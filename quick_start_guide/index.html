@@ -80,17 +80,17 @@
             <li><a href="#get-plugged-in">Get Plugged In</a></li>
             <li><a href="#start-coding">Start Coding</a></li>
             <li><a href="#change-credentials">Change Credentials</a></li>
-            <li><a href="#join-the-community-forum">Join the Community Forum</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
 <h1 id="stretch-re1-quick-start-guide">Stretch RE1: Quick Start Guide</h1>
-<p>Congratulations on your Stretch RE1! This guide will get you started with your new robot. </p>
+<p>Congratulations on your Stretch RE1! This guide will get you started with your new robot.</p>
+<p>We'd welcome your feedback as you get to know your robot. Please let us know of any issues, questions, or points of confusion. Just email us at support@hello-robot.com.</p>
 <h2 id="safety">Safety</h2>
 <p>Stretch has the potential to cause harm if not properly used. All users should review the <a href="../robot_safety_guide/">Stretch Safety Guide</a> and the <a href="">Stretch Safety Video</a> (coming soon) before operating the robot.</p>
 <h2 id="unboxing">Unboxing</h2>
-<p>Please watch the <a href="https://vimeo.com/424213333">Stretch Unboxing Video</a>.</p>
+<p>Please watch our unboxing video (Coming soon)</p>
 <h2 id="robot-tour">Robot Tour</h2>
 <p>A few items you'll want to know about before getting started.</p>
 <h3 id="power">Power</h3>
@@ -103,7 +103,6 @@
 <p><img alt="" src="../images/runstop_rs.png" /></p>
 <h4 id="safe-handling">Safe Handling</h4>
 <p>Like any robot, it is possible to break Stretch if you're not careful. Use common sense when applying forces to its joints, transporting it, etc. </p>
-<p>The <a href="https://vimeo.com/424386241">Stretch Unpowered Best Practices Video</a> provides a quick overview of how to work with the robot.</p>
 <p><strong>Things that won't hurt the robot</strong>:</p>
 <ul>
 <li>Manually push and pull the arm (when the motor isn't holding a position).</li>
@@ -113,7 +112,7 @@
 </ul>
 <p><strong>Things to be mindful of</strong>:</p>
 <ul>
-<li>Manually moving the head and wrist. They will move but they want to go at their own speed.</li>
+<li>Backdriving the head and wrist. They will backdrive but they want to go at their own speed.</li>
 <li>The arm will slowly descend when the robot is powered off. If the arm is retracted it may rest the tool on the base. If desired to hold the arm up when un-powered, the provided 'clip-clamp' can be clipped onto the mast below the shoulder to support it. </li>
 </ul>
 <p><strong>Things that can hurt the robot</strong>: </p>
@@ -126,14 +125,20 @@
 <h2 id="hello-world-demo">Hello World Demo</h2>
 <p>Stretch comes ready to run out of the box. The Xbox Teleoperation demo will let you quickly test out the robot capabilities by teleoperating it with an Xbox Controller. </p>
 <p><img alt="" src="../images/xbox.png" /></p>
-<p><strong>Note</strong>: You will find the USB Dongle already plugged into the the USB port of the base trunk.</p>
 <p>To start the demo after unboxing:</p>
 <ul>
-<li>Remove the 'trunk' cover and power on the robot</li>
-<li>Wait for about 45 seconds. You will hear the Ubuntu startup sound, followed by two beeps (indicating the demo is running). </li>
-<li>Hit the Connect button on the controller. The upper two LEDs of the ring will illuminate.</li>
-<li>Hit the Home Robot button. Stretch will go through its homing calibration routine. </li>
-<li><strong>Note</strong>: make sure the space around the robot is clear before running the Home function</li>
+<li>
+<p>Remove the 'trunk' cover and power on the robot</p>
+</li>
+<li>
+<p>Wait for about 45 seconds. You will hear the Ubuntu startup sound, followed by two beeps (indicating the demo is running). </p>
+</li>
+<li>
+<p>Hit the Connect button on the controller. The upper two LEDs of the ring will illuminate.</p>
+</li>
+<li>
+<p>Hit the Home Robot button. Stretch will go through its homing calibration routine.</p>
+</li>
 </ul>
 <p>You're ready to go! A few things to try:</p>
 <ul>
@@ -152,19 +157,17 @@
 <li>Remove the 'trunk' cover and power on the robot if its not already on.</li>
 <li>Plug in a mouse, keyboard and HDMI monitor to the robot trunk</li>
 <li>Plug in the battery charger</li>
-<li><strong>Note</strong>: You may need to set the charger mode to 12V AGM using the charger 'Mode' button</li>
 </ul>
 <p>Log in to the robot computer. The default user credentials came in the box with the robot. </p>
-<h2 id="start-coding">Start Coding</h2>
-<p>This will give you a quick look at the <a href="../stretch_body_guide/">Stretch Body Interface</a>, which is the low level Python interface to the robot.</p>
-<p>Stretch is configured to run the XBox Controller demo in the background at startup. To run your own code you'll need kill off this process so that it doesn't contend with your code.</p>
+<p>Before you can start coding you'll want to first kill off the XBox controller process which runs by default at boot:</p>
 <pre><code class="bash">&gt;&gt; pkill -f stretch_xbox*
 </code></pre>
 
 <p>While you're at it, disable this autoboot feature. You can always turn it back on later. </p>
 <p>Search for 'Startup' from Ubuntu Activities. Uncheck the box for 'hello_robot_xbox_teleop' </p>
 <p><img alt="" src="../images/xbox_off_rs.png" /></p>
-<p>Now open up a Terminal. From the command line, first verify that that all of the hardware is present and happy</p>
+<h2 id="start-coding">Start Coding</h2>
+<p>Open up a Terminal. From the command line, first verify that that all of the hardware is present and happy</p>
 <pre><code>&gt;&gt; stretch_robot_system_check.py
 </code></pre>
 
@@ -219,16 +222,12 @@ robot.stop()
 <p><img alt="" src="../images/urdf_view_rs.png" /></p>
 <h2 id="change-credentials">Change Credentials</h2>
 <p>Finally, we recommend that you change the login credentials for the default user, hello-robot. </p>
-<pre><code class="bash">&gt;&gt;$ sudo passwd hello-robot
+<pre><code class="bash">&gt;&gt;$ sudo passwd
 </code></pre>
 
-<p>If you'd like to setup a new user account, check out the <a href="https://github.com/hello-robot/stretch_install/blob/master/README.md">Stretch Installation Guide</a>.</p>
+<p>That's it. Happy coding!</p>
 <hr />
-<p>.<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div></p>
-<h2 id="join-the-community-forum">Join the Community Forum</h2>
-<p>Join the Hello Robot Community form at forum.hello-robot.com. We'd welcome hearing your feedback as you get to know your robot. </p>
-<p>Hello Robot support monitors the forum closely and will quickly get back to you on any questions or issues you post.</p>
-<p>That's it. Happy coding!.</p></div>
+<p>.<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div></p></div>
         </div>
 
         <footer class="col-md-12">
