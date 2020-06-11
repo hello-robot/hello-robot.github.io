@@ -37,8 +37,8 @@
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700%7C&display=fallback">
+        <style>body,input{font-family:"Open Sans",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"",SFMono-Regular,Consolas,Menlo,monospace}</style>
       
     
     
@@ -133,8 +133,8 @@
 
 
   <li class="md-nav__item">
-    <a href=".." title="Stretch Docs" class="md-nav__link">
-      Stretch Docs
+    <a href=".." title="Home" class="md-nav__link">
+      Home
     </a>
   </li>
 
@@ -142,6 +142,31 @@
       
       
       
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Resources
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Resources" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Resources
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
 
 
   <li class="md-nav__item">
@@ -150,16 +175,33 @@
     </a>
   </li>
 
-    
-      
-      
-      
+        
+          
+          
+          
 
 
   <li class="md-nav__item">
     <a href="https://github.com/hello-robot" title="Stretch GitHub" class="md-nav__link">
       Stretch GitHub
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://vimeo.com/user108529415" title="Stretch Videos" class="md-nav__link">
+      Stretch Videos
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
     
@@ -215,8 +257,7 @@
     Power
   </a>
   
-    <nav class="md-nav" aria-label="Power">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#runstop" class="md-nav__link">
@@ -229,11 +270,6 @@
   <a href="#safe-handling" class="md-nav__link">
     Safe Handling
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -318,11 +354,11 @@
 <p>The entire robot powers up and down with the On/Off switch. When powering down, we recommend selecting 'Power Off' from the Ubuntu Desktop prior to hitting the Off switch</p>
 <p>The provided battery charger can be plugged and unplugged at any time during operation. We recommend keeping the charger plugged in whenever it isn't running untethered.</p>
 <p><img alt="" src="../images/trunk_rs.png" /></p>
-<h4 id="runstop">Runstop</h4>
+<h3 id="runstop">Runstop</h3>
 <p>The illuminated button on the head is its Runstop. Just tap it, you'll hear a beep and it will start flashing. This will pause motion of the primary robot joints during operation. This can be useful if the robot makes an unsafe motion, or if you just want to free up the robot motors while you roll it around.</p>
 <p>To allow motion once again, hold the button down for two seconds. After the beep, motion can resume.</p>
 <p><img alt="" src="../images/runstop_rs.png" /></p>
-<h4 id="safe-handling">Safe Handling</h4>
+<h3 id="safe-handling">Safe Handling</h3>
 <p>Like any robot, it is possible to break Stretch if you're not careful. Use common sense when applying forces to its joints, transporting it, etc. </p>
 <p>The <a href="https://vimeo.com/424386241">Stretch Unpowered Best Practices Video</a> provides a quick overview of how to work with the robot.</p>
 <p><strong>Things that won't hurt the robot</strong>:</p>
@@ -432,7 +468,7 @@ robot.stow()
 robot.stop()
 </code></pre>
 
-<h4 id="urdf-visualization">URDF Visualization</h4>
+<h3 id="urdf-visualization">URDF Visualization</h3>
 <p>Finally, let's look at the factory calibrated URDF for your robot. From the console run:</p>
 <pre><code class="bash">&gt;&gt; stretch_urdf_show.py --motion
 </code></pre>

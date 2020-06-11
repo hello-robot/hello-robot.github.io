@@ -19,7 +19,7 @@
     
     
       
-        <title>Stretch Body Package - Hello Robot  Documentation</title>
+        <title>Stretch Body Guide - Hello Robot  Documentation</title>
       
     
     
@@ -37,8 +37,8 @@
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700%7C&display=fallback">
+        <style>body,input{font-family:"Open Sans",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"",SFMono-Regular,Consolas,Menlo,monospace}</style>
       
     
     
@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#stretch-body-package" class="md-skip">
+        <a href="#stretch-body-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -90,7 +90,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Stretch Body Package
+              Stretch Body Guide
             
           </span>
         </div>
@@ -133,8 +133,8 @@
 
 
   <li class="md-nav__item">
-    <a href=".." title="Stretch Docs" class="md-nav__link">
-      Stretch Docs
+    <a href=".." title="Home" class="md-nav__link">
+      Home
     </a>
   </li>
 
@@ -142,6 +142,31 @@
       
       
       
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Resources
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Resources" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Resources
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
 
 
   <li class="md-nav__item">
@@ -150,16 +175,33 @@
     </a>
   </li>
 
-    
-      
-      
-      
+        
+          
+          
+          
 
 
   <li class="md-nav__item">
     <a href="https://github.com/hello-robot" title="Stretch GitHub" class="md-nav__link">
       Stretch GitHub
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://vimeo.com/user108529415" title="Stretch Videos" class="md-nav__link">
+      Stretch Videos
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
     
@@ -180,6 +222,249 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#robot-interface" class="md-nav__link">
+    Robot Interface
+  </a>
+  
+    <nav class="md-nav" aria-label="Robot Interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#units" class="md-nav__link">
+    Units
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-robot-status" class="md-nav__link">
+    The Robot Status
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-robot-command" class="md-nav__link">
+    The Robot Command
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stowing-and-homing" class="md-nav__link">
+    Stowing and Homing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripting-the-robot" class="md-nav__link">
+    Scripting the Robot
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-line-tools" class="md-nav__link">
+    Command Line Tools
+  </a>
+  
+    <nav class="md-nav" aria-label="Command Line Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commonly-used-tools" class="md-nav__link">
+    Commonly Used Tools
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#robot-motion" class="md-nav__link">
+    Robot Motion
+  </a>
+  
+    <nav class="md-nav" aria-label="Robot Motion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#motion-profiles" class="md-nav__link">
+    Motion Profiles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range-of-motion" class="md-nav__link">
+    Range of Motion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-modes" class="md-nav__link">
+    Control Modes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runstop" class="md-nav__link">
+    Runstop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guarded-motion" class="md-nav__link">
+    Guarded Motion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronized-motion" class="md-nav__link">
+    Synchronized Motion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motion-status" class="md-nav__link">
+    Motion Status
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-rates" class="md-nav__link">
+    Update Rates
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#robot-parameters" class="md-nav__link">
+    Robot Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Robot Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#calibration-data" class="md-nav__link">
+    Calibration Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urdf-data" class="md-nav__link">
+    URDF Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yaml-data" class="md-nav__link">
+    YAML Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#factory-parameters" class="md-nav__link">
+    Factory Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-parameters" class="md-nav__link">
+    User Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#end-of-arm-tool-parameters" class="md-nav__link">
+    End of Arm Tool Parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#safe-operation-features" class="md-nav__link">
+    Safe Operation Features
+  </a>
+  
+    <nav class="md-nav" aria-label="Safe Operation Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logging" class="md-nav__link">
+    Logging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runstop-functions" class="md-nav__link">
+    Runstop Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#robot-monitor" class="md-nav__link">
+    Robot Monitor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#robot-sentry" class="md-nav__link">
+    Robot Sentry
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -194,7 +479,7 @@
                   
                 
                 
-                <h1 id="stretch-body-package">Stretch Body Package</h1>
+                <h1 id="stretch-body-guide">Stretch Body Guide</h1>
 <p>The Stretch_Body package provides a low level Python API to the Stretch RE1 hardware.  </p>
 <p>The package is available on <a href="https://github.com/hello-robot/stretch_body">Git and installable via Pip</a>.</p>
 <p>It encapsulates</p>
@@ -214,7 +499,7 @@
 <li>D435i: <a href="https://pypi.org/project/pyrealsense2/">pyrealsense2</a></li>
 </ul>
 <p>The Stretch_Body package is intended for advanced users who prefer to not use ROS to control the robot. It assumes a moderate level of experience programming robot sensors and actuators.</p>
-<h1 id="robot-interface">Robot Interface</h1>
+<h2 id="robot-interface">Robot Interface</h2>
 <p>The primary developer interface to  Stretch_Body is the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py">Robot class</a>.  </p>
 <p>As an example, the Python script below prints all Robot sensor and state data to the console every 250ms. </p>
 <pre><code class="python">import time
@@ -251,7 +536,7 @@ robot.startup()
 </code></pre>
 
 <p>Finally, the stop( ) method shuts down the Robot threads and cleanly closes the open serial ports.</p>
-<h4 id="units">Units</h4>
+<h3 id="units">Units</h3>
 <p>The Robot API uses SI units of:</p>
 <ul>
 <li>meters</li>
@@ -266,7 +551,7 @@ robot.startup()
 <li>pos_m : meters</li>
 <li>pos_r: radians</li>
 </ul>
-<h4 id="the-robot-status">The Robot Status</h4>
+<h3 id="the-robot-status">The Robot Status</h3>
 <p>The Robot derives from the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/device.py">Device class</a>. It also encapsulates a number of other Devices:</p>
 <ul>
 <li><a href=".https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/head.py">robot.head</a></li>
@@ -296,7 +581,7 @@ if status['arm']['pos']&gt;0.25:
     print 'Arm extension greater than 0.25m'
 </code></pre>
 
-<h4 id="the-robot-command">The Robot Command</h4>
+<h3 id="the-robot-command">The Robot Command</h3>
 <p>In contrast to the Robot Status which pulls data from the Devices, the Robot Command pushes data to the Devices.</p>
 <p>Consider the following example which extends and then retracts the arm by 0.1 meters:</p>
 <pre><code class="python">import time
@@ -334,7 +619,7 @@ robot.push_command()
 </code></pre>
 
 <p>Commanding robot motion through the Stretch_Body interface is covered in more detail in the Robot Motion section.</p>
-<h4 id="stowing-and-homing">Stowing and Homing</h4>
+<h3 id="stowing-and-homing">Stowing and Homing</h3>
 <p>After power up the robot requires homing in order for its joint encoders to find their zero position. The homing procedure will run the robot through a series of moves to find these zeros. It can be done programatically:</p>
 <pre><code class="python">if not robot.is_calibrated():
     robot.home() #blocking
@@ -352,7 +637,7 @@ robot.push_command()
 <pre><code class="bash">&gt;&gt;$ stretch_robot_stow.py 
 </code></pre>
 
-<h1 id="scripting-the-robot">Scripting the Robot</h1>
+<h2 id="scripting-the-robot">Scripting the Robot</h2>
 <p>A simplified design pattern to script the Robot is as follows</p>
 <pre><code class="python">#!/usr/bin/env python
 import stretch_body.robot
@@ -402,7 +687,7 @@ robot.stop()
 
 </code></pre>
 
-<h1 id="command-line-tools">Command Line Tools</h1>
+<h2 id="command-line-tools">Command Line Tools</h2>
 <p>The Stretch_Body package comes with a suite of command line tools that allow direct interaction with hardware subsystems. These can be useful when developing and debugging applications. They also serve as code examples when developing applications for Stretch_Body.</p>
 <p>These tools can be found by tab completion of  'stretch_' from a terminal.</p>
 <pre><code class="bash">&gt;&gt;$ stretch_
@@ -455,7 +740,7 @@ optional arguments:
 
 </code></pre>
 
-<h4 id="commonly-used-tools">Commonly Used Tools</h4>
+<h3 id="commonly-used-tools">Commonly Used Tools</h3>
 <p>These are the tools a typical user will want to become familiar with.</p>
 <table>
 <thead>
@@ -492,7 +777,7 @@ optional arguments:
 </tbody>
 </table>
 <p>The other tools are fairly self explanatory. They allow the user to quickly read a sensor value or control an individual hardware subsystem.</p>
-<h1 id="robot-motion">Robot Motion</h1>
+<h2 id="robot-motion">Robot Motion</h2>
 <p>Controlling the motion of the robot's actuators is typically done through the ROS interfaces. However it is also possible to control the robot directly through the  stretch_body interfaces. </p>
 <p>Actuators are  commanded by either a <strong>move_by</strong> or <strong>move_to</strong> command (the former being incremental, the latter being absolute). For example, a relative move using the default motion parameters of the arm looks like:</p>
 <pre><code>import stretch_body.robot
@@ -506,7 +791,7 @@ time.sleep(2.0)
 robot.stop()
 </code></pre>
 
-<h4 id="motion-profiles">Motion Profiles</h4>
+<h3 id="motion-profiles">Motion Profiles</h3>
 <p>All joints support trapezoidal based motion generation. Other types of controllers are available (PID, velocity, etc) but they are not covered here . The trapezoidal motion controllers require three values:</p>
 <ul>
 <li>x: target position of joint</li>
@@ -532,14 +817,14 @@ robot.push_command()
 </code></pre>
 
 <p>The motion will fall back to the 'default' settings found in the YAML if no parameters are provided.</p>
-<h4 id="range-of-motion">Range of Motion</h4>
+<h3 id="range-of-motion">Range of Motion</h3>
 <p>All joints obey motion limits which are specified in the factory YAML. These limits have been set at the factory to prevent damage to the hardware. It is not recommended to set them to be greater than the factory specified values. However, they can be further limited if desired. </p>
 <p>For example. to prevent the lift from descending within 100mm of the base, one can override the factory setting in stretch_re1_user_params.yaml</p>
 <pre><code class="yaml">lift:
   range_m: [0.1, 1.095]
 </code></pre>
 
-<h4 id="control-modes">Control Modes</h4>
+<h3 id="control-modes">Control Modes</h3>
 <p>Each joint has a default safety mode and default control mode.  These are:</p>
 <table>
 <thead>
@@ -607,14 +892,14 @@ robot.push_command()
 </code></pre>
 
 <p>As shown, care should be taken to reduce commanded velocities to zero to avoid runaway.</p>
-<h4 id="runstop">Runstop</h4>
+<h3 id="runstop">Runstop</h3>
 <p>Runstop activation will cause  the Base, Arm, and Lift to switch to Safety Mode and for motion commands will be ignored. The motion commands will resume smoothly  when the runstop is deactivated.  This is usually done via the runstop button. However, it can also be done via the Pimu interface:</p>
 <pre><code class="python">if robot.pimu.status['runstop_event']:
     robot.pimu.runstop_event_reset()
     robot.push_command()
 </code></pre>
 
-<h4 id="guarded-motion">Guarded Motion</h4>
+<h3 id="guarded-motion">Guarded Motion</h3>
 <p>The Arm, Lift, and Base support a guarded motion function.  It will automatically transition the actuator from Control mode to Safety mode when the exerted motor torque exceeds a threshold. </p>
 <p>This functionality is most useful for the Lift and the Arm. It allows these joints to safely stop upon contact. It can be used to:</p>
 <ul>
@@ -655,13 +940,13 @@ robot.push_command( )
 </code></pre>
 
 <p><strong>Note: The units of Newtons are approximations only and may not be accurate to real world contact forces.</strong></p>
-<h4 id="synchronized-motion">Synchronized Motion</h4>
+<h3 id="synchronized-motion">Synchronized Motion</h3>
 <p>The Arm, Lift, and Base actuators have a hardware synchronization mechanism. This allows for controller commands to be time synchronized across joints. By default these are turned out in the factory YAML:</p>
 <pre><code class="yaml">hello-motor-arm:
   gains: {enable_sync_mode: 1,...}
 </code></pre>
 
-<h4 id="motion-status">Motion Status</h4>
+<h3 id="motion-status">Motion Status</h3>
 <p>It can be useful to poll the status of a joint during motion in order to modify the robot behavior, etc. The useful status values include:</p>
 <pre><code class="python">robot.arm.status['pos']                     #Joint position
 robot.arm.status['vel']                     #Joint velocity
@@ -673,7 +958,7 @@ robot.arm.motor.status['in_guarded_event']  #Has a guarded event occured
 robot.arm.motor.status['in_safety_event']   #Has a safety event occured
 </code></pre>
 
-<h4 id="update-rates">Update Rates</h4>
+<h3 id="update-rates">Update Rates</h3>
 <p>The following update rates apply to Stretch:</p>
 <table>
 <thead>
@@ -709,7 +994,7 @@ robot.arm.motor.status['in_safety_event']   #Has a safety event occured
 <p>Motion commands are non-blocking and it is the responsibility of the user code to poll the Robot Status to determine when and if a motion target has been achieved.</p>
 <p>The Stretch_Body interface is not designed to support high bandwidth control applications. The natural dynamics of the robot actuators do not support high bandwidth contorl, and the USB based interface limits high rate communication.</p>
 <p>In practice, a Python based control loop that calls push_command( ) at 1Hz to 10Hz is sufficiently matched to the robot natural dynamics. </p>
-<h1 id="robot-parameters">Robot Parameters</h1>
+<h2 id="robot-parameters">Robot Parameters</h2>
 <p>All robot data is stored in the stretch_user directory.  The location of this directory can be found by:</p>
 <pre><code class="bash">&gt;&gt;$ echo $HELLO_FLEET_PATH
 /home/hello-robot/stretch_user
@@ -731,11 +1016,11 @@ stretch_re1_tool_params.yaml
 </code></pre>
 
 <p>A factory image of this data (as shipped), is stored read-only under /etc/hello-robot . This is only for backup and to support cloning the user environment for new users.</p>
-<h4 id="calibration-data">Calibration Data</h4>
+<h3 id="calibration-data">Calibration Data</h3>
 <p>The raw calibration data that was used in production for the robot is also stored for reference within the stretch_user directory. It isn't generally required for development.</p>
-<h4 id="urdf-data">URDF Data</h4>
+<h3 id="urdf-data">URDF Data</h3>
 <p>A calibrated URDF, and associated mesh files, are provided in the 'export_urdf' directory. This is provided for users who don't wish to use ROS yet still want an accurate model of the robot. The stretch_urdf_view.py tool demonstrates how to visualize the URDF from Python.</p>
-<h4 id="yaml-data">YAML Data</h4>
+<h3 id="yaml-data">YAML Data</h3>
 <p>Stretch_Body relies upon the following three primary YAML files:</p>
 <table>
 <thead>
@@ -759,10 +1044,10 @@ stretch_re1_tool_params.yaml
 </tr>
 </tbody>
 </table>
-<h4 id="factory-parameters">Factory Parameters</h4>
+<h3 id="factory-parameters">Factory Parameters</h3>
 <p>This stretch_re1_factory_params.yaml file contains the robot's 'factory' settings. This includes things such as PID parameters for motor controllers, calibration constants, and default joint velocities and accelerations. </p>
 <p>The user should not edit this file. Hello Robot retains an 'as shipped' version of this file should it ever get corrupted. It can be instructive to review this file when getting to know the Stretch_Body code base.</p>
-<h4 id="user-parameters">User Parameters</h4>
+<h3 id="user-parameters">User Parameters</h3>
 <p>The factory settings should suffice for most use cases. However, the user is allowed to override the factory settings. This is done by using same YAML structure and name as is used in the stretch_re1_user_params.yaml file as in the factory file.</p>
 <p>For example, heres the  stretch_re1_user_params.yaml  file is overriding the factory default contact thresholds and  motion speeds.</p>
 <pre><code class="yaml">factory_params: stretch_re1_factory_params.yaml
@@ -783,19 +1068,19 @@ base:
 
 </code></pre>
 
-<h4 id="end-of-arm-tool-parameters">End of Arm Tool Parameters</h4>
+<h3 id="end-of-arm-tool-parameters">End of Arm Tool Parameters</h3>
 <p>The stretch_re1_tool_params.yaml file stores configuration parameters specific to the user's custom end-of-arm-tools. It is read by the Robot class and the parameter data is made accessible to the user's end-of-arm-tool class. </p>
 <p>More information coming soon.</p>
-<h1 id="safe-operation-functions">Safe Operation Functions</h1>
+<h2 id="safe-operation-features">Safe Operation Features</h2>
 <p>Stretch includes a number of built-in functions that help it maintain safe operating conditions. These functions can be disabled and enabled via the robot YAML parameters.</p>
-<h2 id="logging">Logging</h2>
+<h3 id="logging">Logging</h3>
 <p>Upon instantiation, the Robot class opens a new log file for warning and informational messages to be written to. These timestamped logs are found under $HELLO_FLEET_DIRECTORY/log.</p>
 <p>The logging messages can be echoed to the console by setting:</p>
 <pre><code>robot:
   log_to_console: 1
 </code></pre>
 
-<h2 id="runstop-functions">Runstop Functions</h2>
+<h3 id="runstop-functions">Runstop Functions</h3>
 <table>
 <thead>
 <tr>
@@ -826,7 +1111,7 @@ base:
 </tr>
 </tbody>
 </table>
-<h2 id="robot-monitor">Robot Monitor</h2>
+<h3 id="robot-monitor">Robot Monitor</h3>
 <p>The <a href="https://github.com/hello-robot/stretch_body/blob/master/python/stretch_body/robot_monitor.py">Robot Monitor</a> is a thread that monitors the Robot Status data for significant events. For example, it can monitor the error flags from the Dynamixel servos and notify when a thermal overload occurs. The Robot Monitor logs warnings to a log file by default. </p>
 <table>
 <thead>
@@ -898,7 +1183,7 @@ robot_sentry:
   wrist_yaw_overload: 1
 </code></pre>
 
-<h2 id="robot-sentry">Robot Sentry</h2>
+<h3 id="robot-sentry">Robot Sentry</h3>
 <p>The <a href="https://github.com/hello-robot/stretch_body/blob/master/python/stretch_body/robot_sentry.py">Robot Sentry</a> is a thread that can override and also generate commands to the robot hardware. It's purpose is to keep the robot operating within a safe regime. For example, the Robot Sentry monitors the position of the Lift and Arm and limits the maximum base velocity and acceleration (in order to reduce the chance of toppling). The Robot Sentry reports events to the log file as well. </p>
 <table>
 <thead>
