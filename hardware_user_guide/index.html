@@ -434,40 +434,6 @@
     Battery Maintenance
   </a>
   
-    <nav class="md-nav" aria-label="Battery Maintenance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#battery-state" class="md-nav__link">
-    Battery State
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#run-time" class="md-nav__link">
-    Run Time
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#low-voltage-alert" class="md-nav__link">
-    Low Voltage Alert
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#battery-fuse" class="md-nav__link">
-    Battery Fuse
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
@@ -899,27 +865,7 @@ Pin 2: GND</td>
 <p><img alt="image alt text" src="../images/gripper_mount_a_rs.png" /></p>
 <h2 id="robot-care">Robot Care</h2>
 <h3 id="battery-maintenance">Battery Maintenance</h3>
-<p>The robot has two deep-cycle sealed lead acid batteries which provide 12V/19AH of charge. The provided charger will keep the system at a near full-charge if it is left plugged during non-tethered use. </p>
-<p>While deep-cycle batteries are robust to deep discharge states, it is recommended to avoid doing so if possible. The provide charger is able to recover form such a state if it occurs however.</p>
-<p>We recommend leaving the charger plugged in whenever the robot base is stationary.</p>
-<h4 id="battery-state">Battery State</h4>
-<p>The battery charger LEDs provide an approximate indicator of battery charge. However, this is not especially accurate. A charged battery will typically report a voltage of 12-12.8V and will maintain that voltage across load conditions. Meanwhile, a partially charged battery may report anywhere from 10-12.8V but its voltage will drop rapidly when loaded. </p>
-<p>The  voltage and current draw can be checked by;</p>
-<pre><code class="bash">&gt;&gt;$ stretch_robot_battery_check.py 
-[Pass] Voltage with 12.9889035225
-[Pass] Current with 2.46239192784
-[Pass] CPU Temp with 56.0
-
-</code></pre>
-
-<h4 id="run-time">Run Time</h4>
-<p>The run time for a fully charged system is dependent on the load use case. The vast majority of battery power is consumed by the NUC computer. While the motors can momentarily draw surge currents, the robot is designed such that minimal power is expended to hold the body up against gravity (which keeps average motor current low). </p>
-<p>The robot will continue to operate at battery voltages as low as 9.5V. A fully charged robot running a very high CPU load will take over 2 hours to discharge to 10V. </p>
-<h4 id="low-voltage-alert">Low Voltage Alert</h4>
-<p>When the battery voltage drops below a YAML specified threshold the robot will produce an intermittent double beep sound. This is a reminder to the user to plug in the charger. This threshold is set at 10.5V at the factory but may be overridden.</p>
-<h4 id="battery-fuse">Battery Fuse</h4>
-<p>The batteries are fused with a 20mm 8A / slow blow fuse. Nominal load currents for the robot are 3-5A for most use cases. The fuse provides protection against an internal short. </p>
-<p>Should the fuse blow, the robot will fail to power up. Should the fuse need replacement contact support@hello-robot.com.</p>
+<p>Please review the <a href="../battery_maintenance_guide/">Battery Maintenance Guide</a> for proper care and charging of the Stretch batteries.</p>
 <h3 id="belt-tension">Belt Tension</h3>
 <p>A neoprene timing belt drives the arm up and down the lift. It may detension over long periods of time if it experiences sustained loading. In this case, slack will become visually apparent in the belt as the lift moves.</p>
 <p>The belt is very straightforward to re-tension. Please contact support@hello-robot.com for tensioning instructions.</p>
