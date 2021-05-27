@@ -425,10 +425,14 @@
 <p>This is the recommended approach if you are running Ubuntu 16.04/18.04 with ROS kinetic/melodic installed. This method will utilize the local installation of ROS tools, such as Rviz, rostopic, and rosservice, while retrieving data from the robot.</p>
 <h4 id="how-to_2">How To</h4>
 <p>If you are developing ROS code to test on the Stretch RE1 and you already have ROS installed on your local Ubuntu machine, then there is an easier way of using Rviz than the method described in <a href="#ssh-x-server">SSH &amp; X Server</a>. In the ROS world, this concept is known as "remote master".</p>
-<p>First, start the ROS launch files on the robot as you normally would. On you local machine, run:</p>
-<pre><code class="language-bash">export ROS_MASTER_URI=http://username@ip-address:11311
+<p>First, run the following on the robot:</p>
+<pre><code class="language-bash">export ROS_IP=ip-address
+export ROS_MASTER_URI=http://ip-address:11311/
 </code></pre>
-<p>Then you may use tools like Rviz, rostopic, or rosservice on your local machine as you would have on the robot. Additional information can be found in the ROS <a href="http://wiki.ros.org/ROS/Tutorials/MultipleMachines">Multiple Machines Tutorial</a>.</p>
+<p>Next, start the ROS launch files on the robot as you normally would. Finally, on your local machine, run:</p>
+<pre><code class="language-bash">export ROS_MASTER_URI=http://ip-address:11311
+</code></pre>
+<p>Then you may use tools like Rviz, rostopic, or rosservice on your local machine as you would have on the robot. Additional information can be found in the ROS <a href="http://wiki.ros.org/ROS/Tutorials/MultipleMachines">Multiple Machines Tutorial</a>. If you use ROS Remote Master often, you may export these environment variables in your <a href="https://www.maketecheasier.com/what-is-bashrc/">bashrc</a>.</p>
 <h2 id="additional-ideas">Additional Ideas</h2>
 <p>Although the methods described above will enable you to wirelessly control the robot, there are a number of way to improve usability and security of your wireless connection. These ideas are listed here.</p>
 <h3 id="hotspot">Hotspot</h3>
