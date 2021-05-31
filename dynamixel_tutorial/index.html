@@ -11,14 +11,14 @@
       
       
       
-        <link rel="canonical" href="https://docs.hello-robot.com/LICENSE/">
+        <link rel="canonical" href="https://docs.hello-robot.com/dynamixel_tutorial/">
       
       <link rel="icon" href="../images/hello_robot_favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.5">
     
     
       
-        <title>LICENSE - Hello Robot  Documentation</title>
+        <title>Stretch RE1 - Working with the Dynamixel Servos - Hello Robot  Documentation</title>
       
     
     
@@ -68,6 +68,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#stretch-re1-working-with-the-dynamixel-servos" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -93,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              LICENSE
+              Stretch RE1 - Working with the Dynamixel Servos
             
           </span>
         </div>
@@ -222,21 +227,202 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servo-tools" class="md-nav__link">
+    Servo Tools
+  </a>
+  
+    <nav class="md-nav" aria-label="Servo Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jogging-the-servos" class="md-nav__link">
+    Jogging the Servos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebooting-the-servos" class="md-nav__link">
+    Rebooting the Servos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identify-servos-on-the-bus" class="md-nav__link">
+    Identify Servos on the Bus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-the-servo-baud-rate" class="md-nav__link">
+    Setting the Servo Baud Rate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-the-servo-id" class="md-nav__link">
+    Setting the Servo ID
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>LICENSE</h1>
-                
-                <p>The following license applies to the entire contents of this directory (the "Contents"), which contains documentation exclusively for use with the Stretch RE1 mobile manipulator, which is a robot produced and sold by Hello Robot Inc.</p>
-<p>Copyright 2020 Hello Robot Inc.</p>
-<p>The Contents are licensed under the Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) license (the "License"); you may not use the Contents except in compliance with the License. You may obtain a copy of the License at</p>
-<p>https://creativecommons.org/licenses/by-nd/4.0</p>
-<p>Unless required by applicable law or agreed to in writing, the Contents distributed under the License are distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-<p>Patents pending and trademark rights cover the Contents. As stated by the detailed License, "Patent and trademark rights are not licensed under this Public License."</p>
-<p>For further information about the Contents including inquiries about dual licensing, please contact Hello Robot Inc.</p>
+                <h1 id="stretch-re1-working-with-the-dynamixel-servos">Stretch RE1 - Working with the Dynamixel Servos</h1>
+<p>In this tutorial we will cover the basics required to work with Dynamixel servos and Stretch.</p>
+<p><strong>Note</strong>: This tutorial applies to Stretch Body v0.1.x or greater</p>
+<h2 id="overview">Overview</h2>
+<p>Stretch comes with two Dynamixel buses - one for the head and one for the end-of-arm:</p>
+<pre><code class="language-bash">ls  /dev/hello-dynamixel-*
+/dev/hello-dynamixel-head  /dev/hello-dynamixel-wrist
+</code></pre>
+<p>Typically users will interact with these devices through either the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/head.py">Head</a> or <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/end_of_arm.py">EndOfArm</a> interfaces. The EndOfArm interface may be extended to support custom tools, as described in the Stretch Body Tool Change Tutorial.</p>
+<p>In some cases users will need to work directly with the servos from the command line. The sections below covers these tools </p>
+<h2 id="servo-tools">Servo Tools</h2>
+<h3 id="jogging-the-servos">Jogging the Servos</h3>
+<p>You can directly command each servo using the command line tool <code>RE1_dynamixel_servo_jog.py</code>. This can be useful for debugging new servos added to the end-of-arm tool during system bring-up. For example, to command the head pan servo:</p>
+<pre><code class="language-bash">RE1_dynamixel_jog.py /dev/hello-dynamixel-head 11
+[Dynamixel ID:011] ping Succeeded. Dynamixel model number : 1080
+------ MENU -------
+m: menu
+a: increment position 50 tick
+b: decrement position 50 tick
+A: increment position 500 ticks
+B: decrement position 500 ticks
+v: set profile velocity
+u: set profile acceleration
+z: zero position
+h: show homing offset
+o: zero homing offset
+q: got to position
+p: ping
+r: reboot
+w: set max pwm
+t: set max temp
+i: set id
+d: disable torque
+e: enable torque
+-------------------
+
+</code></pre>
+<h3 id="rebooting-the-servos">Rebooting the Servos</h3>
+<p>Under high-load conditions the servos may enter an error state to protect themselves from thermal overload. In this case, the red LED on the servo will flash (if visible). In addition, the servo will be unresponsive to motion commands. In this case, allow the overheating servo to cool down and reboot the servos using the <code>stretch_robot_dynamixel_reboot.py</code> tool: </p>
+<pre><code class="language-bash">stretch_robot_dynamixel_reboot.py 
+For use with S T R E T C H (TM) RESEARCH EDITION from Hello Robot Inc.
+
+---- Rebooting Head ---- 
+[Dynamixel ID:011] Reboot Succeeded.
+[Dynamixel ID:012] Reboot Succeeded.
+---- Rebooting Wrist ---- 
+[Dynamixel ID:013] Reboot Succeeded.
+[Dynamixel ID:014] Reboot Succeeded.
+</code></pre>
+<h3 id="identify-servos-on-the-bus">Identify Servos on the Bus</h3>
+<p>If it is unclear which servos are on the bus, and at what baud rate, you can use the <code>RE1_dynamixel_id_scan.py</code> tool. Here we see that the two head servos are at ID 11 and 12 at baud 57600.</p>
+<pre><code class="language-bash">RE1_dynamixel_id_scan.py /dev/hello-dynamixel-head --baud 57600
+Scanning bus /dev/hello-dynamixel-head at baud rate 57600
+----------------------------------------------------------
+[Dynamixel ID:000] ping Failed.
+[Dynamixel ID:001] ping Failed.
+[Dynamixel ID:002] ping Failed.
+[Dynamixel ID:003] ping Failed.
+[Dynamixel ID:004] ping Failed.
+[Dynamixel ID:005] ping Failed.
+[Dynamixel ID:006] ping Failed.
+[Dynamixel ID:007] ping Failed.
+[Dynamixel ID:008] ping Failed.
+[Dynamixel ID:009] ping Failed.
+[Dynamixel ID:010] ping Failed.
+[Dynamixel ID:011] ping Succeeded. Dynamixel model number : 1080
+[Dynamixel ID:012] ping Succeeded. Dynamixel model number : 1060
+[Dynamixel ID:013] ping Failed.
+[Dynamixel ID:014] ping Failed.
+[Dynamixel ID:015] ping Failed.
+[Dynamixel ID:016] ping Failed.
+[Dynamixel ID:017] ping Failed.
+[Dynamixel ID:018] ping Failed.
+[Dynamixel ID:019] ping Failed.
+[Dynamixel ID:020] ping Failed.
+[Dynamixel ID:021] ping Failed.
+[Dynamixel ID:022] ping Failed.
+[Dynamixel ID:023] ping Failed.
+[Dynamixel ID:024] ping Failed.
+
+</code></pre>
+<h3 id="setting-the-servo-baud-rate">Setting the Servo Baud Rate</h3>
+<p>Dynamixel servos come with baudrate=57600 from the factory.  When adding your own servos to the end-of-arm tool, you may want to set the servo ID using the <code>RE1_dynamixel_set_baud.py</code> tool. For example:</p>
+<pre><code class="language-bash">RE1_dynamixel_set_baud.py /dev/hello-dynamixel-wrist 13 115200
+---------------------
+Checking servo current baud for 57600
+----
+Identified current baud of 57600. Changing baud to 115200
+Success at changing baud
+</code></pre>
+<h3 id="setting-the-servo-id">Setting the Servo ID</h3>
+<p>Dynamixel servos come with ID=1 from the factory. When adding your own servos to the end-of-arm tool, you may want to set the servo ID using the <code>RE1_dynamixel_id_change.py</code> tool. For example:</p>
+<pre><code class="language-bash">RE1_dynamixel_id_change.py /dev/hello-dynamixel-wrist 1 13 --baud 115200
+[Dynamixel ID:001] ping Succeeded. Dynamixel model number : 1080
+Ready to change ID 1 to 13. Hit enter to continue:
+
+[Dynamixel ID:013] ping Succeeded. Dynamixel model number : 1080
+Success at setting ID to 13
+
+</code></pre>
+<h2 id="_1"></h2>
+<hr />
+<p>.<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div></p>
                 
               
               

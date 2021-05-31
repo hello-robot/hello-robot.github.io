@@ -11,14 +11,14 @@
       
       
       
-        <link rel="canonical" href="https://docs.hello-robot.com/troubleshooting_guide/">
+        <link rel="canonical" href="https://docs.hello-robot.com/parameters_tutorial/">
       
       <link rel="icon" href="../images/hello_robot_favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.5">
     
     
       
-        <title>Stretch RE1: Troubleshooting Guide - Hello Robot  Documentation</title>
+        <title>Stretch Body: Parameters Tutorial - Hello Robot  Documentation</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#stretch-re1-troubleshooting-guide" class="md-skip">
+        <a href="#stretch-body-parameters-tutorial" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Stretch RE1: Troubleshooting Guide
+              Stretch Body: Parameters Tutorial
             
           </span>
         </div>
@@ -246,22 +246,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#xbox-teleoperation-is-not-working" class="md-nav__link">
-    XBox teleoperation is not working
+  <a href="#overview" class="md-nav__link">
+    Overview
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#battery-is-not-staying-charged" class="md-nav__link">
-    Battery is not staying charged
+  <a href="#data-organization" class="md-nav__link">
+    Data Organization
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#rpc-transport-errors-stretch-doesnt-respond-to-commands" class="md-nav__link">
-    RPC Transport Errors (Stretch doesn't respond to commands)
+  <a href="#working-with-parameters-programmatically" class="md-nav__link">
+    Working with Parameters Programmatically
   </a>
   
 </li>
@@ -279,39 +279,155 @@
               
                 
                 
-                <h1 id="stretch-re1-troubleshooting-guide">Stretch RE1: Troubleshooting Guide</h1>
-<p>This guide covers common issues and ways to resolve them. Please check the <a href="forum.hello-robot.com">Hello Robot Forum</a> for additional topics not covered here.</p>
-<h2 id="xbox-teleoperation-is-not-working">XBox teleoperation is not working</h2>
-<p>The provided Easy SMX wireless controller can accidentally be placed in the wrong mode. The mode is indicated by the round illuminated ring (shown as Connect below). The top 2 LEDs only should be illuminated. If a different LED pattern is shown then the button mapping expected by <a href="https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_xbox_controller_teleop.py0">stretch_xbox_controller_teleop.py</a> will be incorrect.</p>
-<p>To set the controller into the correct mode:</p>
+                <h1 id="stretch-body-parameters-tutorial">Stretch Body: Parameters Tutorial</h1>
+<p>In this tutorial we will discuss how parameters are managed in Stretch Body and show examples of how to customize your robot by overriding parameters.</p>
+<p><strong>Note</strong>: This tutorial applies to Stretch Body version 0.1.x or greater.</p>
+<h2 id="overview">Overview</h2>
+<p>Stretch Body shares a global set of parameters across all of its Python <a href="">Devices</a>. A quick way to see what parameters are available are with the <code>stretch_params.py</code> tool:</p>
+<pre><code class="language-bash">stretch_params.py 
+################################### Parameters for stretch-re1-1039 ######################################
+Origin                                   Parameter                                     Value                        
+----------------------------------------------------------------------------------------------------------
+stretch_re1_factory_params.yaml          param.head_pan.req_calibration                   0                             
+stretch_re1_factory_params.yaml          param.head_tilt.pwm_limit                       885                           
+...
+</code></pre>
+<p>The tool display each parameter's value as well as which parameter file it was loaded from.</p>
+<p>By grepping the tool's output you can query specific settings. For example, to query contact thresholds for the arm:</p>
+<pre><code class="language-bash">stretch_params.py | grep arm | grep contact_thresh
+stretch_re1_factory_params.yaml           param.arm.contact_thresh_max_N          [-100, 100]                   
+stretch_re1_factory_params.yaml           param.arm.contact_thresh_N              [-64.46241590881348, 66.51084520568847]
+</code></pre>
+<p>Now if you want to override the default contact thresholds for the arm, you could add the following to your <code>stretch_re1_user_params.yaml</code>:</p>
+<pre><code class="language-yaml">arm:
+  contact_thresh_N: [-80.0,80.0]
+</code></pre>
+<p>Run the tool again and we see:</p>
+<pre><code class="language-bash">stretch_params.py | grep arm | grep contact_thresh
+stretch_re1_factory_params.yaml           param.arm.contact_thresh_max_N          [-100, 100]                   
+stretch_re1_factory_params.yaml           param.arm.contact_thresh_N              [-80, 80]
+</code></pre>
+<h2 id="data-organization">Data Organization</h2>
+<p>Parameters' data sources may be either a Python dictionary or a YAML file. The robot's YAML files are found under <code>$HELLO_FLEET_PATH/$HELLO_FLEET_ID</code>. The Python dictionaries may come from any Python module on the Python path.</p>
+<p>There are three types of parameters:</p>
 <ul>
-<li>Hold the center button down for 5s. It will switch modes. Release.</li>
-<li>Repeat until top half of ring (upper two lights) are illuminated.</li>
+<li>Factory Parameters</li>
+<li><code>stretch_re1_factory_params.yaml</code>: These are common factory settings shared across RE1s as well as factory calibration data that is specific to your robot.</li>
+<li><code>stretch_body.robot_params.py</code>: These are common factory settings shared across RE1s that may be automatically updated over time as new versions of Stretch Body are released.</li>
+<li>External Parameters</li>
+<li><code>&lt;external_module&gt;.params.py</code>: These are parameters for devices outside of Stretch Body (such as the devices found in the Stretch Tool Share)</li>
+<li>User Parameters</li>
+<li><code>stretch_re1_user_params.yaml</code>: These are user customizations of the robot's settings</li>
 </ul>
-<p>In addition, check that the provided USB dongle is plugged into the robot USB port in its trunk.</p>
-<p>. </p>
-<p><img alt="" src="../images/xbox.png" /></p>
-<h2 id="battery-is-not-staying-charged">Battery is not staying charged</h2>
-<p>Please review the troubleshooting section of the <a href="../battery_maintenance_guide/">Battery Maintenance Guide</a>.</p>
-<h2 id="rpc-transport-errors-stretch-doesnt-respond-to-commands">RPC Transport Errors (Stretch doesn't respond to commands)</h2>
-<p>If more than one instance of Stretch Body's <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py">Robot</a> class is instantiated at a time, Stretch Body will report communication errors and will not always execute motion commands as expected. This is because <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py">Robot</a>  manages communications with the robot hardware and it doesn't support multiple writes to the USB devices.</p>
-<p>These errors can appear as</p>
-<pre><code>Transport RX Error on RPC_ACK_SEND_BLOCK_MORE False 0 102
----- Debug Exception
---------------- New RPC -------------------------
-Framer sent RPC_START_NEW_RPC
-...
+<p>As shown below, the parameters are loaded into the <code>robot_params</code> dictionary in a specific order, starting with <code>stretch_re1_factory_params.yaml</code>. Loading of subsequent parameters overwrites earlier parameters. As such, the <code>stretch_re1_user_params.yaml</code> parameters can overwrite any factory parameters or external parameters. </p>
+<p><img alt="" src="../images/parameter_stack_rs.png" /></p>
+<p>You can configure which external parameters' data sources are loaded, and their order, in your <code>stretch_re1_user_params.yaml</code>. For example:</p>
+<pre><code class="language-yaml">factory_params: stretch_re1_factory_params.yaml
+params:
+- stretch_tool_share.usbcam_wrist_v1.params
+- stretch_tool_share.stretch_dex_wrist_beta.params
 </code></pre>
-<p>or as</p>
-<pre><code>IOError(None): None
-...
+<p>Here we see that the name of the factory parameters file is <code>stretch_re1_factory_params.yaml</code>. We also see that two external parameter sets will be loaded. In this example, the order of parameter precedence  would be:</p>
+<ol>
+<li><code>stretch_re1_user_params.yaml</code></li>
+<li><code>stretch_tool_share.stretch_dex_wrist_beta.params.py</code></li>
+<li><code>stretch_tool_share.usbcam_wrist_v1.params.py</code></li>
+<li><code>stretch_body.robot_params.py</code></li>
+<li><code>stretch_re1_factory_params.yaml</code></li>
+</ol>
+<h2 id="working-with-parameters-programmatically">Working with Parameters Programmatically</h2>
+<p>Stretch Body is organized as a set of classes that extend the base <a href="">Device</a> class. Each Device has access to a set of global parameters that are stored within the Device as a dictionary. These are:</p>
+<ul>
+<li><code>device.params</code> : the parameters for the specific device</li>
+<li><code>device.robot_params</code>: global set of parameters</li>
+</ul>
+<p>For example, let's look at the Robot class:</p>
+<pre><code class="language-python">class Robot(Device):
+    def __init__(self):
+        Device.__init__(self,'robot')
+        ...
 </code></pre>
-<p>To check if a instance of <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py">Robot</a> is already instantiated, you may use the Unix <a href="https://www.unixtutorial.org/commands/top">top</a> command to monitor active processes. You may use the Unix <a href="https://linuxize.com/post/pkill-command-in-linux/">pkill</a> command to end the background instance of Robot.</p>
-<pre><code>$ pkill -9 python
+<p>When instantiating its Device base class it loads the robot parameters of the various YAML files and Python dictionaries.</p>
+<pre><code class="language-python">class Device:
+    def __init__(self,name):
+        self.name=name
+        self.user_params, self.robot_params = RobotParams.get_params()
+        try:
+            self.params=self.robot_params[self.name]
+        except KeyError:
+            print('No device params found for %s'%name)
+            self.params={}
 </code></pre>
-<p>As shipped, Stretch launches <a href="https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_xbox_controller_teleop.py">stretch_xbox_controller_teleop.py</a> upon boot. It is necessary to turn off this automatic launch feature, otherwise your own Robot instance will conflict with this script. Additionally, if you are logged into multiple accounts, a Robot instance may be active in another user account.</p>
-<p>To turn it off, search for 'Startup' from Ubuntu Activities. Uncheck the box for 'hello_robot_xbox_teleop'.</p>
-<p><img alt="" src="../images/xbox_off_rs.png" /></p>
+<p>We can explore these parameters via iPython. </p>
+<pre><code class="language-python">import stretch_body.robot as robot
+
+In [2]: r=robot.Robot()
+
+In [3]: r.params
+Out[3]: 
+{'batch_name': 'Irma',
+ 'log_to_console': 0,
+ 'serial_no': 'stretch-re1-1039',
+ 'stow': {'arm': 0.0,
+  'head_pan': 0.0,
+  'head_tilt': 0.0,
+  'lift': 0.2,
+  'stretch_gripper': 0,
+  'wrist_yaw': 3.4},
+ 'tool': 'tool_none',
+ 'use_arm': 1,
+ 'use_base': 1,
+ 'use_end_of_arm': 1,
+ 'use_head': 1,
+ 'use_lift': 1,
+ 'use_monitor': 1,
+ 'use_pimu': 1,
+ 'use_sentry': 1,
+ 'use_wacc': 1,
+ 'verbose': 0}
+
+In [4]: r.arm.params
+Out[4]: 
+{'chain_pitch': 0.0167,
+ 'chain_sprocket_teeth': 10,
+ 'contact_thresh_N': [-80, 80],
+ 'contact_thresh_max_N': [-100, 100],
+ 'force_N_per_A': 55.9,
+ 'gr_spur': 3.875,
+ 'homing_force_N': [-60, 80],
+ 'i_feedforward': 0,
+ 'motion': {'default': {'accel_m': 0.14, 'vel_m': 0.14},
+  'fast': {'accel_m': 0.2, 'vel_m': 0.25},
+  'max': {'accel_m': 0.3, 'vel_m': 0.3},
+  'slow': {'accel_m': 0.07, 'vel_m': 0.06}},
+ 'range_m': [0.0, 0.5202755326289126],
+ 'verbose': 0}
+
+</code></pre>
+<p>All devices have access the global parameter set, <code>robot_params</code>. For example, the arm can access the lift parameters:</p>
+<pre><code class="language-python">r.arm.robot_params['lift']
+Out[7]: 
+{'belt_pitch_m': 0.005,
+ 'contact_thresh_N': [-72.45217552185059, 65.6581787109375],
+ 'contact_thresh_max_N': [-100, 100],
+ 'force_N_per_A': 75.0,
+ 'homing_force_N': [-70, 70],
+ 'i_feedforward': 0.75,
+ 'motion': {'default': {'accel_m': 0.15, 'vel_m': 0.095},
+  'fast': {'accel_m': 0.2, 'vel_m': 0.12},
+  'max': {'accel_m': 0.3, 'vel_m': 0.15},
+  'slow': {'accel_m': 0.05, 'vel_m': 0.05}},
+ 'pinion_t': 12,
+ 'range_m': [0.0, 1.0983598164609882],
+ 'verbose': 0}
+
+</code></pre>
+<p>You can set any of the <code>robot_params</code> programmatically. For example to adjust the contact sensitivity for the arm:</p>
+<pre><code class="language-python">In [9]: r.arm.params['contact_thresh_N']
+Out[9]: [-64.46241590881348, 66.51084520568847]
+
+In [10]: r.arm.params['contact_thresh_N']=[-80.0, 80.0]
+</code></pre>
                 
               
               
