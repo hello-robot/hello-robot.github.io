@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://docs.hello-robot.com/stretch_docs/LICENSE/</loc>
+         <loc>https://docs.hello-robot.com/LICENSE/</loc>
          <lastmod>2021-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.hello-robot.com/stretch_docs/guides/battery_maintenance_guide/</loc>
+         <loc>https://docs.hello-robot.com/guides/battery_maintenance_guide/</loc>
          <lastmod>2021-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.hello-robot.com/stretch_docs/guides/dex_wrist_user_guide/</loc>
+         <loc>https://docs.hello-robot.com/guides/dex_wrist_user_guide/</loc>
          <lastmod>2021-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.hello-robot.com/stretch_docs/guides/hardware_user_guide/</loc>
+         <loc>https://docs.hello-robot.com/guides/hardware_user_guide/</loc>
          <lastmod>2021-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.hello-robot.com/stretch_docs/guides/quick_start_guide/</loc>
+         <loc>https://docs.hello-robot.com/guides/quick_start_guide/</loc>
          <lastmod>2021-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.hello-robot.com/stretch_docs/guides/robot_safety_guide/</loc>
+         <loc>https://docs.hello-robot.com/guides/robot_safety_guide/</loc>
          <lastmod>2021-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.hello-robot.com/stretch_docs/guides/troubleshooting_guide/</loc>
+         <loc>https://docs.hello-robot.com/guides/troubleshooting_guide/</loc>
          <lastmod>2021-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.hello-robot.com/stretch_docs/tutorials/tool_change_tutorial/</loc>
+         <loc>https://docs.hello-robot.com/tutorials/tool_change_tutorial/</loc>
          <lastmod>2021-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.hello-robot.com/stretch_docs/tutorials/untethered_operation/</loc>
+         <loc>https://docs.hello-robot.com/tutorials/untethered_operation/</loc>
          <lastmod>2021-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.hello-robot.com/stretch_docs/tutorials/updating_software/</loc>
+         <loc>https://docs.hello-robot.com/tutorials/updating_software/</loc>
          <lastmod>2021-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
