@@ -18,3 +18,7 @@
 [data-md-color-scheme="slate"] {
   --md-hue: 210; /* [0, 360] */
 }
+
+.md-header__topic:first-child {
+  font-weight: normal;
+}
