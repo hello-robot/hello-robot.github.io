@@ -9,11 +9,13 @@
         <meta name="description" content="Hello Robot User Documentation">
       
       
+        <meta name="author" content="Hello Robot Inc">
+      
       
         <link rel="canonical" href="https://docs.hello-robot.com/stretch_body_guide/">
       
       <link rel="icon" href="../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.11">
     
     
       
@@ -21,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.6e60f8b8.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.50e68009.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
@@ -33,8 +35,8 @@
       
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=:300,400,400i,700%7C&display=fallback">
-        <style>:root{--md-text-font:"";--md-code-font:""}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
@@ -621,35 +623,52 @@
 <h2 id="robot-interface">Robot Interface</h2>
 <p>The primary developer interface to  Stretch_Body is the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py">Robot class</a>.  </p>
 <p>As an example, the Python script below prints all Robot sensor and state data to the console every 250ms. </p>
-<pre><code class="language-python">import time
-import stretch_body.robot
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">stretch_body.robot</span>
 
-robot=stretch_body.robot.Robot()
-robot.startup()
+<span class="n">robot</span><span class="o">=</span><span class="n">stretch_body</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">Robot</span><span class="p">()</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">startup</span><span class="p">()</span>
 
-for i in range(10):
-    robot.pretty_print()
-    time.sleep(0.25)
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">robot</span><span class="o">.</span><span class="n">pretty_print</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
 
-robot.stop()
-
-</code></pre>
+<span class="n">robot</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
 <p>Looking at this in detail:</p>
-<pre><code class="language-python">import stretch_body.robot
-</code></pre>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">stretch_body.robot</span>
+</code></pre></div>
+</td></tr></table>
 <p>The package stretch_body includes the Python module for Robot as well as other Devices such as Lift and Arm.</p>
-<pre><code class="language-python">robot=stretch_body.robot.Robot()
-robot.startup()
-</code></pre>
-<p>Here we instantiate an instance of our Robot. The call to startup( ) opens the serial ports to the various devices, loads the Robot YAML parameters, and launches a few helper threads.</p>
-<pre><code class="language-python">for i in range(10):
-    robot.pretty_print()
-    time.sleep(0.25)
-</code></pre>
-<p>The call to pretty_print( ) prints to console all of the robot's sensor and state data. </p>
-<pre><code class="language-python">robot.stop()
-</code></pre>
-<p>Finally, the stop( ) method shuts down the Robot threads and cleanly closes the open serial ports.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">robot</span><span class="o">=</span><span class="n">stretch_body</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">Robot</span><span class="p">()</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">startup</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+<p>Here we instantiate an instance of our Robot. The call to <code>startup()</code> opens the serial ports to the various devices, loads the Robot YAML parameters, and launches a few helper threads.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">robot</span><span class="o">.</span><span class="n">pretty_print</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>The call to <code>pretty_print()</code> prints to console all of the robot's sensor and state data.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">robot</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+<p>Finally, the <code>stop()</code> method shuts down the Robot threads and cleanly closes the open serial ports.</p>
 <h3 id="units">Units</h3>
 <p>The Robot API uses SI units of:</p>
 <ul>
@@ -668,181 +687,242 @@ robot.startup()
 <h3 id="the-robot-status">The Robot Status</h3>
 <p>The Robot derives from the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/device.py">Device class</a>. It also encapsulates a number of other Devices:</p>
 <ul>
-<li><a href=".https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/head.py">robot.head</a></li>
+<li><a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/head.py">robot.head</a></li>
 <li><a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/arm.py">robot.arm</a></li>
-<li><a href=".https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/lift.py">robot.lift</a></li>
+<li><a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/lift.py">robot.lift</a></li>
 <li><a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/base.py">robot.base</a></li>
 <li><a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/wacc.py">robot.wacc</a></li>
 <li><a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/pimu.py">robot.pimu</a></li>
 <li><a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/end_of_arm.py">robot.end_of_arm</a></li>
 </ul>
 <p>All devices contain a Status dictionary. The Status contains the most recent sensor and state data of that device. For example, looking at the Arm class we see:</p>
-<pre><code class="language-python">class Arm(Device):
-    def __init__(self):
-        ...
-        self.status = {'pos': 0.0, 'vel': 0.0, 'force':0.0, \
-                       'motor':self.motor.status,'timestamp_pc':0}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Arm</span><span class="p">(</span><span class="n">Device</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pos&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;vel&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;force&#39;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span> \
+                       <span class="s1">&#39;motor&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">motor</span><span class="o">.</span><span class="n">status</span><span class="p">,</span><span class="s1">&#39;timestamp_pc&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
+</code></pre></div>
 <p>The Status dictionaries are  automatically updated by a background thread of the Robot at 25Hz. The Status data can be accessed via the Robot. For example:</p>
-<pre><code class="language-python">if robot.arm.status['pos']&gt;0.25:
-    print 'Arm extension greater than 0.25m'
-</code></pre>
-<p>If an instantaneous snapshot of the entire Robot Status is needed, the get_status() method can be used instead:</p>
-<pre><code class="language-python">status=robot.get_status()
-if status['arm']['pos']&gt;0.25:
-    print 'Arm extension greater than 0.25m'
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;pos&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mf">0.25</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Arm extension greater than 0.25m&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>If an instantaneous snapshot of the entire Robot Status is needed, the <code>get_status()</code> method can be used instead:</p>
+<div class="highlight"><pre><span></span><code><span class="n">status</span><span class="o">=</span><span class="n">robot</span><span class="o">.</span><span class="n">get_status</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">status</span><span class="p">[</span><span class="s1">&#39;arm&#39;</span><span class="p">][</span><span class="s1">&#39;pos&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mf">0.25</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Arm extension greater than 0.25m&#39;</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="the-robot-command">The Robot Command</h3>
 <p>In contrast to the Robot Status which pulls data from the Devices, the Robot Command pushes data to the Devices.</p>
 <p>Consider the following example which extends and then retracts the arm by 0.1 meters:</p>
-<pre><code class="language-python">import time
-import stretch_body.robot
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">stretch_body.robot</span>
 
-robot=stretch_body.robot.Robot()
-robot.startup()
+<span class="n">robot</span><span class="o">=</span><span class="n">stretch_body</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">Robot</span><span class="p">()</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">startup</span><span class="p">()</span>
 
-robot.arm.move_by(0.1)
-robot.push_command()
-time.sleep(2.0) 
+<span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">move_by</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">push_command</span><span class="p">()</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span> 
 
-robot.arm.move_by(-0.1)
-robot.push_command()
-time.sleep(2.0)
+<span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">move_by</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">push_command</span><span class="p">()</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
 
-robot.stop()
-</code></pre>
+<span class="n">robot</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
 <p>A few important things are going on:</p>
-<pre><code>robot.arm.move_by(0.1)
-</code></pre>
-<p>The move_by( ) method queues up an RPC command to the stepper motor controller. However, the command does not yet execute.</p>
-<pre><code>robot.push_command()
-</code></pre>
-<p>The push_command( ) causes all queued up RPC commands to be executed at once.  In this example we call sleep( ) to allow time for the motion to complete before initiating a new motion.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">move_by</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>The <code>move_by()</code> method queues up an RPC command to the stepper motor controller. However, the command does not yet execute.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">robot</span><span class="o">.</span><span class="n">push_command</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+<p>The <code>push_command()</code> causes all queued up RPC commands to be executed at once.  In this example we call <code>sleep()</code> to allow time for the motion to complete before initiating a new motion.</p>
 <p><strong>NOTE</strong>: The Dynamixel servos do not use the Hello Robot RPC protocol. As such, the head, wrist, and gripper will move immediately upon issuing a motion command. </p>
 <p>The stepper actuators support a synchronous mode, allowing the base, arm, and lift to synchronously track trajectories.  Thus, the following code will cause the base, arm, and lift to initiate motion simultaneously:</p>
-<pre><code>robot.arm.move_by(0.1)
-robot.lift.move_by(0.1)
-robot.base.translate_by(0.1)
-robot.push_command()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">move_by</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">lift</span><span class="o">.</span><span class="n">move_by</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">translate_by</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">push_command</span><span class="p">()</span>
+</code></pre></div>
 <p>Commanding robot motion through the Stretch_Body interface is covered in more detail in the Robot Motion section.</p>
 <h3 id="stowing-and-homing">Stowing and Homing</h3>
 <p>After power up the robot requires homing in order for its joint encoders to find their zero position. The homing procedure will run the robot through a series of moves to find these zeros. It can be done programatically:</p>
-<pre><code class="language-python">if not robot.is_calibrated():
-    robot.home() #blocking
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="ow">not</span> <span class="n">robot</span><span class="o">.</span><span class="n">is_calibrated</span><span class="p">():</span>
+    <span class="n">robot</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="c1">#blocking</span>
+</code></pre></div>
 <p>Or it can be done manually after boot using the command line tool:</p>
-<pre><code class="language-bash">&gt;&gt;$ stretch_robot_home.py 
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>stretch_robot_home.py
+</code></pre></div>
 <p>Likewise, stowing is a robot procedure that will cause it to move its arm and tool safely within the footprint of the base. </p>
-<pre><code class="language-python">robot.stow() #blocking
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">robot</span><span class="o">.</span><span class="n">stow</span><span class="p">()</span> <span class="c1">#blocking</span>
+</code></pre></div>
 <p>Or it can be done manually from the command line when needed:</p>
-<pre><code class="language-bash">&gt;&gt;$ stretch_robot_stow.py 
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>stretch_robot_stow.py
+</code></pre></div>
 <h2 id="scripting-the-robot">Scripting the Robot</h2>
 <p>A simplified design pattern to script the Robot is as follows</p>
-<pre><code class="language-python">#!/usr/bin/env python
-import stretch_body.robot
-from stretch_body.hello_utils import ThreadServiceExit
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">stretch_body.robot</span>
+<span class="kn">from</span> <span class="nn">stretch_body.hello_utils</span> <span class="kn">import</span> <span class="n">ThreadServiceExit</span>
 
-robot=stretch_body.robot.Robot()
-robot.startup()
+<span class="n">robot</span><span class="o">=</span><span class="n">stretch_body</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">Robot</span><span class="p">()</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">startup</span><span class="p">()</span>
 
-x_move_base = 0
-x_move_arm = 0
-x_move_lift = 0
-x_move_head_pan = 0
-x_move_head_tilt = 0
-x_move_wrist_yaw = 0
-x_move_gripper = 0
+<span class="n">x_move_base</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">x_move_arm</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">x_move_lift</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">x_move_head_pan</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">x_move_head_tilt</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">x_move_wrist_yaw</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">x_move_gripper</span> <span class="o">=</span> <span class="mi">0</span>
 
-def update_my_behavior(status):
-    #Update the joint commands based on the status data
-    pass 
+<span class="k">def</span> <span class="nf">update_my_behavior</span><span class="p">(</span><span class="n">status</span><span class="p">):</span>
+    <span class="c1">#Update the joint commands based on the status data</span>
+    <span class="k">pass</span> 
 
-try:
-    while True:
-        #Get a snapshot of the robot status data
-        status=robot.get_status()
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1">#Get a snapshot of the robot status data</span>
+        <span class="n">status</span><span class="o">=</span><span class="n">robot</span><span class="o">.</span><span class="n">get_status</span><span class="p">()</span>
 
-        #Compute new position targets based on sensor data 
-        update_my_behavior(status)
+        <span class="c1">#Compute new position targets based on sensor data </span>
+        <span class="n">update_my_behavior</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
 
-        #Queue new targets to devices
-        robot.base.translate_by(x_move_base) #or robot.base.rotate_by()
-        robot.arm.move_by(x_move_arm)
-        robot.lift.move_by(x_move_lift)
-        robot.head.move_by('head_pan', x_move_head_pan)
-        robot.head.move_by('head_tilt', x_move_head_tilt)
-        robot.end_of_arm.move_by('wrist_yaw', x_move_wrist_yaw)
-        robot.end_of_arm.move_by('stretch_gripper', x_move_gripper)
+        <span class="c1">#Queue new targets to devices</span>
+        <span class="n">robot</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">translate_by</span><span class="p">(</span><span class="n">x_move_base</span><span class="p">)</span> <span class="c1">#or robot.base.rotate_by()</span>
+        <span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">move_by</span><span class="p">(</span><span class="n">x_move_arm</span><span class="p">)</span>
+        <span class="n">robot</span><span class="o">.</span><span class="n">lift</span><span class="o">.</span><span class="n">move_by</span><span class="p">(</span><span class="n">x_move_lift</span><span class="p">)</span>
+        <span class="n">robot</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">move_by</span><span class="p">(</span><span class="s1">&#39;head_pan&#39;</span><span class="p">,</span> <span class="n">x_move_head_pan</span><span class="p">)</span>
+        <span class="n">robot</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">move_by</span><span class="p">(</span><span class="s1">&#39;head_tilt&#39;</span><span class="p">,</span> <span class="n">x_move_head_tilt</span><span class="p">)</span>
+        <span class="n">robot</span><span class="o">.</span><span class="n">end_of_arm</span><span class="o">.</span><span class="n">move_by</span><span class="p">(</span><span class="s1">&#39;wrist_yaw&#39;</span><span class="p">,</span> <span class="n">x_move_wrist_yaw</span><span class="p">)</span>
+        <span class="n">robot</span><span class="o">.</span><span class="n">end_of_arm</span><span class="o">.</span><span class="n">move_by</span><span class="p">(</span><span class="s1">&#39;stretch_gripper&#39;</span><span class="p">,</span> <span class="n">x_move_gripper</span><span class="p">)</span>
 
-        #Synchronized send of new position targets 
-        robot.push_command()
+        <span class="c1">#Synchronized send of new position targets </span>
+        <span class="n">robot</span><span class="o">.</span><span class="n">push_command</span><span class="p">()</span>
 
-        #Wait for next control cycle
-        time.sleep(0.1)
-except (KeyboardInterrupt, SystemExit,ThreadServiceExit)
-    pass
+        <span class="c1">#Wait for next control cycle</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="k">except</span> <span class="p">(</span><span class="ne">KeyboardInterrupt</span><span class="p">,</span> <span class="ne">SystemExit</span><span class="p">,</span> <span class="n">ThreadServiceExit</span><span class="p">)</span>
+    <span class="k">pass</span>
 
-robot.stop()
-
-</code></pre>
+<span class="n">robot</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
 <h2 id="command-line-tools">Command Line Tools</h2>
 <p>The Stretch_Body package comes with a suite of command line tools that allow direct interaction with hardware subsystems. These can be useful when developing and debugging applications. They also serve as code examples when developing applications for Stretch_Body.</p>
 <p>These tools can be found by tab completion of  'stretch_' from a terminal.</p>
-<pre><code class="language-bash">&gt;&gt;$ stretch_
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>stretch_
 
-
-stretch_about.py                   
-stretch_gripper_home.py            
-stretch_lift_jog.py                
-stretch_robot_dynamixel_reboot.py  
-stretch_robot_stow.py              
-stretch_wacc_scope.py              
-stretch_arm_home.py                
-stretch_gripper_jog.py             
-stretch_pimu_jog.py                
-stretch_robot_home.py              
-stretch_robot_system_check.py      
-stretch_wrist_yaw_home.py          
-stretch_arm_jog.py                 
-stretch_hardware_echo.py           
-stretch_pimu_scope.py              
-stretch_robot_jog.py               
-stretch_rp_lidar_jog.py            
-stretch_wrist_yaw_jog.py           
-stretch_audio_test.py              
-stretch_head_jog.py                
-stretch_respeaker_test.py          
-stretch_robot_keyboard_teleop.py   
-stretch_urdf_show.py               
-stretch_xbox_controller_teleop.py  
-stretch_base_jog.py                
-stretch_lift_home.py               
-stretch_robot_battery_check.py     
-stretch_robot_monitor.py           
-stretch_wacc_jog.py 
-</code></pre>
+<span class="go">stretch_about.py                   </span>
+<span class="go">stretch_gripper_home.py            </span>
+<span class="go">stretch_lift_jog.py                </span>
+<span class="go">stretch_robot_dynamixel_reboot.py  </span>
+<span class="go">stretch_robot_stow.py              </span>
+<span class="go">stretch_wacc_scope.py              </span>
+<span class="go">stretch_arm_home.py                </span>
+<span class="go">stretch_gripper_jog.py             </span>
+<span class="go">stretch_pimu_jog.py                </span>
+<span class="go">stretch_robot_home.py              </span>
+<span class="go">stretch_robot_system_check.py      </span>
+<span class="go">stretch_wrist_yaw_home.py          </span>
+<span class="go">stretch_arm_jog.py                 </span>
+<span class="go">stretch_hardware_echo.py           </span>
+<span class="go">stretch_pimu_scope.py              </span>
+<span class="go">stretch_robot_jog.py               </span>
+<span class="go">stretch_rp_lidar_jog.py            </span>
+<span class="go">stretch_wrist_yaw_jog.py           </span>
+<span class="go">stretch_audio_test.py              </span>
+<span class="go">stretch_head_jog.py                </span>
+<span class="go">stretch_respeaker_test.py          </span>
+<span class="go">stretch_robot_keyboard_teleop.py   </span>
+<span class="go">stretch_urdf_show.py               </span>
+<span class="go">stretch_xbox_controller_teleop.py  </span>
+<span class="go">stretch_base_jog.py                </span>
+<span class="go">stretch_lift_home.py               </span>
+<span class="go">stretch_robot_battery_check.py     </span>
+<span class="go">stretch_robot_monitor.py           </span>
+<span class="go">stretch_wacc_jog.py </span>
+</code></pre></div>
 <p>All tools accept '--help' as a command line argument to learn its function. For example:</p>
-<pre><code class="language-bash">&gt;&gt;$ stretch_wacc_scope.py --help
-usage: stretch_wacc_scope.py [-h] [--ax] [--ay] [--az] [--a0] [--d0] [--d1]
-                             [--tap]
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>stretch_wacc_scope.py --help
+<span class="go">usage: stretch_wacc_scope.py [-h] [--ax] [--ay] [--az] [--a0] [--d0] [--d1]</span>
+<span class="go">                             [--tap]</span>
 
-Visualize Wacc (Wrist+Accel) board data with an oscilloscope
+<span class="go">Visualize Wacc (Wrist+Accel) board data with an oscilloscope</span>
 
-optional arguments:
-  -h, --help  show this help message and exit
-  --ax        Scope accelerometer AX
-  --ay        Scope accelerometer AY
-  --az        Scope accelerometer AZ
-  --a0        Scope analog-in-0
-  --d0        Scope digital-in-0
-  --d1        Scope digital-in-1
-  --tap       Scope single tap
-
-</code></pre>
+<span class="go">optional arguments:</span>
+<span class="go">  -h, --help  show this help message and exit</span>
+<span class="go">  --ax        Scope accelerometer AX</span>
+<span class="go">  --ay        Scope accelerometer AY</span>
+<span class="go">  --az        Scope accelerometer AZ</span>
+<span class="go">  --a0        Scope analog-in-0</span>
+<span class="go">  --d0        Scope digital-in-0</span>
+<span class="go">  --d1        Scope digital-in-1</span>
+<span class="go">  --tap       Scope single tap</span>
+</code></pre></div>
 <h3 id="commonly-used-tools">Commonly Used Tools</h3>
 <p>These are the tools a typical user will want to become familiar with.</p>
 <table>
@@ -882,17 +962,26 @@ optional arguments:
 <p>The other tools are fairly self explanatory. They allow the user to quickly read a sensor value or control an individual hardware subsystem.</p>
 <h2 id="robot-motion">Robot Motion</h2>
 <p>Controlling the motion of the robot's actuators is typically done through the ROS interfaces. However it is also possible to control the robot directly through the  stretch_body interfaces. </p>
-<p>Actuators are  commanded by either a <strong>move_by</strong> or <strong>move_to</strong> command (the former being incremental, the latter being absolute). For example, a relative move using the default motion parameters of the arm looks like:</p>
-<pre><code>import stretch_body.robot
-robot=stretch_body.robot.Robot()
-robot.startup()
+<p>Actuators are commanded by either a <code>move_by</code> or <code>move_to</code> command (the former being incremental, the latter being absolute). For example, a relative move using the default motion parameters of the arm looks like:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">stretch_body.robot</span>
+<span class="n">robot</span><span class="o">=</span><span class="n">stretch_body</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">Robot</span><span class="p">()</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">startup</span><span class="p">()</span>
 
-robot.arm.move_by(0.1)
-robot.push_command()
-time.sleep(2.0)
+<span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">move_by</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">push_command</span><span class="p">()</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
 
-robot.stop()
-</code></pre>
+<span class="n">robot</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
 <h3 id="motion-profiles">Motion Profiles</h3>
 <p>All joints support trapezoidal based motion generation. Other types of controllers are available (PID, velocity, etc) but they are not covered here . The trapezoidal motion controllers require three values:</p>
 <ul>
@@ -901,28 +990,27 @@ robot.stop()
 <li>a: acceleration of motion</li>
 </ul>
 <p>We provide 'default' settings for the velocity and acceleration settings, as well as 'fast', and 'slow' settings. These values have been tuned to be appropriate for safe motion of the robot. These values can be seen in the 'stretch_re1_factory_params.yaml'. For example:</p>
-<pre><code class="language-yaml">arm:
-  motion:
-    fast: {accel_m: 0.2, vel_m: 0.2}
-    default: {accel_m: 0.14, vel_m: 0.14}
-    max: {accel_m: 1.0, vel_m: 1.0}
-    slow: {accel_m: 0.07, vel_m: 0.06}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">arm</span><span class="p">:</span>
+  <span class="nt">motion</span><span class="p">:</span>
+    <span class="nt">fast</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt">accel_m</span><span class="p">:</span> <span class="nv">0.2</span><span class="p p-Indicator">,</span><span class="nt"> vel_m</span><span class="p">:</span> <span class="nv">0.2</span><span class="p p-Indicator">}</span>
+    <span class="nt">default</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt">accel_m</span><span class="p">:</span> <span class="nv">0.14</span><span class="p p-Indicator">,</span><span class="nt"> vel_m</span><span class="p">:</span> <span class="nv">0.14</span><span class="p p-Indicator">}</span>
+    <span class="nt">max</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt">accel_m</span><span class="p">:</span> <span class="nv">1.0</span><span class="p p-Indicator">,</span><span class="nt"> vel_m</span><span class="p">:</span> <span class="nv">1.0</span><span class="p p-Indicator">}</span>
+    <span class="nt">slow</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt">accel_m</span><span class="p">:</span> <span class="nv">0.07</span><span class="p p-Indicator">,</span><span class="nt"> vel_m</span><span class="p">:</span> <span class="nv">0.06</span><span class="p p-Indicator">}</span>
+</code></pre></div>
 <p>To move the arm quickly instead:</p>
-<pre><code class="language-python">vel_fast_m = robot.arm.params['motion']['fast']['vel_m']
-accel_fast_m = robot.arm.params['motion']['fast']['accel_m']
+<div class="highlight"><pre><span></span><code><span class="n">vel_fast_m</span> <span class="o">=</span> <span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;motion&#39;</span><span class="p">][</span><span class="s1">&#39;fast&#39;</span><span class="p">][</span><span class="s1">&#39;vel_m&#39;</span><span class="p">]</span>
+<span class="n">accel_fast_m</span> <span class="o">=</span> <span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;motion&#39;</span><span class="p">][</span><span class="s1">&#39;fast&#39;</span><span class="p">][</span><span class="s1">&#39;accel_m&#39;</span><span class="p">]</span>
 
-robot.arm.move_by(x_m=0.1,v_m=vel_fast_m, a_m=accel_fast_m)
-robot.push_command()
-
-</code></pre>
+<span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">move_by</span><span class="p">(</span><span class="n">x_m</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">v_m</span><span class="o">=</span><span class="n">vel_fast_m</span><span class="p">,</span> <span class="n">a_m</span><span class="o">=</span><span class="n">accel_fast_m</span><span class="p">)</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">push_command</span><span class="p">()</span>
+</code></pre></div>
 <p>The motion will fall back to the 'default' settings found in the YAML if no parameters are provided.</p>
 <h3 id="range-of-motion">Range of Motion</h3>
 <p>All joints obey motion limits which are specified in the factory YAML. These limits have been set at the factory to prevent damage to the hardware. It is not recommended to set them to be greater than the factory specified values. However, they can be further limited if desired. </p>
 <p>For example. to prevent the lift from descending within 100mm of the base, one can override the factory setting in stretch_re1_user_params.yaml</p>
-<pre><code class="language-yaml">lift:
-  range_m: [0.1, 1.095]
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">lift</span><span class="p">:</span>
+  <span class="nt">range_m</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">0.1</span><span class="p p-Indicator">,</span> <span class="nv">1.095</span><span class="p p-Indicator">]</span>
+</code></pre></div>
 <h3 id="control-modes">Control Modes</h3>
 <p>Each joint has a default safety mode and default control mode.  These are:</p>
 <table>
@@ -976,26 +1064,26 @@ robot.push_command()
 </tr>
 </tbody>
 </table>
-<p>The actuator remains in Safety Mode when no program is running. When the device.startup( ) function is called it transitions to its Control Mode. It is placed back in Safety Mode when device.stop() is called.</p>
+<p>The actuator remains in Safety Mode when no program is running. When the <code>&lt;device&gt;.startup()</code> function is called it transitions to its Control Mode. It is placed back in Safety Mode when <code>&lt;device&gt;.stop()</code> is called.</p>
 <p>In addition, the Base supports a velocity control mode. The Base controllers will automatically switch between velocity and position based control.  For example:</p>
-<pre><code class="language-python">robot.base.translate_by(x_m=0.5)
-robot.push_command()
-time.sleep(4.0) #wait
+<div class="highlight"><pre><span></span><code><span class="n">robot</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">translate_by</span><span class="p">(</span><span class="n">x_m</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">push_command</span><span class="p">()</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">4.0</span><span class="p">)</span> <span class="c1">#wait</span>
 
-robot.base.set_rotational_velocity(v_r=0.1) #switch to velocity controller
-robot.push_command()
-time.sleep(4.0) #wait
+<span class="n">robot</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">set_rotational_velocity</span><span class="p">(</span><span class="n">v_r</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span> <span class="c1">#switch to velocity controller</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">push_command</span><span class="p">()</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">4.0</span><span class="p">)</span> <span class="c1">#wait</span>
 
-robot.base.set_rotational_velocity(v_r=0.0) #stop motion
-robot.push_command()
-</code></pre>
+<span class="n">robot</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">set_rotational_velocity</span><span class="p">(</span><span class="n">v_r</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span> <span class="c1">#stop motion</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">push_command</span><span class="p">()</span>
+</code></pre></div>
 <p>As shown, care should be taken to reduce commanded velocities to zero to avoid runaway.</p>
 <h3 id="runstop">Runstop</h3>
 <p>Runstop activation will cause  the Base, Arm, and Lift to switch to Safety Mode and for motion commands will be ignored. The motion commands will resume smoothly  when the runstop is deactivated.  This is usually done via the runstop button. However, it can also be done via the Pimu interface:</p>
-<pre><code class="language-python">if robot.pimu.status['runstop_event']:
-    robot.pimu.runstop_event_reset()
-    robot.push_command()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">robot</span><span class="o">.</span><span class="n">pimu</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;runstop_event&#39;</span><span class="p">]:</span>
+    <span class="n">robot</span><span class="o">.</span><span class="n">pimu</span><span class="o">.</span><span class="n">runstop_event_reset</span><span class="p">()</span>
+    <span class="n">robot</span><span class="o">.</span><span class="n">push_command</span><span class="p">()</span>
+</code></pre></div>
 <h3 id="guarded-motion">Guarded Motion</h3>
 <p>The Arm, Lift, and Base support a guarded motion function.  It will automatically transition the actuator from Control mode to Safety mode when the exerted motor torque exceeds a threshold. </p>
 <p>This functionality is most useful for the Lift and the Arm. It allows these joints to safely stop upon contact. It can be used to:</p>
@@ -1005,50 +1093,49 @@ robot.push_command()
 <li>Make a guarded motion where the robot reaches to a surface and then stops</li>
 </ul>
 <p>Each of these tasks have different force characteristics and may require different threshold settings. The factory defaults are set so as to allow freespace motion without a payload (without triggering a false positive stop). These thresholds are set in the factory YAML. For example:</p>
-<pre><code class="language-yaml">arm:
-  contact_thresh_N: [-50, 50]
-  contact_thresh_max_N: [-80, 80]
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">arm</span><span class="p">:</span>
+  <span class="nt">contact_thresh_N</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">-50</span><span class="p p-Indicator">,</span> <span class="nv">50</span><span class="p p-Indicator">]</span>
+  <span class="nt">contact_thresh_max_N</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">-80</span><span class="p p-Indicator">,</span> <span class="nv">80</span><span class="p p-Indicator">]</span>
+</code></pre></div>
 <p>A user can dynamically set the contact thresholds depending on the task requirements. For example, to make the arm extension motion more sensitive:</p>
-<pre><code class="language-python">robot.arm.move_by(x_m=0.1, contact_thresh_pos_N=30.0)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">move_by</span><span class="p">(</span><span class="n">x_m</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">contact_thresh_pos_N</span><span class="o">=</span><span class="mf">30.0</span><span class="p">)</span>
+</code></pre></div>
 <p>If too sensitive, the joint may trigger false positives (e.g., stop without contact), and different thresholds may be needed in different portions of the workspace.</p>
 <p>When a guarded motion event has occurred it is reported in the Status:</p>
-<pre><code class="language-python">if robot.arm.motor.status['in_guarded_event']:
-    print 'Arm has made contact'
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">motor</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;in_guarded_event&#39;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Arm has made contact&#39;</span><span class="p">)</span>
+</code></pre></div>
 <p>The guarded event can be reset and motion resumed by simply sending a new motion command to the joint (that is not identical to the previous command). Here is a simple example of moving to contact, then moving back:</p>
-<pre><code class="language-python">robot.arm.move_to(0.5) #Reach all the way out
-robot.push_command()
+<div class="highlight"><pre><span></span><code><span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">move_to</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1">#Reach all the way out</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">push_command</span><span class="p">()</span>
 
-while robot.arm.status['pos']&lt;0.5:
-    if robot.arm.motor.status['in_guarded_event']:
-        print 'Contact made at', robot.arm.status['pos']
-        break
-    time.sleep(0.1)
+<span class="k">while</span> <span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;pos&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mf">0.5</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">motor</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;in_guarded_event&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Contact made at&#39;</span><span class="p">,</span> <span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;pos&#39;</span><span class="p">])</span>
+        <span class="k">break</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 
-print 'Retracting...'
-robot.arm.move_to(0.0)
-robot.push_command( )
-
-</code></pre>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Retracting...&#39;</span><span class="p">)</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">move_to</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">push_command</span><span class="p">()</span>
+</code></pre></div>
 <p><strong>Note: The units of Newtons are approximations only and may not be accurate to real world contact forces.</strong></p>
 <h3 id="synchronized-motion">Synchronized Motion</h3>
 <p>The Arm, Lift, and Base actuators have a hardware synchronization mechanism. This allows for controller commands to be time synchronized across joints. By default these are turned out in the factory YAML:</p>
-<pre><code class="language-yaml">hello-motor-arm:
-  gains: {enable_sync_mode: 1,...}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">hello-motor-arm</span><span class="p">:</span>
+  <span class="nt">gains</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt">enable_sync_mode</span><span class="p">:</span> <span class="nv">1</span><span class="p p-Indicator">,</span><span class="nv">...</span><span class="p p-Indicator">}</span>
+</code></pre></div>
 <h3 id="motion-status">Motion Status</h3>
 <p>It can be useful to poll the status of a joint during motion in order to modify the robot behavior, etc. The useful status values include:</p>
-<pre><code class="language-python">robot.arm.status['pos']                     #Joint position
-robot.arm.status['vel']                     #Joint velocity
-robot.arm.status['force']                   #Joint force (derived from motor current)   
-robot.arm.motor.status['near_pos_setpoint'] #Is sensed position near commanded position
-robot.arm.motor.status['near_vel_setpoint'] #Is sensed velocity near commanded velocity
-robot.arm.motor.status['is_moving']         #Is the joint in motion
-robot.arm.motor.status['in_guarded_event']  #Has a guarded event occured
-robot.arm.motor.status['in_safety_event']   #Has a safety event occured
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;pos&#39;</span><span class="p">]</span>                     <span class="c1">#Joint position</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;vel&#39;</span><span class="p">]</span>                     <span class="c1">#Joint velocity</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;force&#39;</span><span class="p">]</span>                   <span class="c1">#Joint force (derived from motor current)   </span>
+<span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">motor</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;near_pos_setpoint&#39;</span><span class="p">]</span> <span class="c1">#Is sensed position near commanded position</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">motor</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;near_vel_setpoint&#39;</span><span class="p">]</span> <span class="c1">#Is sensed velocity near commanded velocity</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">motor</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;is_moving&#39;</span><span class="p">]</span>         <span class="c1">#Is the joint in motion</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">motor</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;in_guarded_event&#39;</span><span class="p">]</span>  <span class="c1">#Has a guarded event occured</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">motor</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;in_safety_event&#39;</span><span class="p">]</span>   <span class="c1">#Has a safety event occured</span>
+</code></pre></div>
 <h3 id="update-rates">Update Rates</h3>
 <p>The following update rates apply to Stretch:</p>
 <table>
@@ -1093,51 +1180,50 @@ robot.arm.motor.status['in_safety_event']   #Has a safety event occured
 <h3 id="cliff-sensors">Cliff Sensors</h3>
 <p>Stretch has <a href="https://docs.hello-robot.com/hardware_user_guide/#base">four IR cliff sensors</a> pointed towards the floor. These report the distance to the floor, allowing for detection of thresholds, stair edges, etc. </p>
 <p>Relevant parameters in the factory YAML are</p>
-<pre><code class="language-yaml">pimu:
-  config:
-    cliff_LPF: 10.0
-    cliff_thresh: -50
-    cliff_zero:
-    - 523.7940936279297
-    - 508.10246490478517
-    - 496.55742706298827
-    - 525.149652709961
-    stop_at_cliff: 0
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">pimu</span><span class="p">:</span>
+  <span class="nt">config</span><span class="p">:</span>
+    <span class="nt">cliff_LPF</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.0</span>
+    <span class="nt">cliff_thresh</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-50</span>
+    <span class="nt">cliff_zero</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">523.7940936279297</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">508.10246490478517</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">496.55742706298827</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">525.149652709961</span>
+    <span class="nt">stop_at_cliff</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+</code></pre></div>
 <p>The  <code>stop_at_cliff</code> field causes the robot to execute a Runstop when the cliff sensor readings are out of bounds. </p>
 <p><strong>Note: As configured at the factory,  <code>stop_at_cliff</code> is set to zero and Stretch does not stop its motion based on the cliff sensor readings. Hello Robot makes no guarantees as to the reliability of Stretch's ability to avoid driving over ledges and stairs when this flag is enabled.</strong></p>
 <p>The sensors are calibrated such that a zero value indicates the sensor is at the correct height from the floor surface. A negative value indicates a drop off such as a stair ledge while a positive value indicates an obstacle like a threshold or high pile carpet.</p>
 <p>The calibrated range values from the sensors can be read from the <code>robot.pimu.status</code> message. Relevant fields are:</p>
-<pre><code class="language-python">
-In [1]: robot.pimu.pretty_print()
------- Pimu -----
-...
-At Cliff [False, False, False, False]
-Cliff Range [2.043212890625, 3.710906982421875, 1.6026611328125, 1.95098876953125]
-Cliff Event False
-...
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">robot</span><span class="o">.</span><span class="n">pimu</span><span class="o">.</span><span class="n">pretty_print</span><span class="p">()</span>
+<span class="o">------</span> <span class="n">Pimu</span> <span class="o">-----</span>
+<span class="o">...</span>
+<span class="n">At</span> <span class="n">Cliff</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
+<span class="n">Cliff</span> <span class="n">Range</span> <span class="p">[</span><span class="mf">2.043212890625</span><span class="p">,</span> <span class="mf">3.710906982421875</span><span class="p">,</span> <span class="mf">1.6026611328125</span><span class="p">,</span> <span class="mf">1.95098876953125</span><span class="p">]</span>
+<span class="n">Cliff</span> <span class="n">Event</span> <span class="kc">False</span>
+<span class="o">...</span>
+</code></pre></div>
 <p>A Cliff Event flag is set when any of the four sensor readings exceed <code>cliff_thresh</code> and <code>stop_at_cliff</code> is enabled. In the event of a Cliff Event, it must be reset by <code>robot.pimu.cliff_event_reset()</code>in order to reset the generated Runstop.</p>
 <p>The cliff detection logic can be found in the <a href="https://github.com/hello-robot/stretch_firmware/blob/master/arduino/hello_pimu/Pimu.cpp">Pimu firmware</a>.</p>
 <h2 id="robot-parameters">Robot Parameters</h2>
 <p>All robot data is stored in the stretch_user directory.  The location of this directory can be found by:</p>
-<pre><code class="language-bash">&gt;&gt;$ echo $HELLO_FLEET_PATH
-/home/hello-robot/stretch_user
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span><span class="nb">echo</span> <span class="nv">$HELLO_FLEET_PATH</span>
+<span class="go">/home/hello-robot/stretch_user</span>
+</code></pre></div>
 <p>The robot data stored here is identified by the robot ID (eg, stretch-re1-1002)</p>
-<pre><code class="language-bash">cd $HELLO_FLEET_PATH/$HELLO_FLEET_ID
-&gt;&gt;$ ls
-calibration_base_imu  
-calibration_guarded_contact  
-calibration_steppers    
-calibration_D435i     
-calibration_ros
-export_urdf
-udev
-stretch_re1_factory_params.yaml  
-stretch_re1_user_params.yaml
-stretch_re1_tool_params.yaml
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span><span class="nb">cd</span> <span class="nv">$HELLO_FLEET_PATH</span>/<span class="nv">$HELLO_FLEET_ID</span>
+<span class="gp">$ </span>ls
+<span class="go">calibration_base_imu  </span>
+<span class="go">calibration_guarded_contact  </span>
+<span class="go">calibration_steppers    </span>
+<span class="go">calibration_D435i     </span>
+<span class="go">calibration_ros</span>
+<span class="go">export_urdf</span>
+<span class="go">udev</span>
+<span class="go">stretch_re1_factory_params.yaml  </span>
+<span class="go">stretch_re1_user_params.yaml</span>
+<span class="go">stretch_re1_tool_params.yaml</span>
+</code></pre></div>
 <p>A factory image of this data (as shipped), is stored read-only under /etc/hello-robot . This is only for backup and to support cloning the user environment for new users.</p>
 <h3 id="calibration-data">Calibration Data</h3>
 <p>The raw calibration data that was used in production for the robot is also stored for reference within the stretch_user directory. It isn't generally required for development.</p>
@@ -1173,23 +1259,21 @@ stretch_re1_tool_params.yaml
 <h3 id="user-parameters">User Parameters</h3>
 <p>The factory settings should suffice for most use cases. However, the user is allowed to override the factory settings. This is done by using same YAML structure and name as is used in the stretch_re1_user_params.yaml file as in the factory file.</p>
 <p>For example, heres the  stretch_re1_user_params.yaml  file is overriding the factory default contact thresholds and  motion speeds.</p>
-<pre><code class="language-yaml">factory_params: stretch_re1_factory_params.yaml
-tool_params: stretch_re1_tool_params.yaml
+<div class="highlight"><pre><span></span><code><span class="nt">factory_params</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">stretch_re1_factory_params.yaml</span>
+<span class="nt">tool_params</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">stretch_re1_tool_params.yaml</span>
 
-lift:
-  contact_thresh_N: [-60, 60]
-  motion:
-    default: {accel_m: 0.15, vel_m: 0.095}
-arm:
-  contact_thresh_N: [-80, 80]
-  motion:
-    default: {accel_m: 0.14, vel_m: 0.14}
-base:
-  motion:
-    default: {accel_m: 0.1, vel_m: 0.15}
-
-
-</code></pre>
+<span class="nt">lift</span><span class="p">:</span>
+  <span class="nt">contact_thresh_N</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">-60</span><span class="p p-Indicator">,</span> <span class="nv">60</span><span class="p p-Indicator">]</span>
+  <span class="nt">motion</span><span class="p">:</span>
+    <span class="nt">default</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt">accel_m</span><span class="p">:</span> <span class="nv">0.15</span><span class="p p-Indicator">,</span><span class="nt"> vel_m</span><span class="p">:</span> <span class="nv">0.095</span><span class="p p-Indicator">}</span>
+<span class="nt">arm</span><span class="p">:</span>
+  <span class="nt">contact_thresh_N</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">-80</span><span class="p p-Indicator">,</span> <span class="nv">80</span><span class="p p-Indicator">]</span>
+  <span class="nt">motion</span><span class="p">:</span>
+    <span class="nt">default</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt">accel_m</span><span class="p">:</span> <span class="nv">0.14</span><span class="p p-Indicator">,</span><span class="nt"> vel_m</span><span class="p">:</span> <span class="nv">0.14</span><span class="p p-Indicator">}</span>
+<span class="nt">base</span><span class="p">:</span>
+  <span class="nt">motion</span><span class="p">:</span>
+    <span class="nt">default</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt">accel_m</span><span class="p">:</span> <span class="nv">0.1</span><span class="p p-Indicator">,</span><span class="nt"> vel_m</span><span class="p">:</span> <span class="nv">0.15</span><span class="p p-Indicator">}</span>
+</code></pre></div>
 <h3 id="end-of-arm-tool-parameters">End of Arm Tool Parameters</h3>
 <p>The stretch_re1_tool_params.yaml file stores configuration parameters specific to the user's custom end-of-arm-tools. It is read by the Robot class and the parameter data is made accessible to the user's end-of-arm-tool class. </p>
 <p>More information on integrating custom hardware on the End of Arm Dynamixel bus can be found at the <a href="https://github.com/hello-robot/stretch_body/tree/master/tutorial/extending_wrist_dof">Extending Wrist DOF Tutorial</a></p>
@@ -1198,9 +1282,9 @@ base:
 <h3 id="logging">Logging</h3>
 <p>Upon instantiation, the Robot class opens a new log file for warning and informational messages to be written to. These timestamped logs are found under $HELLO_FLEET_DIRECTORY/log.</p>
 <p>The logging messages can be echoed to the console by setting:</p>
-<pre><code>robot:
-  log_to_console: 1
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">robot</span><span class="p">:</span>
+  <span class="nt">log_to_console</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+</code></pre></div>
 <h3 id="runstop-functions">Runstop Functions</h3>
 <table>
 <thead>
@@ -1281,28 +1365,28 @@ base:
 </tbody>
 </table>
 <p>The YAML below illustrates the types of events that are can be configured.</p>
-<pre><code class="language-yaml">robot:
-  log_to_console: 0
-  use_monitor: 1
-  use_sentry: 1
+<div class="highlight"><pre><span></span><code><span class="nt">robot</span><span class="p">:</span>
+  <span class="nt">log_to_console</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+  <span class="nt">use_monitor</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+  <span class="nt">use_sentry</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
 
-robot_monitor:
-  monitor_base_bump_event: 1
-  monitor_base_cliff_event: 1
-  monitor_current: 1
-  monitor_dynamixel_flags: 1
-  monitor_guarded_contact: 1
-  monitor_over_tilt_alert: 1
-  monitor_runstop: 1
-  monitor_voltage: 1
-  monitor_wrist_single_tap: 1
+<span class="nt">robot_monitor</span><span class="p">:</span>
+  <span class="nt">monitor_base_bump_event</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+  <span class="nt">monitor_base_cliff_event</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+  <span class="nt">monitor_current</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+  <span class="nt">monitor_dynamixel_flags</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+  <span class="nt">monitor_guarded_contact</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+  <span class="nt">monitor_over_tilt_alert</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+  <span class="nt">monitor_runstop</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+  <span class="nt">monitor_voltage</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+  <span class="nt">monitor_wrist_single_tap</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
 
-robot_sentry:
-  base_fan_control: 1
-  base_max_velocity: 1
-  stretch_gripper_overload: 1
-  wrist_yaw_overload: 1
-</code></pre>
+<span class="nt">robot_sentry</span><span class="p">:</span>
+  <span class="nt">base_fan_control</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+  <span class="nt">base_max_velocity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+  <span class="nt">stretch_gripper_overload</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+  <span class="nt">wrist_yaw_overload</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+</code></pre></div>
 <h3 id="robot-sentry">Robot Sentry</h3>
 <p>The <a href="https://github.com/hello-robot/stretch_body/blob/master/python/stretch_body/robot_sentry.py">Robot Sentry</a> is a thread that can override and also generate commands to the robot hardware. It's purpose is to keep the robot operating within a safe regime. For example, the Robot Sentry monitors the position of the Lift and Arm and limits the maximum base velocity and acceleration (in order to reduce the chance of toppling). The Robot Sentry reports events to the log file as well. </p>
 <table>
@@ -1332,7 +1416,7 @@ robot_sentry:
 </tbody>
 </table>
 <hr />
-<p>.<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div></p>
+<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>
 
               
             </article>
@@ -1366,8 +1450,17 @@ robot_sentry:
       
       
     
+    <a href="https://hello-robot.com" target="_blank" rel="noopener" title="hello-robot.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
     <a href="https://twitter.com/HelloRobotInc" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg>
     </a>
   
     
@@ -1376,7 +1469,16 @@ robot_sentry:
       
     
     <a href="https://github.com/hello-robot" target="_blank" rel="noopener" title="github.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/company/hello-robot-inc" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
     </a>
   
 </div>
@@ -1389,10 +1491,10 @@ robot_sentry:
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.092fa1f6.min.js"}</script>
     
     
-      <script src="../assets/javascripts/bundle.960e086b.min.js"></script>
+      <script src="../assets/javascripts/bundle.5a9542cf.min.js"></script>
       
     
   </body>
