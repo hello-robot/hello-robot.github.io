@@ -8,7 +8,6 @@ use_directory_urls: True
 theme:
  name: material
  font: Arial
- custom_dir: overrides
  palette:
   - scheme: default
     primary: hello-robot-light
