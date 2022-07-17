@@ -37,3 +37,12 @@ div.doc-contents {
 .md-typeset table:not([class]) {
   display: table;
 }
+
+.shell-prompt code::before {
+  content: "$ ";
+  color: grey;
+}
+
+.highlight.no-copy .md-clipboard {
+  display: none;
+}

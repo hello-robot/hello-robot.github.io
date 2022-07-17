@@ -12,19 +12,21 @@
         <meta name="author" content="Hello Robot Inc">
       
       
-      <link rel="icon" href="/images/hello_robot_favicon.png">
+        <link rel="canonical" href="https://docs.hello-robot.com/updating_software/">
+      
+      <link rel="icon" href="../images/hello_robot_favicon.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
     
     
       
-        <title>Hello Robot Documentation</title>
+        <title>Updating Stretch Software - Hello Robot Documentation</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.1d29e8d0.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.cbb835fc.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
         
       
       
@@ -40,11 +42,11 @@
       
     
     
-      <link rel="stylesheet" href="/assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="/extra.css">
+      <link rel="stylesheet" href="../extra.css">
     
-    <script>__md_scope=new URL("/",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -71,6 +73,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#updating-stretch-software" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -87,9 +94,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="Hello Robot Documentation" class="md-header__button md-logo" aria-label="Hello Robot Documentation" data-md-component="logo">
+    <a href=".." title="Hello Robot Documentation" class="md-header__button md-logo" aria-label="Hello Robot Documentation" data-md-component="logo">
       
-  <img src="/images/hello_robot_logo_light.png" alt="logo">
+  <img src="../images/hello_robot_logo_light.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -105,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Updating Stretch Software
             
           </span>
         </div>
@@ -194,9 +201,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="Hello Robot Documentation" class="md-nav__button md-logo" aria-label="Hello Robot Documentation" data-md-component="logo">
+    <a href=".." title="Hello Robot Documentation" class="md-nav__button md-logo" aria-label="Hello Robot Documentation" data-md-component="logo">
       
-  <img src="/images/hello_robot_logo_light.png" alt="logo">
+  <img src="../images/hello_robot_logo_light.png" alt="logo">
 
     </a>
     Hello Robot Documentation
@@ -212,7 +219,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         Home
       </a>
     </li>
@@ -312,6 +319,84 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-update" class="md-nav__link">
+    When to Update
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-update" class="md-nav__link">
+    How to Update
+  </a>
+  
+    <nav class="md-nav" aria-label="How to Update">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stretch-ros" class="md-nav__link">
+    Stretch ROS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch-body" class="md-nav__link">
+    Stretch Body
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch-firmware" class="md-nav__link">
+    Stretch Firmware
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu" class="md-nav__link">
+    Ubuntu
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#firmware-mismatch-error" class="md-nav__link">
+    Firmware Mismatch Error
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -322,8 +407,56 @@
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
-  <h1>404 - Not found</h1>
+                
 
+
+<h1 id="updating-stretch-software">Updating Stretch Software</h1>
+<p>Stretch's software is improved with new features and bug fixes with each update. In this guide, we cover when and how to update the various software components on your Stretch RE1.</p>
+<h2 id="when-to-update">When to Update</h2>
+<p>We develop our software publicly on Github, allowing anyone to follow/propose the development of a code feature or bug fix. While we wholeheartedly welcome collaboration on Github, it is not necessary to be active on Github to follow our software releases. We announce every major release of software on our <a href="https://forum.hello-robot.com/c/announcements">forum</a>. These are stable releases with code that has been extensively tested on many Stretch RE1s. To be notified of new releases, create an account on the forum and click the bell icon in the top left of the <a href="https://forum.hello-robot.com/c/announcements/6">announcements section</a>. The forum is also available to report issues and ask questions about any of our software packages.</p>
+<h2 id="how-to-update">How to Update</h2>
+<p>Each Stretch RE1 is shipped with firmware, a Python SDK, and ROS packages developed specifically for Stretch. At the moment, there are three separate processes for updating each of these components.</p>
+<h3 id="stretch-ros">Stretch ROS</h3>
+<p>Stretch ROS is the <a href="https://www.ros.org/about-ros/">Robot Operating System</a> (ROS) interface to the robot. Many robotics developers find ROS useful to bootstrap their robotics software developments. You may update it using the following commands:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>roscd stretch_core
+<span class="gp">$ </span>git pull
+</code></pre></div>
+<h3 id="stretch-body">Stretch Body</h3>
+<p>Stretch Body is the Python SDK to the robot. It abstracts away the low level details of communication with the embedded devices and provides an intuitive API to working with the robot. You may update it using the following commands:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>pip install -U hello-robot-stretch-body
+<span class="gp">$ </span>pip install -U hello-robot-stretch-body-tools
+<span class="gp">$ </span>pip install -U hello-robot-stretch-factory
+<span class="gp">$ </span>pip3 install -U hello_robot_stretch_body_tools_py3
+</code></pre></div>
+<h3 id="stretch-firmware">Stretch Firmware</h3>
+<p>The firmware and the Python SDK (called Stretch Body) communicate on an established protocol. Therefore, it is important to maintain a protocol match between the different firmware and Stretch Body versions. Fortunately, there is a script that handles this automatically. In the command line, run the following command:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>RE1_firmware_updater.py --status
+</code></pre></div>
+<p>This script will automatically determine what version is currently running on the robot and provide a recommendation for a next step. Follow the next steps provided by the firmware updater script.</p>
+<h3 id="ubuntu">Ubuntu</h3>
+<p>The operating system upon which Stretch RE1 is built is called Ubuntu. This operating system provides the underlying packages that power Stretch's software packages. Furthermore, users of Stretch depend on this operating system and the underlying packages to develop software on Stretch. Therefore, it is important to keep the OS and these underlying packages up to date. In the command line, run the following command:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt update
+<span class="gp">$ </span>sudo apt upgrade
+</code></pre></div>
+<p><a href="https://en.wikipedia.org/wiki/APT_(software)">Apt</a> is the package manager that handles updates for all Ubuntu packages.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="firmware-mismatch-error">Firmware Mismatch Error</h3>
+<p>When working with Stretch Body, if you see the following error:</p>
+<div class="highlight"><pre><span></span><code>----------------
+Firmware protocol mismatch on /dev/XXXX.
+Protocol on board is pX.
+Valid protocol is: pX.
+Disabling device.
+Please upgrade the firmware and/or version of Stretch Body.
+----------------
+</code></pre></div>
+<p>This error appears because the low level Python SDK and the firmware cannot communicate to each other. There is a protocol mismatch preventing communication between the two. Simply run the following script and follow its recommendations to upgrade/downgrade the firmware as necessary to match the protocol level of Stretch Body.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>RE1_firmware_updater.py --status
+</code></pre></div>
+<hr />
+<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>
+
+              
             </article>
             
           </div>
@@ -397,10 +530,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "/", "features": ["navigation.instant"], "search": "/assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant"], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="/assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
       
     
   </body>
