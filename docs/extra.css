@@ -1,0 +1,48 @@
+[data-md-color-primary=hello-robot-light]{
+  --md-primary-fg-color: #122837;
+  --md-primary-fg-color--light: hsla(0,0%, 100%, 0.7);
+  --md-primary-fg-color--dark: hsla(0, 0%, 0%, 0.07);
+  --md-primary-bg-color: hsla(341, 85%, 89%, 1.0);
+  --md-typeset-a-color: #0550b3;
+  --md-code-hl-number-color: hsla(196, 86%, 29%, 1); /* Make code block magic numbers less bright in light theme */
+}
+[data-md-color-primary=hello-robot-dark]{
+  --md-primary-fg-color: #122837;
+  --md-primary-fg-color--light: hsla(0,0%, 100%, 0.7);
+  --md-primary-fg-color--dark: hsla(0, 0%, 0%, 0.07);
+  --md-primary-bg-color: hsla(341, 85%, 89%, 1.0);
+  --md-typeset-a-color: hsla(341, 85%, 89%, 1.0); /* Make links more visible in dark theme */
+}
+
+
+[data-md-color-scheme="slate"] {
+  --md-hue: 210; /* [0, 360] */
+}
+
+.md-header__topic:first-child {
+  font-weight: normal;
+}
+
+/* Indentation. */
+div.doc-contents {
+  padding-left: 25px;
+  border-left: 4px solid rgba(230, 230, 230);
+  margin-bottom: 20px;
+}
+
+.md-typeset__table {
+  min-width: 100%;
+}
+
+.md-typeset table:not([class]) {
+  display: table;
+}
+
+.shell-prompt code::before {
+  content: "$ ";
+  color: grey;
+}
+
+.highlight.no-copy .md-clipboard {
+  display: none;
+}
