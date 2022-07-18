@@ -125,4 +125,9 @@
          <lastmod>2022-07-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-ros/</loc>
+         <lastmod>2022-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
 </urlset>
