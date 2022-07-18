@@ -45,12 +45,12 @@ plugins:
       # uses the version specified via `mike deploy`
   - search
   - tags
-  - simple:
-      merge_docs_dir: true
-      include_extensions: [".css", ".png"]
-      ignore_folders:
-        - "repos/stretch_firmware/arduino"
-        - "repos/stretch_factory/updates"
+#  - simple:
+#      merge_docs_dir: true
+#      include_extensions: [".css", ".png"]
+#      ignore_folders:
+#        - "repos/stretch_firmware/arduino"
+#        - "repos/stretch_factory/updates"
   - mkdocstrings:
       default_handler: python
       handlers:
