@@ -1,5 +1,5 @@
-
-# Stretch Body Guide
+![](./images/banner.png)
+# Working with Stretch Body
 The Stretch_Body package provides a low level Python API to the Stretch RE1 hardware.  
 
 The package is available on [Git and installable via Pip](https://github.com/hello-robot/stretch_body).

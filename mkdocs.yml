@@ -7,6 +7,8 @@ use_directory_urls: True
 
 theme:
  name: material
+ features:
+   - navigation.instant
  font: Arial
  palette:
   - scheme: default
@@ -21,19 +23,17 @@ theme:
       name: Switch to light mode
  logo: images/hello_robot_logo_light.png
  favicon: images/hello_robot_favicon.png
- features:
-  - navigation.instant
-
-extra_css:
-  - extra.css
-
 markdown_extensions:
   - pymdownx.highlight
   - pymdownx.superfences
   - pymdownx.inlinehilite
   - pymdownx.keys
   - admonition
+  - mkdocs-click
 
+
+extra_css:
+  - extra.css
 plugins:
   - mike:
       # these fields are all optional; the defaults are as below...
@@ -44,6 +44,12 @@ plugins:
       # uses the version specified via `mike deploy`
   - search
   - tags
+  - simple:
+      merge_docs_dir: true
+      include_extensions: [".css", ".png"]
+      ignore_folders:
+        - "repos/stretch_firmware/arduino"
+        - "repos/stretch_factory/updates"
   - mkdocstrings:
       default_handler: python
       handlers:
@@ -56,12 +62,13 @@ plugins:
             members_order: source
             heading_level: 3
             show_if_no_docstring: true
-
+edit_uri: ''
 extra:
   version:
     provider: mike
     default: latest
   social:
+    - icon: fontawesome/brands/twitter
     - icon: material/home
       link: https://hello-robot.com
     - icon: material/twitter
@@ -72,8 +79,52 @@ extra:
       link: https://linkedin.com/company/hello-robot-inc
 
 nav:
- - Home: README.md
- - Resources:
-   - Stretch Forum: "https://forum.hello-robot.com/"
-   - Stretch GitHub: "https://github.com/hello-robot"
-   - Stretch Videos: "https://youtube.com/c/HelloRobot"
+  - Home: README.md
+  - User Guides:
+      - Quick Start: guides/quick_start_guide.md
+      - Robot Safety: guides/robot_safety_guide.md
+      - Battery Maintenance: guides/battery_maintenance_guide.md
+      - Stretch RE1 Hardware: guides/hardware_user_guide.md
+      - Stretch RE1 DexWrist: guides/dex_wrist_user_guide.md
+      - Troubleshooting: guides/troubleshooting_guide.md
+  - Code:
+    - Code Overview:
+      - Stretch Body: repos/stretch_body/README.md
+      - Stretch ROS: repos/stretch_ros/README.md
+      - Stretch Firmware: repos/stretch_firmware/README.md
+      - Stretch Tool Share: repos/stretch_tool_share/README.md
+      - Stretch Factory: repos/stretch_factory/README.md
+      - Stretch Web Interface: repos/stretch_web_interface/README.md
+    - API:
+        - Coming Soon: foo.md
+    - Command Line Tools:
+        - Coming Soon: foo.md
+  - Tutorials:
+    - Fundamentals:
+      - Updating the Software: tutorials/updating_software.md
+      - Untethered Operation: tutorials/untethered_operation.md
+      - Changing Tools: tutorials/tool_change_tutorial.md
+    - Stretch Body:
+      - Working With Stretch Body: repos/stretch_body/docs/stretch_body_guide.md
+      - Working With Dynamixel Servos: repos/stretch_body/docs/dynamixel_tutorial.md
+      - Working With Parameters: repos/stretch_body/docs/parameters_tutorial.md
+      - Extending the Wrist DOF: repos/stretch_body/docs/extending_wrist_dof/README.md
+    - Stretch ROS:
+        - URDF Calibration: repos/stretch_ros/stretch_calibration/README.md
+        - Deep Perception Demos: repos/stretch_ros/stretch_deep_perception/README.md
+        - Autonomy Demos: repos/stretch_ros/stretch_demos/README.md
+        - Working with the URDF: repos/stretch_ros/stretch_description/README.md
+        - Fast Unified Navigation, Manipulation And Planning (FUNMAP): repos/stretch_ros/stretch_funmap/README.md
+        - ROS Gazebo: repos/stretch_ros/stretch_gazebo/README.md
+        - ROS MoveIt: repos/stretch_ros/stretch_moveit_config/README.md
+        - ROS Navigation: repos/stretch_ros/stretch_navigation/README.md
+    - Stretch Firmware:
+      - Updating the Firmware: repos/stretch_firmware/tutorials/docs/updating_firmware.md
+      - Integrating Custom Data: repos/stretch_firmware/tutorials/docs/data_transfer.md
+      - Integrating Custom Hardware: repos/stretch_firmware/tutorials/docs/README.md
+    - Jupyter:
+        - Coming Soon: foo.md
+  - Resources:
+    - Stretch Forum: "https://forum.hello-robot.com/"
+    - Stretch GitHub: "https://github.com/hello-robot"
+    - Stretch Videos: "https://youtube.com/c/HelloRobot"
