@@ -29,12 +29,13 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.keys
   - admonition
-  - mkdocs-click
+
 
 
 extra_css:
   - extra.css
 plugins:
+  - monorepo
   - mike:
       # these fields are all optional; the defaults are as below...
       version_selector: true   # set to false to leave out the version selector
@@ -80,50 +81,8 @@ extra:
 
 nav:
   - Home: README.md
-  - User Guides:
-      - Quick Start: guides/quick_start_guide.md
-      - Robot Safety: guides/robot_safety_guide.md
-      - Battery Maintenance: guides/battery_maintenance_guide.md
-      - Stretch RE1 Hardware: guides/hardware_user_guide.md
-      - Stretch RE1 DexWrist: guides/dex_wrist_user_guide.md
-      - Troubleshooting: guides/troubleshooting_guide.md
-  - Code:
-    - Code Overview:
-      - Stretch Body: repos/stretch_body/README.md
-      - Stretch ROS: repos/stretch_ros/README.md
-      - Stretch Firmware: repos/stretch_firmware/README.md
-      - Stretch Tool Share: repos/stretch_tool_share/README.md
-      - Stretch Factory: repos/stretch_factory/README.md
-      - Stretch Web Interface: repos/stretch_web_interface/README.md
-    - API:
-        - Coming Soon: foo.md
-    - Command Line Tools:
-        - Coming Soon: foo.md
-  - Tutorials:
-    - Fundamentals:
-      - Updating the Software: tutorials/updating_software.md
-      - Untethered Operation: tutorials/untethered_operation.md
-      - Changing Tools: tutorials/tool_change_tutorial.md
-    - Stretch Body:
-      - Working With Stretch Body: repos/stretch_body/docs/stretch_body_guide.md
-      - Working With Dynamixel Servos: repos/stretch_body/docs/dynamixel_tutorial.md
-      - Working With Parameters: repos/stretch_body/docs/parameters_tutorial.md
-      - Extending the Wrist DOF: repos/stretch_body/docs/extending_wrist_dof/README.md
-    - Stretch ROS:
-        - URDF Calibration: repos/stretch_ros/stretch_calibration/README.md
-        - Deep Perception Demos: repos/stretch_ros/stretch_deep_perception/README.md
-        - Autonomy Demos: repos/stretch_ros/stretch_demos/README.md
-        - Working with the URDF: repos/stretch_ros/stretch_description/README.md
-        - Fast Unified Navigation, Manipulation And Planning (FUNMAP): repos/stretch_ros/stretch_funmap/README.md
-        - ROS Gazebo: repos/stretch_ros/stretch_gazebo/README.md
-        - ROS MoveIt: repos/stretch_ros/stretch_moveit_config/README.md
-        - ROS Navigation: repos/stretch_ros/stretch_navigation/README.md
-    - Stretch Firmware:
-      - Updating the Firmware: repos/stretch_firmware/tutorials/docs/updating_firmware.md
-      - Integrating Custom Data: repos/stretch_firmware/tutorials/docs/data_transfer.md
-      - Integrating Custom Hardware: repos/stretch_firmware/tutorials/docs/README.md
-    - Jupyter:
-        - Coming Soon: foo.md
+  - Repos:
+    - Stretch Body: '!include ./repos/stretch_body/mkdocs.yml'
   - Resources:
     - Stretch Forum: "https://forum.hello-robot.com/"
     - Stretch GitHub: "https://github.com/hello-robot"
