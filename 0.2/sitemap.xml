@@ -131,6 +131,41 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-firmware/</loc>
+         <lastmod>2022-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-firmware/tutorial_data_transfer/</loc>
+         <lastmod>2022-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-firmware/tutorial_i2c_sensor/</loc>
+         <lastmod>2022-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-firmware/tutorial_serial_sensor/</loc>
+         <lastmod>2022-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-firmware/tutorial_spi_sensor/</loc>
+         <lastmod>2022-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-firmware/tutorial_updating_firmware/</loc>
+         <lastmod>2022-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-firmware/tutorial_wacc_emulation/</loc>
+         <lastmod>2022-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-ros/</loc>
          <lastmod>2022-07-18</lastmod>
          <changefreq>daily</changefreq>
