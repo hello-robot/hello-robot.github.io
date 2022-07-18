@@ -41,27 +41,21 @@ git push
 ```commandline
 cd ~/repos/hello-robot.github.io
 mike serve
+Starting server at http://localhost:8000/
+Press Ctrl+C to quit.
 ```
-
+You can then preview the content at site http://localhost:8000
 ## Deploying Edits
-
+If, for example, the version under edit is 0.1, you can push the edits to the webserver by:
 ```commandline
+cd ~/repos/hello-robot.github.io
 mike deploy 0.1 --push
 ```
 This will push the changes to the `gh-pages` branch and the edits will be reflected at [docs.hello-robot.com](docs.hello-robot.com). 
 
 **Note**: It may take time / browser refreshes for the changes to be correctly reflected at [docs.hello-robot.com](docs.hello-robot.com),
 
-
-
-## Other Tips
-The currently hosted versions that are managed by mike can be found with
-```commandline
-~/repos/hello-robot.github.io$ mike list
-"0.2: Beta (WIP)" (0.2) [beta]
-"0.1: Latest" (0.1) [latest]
-```
-
+## Making a new version
 To make a new version, for example:
 ```commandline
 cd ~/repos/hello-robot.github.io
@@ -75,6 +69,14 @@ git checkout 0.3
 mike deploy 0.3 'experimental' -t '0.3: Experimental development' --push
 ```
 
+Note the format for the title (-t). Keep a consistent naming structure. Also note that this version is aliased as `experimental`. 
+## Other Tips
+The currently hosted versions that are managed by mike can be found with
+```commandline
+~/repos/hello-robot.github.io$ mike list
+"0.2: Beta (WIP)" (0.2) [beta]
+"0.1: Latest" (0.1) [latest]
+```
 The default version that is present at is the one with the alias `latest` as defined in mkdocs.yaml:
 ```commandline
 extra:
