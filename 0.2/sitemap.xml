@@ -61,27 +61,57 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.hello-robot.com/0.2/stretch-body/collision_avoidance_tutorial/</loc>
-         <lastmod>2022-07-18</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://docs.hello-robot.com/0.2/stretch-body/dynamixel_tutorial/</loc>
-         <lastmod>2022-07-18</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://docs.hello-robot.com/0.2/stretch-body/parameters_tutorial/</loc>
-         <lastmod>2022-07-18</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-body/stretch_body_api/</loc>
          <lastmod>2022-07-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-body/stretch_body_guide/</loc>
+         <lastmod>2022-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-body/stretch_body_snippets/</loc>
+         <lastmod>2022-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-body/tutorial_collision_avoidance/</loc>
+         <lastmod>2022-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-body/tutorial_command_line_tools/</loc>
+         <lastmod>2022-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-body/tutorial_dynamixel_servos/</loc>
+         <lastmod>2022-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-body/tutorial_parameter_management/</loc>
+         <lastmod>2022-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-body/tutorial_robot_motion/</loc>
+         <lastmod>2022-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-body/tutorial_robot_sensors/</loc>
+         <lastmod>2022-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-body/tutorial_safe_coding/</loc>
+         <lastmod>2022-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-body/tutorial_splined_trajectories/</loc>
          <lastmod>2022-07-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
