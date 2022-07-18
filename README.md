@@ -31,16 +31,28 @@ git checkout 0.1
 
 <make edits>
 
-mike deploy 0.1 --push
-
 git add *
 git commit -m 'make some edits'
 git push
 ```
 
+## Previewing Edits
+
+```commandline
+cd ~/repos/hello-robot.github.io
+mike serve
+```
+
+## Deploying Edits
+
+```commandline
+mike deploy 0.1 --push
+```
 This will push the changes to the `gh-pages` branch and the edits will be reflected at [docs.hello-robot.com](docs.hello-robot.com). 
 
 **Note**: It may take time / browser refreshes for the changes to be correctly reflected at [docs.hello-robot.com](docs.hello-robot.com),
+
+
 
 ## Other Tips
 The currently hosted versions that are managed by mike can be found with
