@@ -81,12 +81,42 @@ extra:
 
 nav:
   - Home: README.md
-  - Primary:
+  - Onboarding:
+    - Quick Start: foo.md
+    - Robot Safety: robot_safety_guide.md
+    - Best Practices: bar.md
+  - ROS Tutorials:
+    - ROS1:
+      - Basics:
+        - Getting Started: repos/stretch_ros_tutorials/getting_started.md
+        - Gazebo Basics:  repos/stretch_ros_tutorials/getting_started.md
+        - Teleoperating Stretch: repos/stretch_ros_tutorials/getting_started.md
+        - Internal State of Stretch: repos/stretch_ros_tutorials/getting_started.md
+        - RViz Basics: repos/stretch_ros_tutorials/getting_started.md
+        - Navigation Stack: repos/stretch_ros_tutorials/getting_started.md
+        - MoveIt! Basics: repos/stretch_ros_tutorials/getting_started.md
+        - Follow Joint Trajectory Commands: repos/stretch_ros_tutorials/getting_started.md
+        - FUNMAP: repos/stretch_ros_tutorials/getting_started.md
+        - Perception: repos/stretch_ros_tutorials/getting_started.md
+        - Microphone Array: repos/stretch_ros_tutorials/getting_started.md
+        - ROS testing: repos/stretch_ros_tutorials/getting_started.md
+        - Other Nav Stack Features: repos/stretch_ros_tutorials/getting_started.md
+      - Other Examples:
+        - Teleoperate Stretch with a Node: repos/stretch_ros_tutorials/example_1.md
+        - Filter Laser Scans: repos/stretch_ros_tutorials/example_2.md
+        - Mobile Base Collision Avoidance: repos/stretch_ros_tutorials/example_3.md
+        - Give Stretch a Balloon: repos/stretch_ros_tutorials/example_4.md
+        - Print Joint States: repos/stretch_ros_tutorials/example_5.md
+        - Store Effort Values: repos/stretch_ros_tutorials/example_6.md
+    - ROS2:
+      - Nav Stack: foo.md
+  - Repositories:
     - Stretch Body: '!include ./repos/stretch_body/mkdocs.yml'
     - Stretch ROS: '!include ./repos/stretch_ros/mkdocs.yml'
-  - Supporting:
     - Stretch Factory: '!include ./repos/stretch_factory/mkdocs.yml'
     - Stretch Firmware: '!include ./repos/stretch_firmware/mkdocs.yml'
+    - Stretch Tool Share: '!include ./repos/stretch_tool_share/mkdocs.yml'
+  - Hardware Guides: '!include ./repos/stretch_hardware_guides/mkdocs.yml'
   - Resources:
     - Stretch Forum: "https://forum.hello-robot.com/"
     - Stretch GitHub: "https://github.com/hello-robot"

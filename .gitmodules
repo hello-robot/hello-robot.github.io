@@ -19,3 +19,6 @@
 [submodule "repos/stretch_web_interface"]
 	path = repos/stretch_web_interface
 	url = https://github.com/hello-robot/stretch_web_interface
+[submodule "repos/stretch_hardware_guides"]
+	path = repos/stretch_hardware_guides
+	url = https://github.com/hello-robot/stretch_hardware_guides
