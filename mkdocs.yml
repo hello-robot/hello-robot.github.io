@@ -81,8 +81,12 @@ extra:
 
 nav:
   - Home: README.md
-  - Repos:
+  - Primary:
     - Stretch Body: '!include ./repos/stretch_body/mkdocs.yml'
+    - Stretch ROS: '!include ./repos/stretch_ros/mkdocs.yml'
+  - Supporting:
+    - Stretch Factory: '!include ./repos/stretch_factory/mkdocs.yml'
+    - Stretch Firmware: '!include ./repos/stretch_firmware/mkdocs.yml'
   - Resources:
     - Stretch Forum: "https://forum.hello-robot.com/"
     - Stretch GitHub: "https://github.com/hello-robot"
