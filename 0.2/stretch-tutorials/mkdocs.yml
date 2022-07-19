@@ -80,7 +80,7 @@ extra:
 
 nav:
   - Overview: README.md
-  - Getting Started:
+  - Getting Started with Stretch:
       - Quick Start: docs/getting_started/quick_start_guide.md
       - Robot Safety: docs/getting_started/robot_safety_guide.md
       - Best Practices: docs/getting_started/best_practices.md
