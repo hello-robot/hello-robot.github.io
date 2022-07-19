@@ -18,12 +18,12 @@
 [data-md-color-scheme="slate"] {
   --md-hue: 210; /* [0, 360] */
 }
-
+/*
 .md-header__topic:first-child {
   font-weight: normal;
 }
 
-/* Indentation. */
+/* Indentation.
 div.doc-contents {
   padding-left: 25px;
   border-left: 4px solid rgba(230, 230, 230);
@@ -37,7 +37,7 @@ div.doc-contents {
 .md-typeset table:not([class]) {
   display: table;
 }
-
+*/
 .shell-prompt code::before {
   content: "$ ";
   color: grey;

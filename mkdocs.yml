@@ -9,7 +9,7 @@ theme:
  name: material
  features:
    - navigation.instant
- font: Arial
+ #font: Arial
  palette:
   - scheme: default
     primary: hello-robot-light
