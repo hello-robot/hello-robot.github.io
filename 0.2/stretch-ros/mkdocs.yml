@@ -80,8 +80,6 @@ extra:
 
 nav:
  - Overview: README.md
- - Quick Start: stretch_ros_guide.md
- - Snippets: stretch_ros_snippets.md
  - Packages:
     - hello_helpers: ./hello_helpers/README.md
     - stretch_calibration: ./stretch_calibration/README.md

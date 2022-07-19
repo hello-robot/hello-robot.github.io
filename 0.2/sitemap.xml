@@ -436,6 +436,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/docs/tool_change_tutorial/</loc>
+         <lastmod>2022-07-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/docs/getting_started/quick_start_guide/</loc>
          <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
@@ -457,6 +462,26 @@
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/docs/getting_started/updating_software/</loc>
+         <lastmod>2022-07-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-web-interface/</loc>
+         <lastmod>2022-07-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-web-interface/LICENSE/</loc>
+         <lastmod>2022-07-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-web-interface/TUTORIAL_LICENSE/</loc>
+         <lastmod>2022-07-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-web-interface/WEBRTC_PROJECT_LICENSE/</loc>
          <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
