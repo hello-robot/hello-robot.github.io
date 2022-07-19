@@ -11,27 +11,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.hello-robot.com/0.2/battery_maintenance_guide/</loc>
-         <lastmod>2022-07-19</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://docs.hello-robot.com/0.2/dex_wrist_user_guide/</loc>
-         <lastmod>2022-07-19</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://docs.hello-robot.com/0.2/hardware_user_guide/</loc>
-         <lastmod>2022-07-19</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://docs.hello-robot.com/0.2/quick_start_guide/</loc>
-         <lastmod>2022-07-19</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://docs.hello-robot.com/0.2/robot_safety_guide/</loc>
          <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -167,6 +147,26 @@
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-hardware-guides/</loc>
+         <lastmod>2022-07-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-hardware-guides/battery_maintenance_guide/</loc>
+         <lastmod>2022-07-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-hardware-guides/dex_wrist_user_guide/</loc>
+         <lastmod>2022-07-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-hardware-guides/robot_hardware_guide/</loc>
+         <lastmod>2022-07-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-hardware-guides/robot_safety_guide/</loc>
          <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
