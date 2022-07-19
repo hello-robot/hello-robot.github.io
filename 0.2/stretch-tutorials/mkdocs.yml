@@ -79,7 +79,6 @@ extra:
       link: https://linkedin.com/company/hello-robot-inc
 
 nav:
-  - Overview: README.md
   - Getting to Know Stretch:
       - Quick Start: docs/getting_started/quick_start_guide.md
       - Robot Safety: docs/getting_started/robot_safety_guide.md
@@ -90,6 +89,7 @@ nav:
     - Basics:
       - Commanding Joint Motion: Foo.md
   - ROS1:
+    - Overview: README.md
     - Basics:
       - Getting Started: getting_started.md
       - Gazebo Basics:  gazebo_basics.md
