@@ -2,277 +2,277 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.hello-robot.com/0.2/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/LICENSE/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/battery_maintenance_guide/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/dex_wrist_user_guide/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/hardware_user_guide/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/quick_start_guide/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/robot_safety_guide/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/tool_change_tutorial/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/troubleshooting_guide/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/untethered_operation/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/updating_software/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-body/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-body/stretch_body_api/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-body/stretch_body_guide/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-body/stretch_body_snippets/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-body/tutorial_collision_avoidance/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-body/tutorial_command_line_tools/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-body/tutorial_dynamixel_servos/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-body/tutorial_parameter_management/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-body/tutorial_robot_motion/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-body/tutorial_robot_sensors/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-body/tutorial_safe_coding/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-body/tutorial_splined_trajectories/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-body/extending_wrist_dof/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-body/jupyter/jupyter_getting_started/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-factory/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-firmware/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-firmware/tutorial_data_transfer/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-firmware/tutorial_i2c_sensor/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-firmware/tutorial_serial_sensor/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-firmware/tutorial_spi_sensor/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-firmware/tutorial_updating_firmware/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-firmware/tutorial_wacc_emulation/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-ros/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-ros/hello_helpers/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-ros/hello_helpers/LICENSE/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-ros/stretch_calibration/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-ros/stretch_calibration/LICENSE/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-ros/stretch_core/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-ros/stretch_core/LICENSE/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-ros/stretch_deep_perception/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-ros/stretch_deep_perception/LICENSE/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-ros/stretch_demos/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-ros/stretch_demos/LICENSE/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-ros/stretch_description/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-ros/stretch_description/LICENSE/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-ros/stretch_description/urdf/export_urdf_license_template/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-ros/stretch_funmap/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-ros/stretch_funmap/LICENSE/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-ros/stretch_gazebo/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-ros/stretch_gazebo/LICENSE/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-ros/stretch_moveit_config/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-ros/stretch_moveit_config/LICENSE/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-ros/stretch_navigation/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-ros/stretch_navigation/LICENSE/</loc>
-         <lastmod>2022-07-18</lastmod>
+         <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
