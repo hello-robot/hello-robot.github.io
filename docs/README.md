@@ -69,7 +69,7 @@ We provide ROS-related code for the Stretch RE1 mobile manipulator, including a 
 | [Stretch Web Interface](https://github.com/hello-robot/stretch_web_interface) | Repository with code to allow a user to operate a Stretch through a web browser |
 
 # Version
-This is version 0.1 of the Stretch User Documentation.
+This is version 0.2 of the Stretch User Documentation.
 
 # License
 

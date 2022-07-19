@@ -22,3 +22,9 @@
 [submodule "repos/stretch_hardware_guides"]
 	path = repos/stretch_hardware_guides
 	url = https://github.com/hello-robot/stretch_hardware_guides
+[submodule "repos/stretch_install"]
+	path = repos/stretch_install
+	url = https://github.com/hello-robot/stretch_install
+[submodule "repos/stretch_tutorials"]
+	path = repos/stretch_tutorials
+	url = https://github.com/hello-robot/stretch_tutorials
