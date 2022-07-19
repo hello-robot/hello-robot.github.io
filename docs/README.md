@@ -27,16 +27,16 @@ In addition, it is worth spending some time on the following sites:
 
 
 # Version
-This is version 0.2 of the Stretch User Documentation. It is written the following system configuration in mind:
+This is version 0.2 of the Stretch User Documentation. It is written with the following system configuration in mind:
 
 
-| Stretch Docs v0.2 Configuration | 
-|---------------------------------|
-| Stretch RE1 or Stretch RE1.5    |
-| Ubuntu 18.04 or 20.04           |
-| ROS Melodic or Noetic           |
-| Stretch Body >=0.3              |
-| Python3                         |
+| Resource                 | Description                  |
+|--------------------------|------------------------------|
+| Model                    | Stretch RE1 or Stretch RE1.5 |
+| OS                       | Ubuntu 18.04 or 20.04        |
+| ROS | Melodic or Noetic            |
+| Stretch Body| >=0.3                        |
+| Python                   | Python3                 |
 
 
 You can access prior documentation suitable for older configurations [here]()
