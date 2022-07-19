@@ -80,10 +80,10 @@ extra:
 
 nav:
  - Overview: README.md
- - Accessories:
+ - Tools:
     - Dry Erase Holder: ./tool_share/dry_erase_holder_V1/README.md
     - Phone Holder: ./tool_share/phone_holder_V1/README.md
-    - Puller: ../tool_share/puller_V1/README.md
+    - Puller: ./tool_share/puller_v1/README.md
     - ReactorX Wrist: ./tool_share/reactorx_wrist_V1/README.md
     - Swiffer Mount: ./tool_share/swiffer_mount_V1/README.md
     - Tray Cup Holder: ./tool_share/tray_cup_holder_V1/README.md
