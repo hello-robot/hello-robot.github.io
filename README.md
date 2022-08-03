@@ -1,15 +1,18 @@
 # Stretch Documentation Web Server
 
-This repository generates the documentation hosted at [docs.hello-robot.com](https://docs.hello-robot.com).
+This repository generates the documentation hosted at [docs.hello-robot.com](https://docs.hello-robot.com). 
+
+The content largely lives inside of indepedent repositories that include their own MkDocs site generation information. This repo has the role of integrating these independent repositories together using the plugin `mkdocs-monorepo-plugin`.
 
 ## Setup for Documentation Development
 In order to create a development environment on a 20.04 Ubuntu machine:
 ```
 cd ~/repos
-git clone https://github.com/hello-robot/hello-robot.github.io
+git clone --recursive https://github.com/hello-robot/hello-robot.github.io
 cd hello-robot.github.io
 ./install.sh
 ```
+
 ## Branch Structure
 The documentation is organized on versioned branches:
 ```commandline
@@ -70,6 +73,31 @@ mike deploy 0.3 'experimental' -t '0.3: Experimental development' --push
 ```
 
 Note the format for the title (-t). Keep a consistent naming structure. Also note that this version is aliased as `experimental`. 
+## Adding a New Submodule Repo
+```commandline
+cd ~/repos/hello-robot.github.io/repos
+git submodule add https://github.com/hello-robot/stretch_foo
+```
+
+## Editing a Submodule Repo
+For example, Stretch Body:
+
+```commandline
+cd ~/repos/hello-robot.github.io/repos/stretch_body
+git pull
+```
+Make sure you've pulled the latest version and are on the desired branch. After making your edits you can test them by:
+```commandline
+mkdocs serve
+...
+INFO     -  [21:47:17] Browser connected: http://127.0.0.1:8000/stretch_body/
+```
+When the submodule site is as desired, check the changes into Git. Then deploy the edits using Mike:
+```commandline
+cd ~/repos/hello-robot.github.io/
+mike deploy 0.2 --push
+mike serve
+```
 ## Other Tips
 The currently hosted versions that are managed by mike can be found with
 ```commandline

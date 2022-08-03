@@ -10,4 +10,5 @@ pip3 install install Pygments
 #pip3 install mkdocstrings
 pip3 install mkdocstrings-python-legacy
 pip3 install mike
-
+pip3 install mkdocs-monorepo-plugin
+pip3 install mkdocs-same-dir
