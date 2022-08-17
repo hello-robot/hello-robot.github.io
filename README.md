@@ -2,7 +2,7 @@
 
 This repository generates the documentation hosted at [docs.hello-robot.com](https://docs.hello-robot.com). 
 
-The content largely lives inside of indepedent repositories that include their own MkDocs site generation information. This repo has the role of integrating these independent repositories together using the plugin `mkdocs-monorepo-plugin`.
+The content largely lives inside of independent repositories that include their own MkDocs site generation information. This repo has the role of integrating these independent repositories together using the plugin `mkdocs-monorepo-plugin`.
 
 ## Setup for Documentation Development
 In order to create a development environment on a 20.04 Ubuntu machine:
