@@ -12,14 +12,14 @@
         <meta name="author" content="Hello Robot Inc">
       
       
-        <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-hardware-guides/battery_maintenance_guide/">
+        <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-hardware-guides/battery_maintenance_guide_re1/">
       
       <link rel="icon" href="../../images/hello_robot_favicon.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
     
     
       
-        <title>Stretch Battery Maintenance Guide - Stretch Documentation</title>
+        <title>Battery Maintenance Guide - Stretch Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#battery-maintenance-guide-stretch-re1" class="md-skip">
+        <a href="#stretch-re1-battery-maintenance-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Stretch Battery Maintenance Guide
+              Battery Maintenance Guide
             
           </span>
         </div>
@@ -2021,13 +2021,41 @@
   
   
     <li class="md-nav__item">
-      <a href="../robot_safety_guide/" class="md-nav__link">
+      <a href="../safety_guide/" class="md-nav__link">
         Stretch Safety Guide
       </a>
     </li>
   
 
             
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
+          Stretch RE1
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Stretch RE1" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Stretch RE1
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
           
             
               
@@ -2045,12 +2073,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Stretch Battery Maintenance Guide
+          Battery Maintenance Guide
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Stretch Battery Maintenance Guide
+        Battery Maintenance Guide
       </a>
       
         
@@ -2206,8 +2234,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../robot_hardware_guide/" class="md-nav__link">
-        Stretch Robot User Guide
+      <a href="../hardware_guide_re1/" class="md-nav__link">
+        Hardware Guide
       </a>
     </li>
   
@@ -2220,9 +2248,91 @@
   
   
     <li class="md-nav__item">
-      <a href="../dex_wrist_user_guide/" class="md-nav__link">
-        Stretch DexWrist User Guide
+      <a href="../dex_wrist_guide_re1/" class="md-nav__link">
+        DexWrist User Guide
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4">
+          Stretch RE2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Stretch RE2" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Stretch RE2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../battery_maintenance_guide_re2/" class="md-nav__link">
+        Battery Maintenance Guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware_guide_re2/" class="md-nav__link">
+        Hardware Guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dex_wrist_guide_re2/" class="md-nav__link">
+        DexWrist User Guide
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -2476,11 +2586,12 @@
 
 
 
-<h1 id="battery-maintenance-guide-stretch-re1">Battery Maintenance Guide - Stretch RE1</h1>
+<h1 id="stretch-re1-battery-maintenance-guide">Stretch RE1 - Battery Maintenance Guide</h1>
 <h2 id="overview">Overview</h2>
 <p>Stretch RE1 utilizes two <a href="https://www.power-sonic.com/product/ps-1290/">12V AGM SLA batteries</a> that provide a combined 18AH of capacity. Maintaining an adequate level of charge on the battery system will enhance the battery lifetime.</p>
 <p>The run time for a fully charged system is dependent on the load use case. The majority of battery power is consumed by the NUC computer as Stretch uses relatively low power motors.</p>
 <p>A fully charged robot running a high CPU load can run approximately 2 hours before requiring a recharge.</p>
+<p>A fully charged robot powered on but with minimal load can run approximately 5 hours before requiring a recharge.</p>
 <h2 id="charger">Charger</h2>
 <p>Stretch ships with a NOCO Genius 10 charger. Earlier versions of Stretch use the NOCO G7200. These two chargers are functionally very similar.</p>
 <p>Please review the battery charger user manuals prior to following the guidance in this document. </p>
@@ -2515,6 +2626,18 @@
 </tr>
 </tbody>
 </table>
+<div class="highlight"><pre><span></span><code>=== &quot;Unordered list&quot;
+
+    * Sed sagittis eleifend rutrum
+    * Donec vitae suscipit est
+    * Nulla tempor lobortis orci
+
+=== &quot;Ordered list&quot;
+
+    1. Sed sagittis eleifend rutrum
+    2. Donec vitae suscipit est
+    3. Nulla tempor lobortis orci
+</code></pre></div>
 <h3 id="noco-genius-10-interface">NOCO Genius 10 - Interface</h3>
 <p><img alt="alt_text" src="../images/NOCO_Genius10_UI.png" title="image_tooltip" /></p>
 <table>
@@ -2740,7 +2863,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../robot_safety_guide/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Stretch Safety Guide" rel="prev">
+        <a href="../safety_guide/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Stretch Safety Guide" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -2756,13 +2879,13 @@
       
       
         
-        <a href="../robot_hardware_guide/" class="md-footer__link md-footer__link--next" aria-label="Next: Stretch Robot User Guide" rel="next">
+        <a href="../hardware_guide_re1/" class="md-footer__link md-footer__link--next" aria-label="Next: Hardware Guide" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Stretch Robot User Guide
+              Hardware Guide
             </div>
           </div>
           <div class="md-footer__button md-icon">
