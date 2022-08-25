@@ -2179,22 +2179,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-battery-light-bar" class="md-nav__link">
-    The Battery Light Bar
-  </a>
-  
-    <nav class="md-nav" aria-label="The Battery Light Bar">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    
+  <a href="#state-of-battery-charge" class="md-nav__link">
+    State of Battery Charge
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-plug-in-the-charger" class="md-nav__link">
+    When To Plug in the Charger
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accidental-full-discharge" class="md-nav__link">
+    Accidental Full Discharge
+  </a>
   
 </li>
       
@@ -2221,13 +2222,6 @@
         <li class="md-nav__item">
   <a href="#charging-best-practices" class="md-nav__link">
     Charging Best Practices
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#when-to-plug-in-the-charger" class="md-nav__link">
-    When To Plug in the Charger
   </a>
   
 </li>
@@ -2467,22 +2461,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-battery-light-bar" class="md-nav__link">
-    The Battery Light Bar
-  </a>
-  
-    <nav class="md-nav" aria-label="The Battery Light Bar">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    
+  <a href="#state-of-battery-charge" class="md-nav__link">
+    State of Battery Charge
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-plug-in-the-charger" class="md-nav__link">
+    When To Plug in the Charger
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accidental-full-discharge" class="md-nav__link">
+    Accidental Full Discharge
+  </a>
   
 </li>
       
@@ -2509,13 +2504,6 @@
         <li class="md-nav__item">
   <a href="#charging-best-practices" class="md-nav__link">
     Charging Best Practices
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#when-to-plug-in-the-charger" class="md-nav__link">
-    When To Plug in the Charger
   </a>
   
 </li>
@@ -2618,35 +2606,55 @@
 <p>The run time for a fully charged system is dependent on the load use case. The majority of battery power is consumed by the NUC computer as Stretch uses relatively low power motors.</p>
 <p>A fully charged robot running a high CPU load can run approximately 2 hours before requiring a recharge.</p>
 <p>A fully charged robot powered on but with minimal load can run approximately 5 hours before requiring a recharge. </p>
-<h2 id="the-battery-light-bar">The Battery Light Bar</h2>
-<p>Stretch RE2 introduces an LED light bar on the base that provides an indication of the battery state. For more details see in the Stretch Hardware Guide.</p>
+<h2 id="state-of-battery-charge">State of Battery Charge</h2>
+<p>An accurate measure of the battery charge isn't available on Stretch (as this requires a coulomb counting system). A coarse approximation of battery charge is given by the battery voltage. </p>
+<p>For RE2 during normal operation with a moderate load the relationship between voltage and charge is roughly:</p>
 <table>
 <thead>
 <tr>
-<th>Mode</th>
-<th>Function</th>
+<th>Voltage</th>
+<th>Charge</th>
+<th>LED Light Bar</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td>Charger not charging the robot</td>
+<td>11.5 - 13.4V</td>
+<td>80%+</td>
+<td>Bright green</td>
 </tr>
 <tr>
-<td>Charging</td>
-<td>Charging  robot powered down</td>
+<td>11.0 - 11.5V</td>
+<td>60%+</td>
+<td>Yellow</td>
 </tr>
 <tr>
-<td>Runstopped</td>
-<td>1) Power the robot during tethered use<br/>2) Repair damaged batteries.</td>
+<td>10.5 - 11.0V</td>
+<td>40%+</td>
+<td>Orange</td>
 </tr>
 <tr>
-<td></td>
-<td>Repair damaged batteries.</td>
+<td>Below 10.5V</td>
+<td>&lt;40%</td>
+<td>Red</td>
 </tr>
 </tbody>
 </table>
-<h3 id="_1"></h3>
+<p>As shown below, the LED lightbar color provides an indication of the battery voltage. </p>
+<p><img alt="alt_text" src="../images/re2/lightbar_voltage.png" /></p>
+<h2 id="when-to-plug-in-the-charger">When To Plug in the Charger</h2>
+<p>We recommend plugging in the charger whenever:</p>
+<ul>
+<li>The battery voltage is below 11V (lightbar is orange). </li>
+<li>The robot is not running untethered</li>
+<li>The robot is producing a periodic beeping sound</li>
+</ul>
+<h2 id="accidental-full-discharge">Accidental Full Discharge</h2>
+<p>Stretch includes a few feature to help prevent accidental full discharge (for example, if the robot is left on overnight not plugged to its charger)</p>
+<ul>
+<li><strong>Audible warning</strong>: Stretch will beep every 2 seconds if the battery voltage drops below 10.5V</li>
+<li><strong>Hard power off</strong>: Stretch will completely power off if the battery voltage drops below 9.75V</li>
+</ul>
 <h2 id="charger">Charger</h2>
 <p>Stretch ships with a NOCO Genius 10 charger. Please review the battery charger user manual prior to following the guidance in this document. </p>
 <ul>
@@ -2741,10 +2749,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="when-to-plug-in-the-charger">When To Plug in the Charger</h2>
-<p>We recommend keeping the charger attached whenever the robot is not running untethered.</p>
-<p>When the battery voltage drops below ‘low voltage’ threshold the robot will produce an intermittent double beep sound. This is a reminder to the user to plug in the charger.</p>
-<p>If desired, the intermittent beep functionality can be disabled by setting the <code>stop_at_low_voltage</code> field in the User YAML to <code>0</code>.</p>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <table>
 <thead>
@@ -2805,25 +2809,23 @@
 <li>When the laser range finder has stopped spinning, turn off the main power switch</li>
 </ol>
 <h3 id="replacing-the-fuse">Replacing the Fuse</h3>
-<p>Stretch RE2 has two automotive fuses inside the base that may need to be replaced. The type of fuse depends on your build version of the RE2</p>
+<p>Stretch RE2 has two automotive fuses inside the base that may need to be replaced. </p>
 <table>
 <thead>
 <tr>
-<th>Build Version</th>
 <th>Fuse Type</th>
 <th>Recommended Fuse</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>MItski</td>
 <td>7.5A ATM Fast Blow Blade</td>
 <td>Bussman VP/ATM-7-1/2-RP</td>
 </tr>
 </tbody>
 </table>
 <p>The fuse locations are shown below.  For guidance on replacing the fuse, contact Hello Robot support: <a href="mailto:support@hello-robot.com">support@hello-robot.com</a>.</p>
-<p><img alt="alt_text" src="../images/base_fuse.png" /></p>
+<p><img alt="alt_text" src="../images/re2/fuse_replacement.png" /></p>
 <h3 id="checking-the-battery-charge">Checking the Battery Charge</h3>
 <p>The battery charger LEDs provide an approximate indicator of battery charge when it is in 12V AGM mode. </p>
 <p><img alt="alt_text" src="../images/genius10_100pct.png" /></p>
@@ -2838,7 +2840,12 @@
 <span class="go">[Pass] CPU Temp with 56.0</span>
 </code></pre></div>
 <p><strong>Measuring Battery Voltage with a DMM</strong></p>
-<p>When troubleshooting a deeply discharged battery it may be useful to directly measure the battery voltage with a digital multimeter (DMM). To do this we recommend detaching the charger cable at its inline connector and applying the DMM to the connector contacts as shown.</p>
+<p>When troubleshooting a deeply discharged battery it may be useful to directly measure the battery voltage with a digital multimeter (DMM). To do this we recommend </p>
+<ul>
+<li>Detach the charger cable at its inline connector </li>
+<li>Apply the DMM to the connector contacts as shown</li>
+<li>Plug the charge cable into the charge port of the robot</li>
+</ul>
 <p>NOTE: Caution should be taken as it is possible to short the battery when doing this. </p>
 <p><img alt="alt_text" src="../images/base_dmm.png" /></p>
 <h3 id="repairing-damaged-batteries">Repairing Damaged Batteries</h3>
