@@ -23,14 +23,18 @@ theme:
       name: Switch to light mode
  logo: images/hello_robot_logo_light.png
  favicon: images/hello_robot_favicon.png
+
 markdown_extensions:
   - pymdownx.highlight
   - pymdownx.superfences
   - pymdownx.inlinehilite
   - pymdownx.keys
   - admonition
+  - pymdownx.tabbed:
+      alternate_style: true
 
 
+#tabbed markdown
 
 extra_css:
   - extra.css

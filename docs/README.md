@@ -27,6 +27,18 @@ In addition, it is worth spending some time on the following sites:
 # Version
 This is version 0.2 of the Stretch User Documentation. It is written with the following system configuration in mind:
 
+=== "Unordered list"
+
+    * Sed sagittis eleifend rutrum
+    * Donec vitae suscipit est
+    * Nulla tempor lobortis orci
+
+=== "Ordered list"
+
+    1. Sed sagittis eleifend rutrum
+    2. Donec vitae suscipit est
+    3. Nulla tempor lobortis orci
+
 
 | Resource                 | Description                  |
 |--------------------------|------------------------------|
