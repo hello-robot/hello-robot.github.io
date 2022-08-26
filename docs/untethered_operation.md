@@ -71,11 +71,11 @@ This works for [copying directories](https://stackoverflow.com/a/11304926/475301
 
 #### Requirements
 
-This is the recommended approach if you are running Ubuntu 16.04/18.04/20.04 with ROS kinetic/melodic/noetic installed on your computer. This method will utilize the local installation of ROS tools, such as Rviz, rostopic, and rosservice, while retrieving data from the robot.
+This is the recommended approach if you are running Ubuntu 16.04/18.04/20.04 with ROS kinetic/melodic/noetic installed on your computer. This method will utilize the local installation of ROS tools, such as Rviz, rostopic, and rosservice, while retrieving data from the robot. Your computer does not need to be running the same ROS1 version as installed on the robot.
 
 #### How To
 
-If you are developing ROS code to test on the Stretch RE1 and you already have ROS installed on your Ubuntu computer, then there is an easier way of using Rviz than the method described in [SSH & X Server](#ssh-x-server). In the ROS world, this concept is known as "remote master".
+If you are developing ROS code to test on the Stretch RE1 and you already have ROS installed on your Ubuntu computer, then there is an easier way of using ROS tools than the method described in [SSH & X Server](#ssh-x-server). In the ROS world, this concept is known as "remote master".
 
 First, identify your robot's and computer's IP address on the network (e.g. using `ifconfig`). These are `robot-ip-address` and `computer-ip-address` respectively.
 
@@ -95,13 +95,13 @@ $ export ROS_MASTER_URI=http://robot-ip-address:11311
 
 If you use ROS Remote Master often, you can export these environment variables in your [bashrc](https://www.maketecheasier.com/what-is-bashrc/).
 
-Tools like [rostopic](http://wiki.ros.org/rostopic) and [rosservice](http://wiki.ros.org/rosservice) can now be used on your computer as you would have on the robot. For example, you can use `rostopic list` on your computer to print out the topics available on the robot. Additional information can be found in the ROS [Multiple Machines Tutorial](http://wiki.ros.org/ROS/Tutorials/MultipleMachines).
+Tools like [rostopic](http://wiki.ros.org/rostopic), [rosservice](http://wiki.ros.org/rosservice), and [Rviz](http://wiki.ros.org/rviz) (remote Rviz requires extra setup, see the next section) can now be used on your computer as you would have on the robot. For example, you can use `rostopic list` on your computer to print out the topics available on the robot. Additional information can be found in the ROS [Multiple Machines Tutorial](http://wiki.ros.org/ROS/Tutorials/MultipleMachines).
 
 #### Visualizing remotely with RViz
 
-If you'd like to visualize the robot model on your computer using Rviz, you'll need to setup a ROS workspace with the [Stretch Description](https://github.com/hello-robot/stretch_ros/tree/master/stretch_description) package. First, copy over the `~/stretch_user` directory from the robot to your computer (e.g. using [Secure Copy](#moving-files-tofrom-the-robot-wirelessly)). Second, clone [Stretch Install](https://github.com/hello-robot/stretch_install/), and checkout the [noetic branch](https://github.com/hello-robot/stretch_install/tree/dev/install_20.04) if you are running ROS Noetic on the robot. Finally, run the [stretch_create_ros_workspace.sh](https://github.com/hello-robot/stretch_install/blob/master/stretch_create_ros_workspace.sh) script. A ROS Workspace with the Stretch ROS packages is now set up on your computer. Furthermore, Stretch Description has been set up with your robot's calibrated URDF.
+If you'd like to visualize the robot model on your computer using Rviz, you'll need to setup a ROS workspace with the [Stretch Description](https://github.com/hello-robot/stretch_ros/tree/master/stretch_description) package so Rviz can access the mesh files locally. First, copy over the `~/stretch_user` directory from the robot to your computer (e.g. using [Secure Copy](#moving-files-tofrom-the-robot-wirelessly)). Second, follow the [Creating a New ROS Workspace](https://github.com/hello-robot/stretch_install/blob/master/docs/ros_workspace.md) tutorial. A ROS Workspace with the Stretch ROS packages is now set up on your computer. Furthermore, Stretch Description has been set up with your robot's calibrated URDF.
 
-We can now use remote master and Rviz to visualize what the robot is seeing on your computer. Open two terminals. In the first, [SSH](#ssh-x-server) into the robot and run `roslaunch stretch_core stretch_driver.launch`. You should see some information print out in the terminal. In the second, run `rviz`. A window will pop up and information about the robot can be visualized by clicking on `Add -> RobotModel` and `Add -> By Topic -> /Scan`. Additional information on how to use Rviz can be found in [ROS's tutorials](http://wiki.ros.org/ROS/Tutorials) or in our [Stretch ROS guides](README.md#ros-interface).
+We can now use remote master and Rviz to visualize what the robot is seeing on your computer. Open two terminals. In the first, [SSH](#ssh-x-server) into the robot and run `roslaunch stretch_core stretch_driver.launch`. You should see some information print out in the terminal. In the second, run `rviz -f base_link`. A window will pop up and information about the robot can be visualized by clicking on `Add -> RobotModel` and `Add -> TF`. Additional information on how to use Rviz can be found in [ROS's tutorials](http://wiki.ros.org/ROS/Tutorials) or in our [Stretch ROS guides](README.md#ros-interface).
 
 ## Additional Ideas
 
