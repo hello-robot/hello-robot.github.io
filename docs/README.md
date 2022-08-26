@@ -5,10 +5,12 @@ This is your jumping off point for Stretch tutorials, datasheets, APIs, and user
 
 We wish you success in your development journey with Stretch. Please contact us at [support@hello-robot.com](mailto:support@hello-robot.com) if you don't find what you're looking for.
 
-\m/ The Hello Robot team
+\m/
+
+--The Hello Robot team
 
 # New to Stretch?
-We recommend you follow the [Stretch Getting Started Tutorials](). 
+We recommend you follow the [Getting to Know Stretch Tutorials](https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/README.md). 
 
 Please take the time to learn safe and best practices in operating Stretch.  
 
@@ -40,13 +42,13 @@ This is version 0.2 of the Stretch User Documentation. It is written with the fo
     3. Nulla tempor lobortis orci
 
 
-| Resource                 | Description                  |
-|--------------------------|------------------------------|
-| Model                    | Stretch RE1 or Stretch RE1.5 |
-| OS                       | Ubuntu 18.04 or 20.04        |
-| ROS | Melodic or Noetic            |
-| Stretch Body| >=0.3                        |
-| Python                   | Python3                 |
+| Resource                 | Description                |
+|--------------------------|----------------------------|
+| Model                    | Stretch RE1 or Stretch RE2 |
+| OS                       | Ubuntu 18.04 or 20.04      |
+| ROS | Melodic or Noetic          |
+| Stretch Body| >=0.3                      |
+| Python                   | Python3                    |
 
 
 You can access prior documentation suitable for older configurations [here]()
