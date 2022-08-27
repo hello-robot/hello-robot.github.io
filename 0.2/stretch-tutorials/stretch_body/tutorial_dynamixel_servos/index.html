@@ -73,6 +73,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#working-with-dynamixel-servos" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -522,8 +527,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorial_safe_coding/" class="md-nav__link">
-        Safe Coding
+      <a href="../tutorial_introduction/" class="md-nav__link">
+        Introduction
       </a>
     </li>
   
@@ -550,8 +555,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorial_simple_coding.py" class="md-nav__link">
-        Simple Coding
+      <a href="../tutorial_stretch_body_api/" class="md-nav__link">
+        Stretch Body API
       </a>
     </li>
   
@@ -633,10 +638,125 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Dynamixel Servos
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         Dynamixel Servos
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servo-tools" class="md-nav__link">
+    Servo Tools
+  </a>
+  
+    <nav class="md-nav" aria-label="Servo Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jogging-the-servos" class="md-nav__link">
+    Jogging the Servos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebooting-the-servos" class="md-nav__link">
+    Rebooting the Servos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identify-servos-on-the-bus" class="md-nav__link">
+    Identify Servos on the Bus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-the-servo-baud-rate" class="md-nav__link">
+    Setting the Servo Baud Rate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-the-servo-id" class="md-nav__link">
+    Setting the Servo ID
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stretch-body-dynamixel-api" class="md-nav__link">
+    Stretch Body Dynamixel API
+  </a>
+  
+    <nav class="md-nav" aria-label="Stretch Body Dynamixel API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynamixelxchain" class="md-nav__link">
+    DynamixelXChain
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamixelhelloxl430" class="md-nav__link">
+    DynamixelHelloXL430
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamixelxl430" class="md-nav__link">
+    DynamixelXL430
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -691,8 +811,50 @@
   
   
     <li class="md-nav__item">
+      <a href="../tutorial_contact_models/" class="md-nav__link">
+        Contact Models
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../tutorial_tool_change/" class="md-nav__link">
         Changing Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_extending_wrist_dof/" class="md-nav__link">
+        Custom Wrist DOF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_safe_coding/" class="md-nav__link">
+        Safety Features
       </a>
     </li>
   
@@ -1734,20 +1896,6 @@
   
     <li class="md-nav__item">
       <a href="../../../stretch-body/" class="md-nav__link">
-        Installation
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../stretch-body/stretch_body_guide/" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -1761,7 +1909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stretch-body/stretch_body_api/" class="md-nav__link">
+      <a href="../../../stretch-body/stretch_body_api.md" class="md-nav__link">
         API
       </a>
     </li>
@@ -1775,7 +1923,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stretch-body/tutorials.md" class="md-nav__link">
+      <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_body/" class="md-nav__link">
         Tutorials
       </a>
     </li>
@@ -2935,6 +3083,105 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servo-tools" class="md-nav__link">
+    Servo Tools
+  </a>
+  
+    <nav class="md-nav" aria-label="Servo Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jogging-the-servos" class="md-nav__link">
+    Jogging the Servos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebooting-the-servos" class="md-nav__link">
+    Rebooting the Servos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identify-servos-on-the-bus" class="md-nav__link">
+    Identify Servos on the Bus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-the-servo-baud-rate" class="md-nav__link">
+    Setting the Servo Baud Rate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-the-servo-id" class="md-nav__link">
+    Setting the Servo ID
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stretch-body-dynamixel-api" class="md-nav__link">
+    Stretch Body Dynamixel API
+  </a>
+  
+    <nav class="md-nav" aria-label="Stretch Body Dynamixel API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynamixelxchain" class="md-nav__link">
+    DynamixelXChain
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamixelhelloxl430" class="md-nav__link">
+    DynamixelHelloXL430
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamixelxl430" class="md-nav__link">
+    DynamixelXL430
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -2951,9 +3198,183 @@
 
 
 
-  <h1>Dynamixel Servos</h1>
+<h1 id="working-with-dynamixel-servos">Working with Dynamixel Servos</h1>
+<p>In this tutorial we will go into the details with Dynamixel servos and Stretch.</p>
+<h2 id="overview">Overview</h2>
+<p>Stretch comes with two Dynamixel buses - one for the head and one for the end-of-arm:</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ ls  /dev/hello-dynamixel-*
+/dev/hello-dynamixel-head  /dev/hello-dynamixel-wrist
+</code></pre></div>
+<p>Typically, users will interact with these devices through either the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/head.py">Head</a> or <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/end_of_arm.py">EndOfArm</a> interfaces.  This tutorial is for users looking to work directly with the servos from the provided servo tools or through Stretch Body's low level Dynamixel API. </p>
+<h2 id="servo-tools">Servo Tools</h2>
+<p><strong>NOTE</strong>: The servo tools here are part of the <a href="https://github.com/hello-robot/stretch_factory">Stretch Factory package</a> which is installed as a part of Stretch Body.</p>
+<h3 id="jogging-the-servos">Jogging the Servos</h3>
+<p>You can directly command each servo using the command line tool <code>REx_dynamixel_servo_jog.py</code>. This can be useful for debugging new servos added to the end-of-arm tool during system bring-up. For example, to command the head pan servo:</p>
+<div class="highlight"><pre><span></span><code>$ REx_dynamixel_jog.py /dev/hello-dynamixel-head <span class="m">11</span>
+<span class="o">[</span>Dynamixel ID:011<span class="o">]</span> ping Succeeded. Dynamixel model number : <span class="m">1080</span>
+------ MENU -------
+m: menu
+a: increment position <span class="m">50</span> tick
+b: decrement position <span class="m">50</span> tick
+A: increment position <span class="m">500</span> ticks
+B: decrement position <span class="m">500</span> ticks
+v: <span class="nb">set</span> profile velocity
+u: <span class="nb">set</span> profile acceleration
+z: zero position
+h: show homing offset
+o: zero homing offset
+q: got to position
+p: ping
+r: reboot
+w: <span class="nb">set</span> max pwm
+t: <span class="nb">set</span> max temp
+i: <span class="nb">set</span> id
+d: disable torque
+e: <span class="nb">enable</span> torque
+-------------------
+</code></pre></div>
+<h3 id="rebooting-the-servos">Rebooting the Servos</h3>
+<p>Under high-load conditions the servos may enter an error state to protect themselves from thermal overload. In this case, the red LED on the servo will flash (if visible). In addition, the servo will be unresponsive to motion commands. In this case, allow the overheating servo to cool down and reboot the servos using the <code>stretch_robot_dynamixel_reboot.py</code> tool: </p>
+<div class="highlight"><pre><span></span><code>$ stretch_robot_dynamixel_reboot.py
+For use with S T R E T C H <span class="o">(</span>TM<span class="o">)</span> RESEARCH EDITION from Hello Robot Inc.
 
-<p>Coming soon</p>
+---- Rebooting Head ---- 
+<span class="o">[</span>Dynamixel ID:011<span class="o">]</span> Reboot Succeeded.
+<span class="o">[</span>Dynamixel ID:012<span class="o">]</span> Reboot Succeeded.
+---- Rebooting Wrist ---- 
+<span class="o">[</span>Dynamixel ID:013<span class="o">]</span> Reboot Succeeded.
+<span class="o">[</span>Dynamixel ID:014<span class="o">]</span> Reboot Succeeded.
+</code></pre></div>
+<h3 id="identify-servos-on-the-bus">Identify Servos on the Bus</h3>
+<p>If it is unclear which servos are on the bus, and at what baud rate, you can use the <code>REx_dynamixel_id_scan.py</code> tool. Here we see that the two head servos are at ID 11 and 12 at baud 57600.</p>
+<div class="highlight"><pre><span></span><code>$ RE1_dynamixel_id_scan.py /dev/hello-dynamixel-head --baud <span class="m">57600</span>
+Scanning bus /dev/hello-dynamixel-head at baud rate <span class="m">57600</span>
+----------------------------------------------------------
+<span class="o">[</span>Dynamixel ID:000<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:001<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:002<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:003<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:004<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:005<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:006<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:007<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:008<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:009<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:010<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:011<span class="o">]</span> ping Succeeded. Dynamixel model number : <span class="m">1080</span>
+<span class="o">[</span>Dynamixel ID:012<span class="o">]</span> ping Succeeded. Dynamixel model number : <span class="m">1060</span>
+<span class="o">[</span>Dynamixel ID:013<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:014<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:015<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:016<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:017<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:018<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:019<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:020<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:021<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:022<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:023<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:024<span class="o">]</span> ping Failed.
+</code></pre></div>
+<h3 id="setting-the-servo-baud-rate">Setting the Servo Baud Rate</h3>
+<p>Stretch ships with its Dynamixels servos configured to baudrate=115200.  When adding your own servos to the end-of-arm tool, you may want to set the servo baud using the <code>RE1_dynamixel_set_baud.py</code> tool. For example:</p>
+<p><div class="highlight"><pre><span></span><code>$ REx_dynamixel_set_baud.py /dev/hello-dynamixel-wrist <span class="m">13</span> <span class="m">115200</span>
+---------------------
+Checking servo current baud <span class="k">for</span> <span class="m">57600</span>
+----
+Identified current baud of <span class="m">57600</span>. Changing baud to <span class="m">115200</span>
+Success at changing baud
+</code></pre></div>
+<strong>Note</strong>: Earlier units of Stretch RE1 may be running Dynamixel servos at baud 57600</p>
+<h3 id="setting-the-servo-id">Setting the Servo ID</h3>
+<p>Dynamixel servos come with ID=1 from the factory. When adding your own servos to the end-of-arm tool, you may want to set the servo ID using the <code>REx_dynamixel_id_change.py</code> tool. For example:</p>
+<div class="highlight"><pre><span></span><code>$ RE1x_dynamixel_id_change.py /dev/hello-dynamixel-wrist <span class="m">1</span> <span class="m">13</span> --baud <span class="m">115200</span>
+<span class="o">[</span>Dynamixel ID:001<span class="o">]</span> ping Succeeded. Dynamixel model number : <span class="m">1080</span>
+Ready to change ID <span class="m">1</span> to <span class="m">13</span>. Hit enter to <span class="k">continue</span>:
+
+<span class="o">[</span>Dynamixel ID:013<span class="o">]</span> ping Succeeded. Dynamixel model number : <span class="m">1080</span>
+Success at setting ID to <span class="m">13</span>
+</code></pre></div>
+<h2 id="stretch-body-dynamixel-api">Stretch Body Dynamixel API</h2>
+<p>Stretch Body's low level Dynamixel API includes a hierarchy of three classes</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/dynamixel_X_chain.py">DynamixelXChain</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/dynamixel_hello_XL430.py">DynamixelHelloXL430</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/dynamixel_XL430.py">DynamixelXL430</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>NOTE</strong>: The naming of XL430 is for legacy reasons. These classes will work with all X Series servos. </p>
+<h3 id="dynamixelxchain">DynamixelXChain</h3>
+<p>DynamixelXChain manages a set of daisy-chained servos on a single bus (for example the head_pan and head_tilt servos). It allows for greater communication bandwidth by doing group read/write over USB. </p>
+<p>The <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/end_of_arm.py">EndOfArm</a> class derives from DynamixelXChain in order to provide an extensible interface that supports a user integrating additional DOF to the robot. The tutorial <a href="../tutorial_extending_wrist_dof/">Adding Custom Wrist DOF</a> explains how to do this.</p>
+<h3 id="dynamixelhelloxl430">DynamixelHelloXL430</h3>
+<p>DynamixelHelloXL430 provides an interface to servo motion that is consistent with the Stretch Body lift, arm, and base joints. It also manages the servo parameters and calibration. Let's explore this interface further. From iPython let's look at the status message for DynamixelHelloXL430</p>
+<div class="highlight"><pre><span></span><code>import stretch_body.dynamixel_hello_XL430 
+
+<span class="nv">m</span> <span class="o">=</span> stretch_body.dynamixel_hello_XL430.DynamixelHelloXL430<span class="o">(</span><span class="s1">&#39;head_pan&#39;</span><span class="o">)</span>
+m.startup<span class="o">()</span>
+
+m.pretty_print<span class="o">()</span>
+----- HelloXL430 ------ 
+Name head_pan
+Position <span class="o">(</span>rad<span class="o">)</span> -0.0
+Position <span class="o">(</span>deg<span class="o">)</span> -0.0
+Position <span class="o">(</span>ticks<span class="o">)</span> <span class="m">1250</span>
+Velocity <span class="o">(</span>rad/s<span class="o">)</span> -0.0
+Velocity <span class="o">(</span>ticks/s<span class="o">)</span> <span class="m">0</span>
+Effort <span class="o">(</span>%<span class="o">)</span> <span class="m">0</span>.0
+Effort <span class="o">(</span>ticks<span class="o">)</span> <span class="m">0</span>
+Temp <span class="m">34</span>.0
+Comm Errors <span class="m">0</span>
+Hardware Error <span class="m">0</span>
+Hardware Error: Input Voltage Error:  False
+Hardware Error: Overheating Error:  False
+Hardware Error: Motor Encoder Error:  False
+Hardware Error: Electrical Shock Error:  False
+Hardware Error: Overload Error:  False
+Watchdog Errors:  <span class="m">0</span>
+Timestamp PC <span class="m">1661552966</span>.7202659
+Range <span class="o">(</span>ticks<span class="o">)</span> <span class="o">[</span><span class="m">0</span>, <span class="m">3827</span><span class="o">]</span>
+Range <span class="o">(</span>rad<span class="o">)</span> <span class="o">[</span> <span class="m">1</span>.9174759848570513  ,  -3.953068490381297 <span class="o">]</span>
+Stalled True
+Stall Overload False
+Is Calibrated <span class="m">0</span>
+</code></pre></div>
+<p>We see that it reports the position in both radians (with respect to the joint frame) and ticks (with respect to the servo encoder). DynamixelHelloXL430 handles the calibration between the two using its method <code>ticks_to_world_rad</code> through the following params:</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep head_pan <span class="p">|</span> grep <span class="s1">&#39;_t &#39;</span>
+...              
+stretch_configuration_params.yaml         param.head_pan.range_t           <span class="o">[</span><span class="m">0</span>, <span class="m">3827</span><span class="o">]</span>                     
+stretch_configuration_params.yaml         param.head_pan.zero_t            <span class="m">1250</span> 
+</code></pre></div>
+<p>In addition to <code>move_to</code> and <code>move_by</code>, the class also implements a splined trajectory interface as discussed in the <a href="./tutorial_splined_trajectory.py">Splined Trajectory Tutorial</a>. </p>
+<h3 id="dynamixelxl430">DynamixelXL430</h3>
+<p>DynamixelXL430 provides a thin wrapper to the <a href="http://emanual.robotis.com/docs/en/dxl/x/xl430-w250/#control-table">Robotis Dynamixel SDK</a>. You may chose to interact with the servo at this level as well. For example to jog the head_pan 200 ticks:
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">stretch_body.dynamixel_XL430</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">stretch_body</span><span class="o">.</span><span class="n">dynamixel_XL430</span><span class="o">.</span><span class="n">DynamixelXL430</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;/dev/hello-dynamixel-head&#39;</span><span class="p">,</span><span class="n">baud</span><span class="o">=</span><span class="mi">115200</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">startup</span><span class="p">()</span>
+
+<span class="n">x</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">get_pos</span><span class="p">()</span> <span class="c1">#In encoder ticks</span>
+<span class="n">m</span><span class="o">.</span><span class="n">go_to_pos</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">200</span><span class="p">)</span> <span class="c1">#Move 200 ticks incremental</span>
+
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</code></pre></div></p>
+<hr />
+<div align="center"> All materials are Copyright 2022 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>
 
               
             </article>

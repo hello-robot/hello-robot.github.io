@@ -73,6 +73,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#sensors" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -524,8 +529,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorial_safe_coding/" class="md-nav__link">
-        Safe Coding
+      <a href="../tutorial_introduction/" class="md-nav__link">
+        Introduction
       </a>
     </li>
   
@@ -552,8 +557,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorial_simple_coding.py" class="md-nav__link">
-        Simple Coding
+      <a href="../tutorial_stretch_body_api/" class="md-nav__link">
+        Stretch Body API
       </a>
     </li>
   
@@ -587,9 +592,65 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Robot Sensors
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Robot Sensors
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sensors" class="md-nav__link">
+    Sensors
+  </a>
+  
+    <nav class="md-nav" aria-label="Sensors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-imu" class="md-nav__link">
+    Base IMU
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wrist-accelerometer" class="md-nav__link">
+    Wrist Accelerometer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cliff-sensors" class="md-nav__link">
+    Cliff Sensors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -691,8 +752,50 @@
   
   
     <li class="md-nav__item">
+      <a href="../tutorial_contact_models/" class="md-nav__link">
+        Contact Models
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../tutorial_tool_change/" class="md-nav__link">
         Changing Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_extending_wrist_dof/" class="md-nav__link">
+        Custom Wrist DOF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_safe_coding/" class="md-nav__link">
+        Safety Features
       </a>
     </li>
   
@@ -1734,20 +1837,6 @@
   
     <li class="md-nav__item">
       <a href="../../../stretch-body/" class="md-nav__link">
-        Installation
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../stretch-body/stretch_body_guide/" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -1761,7 +1850,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stretch-body/stretch_body_api/" class="md-nav__link">
+      <a href="../../../stretch-body/stretch_body_api.md" class="md-nav__link">
         API
       </a>
     </li>
@@ -1775,7 +1864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stretch-body/tutorials.md" class="md-nav__link">
+      <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_body/" class="md-nav__link">
         Tutorials
       </a>
     </li>
@@ -2936,6 +3025,48 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sensors" class="md-nav__link">
+    Sensors
+  </a>
+  
+    <nav class="md-nav" aria-label="Sensors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-imu" class="md-nav__link">
+    Base IMU
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wrist-accelerometer" class="md-nav__link">
+    Wrist Accelerometer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cliff-sensors" class="md-nav__link">
+    Cliff Sensors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2953,7 +3084,39 @@
 
   <h1>Robot Sensors</h1>
 
-<p>Coming soon</p>
+<h2 id="sensors">Sensors</h2>
+<h3 id="base-imu">Base IMU</h3>
+<p>Coming soon.</p>
+<h3 id="wrist-accelerometer">Wrist Accelerometer</h3>
+<p>Coming soon.</p>
+<h3 id="cliff-sensors">Cliff Sensors</h3>
+<p>Stretch has <a href="https://docs.hello-robot.com/hardware_user_guide/#base">four IR cliff sensors</a> pointed towards the floor. These report the distance to the floor, allowing for detection of thresholds, stair edges, etc. </p>
+<p>Relevant parameters in the factory YAML are</p>
+<div class="highlight"><pre><span></span><code><span class="nt">pimu</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cliff_LPF</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cliff_thresh</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-50</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cliff_zero</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">523.7940936279297</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">508.10246490478517</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">496.55742706298827</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">525.149652709961</span><span class="w"></span>
+<span class="w">    </span><span class="nt">stop_at_cliff</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"></span>
+</code></pre></div>
+<p>The  <code>stop_at_cliff</code> field causes the robot to execute a Runstop when the cliff sensor readings are out of bounds. </p>
+<p><strong>Note: As configured at the factory,  <code>stop_at_cliff</code> is set to zero and Stretch does not stop its motion based on the cliff sensor readings. Hello Robot makes no guarantees as to the reliability of Stretch's ability to avoid driving over ledges and stairs when this flag is enabled.</strong></p>
+<p>The sensors are calibrated such that a zero value indicates the sensor is at the correct height from the floor surface. A negative value indicates a drop off such as a stair ledge while a positive value indicates an obstacle like a threshold or high pile carpet.</p>
+<p>The calibrated range values from the sensors can be read from the <code>robot.pimu.status</code> message. Relevant fields are:</p>
+<div class="highlight"><pre><span></span><code><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">robot</span><span class="o">.</span><span class="n">pimu</span><span class="o">.</span><span class="n">pretty_print</span><span class="p">()</span>
+<span class="o">------</span> <span class="n">Pimu</span> <span class="o">-----</span>
+<span class="o">...</span>
+<span class="n">At</span> <span class="n">Cliff</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
+<span class="n">Cliff</span> <span class="n">Range</span> <span class="p">[</span><span class="mf">2.043212890625</span><span class="p">,</span> <span class="mf">3.710906982421875</span><span class="p">,</span> <span class="mf">1.6026611328125</span><span class="p">,</span> <span class="mf">1.95098876953125</span><span class="p">]</span>
+<span class="n">Cliff</span> <span class="n">Event</span> <span class="kc">False</span>
+<span class="o">...</span>
+</code></pre></div>
+<p>A Cliff Event flag is set when any of the four sensor readings exceed <code>cliff_thresh</code> and <code>stop_at_cliff</code> is enabled. In the event of a Cliff Event, it must be reset by <code>robot.pimu.cliff_event_reset()</code>in order to reset the generated Runstop.</p>
+<p>The cliff detection logic can be found in the <a href="https://github.com/hello-robot/stretch_firmware/blob/master/arduino/hello_pimu/Pimu.cpp">Pimu firmware</a>.</p>
 
               
             </article>

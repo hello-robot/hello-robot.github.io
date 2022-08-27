@@ -73,6 +73,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#parameters-management" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -522,8 +527,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorial_safe_coding/" class="md-nav__link">
-        Safe Coding
+      <a href="../tutorial_introduction/" class="md-nav__link">
+        Introduction
       </a>
     </li>
   
@@ -550,8 +555,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorial_simple_coding.py" class="md-nav__link">
-        Simple Coding
+      <a href="../tutorial_stretch_body_api/" class="md-nav__link">
+        Stretch Body API
       </a>
     </li>
   
@@ -647,10 +652,64 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Parameter Management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         Parameter Management
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameter-organization" class="md-nav__link">
+    Parameter Organization
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manually-querying-and-modifying-parameters" class="md-nav__link">
+    Manually Querying and Modifying Parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programmatically-modifying-and-storing-parameters" class="md-nav__link">
+    Programmatically Modifying and Storing Parameters
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -691,8 +750,50 @@
   
   
     <li class="md-nav__item">
+      <a href="../tutorial_contact_models/" class="md-nav__link">
+        Contact Models
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../tutorial_tool_change/" class="md-nav__link">
         Changing Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_extending_wrist_dof/" class="md-nav__link">
+        Custom Wrist DOF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_safe_coding/" class="md-nav__link">
+        Safety Features
       </a>
     </li>
   
@@ -1734,20 +1835,6 @@
   
     <li class="md-nav__item">
       <a href="../../../stretch-body/" class="md-nav__link">
-        Installation
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../stretch-body/stretch_body_guide/" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -1761,7 +1848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stretch-body/stretch_body_api/" class="md-nav__link">
+      <a href="../../../stretch-body/stretch_body_api.md" class="md-nav__link">
         API
       </a>
     </li>
@@ -1775,7 +1862,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stretch-body/tutorials.md" class="md-nav__link">
+      <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_body/" class="md-nav__link">
         Tutorials
       </a>
     </li>
@@ -2935,6 +3022,44 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameter-organization" class="md-nav__link">
+    Parameter Organization
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manually-querying-and-modifying-parameters" class="md-nav__link">
+    Manually Querying and Modifying Parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programmatically-modifying-and-storing-parameters" class="md-nav__link">
+    Programmatically Modifying and Storing Parameters
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -2951,9 +3076,145 @@
 
 
 
-  <h1>Parameter Management</h1>
+<h1 id="parameters-management">Parameters Management</h1>
+<p>In this tutorial we will discuss how parameters are managed in Stretch Body and show examples of how to customize your robot by overriding parameters.</p>
+<h2 id="overview">Overview</h2>
+<p>Stretch Body shares a global set of parameters across all of the hardware it manages. All members of the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/device.py">Device class</a> have an instance of <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_params.py">RobotParams</a>. This class constructs a dictionary of the device parameters and well as the global parameters for each device. For example from iPython try:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">stretch_body.arm</span>
+<span class="n">a</span><span class="o">=</span><span class="n">stretch_body</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">Arm</span><span class="p">()</span>
 
-<p>Coming soon</p>
+<span class="n">a</span><span class="o">.</span><span class="n">params</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">7</span><span class="p">]:</span> 
+<span class="p">{</span><span class="s1">&#39;chain_pitch&#39;</span><span class="p">:</span> <span class="mf">0.0167</span><span class="p">,</span>
+ <span class="s1">&#39;chain_sprocket_teeth&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+ <span class="s1">&#39;gr_spur&#39;</span><span class="p">:</span> <span class="mf">3.875</span><span class="p">,</span>
+ <span class="s1">&#39;i_feedforward&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+ <span class="s1">&#39;calibration_range_bounds&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.515</span><span class="p">,</span> <span class="mf">0.525</span><span class="p">],</span>
+ <span class="s1">&#39;contact_model&#39;</span><span class="p">:</span> <span class="s1">&#39;effort_pct&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;contact_model_homing&#39;</span><span class="p">:</span> <span class="s1">&#39;effort_pct&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;contact_models&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;effort_pct&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;contact_thresh_calibration_margin&#39;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span>
+   <span class="s1">&#39;contact_thresh_max&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">90.0</span><span class="p">,</span> <span class="mf">90.0</span><span class="p">],</span>
+   <span class="s1">&#39;contact_thresh_default&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">45.0</span><span class="p">,</span> <span class="mf">45.0</span><span class="p">],</span>
+   <span class="s1">&#39;contact_thresh_homing&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">45.0</span><span class="p">,</span> <span class="mf">45.0</span><span class="p">]}},</span>
+ <span class="s1">&#39;motion&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;accel_m&#39;</span><span class="p">:</span> <span class="mf">0.14</span><span class="p">,</span> <span class="s1">&#39;vel_m&#39;</span><span class="p">:</span> <span class="mf">0.14</span><span class="p">},</span>
+  <span class="s1">&#39;fast&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;accel_m&#39;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s1">&#39;vel_m&#39;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">},</span>
+  <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;accel_m&#39;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span> <span class="s1">&#39;vel_m&#39;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">},</span>
+  <span class="s1">&#39;slow&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;accel_m&#39;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span> <span class="s1">&#39;vel_m&#39;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">},</span>
+  <span class="s1">&#39;trajectory_max&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;vel_m&#39;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span> <span class="s1">&#39;accel_m&#39;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">}},</span>
+ <span class="s1">&#39;range_m&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.52</span><span class="p">]}</span>
+</code></pre></div>
+<p>Or to access another device params:</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="o">.</span><span class="n">robot_params</span><span class="p">[</span><span class="s1">&#39;lift&#39;</span><span class="p">]</span>
+
+<span class="n">Out</span><span class="p">[</span><span class="mi">9</span><span class="p">]:</span> 
+<span class="p">{</span><span class="s1">&#39;calibration_range_bounds&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.094</span><span class="p">,</span> <span class="mf">1.106</span><span class="p">],</span>
+ <span class="s1">&#39;contact_model&#39;</span><span class="p">:</span> <span class="s1">&#39;effort_pct&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;contact_model_homing&#39;</span><span class="p">:</span> <span class="s1">&#39;effort_pct&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;contact_models&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;effort_pct&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;contact_thresh_calibration_margin&#39;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span>
+   <span class="s1">&#39;contact_thresh_max&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+   <span class="s1">&#39;contact_thresh_default&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">69.0</span><span class="p">,</span> <span class="mf">69.0</span><span class="p">],</span>
+   <span class="s1">&#39;contact_thresh_homing&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">69.0</span><span class="p">,</span> <span class="mf">69.0</span><span class="p">]}},</span>
+ <span class="s1">&#39;belt_pitch_m&#39;</span><span class="p">:</span> <span class="mf">0.005</span><span class="p">,</span>
+ <span class="s1">&#39;motion&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;accel_m&#39;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;vel_m&#39;</span><span class="p">:</span> <span class="mf">0.11</span><span class="p">},</span>
+  <span class="s1">&#39;fast&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;accel_m&#39;</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span> <span class="s1">&#39;vel_m&#39;</span><span class="p">:</span> <span class="mf">0.13</span><span class="p">},</span>
+  <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;accel_m&#39;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s1">&#39;vel_m&#39;</span><span class="p">:</span> <span class="mf">0.15</span><span class="p">},</span>
+  <span class="s1">&#39;slow&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;accel_m&#39;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span> <span class="s1">&#39;vel_m&#39;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">},</span>
+  <span class="s1">&#39;trajectory_max&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;accel_m&#39;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s1">&#39;vel_m&#39;</span><span class="p">:</span> <span class="mf">0.15</span><span class="p">}},</span>
+ <span class="s1">&#39;pinion_t&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+ <span class="s1">&#39;i_feedforward&#39;</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">,</span>
+ <span class="s1">&#39;range_m&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">]}</span>
+</code></pre></div>
+<h2 id="parameter-organization">Parameter Organization</h2>
+<p>Stretch Body utilizes a prioritized parameter organization such that default settings can be easily overridden </p>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Name</th>
+<th>Location</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>user_params</td>
+<td>$HELLO_FLEET_PATH/$HELLO_FLEET_ID/ stretch_user_params.yaml</td>
+<td>Yaml file for users to override default settings and to define custom configurations.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>configuration_params</td>
+<td>$HELLO_FLEET_PATH/$HELLO_FLEET_ID/  stretch_configuration_params.yaml</td>
+<td>Robot specific data  (eg, serial numbers and calibrations). Calibration tools may update these.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>external_params</td>
+<td>Imported via a list defined as <code>params</code> in stretch_user_params.yaml</td>
+<td>External Python parameter dictionaries for 3rd party devices and peripherals.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>nominal_params</td>
+<td>stretch_body.robot_params_RE2V0.py</td>
+<td>Generic systems settings (Common across all robots of a given model.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>nominal_system_params</td>
+<td>stretch_body.robot_params.py</td>
+<td>Generic systems settings (Common across all robots models).</td>
+</tr>
+</tbody>
+</table>
+<p>This allows the user to override any of the parameters by defining it in their <code>stretch_user_params.yaml</code>. It also allows Hello Robot to periodically update parameters defined in the Python files via Pip upadates.</p>
+<p>The tool <code>stretch_params.py</code> will print out all of the robot parameters as well as their origin. For example:</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;<span class="nv">$stretch_params</span>.py 
+<span class="c1">############################################################ Parameters for stretch-re2-2002 </span>
+Origin          Parameter                                                              Value                         
+--------------------------------------------------------------------------------------------------------------------------------- ...         
+stretch_body.robot_params.nominal_params         param.arm.chain_pitch          <span class="m">0</span>.0167                        
+stretch_body.robot_params.nominal_params         param.arm.chain_sprocket_teeth         <span class="m">10</span>                                     ...               
+stretch_configuration_params.yaml       param.arm.contact_models.effort_pct.contact_thresh_default     <span class="o">[</span>-45.0, <span class="m">45</span>.0<span class="o">]</span>         
+</code></pre></div>
+<h2 id="manually-querying-and-modifying-parameters">Manually Querying and Modifying Parameters</h2>
+<p>A quick way to query parameters is with the <code>stretch_params.py</code> tool. For example, to look at parameters relating to the arm motion:</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep arm <span class="p">|</span> grep motion
+stretch_body.robot_params.nominal_params    param.arm.motion.default.accel_m    <span class="m">0</span>.14                          
+stretch_body.robot_params.nominal_params    param.arm.motion.default.vel_m      <span class="m">0</span>.14                          
+stretch_body.robot_params.nominal_params    param.arm.motion.fast.accel_m       <span class="m">0</span>.3                           
+stretch_body.robot_params.nominal_params    param.arm.motion.fast.vel_m         <span class="m">0</span>.3                           
+stretch_body.robot_params.nominal_params    param.arm.motion.max.accel_m        <span class="m">0</span>.4                           
+stretch_body.robot_params.nominal_params    param.arm.motion.max.vel_m          <span class="m">0</span>.4                           
+stretch_body.robot_params.nominal_params    param.arm.motion.slow.accel_m       <span class="m">0</span>.05                          
+stretch_body.robot_params.nominal_params    param.arm.motion.slow.vel_m         <span class="m">0</span>.05                          
+...               
+</code></pre></div>
+<p>The tool display each parameter's value as well as which parameter file it was loaded from.</p>
+<p>Now let's say you want to override the default motion settings for the arm. You could add the following to your <code>stretch_user_params.yaml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">arm</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">motion</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">vel_m</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span><span class="w"></span>
+<span class="w">      </span><span class="nt">accel_m</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span><span class="w"></span>
+</code></pre></div>
+<p>Run the tool again and we see:</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep arm <span class="p">|</span> grep motion <span class="p">|</span> grep default
+stretch_body.robot_params.nominal_params    param.arm.motion.default.accel_m    <span class="m">0</span>.1                          
+stretch_body.robot_params.nominal_params    param.arm.motion.default.vel_m      <span class="m">0</span>.1  
+</code></pre></div>
+<p>The factory parameter settings should suffice for most use cases. </p>
+<h2 id="programmatically-modifying-and-storing-parameters">Programmatically Modifying and Storing Parameters</h2>
+<p>A user want to compute the value of a parameter programmatically and modify the robot settings accordingly. For example, in the Stretch Factory tool <a href="https://github.com/hello-robot/stretch_factory/blob/master/python/tools/REx_base_calibrate_wheel_separation.py">REx_base_calibrate_wheel_seperation.py</a> we see that the parameter <code>wheel_seperation_m</code> is recomputed as the variable <code>d_avg</code>. This new value could be used during the robot execution by simply</p>
+<div class="highlight"><pre><span></span><code><span class="n">robot</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;wheel_seperation_m&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">d_vag</span>
+</code></pre></div>
+<p>, or it could be saved as a user override as :</p>
+<div class="highlight"><pre><span></span><code><span class="n">robot</span><span class="o">.</span><span class="n">write_user_param_to_YAML</span><span class="p">(</span><span class="s1">&#39;base.wheel_separation_m&#39;</span><span class="p">,</span> <span class="n">d_avg</span><span class="p">)</span>
+</code></pre></div>
+<p>This will update the file <code>stretch_user_params.yaml</code></p>
+<hr />
+<div align="center"> All materials are Copyright 2022 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>
 
               
             </article>

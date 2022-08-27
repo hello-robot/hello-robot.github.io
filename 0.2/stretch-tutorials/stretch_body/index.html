@@ -575,8 +575,8 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorial_safe_coding/" class="md-nav__link">
-        Safe Coding
+      <a href="tutorial_introduction/" class="md-nav__link">
+        Introduction
       </a>
     </li>
   
@@ -603,8 +603,8 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorial_simple_coding.py" class="md-nav__link">
-        Simple Coding
+      <a href="tutorial_stretch_body_api/" class="md-nav__link">
+        Stretch Body API
       </a>
     </li>
   
@@ -734,8 +734,50 @@
   
   
     <li class="md-nav__item">
+      <a href="tutorial_contact_models/" class="md-nav__link">
+        Contact Models
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="tutorial_tool_change/" class="md-nav__link">
         Changing Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_extending_wrist_dof/" class="md-nav__link">
+        Custom Wrist DOF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_safe_coding/" class="md-nav__link">
+        Safety Features
       </a>
     </li>
   
@@ -1777,20 +1819,6 @@
   
     <li class="md-nav__item">
       <a href="../../stretch-body/" class="md-nav__link">
-        Installation
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../stretch-body/stretch_body_guide/" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -1804,7 +1832,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../stretch-body/stretch_body_api/" class="md-nav__link">
+      <a href="../../stretch-body/stretch_body_api.md" class="md-nav__link">
         API
       </a>
     </li>
@@ -1818,7 +1846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../stretch-body/tutorials.md" class="md-nav__link">
+      <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_body/" class="md-nav__link">
         Tutorials
       </a>
     </li>
@@ -3020,13 +3048,13 @@
 
 <p><img alt="" src="../images/banner.png" /></p>
 <h1 id="tutorial-track-stretch-body">Tutorial Track: Stretch Body</h1>
-<p><a href="https://github.com/hello-robot/stretch_body">Stretch Body</a> is a set of Python packages that allow a developer to directly program the hardware of the Stretch RE1 robot. The Stretch Body interface is intended for users who chose to not use ROS.</p>
+<p><a href="https://github.com/hello-robot/stretch_body">Stretch Body</a> is a set of Python packages that allow a developer to directly program the hardware of the Stretch RE1 and RE2 robots. The Stretch Body interface is intended for users who choose to not use ROS.</p>
 <p>Stretch Body currently supports both Python2 and Python3. These tutorials assume a general familiarity with Python as well as basic robot motion control.</p>
 <h2 id="basics">Basics</h2>
 <table>
 <thead>
 <tr>
-<th>ID</th>
+<th></th>
 <th>Tutorial</th>
 <th>Description</th>
 </tr>
@@ -3034,28 +3062,28 @@
 <tbody>
 <tr>
 <td>1</td>
-<td><a href="tutorial_safe_coding/">Safe Coding</a></td>
-<td>Best practices in writing safe Stretch Body code</td>
+<td><a href="tutorial_introduction/">Introduction</a></td>
+<td>Introduction to the Stretch Body package</td>
 </tr>
 <tr>
 <td>2</td>
 <td><a href="tutorial_command_line_tools/">Command line Tools</a></td>
-<td>Introduction to the Stretch Body command line tools</td>
+<td>Using the Stretch Body command line tools</td>
 </tr>
 <tr>
 <td>3</td>
-<td><a href="tutorial_simple_coding.py">Simple Coding</a></td>
-<td>Simple examples of writing Stretch Body code</td>
+<td><a href="tutorial_stretch_body_api/">Stretch Body API</a></td>
+<td>Walk through of the Stretch Body API</td>
 </tr>
 <tr>
 <td>4</td>
 <td><a href="tutorial_robot_motion/">Robot Motion</a></td>
-<td>Exploring how to command robot motion</td>
+<td>How to command robot motion</td>
 </tr>
 <tr>
-<td>5</td>
+<td>4</td>
 <td><a href="tutorial_robot_sensors/">Robot Sensors</a></td>
-<td>Exploring how to read robot sensors</td>
+<td>How to read robot sensors</td>
 </tr>
 </tbody>
 </table>
@@ -3063,7 +3091,7 @@
 <table>
 <thead>
 <tr>
-<th>ID</th>
+<th></th>
 <th>Tutorial</th>
 <th>Description</th>
 </tr>
@@ -3072,12 +3100,12 @@
 <tr>
 <td>1</td>
 <td><a href="tutorial_dynamixel_servos/">Dynamixel Servos</a></td>
-<td>How to configure and work with the Stretch Dynamixel servos</td>
+<td>How to configure and work with the Dynamixel servos</td>
 </tr>
 <tr>
 <td>2</td>
 <td><a href="tutorial_parameter_management/">Parameter Management</a></td>
-<td>How to work with Stretch's parameter system</td>
+<td>How to work with parameter system</td>
 </tr>
 <tr>
 <td>3</td>
@@ -3087,12 +3115,27 @@
 <tr>
 <td>4</td>
 <td><a href="tutorial_collision_avoidance/">Collision Avoidance</a></td>
-<td>How to work with Stretch's collision avoidance system</td>
+<td>How to work with the collision avoidance system</td>
 </tr>
 <tr>
 <td>5</td>
+<td><a href="tutorial_contact_models/">Contact Models</a></td>
+<td>How to work with the contact detection system</td>
+</tr>
+<tr>
+<td>6</td>
 <td><a href="tutorial_tool_change/">Changing Tools</a></td>
-<td>How to integrate 3rd party tools onto the Stretch wrist</td>
+<td>How to configure Stretch to work with a different tool</td>
+</tr>
+<tr>
+<td>7</td>
+<td><a href="tutorial_extending_wrist_dof/">Custom Wrist DOF</a></td>
+<td>How to integrate custom DOF onto the wrist</td>
+</tr>
+<tr>
+<td>8</td>
+<td><a href="tutorial_safe_coding/">Safety Features</a></td>
+<td>Learn about Stretch Body features that keep the robot safe</td>
 </tr>
 </tbody>
 </table>
@@ -3127,13 +3170,13 @@
       
       
         
-        <a href="tutorial_safe_coding/" class="md-footer__link md-footer__link--next" aria-label="Next: Safe Coding" rel="next">
+        <a href="tutorial_introduction/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Safe Coding
+              Introduction
             </div>
           </div>
           <div class="md-footer__button md-icon">

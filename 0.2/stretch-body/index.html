@@ -19,7 +19,7 @@
     
     
       
-        <title>Installation - Stretch Documentation</title>
+        <title>Overview - Stretch Documentation</title>
       
     
     
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Installation
+              Overview
             
           </span>
         </div>
@@ -523,8 +523,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/stretch_body/tutorial_safe_coding/" class="md-nav__link">
-        Safe Coding
+      <a href="../stretch-tutorials/stretch_body/tutorial_introduction/" class="md-nav__link">
+        Introduction
       </a>
     </li>
   
@@ -551,8 +551,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/stretch_body/tutorial_simple_coding.py" class="md-nav__link">
-        Simple Coding
+      <a href="../stretch-tutorials/stretch_body/tutorial_stretch_body_api/" class="md-nav__link">
+        Stretch Body API
       </a>
     </li>
   
@@ -682,8 +682,50 @@
   
   
     <li class="md-nav__item">
+      <a href="../stretch-tutorials/stretch_body/tutorial_contact_models/" class="md-nav__link">
+        Contact Models
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../stretch-tutorials/stretch_body/tutorial_tool_change/" class="md-nav__link">
         Changing Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stretch-tutorials/stretch_body/tutorial_extending_wrist_dof/" class="md-nav__link">
+        Custom Wrist DOF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stretch-tutorials/stretch_body/tutorial_safe_coding/" class="md-nav__link">
+        Safety Features
       </a>
     </li>
   
@@ -1738,7 +1780,7 @@
       
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Installation
+        Overview
       </a>
       
     </li>
@@ -1752,21 +1794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="stretch_body_guide/" class="md-nav__link">
-        Overview
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch_body_api/" class="md-nav__link">
+      <a href="stretch_body_api.md" class="md-nav__link">
         API
       </a>
     </li>
@@ -1780,7 +1808,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials.md" class="md-nav__link">
+      <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_body/" class="md-nav__link">
         Tutorials
       </a>
     </li>
@@ -2960,9 +2988,25 @@
 
 <p><img alt="" src="images/banner.png" /></p>
 <h1 id="overview">Overview</h1>
-<p>The stretch_body repository includes Python packages that allow a developer to interact with the hardware of the Stretch RE1 robot. These packages are:
- * <strong>hello-robot-stretch-body</strong>: python library to interface with Stretch RE1
- * <strong>hello-robot-stretch-body-tools</strong>: useful commandline tools for using Stretch RE1</p>
+<p>The stretch_body repository includes Python packages that allow a developer to interact with the hardware of the Stretch RE1 and RE2 robots. These packages are:</p>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hello-robot-stretch-body</td>
+<td>Python library to interface with Stretch</td>
+</tr>
+<tr>
+<td>hello-robot-stretch-body-tools</td>
+<td>Useful commandline tools for using Stretch</td>
+</tr>
+</tbody>
+</table>
 <p>Python2 version of packages can be installed by:
 <div class="highlight"><pre><span></span><code>pip2 install -U hello-robot-stretch-body
 pip2 install -U hello-robot-stretch-body-tools
@@ -2971,11 +3015,11 @@ Python3 version of packages can be installed by:</p>
 <div class="highlight"><pre><span></span><code>pip3 install -U hello-robot-stretch-body
 pip3 install -U hello-robot-stretch-body-tools
 </code></pre></div>
-<p>See <a href="https://docs.hello-robot.com">docs.hello-robot.com</a> for documentation on using Stretch RE1. In particular, see the <a href="stretch_body_guide/">Stretch Body User Guide</a> for information on using these packages.</p>
+<p>See <a href="https://docs.hello-robot.com">docs.hello-robot.com</a> for documentation on using Stretch. In particular, see the <a href="shttps://docs.hello-robot.com/0.2/stretch-tutorials/stretch_body/">Stretch Body Tutorials</a> for additional information on using these packages.</p>
 <h1 id="testing-and-development">Testing and Development</h1>
 <p>See <a href="https://github.com/hello-robot/stretch_body/body/README.md">Stretch Body's README</a> and <a href="https://github.com/hello-robot/stretch_body/tools/README.md">Stretch Body Commandline Tool's README</a> for information on testing/developing these packages.</p>
 <h2 id="license">License</h2>
-<p>Each subdirectory contains a LICENSE.md file that applies to the directory's contents. This software is intended for use with the Stretch RE1 mobile manipulator, which is a robot produced and sold by Hello Robot Inc. For further information including inquiries about dual licensing, please contact Hello Robot Inc.</p>
+<p>Each subdirectory contains a LICENSE.md file that applies to the directory's contents. This software is intended for use with the Stretch RE1 and RE2 mobile manipulators, which are robots produced and sold by Hello Robot Inc. For further information including inquiries about dual licensing, please contact Hello Robot Inc.</p>
 
               
             </article>
@@ -3007,7 +3051,7 @@ pip3 install -U hello-robot-stretch-body-tools
       
       
         
-        <a href="stretch_body_guide/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview" rel="next">
+        <a href="../stretch-ros/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
