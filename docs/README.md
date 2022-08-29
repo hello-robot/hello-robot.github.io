@@ -16,7 +16,7 @@ Please take the time to learn safe and best practices in operating Stretch.
 
 **The Stretch RE1 is a potentially dangerous robot. All users must carefully read the [Stretch Safety Guide](robot_safety_guide.md) prior to using the robot.**
 # Where to Find Things 
-All of the documentation is accessible and searchable via the navigation menu on this site. Alternatively, you can find the Markdown hosted on at the [Hello Robot GitHub portal](github.com/hello-robot).
+All of the documentation is accessible and searchable via the navigation menu on this site. Alternatively, you can view the markdown hosted on at the [Hello Robot GitHub portal](github.com/hello-robot).
 
 In addition, it is worth spending some time on the following sites:
 
@@ -29,35 +29,23 @@ In addition, it is worth spending some time on the following sites:
 # Version
 This is version 0.2 of the Stretch User Documentation. It is written with the following system configuration in mind:
 
-=== "Unordered list"
-
-    * Sed sagittis eleifend rutrum
-    * Donec vitae suscipit est
-    * Nulla tempor lobortis orci
-
-=== "Ordered list"
-
-    1. Sed sagittis eleifend rutrum
-    2. Donec vitae suscipit est
-    3. Nulla tempor lobortis orci
-
 
 | Resource                 | Description                |
 |--------------------------|----------------------------|
 | Model                    | Stretch RE1 or Stretch RE2 |
-| OS                       | Ubuntu 18.04 or 20.04      |
-| ROS | Melodic or Noetic          |
-| Stretch Body| >=0.3                      |
+| OS                       | Ubuntu 20.04               |
+| ROS | Noetic                     |
 | Python                   | Python3                    |
+| Stretch Body| '>=0.3                     |
 
 
-You can access prior documentation suitable for older configurations [here]()
+You can access prior documentation suitable for older configurations [here](https://docs.hello-robot.com/0.1/)
 
 # License
 
-This documentation is only to be used for an authentic Stretch RE1 robot produced and sold by Hello Robot Inc. 
+This documentation is only to be used for an authentic Stretch RE1 or RE2 robot produced and sold by Hello Robot Inc. 
 
 All Hello Robot [stretch_docs](https://github.com/hello-robot/stretch_docs) related materials are released under the [Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)](https://creativecommons.org/licenses/by-nd/4.0) license.
 
-The Stretch RE1 has patents pending.
+The Stretch Research Edition has patents pending.
 
