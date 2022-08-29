@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#sensors" class="md-skip">
+        <a href="#tutorial-robot-sensors" class="md-skip">
           Skip to content
         </a>
       
@@ -591,6 +591,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Robot Sensors
@@ -607,6 +609,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -615,36 +619,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sensors" class="md-nav__link">
-    Sensors
+  <a href="#introduction" class="md-nav__link">
+    Introduction
   </a>
   
-    <nav class="md-nav" aria-label="Sensors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools-to-view-sensor-data" class="md-nav__link">
+    Tools to View Sensor Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-the-status-dictionaries" class="md-nav__link">
+    Accessing the Status Dictionaries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#base-imu" class="md-nav__link">
     Base IMU
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#wrist-accelerometer" class="md-nav__link">
     Wrist Accelerometer
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#cliff-sensors" class="md-nav__link">
     Cliff Sensors
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -780,7 +792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorial_extending_wrist_dof/" class="md-nav__link">
+      <a href="../tutorial_custom_wrist_dof/" class="md-nav__link">
         Custom Wrist DOF
       </a>
     </li>
@@ -3024,6 +3036,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -3032,36 +3046,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sensors" class="md-nav__link">
-    Sensors
+  <a href="#introduction" class="md-nav__link">
+    Introduction
   </a>
   
-    <nav class="md-nav" aria-label="Sensors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools-to-view-sensor-data" class="md-nav__link">
+    Tools to View Sensor Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-the-status-dictionaries" class="md-nav__link">
+    Accessing the Status Dictionaries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#base-imu" class="md-nav__link">
     Base IMU
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#wrist-accelerometer" class="md-nav__link">
     Wrist Accelerometer
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#cliff-sensors" class="md-nav__link">
     Cliff Sensors
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -3082,40 +3104,296 @@
 
 
 
-  <h1>Robot Sensors</h1>
+<h1 id="tutorial-robot-sensors">Tutorial: Robot Sensors</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Stretch Body exposes a host of sensor data through the status dictionaries of its devices.  In this tutorial we'll cover how to access, view, and configure this sensor data. </p>
+<h2 id="tools-to-view-sensor-data">Tools to View Sensor Data</h2>
+<p>There are two useful tools for scoping Pimu and Wacc  sensor data in real-time:</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_pimu_scope.py --help
+For use with S T R E T C H <span class="o">(</span>R<span class="o">)</span> RESEARCH EDITION from Hello Robot Inc.
+---------------------------------------------------------------------
 
-<h2 id="sensors">Sensors</h2>
-<h3 id="base-imu">Base IMU</h3>
-<p>Coming soon.</p>
-<h3 id="wrist-accelerometer">Wrist Accelerometer</h3>
-<p>Coming soon.</p>
-<h3 id="cliff-sensors">Cliff Sensors</h3>
-<p>Stretch has <a href="https://docs.hello-robot.com/hardware_user_guide/#base">four IR cliff sensors</a> pointed towards the floor. These report the distance to the floor, allowing for detection of thresholds, stair edges, etc. </p>
-<p>Relevant parameters in the factory YAML are</p>
-<div class="highlight"><pre><span></span><code><span class="nt">pimu</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">cliff_LPF</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0</span><span class="w"></span>
-<span class="w">    </span><span class="nt">cliff_thresh</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-50</span><span class="w"></span>
-<span class="w">    </span><span class="nt">cliff_zero</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">523.7940936279297</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">508.10246490478517</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">496.55742706298827</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">525.149652709961</span><span class="w"></span>
-<span class="w">    </span><span class="nt">stop_at_cliff</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"></span>
+usage: stretch_pimu_scope.py <span class="o">[</span>-h<span class="o">]</span> <span class="o">(</span>--cliff <span class="p">|</span> --at_cliff <span class="p">|</span> --voltage <span class="p">|</span> --current <span class="p">|</span> --temp <span class="p">|</span> --ax <span class="p">|</span> --ay <span class="p">|</span> --az <span class="p">|</span> --mx <span class="p">|</span> --my <span class="p">|</span> --mz <span class="p">|</span> --gx <span class="p">|</span> --gy <span class="p">|</span> --gz <span class="p">|</span> --roll <span class="p">|</span> --pitch <span class="p">|</span> --heading <span class="p">|</span> --bump<span class="o">)</span>
+
+Visualize Pimu <span class="o">(</span>Power+IMU<span class="o">)</span> board data with an oscilloscope
+
+optional arguments:
+  -h, --help  show this <span class="nb">help</span> message and <span class="nb">exit</span>
+  --cliff     Scope base cliff sensors
+  --at_cliff  Scope base at_cliff signal
+  --voltage   Scope bus voltage <span class="o">(</span>V<span class="o">)</span>
+  --current   Scope bus current <span class="o">(</span>A<span class="o">)</span>
+  --temp      Scope base internal temperature <span class="o">(</span>C<span class="o">)</span>
+  --ax        Scope base accelerometer AX
+  --ay        Scope base accelerometer AY
+  --az        Scope base accelerometer AZ
+  --mx        Scope base magnetometer MX
+  --my        Scope base magnetometer MY
+  --mz        Scope base magnetometer MZ
+  --gx        Scope base gyro GX
+  --gy        Scope base gyro GY
+  --gz        Scope base gyro GZ
+  --roll      Scope base imu Roll
+  --pitch     Scope base imu Pitch
+  --heading   Scope base imu Heading
+  --bump      Scope base imu bump level
 </code></pre></div>
-<p>The  <code>stop_at_cliff</code> field causes the robot to execute a Runstop when the cliff sensor readings are out of bounds. </p>
+<p>And,</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_wacc_scope.py --help
+For use with S T R E T C H <span class="o">(</span>R<span class="o">)</span> RESEARCH EDITION from Hello Robot Inc.
+---------------------------------------------------------------------
+
+usage: stretch_wacc_scope.py <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--ax<span class="o">]</span> <span class="o">[</span>--ay<span class="o">]</span> <span class="o">[</span>--az<span class="o">]</span> <span class="o">[</span>--a0<span class="o">]</span> <span class="o">[</span>--d0<span class="o">]</span> <span class="o">[</span>--d1<span class="o">]</span> <span class="o">[</span>--tap<span class="o">]</span>
+
+Visualize Wacc <span class="o">(</span>Wrist+Accel<span class="o">)</span> board data with an oscilloscope
+
+optional arguments:
+  -h, --help  show this <span class="nb">help</span> message and <span class="nb">exit</span>
+  --ax        Scope accelerometer AX
+  --ay        Scope accelerometer AY
+  --az        Scope accelerometer AZ
+  --a0        Scope analog-in-0
+  --d0        Scope digital-in-0
+  --d1        Scope digital-in-1
+  --tap       Scope single tap
+</code></pre></div>
+<p>Each motor also has associated sensor data available in its status dictionaries. The corresponding 'jog' tool for each joint will pretty-print the sensor data for that motor to the console. For example:</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_arm_jog.py 
+For use with S T R E T C H <span class="o">(</span>R<span class="o">)</span> RESEARCH EDITION from Hello Robot Inc.
+---------------------------------------------------------------------
+...
+----- Arm ------ 
+Pos <span class="o">(</span>m<span class="o">)</span>:  <span class="m">0</span>.0032848120914969895
+Vel <span class="o">(</span>m/s<span class="o">)</span>:  <span class="m">0</span>.0002031017627742426
+Soft motion limits <span class="o">(</span>m<span class="o">)</span> <span class="o">[</span><span class="m">0</span>.0, <span class="m">0</span>.52<span class="o">]</span>
+Timestamp PC <span class="o">(</span>s<span class="o">)</span>: <span class="m">1661797443</span>.1212385
+-----------
+Mode MODE_SAFETY
+x_des <span class="o">(</span>rad<span class="o">)</span> <span class="m">0</span> <span class="o">(</span>deg<span class="o">)</span> <span class="m">0</span>.0
+v_des <span class="o">(</span>rad<span class="o">)</span> <span class="m">25</span> <span class="o">(</span>deg<span class="o">)</span> <span class="m">1432</span>.3944878270581
+a_des <span class="o">(</span>rad<span class="o">)</span> <span class="m">15</span> <span class="o">(</span>deg<span class="o">)</span> <span class="m">859</span>.4366926962349
+Stiffness <span class="m">1</span>
+Feedforward <span class="m">0</span>
+Pos <span class="o">(</span>rad<span class="o">)</span> <span class="m">0</span>.47890087962150574 <span class="o">(</span>deg<span class="o">)</span> <span class="m">27</span>.438999207414973
+Vel <span class="o">(</span>rad/s<span class="o">)</span> <span class="m">0</span>.029610708355903625 <span class="o">(</span>deg<span class="o">)</span> <span class="m">1</span>.6965686171860386
+Effort <span class="o">(</span>Ticks<span class="o">)</span> <span class="m">0</span>.0
+Effort <span class="o">(</span>Pct<span class="o">)</span> <span class="m">0</span>.0
+Current <span class="o">(</span>A<span class="o">)</span> <span class="m">0</span>.0
+Error <span class="o">(</span>deg<span class="o">)</span> <span class="m">0</span>.0
+Debug <span class="m">0</span>.0
+Guarded Events: <span class="m">0</span>
+Diag <span class="m">00000000000000000000000100000000</span>
+       Position Calibrated: False
+       Runstop on: False
+       Near Pos Setpoint: False
+       Near Vel Setpoint: False
+       Is Moving: False
+       Is Moving Filtered: <span class="m">0</span>
+       At Current Limit: False
+       Is MG Accelerating: False
+       Is MG Moving: False
+       Encoder Calibration <span class="k">in</span> Flash: True
+       In Guarded Event: False
+       In Safety Event: False
+       Waiting on Sync: False
+Waypoint Trajectory
+       State: idle
+       Setpoint: <span class="o">(</span>rad<span class="o">)</span> <span class="m">0</span>.0 <span class="p">|</span> <span class="o">(</span>deg<span class="o">)</span> <span class="m">0</span>.0
+       Segment ID: <span class="m">0</span>
+Timestamp <span class="o">(</span>s<span class="o">)</span> <span class="m">1661797443</span>.110996
+Read error <span class="m">0</span>
+Board variant: Stepper.1
+Firmware version: Stepper.v0.2.0p1
+...
+</code></pre></div>
+<h2 id="accessing-the-status-dictionaries">Accessing the Status Dictionaries</h2>
+<p>Each Robot device has a status dictionary that is automatically updates with the latest sensor data. The primary dictionaries are:</p>
+<ul>
+<li><a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/stepper.py#L104">Stepper Status</a></li>
+<li><a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/wacc.py#L44">Wacc Status</a></li>
+<li><a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/pimu.py#L27">Pimu Status</a></li>
+<li><a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/dynamixel_hello_XL430.py#L61">Dynamixel Status</a></li>
+</ul>
+<p>Each of these dictionaries can be accessed through the Robot instance. For example, try in iPython:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">stretch_body.robot</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">r</span><span class="o">=</span><span class="n">stretch_body</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">Robot</span><span class="p">()</span>
+<span class="n">r</span><span class="o">.</span><span class="n">startup</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Arm position (m)</span><span class="si">%f</span><span class="s1">&#39;</span><span class="o">%</span><span class="n">r</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;pos&#39;</span><span class="p">])</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="base-imu">Base IMU</h2>
+<p>The base has a 9 DOF IMU using the 9 DOF FXOS8700 + FXAS21002 chipset. This is the same chipset as used on the <a href="https://www.adafruit.com/product/3463">Adafruit NXP IMU board</a>. </p>
+<p>The <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/pimu.py">Pimu</a> reports back the IMU sensor readings in its <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/pimu.py#L27">IMU status dictionary</a>. For example, from iPython try:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">stretch_body.robot</span>
+<span class="n">r</span><span class="o">=</span><span class="n">stretch_body</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">Robot</span><span class="p">()</span>
+<span class="n">r</span><span class="o">.</span><span class="n">startup</span><span class="p">()</span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">pimu</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;imu&#39;</span><span class="p">]</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span> 
+<span class="p">{</span><span class="s1">&#39;ax&#39;</span><span class="p">:</span> <span class="mf">0.30007487535476685</span><span class="p">,</span>
+ <span class="s1">&#39;ay&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.355493426322937</span><span class="p">,</span>
+ <span class="s1">&#39;az&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">9.736297607421875</span><span class="p">,</span>
+ <span class="s1">&#39;gx&#39;</span><span class="p">:</span> <span class="mf">0.0009544769418425858</span><span class="p">,</span>
+ <span class="s1">&#39;gy&#39;</span><span class="p">:</span> <span class="mf">0.00013635384675581008</span><span class="p">,</span>
+ <span class="s1">&#39;gz&#39;</span><span class="p">:</span> <span class="mf">0.00027270769351162016</span><span class="p">,</span>
+ <span class="s1">&#39;mx&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">10.699999809265137</span><span class="p">,</span>
+ <span class="s1">&#39;my&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">42.900001525878906</span><span class="p">,</span>
+ <span class="s1">&#39;mz&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">51.0</span><span class="p">,</span>
+ <span class="s1">&#39;roll&#39;</span><span class="p">:</span> <span class="mf">0.03657745230780231</span><span class="p">,</span>
+ <span class="s1">&#39;pitch&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.02960890640560868</span><span class="p">,</span>
+ <span class="s1">&#39;heading&#39;</span><span class="p">:</span> <span class="mf">1.2786458241584955</span><span class="p">,</span>
+ <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="mf">1661788669.3042662</span><span class="p">,</span>
+ <span class="s1">&#39;qw&#39;</span><span class="p">:</span> <span class="mf">0.0009681061492301524</span><span class="p">,</span>
+ <span class="s1">&#39;qx&#39;</span><span class="p">:</span> <span class="mf">0.59670090675354</span><span class="p">,</span>
+ <span class="s1">&#39;qy&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.8021157383918762</span><span class="p">,</span>
+ <span class="s1">&#39;qz&#39;</span><span class="p">:</span> <span class="mf">0.023505505174398422</span><span class="p">,</span>
+ <span class="s1">&#39;bump&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.9188174605369568</span><span class="p">}</span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">pimu</span><span class="o">.</span><span class="n">pretty_print</span><span class="p">()</span>
+<span class="o">----------</span><span class="n">IMU</span> <span class="o">-------------</span>
+<span class="n">AX</span> <span class="p">(</span><span class="n">m</span><span class="o">/</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span> <span class="mf">0.30007487535476685</span>
+<span class="n">AY</span> <span class="p">(</span><span class="n">m</span><span class="o">/</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span><span class="mf">0.355493426322937</span>
+<span class="n">AZ</span> <span class="p">(</span><span class="n">m</span><span class="o">/</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span><span class="mf">9.736297607421875</span>
+<span class="n">GX</span> <span class="p">(</span><span class="n">rad</span><span class="o">/</span><span class="n">s</span><span class="p">)</span> <span class="mf">0.0009544769418425858</span>
+<span class="n">GY</span> <span class="p">(</span><span class="n">rad</span><span class="o">/</span><span class="n">s</span><span class="p">)</span> <span class="mf">0.00013635384675581008</span>
+<span class="n">GZ</span> <span class="p">(</span><span class="n">rad</span><span class="o">/</span><span class="n">s</span><span class="p">)</span> <span class="mf">0.00027270769351162016</span>
+<span class="n">MX</span> <span class="p">(</span><span class="n">uTesla</span><span class="p">)</span> <span class="o">-</span><span class="mf">10.699999809265137</span>
+<span class="n">MY</span> <span class="p">(</span><span class="n">uTesla</span><span class="p">)</span> <span class="o">-</span><span class="mf">42.900001525878906</span>
+<span class="n">MZ</span> <span class="p">(</span><span class="n">uTesla</span><span class="p">)</span> <span class="o">-</span><span class="mf">51.0</span>
+<span class="n">QW</span> <span class="mf">0.0009681061492301524</span>
+<span class="n">QX</span> <span class="mf">0.59670090675354</span>
+<span class="n">QY</span> <span class="o">-</span><span class="mf">0.8021157383918762</span>
+<span class="n">QZ</span> <span class="mf">0.023505505174398422</span>
+<span class="n">Roll</span> <span class="p">(</span><span class="n">deg</span><span class="p">)</span> <span class="mf">2.095733642578125</span>
+<span class="n">Pitch</span> <span class="p">(</span><span class="n">deg</span><span class="p">)</span> <span class="o">-</span><span class="mf">1.6964653730392456</span>
+<span class="n">Heading</span> <span class="p">(</span><span class="n">deg</span><span class="p">)</span> <span class="mf">73.26100921630858</span>
+</code></pre></div>
+<p>It reports:</p>
+<ul>
+<li>Acceleration (AX, AY, AZ)</li>
+<li>Gravity (GX, GY GZ)</li>
+<li>Magnetic field (MX, MY, MZ)</li>
+<li>Quaternion orientation (QW, QX, QY, QZ)</li>
+<li>Euler angle orientation (Roll, Pitch, Heading)</li>
+</ul>
+<p>These values are computed on the Pimu. As we can see in <a href="https://github.com/hello-robot/stretch_firmware/blob/master/arduino/hello_pimu/IMU.cpp">its firmware code</a>, a 100Hz Madgwick filter is used to compute the orientation. </p>
+<p>Stretch Body also implements a bump detector using the the IMU accelerometers. This detector simply <a href="https://github.com/hello-robot/stretch_firmware/blob/master/arduino/hello_pimu/IMU.cpp#L223">computes the sum-of-squares of AX, AY, and AZ</a>. This value is then compared to the following threshold to determine if a bump is present:</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep pimu <span class="p">|</span> grep bump
+stretch_body.robot_params.nominal_params   param.pimu.config.bump_thresh       <span class="m">20</span>.0 
+</code></pre></div>
+<p>You can experiment with the bump detector with the following code:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">stretch_body.robot</span>
+<span class="n">r</span><span class="o">=</span><span class="n">stretch_body</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">Robot</span><span class="p">()</span>
+<span class="n">r</span><span class="o">.</span><span class="n">startup</span><span class="p">()</span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">pimu</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;bump_thresh&#39;</span><span class="p">]</span><span class="o">=</span> <span class="mf">20.0</span> <span class="c1">#Experiment with values</span>
+<span class="n">r</span><span class="o">.</span><span class="n">pimu</span><span class="o">.</span><span class="n">set_config</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">push_command</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bump </span><span class="si">%f</span><span class="s1">&#39;</span><span class="o">%</span><span class="n">r</span><span class="o">.</span><span class="n">pimu</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;bump&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bump event count </span><span class="si">%d</span><span class="s1">&#39;</span><span class="o">%</span><span class="n">r</span><span class="o">.</span><span class="n">pimu</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;bump_event_cnt&#39;</span><span class="p">])</span>
+</code></pre></div>
+<p><strong>NOTE</strong>: The IMU is calibrated by Hello Robot at the factory. Please contact Hello Robot support for details on recalibrating your IMU.</p>
+<h2 id="wrist-accelerometer">Wrist Accelerometer</h2>
+<p>The wrist includes a 3 axis <a href="https://www.analog.com/media/en/technical-documentation/data-sheets/ADXL343.pdf">ADXL343</a> accelerometer which provides bump and tap detection capabilities. The Wacc reports back AX, AY, and AZ <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/wacc.py#L44">in its status dictionary</a> From iPython try:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">stretch_body.robot</span>
+<span class="n">r</span><span class="o">=</span><span class="n">stretch_body</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">Robot</span><span class="p">()</span>
+<span class="n">r</span><span class="o">.</span><span class="n">startup</span><span class="p">()</span>
+<span class="n">r</span><span class="o">.</span><span class="n">wacc</span><span class="o">.</span><span class="n">status</span>
+
+<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> 
+<span class="p">{</span><span class="s1">&#39;ax&#39;</span><span class="p">:</span> <span class="mf">10.093315124511719</span><span class="p">,</span>
+ <span class="s1">&#39;ay&#39;</span><span class="p">:</span> <span class="mf">0.10557432472705841</span><span class="p">,</span>
+ <span class="s1">&#39;az&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.45386940240859985</span><span class="p">,</span>
+ <span class="s1">&#39;a0&#39;</span><span class="p">:</span> <span class="mi">155</span><span class="p">,</span>
+ <span class="s1">&#39;d0&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+ <span class="s1">&#39;d1&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+ <span class="s1">&#39;d2&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+ <span class="s1">&#39;d3&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+ <span class="s1">&#39;single_tap_count&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+ <span class="s1">&#39;state&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+ <span class="s1">&#39;debug&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+ <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="mf">1661795676.203578</span><span class="p">,</span>
+ <span class="s1">&#39;transport&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;rate&#39;</span><span class="p">:</span> <span class="mf">0.4572487091345871</span><span class="p">,</span>
+  <span class="s1">&#39;read_error&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s1">&#39;write_error&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s1">&#39;itr&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="s1">&#39;transaction_time_avg&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s1">&#39;transaction_time_max&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s1">&#39;timestamp_pc&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}}</span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">wacc</span><span class="o">.</span><span class="n">pretty_print</span><span class="p">()</span>
+<span class="o">------------------------------</span>
+<span class="n">Ax</span> <span class="p">(</span><span class="n">m</span><span class="o">/</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span> <span class="mf">10.093315124511719</span>
+<span class="n">Ay</span> <span class="p">(</span><span class="n">m</span><span class="o">/</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span> <span class="mf">0.10557432472705841</span>
+<span class="n">Az</span> <span class="p">(</span><span class="n">m</span><span class="o">/</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span><span class="mf">0.45386940240859985</span>
+<span class="n">A0</span> <span class="mi">155</span>
+<span class="n">D0</span> <span class="p">(</span><span class="n">In</span><span class="p">)</span> <span class="mi">1</span>
+<span class="n">D1</span> <span class="p">(</span><span class="n">In</span><span class="p">)</span> <span class="mi">1</span>
+<span class="n">D2</span> <span class="p">(</span><span class="n">Out</span><span class="p">)</span> <span class="mi">0</span>
+<span class="n">D3</span> <span class="p">(</span><span class="n">Out</span><span class="p">)</span> <span class="mi">0</span>
+<span class="n">Single</span> <span class="n">Tap</span> <span class="n">Count</span> <span class="mi">15</span>
+<span class="n">State</span>  <span class="mi">0</span>
+<span class="n">Debug</span> <span class="mi">0</span>
+<span class="n">Timestamp</span> <span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="mf">1661795676.203578</span>
+<span class="n">Board</span> <span class="n">variant</span><span class="p">:</span> <span class="n">Wacc</span><span class="mf">.1</span>
+<span class="n">Firmware</span> <span class="n">version</span><span class="p">:</span> <span class="n">Wacc</span><span class="o">.</span><span class="n">v0</span><span class="mf">.2.0</span><span class="n">p1</span>
+</code></pre></div>
+<p>In addition to AX, AY, and AZ we also see the <code>single_tap_count</code> value which reports back  a count of the number of single-tap contacts the accelerometer has experiences since power-up. </p>
+<p>The following Wacc parameters configure the accelerometer low-pass filter and single-tap settings. See the  <a href="https://www.analog.com/media/en/technical-documentation/data-sheets/ADXL343.pdf">ADXL343</a>  datasheet for more details.</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep wacc
+...
+stretch_body.robot_params.nominal_params      param.wacc.config.accel_LPF         <span class="m">10</span>.0                          
+stretch_body.robot_params.nominal_params      param.wacc.config.accel_range_g        <span class="m">4</span>                             
+stretch_body.robot_params.nominal_params      param.wacc.config.accel_single_tap_dur       <span class="m">70</span>                            
+stretch_body.robot_params.nominal_params      param.wacc.config.accel_single_tap_thresh    <span class="m">50</span>                                     
+stretch_configuration_params.yaml              param.wacc.config.accel_gravity_scale      <span class="m">1</span>.0 
+</code></pre></div>
+<h2 id="cliff-sensors">Cliff Sensors</h2>
+<p>Stretch has four Sharp GP2Y0A51SK0F IR cliff sensors pointed towards the floor. These report the distance to the floor, allowing for detection of thresholds, stair edges, etc. </p>
+<p>Relevant parameters for the cliff sensors are:</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep cliff
+stretch_body.robot_params.nominal_params  param.pimu.config.cliff_LPF           <span class="m">10</span>.0                          
+stretch_body.robot_params.nominal_params  param.pimu.config.cliff_thresh        -50                           
+stretch_body.robot_params.nominal_params  param.pimu.config.stop_at_cliff        <span class="m">0</span>                           
+stretch_configuration_params.yaml         param.pimu.config.cliff_zero          <span class="o">[</span><span class="m">518</span>.6307312011719, <span class="m">530</span>.9835095214844, <span class="m">500</span>.7268048095703, <span class="m">509</span>.92264434814456<span class="o">]</span>         
+stretch_body.robot_params.nominal_params  param.robot_monitor.monitor_base_cliff_event   <span class="m">1</span>  
+</code></pre></div>
+<p>The sensors are calibrated such that a zero value (as defined by <code>cliff_zero</code>) indicates the sensor is at the correct height from the floor surface. A negative value indicates a drop off such as a stair ledge while a positive value indicates an obstacle like a threshold or high pile carpet.  You may want to recalibrate this zero based on the surface the robot is on (eg, carpet, tile, etc). To do this:</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;<span class="nv">$REx_cliff_sensor_calibrate</span>.py 
+For use with S T R E T C H <span class="o">(</span>R<span class="o">)</span> RESEARCH EDITION from Hello Robot Inc.
+---------------------------------------------------------------------
+
+Ensure cliff sensors are not obstructed and base is on a flat surface
+Hit enter when ready
+Itr <span class="m">0</span> Val <span class="o">[</span><span class="m">518</span>.630126953125, <span class="m">530</span>.4168701171875, <span class="m">500</span>.863037109375, <span class="m">510</span>.0032958984375<span class="o">]</span>
+...
+Itr <span class="m">99</span> Val <span class="o">[</span><span class="m">518</span>.8374633789062, <span class="m">530</span>.858154296875, <span class="m">500</span>.5805969238281, <span class="m">509</span>.9013671875<span class="o">]</span>
+Got cliff zeros of:  <span class="o">[</span><span class="m">518</span>.6307312011719, <span class="m">530</span>.9835095214844, <span class="m">500</span>.7268048095703, <span class="m">509</span>.92264434814456<span class="o">]</span>
+Calibration passed. Storing to YAML...
+</code></pre></div>
+<p>The  <code>stop_at_cliff</code> field causes the robot to execute a Runstop when the cliff sensor readings exceed the value <code>cliff_thresh</code>. The parameter <code>cliff_LPF</code> defines the low-pass-filter rate (Hz) on the analog sensor readings.</p>
 <p><strong>Note: As configured at the factory,  <code>stop_at_cliff</code> is set to zero and Stretch does not stop its motion based on the cliff sensor readings. Hello Robot makes no guarantees as to the reliability of Stretch's ability to avoid driving over ledges and stairs when this flag is enabled.</strong></p>
-<p>The sensors are calibrated such that a zero value indicates the sensor is at the correct height from the floor surface. A negative value indicates a drop off such as a stair ledge while a positive value indicates an obstacle like a threshold or high pile carpet.</p>
-<p>The calibrated range values from the sensors can be read from the <code>robot.pimu.status</code> message. Relevant fields are:</p>
-<div class="highlight"><pre><span></span><code><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">robot</span><span class="o">.</span><span class="n">pimu</span><span class="o">.</span><span class="n">pretty_print</span><span class="p">()</span>
-<span class="o">------</span> <span class="n">Pimu</span> <span class="o">-----</span>
-<span class="o">...</span>
-<span class="n">At</span> <span class="n">Cliff</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
-<span class="n">Cliff</span> <span class="n">Range</span> <span class="p">[</span><span class="mf">2.043212890625</span><span class="p">,</span> <span class="mf">3.710906982421875</span><span class="p">,</span> <span class="mf">1.6026611328125</span><span class="p">,</span> <span class="mf">1.95098876953125</span><span class="p">]</span>
-<span class="n">Cliff</span> <span class="n">Event</span> <span class="kc">False</span>
-<span class="o">...</span>
+<p>The  range values from the sensors can be read from the <code>robot.pimu.status</code> message. Relevant fields are:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">stretch_body.robot</span>
+<span class="n">r</span><span class="o">=</span><span class="n">stretch_body</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">Robot</span><span class="p">()</span>
+<span class="n">r</span><span class="o">.</span><span class="n">startup</span><span class="p">()</span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">pimu</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;cliff_range&#39;</span><span class="p">]</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="p">[</span><span class="mf">0.39227294921875</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2047119140625</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.26422119140625</span><span class="p">,</span> <span class="mf">0.006134033203125</span><span class="p">]</span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">pimu</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;at_cliff&#39;</span><span class="p">]</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">pimu</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;cliff_event&#39;</span><span class="p">]</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="kc">False</span>
 </code></pre></div>
-<p>A Cliff Event flag is set when any of the four sensor readings exceed <code>cliff_thresh</code> and <code>stop_at_cliff</code> is enabled. In the event of a Cliff Event, it must be reset by <code>robot.pimu.cliff_event_reset()</code>in order to reset the generated Runstop.</p>
+<p>The <code>cliff_event</code> flag is set when any of the four sensor readings exceed <code>cliff_thresh</code> and <code>stop_at_cliff</code> is enabled. In the event of a Cliff Event, it must be reset by <code>robot.pimu.cliff_event_reset()</code>in order to reset the generated Runstop.</p>
 <p>The cliff detection logic can be found in the <a href="https://github.com/hello-robot/stretch_firmware/blob/master/arduino/hello_pimu/Pimu.cpp">Pimu firmware</a>.</p>
 
               

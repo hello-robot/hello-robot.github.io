@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#stretch-re1-tool-change-tutorial" class="md-skip">
+        <a href="#tutorial-tool-change" class="md-skip">
           Skip to content
         </a>
       
@@ -748,8 +748,7 @@
     Standard Tools
   </a>
   
-    <nav class="md-nav" aria-label="Standard Tools">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#toolstretchgripper" class="md-nav__link">
@@ -762,11 +761,6 @@
   <a href="#toolnone" class="md-nav__link">
     ToolNone
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -797,7 +791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorial_extending_wrist_dof/" class="md-nav__link">
+      <a href="../tutorial_custom_wrist_dof/" class="md-nav__link">
         Custom Wrist DOF
       </a>
     </li>
@@ -3063,8 +3057,7 @@
     Standard Tools
   </a>
   
-    <nav class="md-nav" aria-label="Standard Tools">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#toolstretchgripper" class="md-nav__link">
@@ -3077,11 +3070,6 @@
   <a href="#toolnone" class="md-nav__link">
     ToolNone
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -3114,16 +3102,16 @@
 
 
 
-<h1 id="stretch-re1-tool-change-tutorial">Stretch RE1: Tool Change Tutorial</h1>
+<h1 id="tutorial-tool-change">Tutorial: Tool Change</h1>
 <p>Many users will want to work with tools other than the default Stretch Gripper that ships with the robot. In this tutorial you will learn how to configure the Stretch software interfaces to support other tools.</p>
 <h2 id="changing-tool-interfaces-in-stretch-body">Changing Tool Interfaces in Stretch Body</h2>
-<p>Stretch Body v0.1.x and later supports a plug-in based architecture for tools. A tool interface is an extension of the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/end_of_arm.py">EndOfArm</a> class that supports additional degrees of freedom. </p>
+<p>Stretch Body supports a plug-in based architecture for tools. A tool is an extension of the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/end_of_arm.py">EndOfArm</a> class that supports additional degrees of freedom. </p>
 <h3 id="standard-tools">Standard Tools</h3>
 <p>Stretch Body supports two tool interfaces by default: The <a href="https://github.com/hello-robot/stretch_body/tree/master/body/end_of_arm_tools.py">ToolNone &amp; ToolStretchGripper</a>. We will explore swapping between these default tools.</p>
-<h4 id="toolstretchgripper">ToolStretchGripper</h4>
-<p>The RE1 is configured to load the ToolStretchGripper interface by default. This tool is loaded according to the <code>stretch_re1_user_params.yaml</code> field:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">robot</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">tool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tool_stretch_gripper</span><span class="w"></span>
+<h3 id="toolstretchgripper">ToolStretchGripper</h3>
+<p>Stretch is configured to load the ToolStretchGripper interface by default. This tool is loaded according to the <code>robot.tool</code> parameter:</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep robot.tool
+stretch_body.robot_params.nominal_params     param.robot.tool               tool_stretch_gripper
 </code></pre></div>
 <p>We can interact with this tool from iPython</p>
 <div class="highlight"><pre><span></span><code><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">stretch_body.robot</span> <span class="k">as</span> <span class="nn">robot</span>
@@ -3145,7 +3133,7 @@
 <span class="o">---------</span> <span class="n">Stowing</span> <span class="n">Gripper</span> <span class="o">----</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">r</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </code></pre></div>
-<h4 id="toolnone">ToolNone</h4>
+<h3 id="toolnone">ToolNone</h3>
 <p>The ToolNone interface can be loaded when no tool is attached to the Wrist Yaw joint.  To switch to this interface, simply update the field in your <code>stretch_re1_user_params.yaml</code> to:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">robot</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">tool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tool_none</span><span class="w"></span>
@@ -3168,11 +3156,11 @@
 <span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">r</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </code></pre></div>
 <h2 id="loading-tool-interfaces-from-the-stretch-tool-share">Loading Tool Interfaces from the Stretch Tool Share</h2>
-<p>The <a href="https://github.com/hello-robot/stretch_tool_share/">Stretch Tool Share</a> is an open Git repository for non-standard RE1 tools. It hosts the CAD, URDF, and Python files needed to integrate these tools onto your robot.</p>
+<p>The <a href="https://github.com/hello-robot/stretch_tool_share/">Stretch Tool Share</a> is an open Git repository for non-standard Stretch tools. It hosts the CAD, URDF, and Python files needed to integrate these tools onto your robot.</p>
 <p>To use Stretch Tool Share tools, first update your installation:</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>pip2 install hello-robot-stretch-tool-share
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>pip install -U hello-robot-stretch-tool-share
 </code></pre></div>
-<p>As an example, we see on the Tool Share that there is a tool, the <a href="https://github.com/hello-robot/stretch_tool_share/blob/master/python/stretch_tool_share/dry_erase_holder_v1/tool.py">ToolDryEraseToolHolderV1</a> which <a href="https://github.com/hello-robot/stretch_tool_share/blob/master/python/stretch_tool_share/usbcam_wrist_v1/tool.py">extends the EndOfArm</a> class. In order to load this tool interface , modify your <code>stretch_re1_user_params.yaml</code> to load the tool as before. We will also need to tell it where to find the tool's <a href="https://github.com/hello-robot/stretch_tool_share/blob/master/python/stretch_tool_share/dry_erase_holder_v1/params.py">parameter file</a>:</p>
+<p>As an example, we see on the Tool Share that there is a tool, the <a href="https://github.com/hello-robot/stretch_tool_share/blob/master/python/stretch_tool_share/dry_erase_holder_v1/tool.py">ToolDryEraseToolHolderV1</a> which <a href="https://github.com/hello-robot/stretch_tool_share/blob/master/python/stretch_tool_share/usbcam_wrist_v1/tool.py">extends the EndOfArm</a> class. In order to load this tool interface , modify your <code>stretch_user_params.yaml</code> to load the tool as before. We will also need to tell it where to find the tool's <a href="https://github.com/hello-robot/stretch_tool_share/blob/master/python/stretch_tool_share/dry_erase_holder_v1/params.py">parameter file</a>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">robot</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">tool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tool_dry_erase_holder_v1</span><span class="w"></span>
 <span class="nt">params</span><span class="p">:</span><span class="w"></span>
@@ -3271,7 +3259,7 @@
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;--------- Stowing Gripper ----&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">move_to</span><span class="p">(</span><span class="s1">&#39;stretch_gripper&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;stow&#39;</span><span class="p">][</span><span class="s1">&#39;stretch_gripper&#39;</span><span class="p">])</span>
 </code></pre></div>
-<p>For tools that are not a part of Stretch Body, such as from the Tool Share, you must include the tool parameters as well in your  <code>stretch_re1_user_params.yaml</code>. A robot that must support many tools may have user YAML that looks like:</p>
+<p>For tools that are not a part of Stretch Body, such as from the Tool Share, you must include the tool parameters as well in your  <code>stretch_user_params.yaml</code>. A robot that must support many tools may have user YAML that looks like:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">params</span><span class="p">:</span><span class="w"></span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stretch_tool_share.usbcam_wrist_v1.params</span><span class="w"></span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stretch_tool_share.stretch_dex_wrist_beta.params</span><span class="w"></span>
@@ -3320,7 +3308,7 @@
       
       
         
-        <a href="../tutorial_extending_wrist_dof/" class="md-footer__link md-footer__link--next" aria-label="Next: Custom Wrist DOF" rel="next">
+        <a href="../tutorial_custom_wrist_dof/" class="md-footer__link md-footer__link--next" aria-label="Next: Custom Wrist DOF" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">

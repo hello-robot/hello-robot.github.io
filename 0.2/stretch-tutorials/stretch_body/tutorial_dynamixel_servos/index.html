@@ -839,7 +839,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorial_extending_wrist_dof/" class="md-nav__link">
+      <a href="../tutorial_custom_wrist_dof/" class="md-nav__link">
         Custom Wrist DOF
       </a>
     </li>
@@ -3318,7 +3318,7 @@ Success at setting ID to <span class="m">13</span>
 <p><strong>NOTE</strong>: The naming of XL430 is for legacy reasons. These classes will work with all X Series servos. </p>
 <h3 id="dynamixelxchain">DynamixelXChain</h3>
 <p>DynamixelXChain manages a set of daisy-chained servos on a single bus (for example the head_pan and head_tilt servos). It allows for greater communication bandwidth by doing group read/write over USB. </p>
-<p>The <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/end_of_arm.py">EndOfArm</a> class derives from DynamixelXChain in order to provide an extensible interface that supports a user integrating additional DOF to the robot. The tutorial <a href="../tutorial_extending_wrist_dof/">Adding Custom Wrist DOF</a> explains how to do this.</p>
+<p>The <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/end_of_arm.py">EndOfArm</a> class derives from DynamixelXChain in order to provide an extensible interface that supports a user integrating additional DOF to the robot. The tutorial <a href="./tutorial_extending_wrist_dof.md">Adding Custom Wrist DOF</a> explains how to do this.</p>
 <h3 id="dynamixelhelloxl430">DynamixelHelloXL430</h3>
 <p>DynamixelHelloXL430 provides an interface to servo motion that is consistent with the Stretch Body lift, arm, and base joints. It also manages the servo parameters and calibration. Let's explore this interface further. From iPython let's look at the status message for DynamixelHelloXL430</p>
 <div class="highlight"><pre><span></span><code>import stretch_body.dynamixel_hello_XL430 
