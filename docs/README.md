@@ -1,6 +1,17 @@
 ![](./images/stretch_banner.png)
 
 
+# Version
+This is version 0.1 of the Stretch User Documentation. It is written with the following system configuration in mind:
+
+| Resource                 | Description  |
+|--------------------------|--------------|
+| Model                    | Stretch RE1  |
+| OS                       | Ubuntu 18.04 |
+| ROS | Melodic      |
+| Python                   | Python2      |
+| Stretch Body| '<=0.2       |
+
 
 # Safety
 
