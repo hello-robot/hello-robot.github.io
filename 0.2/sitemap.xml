@@ -11,11 +11,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.hello-robot.com/0.2/tool_change_tutorial/</loc>
-         <lastmod>2022-08-31</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-body/</loc>
          <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
@@ -66,6 +61,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-firmware/tutorials_overview/</loc>
+         <lastmod>2022-08-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-hardware-guides/</loc>
          <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
@@ -106,12 +106,42 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-install/add_new_user/</loc>
+         <lastmod>2022-08-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-install/configure_BIOS/</loc>
          <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-install/contributing/</loc>
+         <lastmod>2022-08-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-install/install_ubuntu_18.04/</loc>
+         <lastmod>2022-08-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-install/install_ubuntu_20.04/</loc>
+         <lastmod>2022-08-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-install/robot_install/</loc>
+         <lastmod>2022-08-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-install/ros_workspace/</loc>
+         <lastmod>2022-08-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-install/updating_software/</loc>
          <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -286,6 +316,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-tool-share/tool_share/stretch_dex_wrist/</loc>
+         <lastmod>2022-08-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-tool-share/tool_share/stretch_dex_wrist/gazebo_support/</loc>
          <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
@@ -391,6 +426,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/ros1/example_13/</loc>
+         <lastmod>2022-08-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/ros1/example_2/</loc>
          <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
@@ -461,27 +501,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/ros1/other_nav_features/</loc>
-         <lastmod>2022-08-31</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/ros1/other_nav_stack/</loc>
-         <lastmod>2022-08-31</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/ros1/perception/</loc>
          <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/ros1/respeaker_microphone_array/</loc>
-         <lastmod>2022-08-31</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/ros1/ros_testing/</loc>
          <lastmod>2022-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
