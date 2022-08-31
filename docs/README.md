@@ -14,7 +14,7 @@ We recommend you follow the [Getting to Know Stretch Tutorials](https://docs.hel
 
 Please take the time to learn safe and best practices in operating Stretch.  
 
-**The Stretch RE1 is a potentially dangerous robot. All users must carefully read the [Stretch Safety Guide](robot_safety_guide.md) prior to using the robot.**
+**The Stretch RE1 is a potentially dangerous robot. All users must carefully read the [Stretch Safety Guide](https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/safety_guide/) prior to using the robot.**
 # Where to Find Things 
 All of the documentation is accessible and searchable via the navigation menu on this site. Alternatively, you can view the markdown hosted on at the [Hello Robot GitHub portal](github.com/hello-robot).
 
@@ -22,8 +22,8 @@ In addition, it is worth spending some time on the following sites:
 
 | Resource                                                                | Description                                                  |
 |-------------------------------------------------------------------------|--------------------------------------------------------------|
-| [Stretch Community](dex_wrist_user_guide.md)                            | Repository for community shared code                         |
-| [Stretch Forum](battery_maintenance_guide.md)                           | Discourse User Forum                                         |
+| [Stretch Community](https://github.com/hello-robot/stretch_community)                            | Repository for community shared code                         |
+| [Stretch Forum](https://forum.hello-robot.com/)                           | Discourse User Forum                                         |
 
 
 # Version
@@ -44,7 +44,7 @@ You can access prior documentation suitable for older configurations (eg Ubuntu 
 
 This documentation is only to be used for an authentic Stretch RE1 or RE2 robot produced and sold by Hello Robot Inc. 
 
-All Hello Robot [documentation](https://github.com/hello-robot/hello-robot.github.io) related materials are released under the [Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)](https://creativecommons.org/licenses/by-nd/4.0) license.
+All Hello Robot documentation and related materials are released under the [Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)](https://creativecommons.org/licenses/by-nd/4.0) license.
 
 ------
 <div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks. The Stretch RE1 and RE2 robots are covered by U.S. Patent 11,230,000 and other patents pending.</div>
