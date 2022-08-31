@@ -1,7 +1,7 @@
 ![](./images/banner.png)
 
 # Welcome
-This is your jumping off point for Stretch tutorials, datasheets, APIs, and user guides. 
+This is your jumping off point for Stretch tutorials, hardware manuals, and APIs. 
 
 We wish you success in your development journey with Stretch. Please contact us at [support@hello-robot.com](mailto:support@hello-robot.com) if you don't find what you're looking for.
 
@@ -38,14 +38,13 @@ This is version 0.2 of the Stretch User Documentation. It is written with the fo
 | Python                   | Python3                    |
 | Stretch Body| '>=0.3                     |
 
-
-You can access prior documentation suitable for older configurations [here](https://docs.hello-robot.com/0.1/)
+You can access prior documentation suitable for older configurations (eg Ubuntu 18.04, ROS Melodic) [here](https://docs.hello-robot.com/0.1/)
 
 # License
 
 This documentation is only to be used for an authentic Stretch RE1 or RE2 robot produced and sold by Hello Robot Inc. 
 
-All Hello Robot [stretch_docs](https://github.com/hello-robot/stretch_docs) related materials are released under the [Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)](https://creativecommons.org/licenses/by-nd/4.0) license.
+All Hello Robot [documentation](https://github.com/hello-robot/hello-robot.github.io) related materials are released under the [Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)](https://creativecommons.org/licenses/by-nd/4.0) license.
 
 The Stretch Research Edition has patents pending.
 
