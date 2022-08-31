@@ -12,7 +12,7 @@ This is version 0.1 of the Stretch User Documentation. It is written with the fo
 | Python                   | Python2      |
 | Stretch Body| '<=0.2       |
 
-
+You can access documentation suitable for newer configurations (eg Ubuntu 20.04, ROS Noetic) [here](https://docs.hello-robot.com/0.2/)
 # Safety
 
 **WARNING: The Stretch RE1 is a potentially dangerous robot. All users must carefully read the [Stretch Safety Guide](robot_safety_guide.md) prior to using the robot.**
