@@ -46,5 +46,8 @@ This documentation is only to be used for an authentic Stretch RE1 or RE2 robot 
 
 All Hello Robot [documentation](https://github.com/hello-robot/hello-robot.github.io) related materials are released under the [Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)](https://creativecommons.org/licenses/by-nd/4.0) license.
 
-The Stretch Research Edition has patents pending.
+------
+<div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks. The Stretch RE1 and RE2 robots are covered by U.S. Patent 11,230,000 and other patents pending.</div>
+
+
 
