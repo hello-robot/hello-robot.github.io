@@ -342,8 +342,22 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting_started/quick_start_guide/" class="md-nav__link">
-        Quick Start
+      <a href="../../getting_started/quick_start_guide_re1/" class="md-nav__link">
+        Quick Start RE1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/quick_start_guide_re2/" class="md-nav__link">
+        Quick Start RE2
       </a>
     </li>
   
@@ -2744,7 +2758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stretch-hardware-guides/safety_guide/" class="md-nav__link">
+      <a href="../../../stretch-hardware-guides/safety_guide.md" class="md-nav__link">
         Stretch Safety Guide
       </a>
     </li>
@@ -3046,7 +3060,7 @@
 <li>Adding YAML parameters to <code>stretch_user_params.yaml</code>that configure the servo as desired</li>
 <li>Adding YAML parameters to <code>stretch_user_params.yaml</code> that tell Stretch to include this class in its EndOfArm list of servos</li>
 </ul>
-<p>Let's create a new DOF called MyWristPitch in a file named <a href="./custom_wrist_dof/my_wrist_pitch.py">my_wrist_pitch.py</a>.  Place the file somewhere on the $PYTHONPATH.</p>
+<p>Let's create a new DOF called MyWristPitch in a file named <a href="../custom_wrist_dof/my_wrist_pitch.py">my_wrist_pitch.py</a>.  Place the file somewhere on the $PYTHONPATH.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">stretch_body.dynamixel_hello_XL430</span> <span class="kn">import</span> <span class="n">DynamixelHelloXL430</span>
 <span class="kn">from</span> <span class="nn">stretch_body.hello_utils</span> <span class="kn">import</span> <span class="o">*</span>
 
@@ -3059,7 +3073,7 @@
     <span class="k">def</span> <span class="nf">pose</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">v_r</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">a_r</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">move_to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">poses</span><span class="p">[</span><span class="n">p</span><span class="p">],</span><span class="n">v_r</span><span class="p">,</span><span class="n">a_r</span><span class="p">)</span>
 </code></pre></div>
-<p>Now let's add the tools' parameters to your <code>stretch_user_params.yaml</code> in order to configure this servo. You may want to adapt these parameters to your application but the nominal values <a href="./custom_wrist_dof/stretch_user_params.yaml">found here</a> usually work well. Below we highlight some of the more useful parameters.</p>
+<p>Now let's add the tools' parameters to your <code>stretch_user_params.yaml</code> in order to configure this servo. You may want to adapt these parameters to your application but the nominal values <a href="../custom_wrist_dof/stretch_user_params.yaml">found here</a> usually work well. Below we highlight some of the more useful parameters.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">my_wrist_pitch</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w">                         </span><span class="c1">#ID on the Dynamixel bus</span><span class="w"></span>
 <span class="w">  </span><span class="nt">range_t</span><span class="p">:</span><span class="w">                      </span><span class="c1">#Range of servo, in ticks</span><span class="w"></span>
@@ -3083,7 +3097,7 @@
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">w</span><span class="o">.</span><span class="n">pose</span><span class="p">(</span><span class="s1">&#39;tool_down&#39;</span><span class="p">)</span>
 </code></pre></div>
-<p>Finally, you'll want to make your WristPitch available from <code>stretch_body.robot</code> Add the following <a href="./stretch_re1_user_params.yaml">YAML</a> to your <code>stretch_user_params.yaml</code></p>
+<p>Finally, you'll want to make your WristPitch available from <code>stretch_body.robot</code> Add the following <a href="../custom_wrist_dof/stretch_user_params.yaml">YAML</a> to your <code>stretch_user_params.yaml</code></p>
 <div class="highlight"><pre><span></span><code><span class="nt">end_of_arm</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">devices</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">wrist_pitch</span><span class="p">:</span><span class="w"></span>
@@ -3099,6 +3113,8 @@
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">r</span><span class="o">.</span><span class="n">end_of_arm</span><span class="o">.</span><span class="n">move_by</span><span class="p">(</span><span class="s1">&#39;wrist_pitch&#39;</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
 </code></pre></div>
+<hr />
+<div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks. The Stretch RE1 and RE2 robots are covered by U.S. Patent 11,230,000 and other patents pending.</div>
 
               
             </article>

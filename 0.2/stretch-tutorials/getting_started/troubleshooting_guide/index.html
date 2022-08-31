@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#stretch-re1-troubleshooting-guide" class="md-skip">
+        <a href="#stretch-re1-and-re2-troubleshooting-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -346,8 +346,22 @@
   
   
     <li class="md-nav__item">
-      <a href="../quick_start_guide/" class="md-nav__link">
-        Quick Start
+      <a href="../quick_start_guide_re1/" class="md-nav__link">
+        Quick Start RE1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick_start_guide_re2/" class="md-nav__link">
+        Quick Start RE2
       </a>
     </li>
   
@@ -2758,7 +2772,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stretch-hardware-guides/safety_guide/" class="md-nav__link">
+      <a href="../../../stretch-hardware-guides/safety_guide.md" class="md-nav__link">
         Stretch Safety Guide
       </a>
     </li>
@@ -3062,10 +3076,10 @@
 
 
 
-<h1 id="stretch-re1-troubleshooting-guide">Stretch RE1: Troubleshooting Guide</h1>
+<h1 id="stretch-re1-and-re2-troubleshooting-guide">Stretch RE1 and RE2: Troubleshooting Guide</h1>
 <p>This guide covers common issues and ways to resolve them. Please check the <a href="https://forum.hello-robot.com">Hello Robot Forum</a> for additional topics not covered here.</p>
 <h2 id="xbox-teleoperation-is-not-working">XBox teleoperation is not working</h2>
-<p>The provided Easy SMX wireless controller can accidentally be placed in the wrong mode. The mode is indicated by the round illuminated ring (shown as Connect below). The top 2 LEDs only should be illuminated. If a different LED pattern is shown then the button mapping expected by <a href="https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_xbox_controller_teleop.py0">stretch_xbox_controller_teleop.py</a> will be incorrect.</p>
+<p>The provided Easy SMX wireless controller can accidentally be placed in the wrong mode. The mode is indicated by the round illuminated ring (shown as Connect below). The top 2 LEDs only should be illuminated. If a different LED pattern is shown then the button mapping expected by <a href="https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_xbox_controller_teleop.py">stretch_xbox_controller_teleop.py</a> will be incorrect.</p>
 <p>To set the controller into the correct mode:</p>
 <ul>
 <li>Hold the center button down for 5s. It will switch modes. Release.</li>
@@ -3073,9 +3087,18 @@
 </ul>
 <p>In addition, check that the provided USB dongle is plugged into the robot USB port in its trunk.</p>
 <p>. </p>
-<p><img alt="" src="./images/xbox.png" /></p>
+<p><img alt="" src="../images/xbox.png" /></p>
 <h2 id="battery-is-not-staying-charged">Battery is not staying charged</h2>
-<p>Please review the troubleshooting section of the <a href="./battery_maintenance_guide.md">Battery Maintenance Guide</a>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Stretch RE1</label><label for="__tabbed_1_2">Stretch RE2</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Please review the troubleshooting section of the <a href="https://docs.hello-robot.com/0.2/stretch-hardware-guides/battery_maintenance_guide_re1/">RE1 Battery Maintenance Guide</a>.</p>
+</div>
+<div class="tabbed-block">
+<p>Please review the troubleshooting section of the <a href="https://docs.hello-robot.com/0.2/stretch-hardware-guides/battery_maintenance_guide_re2">RE2 Battery Maintenance Guide</a>.</p>
+</div>
+</div>
+</div>
 <h2 id="rpc-transport-errors-stretch-doesnt-respond-to-commands">RPC Transport Errors (Stretch doesn't respond to commands)</h2>
 <p>If more than one instance of Stretch Body's <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py">Robot</a> class is instantiated at a time, Stretch Body will report communication errors and will not always execute motion commands as expected. This is because <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py">Robot</a>  manages communications with the robot hardware and it doesn't support multiple writes to the USB devices.</p>
 <p>These errors can appear as</p>
@@ -3094,9 +3117,9 @@ Framer sent RPC_START_NEW_RPC
 </code></pre></div>
 <p>As shipped, Stretch launches <a href="https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_xbox_controller_teleop.py">stretch_xbox_controller_teleop.py</a> upon boot. It is necessary to turn off this automatic launch feature, otherwise your own Robot instance will conflict with this script. Additionally, if you are logged into multiple accounts, a Robot instance may be active in another user account.</p>
 <p>To turn it off, search for 'Startup' from Ubuntu Activities. Uncheck the box for 'hello_robot_xbox_teleop'.</p>
-<p><img alt="" src="./images/xbox_off_rs.png" /></p>
+<p><img alt="" src="../images/xbox_off_rs.png" /></p>
 <hr />
-<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>
+<div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks. The Stretch RE1 and RE2 robots are covered by U.S. Patent 11,230,000 and other patents pending.</div>
 
               
             </article>

@@ -8,11 +8,14 @@ import argparse
 print_stretch_re_use()
 
 parser=argparse.ArgumentParser(description='Jog the dexterous wrist joints from the keyboard')
-parser.add_argument("--yaw", help="Jog yaw joint",action="store_true")
-parser.add_argument("--pitch", help="Jog pitch joint",action="store_true")
-parser.add_argument("--roll", help="Jog roll joint",action="store_true")
+group = parser.add_mutually_exclusive_group(required=True)
+group.add_argument("--yaw", help="Jog yaw joint",action="store_true")
+group.add_argument("--pitch", help="Jog pitch joint",action="store_true")
+group.add_argument("--roll", help="Jog roll joint",action="store_true")
 
-args=parser.parse_args()
+args, _ = parser.parse_known_args()
+
+
 
 w=None
 

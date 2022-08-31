@@ -342,8 +342,22 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting_started/quick_start_guide/" class="md-nav__link">
-        Quick Start
+      <a href="../../getting_started/quick_start_guide_re1/" class="md-nav__link">
+        Quick Start RE1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/quick_start_guide_re2/" class="md-nav__link">
+        Quick Start RE2
       </a>
     </li>
   
@@ -3623,7 +3637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stretch-hardware-guides/safety_guide/" class="md-nav__link">
+      <a href="../../../stretch-hardware-guides/safety_guide.md" class="md-nav__link">
         Stretch Safety Guide
       </a>
     </li>
@@ -5157,8 +5171,8 @@ Blocking.</p>
 <p>The <code>stretch_body</code> library is modular in design. Each subcomponent of Stretch is defined in its own class and <a href="#the-robot-class">the Robot class</a> provides an interface that ties all of these classes together. This modularity allows users to plug in new/modified subcomponents into the <a href="#stretch_body.robot.Robot">Robot</a> interface by extending a device class.</p>
 <p>It is possible to interface with a single subcomponent of Stretch by initializing its device class directly. In this section, we'll look at the API of seven device classes: the <a href="#stretch_body.arm.Arm">arm</a>, <a href="#stretch_body.lift.Lift">lift</a>, <a href="#stretch_body.base.Base">base</a>, <a href="#stretch_body.head.Head">head</a>, <a href="#stretch_body.end_of_arm.EndOfArm">end of arm</a>, <a href="#stretch_body.wacc.Wacc">wacc</a>, and <a href="#stretch_body.pimu.Pimu">pimu</a> subcomponents of Stretch.</p>
 <h3 id="using-the-arm-class">Using the Arm class</h3>
-<p><img alt="Top down Stretch arm blueprint" src="./images/arm_top.png#only-light" />
-<img alt="Top down Stretch arm blueprint" src="./images/arm_top.png#only-dark" /></p>
+<p><img alt="Top down Stretch arm blueprint" src="../images/arm_top.png#only-light" />
+<img alt="Top down Stretch arm blueprint" src="../images/arm_top.png#only-dark" /></p>
 <p>The interface to Stretch's telescoping arm is the <a href="#stretch_body.arm.Arm">Arm</a> class. It is typically initialized as:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -5389,8 +5403,8 @@ return measured range-of-motion if measuring. Return None if not a valide measur
   </div>
 
 <h3 id="using-the-lift-class">Using the Lift class</h3>
-<p><img alt="Stretch lift blueprint" src="./images/lift_detail_rs.png#only-light" />
-<img alt="Stretch lift blueprint" src="./images/lift_detail_rs.png#only-dark" /></p>
+<p><img alt="Stretch lift blueprint" src="../images/lift_detail_rs.png#only-light" />
+<img alt="Stretch lift blueprint" src="../images/lift_detail_rs.png#only-dark" /></p>
 <p>The interface to Stretch's lift is the <a href="#stretch_body.lift.Lift">Lift</a> class. It is typically initialized as:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -5585,8 +5599,8 @@ return measured range-of-motion if measuring. Return None if not a valide measur
   </div>
 
 <h3 id="using-the-base-class">Using the Base class</h3>
-<p><img alt="Stretch mobile base diagram" src="./images/hw_image_1.png#only-light" />
-<img alt="Stretch mobile base diagram" src="./images/hw_image_1.png#only-dark" /></p>
+<p><img alt="Stretch mobile base diagram" src="../images/hw_image_1.png#only-light" />
+<img alt="Stretch mobile base diagram" src="../images/hw_image_1.png#only-dark" /></p>
 <table>
 <thead>
 <tr>
@@ -6611,8 +6625,8 @@ something.</p>
   </div>
 
 <h3 id="using-the-head-class">Using the Head class</h3>
-<p><img alt="Stretch head blueprint" src="./images/tilt_detail_rs.png#only-light" />
-<img alt="Stretch head blueprint" src="./images/tilt_detail_rs.png#only-dark" /></p>
+<p><img alt="Stretch head blueprint" src="../images/tilt_detail_rs.png#only-light" />
+<img alt="Stretch head blueprint" src="../images/tilt_detail_rs.png#only-dark" /></p>
 <p>The interface to Stretch's head is the <a href="#stretch_body.head.Head">Head</a> class. Stretch's head contains a Intel Realsense D435i depth camera, so the pan/tilt joints in the head allows Stretch to swivel and capture depth imagery of its surrounding. The head is typically initialized as:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -7388,7 +7402,7 @@ Based on that version, replaces PimuBase class inheritance with a inheritance to
   </div>
 
 <hr />
-<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>
+<div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks. The Stretch RE1 and RE2 robots are covered by U.S. Patent 11,230,000 and other patents pending.</div>
 
               
             </article>
