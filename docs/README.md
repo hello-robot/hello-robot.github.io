@@ -10,13 +10,13 @@ We wish you success in your development journey with Stretch. Please contact us 
 --The Hello Robot team
 
 # New to Stretch?
-We recommend you follow the [Getting to Know Stretch Tutorials](https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/README.md). 
+We recommend you follow the [Getting to Know Stretch Tutorials](https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/). 
 
 Please take the time to learn safe and best practices in operating Stretch.  
 
 **The Stretch RE1 is a potentially dangerous robot. All users must carefully read the [Stretch Safety Guide](https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/safety_guide/) prior to using the robot.**
 # Where to Find Things 
-All of the documentation is accessible and searchable via the navigation menu on this site. Alternatively, you can view the markdown hosted on at the [Hello Robot GitHub portal](github.com/hello-robot).
+All of the documentation is accessible and searchable via the navigation menu on this site. Alternatively, you can view the markdown hosted on at the [Hello Robot GitHub portal](https://github.com/hello-robot).
 
 In addition, it is worth spending some time on the following sites:
 
