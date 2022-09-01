@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=hello_robot_pimu_ping
+Exec= /usr/bin/hello_robot_pimu_ping.sh
+Hidden=false
+X-GNOME-Autostart-enabled=true
