@@ -84,7 +84,7 @@ if __name__ == '__main__':
 
         robot.startup()
         robot.pimu.trigger_beep()
-        robot.push_command()
+        #robot.push_command()
         #robot.base.enable_pos_incr_mode()
         #robot.push_command()
 
