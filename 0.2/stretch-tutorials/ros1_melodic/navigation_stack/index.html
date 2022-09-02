@@ -3646,7 +3646,7 @@
   <h1>Navigation Stack</h1>
 
 <h2 id="navigation-stack-with-actual-robot">Navigation Stack with Actual robot</h2>
-<p>stretch_navigation provides the standard ROS navigation stack as two launch files. This package utilizes gmapping, move_base, and AMCL to drive the stretch RE1 around a mapped space. Running this code will require the robot to be untethered.</p>
+<p>stretch_navigation provides the standard ROS navigation stack as two launch files. This package utilizes gmapping, move_base, and AMCL to drive Stretch around a mapped space. Running this code will require the robot to be untethered.</p>
 <p>Then run the following commands to map the space that the robot will navigate in.
 <div class="highlight"><pre><span></span><code>roslaunch stretch_navigation mapping.launch
 </code></pre></div>
@@ -3671,7 +3671,7 @@ rosrun map_server map_saver -f <span class="si">${</span><span class="nv">HELLO_
 roslaunch stretch_navigation mapping_gazebo.launch gazebo_world:<span class="o">=</span>worlds/willowgarage.world
 </code></pre></div>
 <h3 id="teleop-using-a-joystick-controller">Teleop using a Joystick Controller</h3>
-<p>The mapping launch files, <code>mapping.launch</code> and <code>mapping_gazebo.launch</code> expose the ROS argument, "teleop_type". By default, this ROS arg is set to "keyboard", which launches keyboard teleop in the terminal. If the xbox controller that ships with Stretch RE1 is plugged into your computer, the following command will launch mapping with joystick teleop:</p>
+<p>The mapping launch files, <code>mapping.launch</code> and <code>mapping_gazebo.launch</code> expose the ROS argument, "teleop_type". By default, this ROS arg is set to "keyboard", which launches keyboard teleop in the terminal. If the xbox controller that ships with Stretch is plugged into your computer, the following command will launch mapping with joystick teleop:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
 roslaunch stretch_navigation mapping.launch teleop_type:<span class="o">=</span>joystick
 </code></pre></div>

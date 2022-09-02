@@ -3643,7 +3643,7 @@
 <p>A splined trajectory is a smooth path that a robot joint follows over a specific period of time. <a href="https://en.wikipedia.org/wiki/Spline_(mathematics)">Cubic or quintic splines</a> are used to represent the trajectory. As shown below, the splines (blue) are defined by a series of user provided waypoints (black dot). A waypoint is simply a target position, velocity, and optional acceleration at a given time. The spline ensures continuity and smoothness when interpolating between the waypoint targets.</p>
 <p>During execution, the trajectory controller uses this splined representation to compute the instantaneous desired position, velocity, and acceleration of the joint (red). On Stretch, this instantaneous target is then passed to a lower-level position or velocity controller. </p>
 <p>Splined trajectories are particularly useful when you want to coordinate motion across several joints. Because the trajectory representation is time based, it is straightforward to encode multi-joint coordination. Stretch Body supports both cubic and quintic spline. A quintic spline waypoint includes acceleration in the waypoint target, while a cubic spline does not. </p>
-<p><img src="./images/splined_traj.png"  /></p>
+<p><img alt="alt_text" src="../images/splined_traj.png" title="image_tooltip" /></p>
 <h2 id="the-splined-trajectory-tool">The Splined Trajectory Tool</h2>
 <p>Stretch Body includes <a href="https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_trajectory_jog.py">a graphical tool for exploring splined trajectory control</a> on the robot:</p>
 <div class="highlight"><pre><span></span><code>stretch_trajectory_jog.py -h
@@ -3667,7 +3667,7 @@ optional arguments:
   --full_body           Test trajectories on all joints at once
 </code></pre></div>
 <p>The tool GUI allows you to interactively construct a splined trajectory and then execute it on the robot. For example, on the arm:</p>
-<p><img src="./images/traj_gui.png"  /></p>
+<p><img alt="alt_text" src="../images/traj_gui.png" title="image_tooltip" /></p>
 <p><strong>NOTE</strong>: Use caution when commanding the base. Ensure that attached cables are long enough to support base motion. Alternatively you may want to put the base on top of a book so the wheel don't touch the ground.</p>
 <p>Finally, you can explore a full-body trajectory using the non-GUI version of the tool:</p>
 <div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_trajectory_jog.py --full_body
