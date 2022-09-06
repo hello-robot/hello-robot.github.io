@@ -89,6 +89,81 @@ def param_dropped_check(new_dict,prior_dict,num_warnings,new_dict_name,prior_dic
                 num_warnings=num_warnings+1
     return num_warnings
 
+# ####################### Contact Thresh Conversion ##############
+# Read in old PseudoN units and write back out as effort_pct
+# Remove the old parameters from the YAML as well
+
+def contacts_pseudo_N_to_effort_pct(force_N_per_A, iMax_pos, iMax_neg,contacts_pseudo_N ):
+    contacts_A = [contacts_pseudo_N[0]/force_N_per_A, contacts_pseudo_N[1]/force_N_per_A]
+    return [contacts_A[0]/abs(iMax_neg), contacts_A[1]/iMax_pos]
+
+def convert_joint_contact_thresh(stepper_name, joint_name, N, D):
+    # Convert arm configuration data
+    modified=False
+
+    if joint_name not in D or stepper_name not in D:
+        return D, False
+    if 'contact_models' not in D[joint_name]:
+        D[joint_name]['contact_models']={'effort_pct':{}}
+
+    if 'homing_force_N' in D[joint_name]:
+        D[joint_name]['contact_models']['effort_pct']['contact_thresh_homing'] = contacts_pseudo_N_to_effort_pct(N[joint_name]['force_N_per_A'],
+                                                     N[stepper_name]['gains']['iMax_pos'],
+                                                     N[stepper_name]['gains']['iMax_neg'],
+                                                     D[joint_name]['homing_force_N'])
+
+        print("Converted [%f, %f] to [%f, %f] for %s of %s"%(D[joint_name]['homing_force_N'][0],D[joint_name]['homing_force_N'][1],
+                                                       D[joint_name]['contact_models']['effort_pct']['contact_thresh_homing'][0],
+                                                       D[joint_name]['contact_models']['effort_pct']['contact_thresh_homing'][1], 'homing_force_N', joint_name))
+        D[joint_name].pop('homing_force_N')
+        modified=True
+
+    if 'contact_thresh_N' in D[joint_name]:
+        D[joint_name]['contact_models']['effort_pct']['contact_thresh_default'] = contacts_pseudo_N_to_effort_pct(N[joint_name]['force_N_per_A'],
+                                                     N[stepper_name]['gains']['iMax_pos'],
+                                                     N[stepper_name]['gains']['iMax_neg'],
+                                                     D[joint_name]['contact_thresh_N'])
+
+        print("Converted [%f, %f] to [%f, %f] for %s of %s" % (
+        D[joint_name]['contact_thresh_N'][0], D[joint_name]['contact_thresh_N'][1],
+        D[joint_name]['contact_models']['effort_pct']['contact_thresh_default'][0],
+        D[joint_name]['contact_models']['effort_pct']['contact_thresh_default'][1], 'contact_thresh_N',joint_name))
+        D[joint_name].pop('contact_thresh_N')
+        modified = True
+
+    if 'contact_thresh_max_N' in D[joint_name]:
+        D[joint_name].pop('contact_thresh_max_N')
+        modified = True
+    return D, modified
+
+def migrate_contact_params_RE1V0(fleet_path, fleet_id):
+    hello_utils.set_fleet_directory(fleet_path, fleet_id)
+    U = hello_utils.read_fleet_yaml('stretch_user_params.yaml')
+    C = hello_utils.read_fleet_yaml('stretch_configuration_params.yaml')
+    if (len(U) == 0 or len(C) == 0):  # Empty file (corrupted)
+        click.secho('Warning. Robot parameter data not found', fg="yellow")
+        return False
+    import stretch_body.robot_params_RE1V0
+    N = stretch_body.robot_params_RE1V0.nominal_params
+
+    C, m1 = convert_joint_contact_thresh('hello-motor-arm','arm',N,C)
+    C, m2 = convert_joint_contact_thresh('hello-motor-lift', 'lift', N, C)
+    if m1 or m2:
+        click.secho('Updated stretch_configuration_params.yaml.', fg="green")
+        hello_utils.write_fleet_yaml('stretch_configuration_params.yaml', C, None, stretch_body.robot_params_RE1V0.configuration_params_header)
+
+    U, m3 = convert_joint_contact_thresh('hello-motor-arm','arm',N,U)
+    U, m4 = convert_joint_contact_thresh('hello-motor-lift', 'lift', N, U)
+    if m3 or m4:
+        click.secho('Updated stretch_user_params.yaml.', fg="green")
+        hello_utils.write_fleet_yaml('stretch_user_params.yaml', U, None,stretch_body.robot_params_RE1V0.configuration_params_header)
+    if not m1 and not m2 and not m3 and not m4:
+        click.secho('Contact parameter migration not required.', fg="green")
+    return True
+
+
+# #########################################################################################
+
 #Todo: make generic for future migrations / parameter org changes. Do we version parameter orgs?
 def migrate_params_RE1V0(fleet_path, fleet_id, dropped_user_params):
     """

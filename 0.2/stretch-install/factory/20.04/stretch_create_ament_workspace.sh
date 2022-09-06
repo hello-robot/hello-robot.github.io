@@ -2,7 +2,7 @@
 set -e
 
 REDIRECT_LOGDIR="$HOME/stretch_user/log"
-AMENT_WSDIR="$HOME/catkin_ws"
+AMENT_WSDIR="$HOME/ament_ws"
 while getopts l:w: opt; do
     case $opt in
         l)
