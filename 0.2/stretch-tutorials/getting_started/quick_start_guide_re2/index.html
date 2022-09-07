@@ -437,13 +437,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#led-lightbar" class="md-nav__link">
-    LED Lightbar
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#charging-the-battery" class="md-nav__link">
     Charging the Battery
   </a>
@@ -453,6 +446,13 @@
           <li class="md-nav__item">
   <a href="#runstop" class="md-nav__link">
     Runstop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#led-lightbar" class="md-nav__link">
+    LED Lightbar
   </a>
   
 </li>
@@ -3846,13 +3846,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#led-lightbar" class="md-nav__link">
-    LED Lightbar
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#charging-the-battery" class="md-nav__link">
     Charging the Battery
   </a>
@@ -3862,6 +3855,13 @@
           <li class="md-nav__item">
   <a href="#runstop" class="md-nav__link">
     Runstop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#led-lightbar" class="md-nav__link">
+    LED Lightbar
   </a>
   
 </li>
@@ -3954,10 +3954,7 @@
 <p>A few items you'll want to know about before getting started.</p>
 <h3 id="power">Power</h3>
 <p>The entire robot powers up and down with the On/Off switch. When powering down, we recommend selecting 'Power Off' from the Ubuntu Desktop prior to hitting the Off switch</p>
-<p><img alt="" src="../images/trunk_rs.png" /></p>
-<h3 id="led-lightbar">LED Lightbar</h3>
-<p>The LED lightbar on the base indicates the battery voltage according to its color. It should be green, indicating a full charge. If it is orange or red the batteries require charging. </p>
-<p><img alt="" src="../images/lightbar_voltage.png" /></p>
+<p><img alt="" src="../images/trunk_re2.png" /></p>
 <h3 id="charging-the-battery">Charging the Battery</h3>
 <p>The provided battery charger can be plugged and unplugged at any time during operation. Stretch uses the following charger modes:</p>
 <table>
@@ -3992,6 +3989,34 @@
 <p>The illuminated button on the head is its Runstop. Just tap it, you'll hear a beep and it will start flashing. This will pause motion of the primary robot joints during operation. This can be useful if the robot makes an unsafe motion, or if you just want to free up the robot motors while you roll it around.</p>
 <p>To allow motion once again, hold the button down for two seconds. After the beep, motion can resume.</p>
 <p><img alt="" src="../images/runstop_rs.png" /></p>
+<h3 id="led-lightbar">LED Lightbar</h3>
+<p>The LED lightbar in the base provides a simple way to quickly ascertain the robot state. At all times its color indicates the battery voltage. </p>
+<p><img alt="" src="../images/lightbar_voltage.png" /></p>
+<p>More information on the voltage display is available in the <a href="https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/battery_maintenance_guide_re2/#state-of-battery-charge">Battery Maintenance Guide</a></p>
+<p>The lightbar will also flash as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Flashing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Normal Operation</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Runstopped</td>
+<td>Rapid flash at 1 Hz</td>
+</tr>
+<tr>
+<td>Charger plugged in</td>
+<td>Slow strobe at 0.5 Hz</td>
+</tr>
+</tbody>
+</table>
+<p>Try runstopping the robot and plugging in the charger to become familiar with these modes. </p>
 <h3 id="safe-handling">Safe Handling</h3>
 <p>Like any robot, it is possible to break Stretch if you're not careful. Use common sense when applying forces to its joints, transporting it, etc. </p>
 <p>The <a href="https://youtu.be/mQdOGEksdYM">Stretch Unpowered Best Practices Video</a> provides a quick overview of how to work with the robot.</p>
@@ -4005,8 +4030,10 @@
 <p><strong>Things to be mindful of</strong>:</p>
 <ul>
 <li>Manually moving the head and wrist. They will move but they want to go at their own speed.</li>
-<li>The arm will slowly descend when the robot is powered off. If the arm is retracted it may rest the tool on the base. If desired to hold the arm up when un-powered, the provided 'clip-clamp' can be clipped onto the mast below the shoulder to support it. </li>
+<li>The lift will slowly descend when the robot is powered off. If the arm is retracted it may come to rest the tool on the base. If desired to hold the arm up when un-powered, the provided 'clip-clamp' can be clipped onto the mast below the shoulder to support it. </li>
 </ul>
+<p><strong>NOTE</strong>: The RE2 lift descends faster than the RE1. For the RE2 we recommend always attaching the clip-clamp as shown below prior to powering down the NUC computer</p>
+<p><img alt="" src="../images/clip-clamp.png" /></p>
 <p><strong>Things that can hurt the robot</strong>: </p>
 <ul>
 <li>Driving the wrist and gripper into the base. When the arm and wrist are stowed it is possible to collide the two.</li>
@@ -4065,7 +4092,9 @@ Python <span class="m">3</span>.8.10 <span class="o">(</span>default, Jun <span 
 ...
 </code></pre></div>
 <p>Now let's move the robot around using the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py">Stretch Body Robot API</a>. Try typing in these interactive commands at the iPython prompt:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">stretch_body.robot</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;</span><span class="err">$</span> <span class="n">ipython</span>
+<span class="o">...</span>
+<span class="kn">import</span> <span class="nn">stretch_body.robot</span>
 <span class="n">robot</span><span class="o">=</span><span class="n">stretch_body</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">Robot</span><span class="p">()</span>
 <span class="n">robot</span><span class="o">.</span><span class="n">startup</span><span class="p">()</span>
 

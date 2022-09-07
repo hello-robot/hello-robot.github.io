@@ -1097,34 +1097,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#stretch_body.base.Base.motor_current_to_rotation_pseudo_N" class="md-nav__link">
-    motor_current_to_rotation_pseudo_N()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#stretch_body.base.Base.motor_current_to_translation_pseudo_N" class="md-nav__link">
-    motor_current_to_translation_pseudo_N()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#stretch_body.base.Base.translation_pseudo_N_to_motor_current" class="md-nav__link">
-    translation_pseudo_N_to_motor_current()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#stretch_body.base.Base.rotation_pseudo_N_to_motor_current" class="md-nav__link">
-    rotation_pseudo_N_to_motor_current()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#stretch_body.base.Base.rotation_effort_pct_to_motor_current" class="md-nav__link">
     rotation_effort_pct_to_motor_current()
   </a>
@@ -5070,34 +5042,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#stretch_body.base.Base.motor_current_to_rotation_pseudo_N" class="md-nav__link">
-    motor_current_to_rotation_pseudo_N()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#stretch_body.base.Base.motor_current_to_translation_pseudo_N" class="md-nav__link">
-    motor_current_to_translation_pseudo_N()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#stretch_body.base.Base.translation_pseudo_N_to_motor_current" class="md-nav__link">
-    translation_pseudo_N_to_motor_current()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#stretch_body.base.Base.rotation_pseudo_N_to_motor_current" class="md-nav__link">
-    rotation_pseudo_N_to_motor_current()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#stretch_body.base.Base.rotation_effort_pct_to_motor_current" class="md-nav__link">
     rotation_effort_pct_to_motor_current()
   </a>
@@ -6070,7 +6014,8 @@ stretch_body.arm.Arm            (<span title="stretch_body.prismatic_joint.Prism
 
     <div class="doc doc-contents ">
 
-      <p>to_positive_stop:
+      <p>end_pos: position to end on
+to_positive_stop:
 -- True: Move to the positive direction stop and mark to range_m[1]
 -- False: Move to the negative direction stop and mark to range_m[0]
 measuring: After homing to stop, move to opposite stop and report back measured distance
@@ -6266,7 +6211,8 @@ stretch_body.lift.Lift            (<span title="stretch_body.prismatic_joint.Pri
 
     <div class="doc doc-contents ">
 
-      <p>to_positive_stop:
+      <p>end_pos: position to end on
+to_positive_stop:
 -- True: Move to the positive direction stop and mark to range_m[1]
 -- False: Move to the negative direction stop and mark to range_m[0]
 measuring: After homing to stop, move to opposite stop and report back measured distance
@@ -6632,13 +6578,14 @@ stretch_body.base.Base            (<span title="stretch_body.device.Device">Devi
 
 
 <h4 id="stretch_body.base.Base.contact_thresh_to_motor_current" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">contact_thresh_to_motor_current</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">is_translate</span><span class="p">,</span> <span class="n">contact_thresh</span><span class="p">,</span> <span class="n">contact_model</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">contact_thresh_to_motor_current</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">is_translate</span><span class="p">,</span> <span class="n">contact_thresh</span><span class="p">)</span></code>
 
 
 </h4>
 
     <div class="doc doc-contents ">
 
+      <p>This model converts from a specified percentage effort (-100 to 100) of translate/rotational effort to motor currents</p>
 
     </div>
 
@@ -6651,7 +6598,7 @@ stretch_body.base.Base            (<span title="stretch_body.device.Device">Devi
 
 
 <h4 id="stretch_body.base.Base.translate_by" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">translate_by</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_m</span><span class="p">,</span> <span class="n">v_m</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">a_m</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stiffness</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contact_thresh</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contact_model</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">translate_by</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_m</span><span class="p">,</span> <span class="n">v_m</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">a_m</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stiffness</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contact_thresh_N</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contact_thresh</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 
 </h4>
@@ -6663,7 +6610,8 @@ x_m: desired motion (m)
 v_m: velocity for trapezoidal motion profile (m/s)
 a_m: acceleration for trapezoidal motion profile (m/s^2)
 stiffness: stiffness of motion. Range 0.0 (min) to 1.0 (max)
-contact_thresh_N: force threshold to stop motion (TODO: Not yet implemented)</p>
+contact_thresh_N: (deprecated) effort to stop at (units of pseudo_N)
+contact_thresh: effort to stop at (units of effort_pct (-100, 100))</p>
 
     </div>
 
@@ -6676,7 +6624,7 @@ contact_thresh_N: force threshold to stop motion (TODO: Not yet implemented)</p>
 
 
 <h4 id="stretch_body.base.Base.rotate_by" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">rotate_by</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_r</span><span class="p">,</span> <span class="n">v_r</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">a_r</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stiffness</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contact_thresh</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contact_model</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">rotate_by</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_r</span><span class="p">,</span> <span class="n">v_r</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">a_r</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stiffness</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contact_thresh_N</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contact_thresh</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 
 </h4>
@@ -6688,7 +6636,8 @@ x_r: desired motion (radians)
 v_r: velocity for trapezoidal motion profile (rad/s)
 a_r: acceleration for trapezoidal motion profile (rad/s^2)
 stiffness: stiffness of motion. Range 0.0 (min) to 1.0 (max)
-contact_thresh_N: force threshold to stop motion (Not yet implemented)</p>
+contact_thresh_N: (deprecated) effort to stop at (units of pseudo_N)
+contact_thresh: effort to stop at (units of effort_pct (-100, 100))</p>
 
     </div>
 
@@ -6701,7 +6650,7 @@ contact_thresh_N: force threshold to stop motion (Not yet implemented)</p>
 
 
 <h4 id="stretch_body.base.Base.set_translate_velocity" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">set_translate_velocity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v_m</span><span class="p">,</span> <span class="n">a_m</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stiffness</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contact_thresh</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contact_model</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">set_translate_velocity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v_m</span><span class="p">,</span> <span class="n">a_m</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stiffness</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contact_thresh_N</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contact_thresh</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 
 </h4>
@@ -6711,7 +6660,9 @@ contact_thresh_N: force threshold to stop motion (Not yet implemented)</p>
       <p>Command the bases translational velocity.
 Use care to prevent collisions / avoid runaways
 v_m: desired velocity (m/s)
-a_m: acceleration of motion profile (m/s^2)</p>
+a_m: acceleration of motion profile (m/s^2)
+contact_thresh_N: (deprecated) effort to stop at (units of pseudo_N)
+contact_thresh: effort to stop at (units of effort_pct (-100, 100))</p>
 
     </div>
 
@@ -6724,7 +6675,7 @@ a_m: acceleration of motion profile (m/s^2)</p>
 
 
 <h4 id="stretch_body.base.Base.set_rotational_velocity" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">set_rotational_velocity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v_r</span><span class="p">,</span> <span class="n">a_r</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stiffness</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contact_thresh</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contact_model</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">set_rotational_velocity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v_r</span><span class="p">,</span> <span class="n">a_r</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stiffness</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contact_thresh_N</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contact_thresh</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 
 </h4>
@@ -6734,7 +6685,9 @@ a_m: acceleration of motion profile (m/s^2)</p>
       <p>Command the bases rotational velocity.
 Use care to prevent collisions / avoid runaways
 v_r: desired rotational velocity (rad/s)
-a_r: acceleration of motion profile (rad/s^2)</p>
+a_r: acceleration of motion profile (rad/s^2)
+contact_thresh_N: (deprecated) effort to stop at (units of pseudo_N)
+contact_thresh: effort to stop at (units of effort_pct (-100, 100))</p>
 
     </div>
 
@@ -6747,7 +6700,7 @@ a_r: acceleration of motion profile (rad/s^2)</p>
 
 
 <h4 id="stretch_body.base.Base.set_velocity" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">set_velocity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v_m</span><span class="p">,</span> <span class="n">w_r</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stiffness</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contact_thresh</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contact_model</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">set_velocity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v_m</span><span class="p">,</span> <span class="n">w_r</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stiffness</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contact_thresh_N</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contact_thresh</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 
 </h4>
@@ -6759,7 +6712,9 @@ velocities simultaneously.
 Use care to prevent collisions / avoid runaways
 v_m: desired velocity (m/s)
 w_r: desired rotational velocity (rad/s)
-a:   acceleration of motion profile (m/s^2 and rad/s^2)</p>
+a:   acceleration of motion profile (m/s^2 and rad/s^2)
+contact_thresh_N: (deprecated) effort to stop at (units of pseudo_N)
+contact_thresh: effort to stop at (units of effort_pct (-100, 100))</p>
 
     </div>
 
@@ -6772,7 +6727,7 @@ a:   acceleration of motion profile (m/s^2 and rad/s^2)</p>
 
 
 <h4 id="stretch_body.base.Base.follow_trajectory" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">follow_trajectory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v_r</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">a_r</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stiffness</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contact_thresh</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contact_model</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">follow_trajectory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v_r</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">a_r</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stiffness</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contact_thresh_N</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contact_thresh</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 
 </h4>
@@ -6789,8 +6744,8 @@ a_r : float
     acceleration limit for trajectory in motor space in meters per second squared
 stiffness : float
     stiffness of motion. Range 0.0 (min) to 1.0 (max)
-contact_thresh_N : float
-    force threshold to stop motion (~Newtons)</p>
+contact_thresh_N: (deprecated) effort to stop at (units of pseudo_N)
+contact_thresh: effort to stop at (units of effort_pct (-100, 100))</p>
 
     </div>
 
@@ -7025,82 +6980,6 @@ something.</p>
 
 <h4 id="stretch_body.base.Base.rotation_torque_to_motor_current" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">rotation_torque_to_motor_current</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tq_Nm</span><span class="p">)</span></code>
-
-
-</h4>
-
-    <div class="doc doc-contents ">
-
-
-    </div>
-
-  </div>
-
-
-
-  <div class="doc doc-object doc-method">
-
-
-
-<h4 id="stretch_body.base.Base.motor_current_to_rotation_pseudo_N" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">motor_current_to_rotation_pseudo_N</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">il</span><span class="p">,</span> <span class="n">ir</span><span class="p">)</span></code>
-
-
-</h4>
-
-    <div class="doc doc-contents ">
-
-
-    </div>
-
-  </div>
-
-
-
-  <div class="doc doc-object doc-method">
-
-
-
-<h4 id="stretch_body.base.Base.motor_current_to_translation_pseudo_N" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">motor_current_to_translation_pseudo_N</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">il</span><span class="p">,</span> <span class="n">ir</span><span class="p">)</span></code>
-
-
-</h4>
-
-    <div class="doc doc-contents ">
-
-
-    </div>
-
-  </div>
-
-
-
-  <div class="doc doc-object doc-method">
-
-
-
-<h4 id="stretch_body.base.Base.translation_pseudo_N_to_motor_current" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">translation_pseudo_N_to_motor_current</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f_N</span><span class="p">)</span></code>
-
-
-</h4>
-
-    <div class="doc doc-contents ">
-
-
-    </div>
-
-  </div>
-
-
-
-  <div class="doc doc-object doc-method">
-
-
-
-<h4 id="stretch_body.base.Base.rotation_pseudo_N_to_motor_current" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">rotation_pseudo_N_to_motor_current</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tq_Nm</span><span class="p">)</span></code>
 
 
 </h4>
