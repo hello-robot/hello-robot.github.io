@@ -144,4 +144,5 @@ if click.confirm('Proceed?'):
 
     if click.confirm('Save results?'):
         j.write_configuration_param_to_YAML(j.name + '.contact_models.effort_pct.contact_thresh_default', [ncd_n,ncd_p])
+        j.write_configuration_param_to_YAML(j.name + '.contact_models.effort_pct.contact_thresh_homing', [ncd_n, ncd_p])
 

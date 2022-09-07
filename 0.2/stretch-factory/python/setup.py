@@ -11,7 +11,7 @@ stretch_scripts={script_path+'/'+f for f in listdir(script_path) if isfile(join(
 
 setuptools.setup(
     name="hello_robot_stretch_factory",
-    version="0.3.2",
+    version="0.3.3",
     author="Hello Robot Inc.",
     author_email="support@hello-robot.com",
     description="Stretch Factory Tools",
