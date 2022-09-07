@@ -437,13 +437,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#charging-the-battery" class="md-nav__link">
-    Charging the Battery
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#runstop" class="md-nav__link">
     Runstop
   </a>
@@ -457,13 +450,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#safe-handling" class="md-nav__link">
-    Safe Handling
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -473,6 +459,26 @@
   <a href="#hello-world-demo" class="md-nav__link">
     Hello World Demo
   </a>
+  
+    <nav class="md-nav" aria-label="Hello World Demo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#safe-handling" class="md-nav__link">
+    Safe Handling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#charging-the-battery" class="md-nav__link">
+    Charging the Battery
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3846,13 +3852,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#charging-the-battery" class="md-nav__link">
-    Charging the Battery
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#runstop" class="md-nav__link">
     Runstop
   </a>
@@ -3866,13 +3865,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#safe-handling" class="md-nav__link">
-    Safe Handling
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -3882,6 +3874,26 @@
   <a href="#hello-world-demo" class="md-nav__link">
     Hello World Demo
   </a>
+  
+    <nav class="md-nav" aria-label="Hello World Demo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#safe-handling" class="md-nav__link">
+    Safe Handling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#charging-the-battery" class="md-nav__link">
+    Charging the Battery
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3954,37 +3966,7 @@
 <p>A few items you'll want to know about before getting started.</p>
 <h3 id="power">Power</h3>
 <p>The entire robot powers up and down with the On/Off switch. When powering down, we recommend selecting 'Power Off' from the Ubuntu Desktop prior to hitting the Off switch</p>
-<p><img alt="" src="../images/trunk_re2.png" /></p>
-<h3 id="charging-the-battery">Charging the Battery</h3>
-<p>The provided battery charger can be plugged and unplugged at any time during operation. Stretch uses the following charger modes:</p>
-<table>
-<thead>
-<tr>
-<th>Mode</th>
-<th>Function</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>STANDBY</td>
-<td>Charger not charging the robot</td>
-</tr>
-<tr>
-<td>12V AGM</td>
-<td>Charging while robot is powered down</td>
-</tr>
-<tr>
-<td>SUPPLY</td>
-<td>1) Power the robot during tethered use<br/>2) Repair damaged batteries.</td>
-</tr>
-<tr>
-<td>REPAIR</td>
-<td>Repair damaged batteries.</td>
-</tr>
-</tbody>
-</table>
-<p>Please review the <a href="https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/battery_maintenance_guide_re2/">Battery Maintenance Guide</a> for proper care and charging of Stretch batteries. </p>
-<p><img alt="" src="../images/NOCO_Genius10_UI_rs.png" /></p>
+<p><img alt="" src="../images/trunk_re2_rs.png" /></p>
 <h3 id="runstop">Runstop</h3>
 <p>The illuminated button on the head is its Runstop. Just tap it, you'll hear a beep and it will start flashing. This will pause motion of the primary robot joints during operation. This can be useful if the robot makes an unsafe motion, or if you just want to free up the robot motors while you roll it around.</p>
 <p>To allow motion once again, hold the button down for two seconds. After the beep, motion can resume.</p>
@@ -4016,31 +3998,6 @@
 </tr>
 </tbody>
 </table>
-<p>Try runstopping the robot and plugging in the charger to become familiar with these modes. </p>
-<h3 id="safe-handling">Safe Handling</h3>
-<p>Like any robot, it is possible to break Stretch if you're not careful. Use common sense when applying forces to its joints, transporting it, etc. </p>
-<p>The <a href="https://youtu.be/mQdOGEksdYM">Stretch Unpowered Best Practices Video</a> provides a quick overview of how to work with the robot.</p>
-<p><strong>Things that won't hurt the robot</strong>:</p>
-<ul>
-<li>Manually push and pull the arm (when the motor isn't holding a position).</li>
-<li>Manually raise and lower the lift (when the motor isn't holding a position).</li>
-<li>Manually tilt and roll the base around (when the motors aren't holding a position).</li>
-<li>Pick up and carry Stretch (while holding it by the mast, two people for safety).</li>
-</ul>
-<p><strong>Things to be mindful of</strong>:</p>
-<ul>
-<li>Manually moving the head and wrist. They will move but they want to go at their own speed.</li>
-<li>The lift will slowly descend when the robot is powered off. If the arm is retracted it may come to rest the tool on the base. If desired to hold the arm up when un-powered, the provided 'clip-clamp' can be clipped onto the mast below the shoulder to support it. </li>
-</ul>
-<p><strong>NOTE</strong>: The RE2 lift descends faster than the RE1. For the RE2 we recommend always attaching the clip-clamp as shown below prior to powering down the NUC computer</p>
-<p><img alt="" src="../images/clip-clamp.png" /></p>
-<p><strong>Things that can hurt the robot</strong>: </p>
-<ul>
-<li>Driving the wrist and gripper into the base. When the arm and wrist are stowed it is possible to collide the two.</li>
-<li>Getting the gripper stuck on something and then driving the arm, lift, or base. </li>
-<li>Laying the robot down with it weight on its camera.</li>
-<li>Trying to ride on the robot, getting it wet, etc. (eg, common sense)</li>
-</ul>
 <h2 id="hello-world-demo">Hello World Demo</h2>
 <p>Stretch comes ready to run out of the box. The Xbox Teleoperation demo will let you quickly test out the robot capabilities by teleoperating it with an Xbox Controller. </p>
 <p><img alt="" src="../images/xbox.png" /></p>
@@ -4062,15 +4019,69 @@
 <li>Try grasping cup from a counter top</li>
 <li>Try delivering an object to a person</li>
 </ul>
-<p>If you're done, hold down the Shutdown PC button for 2 seconds. This will cause the PC to turn off. You can then power down the robot. Or proceed to the next step...</p>
+<p>If you're done, let's power down. First attach the clip-clamp just below the shoulder as shown.
+<img alt="" src="../images/clip-clamp_rs.png" /></p>
+<p>Hold down the Shutdown PC button on the Xbox controller for 2 seconds. This will cause the PC to turn off. You can then power down the robot with the On/Off switch. </p>
 <p>Now that you're familiar with the robot, take a minute to watch the <a href="https://youtu.be/iEaapHNfEWA">Stretch Powered Best Practices Video</a>.</p>
-<h2 id="get-plugged-in">Get Plugged In</h2>
-<p>Let's get plugged in.</p>
+<h3 id="safe-handling">Safe Handling</h3>
+<p>Like any robot, it is possible to break Stretch if you're not careful. Use common sense when applying forces to its joints, transporting it, etc. </p>
+<p>The <a href="https://youtu.be/mQdOGEksdYM">Stretch Unpowered Best Practices Video</a> provides a quick overview of how to work with the robot.</p>
+<p><strong>Things that won't hurt the robot</strong>:</p>
 <ul>
-<li>Plug in a mouse, keyboard and HDMI monitor to the robot trunk</li>
-<li>Plug in the battery charger</li>
-<li>Place the charger in SUPPLY mode</li>
+<li>Manually push and pull the arm (when the motor isn't holding a position).</li>
+<li>Manually raise and lower the lift (when the motor isn't holding a position).</li>
+<li>Manually tilt and roll the base around (when the motors aren't holding a position).</li>
+<li>Pick up and carry Stretch (while holding it by the mast, two people for safety).</li>
 </ul>
+<p><strong>Things to be mindful of</strong>:</p>
+<ul>
+<li>Manually moving the head and wrist. They will move but they want to go at their own speed.</li>
+<li>The lift will slowly descend when the robot is powered off. If the arm is retracted it may come to rest the tool on the base. If desired to hold the arm up when un-powered, the provided 'clip-clamp' can be clipped onto the mast below the shoulder to support it. </li>
+</ul>
+<p><strong>NOTE</strong>: The RE2 lift descends faster than the RE1. For the RE2 we recommend always attaching the clip-clamp prior to powering down the NUC computer</p>
+<p><strong>Things that can hurt the robot</strong>: </p>
+<ul>
+<li>Driving the wrist and gripper into the base. When the arm and wrist are stowed it is possible to collide the two.</li>
+<li>Getting the gripper stuck on something and then driving the arm, lift, or base. </li>
+<li>Laying the robot down with it weight on its camera.</li>
+<li>Trying to ride on the robot, getting it wet, etc. (eg, common sense)</li>
+</ul>
+<h3 id="charging-the-battery">Charging the Battery</h3>
+<p>The provided battery charger can be plugged and unplugged at any time during operation. Stretch uses the following charger modes:</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STANDBY</td>
+<td>Charger not charging the robot</td>
+</tr>
+<tr>
+<td>12V AGM</td>
+<td>Charging while robot is powered down</td>
+</tr>
+<tr>
+<td>SUPPLY</td>
+<td>1) Power the robot during tethered use<br/>2) Repair damaged batteries.</td>
+</tr>
+<tr>
+<td>REPAIR</td>
+<td>Repair damaged batteries.</td>
+</tr>
+</tbody>
+</table>
+<p>Please review the <a href="https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/battery_maintenance_guide_re2/">Battery Maintenance Guide</a> for proper care and charging of Stretch batteries. </p>
+<p><img alt="" src="../images/NOCO_Genius10_UI_rs.png" /></p>
+<h2 id="get-plugged-in">Get Plugged In</h2>
+<p>Let's get plugged in.
+* Power up the robot
+* Plug in a mouse, keyboard and HDMI monitor to the robot trunk
+* Plug in the battery charger
+* Place the charger in SUPPLY mode</p>
 <p>Log in to the robot computer. The default user credentials came in the box with the robot. </p>
 <h2 id="start-coding">Start Coding</h2>
 <p>Python is the easiest way to begin writing code for the robot. This section will give you a quick look at Stretch Body, which is the low level Python interface to the robot. Detailed information on the <a href="../../stretch_body/">Stretch Body Interface</a> can be found here.</p>
