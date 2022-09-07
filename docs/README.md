@@ -9,6 +9,19 @@ We wish you success in your development journey with Stretch. Please contact us 
 
 --The Hello Robot team
 
+## Version
+This is version 0.2 of the Stretch User Documentation. It is written with the following system configuration in mind:
+
+
+| Resource                 | Description                |
+|--------------------------|----------------------------|
+| Model                    | Stretch RE1 or Stretch RE2 |
+| OS                       | Ubuntu 20.04               |
+| ROS | Noetic  and Melodic        |
+| Python                   | Python3                    |
+| Stretch Body| '>=0.4                     |
+
+You can access prior documentation suitable for older configurations (eg Ubuntu 18.04, ROS Melodic) [here](https://docs.hello-robot.com/0.1/)
 # New to Stretch?
 We recommend you follow the [Getting to Know Stretch Tutorials](https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/). 
 
@@ -26,19 +39,7 @@ In addition, it is worth spending some time on the following sites:
 | [Stretch Forum](https://forum.hello-robot.com/)                           | Discourse User Forum                                         |
 
 
-# Version
-This is version 0.2 of the Stretch User Documentation. It is written with the following system configuration in mind:
 
-
-| Resource                 | Description                |
-|--------------------------|----------------------------|
-| Model                    | Stretch RE1 or Stretch RE2 |
-| OS                       | Ubuntu 20.04               |
-| ROS | Noetic                     |
-| Python                   | Python3                    |
-| Stretch Body| '>=0.4                     |
-
-You can access prior documentation suitable for older configurations (eg Ubuntu 18.04, ROS Melodic) [here](https://docs.hello-robot.com/0.1/)
 
 # License
 
