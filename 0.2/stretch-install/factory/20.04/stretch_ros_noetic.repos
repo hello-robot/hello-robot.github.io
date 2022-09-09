@@ -11,7 +11,3 @@ repositories:
     type: git
     url: https://github.com/pal-robotics/realsense_gazebo_plugin/
     version: melodic-devel
-  respeaker_ros:
-    type: git
-    url: https://github.com/hello-binit/respeaker_ros/
-    version: python3.9.7

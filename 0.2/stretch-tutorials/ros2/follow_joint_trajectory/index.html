@@ -3847,7 +3847,7 @@
 <p>Stretch driver offers a <a href="http://docs.ros.org/en/api/control_msgs/html/action/FollowJointTrajectory.html"><code>FollowJointTrajectory</code></a> action service for its arm. Within this tutorial we will have a simple FollowJointTrajectory command sent to a Stretch robot to execute.</p>
 <h2 id="stow-command-example">Stow Command Example</h2>
 <p align="center">
-  <img src="images/stow_command.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/stow_command.gif"/>
 </p>
 
 <p>Begin by launching stretch_driver in a terminal.</p>
@@ -3920,7 +3920,7 @@
 <p><div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 </code></pre></div>
 Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python script.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rclpy</span>
+<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rclpy</span>
 <span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
 <span class="kn">from</span> <span class="nn">rclpy.duration</span> <span class="kn">import</span> <span class="n">Duration</span>
 <span class="kn">from</span> <span class="nn">rclpy.action</span> <span class="kn">import</span> <span class="n">ActionClient</span>
@@ -3929,8 +3929,7 @@ Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this dec
 <span class="kn">from</span> <span class="nn">trajectory_msgs.msg</span> <span class="kn">import</span> <span class="n">JointTrajectoryPoint</span>
 <span class="kn">from</span> <span class="nn">sensor_msgs.msg</span> <span class="kn">import</span> <span class="n">JointState</span>
 </code></pre></div>
-<!-- TODO: Update links below -->
-<p>You need to import rclpy if you are writing a ROS 2 Node. Import the FollowJointTrajectory from the <a href="http://wiki.ros.org/control_msgs">control_msgs.msg</a> package to control the Stretch robot. Import JointTrajectoryPoint from the <a href="http://wiki.ros.org/trajectory_msgs">trajectory_msgs</a> package to define robot trajectories.</p>
+You need to import rclpy if you are writing a ROS 2 Node. Import the FollowJointTrajectory from the <a href="http://wiki.ros.org/control_msgs">control_msgs.msg</a> package to control the Stretch robot. Import JointTrajectoryPoint from the <a href="https://github.com/ros2/common_interfaces/tree/galactic/trajectory_msgs">trajectory_msgs</a> package to define robot trajectories.</p>
 <p><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">StowCommand</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;stretch_stow_command&#39;</span><span class="p">)</span>
@@ -3979,7 +3978,7 @@ Create a funcion, <code>main()</code>, to do all of the setup in the class and i
 To make the script executable call the main() function like above.</p>
 <h2 id="multipoint-command-example">Multipoint Command Example</h2>
 <p align="center">
-  <img src="images/multipoint.gif"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/multipoint.gif"/>
 </p>
 
 <p>If you have killed the above instance of stretch_driver relaunch it again through the terminal.</p>

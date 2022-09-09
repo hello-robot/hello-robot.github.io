@@ -3756,20 +3756,18 @@
 <p><strong>NOTE</strong>: ROS 2 tutorials are still under active development. </p>
 <h2 id="installing-ubuntu-2004-with-ros-2-galactic-on-stretch">Installing Ubuntu 20.04 with ROS 2 Galactic on Stretch</h2>
 <p>Hello Robot utilizes Ubuntu, an open source Linux operating system, for the Stretch RE1 platform. If you are unfamiliar with the operating system, we encourage you to review a <a href="https://ubuntu.com/tutorials/command-line-for-beginners#1-overview">tutorial</a> provided by Ubuntu. Additionally, the Linux command line, BASH, is used to execute commands and is needed to run ROS on the Stretch robot. Here is a <a href="https://ryanstutorials.net/linuxtutorial/">tutorial</a> on getting started with BASH.</p>
-<!-- TODO: Change the installation instructions link below -->
 <p>Instructions on installing Ubuntu 20.04 with ROS Noetic and ROS 2 Galactic can be found in our open source <a href="https://github.com/hello-robot/stretch_ros/blob/dev/noetic/install_noetic.md">installation guide</a>. Following these steps should create a separate Ubuntu 20.04 partition with an ament worskspace created in the home directory.</p>
 <h2 id="ros-2-tutorials-setup-on-local-computer">ROS 2 Tutorials Setup on Local Computer</h2>
-<p>Once your system is setup, clone the <a href="https://github.com/hello-sanchez/stretch_ros_tutorials.git">stretch_ros_tutorials</a> to the src directory of the ament workspace, then build the packages.</p>
+<p>Once your system is setup, clone the <a href="https://github.com/hello-sanchez/stretch_ros_tutorials.git">stretch_ros_tutorials</a> repo to the src directory of the ament workspace, then build the packages.</p>
 <div class="highlight"><pre><span></span><code>cd ~/ament_ws/src
-&lt;!-- TODO: Change the link below --&gt;
-git clone https://github.com/hello-sanchez/stretch_ros_tutorials.git
+git clone https://github.com/hello-robot/stretch_tutorials.git
+git checkout ROS2
 cd ~/ament_ws
 colcon build
 </code></pre></div>
 <p>Then source your workspace with the following command
 <div class="highlight"><pre><span></span><code>source ~/ament_ws/install/setup.bash&quot;
 </code></pre></div></p>
-<p><strong>Next Tutorial:</strong> <a href="../gazebo_basics/">Gazebo Basics</a></p>
 
               
             </article>

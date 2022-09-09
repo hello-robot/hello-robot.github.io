@@ -3776,7 +3776,7 @@
 
 <h2 id="example-4">Example 4</h2>
 <p><strong>NOTE</strong>: ROS 2 tutorials are still under active development. </p>
-<p><img alt="image" src="../images/balloon.png" /></p>
+<p><img alt="image" src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/balloon.png" /></p>
 <p>Let's bringup stretch in RViz by using the following command.</p>
 <p><div class="highlight"><pre><span></span><code>ros2 launch stretch_core stretch_driver.launch.py
 ros2 run rviz2 rviz2 -d <span class="sb">`</span>ros2 pkg prefix stretch_calibrtion<span class="sb">`</span>/rviz/stretch_simple_test.rviz
@@ -3785,7 +3785,7 @@ In a new terminal run the following commands to create a marker.</p>
 <p><div class="highlight"><pre><span></span><code>ros2 run stretch_ros_tutorials marker
 </code></pre></div>
 The gif below demonstrates how to add a new <em>Marker</em> display type, and change the topic name from <code>visualization_marker</code> to <code>balloon</code>. A red sphere Marker should appear above the Stretch robot.</p>
-<p><img alt="image" src="../images/balloon.gif" /></p>
+<p><img alt="image" src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/balloon.gif" /></p>
 <h3 id="the-code">The Code</h3>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 <span class="kn">import</span> <span class="nn">rclpy</span>
@@ -3843,7 +3843,6 @@ This declares that your node is publishing to the <em>/ballon</em> topic using t
 <span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">stamp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_clock</span><span class="p">()</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">to_msg</span><span class="p">()</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">SPHERE</span>
 </code></pre></div>
-<!-- TODO: Update links -->
 <p>Create a maker. Markers of all shapes share a common type. Set the frame ID and type. The frame ID is the frame in which the position of the marker is specified. The type is the shape of the marker. Further details on marker shapes can be found here: <a href="http://wiki.ros.org/rviz/DisplayTypes/Marker">RViz Markers</a></p>
 <p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">0</span>
 </code></pre></div>

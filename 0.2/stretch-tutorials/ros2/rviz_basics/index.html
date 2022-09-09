@@ -3753,24 +3753,21 @@
 <p>You can utilize RViz to visualize Stretch's sensor information. To begin, run the stretch driver launch file.</p>
 <div class="highlight"><pre><span></span><code>ros2 launch stretch_core stretch_driver.launch.py
 </code></pre></div>
-<!-- TODO: Make this rviz config file available to users in the main branch -->
 <p>Then run the following command to bring up a simple RViz configuration of the Stretch robot.
 <div class="highlight"><pre><span></span><code>ros2 run rviz2 rviz2 -d <span class="sb">`</span>ros2 pkg prefix stretch_calibration<span class="sb">`</span>/rviz/stretch_simple_test.rviz
 </code></pre></div>
 An RViz window should open, allowing you to see the various DisplayTypes in the display tree on the left side of the window.</p>
-<p><img alt="image" src="../images/simple_rviz.png" /></p>
+<p><img alt="image" src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/simple_rviz.png" /></p>
 <p>If you want to visualize Stretch's <a href="http://wiki.ros.org/rviz/DisplayTypes/TF">tf transform tree</a>, you need to add the display type to the RViz window. First, click on the <em>Add</em> button and include the <em>TF</em>  type to the display. You will then see all of the transform frames of the Stretch robot and the visualization can be toggled off and on by clicking the checkbox next to the tree. Below is a gif for reference.</p>
-<p><img alt="image" src="../images/rviz_adding_tf.gif" /></p>
-<p>TODO: Add the correct link for working with rviz2 in ROS 2
-There are further tutorials for RViz that can be found <a href="http://wiki.ros.org/rviz/Tutorials">here</a>.</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/rviz_adding_tf.gif" /></p>
+<p>There are further tutorials for RViz that can be found <a href="http://wiki.ros.org/rviz/Tutorials">here</a>.</p>
 <h2 id="running-rviz-and-gazebo-simulation">Running RViz and Gazebo (Simulation)</h2>
 <p>Let's bringup stretch in the willowgarage world from the <a href="../gazebo_basics/">gazebo basics tutorial</a> and RViz by using the following command.</p>
 <p><div class="highlight"><pre><span></span><code>roslaunch stretch_gazebo gazebo.launch world:=worlds/willowgarage.world rviz:=true
 </code></pre></div>
 the <code>rviz</code> flag will open an RViz window  to visualize a variety of ROS topics.</p>
-<p><img alt="image" src="../images/willowgarage_with_rviz.png" /></p>
+<p><img alt="image" src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/willowgarage_with_rviz.png" /></p>
 <p>Bringup the <a href="../teleoperating_stretch/">keyboard teleop</a> to drive Stretch and observe its sensor input.</p>
-<p><strong>Next Tutorial:</strong> <a href="../navigation_stack/">Navigation Stack</a></p>
 
               
             </article>

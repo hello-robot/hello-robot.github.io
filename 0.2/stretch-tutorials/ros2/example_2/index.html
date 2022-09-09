@@ -3777,14 +3777,13 @@
 <h2 id="example-2">Example 2</h2>
 <p><strong>NOTE</strong>: ROS 2 tutorials are still under active development. </p>
 <p>The aim of this example is to provide instruction on how to filter scan messages.</p>
-<!-- TODO: Update the links -->
-<p>For robots with laser scanners, ROS provides a special Message type in the <a href="http://wiki.ros.org/sensor_msgs">sensor_msgs</a> package called <a href="http://docs.ros.org/en/api/sensor_msgs/html/msg/LaserScan.html">LaserScan</a> to hold information about a given scan. Let's take a look at the message specification itself:</p>
+<p>For robots with laser scanners, ROS provides a special Message type in the <a href="https://github.com/ros2/common_interfaces/tree/galactic/sensor_msgs">sensor_msgs</a> package called <a href="https://github.com/ros2/common_interfaces/blob/galactic/sensor_msgs/msg/LaserScan.msg">LaserScan</a> to hold information about a given scan. Let's take a look at the message specification itself:</p>
 <p><div class="highlight"><pre><span></span><code>#
 # Laser scans angles are measured counter clockwise,
 # with Stretch&#39;s LiDAR having both angle_min and angle_max facing forward
 # (very closely along the x-axis) of the device frame
 #
-Header header
+std_msgs/Header header   # timestamp data in a particular coordinate frame
 float32 angle_min        # start angle of the scan [rad]
 float32 angle_max        # end angle of the scan [rad]
 float32 angle_increment  # angular distance between measurements [rad]
@@ -3797,14 +3796,14 @@ float32[] intensities    # intensity data [device-specific units]
 </code></pre></div>
 The above message tells you everything you need to know about a scan. Most importantly, you have the angle of each hit and its distance (range) from the scanner. If you want to work with raw range data, then the above message is all you need. There is also an image below that illustrates the components of the message type.</p>
 <p align="center">
-  <img src="images/lidar.png"/>
+  <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/lidar.png"/>
 </p>
 
 <p>For a Stretch robot the start angle of the scan, <code>angle_min</code>, and
 end angle, <code>angle_max</code>, are closely located along the x-axis of Stretch's frame. <code>angle_min</code> and <code>angle_max</code> are set at <strong>-3.1416</strong> and <strong>3.1416</strong>, respectively. This is illustrated by the images below.</p>
 <p align="center">
-  <img height=500 src="images/stretch_axes.png"/>
-  <img height=500 src="images/scan_angles.png"/>
+  <img height=500 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/stretch_axes.png"/>
+  <img height=500 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/scan_angles.png"/>
 
 </p>
 
@@ -3823,7 +3822,7 @@ end angle, <code>angle_max</code>, are closely located along the x-axis of Stret
 </code></pre></div>
 Change the topic name from the LaserScan display from <em>/scan</em> to <em>/filter_scan</em>.</p>
 <p align="center">
-  <img height=600 src="images/scanfilter.gif"/>
+  <img height=600 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/scanfilter.gif"/>
 </p>
 
 <h3 id="the-code">The Code</h3>
@@ -3903,7 +3902,6 @@ The next line, rclpy.init_node initializes the node. In this case, your node wil
 Give control to ROS.  This will allow the callback to be called whenever new
 messages come in.  If we don't put this line in, then the node will not work,
 and ROS will not process any messages.</p>
-<p><strong>Next Example:</strong> <a href="../example_3/">Example 3</a></p>
 
               
             </article>

@@ -34,4 +34,4 @@ repositories:
   stretch_ros2:
     type: git
     url: https://github.com/hello-robot/stretch_ros2
-    version: feature/hybrid_planning
+    version: galactic

@@ -110,6 +110,7 @@ install ros-melodic-gmapping ros-melodic-navigation
 echo "Install RPLidar A1M8 packages"
 install ros-melodic-rplidar-ros ros-melodic-rplidar-ros-dbgsym
 echo "Install Respeaker and speech recognition packages"
+install python-pyaudio
 install ros-melodic-respeaker-ros ros-melodic-ros-speech-recognition
 echo "Install scan tools for Canonical Scan Matching using the laser_scan_matcher"
 install ros-melodic-scan-tools

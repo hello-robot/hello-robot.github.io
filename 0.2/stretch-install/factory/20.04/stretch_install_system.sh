@@ -56,7 +56,9 @@ echo ""
 echo "Install Ubuntu Sounds"
 install ubuntu-sounds
 echo ""
-
+echo "Install BleachBit"
+install bleachbit
+echo ""
 
 # see http://wiki.ros.org/noetic/Installation/Ubuntu for details
 echo "###########################################"
@@ -141,7 +143,7 @@ install ros-noetic-rplidar-ros ros-noetic-rplidar-ros-dbgsym
 install ros-galactic-rplidar-ros ros-galactic-rplidar-ros-dbgsym
 echo "Install Respeaker and speech recognition packages"
 install python3-pyaudio
-install ros-noetic-respeaker-ros ros-noetic-ros-speech-recognition
+# install ros-noetic-respeaker-ros ros-noetic-ros-speech-recognition
 # install ros-galactic-respeaker-ros ros-galactic-ros-speech-recognition # not available
 echo "Install scan tools for Canonical Scan Matching using the laser_scan_matcher"
 install ros-noetic-scan-tools
