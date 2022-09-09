@@ -39,6 +39,11 @@ markdown_extensions:
 extra_css:
   - extra.css
 plugins:
+  - redirects:
+      redirect_maps:
+        'safety.md': 'https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/safety_guide/'
+        'battery.md': 'https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/battery_maintenance_guide_re2/'
+        'quick_start.md': 'https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/quick_start_guide_re2/'
   - monorepo
   - mike:
       # these fields are all optional; the defaults are as below...
