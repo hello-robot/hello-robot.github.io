@@ -432,7 +432,6 @@ nominal_params={
             'NonDXLStatusThread_trajectory_downrate_int': 2},
         'tool': 'tool_stretch_gripper',
         'use_collision_manager': 1,
-        'log_to_console': 0,
         'stow':{
         'arm': 0.0,
         'head_pan': 0.0,
@@ -540,30 +539,30 @@ nominal_params={
         'accel_single_tap_thresh': 50,
         'ana_LPF': 10.0}},
     'wrist_yaw':{
-        'range_pad_t': [50.0, -50.0],
+        'range_pad_t': [100.0, -100.0],
         'flip_encoder_polarity': 1,
         'gr': 2.4,
         'id': 13,
         'max_voltage_limit': 15,
         'min_voltage_limit': 11,
-        'motion':{
-            'trajectory_vel_ctrl':1,
-            'trajectory_vel_ctrl_kP':1.5,
-            'default':{
-              'accel': 8.0,
-              'vel': 3.0},
-            'fast':{
-              'accel': 10.0,
-              'vel': 5.0},
-            'max':{
-              'accel': 12,
-              'vel': 8},
-            'slow':{
-              'accel': 4.0,
-              'vel': 1.0},
-              'trajectory_max': {
-                  'vel_r': 8.0,
-                  'accel_r': 16.0}},
+        'motion': {
+            'trajectory_vel_ctrl': 1,
+            'trajectory_vel_ctrl_kP': 1.5,
+            'default': {
+                'accel': 3.0,
+                'vel': 2.0},
+            'fast': {
+                'accel': 5.0,
+                'vel': 2.5},
+            'max': {
+                'accel': 10,
+                'vel': 6.0},
+            'slow': {
+                'accel': 1.5,
+                'vel': 0.75},
+            'trajectory_max': {
+                'vel_r': 3.0,
+                'accel_r': 3.0}},
         'pid': [640,0,0],
         'pwm_homing': [-300,300],
         'pwm_limit': 885,

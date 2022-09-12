@@ -93,24 +93,26 @@ def param_dropped_check(new_dict,prior_dict,num_warnings,new_dict_name,prior_dic
 # Read in old PseudoN units and write back out as effort_pct
 # Remove the old parameters from the YAML as well
 
-def contacts_pseudo_N_to_effort_pct(force_N_per_A, iMax_pos, iMax_neg,contacts_pseudo_N ):
-    contacts_A = [contacts_pseudo_N[0]/force_N_per_A, contacts_pseudo_N[1]/force_N_per_A]
-    return [contacts_A[0]/abs(iMax_neg), contacts_A[1]/iMax_pos]
+def contacts_pseudo_N_to_effort_pct(force_N_per_A, iMax_pos, iMax_neg,contacts_pseudo_N , i_feedforward):
+    contacts_A = [(contacts_pseudo_N[0]/force_N_per_A)+i_feedforward, (contacts_pseudo_N[1]/force_N_per_A)+i_feedforward]
+    return [100*contacts_A[0]/abs(iMax_neg), 100*contacts_A[1]/iMax_pos]
 
-def convert_joint_contact_thresh(stepper_name, joint_name, N, D):
+def convert_joint_contact_thresh(stepper_name,joint_name, N, D, i_feedforward):
     # Convert arm configuration data
     modified=False
 
-    if joint_name not in D or stepper_name not in D:
+    if joint_name not in D:
         return D, False
     if 'contact_models' not in D[joint_name]:
         D[joint_name]['contact_models']={'effort_pct':{}}
 
+    iMax_pos=N[stepper_name]['gains']['iMax_pos']
+    iMax_neg=N[stepper_name]['gains']['iMax_neg']
     if 'homing_force_N' in D[joint_name]:
         D[joint_name]['contact_models']['effort_pct']['contact_thresh_homing'] = contacts_pseudo_N_to_effort_pct(N[joint_name]['force_N_per_A'],
-                                                     N[stepper_name]['gains']['iMax_pos'],
-                                                     N[stepper_name]['gains']['iMax_neg'],
-                                                     D[joint_name]['homing_force_N'])
+                                                     iMax_pos,
+                                                     iMax_neg,
+                                                     D[joint_name]['homing_force_N'],i_feedforward)
 
         print("Converted [%f, %f] to [%f, %f] for %s of %s"%(D[joint_name]['homing_force_N'][0],D[joint_name]['homing_force_N'][1],
                                                        D[joint_name]['contact_models']['effort_pct']['contact_thresh_homing'][0],
@@ -120,9 +122,9 @@ def convert_joint_contact_thresh(stepper_name, joint_name, N, D):
 
     if 'contact_thresh_N' in D[joint_name]:
         D[joint_name]['contact_models']['effort_pct']['contact_thresh_default'] = contacts_pseudo_N_to_effort_pct(N[joint_name]['force_N_per_A'],
-                                                     N[stepper_name]['gains']['iMax_pos'],
-                                                     N[stepper_name]['gains']['iMax_neg'],
-                                                     D[joint_name]['contact_thresh_N'])
+                                                     iMax_pos,
+                                                     iMax_neg,
+                                                     D[joint_name]['contact_thresh_N'],i_feedforward)
 
         print("Converted [%f, %f] to [%f, %f] for %s of %s" % (
         D[joint_name]['contact_thresh_N'][0], D[joint_name]['contact_thresh_N'][1],
@@ -146,17 +148,37 @@ def migrate_contact_params_RE1V0(fleet_path, fleet_id):
     import stretch_body.robot_params_RE1V0
     N = stretch_body.robot_params_RE1V0.nominal_params
 
-    C, m1 = convert_joint_contact_thresh('hello-motor-arm','arm',N,C)
-    C, m2 = convert_joint_contact_thresh('hello-motor-lift', 'lift', N, C)
+
+    C1, m1 = convert_joint_contact_thresh('hello-motor-arm','arm',N,C,C['arm']['i_feedforward'])
+    C2, m2 = convert_joint_contact_thresh('hello-motor-lift', 'lift', N, C1,C['lift']['i_feedforward'])
     if m1 or m2:
         click.secho('Updated stretch_configuration_params.yaml.', fg="green")
-        hello_utils.write_fleet_yaml('stretch_configuration_params.yaml', C, None, stretch_body.robot_params_RE1V0.configuration_params_header)
+        hello_utils.write_fleet_yaml('stretch_configuration_params.yaml', C2, None, stretch_body.robot_params_RE1V0.configuration_params_header)
 
-    U, m3 = convert_joint_contact_thresh('hello-motor-arm','arm',N,U)
-    U, m4 = convert_joint_contact_thresh('hello-motor-lift', 'lift', N, U)
+    if 'arm' in U and 'i_feedforward' in U['arm']:
+        i_feedforward = U['arm']['i_feedforward']
+    else:
+        i_feedforward=C['arm']['i_feedforward']
+    U1, m3 = convert_joint_contact_thresh('hello-motor-arm','arm',N,U,i_feedforward)
+
+    if 'lift' in U and 'i_feedforward' in U['lift']:
+        i_feedforward = U['lift']['i_feedforward']
+    else:
+        i_feedforward = C['lift']['i_feedforward']
+    U2, m4 = convert_joint_contact_thresh('hello-motor-lift', 'lift', N, U1,i_feedforward)
+
+    #Do a bit of cleanup
+    if 'tool_params' in U2:
+        U2.pop('tool_params')
+        m4=True
+
+    if 'factory_params' in U2:
+        U2.pop('factory_params')
+        m4=True
+
     if m3 or m4:
         click.secho('Updated stretch_user_params.yaml.', fg="green")
-        hello_utils.write_fleet_yaml('stretch_user_params.yaml', U, None,stretch_body.robot_params_RE1V0.configuration_params_header)
+        hello_utils.write_fleet_yaml('stretch_user_params.yaml', U2, None,stretch_body.robot_params_RE1V0.configuration_params_header)
     if not m1 and not m2 and not m3 and not m4:
         click.secho('Contact parameter migration not required.', fg="green")
     return True

@@ -287,6 +287,7 @@ class TestDynamixelHelloXL430(unittest.TestCase):
         servo.stop()
         
 
+
     def test_motion_profile_doesnt_persist(self):
         """Verify move_to/move_by with vel/accel doesn't set a motion profile that
         persists to subsequent move_to/move_by commands.
@@ -297,8 +298,7 @@ class TestDynamixelHelloXL430(unittest.TestCase):
 
         servo.move_to(0.0)
         time.sleep(5)
-
-        servo.move_to(1.0, v_des=2.0, a_des=2.0)
+        servo.move_to(1.0, v_des=1.95, a_des=1.95)
         move1_vel_ticks = servo.motor.get_profile_velocity()
         move1_accel_ticks = servo.motor.get_profile_acceleration()
         time.sleep(5)
@@ -313,7 +313,7 @@ class TestDynamixelHelloXL430(unittest.TestCase):
 
         servo.stop()
 
-
+    
     def test_status_velocity(self):
         """Verify that the motor's velocity is correct in the status dict by
         commanding the robot a known distance and integrating velocity over
@@ -323,23 +323,25 @@ class TestDynamixelHelloXL430(unittest.TestCase):
         s = stretch_body.dynamixel_hello_XL430.DynamixelHelloXL430(name="wrist_yaw")
         self.assertTrue(s.startup())
 
-        s.move_to(-1.1) # start at one end stop
+        s.move_to(-1.0) # start at one end stop
         time.sleep(5)
-        expected_traveled_distance = 4.3 + 1.1
+        expected_traveled_distance = 1.5 + 1.0
 
-        s.move_to(4.3, v_des=1.0, a_des=1.0) # travel to other end stop
-        ts = time.time()
+        s.move_to(1.5, v_des=1.0, a_des=1.0) # travel to other end stop
+        ts2 = time.time()
         measured_traveled_distance = 0.0
         s.pull_status()
-        while not np.isclose(s.status['pos'], 4.3, atol=1e-2):
+        ts=ts2
+        while not np.isclose(s.status['pos'], 1.5, atol=1e-2) and time.time()-ts2<6.0:
             dt = time.time() - ts
+            ts=time.time()
             measured_traveled_distance += s.status['vel'] * dt
-            ts = time.time()
             time.sleep(0.01)
             s.pull_status()
-            # print(s.status['pos'], expected_traveled_distance, measured_traveled_distance)
+            #print(dt,s.status['pos'], expected_traveled_distance, measured_traveled_distance)
 
         dt = time.time() - ts
         measured_traveled_distance += s.status['vel'] * dt
+        print('Measured',measured_traveled_distance)
         self.assertTrue(np.isclose(measured_traveled_distance, expected_traveled_distance, atol=0.3))
         s.stop()

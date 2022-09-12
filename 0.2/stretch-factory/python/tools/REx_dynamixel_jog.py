@@ -55,6 +55,10 @@ def menu_top():
     print('i: set id')
     print('d: disable torque')
     print('e: enable torque')
+    print('x: put in multi-turn mode')
+    print('y: put in position mode')
+    print('w: put in pwm mode')
+    print('f: put in vel mode')
     print('-------------------')
 
 def step_interaction():
@@ -83,6 +87,7 @@ def step_interaction():
             m.disable_torque()
             xn=m.get_homing_offset()
             print('Current homing offset is:',xn)
+            m.enable_torque()
         if x[0]=='s':
             m.disable_torque()
             xn = m.get_homing_offset()
@@ -91,6 +96,7 @@ def step_interaction():
             m.set_homing_offset(int(x[2:]))
             xn = m.get_homing_offset()
             print('New homing offset is:',xn)
+            m.enable_torque()
         if x[0]=='o':
             m.disable_torque()
             xn=m.get_homing_offset()
@@ -131,6 +137,22 @@ def step_interaction():
                 print('Ping fail')
         if x[0] == 'r':
             m.do_reboot()
+        if x[0] == 'x':
+            m.disable_torque()
+            m.enable_multiturn()
+            m.enable_torque()
+        if x[0] == 'y':
+            m.disable_torque()
+            m.enable_pos()
+            m.enable_torque()
+        if x[0] == 'w':
+            m.disable_torque()
+            m.enable_pwm()
+            m.enable_torque()
+        if x[0] == 'f':
+            m.disable_torque()
+            m.enable_vel()
+            m.enable_torque()
     else:
         m.pretty_print()
 

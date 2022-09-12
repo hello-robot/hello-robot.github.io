@@ -27,7 +27,12 @@ if args.head_pan or args.head_tilt or args.wrist_yaw:
     h.params['req_calibration']=1
     if not h.startup():
         exit(1)
-    h.home(single_stop=False,move_to_zero=True,delay_at_stop=1.0,save_calibration=True, set_homing_offset=False)
+    success, measured = h.home(single_stop=False,move_to_zero=True,delay_at_stop=1.0,save_calibration=False, set_homing_offset=False)
+    if not success:
+        print('Failed to measure joint range')
+    else:
+        if click.confirm('Save calibrated range of motion?'):
+            h.write_configuration_param_to_YAML('%s.range_t' % h.name,measured)
     print('Recalibration done.')
     h.stop()
 

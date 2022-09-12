@@ -3666,6 +3666,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#047-sept-14-2022" class="md-nav__link">
+    0.4.7 - Sept 14, 2022
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#034-july-20-2022" class="md-nav__link">
     0.3.4 - July 20, 2022
   </a>
@@ -3747,25 +3754,26 @@
 
 <h1 id="changelog">Changelog</h1>
 <p>The changes between releases of Stretch Body are documented here.</p>
-<p>0.3.5 - Sept X, 2022</p>
-<p>This is the initial production release that supports RE2 (Mitski batch).  This includes the <code>robot_params_RE2V0.py</code> which are the initial robot settings for the RE2 version of the product.</p>
+<h2 id="047-sept-14-2022"><a href="https://github.com/hello-robot/stretch_body/pull/148">0.4.7</a> - Sept 14, 2022</h2>
+<p>This is the initial production release that supports the Stretch RE2 (Mitski batch).  This includes the <code>robot_params_RE2V0.py</code> which are the initial robot settings for the RE2 version of the product.</p>
 <ul>
 <li>
 <p>It introduces the <a href="https://github.com/hello-robot/stretch_body/blob/master/stretch_body/prismatic_joint.py">PrismaticJoint</a> class which consolidates the common Arm and Lift functionality. </p>
 </li>
 <li>
-<p>It also  the notion of a Contact Model in PrismaticJoint and Base which converts a motion's contact_thresh into a current (A) that a joint should stop at. Previously the notions of contact model (and units) were implicit. With this release they are explicit (eg, 'pseudo_N' and 'effort_pct'). This change breaks the joint motion APIs (eg, move_to()). For robots running older code that has specified contact parameters using the older API, Stretch Body will throw a DeprecationWarning and instruct the user to upgrade their code.</p>
+<p>It changes the units for guarded contact motion from approximate Newtons (suffix _N) to <code>effort_pct</code> - the pecentage [-100,100] of maximum current (A) that a joint should stop at. This change requires RE1 users to migrate their code and robot parameters. <a href="https://forum.hello-robot.com/t/stretch-body-release-0-4-and-new-contact-model-units/476/2">See the forum post</a> for more details.</p>
 </li>
 <li>
 <p>It introduces <code>mkdocs.yaml</code> to support serving the repository documenation via MKDocs.</p>
 </li>
 </ul>
-<p>It introduces several new features and fixes several bugs, notable:</p>
+<p>It introduces several new features and fixes several bugs, notably:</p>
 <ul>
 <li><a href="https://github.com/hello-robot/stretch_body/commit/d15e3fb4416a5b296a184148df7b2045cf16027d">Adds <code>wait_until_setpoint</code> to the Arm and Lift classes</a></li>
 <li><a href="https://github.com/hello-robot/stretch_body/commit/c9c79d6fa08d0aec7d217e2e1d9a9d36b15145b1">Adds use of argparse with all tools</a></li>
 <li><a href="https://github.com/hello-robot/stretch_body/commit/0fa82e852f98031064a4dbfba722af6da43bc992">Moves Robot thread rates to YAML</a></li>
 <li><a href="https://github.com/hello-robot/stretch_body/commit/13549e3662a3168c2a6f460f52c6577d0dbf5b5d">Cleans up the splined trajectory interface, enables velocity controlled splined trajectories for the Dynamixels</a></li>
+<li><a href="https://github.com/hello-robot/stretch_body/pull/151">Flags a warning for users incorrectly setting the homing offset on DXL servos</a></li>
 </ul>
 <h2 id="034-july-20-2022"><a href="https://github.com/hello-robot/stretch_body/pull/142">0.3.4</a> - July 20, 2022</h2>
 <p>Release to add minor features and fix minor bugs:</p>

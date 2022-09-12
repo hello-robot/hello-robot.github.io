@@ -7,7 +7,7 @@ user_params_header='#User parameters\n' \
                    '#USE WITH CAUTION. IT IS POSSIBLE TO CAUSE UNSAFE BEHAVIOR OF THE ROBOT \n'
 
 user_params_template={
-    'robot': {'log_to_console': 0}} #Include this just as an example
+    'robot': {'use_collision_manager': 1}} #Include this just as an example
 
 # ###################### CONFIGURATION PARAMS #####################################################
 #Template for the generated file: stretch_configuration_params.yaml
@@ -67,6 +67,7 @@ configuration_params_template={
 #Parameters that are common across the RE2 fleet
 nominal_params={
     'arm':{
+        'force_N_per_A': 55.9,  # Legacy
         'chain_pitch': 0.0167,
         'chain_sprocket_teeth': 10,
         'gr_spur': 3.875,
@@ -91,6 +92,7 @@ nominal_params={
                 'vel_m': 0.4,
                 'accel_m': 0.4}}},
     'base':{
+        'force_N_per_A': 21.18,  # Legacy
         'gr': 3.8,
         'motion':{
             'default':{
@@ -373,6 +375,7 @@ nominal_params={
             'vel': 25},
         'rated_current': 2.8},
     'lift':{
+        'force_N_per_A': 75.0,  # Legacy
         'calibration_range_bounds': [1.094, 1.106],
         'contact_models': {
             'effort_pct':{
@@ -426,7 +429,6 @@ nominal_params={
             'NonDXLStatusThread_trajectory_downrate_int': 2},
         'tool': 'tool_stretch_gripper',
         'use_collision_manager': 1,
-        'log_to_console': 0,
         'stow':{
         'arm': 0.0,
         'head_pan': 0.0,
@@ -457,7 +459,7 @@ nominal_params={
         'wrist_yaw_overload': 1,
         'stepper_is_moving_filter': 1},
     'stretch_gripper':{
-        'range_pad_t': [50.0, -50.0],
+        'range_pad_t': [100.0, -100.0],
         'flip_encoder_polarity': 0,
         'gr': 1.0,
         'id': 14,

@@ -55,4 +55,4 @@ if click.confirm('Attempting migration of contact data for robot %s. Proceed?'%f
 
     param_mgmt.migrate_contact_params_RE1V0(fleet_path, fleet_id)
 
-    click.secho("Robot %s now configured to use effort_pct contact parameters" % fleet_id, fg='green')
+    click.secho("Robot %s configured to use effort_pct contact parameters" % fleet_id, fg='green')
