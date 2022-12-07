@@ -736,6 +736,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/tutorial_template/</loc>
+         <lastmod>2022-12-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/</loc>
          <lastmod>2022-12-07</lastmod>
          <changefreq>daily</changefreq>
@@ -1031,7 +1036,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/align_to_aruco/</loc>
+         <lastmod>2022-12-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/coming_soon/</loc>
+         <lastmod>2022-12-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/deep_perception/</loc>
          <lastmod>2022-12-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1086,7 +1101,22 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/moveit_movegroup_demo/</loc>
+         <lastmod>2022-12-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/moveit_rviz_demo/</loc>
+         <lastmod>2022-12-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/navigation_stack/</loc>
+         <lastmod>2022-12-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/obstacle_avoider/</loc>
          <lastmod>2022-12-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
