@@ -26,7 +26,7 @@ In addition, it is worth spending some time on the following sites:
 | [Stretch Community](https://github.com/hello-robot/stretch_community)                            | Repository for community shared code                         |
 | [Stretch Forum](https://forum.hello-robot.com/)                           | Discourse User Forum                                         |
 
-## Version
+# Version
 This is version 0.2 of the Stretch User Documentation. It is written with the following system configuration in mind:
 
 | Resource                 | Description                |
