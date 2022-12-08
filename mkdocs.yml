@@ -92,7 +92,8 @@ extra:
 nav:
   - Home: README.md
   - Tutorials: '!include ./repos/stretch_tutorials/mkdocs.yml'
-  - Repositories:
+  - Code Repositories:
+    - Overview: repos_overview.md
     - Stretch Body: '!include ./repos/stretch_body/mkdocs.yml'
     - Stretch ROS: '!include ./repos/stretch_ros/mkdocs.yml'
     - Stretch ROS2: '!include ./repos/stretch_ros2/mkdocs.yml'
