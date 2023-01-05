@@ -7,12 +7,13 @@ import git
 import stretch_body.stepper
 import stretch_body.pimu
 import stretch_body.wacc
+import stretch_body.device
 import yaml
 import time
 import sys
 import stretch_body.device
 from stretch_factory.device_mgmt import StretchDeviceMgmt
-
+import stretch_body.hello_utils
 
 # #####################################################################################################
 class FirmwareVersion():
@@ -192,7 +193,14 @@ class AvailableFirmware():
         self.repo_path = '/tmp/stretch_firmware_update'
         if not os.path.isdir(self.repo_path):
             #print('Cloning latest version of Stretch Firmware to %s'% self.repo_path)
-            git.Repo.clone_from('https://github.com/hello-robot/stretch_firmware',  self.repo_path)
+            try:
+                git.Repo.clone_from('https://github.com/hello-robot/stretch_firmware',  self.repo_path)
+            except git.GitCommandError as e:
+                if "could not resolve host" in e.stderr.lower():
+                    print("ERROR: Unable to connect to Github. Check internet connection?", file=sys.stderr)
+                else:
+                    print("ERROR: Unable to clone stretch_firmware from Github into /tmp/stretch_firmware_update.", file=sys.stderr)
+                sys.exit(1)
 
         sys.stdout.write('.')
         sys.stdout.flush()
@@ -290,6 +298,7 @@ class RecommendedFirmware():
         print('\n')
         click.secho('%s | %s | %s | %s ' % ('DEVICE'.ljust(25), 'INSTALLED'.ljust(25), 'RECOMMENDED'.ljust(25), 'ACTION'.ljust(25)), fg="cyan", bold=True)
         click.secho('-'*110,fg="cyan", bold=True)
+
         for device_name in self.recommended.keys():
             dev_out=device_name.upper().ljust(25)
             installed_out=''.ljust(25)
@@ -311,6 +320,24 @@ class RecommendedFirmware():
                     else:
                         action_out = 'At most recent version'.ljust(25)
             print('%s | %s | %s | %s ' %(dev_out,installed_out,rec_out,action_out))
+
+
+    def print_recommended_args(self):
+        dev_arg_map={'hello-pimu':' --pimu','hello-wacc':' --wacc','hello-motor-right-wheel':' --right_wheel',
+                     'hello-motor-left-wheel':' --left_wheel','hello-motor-lift':' --lift',
+                     'hello-motor-arm':' --arm'}
+        rec_args=''
+        for device_name in self.recommended.keys():
+            if self.fw_installed.is_device_valid(device_name):
+                version = self.fw_installed.get_version(device_name)
+                if self.recommended[device_name]!=None:
+                    if self.recommended[device_name] > version:
+                        rec_args=rec_args+dev_arg_map[device_name]
+        if len(rec_args):
+            click.secho('\nRun recommended command: \nREx_firmware_updater.py --install %s'%rec_args,fg="green", bold=True)
+        else:
+            click.secho('\nFirmware upgrade not necessary',fg="green", bold=True)
+
 # #####################################################################################################
 
 log_device=stretch_body.device.Device(req_params=False)
@@ -538,11 +565,15 @@ class FirmwareUpdater():
     def flash_stepper_calibration(self,device_name):
         if device_name == 'hello-motor-arm' or device_name == 'hello-motor-lift' or device_name == 'hello-motor-right-wheel' or device_name == 'hello-motor-left-wheel':
                 click.secho(' Flashing Stepper Calibration: %s '.center(110,'#') % device_name, fg="cyan",bold=True)
+                if not self.wait_on_device(device_name):
+                    click.secho('Device %s failed to return to bus' % device_name, fg="red",bold=True)
+                    return False
                 time.sleep(1.0)
                 motor = stretch_body.stepper.Stepper('/dev/' + device_name)
                 motor.startup()
                 if not motor.hw_valid:
                     click.secho('Failed to startup stepper %s' % device_name, fg="red", bold=True)
+                    return False
                 else:
                     print('Writing gains to flash...')
                     motor.write_gains_to_flash()
@@ -561,21 +592,29 @@ class FirmwareUpdater():
                     time.sleep(2.0)
                     self.wait_on_device(device_name)
                     print('Successful return of device to bus.')
+        return True
 
 
 
 
     def post_firmware_update(self):
         #Return True if no errors
+        click.secho(' Performing Post Firmware Updates '.center(110, '#'), fg="cyan", bold=True)
+        StretchDeviceMgmt.reset_all_arduino()
+        s = StretchDeviceMgmt()
+        s.reset_all()
+        time.sleep(2.0)
+        flash_stepper_calibration_success={}
         for device_name in self.target.keys():
             if self.fw_updated[device_name]:
-                self.flash_stepper_calibration(device_name)
+                flash_stepper_calibration_success[device_name]=self.flash_stepper_calibration(device_name)
                 time.sleep(2.0)  # Give time to get back on bus
-                s = StretchDeviceMgmt([device_name])
-                s.reset_all()
-                if not self.wait_on_device(device_name):
-                    print('Failed to return to bus')
-                    return False
+                #s = StretchDeviceMgmt([device_name])
+                #s.reset_all()
+                # StretchDeviceMgmt.reset_all_arduino()
+                # if not self.wait_on_device(device_name):
+                #     print('Failed to return to bus')
+                #     return False
         print('')
         click.secho(' Confirming Firmware Updates '.center(110,'#'), fg="cyan", bold=True)
         self.fw_installed = InstalledFirmware(self.use_device) #Pull the currently installed system from fw
@@ -592,6 +631,11 @@ class FirmwareUpdater():
                     else:
                         click.secho('%s | %s ' % (device_name.upper().ljust(25), 'Firmware update failure!!'.ljust(40)),fg="red", bold=True)
                         n_failure=n_failure+1
+                    if not flash_stepper_calibration_success[device_name]:
+                        n_failure = n_failure + 1
+                        click.secho('%s | %s ' % (device_name.upper().ljust(25), 'Stepper calibration flash failure!!'.ljust(40)),fg="red", bold=True)
+                        click.secho('To manually restore stepper calibration, after power-cycling robot run ', fg="red",bold=True)
+                        click.secho('REx_stepper_calibration_YAML_to_flash.py %s' % device_name)
         if n_failure !=0:
             click.secho('#'*110,fg="red", bold=True)
             click.secho('Firmware update reported %d failures.\nTo remedy failures power down and the power up the robot and try again.'%n_failure,fg="red", bold=True)
@@ -688,8 +732,11 @@ class FirmwareUpdater():
             return None
 
     def does_stepper_have_encoder_calibration_YAML(self,device_name):
-        dd = stretch_body.stepper.Stepper('/dev/' + device_name)
-        return len(dd.read_encoder_calibration_from_YAML())!=0
+        d=stretch_body.device.Device(req_params=False)
+        sn = d.robot_params[device_name]['serial_no']
+        fn = 'calibration_steppers/' + device_name + '_' + sn + '.yaml'
+        enc_data = stretch_body.hello_utils.read_fleet_yaml(fn)
+        return len(enc_data)!=0
 
     def flash_firmware_update(self,device_name, tag,repo_path=None,verbose=False):
         click.secho('-------- FIRMWARE FLASH %s | %s ------------'%(device_name,tag), fg="cyan", bold=True)
@@ -709,11 +756,9 @@ class FirmwareUpdater():
         if sketch_name=='hello_stepper' and not self.does_stepper_have_encoder_calibration_YAML(device_name):
             print('Encoder data has not been stored for %s and may be lost. Aborting firmware flash.'%device_name)
             return False
-
-        s = StretchDeviceMgmt([device_name])
-        if not s.reset(device_name):
-            return False
-
+        #s = StretchDeviceMgmt([device_name])
+        #if not s.reset(device_name):
+        #    return False
         print('Looking for device %s on bus' % device_name)
         if not self.wait_on_device(device_name, timeout=5.0):
             print('Failure: Device not on bus.')
@@ -764,15 +809,17 @@ class FirmwareUpdater():
             success = uu[-1] == b'CPU reset.'
             if not success:
                 print('Firmware flash. Failed to upload to %s' % (port_name))
+                return False
             else:
                 print('Success in firmware flash.')
-                time.sleep(2.0) #Give time to get back on bus
-                s = StretchDeviceMgmt([device_name])
-                s.reset_all()
-                if self.wait_on_device(device_name):
-                    return True
-            print('Failure for device %s to return to USB bus after upload'%device_name)
-            return False
+                #Give time to get back on bus
+                time.sleep(3.0)
+                s = StretchDeviceMgmt.reset_all_arduino()
+
+                if not self.wait_on_device(device_name):
+                    click.secho('Device %s failed to return to bus' % device_name, fg="red",bold=True)
+                    return False
+                return True
         else:
             print('Firmware update %s. Failed to find device %s'%(tag,device_name))
             return False

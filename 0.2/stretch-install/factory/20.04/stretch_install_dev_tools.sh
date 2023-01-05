@@ -36,6 +36,10 @@ git clone https://github.com/hello-robot/stretch_production_data.git >> $REDIREC
 git clone https://github.com/hello-robot/hello-robot.github.io >> $REDIRECT_LOGFILE
 git clone https://github.com/hello-robot/stretch_docs >> $REDIRECT_LOGFILE
 
+echo "Install stretch_production_tools"
+cd stretch_production_tools/python
+pip3 install -e .
+
 # update .bashrc to add body code directory to the Python path
 
 #echo "export PATH=\${PATH}:~/repos/stretch_body/python/bin" >> ~/.bashrc

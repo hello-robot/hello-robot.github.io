@@ -7,7 +7,7 @@ user_params_header='#User parameters\n' \
                    '#USE WITH CAUTION. IT IS POSSIBLE TO CAUSE UNSAFE BEHAVIOR OF THE ROBOT \n'
 
 user_params_template={
-    'robot': {'use_collision_manager': 1}} #Include this just as an example
+    'robot': {'use_collision_manager': 0}} #Include this just as an example
 
 # ###################### CONFIGURATION PARAMS #####################################################
 #Template for the generated file: stretch_configuration_params.yaml
@@ -19,14 +19,14 @@ configuration_params_template={
     'arm':{
         'contact_models':{
             'effort_pct':{
-                'contact_thresh_default':[-45.0, 45.0],
-                'contact_thresh_homing':[-45.0, 45.0]}},
+                'contact_thresh_default':[-55.0, 55.0],
+                'contact_thresh_homing':[-55.0, 55.0]}},
         'range_m':[0.0,0.52]},
     'lift': {
         'contact_models':{
             'effort_pct': {
-                'contact_thresh_default': [-69.0, 69.0],
-                'contact_thresh_homing': [-69.0, 69.0]}},
+                'contact_thresh_default': [-10.0, 69.0],
+                'contact_thresh_homing': [-10.0, 69.0]}},
         'i_feedforward': 1.2,
         'range_m': [0.0, 1.10]},
     'base':{
@@ -67,6 +67,7 @@ configuration_params_template={
 #Parameters that are common across the RE2 fleet
 nominal_params={
     'arm':{
+        'usb_name': '/dev/hello-motor-arm',
         'force_N_per_A': 55.9,  # Legacy
         'chain_pitch': 0.0167,
         'chain_sprocket_teeth': 10,
@@ -92,6 +93,8 @@ nominal_params={
                 'vel_m': 0.4,
                 'accel_m': 0.4}}},
     'base':{
+        'usb_name_left_wheel': '/dev/hello-motor-left-wheel',
+        'usb_name_right_wheel': '/dev/hello-motor-right-wheel',
         'force_N_per_A': 21.18,  # Legacy
         'gr': 3.8,
         'motion':{
@@ -136,6 +139,7 @@ nominal_params={
         'warn_above_rate': 0.1,
         'verbose': 0},
     'end_of_arm':{
+        'usb_name': '/dev/hello-dynamixel-wrist',
         'devices':{
             'wrist_yaw':{
               'py_class_name': 'WristYaw',
@@ -146,6 +150,7 @@ nominal_params={
         'dxl_latency_timer': 64,
         'stow': {'wrist_yaw': 3.4}},
     'head':{
+        'usb_name': '/dev/hello-dynamixel-head',
         'use_group_sync_read': 1,
         'retry_on_comm_failure': 1,
         'dxl_latency_timer':64,
@@ -323,7 +328,7 @@ nominal_params={
             'pKp_d': 6.0,
             'pLPF': 100,
             'phase_advance_d': 1.8,
-            'pos_near_setpoint_d': 4.0,
+            'pos_near_setpoint_d': 6.0,
             'safety_hold': 1,
             'safety_stiffness': 0.0,
             'vKd_d': 0,
@@ -375,6 +380,7 @@ nominal_params={
             'vel': 25},
         'rated_current': 2.8},
     'lift':{
+        'usb_name': '/dev/hello-motor-lift',
         'force_N_per_A': 75.0,  # Legacy
         'calibration_range_bounds': [1.094, 1.106],
         'contact_models': {
@@ -400,6 +406,7 @@ nominal_params={
               'vel_m': 0.15}},
           'pinion_t': 12},
     'pimu':{
+      'usb_name': '/dev/hello-pimu',
       'base_fan_off': 70,
       'base_fan_on': 82,
       'max_sync_rate_hz': 80.0,
@@ -428,7 +435,7 @@ nominal_params={
             'NonDXLStatusThread_sentry_downrate_int': 2,
             'NonDXLStatusThread_trajectory_downrate_int': 2},
         'tool': 'tool_stretch_gripper',
-        'use_collision_manager': 1,
+        'use_collision_manager': 0,
         'stow':{
         'arm': 0.0,
         'head_pan': 0.0,
@@ -532,6 +539,7 @@ nominal_params={
         },
         'collision_models': ['collision_stretch_gripper']},
     'wacc':{
+        'usb_name': '/dev/hello-wacc',
         'config': {
         'accel_LPF': 10.0,
         'accel_range_g': 4,
@@ -578,5 +586,7 @@ nominal_params={
         'baud': 115200,
         'enable_runstop': 1,
         'disable_torque_on_stop': 1,
-        'range_pad_t': [50.0, -50.0]}
+        'range_pad_t': [50.0, -50.0]},
+    'respeaker': {'usb_name': '/dev/hello-respeaker'},
+    'lidar': {'usb_name': '/dev/hello-lrf'}
 }

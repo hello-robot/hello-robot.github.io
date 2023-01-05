@@ -52,6 +52,8 @@ echo "Install SSH Server"
 install ssh
 echo "Install Chromium"
 install chromium-browser
+echo "Install htop"
+install htop
 echo ""
 
 # see http://wiki.ros.org/melodic/Installation/Ubuntu#Installation for details
@@ -73,7 +75,7 @@ if [ -f "/etc/ros/rosdep/sources.list.d/20-default.list" ]; then
     sudo rm /etc/ros/rosdep/sources.list.d/20-default.list
 fi
 sudo rosdep init >> $REDIRECT_LOGFILE
-rosdep update >> $REDIRECT_LOGFILE
+rosdep update --include-eol-distros >> $REDIRECT_LOGFILE
 echo "Install other ROS workspace tools"
 install python-vcstool python-rosinstall python-rosinstall-generator python-wstool build-essential
 echo ""

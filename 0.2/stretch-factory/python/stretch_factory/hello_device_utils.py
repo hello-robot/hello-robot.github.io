@@ -86,6 +86,27 @@ def exec_process(cmdline, silent, input=None, **kwargs):
     return stdout
 
 # ###################################
+def get_device_ttyACMx(device):
+    #Return the ACMx of a symlinked device, eg 'ttyACM0' given /dev/hello-motor-arm
+    try:
+        ACMx = Popen("ls -l %s"%device, shell=True, bufsize=64, stdin=PIPE, stdout=PIPE, close_fds=True).stdout.read().strip().split()[-1]
+        ACMx=ACMx.decode("utf-8")
+        return ACMx
+    except IndexError:
+        return None
+
+def get_all_ttyACMx():
+    #Return list of ACMx names eg ['ttyACM0','ttyACM1']
+    ACMx_all = Popen("ls -l /dev/ttyACM*", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE, close_fds=True).stdout.read().strip().split()
+    ret=[]
+    for line in ACMx_all:
+        l=line.decode("utf-8")
+        if l.find('ttyACM')!=-1:
+            ret.append(l[5:])
+    return ret
+
+
+
 def is_device_present(device):
     try:
         exec_process(['ls',device],True)
@@ -361,6 +382,27 @@ def add_ftdi_udev_line(device_name, serial_no,fleet_dir):
     f = open(fleet_dir+'udev/99-hello-dynamixel.rules', 'w')
     f.write(x_out)
     f.close()
+
+def get_serial_nos_from_udev(udev_file_full_path, device_name):
+    sns=[]
+    try:
+        f = open(udev_file_full_path, 'r')
+        x = f.readlines()
+        f.close()
+        lines=[]
+        for xx in x:
+            if xx.find(device_name) > 0 and xx[0]!='#':
+                lines.append(xx)
+        for l in lines:
+            ll=l.split(',')
+            for q in ll:
+                if q.find('serial')>-1:
+                    s=q[q.find('"')+1:q.rfind('"')]
+                    if len(s)==8 or len(s)==32: #FTDI or Arduino
+                        sns.append(s)
+    except:
+        pass
+    return sns
 
 def assign_arduino_to_robot(device_name,is_stepper=False,robot_sn=None):
     """

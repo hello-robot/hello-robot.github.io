@@ -52,10 +52,10 @@ echo "Install SSH Server"
 install ssh
 echo "Install Chromium"
 install chromium-browser
-echo ""
+echo "Install htop"
+install htop
 echo "Install Ubuntu Sounds"
 install ubuntu-sounds
-echo ""
 echo "Install BleachBit"
 install bleachbit
 echo ""
@@ -79,7 +79,7 @@ if [ -f "/etc/ros/rosdep/sources.list.d/20-default.list" ]; then
     sudo rm /etc/ros/rosdep/sources.list.d/20-default.list
 fi
 sudo rosdep init >> $REDIRECT_LOGFILE
-rosdep update >> $REDIRECT_LOGFILE
+rosdep update --include-eol-distros >> $REDIRECT_LOGFILE
 echo "Install vcstool"
 install python3-vcstool
 echo ""
@@ -143,7 +143,6 @@ install ros-noetic-rplidar-ros ros-noetic-rplidar-ros-dbgsym
 install ros-galactic-rplidar-ros ros-galactic-rplidar-ros-dbgsym
 echo "Install Respeaker and speech recognition packages"
 install python3-pyaudio
-# install ros-noetic-respeaker-ros ros-noetic-ros-speech-recognition
 # install ros-galactic-respeaker-ros ros-galactic-ros-speech-recognition # not available
 echo "Install scan tools for Canonical Scan Matching using the laser_scan_matcher"
 install ros-noetic-scan-tools

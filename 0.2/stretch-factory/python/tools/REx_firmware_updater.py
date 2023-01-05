@@ -86,7 +86,7 @@ a new version of Stretch Body, this firmware updater tools should be run.
 if args.arm or args.lift or args.wacc or args.pimu or args.left_wheel or args.right_wheel:
     use_device={'hello-motor-lift':args.lift,'hello-motor-arm':args.arm, 'hello-motor-right-wheel':args.right_wheel, 'hello-motor-left-wheel':args.left_wheel,'hello-pimu':args.pimu,'hello-wacc':args.wacc}
 else:
-    use_device = {'hello-motor-lift': True, 'hello-motor-arm': True, 'hello-motor-right-wheel': True, 'hello-motor-left-wheel': True, 'hello-pimu': True, 'hello-wacc': True}
+    use_device = {'hello-motor-arm': True, 'hello-motor-right-wheel': True, 'hello-motor-left-wheel': True, 'hello-pimu': True, 'hello-wacc': True,'hello-motor-lift': True}
 
 if args.mgmt:
     print(mgmt)
@@ -100,6 +100,7 @@ if args.current:
 if args.recommended:
     r = RecommendedFirmware(use_device)
     r.pretty_print()
+    r.print_recommended_args()
     exit()
 
 if args.available:

@@ -15,6 +15,20 @@ class StretchDeviceMgmt:
 
     Also see: https://stackoverflow.com/questions/31992058/how-can-i-comunicate-with-this-device-using-pyusb/31994168#31994168
     """
+
+    @staticmethod
+    def reset_all_arduino():
+        devs = []
+        all = usb.core.find(find_all=True)
+        for dev in all:
+            if dev.idVendor == 0x2341:# and dev.idProduct == 0x804d:
+                devs.append(dev)
+        for d in devs:
+            try:
+                d.reset()
+            except:
+                pass
+
     def __init__(self,device_names=None):
         self.comports= serial.tools.list_ports.comports()
         if device_names==None:
@@ -34,7 +48,7 @@ class StretchDeviceMgmt:
 
         self.valid=True
 
-        #Build mapping between symlink and device name
+        #Build mapping between symlink (hello-motor-arm) and device name (ttyACM0)
         n_match=0
         lsdev=Popen("ls -ltr /dev/hello*", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE, close_fds=True).stdout.read().split(b'\n')
         for name in self.device_info.keys():
@@ -42,15 +56,20 @@ class StretchDeviceMgmt:
                 if line.find(name.encode())>=0:
                     map=line[line.find(name.encode()):] #eg: hello-motor-arm -> ttyACM4
                     device=map[map.find(b'->')+3:] #eg ttyACM
-                    self.device_info[name]['device']=device
+                    self.device_info[name]['device']=device #Now self.device_info['hello-pimu']['device']='ttyACM0' for example
                     n_match=n_match+1
         if not n_match==len(self.device_info.keys()):
-            print('ls parse: Failed to match all devices for StretchSerialInfo')
-            print(self.device_info)
+            print('ls parse: Failed to match all device symlinks to /dev/ttyACMx for StretchSerialInfo')
+
+
+        #Now for each device mapped above find the associated comport under usb.core
         for c in self.comports:
             for name in self.device_info.keys():
-                if c.device[5:].encode()==self.device_info[name]['device']:
+                ttyACMx = c.device[5:].encode()
+                if ttyACMx==self.device_info[name]['device']:
                     self.device_info[name]['info']=c
+
+        #Now build a list of usb.core devices with Arduino vendor info
         devs = []
         if self.check_udev_rules():
             all = usb.core.find(find_all=True)

@@ -1,17 +1,17 @@
 import setuptools
-from os import listdir
-from os.path import isfile, join
-
+from os.path import isfile
+import glob
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 script_path='./bin'
-stretch_scripts={script_path+'/'+f for f in listdir(script_path) if isfile(join(script_path, f))}
+ex_scripts = glob.glob(script_path+'/*.py') + glob.glob(script_path+'/*.sh')
+stretch_scripts=[f for f in ex_scripts if isfile(f)]
 
 setuptools.setup(
     name="hello_robot_stretch_body_tools",
-    version="0.4.2",
+    version="0.4.5",
     author="Hello Robot Inc",
     author_email="support@hello-robot.com",
     description="Stretch Body Tools",

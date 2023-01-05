@@ -23,7 +23,10 @@
 // Version 0.2.0: Add support for Variant 1 (BOARD_VARIANT_DEDICATED_SYNC, charge connect, Neopixel, etc)
 // Version 0.2.1: Update lightbar UI
 // Version 0.2.3: Initial production release RE2 Mitski
-#define FIRMWARE_VERSION "Pimu.v0.2.3p1"
+// Version 0.2.4: Bugfix lightbar voltage display
+// Version 0.2.5: Initial production release for RE2 Nina
+
+#define FIRMWARE_VERSION "Pimu.v0.2.5p1"
 
 #define FS 100 //Loop rate in Hz for TC5
 

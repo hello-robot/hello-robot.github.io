@@ -24,6 +24,7 @@
 #include "LightBarManager.h"
 
 #define V_TO_RAW(v) v*1024/20.0 //per circuit
+#define RAW_TO_V(r) (float)r*0.01953125 //20.0/1024.0
 #define I_TO_RAW(i) (i*1000)*0.408*1024.0/3300 //per circuit
 
 float low_voltage_alert=V_TO_RAW(10.5);
@@ -133,7 +134,7 @@ void setupBoardVariants()
     BOARD_VARIANT_DEDICATED_SYNC=0;
   }
   
-  if (BOARD_VARIANT==1)
+  if (BOARD_VARIANT>=1)
   {
     BOARD_VARIANT_DEDICATED_SYNC=1;
     light_bar_manager.setupLightBarManager();
@@ -169,8 +170,7 @@ void stepPimuController()
   runstop_manager.step(&cfg);
   beep_manager.step();
   analog_manager.step(&stat, &cfg);
-
-  light_bar_manager.step(state_boot_detected, runstop_manager.state_runstop_event, state_charger_connected, state_low_voltage_alert, runstop_manager.runstop_led_on, analog_manager.voltage);
+  light_bar_manager.step(state_boot_detected, runstop_manager.state_runstop_event, state_charger_connected, state_low_voltage_alert, runstop_manager.runstop_led_on, RAW_TO_V(analog_manager.voltage));
   update_fan();  
   update_imu();
   update_board_reset();
@@ -366,7 +366,7 @@ void update_imu()
 ////////////////////////////
 void update_voltage_monitor()
 {
-  if (BOARD_VARIANT==1)
+  if (BOARD_VARIANT>=1)
   {
     //For Variant 1, indicate charging required on the Neopixel
     state_charger_connected=digitalRead(CHARGER_CONNECTED);

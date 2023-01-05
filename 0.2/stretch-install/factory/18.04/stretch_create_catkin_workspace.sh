@@ -38,7 +38,7 @@ cd $CATKIN_WSDIR/src
 vcs import --input ~/stretch_install/factory/18.04/stretch_ros_melodic.repos >> $REDIRECT_LOGFILE
 echo "Fetch ROS packages' dependencies (this might take a while)..."
 cd $CATKIN_WSDIR/
-rosdep install -iy --from-paths src &>> $REDIRECT_LOGFILE
+rosdep install -iy --skip-keys="librealsense2" --from-paths src &>> $REDIRECT_LOGFILE
 echo "Make the workspace..."
 catkin_make -DCATKIN_ENABLE_TESTING=False -DCMAKE_BUILD_TYPE=Release &>> $REDIRECT_LOGFILE
 echo "Source setup.bash file..."
