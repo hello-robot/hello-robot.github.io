@@ -9,6 +9,7 @@ theme:
  name: material
  features:
    - navigation.instant
+   - navigation.footer
  #font: Arial
  palette:
   - scheme: default
