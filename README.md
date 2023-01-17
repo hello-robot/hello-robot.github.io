@@ -79,6 +79,14 @@ cd ~/repos/hello-robot.github.io/repos
 git submodule add https://github.com/hello-robot/stretch_foo
 ```
 
+## Updating a Submodule Repo
+If your submodule repos are stale try:
+
+```
+cd ~/repos/hello-robot.github.io/repos
+git submodule init
+git submoudle update
+```
 ## Editing a Submodule Repo
 For example, Stretch Body:
 
