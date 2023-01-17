@@ -87,6 +87,11 @@ cd ~/repos/hello-robot.github.io/repos
 git submodule init
 git submoudle update
 ```
+Once the repos are present you can update them all to the latest master by:
+
+```
+git submodule foreach git pull origin master
+```
 ## Editing a Submodule Repo
 For example, Stretch Body:
 
