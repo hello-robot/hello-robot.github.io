@@ -1221,6 +1221,36 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_tool_share/</loc>
+         <lastmod>2023-01-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_tool_share/dexwrist/</loc>
+         <lastmod>2023-01-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_tool_share/dry_erase_holder/</loc>
+         <lastmod>2023-01-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_tool_share/gripper_puller/</loc>
+         <lastmod>2023-01-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_tool_share/gripper_removal/</loc>
+         <lastmod>2023-01-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_tool_share/updating_urdf/</loc>
+         <lastmod>2023-01-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-web-interface/</loc>
          <lastmod>2023-01-18</lastmod>
          <changefreq>daily</changefreq>
