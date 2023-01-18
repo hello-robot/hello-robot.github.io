@@ -14,10 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros1_melodic/example_7/">
       
-      
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -25,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -123,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -130,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3333,7 +3336,6 @@
                   
 
 
-
 <h1 id="example-7">Example 7</h1>
 <p>In this example, we will review the <a href="http://wiki.ros.org/image_view?distro=melodic">image_view</a> ROS package and a Python script that captures an image from the <a href="https://www.intelrealsense.com/depth-camera-d435i/">RealSense camera</a>.</p>
 <p align="center">
@@ -3342,37 +3344,37 @@
 </p>
 
 <p>BBegin by checking out the <a href="https://github.com/hello-robot/stretch_ros/tree/feature/upright_camera_view">feature/upright_camera_view</a> branch in the <a href="https://github.com/hello-robot/stretch_ros">stretch_ros</a> repository. The configuration of the camera results in the images being displayed sideways. Thus, this branch publishes a new topic that rotates the raw image upright.</p>
-<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/catkin_ws/src/stretch_ros/stretch_core
-git<span class="w"> </span>checkout<span class="w"> </span>feature/upright_camera_view
+<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/catkin_ws/src/stretch_ros/stretch_core
+git checkout feature/upright_camera_view
 </code></pre></div>
 Then run the stretch driver launch file.</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch<span class="w"> </span>stretch_core<span class="w"> </span>stretch_driver.launch
+roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 To activate the <a href="https://www.intelrealsense.com/depth-camera-d435i/">RealSense camera</a> and publish topics to be visualized, run the following launch file in a new terminal.</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-roslaunch<span class="w"> </span>stretch_core<span class="w"> </span>d435i_low_resolution.launch
+roslaunch stretch_core d435i_low_resolution.launch
 </code></pre></div>
 Within this tutorial package, there is an RViz config file with the topics for perception already in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Terminal 3</span>
-rosrun<span class="w"> </span>rviz<span class="w"> </span>rviz<span class="w"> </span>-d<span class="w"> </span>/home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/perception_example.rviz
+rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/perception_example.rviz
 </code></pre></div>
 <h2 id="capture-image-with-image_view">Capture Image with image_view</h2>
 <p>There are a couple of methods to save an image using the <a href="http://wiki.ros.org/image_view">image_view</a> package.</p>
 <p><strong>OPTION 1:</strong> Use the <code>image_view</code> node to open a simple image viewer for ROS <em>sensor_msgs/image</em> topics.</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 4</span>
-rosrun<span class="w"> </span>image_view<span class="w"> </span>image_view<span class="w"> </span>image:<span class="o">=</span>/camera/color/image_raw_upright_view
+rosrun image_view image_view image:<span class="o">=</span>/camera/color/image_raw_upright_view
 </code></pre></div>
 Then you can save the current image by right-clicking on the display window. By deafult, images will be saved as frame000.jpg, frame000.jpg, etc. Note, that the image will be saved to the terminal's current work directory.</p>
 <p><strong>OPTION 2:</strong> Use the <code>image_saver</code> node to save an image to the terminals current work directory.
 <div class="highlight"><pre><span></span><code><span class="c1"># Terminal 4</span>
-rosrun<span class="w"> </span>image_view<span class="w"> </span>image_saver<span class="w"> </span>image:<span class="o">=</span>/camera/color/image_raw_upright_view
+rosrun image_view image_saver image:<span class="o">=</span>/camera/color/image_raw_upright_view
 </code></pre></div></p>
 <h2 id="capture-image-with-python-script">Capture Image with Python Script</h2>
 <p>In this section, you can use a Python node to capture an image from the <a href="https://www.intelrealsense.com/depth-camera-d435i/">RealSense camera</a>. Execute the <a href="https://github.com/hello-robot/stretch_tutorials/blob/main/src/capture_image.py">capture_image.py</a> node to save a .jpeg image of the image topic <em>/camera/color/image_raw_upright_view</em>.</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 4</span>
-<span class="nb">cd</span><span class="w"> </span>~/catkin_ws/src/stretch_tutorials/src
-python<span class="w"> </span>capture_image.py
+<span class="nb">cd</span> ~/catkin_ws/src/stretch_tutorials/src
+python capture_image.py
 </code></pre></div>
 An image named <strong>camera_image.jpeg</strong> is saved in the <strong>stored_data</strong> folder in this package.</p>
 <h3 id="the-code">The Code</h3>
@@ -3387,12 +3389,12 @@ An image named <strong>camera_image.jpeg</strong> is saved in the <strong>stored
 <span class="kn">from</span> <span class="nn">cv_bridge</span> <span class="kn">import</span> <span class="n">CvBridge</span><span class="p">,</span> <span class="n">CvBridgeError</span>
 
 <span class="k">class</span> <span class="nc">CaptureImage</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A class that converts a subscribed ROS image to a OpenCV image and saves</span>
 <span class="sd">    the captured image to a predefined directory.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A function that initializes a CvBridge class, subscriber, and save path.</span>
 <span class="sd">        :param self: The self reference.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -3401,7 +3403,7 @@ An image named <strong>camera_image.jpeg</strong> is saved in the <strong>stored
         <span class="bp">self</span><span class="o">.</span><span class="n">save_path</span> <span class="o">=</span> <span class="s1">&#39;/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data&#39;</span>
 
     <span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A callback function that converts the ROS image to a CV2 image and stores the</span>
 <span class="sd">        image.</span>
 <span class="sd">        :param self: The self reference.</span>
@@ -3439,7 +3441,7 @@ You need to import <code>rospy</code> if you are writing a ROS <a href="http://w
 </code></pre></div>
 The <code>sensor_msgs.msg</code> is imported so that we can subscribe to ROS <code>Image</code> messages. Import <a href="http://wiki.ros.org/cv_bridge">CvBridge</a> to convert between ROS <code>Image</code> messages and OpenCV images.</p>
 <p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A function that initializes a CvBridge class, subscriber, and save path.</span>
 <span class="sd">    :param self: The self reference.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -3449,7 +3451,7 @@ The <code>sensor_msgs.msg</code> is imported so that we can subscribe to ROS <co
 </code></pre></div>
 Initialize the CvBridge class, the subscriber, and the directory of where the captured image will be stored.</p>
 <p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A callback function that converts the ROS image to a cv2 image and stores the</span>
 <span class="sd">    image.</span>
 <span class="sd">    :param self: The self reference.</span>
@@ -3481,8 +3483,8 @@ Give control to ROS.  This will allow the callback to be called whenever new mes
 <h2 id="edge-detection">Edge Detection</h2>
 <p>In this section, we highlight a node that utilizes the <a href="https://www.geeksforgeeks.org/python-opencv-canny-function/">Canny Edge filter</a> algorithm to detect the edges from an image and convert it back as a ROS image to be visualized in RViz. Begin by running the following commands.</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 4</span>
-<span class="nb">cd</span><span class="w"> </span>~/catkin_ws/src/stretch_tutorials/src
-python<span class="w"> </span>edge_detection.py
+<span class="nb">cd</span> ~/catkin_ws/src/stretch_tutorials/src
+python edge_detection.py
 </code></pre></div>
 The node will publish a new Image topic named <em>/image_edge_detection</em>. This can be visualized in RViz and a gif is provided below for reference.</p>
 <p align="center">
@@ -3501,12 +3503,12 @@ The node will publish a new Image topic named <em>/image_edge_detection</em>. Th
 <span class="kn">from</span> <span class="nn">cv_bridge</span> <span class="kn">import</span> <span class="n">CvBridge</span><span class="p">,</span> <span class="n">CvBridgeError</span>
 
 <span class="k">class</span> <span class="nc">EdgeDetection</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A class that converts a subscribed ROS image to a OpenCV image and saves</span>
 <span class="sd">    the captured image to a predefined directory.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A function that initializes a CvBridge class, subscriber, and other</span>
 <span class="sd">        parameter values.</span>
 <span class="sd">        :param self: The self reference.</span>
@@ -3520,7 +3522,7 @@ The node will publish a new Image topic named <em>/image_edge_detection</em>. Th
         <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s2">&quot;Publishing the CV2 Image. Use RViz to visualize.&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A callback function that converts the ROS image to a CV2 image and goes</span>
 <span class="sd">        through the Canny Edge filter in OpenCV for edge detection. Then publishes</span>
 <span class="sd">        that filtered image to be visualized in RViz.</span>
@@ -3573,8 +3575,6 @@ Publish the ROS image with the same header as the subscribed ROS message.</p>
       </main>
       
         <footer class="md-footer">
-  
-    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3647,11 +3647,12 @@ Publish the ROS image with the same header as the subscribed ROS message.</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

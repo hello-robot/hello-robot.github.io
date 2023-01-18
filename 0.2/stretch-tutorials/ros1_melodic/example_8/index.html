@@ -14,10 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros1_melodic/example_8/">
       
-      
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -25,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -123,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -130,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3286,7 +3289,6 @@
                   
 
 
-
 <h1 id="example-8">Example 8</h1>
 <p>This example will showcase how to save the interpreted speech from Stretch's <a href="https://wiki.seeedstudio.com/ReSpeaker_Mic_Array_v2.0/">ReSpeaker Mic Array v2.0</a> to a text file.</p>
 <p align="center">
@@ -3295,12 +3297,12 @@
 
 <p>Begin by running the <code>respeaker.launch</code> file in a terminal.
 <div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch<span class="w"> </span>respeaker_ros<span class="w"> </span>sample_respeaker.launch
+roslaunch respeaker_ros sample_respeaker.launch
 </code></pre></div>
 Then run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/main/src/speech_text.py">speech_text.py</a> node.</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-<span class="nb">cd</span><span class="w"> </span>catkin_ws/src/stretch_tutorials/src/
-python<span class="w"> </span>speech_text.py
+<span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+python speech_text.py
 </code></pre></div>
 The ReSpeaker will be listening and will start to interpret speech and save the transcript to a text file.  To stop shutdown the node, type <strong>Ctrl</strong> + <strong>c</strong> in the terminal.</p>
 <h3 id="the-code">The Code</h3>
@@ -3311,11 +3313,11 @@ The ReSpeaker will be listening and will start to interpret speech and save the 
 <span class="kn">from</span> <span class="nn">speech_recognition_msgs.msg</span> <span class="kn">import</span> <span class="n">SpeechRecognitionCandidates</span>
 
 <span class="k">class</span> <span class="nc">SpeechText</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A class that saves the interpreted speech from the ReSpeaker Microphone Array to a text file.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize subscriber and directory to save speech to text file.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s2">&quot;speech_to_text&quot;</span><span class="p">,</span> <span class="n">SpeechRecognitionCandidates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
@@ -3323,7 +3325,7 @@ The ReSpeaker will be listening and will start to interpret speech and save the 
         <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s2">&quot;Listening to speech.&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">msg</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A callback function that receives the speech transcript and appends the</span>
 <span class="sd">        transcript to a text file.</span>
 <span class="sd">        :param self: The self reference.</span>
@@ -3355,7 +3357,7 @@ You need to import <code>rospy</code> if you are writing a ROS <a href="http://w
 </code></pre></div>
 Import <code>SpeechRecognitionCandidates</code> from the <code>speech_recgonition_msgs.msg</code> so that we can receive the interpreted speech.</p>
 <p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Initialize subscriber and directory to save speech to text file.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">sub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s2">&quot;speech_to_text&quot;</span><span class="p">,</span> <span class="n">SpeechRecognitionCandidates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
@@ -3401,8 +3403,6 @@ and ROS will not process any messages.</p>
       </main>
       
         <footer class="md-footer">
-  
-    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3475,11 +3475,12 @@ and ROS will not process any messages.</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

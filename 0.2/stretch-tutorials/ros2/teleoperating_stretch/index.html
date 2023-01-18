@@ -14,10 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/teleoperating_stretch/">
       
-      
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -25,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -123,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -130,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3318,7 +3321,6 @@
                   
 
 
-
   <h1>Teleoperating stretch</h1>
 
 <h2 id="teleoperating-stretch">Teleoperating Stretch</h2>
@@ -3330,11 +3332,11 @@
 <h3 id="keyboard-teleoperating-full-body">Keyboard Teleoperating: Full Body</h3>
 <p>For full body teleoperation with the keyboard, you first need to run the <code>stretch_driver.launch</code> in a terminal.</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch<span class="w"> </span>stretch_core<span class="w"> </span>stretch_driver.launch
+roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 Then in a new terminal, type the following command</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-rosrun<span class="w"> </span>stretch_core<span class="w"> </span>keyboard_teleop
+rosrun stretch_core keyboard_teleop
 </code></pre></div>
 <p>Below are the keyboard commands that allow a user to control all of Stretch's joints.<br />
 <div class="highlight"><pre><span></span><code>---------- KEYBOARD TELEOP MENU -----------
@@ -3374,12 +3376,12 @@ To stop the node from sending twist messages, type <strong>Ctrl</strong> + <stro
 <h3 id="keyboard-teleoperating-mobile-base">Keyboard Teleoperating: Mobile Base</h3>
 <p>Begin by running the following command in your terminal:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch<span class="w"> </span>stretch_core<span class="w"> </span>stretch_driver.launch
+roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 <p>To teleoperate a Stretch's mobile base with the keyboard, you first need to switch the mode to <em>nagivation</em> for the robot to receive <em>Twist</em> messages. This is done using a rosservice call in a new terminal. In the same terminal run the teleop_twist_keyboard node with the argument remapping the <em>cmd_vel</em> topic name to <em>stretch/cmd_vel</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-rosservice<span class="w"> </span>call<span class="w"> </span>/switch_to_navigation_mode
-rosrun<span class="w"> </span>teleop_twist_keyboard<span class="w"> </span>teleop_twist_keyboard.py<span class="w"> </span>cmd_vel:<span class="o">=</span>stretch/cmd_vel
+rosservice call /switch_to_navigation_mode
+rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:<span class="o">=</span>stretch/cmd_vel
 </code></pre></div>
 <p>Below are the keyboard commands that allow a user to move Stretch's base.<br />
 <div class="highlight"><pre><span></span><code>Reading from the keyboard  and Publishing to Twist!
@@ -3417,7 +3419,7 @@ To stop the node from sending twist messages, type <strong>Ctrl</strong> + <stro
 ### Keyboard Teleoperating
 For keyboard teleoperation, first [startup Stretch in simulation](gazebo_basics.md). Then run the following command in a new terminal.
 
-<div class="highlight"><pre><span></span><code>roslaunch<span class="w"> </span>stretch_gazebo<span class="w"> </span>gazebo.launch
+<div class="highlight"><pre><span></span><code>roslaunch stretch_gazebo gazebo.launch
 </code></pre></div>
 
 In a new terminal, type the following
@@ -3447,8 +3449,6 @@ Note that the teleop_twist_joy package has a deadman switch by default which dis
       </main>
       
         <footer class="md-footer">
-  
-    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3521,11 +3521,12 @@ Note that the teleop_twist_joy package has a deadman switch by default which dis
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

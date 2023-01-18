@@ -14,10 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-factory/updates/004_HEAD_TILT/">
       
-      
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -25,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -123,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -130,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3286,68 +3289,67 @@
                   
 
 
-
 <h1 id="004_head_tilt">004_HEAD_TILT</h1>
 <h3 id="background"><strong>Background</strong></h3>
 <p>Tools to debug the head tilt unit not working (assuming not a mechanical failure or unplugged cable)</p>
 <p>Check that both the pan (ID 11) and tilt (ID 12) are on the bus</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>RE1_dynamixel_id_scan.py<span class="w"> </span>/dev/hello-dynamixel-head<span class="w"> </span>
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:000<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:001<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:002<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:003<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:004<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:005<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:006<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:007<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:008<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:009<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:010<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:011<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Succeeded.<span class="w"> </span>Dynamixel<span class="w"> </span>model<span class="w"> </span>number<span class="w"> </span>:<span class="w"> </span><span class="m">1060</span>
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:012<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Succeeded.<span class="w"> </span>Dynamixel<span class="w"> </span>model<span class="w"> </span>number<span class="w"> </span>:<span class="w"> </span><span class="m">1060</span>
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:013<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:014<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:015<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:016<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:017<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:018<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:019<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ RE1_dynamixel_id_scan.py /dev/hello-dynamixel-head 
+<span class="o">[</span>Dynamixel ID:000<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:001<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:002<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:003<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:004<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:005<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:006<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:007<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:008<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:009<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:010<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:011<span class="o">]</span> ping Succeeded. Dynamixel model number : <span class="m">1060</span>
+<span class="o">[</span>Dynamixel ID:012<span class="o">]</span> ping Succeeded. Dynamixel model number : <span class="m">1060</span>
+<span class="o">[</span>Dynamixel ID:013<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:014<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:015<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:016<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:017<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:018<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:019<span class="o">]</span> ping Failed.
 </code></pre></div>
 <h3 id="things-to-try">Things to try</h3>
 <p>Directly jog the tilt joint (ID 12) from the menu</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>RE1_dynamixel_jog.py<span class="w"> </span>/dev/hello-dynamixel-head<span class="w"> </span><span class="m">12</span>
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ RE1_dynamixel_jog.py /dev/hello-dynamixel-head <span class="m">12</span>
 </code></pre></div>
 <p>Directly jog the pan joint (ID 11) from the menu</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>RE1_dynamixel_jog.py<span class="w"> </span>/dev/hello-dynamixel-head<span class="w"> </span><span class="m">11</span>
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ RE1_dynamixel_jog.py /dev/hello-dynamixel-head <span class="m">11</span>
 </code></pre></div>
 <p>If you think a servo may have overheated, reboot the servos of the head</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>RE1_dynamixel_reboot.py<span class="w"> </span>/dev/hello-dynamixel-head
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:011<span class="o">]</span><span class="w"> </span>Reboot<span class="w"> </span>Succeeded.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:012<span class="o">]</span><span class="w"> </span>Reboot<span class="w"> </span>Succeeded.
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ RE1_dynamixel_reboot.py /dev/hello-dynamixel-head
+<span class="o">[</span>Dynamixel ID:011<span class="o">]</span> Reboot Succeeded.
+<span class="o">[</span>Dynamixel ID:012<span class="o">]</span> Reboot Succeeded.
 </code></pre></div>
 <p>Jog the entire head. Verify the looking ahead, back, etc from the menu work as expcted</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>stretch_head_jog.py
-For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </span>S<span class="w"> </span>T<span class="w"> </span>R<span class="w"> </span>E<span class="w"> </span>T<span class="w"> </span>C<span class="w"> </span>H<span class="w"> </span><span class="o">(</span>TM<span class="o">)</span><span class="w"> </span>RESEARCH<span class="w"> </span>EDITION<span class="w"> </span>from<span class="w"> </span>Hello<span class="w"> </span>Robot<span class="w"> </span>Inc.
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_head_jog.py
+For use with S T R E T C H <span class="o">(</span>TM<span class="o">)</span> RESEARCH EDITION from Hello Robot Inc.
 
-------<span class="w"> </span>MENU<span class="w"> </span>-------
-m:<span class="w"> </span>menu
-a:<span class="w"> </span>increment<span class="w"> </span>pan<span class="w"> </span><span class="m">10</span><span class="w"> </span>deg
-b:<span class="w"> </span>decrement<span class="w"> </span>pan<span class="w"> </span><span class="m">10</span><span class="w"> </span>deg
-c:<span class="w"> </span>increment<span class="w"> </span>tilt<span class="w"> </span><span class="m">10</span><span class="w"> </span>deg
-d:<span class="w"> </span>decrement<span class="w"> </span>tilt<span class="w"> </span><span class="m">10</span><span class="w"> </span>deg
-e:<span class="w"> </span>ahead
-f:<span class="w"> </span>back
-g:<span class="w"> </span>tool
-h:<span class="w"> </span>wheels
-i:<span class="w"> </span>left
-j:<span class="w"> </span>up
-p:<span class="w"> </span>pan<span class="w"> </span>go<span class="w"> </span>to<span class="w"> </span>pos<span class="w"> </span>ticks
-t:<span class="w"> </span>tilt<span class="w"> </span>go<span class="w"> </span>to<span class="w"> </span>pos<span class="w"> </span>ticks
-x:<span class="w"> </span>home
-<span class="m">1</span>:<span class="w"> </span>speed<span class="w"> </span>slow
-<span class="m">2</span>:<span class="w"> </span>speed<span class="w"> </span>default
-<span class="m">3</span>:<span class="w"> </span>speed<span class="w"> </span>fast
-<span class="m">4</span>:<span class="w"> </span>speed<span class="w"> </span>max
+------ MENU -------
+m: menu
+a: increment pan <span class="m">10</span> deg
+b: decrement pan <span class="m">10</span> deg
+c: increment tilt <span class="m">10</span> deg
+d: decrement tilt <span class="m">10</span> deg
+e: ahead
+f: back
+g: tool
+h: wheels
+i: left
+j: up
+p: pan go to pos ticks
+t: tilt go to pos ticks
+x: home
+<span class="m">1</span>: speed slow
+<span class="m">2</span>: speed default
+<span class="m">3</span>: speed fast
+<span class="m">4</span>: speed max
 -------------------
 </code></pre></div>
 
@@ -3365,8 +3367,6 @@ x:<span class="w"> </span>home
       </main>
       
         <footer class="md-footer">
-  
-    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3439,11 +3439,12 @@ x:<span class="w"> </span>home
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

@@ -14,14 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros1/perception/">
       
-      
-        <link rel="prev" href="../follow_joint_trajectory/">
-      
-      
-        <link rel="next" href="../aruco_marker_detection/">
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -29,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -127,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -134,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3406,22 +3405,21 @@
                   
 
 
-
   <h1>Perception</h1>
 
 <h2 id="perception-introduction">Perception Introduction</h2>
 <p>The Stretch robot is equipped with the <a href="https://www.intelrealsense.com/depth-camera-d435i/">Intel RealSense D435i camera</a>, an essential component that allows the robot to measure and analyze the world around it. In this tutorial, we are going to showcase how to visualize the various topics published from the camera.</p>
 <p>Begin by running the stretch <code>driver.launch</code> file.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch<span class="w"> </span>stretch_core<span class="w"> </span>stretch_driver.launch
+roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 <p>To activate the <a href="https://www.intelrealsense.com/depth-camera-d435i/">RealSense camera</a> and publish topics to be visualized, run the following launch file in a new terminal.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-roslaunch<span class="w"> </span>stretch_core<span class="w"> </span>d435i_low_resolution.launch
+roslaunch stretch_core d435i_low_resolution.launch
 </code></pre></div>
 <p>Within this tutorial package, there is an <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/rviz/perception_example.rviz">RViz config file</a> with the topics for perception already in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Terminal 3</span>
-rosrun<span class="w"> </span>rviz<span class="w"> </span>rviz<span class="w"> </span>-d<span class="w"> </span>/home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/perception_example.rviz
+rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/perception_example.rviz
 </code></pre></div>
 <h3 id="pointcloud2-display">PointCloud2 Display</h3>
 <p>A list of displays on the left side of the interface can visualize the camera data. Each display has its properties and status that notify a user if topic messages are received.</p>
@@ -3467,42 +3465,40 @@ rosrun<span class="w"> </span>rviz<span class="w"> </span>rviz<span class="w"> <
         <footer class="md-footer">
   
     
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
-          
-          <a href="../follow_joint_trajectory/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Follow Joint Trajectory Commands" rel="prev">
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        <a href="../follow_joint_trajectory/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Follow Joint Trajectory Commands" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Follow Joint Trajectory Commands
             </div>
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Previous
-                </span>
-                Follow Joint Trajectory Commands
-              </div>
-            </div>
-          </a>
+          </div>
+        </a>
+      
+      
         
-        
-          
-          <a href="../aruco_marker_detection/" class="md-footer__link md-footer__link--next" aria-label="Next: ArUco Marker Detection" rel="next">
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Next
-                </span>
-                ArUco Marker Detection
-              </div>
+        <a href="../aruco_marker_detection/" class="md-footer__link md-footer__link--next" aria-label="Next: ArUco Marker Detection" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              ArUco Marker Detection
             </div>
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3575,11 +3571,12 @@ rosrun<span class="w"> </span>rviz<span class="w"> </span>rviz<span class="w"> <
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

@@ -14,10 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/navigation_stack/">
       
-      
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -25,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -123,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -130,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3290,7 +3293,6 @@
                   
 
 
-
   <h1>Navigation stack</h1>
 
 <h2 id="navigation-stack-with-actual-robot">Navigation Stack with Actual robot</h2>
@@ -3299,7 +3301,7 @@
 <p>Refer to the instructions below if you want to test this functionality in ROS 1.</p>
 <p>stretch_navigation provides the standard ROS navigation stack as two launch files. This package utilizes gmapping, move_base, and AMCL to drive the stretch RE1 around a mapped space. Running this code will require the robot to be untethered.</p>
 <p>Then run the following commands to map the space that the robot will navigate in.
-<div class="highlight"><pre><span></span><code>roslaunch<span class="w"> </span>stretch_navigation<span class="w"> </span>mapping.launch
+<div class="highlight"><pre><span></span><code>roslaunch stretch_navigation mapping.launch
 </code></pre></div>
 Rviz will show the robot and the map that is being constructed. With the terminal open, use the instructions printed by the teleop package to teleoperate the robot around the room. Avoid sharp turns and revisit previously visited spots to form loop closures.</p>
 <p align="center">
@@ -3307,12 +3309,12 @@ Rviz will show the robot and the map that is being constructed. With the termina
 </p>
 
 <p>In Rviz, once you see a map that has reconstructed the space well enough, you can run the following commands to save the map to <code>stretch_user/</code>.</p>
-<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>~/stretch_user/maps
-rosrun<span class="w"> </span>map_server<span class="w"> </span>map_saver<span class="w"> </span>-f<span class="w"> </span><span class="si">${</span><span class="nv">HELLO_FLEET_PATH</span><span class="si">}</span>/maps/&lt;map_name&gt;
+<div class="highlight"><pre><span></span><code>mkdir -p ~/stretch_user/maps
+rosrun map_server map_saver -f <span class="si">${</span><span class="nv">HELLO_FLEET_PATH</span><span class="si">}</span>/maps/&lt;map_name&gt;
 </code></pre></div>
 <p>The <code>&lt;map_name&gt;</code> does not include an extension. Map_saver will save two files as <code>&lt;map_name&gt;.pgm</code> and <code>&lt;map_name&gt;.yaml</code>.</p>
 <p>Next, with <code>&lt;map_name&gt;.yaml</code>, we can navigate the robot around the mapped space. Run:</p>
-<div class="highlight"><pre><span></span><code>roslaunch<span class="w"> </span>stretch_navigation<span class="w"> </span>navigation.launch<span class="w"> </span>map_yaml:<span class="o">=</span><span class="si">${</span><span class="nv">HELLO_FLEET_PATH</span><span class="si">}</span>/maps/&lt;map_name&gt;.yaml
+<div class="highlight"><pre><span></span><code>roslaunch stretch_navigation navigation.launch map_yaml:<span class="o">=</span><span class="si">${</span><span class="nv">HELLO_FLEET_PATH</span><span class="si">}</span>/maps/&lt;map_name&gt;.yaml
 </code></pre></div>
 <p>Rviz will show the robot in the previously mapped space, however, it's likely that the robot's location in the map does not match the robot's location in the real space. In the top bar of Rviz, use 2D Pose Estimate to lay an arrow down roughly where the robot is located in the real space. AMCL, the localization package, will better localize our pose once we give the robot a 2D Nav Goal. In the top bar of Rviz, use 2D Nav Goal to lay down an arrow where you'd like the robot to go. In the terminal, you'll see move_base go through the planning phases and then navigate the robot to the goal. If planning fails, the robot will begin a recovery behavior: spinning around 360 degrees in place.</p>
 <p>It is also possible to send 2D Pose Estimates and Nav Goals programatically. In your own launch file, you may include <code>navigation.launch</code> to bring up the navigation stack. Then, you can send <code>move_base_msgs::MoveBaseGoal</code> messages in order to navigate the robot programatically.</p>
@@ -3342,8 +3344,6 @@ Then bringup [Stretch in the willowgarage world](gazebo_basics.md) and in a new 
       </main>
       
         <footer class="md-footer">
-  
-    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3416,11 +3416,12 @@ Then bringup [Stretch in the willowgarage world](gazebo_basics.md) and in a new 
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

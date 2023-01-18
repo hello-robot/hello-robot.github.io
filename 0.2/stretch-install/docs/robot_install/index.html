@@ -14,14 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-install/docs/robot_install/">
       
-      
-        <link rel="prev" href="../ros_workspace/">
-      
-      
-        <link rel="next" href="../../../stretch-web-interface/">
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -29,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -127,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -134,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3282,7 +3281,6 @@
                   
 
 
-
 <h1 id="performing-a-robot-installation">Performing a Robot Installation</h1>
 <h1 id="why">Why</h1>
 <p>A fresh robot-level install should only be done under the guidance of <a href="https://forum.hello-robot.com">Hello Robot Support</a>. This guide will lead you through a robot-level install, which can be used to:</p>
@@ -3326,8 +3324,8 @@
 <p>After the Ubuntu install, the default <code>hello-robot</code> user account will be set up.</p>
 <h2 id="run-the-new-robot-installation-script">Run the new robot installation script</h2>
 <p>Login to the <code>hello-robot</code> user account on your new Ubuntu partition, open a terminal, and run:</p>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>zip
+<div class="highlight"><pre><span></span><code>sudo apt update
+sudo apt install git zip
 </code></pre></div>
 <p><strong>Note</strong>: The system may not be able to run 'apt' immediately after a reboot as the OS may be running automatic updates in the background. Typically, waiting 10-20 minutes will allow you to use 'apt' again.</p>
 <p>Next, place the robot's calibration data in the home folder using the following steps:</p>
@@ -3340,10 +3338,10 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 </li>
 </ol>
 <p>Next, pull down the Stretch Install repository and being the installation process:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/
-git<span class="w"> </span>clone<span class="w"> </span>https://github.com/hello-robot/stretch_install
-<span class="nb">cd</span><span class="w"> </span>stretch_install
-git<span class="w"> </span>pull
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/
+git clone https://github.com/hello-robot/stretch_install
+<span class="nb">cd</span> stretch_install
+git pull
 ./stretch_new_robot_install.sh
 </code></pre></div>
 <p>Once the script has started, it will ask you for your robot's serial number, Y/N confirmation, and the password. Then, the script will typically take 20-30 minutes to complete on a wired connection. Once it finishes, it should print out something similar to:</p>
@@ -3371,7 +3369,7 @@ DONE! COMPLETE THESE POST INSTALL STEPS:
 <div class="highlight"><pre><span></span><code>RE1_migrate_contacts.py
 </code></pre></div>
 <p>Next, we'll ensure the robot's firmware is upgraded to the latest available. Newer firmware unlocks new features (e.g. waypoint trajectory following, which is used in ROS2 to support MoveIt2) and fixes bugs. See the <a href="https://github.com/hello-robot/stretch_firmware/tags">firmware releases</a> for details.</p>
-<div class="highlight"><pre><span></span><code>REx_firmware_updater.py<span class="w"> </span>--install
+<div class="highlight"><pre><span></span><code>REx_firmware_updater.py --install
 </code></pre></div>
 <p>Next, if your robot has the <a href="https://hello-robot.com/stretch-dex-wrist">Stretch Dex Wrist</a>, we'll configure the software to recognize it. <strong>Skip this step if you are not using the Dex Wrist.</strong></p>
 <div class="highlight"><pre><span></span><code>cd ~/stretch_install
@@ -3477,42 +3475,40 @@ Please upgrade the firmware and/or version of Stretch Body.
         <footer class="md-footer">
   
     
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
-          
-          <a href="../ros_workspace/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Adding a ROS Workspace" rel="prev">
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        <a href="../ros_workspace/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Adding a ROS Workspace" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Adding a ROS Workspace
             </div>
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Previous
-                </span>
-                Adding a ROS Workspace
-              </div>
-            </div>
-          </a>
+          </div>
+        </a>
+      
+      
         
-        
-          
-          <a href="../../../stretch-web-interface/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview" rel="next">
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Next
-                </span>
-                Overview
-              </div>
+        <a href="../../../stretch-web-interface/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Overview
             </div>
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3585,11 +3581,12 @@ Please upgrade the firmware and/or version of Stretch Body.
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

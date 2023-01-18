@@ -14,10 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros1_melodic/example_3/">
       
-      
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -25,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -123,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -130,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3297,24 +3300,23 @@
                   
 
 
-
   <h1>Example 3</h1>
 
 <h2 id="example-3">Example 3</h2>
 <p>The aim of example 3 is to combine the two previous examples and have Stretch utilize its laser scan data to avoid collision with objects as it drives forward.</p>
 <p>Begin by running the following commands in a new terminal.</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch<span class="w"> </span>stretch_core<span class="w"> </span>stretch_driver.launch
+roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 Then in a new terminal type the following to activate the LiDAR sensor.
 <div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-roslaunch<span class="w"> </span>stretch_core<span class="w"> </span>rplidar.launch
+roslaunch stretch_core rplidar.launch
 </code></pre></div></p>
 <p>To set <em>navigation</em> mode and to activate the <a href="https://github.com/hello-robot/stretch_tutorials/blob/main/src/avoider.py">avoider.py</a> node, type the following in a new terminal.</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 3</span>
-rosservice<span class="w"> </span>call<span class="w"> </span>/switch_to_navigation_mode
-<span class="nb">cd</span><span class="w"> </span>catkin_ws/src/stretch_tutorials/src/
-python<span class="w"> </span>avoider.py
+rosservice call /switch_to_navigation_mode
+<span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+python avoider.py
 </code></pre></div>
 To stop the node from sending twist messages, type <strong>Ctrl</strong> + <strong>c</strong> in the terminal running the avoider node.</p>
 <p align="center">
@@ -3331,12 +3333,12 @@ To stop the node from sending twist messages, type <strong>Ctrl</strong> + <stro
 <span class="kn">from</span> <span class="nn">sensor_msgs.msg</span> <span class="kn">import</span> <span class="n">LaserScan</span>
 
 <span class="k">class</span> <span class="nc">Avoider</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A class that implements both a LaserScan filter and base velocity control</span>
 <span class="sd">    for collision avoidance.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Function that initializes the subscriber, publisher, and marker features.</span>
 <span class="sd">        :param self: The self reference.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -3356,7 +3358,7 @@ To stop the node from sending twist messages, type <strong>Ctrl</strong> + <stro
         <span class="bp">self</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
 
     <span class="k">def</span> <span class="nf">set_speed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">msg</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Callback function to deal with incoming LaserScan messages.</span>
 <span class="sd">        :param self: The self reference.</span>
 <span class="sd">        :param msg: The subscribed LaserScan message.</span>
@@ -3445,8 +3447,6 @@ The next line, <code>rospy.init_node(NAME, ...)</code>, is very important as it 
       
         <footer class="md-footer">
   
-    
-  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
@@ -3518,11 +3518,12 @@ The next line, <code>rospy.init_node(NAME, ...)</code>, is very important as it 
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

@@ -14,10 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros1_melodic/respeaker_microphone_array/">
       
-      
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -25,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -123,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -130,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3297,7 +3300,6 @@
                   
 
 
-
   <h1>Respeaker microphone array</h1>
 
 <h2 id="respeaker-microphone-array">ReSpeaker Microphone Array</h2>
@@ -3312,15 +3314,15 @@
 <div class="highlight"><pre><span></span><code>stretch_respeaker_test.py
 </code></pre></div>
 <p>The following will be displayed in your terminal
-<div class="highlight"><pre><span></span><code>hello-robot@stretch-re1-1005:~$<span class="w"> </span>stretch_respeaker_test.py
-For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </span>S<span class="w"> </span>T<span class="w"> </span>R<span class="w"> </span>E<span class="w"> </span>T<span class="w"> </span>C<span class="w"> </span>H<span class="w"> </span><span class="o">(</span>TM<span class="o">)</span><span class="w"> </span>RESEARCH<span class="w"> </span>EDITION<span class="w"> </span>from<span class="w"> </span>Hello<span class="w"> </span>Robot<span class="w"> </span>Inc.
+<div class="highlight"><pre><span></span><code>hello-robot@stretch-re1-1005:~$ stretch_respeaker_test.py
+For use with S T R E T C H <span class="o">(</span>TM<span class="o">)</span> RESEARCH EDITION from Hello Robot Inc.
 
 
-*<span class="w"> </span>waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>audio...
-*<span class="w"> </span>recording<span class="w"> </span><span class="m">3</span><span class="w"> </span>seconds
-*<span class="w"> </span><span class="k">done</span>
-*<span class="w"> </span>playing<span class="w"> </span>audio
-*<span class="w"> </span><span class="k">done</span>
+* waiting <span class="k">for</span> audio...
+* recording <span class="m">3</span> seconds
+* <span class="k">done</span>
+* playing audio
+* <span class="k">done</span>
 </code></pre></div></p>
 <p>The ReSpeaker Mico Array will wait until it hears audio loud enough to trigger its recording feature. Stretch will record audio for 3 seconds and then replay it through its speakers. This command line is a good method to see if the hardware is working correctly.</p>
 <p>To stop the python script, type <strong>Ctrl</strong> + <strong>c</strong> in the terminal.</p>
@@ -3328,28 +3330,28 @@ For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </spa
 <p>A <a href="https://index.ros.org/p/respeaker_ros/#melodic">ROS package for the ReSpeaker</a> is utilized for this tutorial's section.</p>
 <p>Begin by running the <code>sample_respeaker.launch</code> file in a terminal.</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch<span class="w"> </span>respeaker_ros<span class="w"> </span>sample_respeaker.launch
+roslaunch respeaker_ros sample_respeaker.launch
 </code></pre></div>
 This will bring up the necessary nodes that will allow the ReSpeaker to implement a voice and sound interface with the robot.</p>
 <p>Below are executables you can run and see the ReSpeaker results.</p>
-<div class="highlight"><pre><span></span><code>rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/sound_direction<span class="w">    </span><span class="c1"># Result of Direction (in Radians) of Audio</span>
-rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/sound_localization<span class="w"> </span><span class="c1"># Result of Direction as Pose (Quaternion values)</span>
-rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/is_speeching<span class="w">       </span><span class="c1"># Result of Voice Activity Detector</span>
-rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/audio<span class="w">              </span><span class="c1"># Raw audio data</span>
-rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/speech_audio<span class="w">       </span><span class="c1"># Raw audio data when there is speech</span>
-rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/speech_to_text<span class="w">     </span><span class="c1"># Voice recognition</span>
+<div class="highlight"><pre><span></span><code>rostopic <span class="nb">echo</span> /sound_direction    <span class="c1"># Result of Direction (in Radians) of Audio</span>
+rostopic <span class="nb">echo</span> /sound_localization <span class="c1"># Result of Direction as Pose (Quaternion values)</span>
+rostopic <span class="nb">echo</span> /is_speeching       <span class="c1"># Result of Voice Activity Detector</span>
+rostopic <span class="nb">echo</span> /audio              <span class="c1"># Raw audio data</span>
+rostopic <span class="nb">echo</span> /speech_audio       <span class="c1"># Raw audio data when there is speech</span>
+rostopic <span class="nb">echo</span> /speech_to_text     <span class="c1"># Voice recognition</span>
 </code></pre></div>
 <p>An example is when you run the <code>speech_to_text</code> executable and speak near the microphone array. In this instance, "hello robot" was said.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-hello-robot@stretch-re1-1005:~$<span class="w"> </span>rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/speech_to_text
+hello-robot@stretch-re1-1005:~$ rostopic <span class="nb">echo</span> /speech_to_text
 transcript:
-<span class="w">  </span>-<span class="w"> </span>hello<span class="w"> </span>robot
-confidence:<span class="w"> </span><span class="o">[]</span>
+  - hello robot
+confidence: <span class="o">[]</span>
 ---
 </code></pre></div>
 <p>You can also set various parameters via<code>dynamic_reconfigure</code> running the following command in a new terminal.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Terminal 3</span>
-rosrun<span class="w"> </span>rqt_reconfigure<span class="w"> </span>rqt_reconfigure
+rosrun rqt_reconfigure rqt_reconfigure
 </code></pre></div>
 
 
@@ -3366,8 +3368,6 @@ rosrun<span class="w"> </span>rqt_reconfigure<span class="w"> </span>rqt_reconfi
       </main>
       
         <footer class="md-footer">
-  
-    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3440,11 +3440,12 @@ rosrun<span class="w"> </span>rqt_reconfigure<span class="w"> </span>rqt_reconfi
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

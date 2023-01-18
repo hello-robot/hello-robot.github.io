@@ -14,14 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-firmware/docs/tutorial_serial_sensor/">
       
-      
-        <link rel="prev" href="../tutorial_spi_sensor/">
-      
-      
-        <link rel="next" href="../tutorial_wacc_emulation/">
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -29,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -127,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -134,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3386,7 +3385,6 @@
                   
 
 
-
 <p><img alt="" src="../images/banner.png" />
 <strong>NOTE</strong> It is possible to brick the Wacc board by incorrectly configuring the hardware peripherals of the SAMD uC. Therefore, when integrating your custom hardware into the Wacc we strongly recommend emulating the Wacc board until the functionality is complete. The tutorial <a href="../tutorial_wacc_emulation/">Wacc Emulation</a> describes how to configure an Adafruit Metro M0 Express to behave as a stand-in for a Wacc board.</p>
 <p><strong>NOTE</strong>: These tutorials may require the latest version of Stretch Body. If necessary, please update your install.</p>
@@ -3399,8 +3397,8 @@
 <p><img alt="" src="../images/wacc_serial_loopback.png" /></p>
 <h3 id="flash-firmware">Flash Firmware</h3>
 <p>Pull down the latest version of Stretch Firmware</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/repos
-&gt;&gt;$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/hello-robot/stretch_firmware
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ <span class="nb">cd</span> ~/repos
+&gt;&gt;$ git clone https://github.com/hello-robot/stretch_firmware
 </code></pre></div>
 <p>Next, program the (emulated) Wacc with the provided sketch, <a href="https://github.com/hello-robot/stretch_firmware/tree/master/tutorials/arduino/hello_wacc_serial">hello_wacc_serial</a>. Be sure to:</p>
 <ul>
@@ -3409,38 +3407,38 @@
 </ul>
 <h3 id="firmware-code-walk-through">Firmware Code Walk-through</h3>
 <p>First, in the sketch <code>setup()</code> we configure enable the SerialExt device</p>
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="n">SerialExt</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="n">SerialExt</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <p>Next, in <a href="https://github.com/hello-robot/stretch_firmware/tree/master/tutorials/arduino/hello_wacc_serial/Common.h">Common.h</a> we define Command data to send down from Stretch Body to the serial device. We also define Status data to report back to Stretch Body. For our example we'll send 10 floats down and 10 floats back up.</p>
-<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">__attribute__</span><span class="w"> </span><span class="p">((</span><span class="n">packed</span><span class="p">))</span><span class="w"> </span><span class="n">SerialExtCommand</span><span class="p">{</span>
-<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
-<span class="p">};</span>
-<span class="k">struct</span><span class="w"> </span><span class="nc">__attribute__</span><span class="w"> </span><span class="p">((</span><span class="n">packed</span><span class="p">))</span><span class="w"> </span><span class="n">SerialExtStatus</span><span class="p">{</span>
-<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
-<span class="p">};</span>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">__attribute__</span><span class="w"> </span><span class="p">((</span><span class="n">packed</span><span class="p">))</span><span class="w"> </span><span class="n">SerialExtCommand</span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">__attribute__</span><span class="w"> </span><span class="p">((</span><span class="n">packed</span><span class="p">))</span><span class="w"> </span><span class="n">SerialExtStatus</span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 </code></pre></div>
 <p>In <code>Wacc.cpp</code> we add the code that will communicate with the serial device. Whenever Stretch Body pushes a new command down the Wacc, this function will get called.  Here we are writing the Command data to the SerialExt port. We then send back in the Status message the data we read from SerialExt. As it is a physical loopback connection, the data back in Status will be the same as the Command message.</p>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">serial_comms</span><span class="p">()</span>
-<span class="p">{</span>
-<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">data_down</span><span class="o">=</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">cmd</span><span class="p">.</span><span class="n">serial</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">data_up</span><span class="o">=</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)(</span><span class="n">stat</span><span class="p">.</span><span class="n">serial</span><span class="p">.</span><span class="n">data</span><span class="p">);</span>
-<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">40</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="n">SerialExt</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">data_down</span><span class="o">+</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">40</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SerialExt</span><span class="p">.</span><span class="n">available</span><span class="p">())</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="n">data_up</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">SerialExt</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">serial_comms</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">data_down</span><span class="o">=</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">cmd</span><span class="p">.</span><span class="n">serial</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">data_up</span><span class="o">=</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)(</span><span class="n">stat</span><span class="p">.</span><span class="n">serial</span><span class="p">.</span><span class="n">data</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">40</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">SerialExt</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">data_down</span><span class="o">+</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">40</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SerialExt</span><span class="p">.</span><span class="n">available</span><span class="p">())</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">data_up</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">SerialExt</span><span class="p">.</span><span class="n">read</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="stretch-body-code-walk-through">Stretch Body Code Walk-through</h2>
 <p>We provide an example class <a href="https://github.com/hello-robot/stretch_firmware/tree/master/tutorials/python/wacc_serial_ext.py">WaccSerialExt</a> that extends the Wacc class of Stretch Body. This class provides two call backs that will get called on <code>pull_status</code> and <code>push_command</code> respectively. Here we see the packing and unpacking of the 10 floats found in <a href="https://github.com/hello-robot/stretch_firmware/tree/master/tutorials/arduino/hello_wacc_serial/Common.h">Common.h</a> </p>
 <div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">ext_unpack_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">s</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        s: byte array to unpack</span>
 <span class="sd">        return: number of bytes unpacked</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -3451,7 +3449,7 @@
         <span class="k">return</span> <span class="n">sidx</span>
 
     <span class="k">def</span> <span class="nf">ext_pack_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">sidx</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        s: byte array to pack in to</span>
 <span class="sd">        sidx: index to start packing at</span>
 <span class="sd">        return: new sidx</span>
@@ -3484,17 +3482,17 @@
     <span class="n">w</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </code></pre></div>
 <p>Run it from the command line and verify that the 10 floats are being command down to your serial device, through the loopback connection, and back, up to the WaccSerialExt class:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/repos/stretch_firmware/tutorial/python
-&gt;&gt;$<span class="w"> </span>./stretch_wacc_serial_jog.py<span class="w"> </span>
-Hit<span class="w"> </span>enter<span class="w"> </span>to<span class="w"> </span><span class="k">do</span><span class="w"> </span>TX/RX<span class="w"> </span>cycle
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ <span class="nb">cd</span> ~/repos/stretch_firmware/tutorial/python
+&gt;&gt;$ ./stretch_wacc_serial_jog.py 
+Hit enter to <span class="k">do</span> TX/RX cycle
 ..
-<span class="o">(</span><span class="s1">&#39;TX to SerialExt&#39;</span>,<span class="w"> </span><span class="o">[</span><span class="m">2</span>.0,<span class="w"> </span><span class="m">3</span>.0,<span class="w"> </span><span class="m">4</span>.0,<span class="w"> </span><span class="m">5</span>.0,<span class="w"> </span><span class="m">6</span>.0,<span class="w"> </span><span class="m">7</span>.0,<span class="w"> </span><span class="m">8</span>.0,<span class="w"> </span><span class="m">9</span>.0,<span class="w"> </span><span class="m">10</span>.0,<span class="w"> </span><span class="m">11</span>.0<span class="o">])</span>
-<span class="o">(</span><span class="s1">&#39;RX from SerialExt&#39;</span>,<span class="w"> </span><span class="o">[</span><span class="m">1</span>.0,<span class="w"> </span><span class="m">2</span>.0,<span class="w"> </span><span class="m">3</span>.0,<span class="w"> </span><span class="m">4</span>.0,<span class="w"> </span><span class="m">5</span>.0,<span class="w"> </span><span class="m">6</span>.0,<span class="w"> </span><span class="m">7</span>.0,<span class="w"> </span><span class="m">8</span>.0,<span class="w"> </span><span class="m">9</span>.0,<span class="w"> </span><span class="m">10</span>.0<span class="o">])</span>
-Hit<span class="w"> </span>enter<span class="w"> </span>to<span class="w"> </span><span class="k">do</span><span class="w"> </span>TX/RX<span class="w"> </span>cycle
+<span class="o">(</span><span class="s1">&#39;TX to SerialExt&#39;</span>, <span class="o">[</span><span class="m">2</span>.0, <span class="m">3</span>.0, <span class="m">4</span>.0, <span class="m">5</span>.0, <span class="m">6</span>.0, <span class="m">7</span>.0, <span class="m">8</span>.0, <span class="m">9</span>.0, <span class="m">10</span>.0, <span class="m">11</span>.0<span class="o">])</span>
+<span class="o">(</span><span class="s1">&#39;RX from SerialExt&#39;</span>, <span class="o">[</span><span class="m">1</span>.0, <span class="m">2</span>.0, <span class="m">3</span>.0, <span class="m">4</span>.0, <span class="m">5</span>.0, <span class="m">6</span>.0, <span class="m">7</span>.0, <span class="m">8</span>.0, <span class="m">9</span>.0, <span class="m">10</span>.0<span class="o">])</span>
+Hit enter to <span class="k">do</span> TX/RX cycle
 
-<span class="o">(</span><span class="s1">&#39;TX to SerialExt&#39;</span>,<span class="w"> </span><span class="o">[</span><span class="m">3</span>.0,<span class="w"> </span><span class="m">4</span>.0,<span class="w"> </span><span class="m">5</span>.0,<span class="w"> </span><span class="m">6</span>.0,<span class="w"> </span><span class="m">7</span>.0,<span class="w"> </span><span class="m">8</span>.0,<span class="w"> </span><span class="m">9</span>.0,<span class="w"> </span><span class="m">10</span>.0,<span class="w"> </span><span class="m">11</span>.0,<span class="w"> </span><span class="m">12</span>.0<span class="o">])</span>
-<span class="o">(</span><span class="s1">&#39;RX from SerialExt&#39;</span>,<span class="w"> </span><span class="o">[</span><span class="m">2</span>.0,<span class="w"> </span><span class="m">3</span>.0,<span class="w"> </span><span class="m">4</span>.0,<span class="w"> </span><span class="m">5</span>.0,<span class="w"> </span><span class="m">6</span>.0,<span class="w"> </span><span class="m">7</span>.0,<span class="w"> </span><span class="m">8</span>.0,<span class="w"> </span><span class="m">9</span>.0,<span class="w"> </span><span class="m">10</span>.0,<span class="w"> </span><span class="m">11</span>.0<span class="o">])</span>
-Hit<span class="w"> </span>enter<span class="w"> </span>to<span class="w"> </span><span class="k">do</span><span class="w"> </span>TX/RX<span class="w"> </span>cycle
+<span class="o">(</span><span class="s1">&#39;TX to SerialExt&#39;</span>, <span class="o">[</span><span class="m">3</span>.0, <span class="m">4</span>.0, <span class="m">5</span>.0, <span class="m">6</span>.0, <span class="m">7</span>.0, <span class="m">8</span>.0, <span class="m">9</span>.0, <span class="m">10</span>.0, <span class="m">11</span>.0, <span class="m">12</span>.0<span class="o">])</span>
+<span class="o">(</span><span class="s1">&#39;RX from SerialExt&#39;</span>, <span class="o">[</span><span class="m">2</span>.0, <span class="m">3</span>.0, <span class="m">4</span>.0, <span class="m">5</span>.0, <span class="m">6</span>.0, <span class="m">7</span>.0, <span class="m">8</span>.0, <span class="m">9</span>.0, <span class="m">10</span>.0, <span class="m">11</span>.0<span class="o">])</span>
+Hit enter to <span class="k">do</span> TX/RX cycle
 
 ..
 </code></pre></div>
@@ -3518,42 +3516,40 @@ Hit<span class="w"> </span>enter<span class="w"> </span>to<span class="w"> </spa
         <footer class="md-footer">
   
     
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
-          
-          <a href="../tutorial_spi_sensor/" class="md-footer__link md-footer__link--prev" aria-label="Previous: SPI Sensor" rel="prev">
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        <a href="../tutorial_spi_sensor/" class="md-footer__link md-footer__link--prev" aria-label="Previous: SPI Sensor" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              SPI Sensor
             </div>
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Previous
-                </span>
-                SPI Sensor
-              </div>
-            </div>
-          </a>
+          </div>
+        </a>
+      
+      
         
-        
-          
-          <a href="../tutorial_wacc_emulation/" class="md-footer__link md-footer__link--next" aria-label="Next: Wacc Emulaton" rel="next">
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Next
-                </span>
-                Wacc Emulaton
-              </div>
+        <a href="../tutorial_wacc_emulation/" class="md-footer__link md-footer__link--next" aria-label="Next: Wacc Emulaton" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Wacc Emulaton
             </div>
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3626,11 +3622,12 @@ Hit<span class="w"> </span>enter<span class="w"> </span>to<span class="w"> </spa
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

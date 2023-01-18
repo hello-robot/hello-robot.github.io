@@ -14,14 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros1/teleoperating_stretch/">
       
-      
-        <link rel="prev" href="../getting_started/">
-      
-      
-        <link rel="next" href="../internal_state_of_stretch/">
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -29,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -127,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -134,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3446,7 +3445,6 @@
                   
 
 
-
   <h1>Teleoperating Stretch</h1>
 
 <h2 id="teleoperating-stretch">Teleoperating Stretch</h2>
@@ -3455,11 +3453,11 @@
 <h3 id="keyboard-teleoperating-full-body">Keyboard Teleoperating: Full Body</h3>
 <p>For full body teleoperation with the keyboard, you first need to run the <code>stretch_driver.launch</code> in a terminal.</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch<span class="w"> </span>stretch_core<span class="w"> </span>stretch_driver.launch
+roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 Then in a new terminal, type the following command</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-rosrun<span class="w"> </span>stretch_core<span class="w"> </span>keyboard_teleop
+rosrun stretch_core keyboard_teleop
 </code></pre></div>
 <p>Below are the keyboard commands that allow a user to control all of Stretch's joints.<br />
 <div class="highlight"><pre><span></span><code>---------- KEYBOARD TELEOP MENU -----------
@@ -3499,12 +3497,12 @@ To stop the node from sending twist messages, type <strong>Ctrl</strong> + <stro
 <h3 id="keyboard-teleoperating-mobile-base">Keyboard Teleoperating: Mobile Base</h3>
 <p>Begin by running the following command in your terminal:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch<span class="w"> </span>stretch_core<span class="w"> </span>stretch_driver.launch
+roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 <p>To teleoperate a Stretch's mobile base with the keyboard, you first need to switch the mode to <em>nagivation</em> for the robot to receive <em>Twist</em> messages. This is done using a rosservice call in a new terminal. In the same terminal run the teleop_twist_keyboard node with the argument remapping the <em>cmd_vel</em> topic name to <em>stretch/cmd_vel</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-rosservice<span class="w"> </span>call<span class="w"> </span>/switch_to_navigation_mode
-rosrun<span class="w"> </span>teleop_twist_keyboard<span class="w"> </span>teleop_twist_keyboard.py<span class="w"> </span>cmd_vel:<span class="o">=</span>stretch/cmd_vel
+rosservice call /switch_to_navigation_mode
+rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:<span class="o">=</span>stretch/cmd_vel
 </code></pre></div>
 <p>Below are the keyboard commands that allow a user to move Stretch's base.<br />
 <div class="highlight"><pre><span></span><code>Reading from the keyboard  and Publishing to Twist!
@@ -3540,17 +3538,17 @@ To stop the node from sending twist messages, type <strong>Ctrl</strong> + <stro
 <h3 id="keyboard-teleoperating-mobile-base_1">Keyboard Teleoperating: Mobile Base</h3>
 <p>For keyboard teleoperation of the Stretch's mobile base, first <a href="../gazebo_basics/">startup Stretch in simulation</a>. Then run the following command in a new terminal.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch<span class="w"> </span>stretch_gazebo<span class="w"> </span>gazebo.launch
+roslaunch stretch_gazebo gazebo.launch
 </code></pre></div>
 <p>In a new terminal, type the following</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-roslaunch<span class="w"> </span>stretch_core<span class="w"> </span>teleop_twist.launch<span class="w"> </span>twist_topic:<span class="o">=</span>/stretch_diff_drive_controller/cmd_vel<span class="w"> </span>linear:<span class="o">=</span><span class="m">1</span>.0<span class="w"> </span>angular:<span class="o">=</span><span class="m">2</span>.0<span class="w"> </span>teleop_type:<span class="o">=</span>keyboard<span class="w"> </span><span class="c1"># or use teleop_type:=joystick if you have a controller</span>
+roslaunch stretch_core teleop_twist.launch twist_topic:<span class="o">=</span>/stretch_diff_drive_controller/cmd_vel linear:<span class="o">=</span><span class="m">1</span>.0 angular:<span class="o">=</span><span class="m">2</span>.0 teleop_type:<span class="o">=</span>keyboard <span class="c1"># or use teleop_type:=joystick if you have a controller</span>
 </code></pre></div>
 The same keyboard commands will be presented to a user to move the robot.</p>
 <h3 id="xbox-controller-teleoperating_1">Xbox Controller Teleoperating</h3>
 <p>An alternative for robot base teleoperation is to use an Xbox controller. Stop the keyboard teleoperation node by typing <strong>Ctrl</strong> + <strong>c</strong> in the terminal where the command was executed. Then connect the Xbox controller device to your local machine and run the following command.</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-roslaunch<span class="w"> </span>stretch_core<span class="w"> </span>teleop_twist.launch<span class="w"> </span>twist_topic:<span class="o">=</span>/stretch_diff_drive_controller/cmd_vel<span class="w"> </span>linear:<span class="o">=</span><span class="m">1</span>.0<span class="w"> </span>angular:<span class="o">=</span><span class="m">2</span>.0<span class="w"> </span>teleop_type:<span class="o">=</span>joystick
+roslaunch stretch_core teleop_twist.launch twist_topic:<span class="o">=</span>/stretch_diff_drive_controller/cmd_vel linear:<span class="o">=</span><span class="m">1</span>.0 angular:<span class="o">=</span><span class="m">2</span>.0 teleop_type:<span class="o">=</span>joystick
 </code></pre></div>
 Note that the teleop_twist_joy package has a deadman switch by default which disables the drive commands to be published unless pressed. For a Logitech F310 joystick, this button is A.</p>
 
@@ -3570,42 +3568,40 @@ Note that the teleop_twist_joy package has a deadman switch by default which dis
         <footer class="md-footer">
   
     
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
-          
-          <a href="../getting_started/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Getting Started" rel="prev">
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        <a href="../getting_started/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Getting Started" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Getting Started
             </div>
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Previous
-                </span>
-                Getting Started
-              </div>
-            </div>
-          </a>
+          </div>
+        </a>
+      
+      
         
-        
-          
-          <a href="../internal_state_of_stretch/" class="md-footer__link md-footer__link--next" aria-label="Next: Internal State of Stretch" rel="next">
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Next
-                </span>
-                Internal State of Stretch
-              </div>
+        <a href="../internal_state_of_stretch/" class="md-footer__link md-footer__link--next" aria-label="Next: Internal State of Stretch" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Internal State of Stretch
             </div>
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3678,11 +3674,12 @@ Note that the teleop_twist_joy package has a deadman switch by default which dis
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

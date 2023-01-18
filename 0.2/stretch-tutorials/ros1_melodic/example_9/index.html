@@ -14,10 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros1_melodic/example_9/">
       
-      
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -25,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -123,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -130,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3297,24 +3300,23 @@
                   
 
 
-
   <h1>Example 9</h1>
 
 <h2 id="example-9">Example 9</h2>
 <p>The aim of example 9 is to combine the <a href="../respeaker_microphone_array/">ReSpeaker Microphone Array</a> and <a href="../follow_joint_trajectory/">Follow Joint Trajectory</a> tutorials to voice teleoperate the mobile base of the Stretch robot.</p>
 <p>Begin by running the following command in a new terminal.</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch<span class="w"> </span>stretch_core<span class="w"> </span>stretch_driver.launch
+roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 Switch the mode to <em>position</em> mode using a rosservice call. Then run the <code>respeaker.launch</code> file.</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-rosservice<span class="w"> </span>call<span class="w"> </span>/switch_to_position_mode
-roslaunch<span class="w"> </span>stretch_core<span class="w"> </span>respeaker.launch
+rosservice call /switch_to_position_mode
+roslaunch stretch_core respeaker.launch
 </code></pre></div>
 Then run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/main/src/voice_teleoperation_base.py">voice_teleoperation_base.py</a> node in a new terminal.</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 3</span>
-<span class="nb">cd</span><span class="w"> </span>catkin_ws/src/stretch_tutorials/src/
-python<span class="w"> </span>voice_teleoperation_base.py
+<span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+python voice_teleoperation_base.py
 </code></pre></div>
 In terminal 3, a menu of voice commands is printed. You can reference this menu layout below.  </p>
 <p><div class="highlight"><pre><span></span><code>------------ VOICE TELEOP MENU ------------
@@ -3352,13 +3354,13 @@ To stop the node from sending twist messages, type <strong>Ctrl</strong> + <stro
 <span class="kn">from</span> <span class="nn">speech_recognition_msgs.msg</span> <span class="kn">import</span> <span class="n">SpeechRecognitionCandidates</span>
 
 <span class="k">class</span> <span class="nc">GetVoiceCommands</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A class that subscribes to the speech to text recognition messages, prints</span>
 <span class="sd">    a voice command menu, and defines step size for translational and rotational</span>
 <span class="sd">    mobile base motion.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A function that initializes subscribers and defines the three different</span>
 <span class="sd">        step sizes.</span>
 <span class="sd">        :param self: The self reference.</span>
@@ -3384,7 +3386,7 @@ To stop the node from sending twist messages, type <strong>Ctrl</strong> + <stro
         <span class="bp">self</span><span class="o">.</span><span class="n">sound_direction_sub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s2">&quot;/sound_direction&quot;</span><span class="p">,</span> <span class="n">Int32</span><span class="p">,</span>                       <span class="bp">self</span><span class="o">.</span><span class="n">callback_direction</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">callback_direction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A callback function that converts the incoming message, sound direction,</span>
 <span class="sd">        from degrees to radians.</span>
 <span class="sd">        :param self: The self reference.</span>
@@ -3393,7 +3395,7 @@ To stop the node from sending twist messages, type <strong>Ctrl</strong> + <stro
         <span class="bp">self</span><span class="o">.</span><span class="n">sound_direction</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">data</span> <span class="o">*</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">rad_per_deg</span>
 
     <span class="k">def</span> <span class="nf">callback_speech</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">msg</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A callback function takes the incoming message, a list of the speech to</span>
 <span class="sd">        text, and joins all items in that iterable list into a single string.</span>
 <span class="sd">        :param self: The self reference.</span>
@@ -3402,7 +3404,7 @@ To stop the node from sending twist messages, type <strong>Ctrl</strong> + <stro
         <span class="bp">self</span><span class="o">.</span><span class="n">voice_command</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span><span class="n">msg</span><span class="o">.</span><span class="n">transcript</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">get_inc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A function that sets the increment size for translational and rotational</span>
 <span class="sd">        base motion.</span>
 <span class="sd">        :param self:The self reference.</span>
@@ -3418,7 +3420,7 @@ To stop the node from sending twist messages, type <strong>Ctrl</strong> + <stro
         <span class="k">return</span> <span class="n">inc</span>
 
     <span class="k">def</span> <span class="nf">print_commands</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A function that prints the voice teleoperation menu.</span>
 <span class="sd">        :param self: The self reference.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -3443,7 +3445,7 @@ To stop the node from sending twist messages, type <strong>Ctrl</strong> + <stro
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------------------------------------------&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">get_command</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A function that defines the teleoperation command based on the voice command.</span>
 <span class="sd">        :param self: The self reference.</span>
 
@@ -3472,12 +3474,12 @@ To stop the node from sending twist messages, type <strong>Ctrl</strong> + <stro
 
 
 <span class="k">class</span> <span class="nc">VoiceTeleopNode</span><span class="p">(</span><span class="n">hm</span><span class="o">.</span><span class="n">HelloNode</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A class that inherits the HelloNode class from hm and sends joint trajectory</span>
 <span class="sd">    commands.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A function that declares object from the GetVoiceCommands class, instantiates</span>
 <span class="sd">        the HelloNode class, and set the publishing rate.</span>
 <span class="sd">        :param self: The self reference.</span>
@@ -3488,7 +3490,7 @@ To stop the node from sending twist messages, type <strong>Ctrl</strong> + <stro
         <span class="bp">self</span><span class="o">.</span><span class="n">speech</span> <span class="o">=</span> <span class="n">GetVoiceCommands</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">joint_states_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A callback function that stores Stretch&#39;s joint states.</span>
 <span class="sd">        :param self: The self reference.</span>
 <span class="sd">        :param msg: The JointState message type.</span>
@@ -3496,7 +3498,7 @@ To stop the node from sending twist messages, type <strong>Ctrl</strong> + <stro
         <span class="bp">self</span><span class="o">.</span><span class="n">joint_state</span> <span class="o">=</span> <span class="n">msg</span>
 
     <span class="k">def</span> <span class="nf">send_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Function that makes an action call and sends base joint trajectory goals</span>
 <span class="sd">        :param self: The self reference.</span>
 <span class="sd">        :param command: A dictionary type.</span>
@@ -3523,7 +3525,7 @@ To stop the node from sending twist messages, type <strong>Ctrl</strong> + <stro
             <span class="bp">self</span><span class="o">.</span><span class="n">speech</span><span class="o">.</span><span class="n">print_commands</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The main function that instantiates the HelloNode class, initializes the subscriber,</span>
 <span class="sd">        and call other methods in both the VoiceTeleopNode and GetVoiceCommands classes.</span>
 <span class="sd">        :param self: The self reference.</span>
@@ -3625,12 +3627,12 @@ Based on the <em>self.voice_command</em> value, set the step size for the increm
 </code></pre></div>
 If the <em>self.voice_command</em> is equal to "quit", then initiate a clean shutdown of ROS and exit the Python interpreter.</p>
 <p><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">VoiceTeleopNode</span><span class="p">(</span><span class="n">hm</span><span class="o">.</span><span class="n">HelloNode</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A class that inherits the HelloNode class from hm and sends joint trajectory</span>
 <span class="sd">    commands.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A function that declares object from the GetVoiceCommands class, instantiates</span>
 <span class="sd">        the HelloNode class, and set the publishing rate.</span>
 <span class="sd">        :param self: The self reference.</span>
@@ -3642,7 +3644,7 @@ If the <em>self.voice_command</em> is equal to "quit", then initiate a clean shu
 </code></pre></div>
 A class that inherits the <code>HelloNode</code> class from <code>hm</code>, declares object from the <code>GetVoiceCommands</code> class, and sends joint trajectory commands.</p>
 <p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">send_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function that makes an action call and sends base joint trajectory goals</span>
 <span class="sd">    :param self: The self reference.</span>
 <span class="sd">    :param command: A dictionary type.</span>
@@ -3678,7 +3680,7 @@ Make the action call and send goal of the new joint position.</p>
 </code></pre></div>
 Reprint the voice command menu after the trajectory goal is sent.</p>
 <p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">      </span><span class="sd">&quot;&quot;&quot;</span>
+      <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">      The main function that instantiates the HelloNode class, initializes the subscriber,</span>
 <span class="sd">      and call other methods in both the VoiceTeleopNode and GetVoiceCommands classes.</span>
 <span class="sd">      :param self: The self reference.</span>
@@ -3717,8 +3719,6 @@ Declare a <code>VoiceTeleopNode</code> object. Then execute the <code>main()</co
       </main>
       
         <footer class="md-footer">
-  
-    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3791,11 +3791,12 @@ Declare a <code>VoiceTeleopNode</code> object. Then execute the <code>main()</co
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

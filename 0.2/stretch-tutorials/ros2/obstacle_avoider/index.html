@@ -14,14 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/obstacle_avoider/">
       
-      
-        <link rel="prev" href="../example_10/">
-      
-      
-        <link rel="next" href="../align_to_aruco/">
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -29,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -127,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -134,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3386,7 +3385,6 @@
                   
 
 
-
 <h1 id="obstacle-avoider">Obstacle Avoider</h1>
 <p>In this tutorial we will work with Stretch to detect and avoid obstacles using the onboard RPlidar A1 laser scanner and learn how to filter laser scan data. If you want to know more about the laser scanner setup on Stretch and how to get it up and running, we recommend visiting the previous tutorials on <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/example_2/">Filtering Laser Scans</a> and <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/example_3/">Mobile Base Collision Avoidance</a>.</p>
 <p>A major drawback of using any ToF (Time of Flight) sensor is the inherent inaccuracies as a result of occlusions and weird reflection and diffraction phenomena the light pulses are subject to in an unstructured environment. This results in unexpected and undesired noise that can get in the way of an otherwise extremely useful sensor. Fortunately, it is easy to account for and eliminate these inaccuracies to a great extent by filering out the noise. We will do this with a ROS package called <a href="http://wiki.ros.org/laser_filters">laser_filters</a> that comes prebuilt with some pretty handy laser scan message filters.</p>
@@ -3409,7 +3407,7 @@
 </code></pre></div></p>
 <h2 id="see-it-in-action">See It In Action</h2>
 <p>Alright, let's see it in action! Execute the following command to run the scripts:
-<div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_core<span class="w"> </span>rplidar_keepout.launch.py
+<div class="highlight"><pre><span></span><code>ros2 launch stretch_core rplidar_keepout.launch.py
 </code></pre></div></p>
 <p><img alt="avoidance" src="https://user-images.githubusercontent.com/97639181/196327294-1b2dde5e-2fdc-4a67-a188-ae6b1f5e6a06.gif" /></p>
 <h2 id="code-breakdown">Code Breakdown:</h2>
@@ -3466,42 +3464,40 @@
         <footer class="md-footer">
   
     
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
-          
-          <a href="../example_10/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Tf2 Broadcaster and Listener" rel="prev">
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        <a href="../example_10/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Tf2 Broadcaster and Listener" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Tf2 Broadcaster and Listener
             </div>
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Previous
-                </span>
-                Tf2 Broadcaster and Listener
-              </div>
-            </div>
-          </a>
+          </div>
+        </a>
+      
+      
         
-        
-          
-          <a href="../align_to_aruco/" class="md-footer__link md-footer__link--next" aria-label="Next: Align to ArUco" rel="next">
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Next
-                </span>
-                Align to ArUco
-              </div>
+        <a href="../align_to_aruco/" class="md-footer__link md-footer__link--next" aria-label="Next: Align to ArUco" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Align to ArUco
             </div>
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3574,11 +3570,12 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

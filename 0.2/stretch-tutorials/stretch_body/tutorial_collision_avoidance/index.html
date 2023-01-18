@@ -14,14 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_body/tutorial_collision_avoidance/">
       
-      
-        <link rel="prev" href="../tutorial_splined_trajectories/">
-      
-      
-        <link rel="next" href="../tutorial_contact_models/">
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -29,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -127,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -134,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3426,19 +3425,18 @@
                   
 
 
-
 <h1 id="tutorial-collision-avoidance">Tutorial: Collision Avoidance</h1>
 <p>In this tutorial we will discuss the simple collision avoidance system that runs as a part of Stretch Body.</p>
 <h2 id="overview">Overview</h2>
 <p>Stretch Body includes a system to prevent inadvertent self-collisions.  It will dynamically limit the range of motion of each joint in order to prevent self-collisions. </p>
 <p><strong>NOTE</strong>: Self collisions are still possible while using the collision-avoidance system. The factory default collision models are coarse and not necessarily complete.</p>
 <p>This system is turned off by default starting with RE2. It may be turned off by default on many RE1 systems. First check if the collision detection system is turned on:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>stretch_params.py<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>use_collision_manager
-stretch_body.robot_params.nominal_params<span class="w">       </span>param.robot.use_collision_manager<span class="w">         </span><span class="m">1</span>
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep use_collision_manager
+stretch_body.robot_params.nominal_params       param.robot.use_collision_manager         <span class="m">1</span>
 </code></pre></div>
 <p>If it is turned off you can enable it by adding the following to your stretch_user_yaml.py</p>
 <div class="highlight"><pre><span></span><code>robot:
-<span class="w">  </span>use_collision_manager:<span class="w"> </span><span class="m">1</span>
+  use_collision_manager: <span class="m">1</span>
 </code></pre></div>
 <h2 id="common-self-collisions">Common Self Collisions</h2>
 <p>Fortunately the simple kinematics of Stretch make self collisions fairly uncommon and simple to predict. The primary places where self collisions may occur are</p>
@@ -3451,8 +3449,8 @@ stretch_body.robot_params.nominal_params<span class="w">       </span>param.robo
 </ul>
 <h2 id="joint-limits">Joint Limits</h2>
 <p>The collision avoidance system works by dynamically modifying the acceptable range of motion for each joint. By default, a joint's range is set to the physical hardstop limits. For example, the lift has a mechanical throw of 1.1m:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;<span class="nv">$stretch_params</span>.py<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>range<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>lift
-stretch_body.robot_params.factory_params<span class="w">       </span>param.lift.range_m<span class="w">      </span><span class="o">[</span><span class="m">0</span>.0,<span class="w"> </span><span class="m">1</span>.1<span class="o">]</span><span class="w">                </span>
+<div class="highlight"><pre><span></span><code>&gt;&gt;<span class="nv">$stretch_params</span>.py <span class="p">|</span> grep range <span class="p">|</span> grep lift
+stretch_body.robot_params.factory_params       param.lift.range_m      <span class="o">[</span><span class="m">0</span>.0, <span class="m">1</span>.1<span class="o">]</span>                
 </code></pre></div>
 <p>A reduced range-of-motion can be set at run-time by setting the Soft Motion Limit. For example, to limit the lift range of motion to 0.3 meter off the base:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">stretch_body.robot</span> <span class="k">as</span> <span class="nn">robot</span>
@@ -3479,9 +3477,9 @@ stretch_body.robot_params.factory_params<span class="w">       </span>param.lift
 <h2 id="collision-models">Collision Models</h2>
 <p>The <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_collision.py">RobotCollision</a> class manages a set of <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_collision.py">RobotCollisionModels</a>. Each <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_collision.py">RobotCollisionModel</a> computes the soft limits for a subset of joints based on a simple geometric model. This geometric model captures the enumerated set of potential collisions listed above.</p>
 <p>We can see the which collision models will execute when <code>use_collision_manager</code> is set to 1:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>stretch_params.py<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>collision<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>enabled
-stretch_body.robot_params.nominal_params<span class="w">    </span>param.collision_arm_camera.enabled<span class="w">           </span><span class="m">1</span><span class="w">                             </span>
-stretch_body.robot_params.nominal_params<span class="w">    </span>param.collision_stretch_gripper.enabled<span class="w">      </span><span class="m">1</span><span class="w">  </span>
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep collision <span class="p">|</span> grep enabled
+stretch_body.robot_params.nominal_params    param.collision_arm_camera.enabled           <span class="m">1</span>                             
+stretch_body.robot_params.nominal_params    param.collision_stretch_gripper.enabled      <span class="m">1</span>  
 </code></pre></div>
 <p>We see two models. One that protects the camera from the arm, and one that protects the base from the gripper. Each model is registered with the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_collision.py">RobotCollision</a> instance as a loadable plug-in. The <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py">Robot</a> class calls the <code>RobotCollision.step</code> method periodically at approximately 10hz. </p>
 <p><code>RobotCollision.step</code>  computes the 'AND' of the  limits specified across each Collision Model such that the most restrictive joint limits are set for each joint using the <code>set_soft_motion_limit_min , set_soft_motion_limt_max</code> methods. </p>
@@ -3505,12 +3503,12 @@ stretch_body.robot_params.nominal_params<span class="w">    </span>param.collisi
     <span class="p">}</span>
 </code></pre></div>
 <p>This instructs RobotCollision to construct a model of type <code>CollisionArmCamera</code> and enable it by default. One can disable this model by default by specifying the following <code>stretch_re1_user_params.yaml</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">collision_arm_camera</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<div class="highlight"><pre><span></span><code><span class="nt">collision_arm_camera</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"></span>
 </code></pre></div>
 <p>The  entire collision avoidance system can be disabled in <code>stretch_re1_user_params.yaml</code> by:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">robot</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">use_collision_manager</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<div class="highlight"><pre><span></span><code><span class="nt">robot</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">use_collision_manager</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"></span>
 </code></pre></div>
 <p>A specific collision model can be enabled or disabled during runtime by:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">stretch_body.robot</span>
@@ -3522,10 +3520,10 @@ stretch_body.robot_params.nominal_params<span class="w">    </span>param.collisi
 <span class="n">r</span><span class="o">.</span><span class="n">collision</span><span class="o">.</span><span class="n">enable_model</span><span class="p">(</span><span class="s1">&#39;collsion_arm_camera&#39;</span><span class="p">)</span>
 </code></pre></div>
 <p>Finally, if we want to also use the CollisionStretchGripper model, we can add to <code>stretch_re1_user_params.py</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">robot_collision</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">models</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">collision_arm_camera</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">collision_stretch_gripper</span>
+<div class="highlight"><pre><span></span><code><span class="nt">robot_collision</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">models</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">collision_arm_camera</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">collision_stretch_gripper</span><span class="w"></span>
 </code></pre></div>
 <h3 id="creating-a-custom-collision-model">Creating a Custom Collision Model</h3>
 <p>The <code>step</code> method of a RobotCollisionModel returns the desired joint limits given that model. For example, the base class is simply:</p>
@@ -3578,20 +3576,20 @@ stretch_body.robot_params.nominal_params<span class="w">    </span>param.collisi
 </code></pre></div>
 In this example we include the <code>safety_margin</code> as a way to introduce some hysteresis around state changes to avoid toggling between the soft limits.</p>
 <p>The following command should be run in order to add the working directory to the PYTHONPATH env , This can also be added to our bashrc to permanently edit the path: </p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PYTHONPATH</span>:/&lt;path_to_modules&gt;
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ <span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PYTHONPATH</span>:/&lt;path_to_modules&gt;
 </code></pre></div>
 <p>Next we configure RobotCollision to use our CollisionArmTable model in <code>stretch_re1_user_yaml</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">robot_collision</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">models</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">collision_arm_table</span>
+<div class="highlight"><pre><span></span><code><span class="nt">robot_collision</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">models</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">collision_arm_table</span><span class="w"></span>
 
-<span class="nt">collision_arm_table</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">  </span><span class="nt">py_class_name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;CollisionArmTable&#39;</span>
-<span class="w">  </span><span class="nt">py_module_name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;collision_arm_table&#39;</span>
+<span class="nt">collision_arm_table</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">  </span><span class="nt">py_class_name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;CollisionArmTable&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">py_module_name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;collision_arm_table&#39;</span><span class="w"></span>
 </code></pre></div>
 <p>Finally, test out the model by driving the arm and lift around using the XBox teleoperation tool:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>stretch_xbox_controller_teleop.py
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_xbox_controller_teleop.py
 </code></pre></div>
 <hr />
 <div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks.</div>
@@ -3612,42 +3610,40 @@ In this example we include the <code>safety_margin</code> as a way to introduce 
         <footer class="md-footer">
   
     
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
-          
-          <a href="../tutorial_splined_trajectories/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Splined Trajectories" rel="prev">
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        <a href="../tutorial_splined_trajectories/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Splined Trajectories" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Splined Trajectories
             </div>
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Previous
-                </span>
-                Splined Trajectories
-              </div>
-            </div>
-          </a>
+          </div>
+        </a>
+      
+      
         
-        
-          
-          <a href="../tutorial_contact_models/" class="md-footer__link md-footer__link--next" aria-label="Next: Contact Models" rel="next">
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Next
-                </span>
-                Contact Models
-              </div>
+        <a href="../tutorial_contact_models/" class="md-footer__link md-footer__link--next" aria-label="Next: Contact Models" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Contact Models
             </div>
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3720,11 +3716,12 @@ In this example we include the <code>safety_margin</code> as a way to introduce 
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

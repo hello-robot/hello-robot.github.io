@@ -14,14 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_body/tutorial_splined_trajectories/">
       
-      
-        <link rel="prev" href="../tutorial_parameter_management/">
-      
-      
-        <link rel="next" href="../tutorial_collision_avoidance/">
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -29,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -127,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -134,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3372,7 +3371,6 @@
                   
 
 
-
 <h1 id="tutorial-splined-trajectories">Tutorial: Splined Trajectories</h1>
 <p>Stretch Body supports splined trajectory controllers across all of its joints. This enables Stretch to achieve smooth and coordinated full-body control of the robot. </p>
 <h2 id="what-are-splined-trajectories">What are Splined Trajectories?</h2>
@@ -3382,31 +3380,31 @@
 <p><img alt="alt_text" src="../images/splined_traj.png" title="image_tooltip" /></p>
 <h2 id="the-splined-trajectory-tool">The Splined Trajectory Tool</h2>
 <p>Stretch Body includes <a href="https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_trajectory_jog.py">a graphical tool for exploring splined trajectory control</a> on the robot:</p>
-<div class="highlight"><pre><span></span><code>stretch_trajectory_jog.py<span class="w"> </span>-h
-usage:<span class="w"> </span>stretch_trajectory_jog.py<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--text<span class="o">]</span><span class="w"> </span><span class="o">[</span>--preloaded_traj<span class="w"> </span><span class="o">{</span><span class="m">1</span>,2,3<span class="o">}]</span><span class="w"> </span><span class="o">(</span>--head_pan<span class="w"> </span><span class="p">|</span><span class="w"> </span>--head_tilt<span class="w"> </span><span class="p">|</span><span class="w"> </span>--wrist_yaw<span class="w"> </span><span class="p">|</span><span class="w"> </span>--gripper<span class="w"> </span><span class="p">|</span><span class="w"> </span>--arm<span class="w"> </span><span class="p">|</span><span class="w"> </span>--lift<span class="w"> </span><span class="p">|</span><span class="w"> </span>--base_translate<span class="w"> </span><span class="p">|</span><span class="w"> </span>--base_rotate<span class="w"> </span><span class="p">|</span><span class="w"> </span>--full_body<span class="o">)</span>
+<div class="highlight"><pre><span></span><code>stretch_trajectory_jog.py -h
+usage: stretch_trajectory_jog.py <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--text<span class="o">]</span> <span class="o">[</span>--preloaded_traj <span class="o">{</span><span class="m">1</span>,2,3<span class="o">}]</span> <span class="o">(</span>--head_pan <span class="p">|</span> --head_tilt <span class="p">|</span> --wrist_yaw <span class="p">|</span> --gripper <span class="p">|</span> --arm <span class="p">|</span> --lift <span class="p">|</span> --base_translate <span class="p">|</span> --base_rotate <span class="p">|</span> --full_body<span class="o">)</span>
 
-Test<span class="w"> </span>out<span class="w"> </span>splined<span class="w"> </span>trajectories<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>various<span class="w"> </span>joint<span class="w"> </span>from<span class="w"> </span>a<span class="w"> </span>GUI<span class="w"> </span>or<span class="w"> </span>text<span class="w"> </span>menu.
+Test out splined trajectories on the various joint from a GUI or text menu.
 
-optional<span class="w"> </span>arguments:
-<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">            </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
-<span class="w">  </span>--text,<span class="w"> </span>-t<span class="w">            </span>Use<span class="w"> </span>text<span class="w"> </span>options<span class="w"> </span>instead<span class="w"> </span>of<span class="w"> </span>GUI
-<span class="w">  </span>--preloaded_traj<span class="w"> </span><span class="o">{</span><span class="m">1</span>,2,3<span class="o">}</span>,<span class="w"> </span>-p<span class="w"> </span><span class="o">{</span><span class="m">1</span>,2,3<span class="o">}</span>
-<span class="w">                        </span>Load<span class="w"> </span>one<span class="w"> </span>of<span class="w"> </span>three<span class="w"> </span>predefined<span class="w"> </span>trajectories
-<span class="w">  </span>--head_pan<span class="w">            </span>Test<span class="w"> </span>trajectories<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>head_pan<span class="w"> </span>joint
-<span class="w">  </span>--head_tilt<span class="w">           </span>Test<span class="w"> </span>trajectories<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>head_tilt<span class="w"> </span>joint
-<span class="w">  </span>--wrist_yaw<span class="w">           </span>Test<span class="w"> </span>trajectories<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>wrist_yaw<span class="w"> </span>joint
-<span class="w">  </span>--gripper<span class="w">             </span>Test<span class="w"> </span>trajectories<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>stretch_gripper<span class="w"> </span>joint
-<span class="w">  </span>--arm<span class="w">                 </span>Test<span class="w"> </span>trajectories<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>arm<span class="w"> </span>joint
-<span class="w">  </span>--lift<span class="w">                </span>Test<span class="w"> </span>trajectories<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>lift<span class="w"> </span>joint
-<span class="w">  </span>--base_translate<span class="w">      </span>Test<span class="w"> </span>translational<span class="w"> </span>trajectories<span class="w"> </span>on<span class="w"> </span>diff-drive<span class="w"> </span>base
-<span class="w">  </span>--base_rotate<span class="w">         </span>Test<span class="w"> </span>rotational<span class="w"> </span>trajectories<span class="w"> </span>on<span class="w"> </span>diff-drive<span class="w"> </span>base
-<span class="w">  </span>--full_body<span class="w">           </span>Test<span class="w"> </span>trajectories<span class="w"> </span>on<span class="w"> </span>all<span class="w"> </span>joints<span class="w"> </span>at<span class="w"> </span>once
+optional arguments:
+  -h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
+  --text, -t            Use text options instead of GUI
+  --preloaded_traj <span class="o">{</span><span class="m">1</span>,2,3<span class="o">}</span>, -p <span class="o">{</span><span class="m">1</span>,2,3<span class="o">}</span>
+                        Load one of three predefined trajectories
+  --head_pan            Test trajectories on the head_pan joint
+  --head_tilt           Test trajectories on the head_tilt joint
+  --wrist_yaw           Test trajectories on the wrist_yaw joint
+  --gripper             Test trajectories on the stretch_gripper joint
+  --arm                 Test trajectories on the arm joint
+  --lift                Test trajectories on the lift joint
+  --base_translate      Test translational trajectories on diff-drive base
+  --base_rotate         Test rotational trajectories on diff-drive base
+  --full_body           Test trajectories on all joints at once
 </code></pre></div>
 <p>The tool GUI allows you to interactively construct a splined trajectory and then execute it on the robot. For example, on the arm:</p>
 <p><img alt="alt_text" src="../images/traj_gui.png" title="image_tooltip" /></p>
 <p><strong>NOTE</strong>: Use caution when commanding the base. Ensure that attached cables are long enough to support base motion. Alternatively you may want to put the base on top of a book so the wheel don't touch the ground.</p>
 <p>Finally, you can explore a full-body trajectory using the non-GUI version of the tool:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>stretch_trajectory_jog.py<span class="w"> </span>--full_body
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_trajectory_jog.py --full_body
 </code></pre></div>
 <h2 id="programming-trajectories">Programming Trajectories</h2>
 <p>Programming a splined trajectory is straightforward. Try the following from iPython:</p>
@@ -3449,12 +3447,12 @@ optional<span class="w"> </span>arguments:
 <p>For example, the arm trajectory below has a large excursion outside of the joints range of motion (white). This is because the second waypoint expects a non-zero velocity when the arm reaches full extension. </p>
 <p><img alt="" src="../images/bad_trajectory.png" /></p>
 <p>Often the trajectory waypoints will be generated from a motion planner. It is important that this planner incorporates the position, velocity, and acceleration constraints of the joint. These can be found by, for example</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>stretch_params.py<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>arm<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>motion<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>trajectory
-stretch_body.robot_params.nominal_params<span class="w">  </span>param.arm.motion.trajectory_max.vel_m<span class="w">    </span><span class="m">0</span>.4<span class="w">             </span>
-stretch_body.robot_params.nominal_params<span class="w"> </span>param.arm.motion.trajectory_max.accel_m<span class="w">   </span><span class="m">0</span>.4<span class="w"> </span>
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep arm <span class="p">|</span> grep motion <span class="p">|</span> grep trajectory
+stretch_body.robot_params.nominal_params  param.arm.motion.trajectory_max.vel_m    <span class="m">0</span>.4             
+stretch_body.robot_params.nominal_params param.arm.motion.trajectory_max.accel_m   <span class="m">0</span>.4 
 
-&gt;&gt;$<span class="w"> </span>stretch_params.py<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>arm<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>range_m
-stretch_user_params.yaml<span class="w">       </span>param.arm.range_m<span class="w">      </span><span class="o">[</span><span class="m">0</span>.0,<span class="w"> </span><span class="m">0</span>.515<span class="o">]</span><span class="w"> </span>
+&gt;&gt;$ stretch_params.py <span class="p">|</span> grep arm <span class="p">|</span> grep range_m
+stretch_user_params.yaml       param.arm.range_m      <span class="o">[</span><span class="m">0</span>.0, <span class="m">0</span>.515<span class="o">]</span> 
 </code></pre></div>
 <p>Fortunately the Stretch Body <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/trajectories.py">Trajectory</a> classes do some preliminary feasibility checking of trajectories using the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/hello_utils.py#L290">is_segment_feasible function</a>. This checks if the generated motions lie within the constraints of the <code>trajectory_max</code> parameters.</p>
 <p>It is generally important for the waypoints to be spaced far apart. Stretch isn't a dynamic and fast moving robot, so there isn't a practical advantage to closely spaced waypoints at any rate. </p>
@@ -3478,42 +3476,40 @@ stretch_user_params.yaml<span class="w">       </span>param.arm.range_m<span cla
         <footer class="md-footer">
   
     
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
-          
-          <a href="../tutorial_parameter_management/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Parameter Management" rel="prev">
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        <a href="../tutorial_parameter_management/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Parameter Management" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Parameter Management
             </div>
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Previous
-                </span>
-                Parameter Management
-              </div>
-            </div>
-          </a>
+          </div>
+        </a>
+      
+      
         
-        
-          
-          <a href="../tutorial_collision_avoidance/" class="md-footer__link md-footer__link--next" aria-label="Next: Collision Avoidance" rel="next">
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Next
-                </span>
-                Collision Avoidance
-              </div>
+        <a href="../tutorial_collision_avoidance/" class="md-footer__link md-footer__link--next" aria-label="Next: Collision Avoidance" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Collision Avoidance
             </div>
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3586,11 +3582,12 @@ stretch_user_params.yaml<span class="w">       </span>param.arm.range_m<span cla
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

@@ -14,14 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-ros2/stretch_rtabmap/">
       
-      
-        <link rel="prev" href="../stretch_octomap/">
-      
-      
-        <link rel="next" href="../../stretch-factory/">
-      
       <link rel="icon" href="../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -29,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -127,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -134,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3420,7 +3419,6 @@
                   
 
 
-
   <h1>stretch_rtabmap</h1>
 
 <p><img alt="" src="../images/banner.png" /></p>
@@ -3429,22 +3427,22 @@
 <p><em>stretch_rtabmap</em> provides RTAB-MAPPiNG. This package utilizes rtab-map, move_base, and AMCL to map and drive the stretch RE1 around a space. Running this code will require the robot to be untethered.</p>
 <h2 id="setup">Setup</h2>
 <p>Use <code>rosdep</code> to install the required packages.</p>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nb">cd</span><span class="w"> </span>~/catkin_ws/src
-<span class="w">    </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/NateWright/stretch_ros.git
-<span class="w">    </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/pal-robotics/realsense_gazebo_plugin
-<span class="w">    </span><span class="nb">cd</span><span class="w"> </span>~/catkin_ws
-<span class="w">    </span>rosdep<span class="w"> </span>install<span class="w"> </span>--from-paths<span class="w"> </span>src<span class="w"> </span>--ignore-src<span class="w"> </span>-r<span class="w"> </span>-y
-<span class="w">    </span>catkin_make
+<div class="highlight"><pre><span></span><code>    <span class="nb">cd</span> ~/catkin_ws/src
+    git clone https://github.com/NateWright/stretch_ros.git
+    git clone https://github.com/pal-robotics/realsense_gazebo_plugin
+    <span class="nb">cd</span> ~/catkin_ws
+    rosdep install --from-paths src --ignore-src -r -y
+    catkin_make
 </code></pre></div>
 <h2 id="running-demo">Running Demo</h2>
 <h3 id="gazebo">Gazebo</h3>
-<div class="highlight"><pre><span></span><code><span class="w">    </span>roslaunch<span class="w"> </span>stretch_rtabmap<span class="w"> </span>gazebo.launch
-<span class="w">    </span>roslaunch<span class="w"> </span>stretch_rtabmap<span class="w"> </span>start_rtab.launch<span class="w"> </span>sim:<span class="o">=</span><span class="nb">true</span><span class="w"> </span>localization:<span class="o">=</span><span class="nb">false</span><span class="w"> </span>move_base_config:<span class="o">=</span>2d
-<span class="w">    </span>roslaunch<span class="w"> </span>stretch_rtabmap<span class="w"> </span>rviz_rtab.launch<span class="w"> </span>mapping:<span class="o">=</span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code>    roslaunch stretch_rtabmap gazebo.launch
+    roslaunch stretch_rtabmap start_rtab.launch sim:<span class="o">=</span><span class="nb">true</span> localization:<span class="o">=</span><span class="nb">false</span> move_base_config:<span class="o">=</span>2d
+    roslaunch stretch_rtabmap rviz_rtab.launch mapping:<span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
 <h3 id="stretch-re1">Stretch RE1</h3>
-<div class="highlight"><pre><span></span><code><span class="w">    </span>roslaunch<span class="w"> </span>stretch_rtabmap<span class="w"> </span>start_rtab.launch<span class="w"> </span>sim:<span class="o">=</span><span class="nb">false</span><span class="w"> </span>localization:<span class="o">=</span><span class="nb">false</span><span class="w"> </span>move_base_config:<span class="o">=</span>2d
-<span class="w">    </span>roslaunch<span class="w"> </span>stretch_rtabmap<span class="w"> </span>rviz_rtab.launch<span class="w"> </span>mapping:<span class="o">=</span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code>    roslaunch stretch_rtabmap start_rtab.launch sim:<span class="o">=</span><span class="nb">false</span> localization:<span class="o">=</span><span class="nb">false</span> move_base_config:<span class="o">=</span>2d
+    roslaunch stretch_rtabmap rviz_rtab.launch mapping:<span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
 <h2 id="code-status-development-plans">Code Status &amp; Development Plans</h2>
 <table>
@@ -3497,42 +3495,40 @@
         <footer class="md-footer">
   
     
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
-          
-          <a href="../stretch_octomap/" class="md-footer__link md-footer__link--prev" aria-label="Previous: stretch_octomap" rel="prev">
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        <a href="../stretch_octomap/" class="md-footer__link md-footer__link--prev" aria-label="Previous: stretch_octomap" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              stretch_octomap
             </div>
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Previous
-                </span>
-                stretch_octomap
-              </div>
-            </div>
-          </a>
+          </div>
+        </a>
+      
+      
         
-        
-          
-          <a href="../../stretch-factory/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview" rel="next">
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Next
-                </span>
-                Overview
-              </div>
+        <a href="../../stretch-factory/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Overview
             </div>
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3605,11 +3601,12 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

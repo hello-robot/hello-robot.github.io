@@ -14,10 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-factory/updates/011_HEAD_TILT_SWAP/">
       
-      
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -25,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -123,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -130,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3300,48 +3303,47 @@
                   
 
 
-
 <h1 id="011_head_tilt_swap">011_HEAD_TILT_SWAP</h1>
 <h3 id="background"><strong>Background</strong></h3>
 <p>After installing a new head tilt module the URDF calibration needs to be updated. In addition, we will want to store a local copy of the D435i calibration data.</p>
 <h3 id="test-head">Test Head</h3>
 <p>First check that the new head hardware is working correctly. Jog the head around using the command line tool:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w">  </span>stretch_head_jog.py<span class="w"> </span>
-For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </span>S<span class="w"> </span>T<span class="w"> </span>R<span class="w"> </span>E<span class="w"> </span>T<span class="w"> </span>C<span class="w"> </span>H<span class="w"> </span><span class="o">(</span>TM<span class="o">)</span><span class="w"> </span>RESEARCH<span class="w"> </span>EDITION<span class="w"> </span>from<span class="w"> </span>Hello<span class="w"> </span>Robot<span class="w"> </span>Inc.
+<div class="highlight"><pre><span></span><code>&gt;&gt;$  stretch_head_jog.py 
+For use with S T R E T C H <span class="o">(</span>TM<span class="o">)</span> RESEARCH EDITION from Hello Robot Inc.
 
-------<span class="w"> </span>MENU<span class="w"> </span>-------
-m:<span class="w"> </span>menu
-a:<span class="w"> </span>increment<span class="w"> </span>pan<span class="w"> </span><span class="m">10</span><span class="w"> </span>deg
-b:<span class="w"> </span>decrement<span class="w"> </span>pan<span class="w"> </span><span class="m">10</span><span class="w"> </span>deg
-c:<span class="w"> </span>increment<span class="w"> </span>tilt<span class="w"> </span><span class="m">10</span><span class="w"> </span>deg
-d:<span class="w"> </span>decrement<span class="w"> </span>tilt<span class="w"> </span><span class="m">10</span><span class="w"> </span>deg
-e:<span class="w"> </span>ahead
-f:<span class="w"> </span>back
-g:<span class="w"> </span>tool
-h:<span class="w"> </span>wheels
-i:<span class="w"> </span>left
-j:<span class="w"> </span>up
-p:<span class="w"> </span>pan<span class="w"> </span>go<span class="w"> </span>to<span class="w"> </span>pos<span class="w"> </span>ticks
-t:<span class="w"> </span>tilt<span class="w"> </span>go<span class="w"> </span>to<span class="w"> </span>pos<span class="w"> </span>ticks
-x:<span class="w"> </span>home
-<span class="m">1</span>:<span class="w"> </span>speed<span class="w"> </span>slow
-<span class="m">2</span>:<span class="w"> </span>speed<span class="w"> </span>default
-<span class="m">3</span>:<span class="w"> </span>speed<span class="w"> </span>fast
-<span class="m">4</span>:<span class="w"> </span>speed<span class="w"> </span>max
+------ MENU -------
+m: menu
+a: increment pan <span class="m">10</span> deg
+b: decrement pan <span class="m">10</span> deg
+c: increment tilt <span class="m">10</span> deg
+d: decrement tilt <span class="m">10</span> deg
+e: ahead
+f: back
+g: tool
+h: wheels
+i: left
+j: up
+p: pan go to pos ticks
+t: tilt go to pos ticks
+x: home
+<span class="m">1</span>: speed slow
+<span class="m">2</span>: speed default
+<span class="m">3</span>: speed fast
+<span class="m">4</span>: speed max
 -------------------
 </code></pre></div>
 <p>Next check that the D435i Camera can generate point clouds:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>realsense-viewer
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ realsense-viewer
 </code></pre></div>
 <h3 id="update-d435i-calibration-data">Update D435i Calibration Data</h3>
 <p>First, pull down the files</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/repos
-&gt;&gt;$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/hello-robot/stretch_factory
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ <span class="nb">cd</span> ~/repos
+&gt;&gt;$ git clone https://github.com/hello-robot/stretch_factory
 </code></pre></div>
 <p>Now copy them over</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/repos/stretch_factory/updates/011_WRIST_SWAP
-&gt;&gt;$<span class="w"> </span>sudo<span class="w"> </span>cp<span class="w"> </span>*<span class="w"> </span>~/stretch_user/stretch-re1-1007/calibration_D435i
-&gt;&gt;$<span class="w"> </span>sudo<span class="w"> </span>cp<span class="w"> </span>*<span class="w"> </span>/etc/hello-robot/stretch-re1-1007/calibration_D435i
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ <span class="nb">cd</span> ~/repos/stretch_factory/updates/011_WRIST_SWAP
+&gt;&gt;$ sudo cp * ~/stretch_user/stretch-re1-1007/calibration_D435i
+&gt;&gt;$ sudo cp * /etc/hello-robot/stretch-re1-1007/calibration_D435i
 </code></pre></div>
 <h3 id="update-urdf-calibration">Update URDF Calibration</h3>
 <p>The URDF will need re-calibration given the new head hardware. The calibration procedure is described in detail <a href="https://github.com/hello-robot/stretch_ros/tree/master/stretch_calibration#calibrate-the-stretch-re1">here</a>. </p>
@@ -3361,8 +3363,6 @@ x:<span class="w"> </span>home
       </main>
       
         <footer class="md-footer">
-  
-    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3435,11 +3435,12 @@ x:<span class="w"> </span>home
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

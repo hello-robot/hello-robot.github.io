@@ -14,10 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros1_melodic/follow_joint_trajectory/">
       
-      
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -25,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -123,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -130,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3358,7 +3361,6 @@
                   
 
 
-
   <h1>Follow joint trajectory</h1>
 
 <h2 id="followjointtrajectory-commands">FollowJointTrajectory Commands</h2>
@@ -3370,13 +3372,13 @@
 
 <p>Begin by running the following command in the terminal in a terminal.</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch<span class="w"> </span>stretch_core<span class="w"> </span>stretch_driver.launch
+roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 Switch the mode to <em>position</em> mode using a rosservice call. Then run the stow command node.</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-rosservice<span class="w"> </span>call<span class="w"> </span>/switch_to_position_mode
-<span class="nb">cd</span><span class="w"> </span>catkin_ws/src/stretch_tutorials/src/
-python<span class="w"> </span>stow_command.py
+rosservice call /switch_to_position_mode
+<span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+python stow_command.py
 </code></pre></div>
 This will send a <code>FollowJointTrajectory</code> command to stow Stretch's arm.</p>
 <h3 id="the-code">The Code</h3>
@@ -3389,14 +3391,14 @@ This will send a <code>FollowJointTrajectory</code> command to stow Stretch's ar
 <span class="kn">import</span> <span class="nn">time</span>
 
 <span class="k">class</span> <span class="nc">StowCommand</span><span class="p">(</span><span class="n">hm</span><span class="o">.</span><span class="n">HelloNode</span><span class="p">):</span>
-<span class="w">  </span><span class="sd">&#39;&#39;&#39;</span>
+  <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">  A class that sends a joint trajectory goal to stow the Stretch&#39;s arm.</span>
 <span class="sd">  &#39;&#39;&#39;</span>
   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">hm</span><span class="o">.</span><span class="n">HelloNode</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
   <span class="k">def</span> <span class="nf">issue_stow_command</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+    <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Function that makes an action call and sends stow position goal.</span>
 <span class="sd">    :param self: The self reference.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
@@ -3415,7 +3417,7 @@ This will send a <code>FollowJointTrajectory</code> command to stow Stretch's ar
     <span class="bp">self</span><span class="o">.</span><span class="n">trajectory_client</span><span class="o">.</span><span class="n">wait_for_result</span><span class="p">()</span>
 
   <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+    <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Function that initiates stow_command function.</span>
 <span class="sd">    :param self: The self reference.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
@@ -3489,13 +3491,13 @@ Declare object, <em>node</em>, from the <code>StowCommand()</code> class. Then r
 
 <p>Begin by running the following command in the terminal in a terminal.</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch<span class="w"> </span>stretch_core<span class="w"> </span>stretch_driver.launch
+roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 Switch the mode to <em>position</em> mode using a rosservice call. Then run the multipoint command node.</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-rosservice<span class="w"> </span>call<span class="w"> </span>/switch_to_position_mode
-<span class="nb">cd</span><span class="w"> </span>catkin_ws/src/stretch_tutorials/src/
-python<span class="w"> </span>multipoint_command.py
+rosservice call /switch_to_position_mode
+<span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+python multipoint_command.py
 </code></pre></div>
 This will send a list of <code>JointTrajectoryPoint</code> message types to move Stretch's arm.</p>
 <h3 id="the-code_1">The Code</h3>
@@ -3508,14 +3510,14 @@ This will send a list of <code>JointTrajectoryPoint</code> message types to move
 <span class="kn">import</span> <span class="nn">hello_helpers.hello_misc</span> <span class="k">as</span> <span class="nn">hm</span>
 
 <span class="k">class</span> <span class="nc">MultiPointCommand</span><span class="p">(</span><span class="n">hm</span><span class="o">.</span><span class="n">HelloNode</span><span class="p">):</span>
-<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+  <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  A class that sends multiple joint trajectory goals to the stretch robot.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">hm</span><span class="o">.</span><span class="n">HelloNode</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
   <span class="k">def</span> <span class="nf">issue_multipoint_command</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function that makes an action call and sends multiple joint trajectory goals</span>
 <span class="sd">    to the joint_lift, wrist_extension, and joint_wrist_yaw.</span>
 <span class="sd">    :param self: The self reference.</span>
@@ -3551,7 +3553,7 @@ This will send a list of <code>JointTrajectoryPoint</code> message types to move
     <span class="bp">self</span><span class="o">.</span><span class="n">trajectory_client</span><span class="o">.</span><span class="n">wait_for_result</span><span class="p">()</span>
 
   <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function that initiates the multipoint_command function.</span>
 <span class="sd">    :param self: The self reference.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -3609,13 +3611,13 @@ rotate_mobile_base:    No lower or upper limit. Defined by a step size in radian
 </code></pre></div>
 <p>Begin by running the following command in the terminal in a terminal.</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch<span class="w"> </span>stretch_core<span class="w"> </span>stretch_driver.launch
+roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 Switch the mode to <em>position</em> mode using a rosservice call. Then run the single joint actuator node.</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-rosservice<span class="w"> </span>call<span class="w"> </span>/switch_to_position_mode
-<span class="nb">cd</span><span class="w"> </span>catkin_ws/src/stretch_tutorials/src/
-python<span class="w"> </span>single_joint_actuator.py
+rosservice call /switch_to_position_mode
+<span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+python single_joint_actuator.py
 </code></pre></div>
 This will send a list of <code>JointTrajectoryPoint</code> message types to move Stretch's arm.</p>
 <p>The joint, <em>joint_gripper_finger_left</em>, is only needed when actuating the gripper.</p>
@@ -3629,14 +3631,14 @@ This will send a list of <code>JointTrajectoryPoint</code> message types to move
 <span class="kn">import</span> <span class="nn">hello_helpers.hello_misc</span> <span class="k">as</span> <span class="nn">hm</span>
 
 <span class="k">class</span> <span class="nc">SingleJointActuator</span><span class="p">(</span><span class="n">hm</span><span class="o">.</span><span class="n">HelloNode</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A class that sends multiple joint trajectory goals to a single joint.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">hm</span><span class="o">.</span><span class="n">HelloNode</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">issue_command</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Function that makes an action call and sends joint trajectory goals</span>
 <span class="sd">        to a single joint</span>
 <span class="sd">        :param self: The self reference.</span>
@@ -3658,7 +3660,7 @@ This will send a list of <code>JointTrajectoryPoint</code> message types to move
         <span class="bp">self</span><span class="o">.</span><span class="n">trajectory_client</span><span class="o">.</span><span class="n">wait_for_result</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Function that initiates the issue_command function.</span>
 <span class="sd">        :param self: The self reference.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -3709,8 +3711,6 @@ Set <em>trajectory_goal</em> as a <code>FollowJointTrajectoryGoal</code> and def
       </main>
       
         <footer class="md-footer">
-  
-    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3783,11 +3783,12 @@ Set <em>trajectory_goal</em> as a <code>FollowJointTrajectoryGoal</code> and def
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

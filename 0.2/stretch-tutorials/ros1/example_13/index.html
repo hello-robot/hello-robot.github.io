@@ -14,14 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros1/example_13/">
       
-      
-        <link rel="prev" href="../example_12/">
-      
-      
-        <link rel="next" href="../../ros2/">
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -29,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -127,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -134,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3384,14 +3383,13 @@
                   
 
 
-
 <h1 id="example-13">Example 13</h1>
 <p>In this example, we will be utilizing the <a href="http://wiki.ros.org/move_base">move_base ROS node</a>, a component of the <a href="http://wiki.ros.org/navigation?distro=melodic">ROS navigation stack</a> to send base goals to the Stretch robot.</p>
 <h2 id="build-a-map">Build a map</h2>
 <p>First, begin by building a map of the space the robot will be navigating in. If you need a refresher on how to do this, then check out the <a href="../navigation_stack/">Navigation Stack tutorial</a>.</p>
 <h2 id="getting-started">Getting Started</h2>
 <p>Next, with your created map, we can navigate the robot around the mapped space. Run:</p>
-<p><div class="highlight"><pre><span></span><code>roslaunch<span class="w"> </span>stretch_navigation<span class="w"> </span>navigation.launch<span class="w"> </span>map_yaml:<span class="o">=</span><span class="si">${</span><span class="nv">HELLO_FLEET_PATH</span><span class="si">}</span>/maps/&lt;map_name&gt;.yaml
+<p><div class="highlight"><pre><span></span><code>roslaunch stretch_navigation navigation.launch map_yaml:<span class="o">=</span><span class="si">${</span><span class="nv">HELLO_FLEET_PATH</span><span class="si">}</span>/maps/&lt;map_name&gt;.yaml
 </code></pre></div>
 Where <code>${HELLO_FLEET_PATH}</code> is the path of the <code>&lt;map_name&gt;.yaml</code> file.</p>
 <p><strong>IMPORTANT NOTE:</strong> It's likely that the robot's location in the map does not match the robot's location in the real space. In the top bar of Rviz, use 2D Pose Estimate to lay an arrow down roughly where the robot is located in the real space. Below is a gif for reference.</p>
@@ -3401,8 +3399,8 @@ Where <code>${HELLO_FLEET_PATH}</code> is the path of the <code>&lt;map_name&gt;
 
 <p>Now we are going to use a node to send a a move base goal half a meter in front of the map's origin. run the following command to execute the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/navigation.py">navigation.py</a> node.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-<span class="nb">cd</span><span class="w"> </span>catkin_ws/src/stretch_tutorials/src/
-python3<span class="w"> </span>navigation.py
+<span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+python3 navigation.py
 </code></pre></div>
 <h3 id="the-code">The Code</h3>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
@@ -3415,11 +3413,11 @@ python3<span class="w"> </span>navigation.py
 <span class="kn">from</span> <span class="nn">tf</span> <span class="kn">import</span> <span class="n">transformations</span>
 
 <span class="k">class</span> <span class="nc">StretchNavigation</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A simple encapsulation of the navigation stack for a Stretch robot.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create an instance of the simple navigation interface.</span>
 <span class="sd">        :param self: The self reference.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -3440,7 +3438,7 @@ python3<span class="w"> </span>navigation.py
         <span class="bp">self</span><span class="o">.</span><span class="n">goal</span><span class="o">.</span><span class="n">target_pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="mf">1.0</span>
 
     <span class="k">def</span> <span class="nf">get_quaternion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">theta</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A function to build Quaternians from Euler angles. Since the Stretch only</span>
 <span class="sd">        rotates around z, we can zero out the other angles.</span>
 <span class="sd">        :param theta: The angle (radians) the robot makes with the x-axis.</span>
@@ -3448,7 +3446,7 @@ python3<span class="w"> </span>navigation.py
         <span class="k">return</span> <span class="n">Quaternion</span><span class="p">(</span><span class="o">*</span><span class="n">transformations</span><span class="o">.</span><span class="n">quaternion_from_euler</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">theta</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">go_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Drive the robot to a particular pose on the map. The Stretch only needs</span>
 <span class="sd">        (x, y) coordinates and a heading.</span>
 <span class="sd">        :param x: x coordinate in the map frame.</span>
@@ -3466,7 +3464,7 @@ python3<span class="w"> </span>navigation.py
         <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">wait_for_result</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">done_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The done_callback function will be called when the joint action is complete.</span>
 <span class="sd">        :param self: The self reference.</span>
 <span class="sd">        :param status: status attribute from MoveBaseActionResult message.</span>
@@ -3515,7 +3513,7 @@ Make a goal for the action. Specify the coordinate frame that we want, in this i
 </code></pre></div>
 Initialize a position in the coordinate frame.</p>
 <p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_quaternion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">theta</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A function to build Quaternians from Euler angles. Since the Stretch only</span>
 <span class="sd">    rotates around z, we can zero out the other angles.</span>
 <span class="sd">    :param theta: The angle (radians) the robot makes with the x-axis.</span>
@@ -3524,7 +3522,7 @@ Initialize a position in the coordinate frame.</p>
 </code></pre></div>
 A function that transforms Euler angles to quaternions and returns those values.</p>
 <p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">go_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Drive the robot to a particular pose on the map. The Stretch only needs</span>
 <span class="sd">    (x, y) coordinates and a heading.</span>
 <span class="sd">    :param x: x coordinate in the map frame.</span>
@@ -3545,7 +3543,7 @@ The <code>MoveBaseGoal()</code> data structure has three goal positions (in mete
 </code></pre></div>
 Send the goal and include the <code>done_callback()</code> function in one of the arguments in <code>send_goal()</code>.</p>
 <p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">done_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The done_callback function will be called when the joint action is complete.</span>
 <span class="sd">    :param self: The self reference.</span>
 <span class="sd">    :param status: status attribute from MoveBaseActionResult message.</span>
@@ -3582,42 +3580,40 @@ Send a move base goal half a meter in front of the map's origin.</p>
         <footer class="md-footer">
   
     
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
-          
-          <a href="../example_12/" class="md-footer__link md-footer__link--prev" aria-label="Previous: ArUco Tag Locator" rel="prev">
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        <a href="../example_12/" class="md-footer__link md-footer__link--prev" aria-label="Previous: ArUco Tag Locator" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              ArUco Tag Locator
             </div>
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Previous
-                </span>
-                ArUco Tag Locator
-              </div>
-            </div>
-          </a>
+          </div>
+        </a>
+      
+      
         
-        
-          
-          <a href="../../ros2/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview" rel="next">
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Next
-                </span>
-                Overview
-              </div>
+        <a href="../../ros2/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Overview
             </div>
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3690,11 +3686,12 @@ Send a move base goal half a meter in front of the map's origin.</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

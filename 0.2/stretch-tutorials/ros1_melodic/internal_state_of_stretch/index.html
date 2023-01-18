@@ -14,10 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros1_melodic/internal_state_of_stretch/">
       
-      
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -25,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -123,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -130,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3277,17 +3280,16 @@
                   
 
 
-
   <h1>Internal state of stretch</h1>
 
 <h2 id="getting-the-state-of-the-robot">Getting the State of the Robot</h2>
 <p>Begin by starting up the stretch driver launch file.
 <div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch<span class="w"> </span>stretch_core<span class="w"> </span>stretch_driver.launch
+roslaunch stretch_core stretch_driver.launch
 </code></pre></div></p>
 <p>Then utilize the ROS command-line tool, <a href="http://wiki.ros.org/rostopic">rostopic</a>, to display Stretch's internal state information. For instance, to view the current state of the robot's joints, simply type the following in a terminal.
 <div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/joint_states<span class="w"> </span>-n1
+rostopic <span class="nb">echo</span> /joint_states -n1
 </code></pre></div>
 Note that the flag, <code>-n1</code>, at the end of the command defines the count of how many times you wish to publish the current topic information. Remove the flag if you prefer to continuously print the topic for debugging purposes.</p>
 <p>Your terminal will output the information associated with the <code>/joint_states</code> topic. Your <code>header</code>, <code>position</code>, <code>velocity</code>, and <code>effort</code> information may vary from what is printed below.
@@ -3307,7 +3309,7 @@ effort: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 </code></pre></div></p>
 <p>Let's say you are interested in only seeing the <code>header</code> component of the <code>/joint_states</code> topic, you can output this within the rostopic command-line tool by typing the following command.
 <div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/joint_states/header<span class="w"> </span>-n1
+rostopic <span class="nb">echo</span> /joint_states/header -n1
 </code></pre></div>
 Your terminal will then output something similar to this:</p>
 <div class="highlight"><pre><span></span><code>seq: 97277
@@ -3342,8 +3344,6 @@ rqt_graph
       </main>
       
         <footer class="md-footer">
-  
-    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3416,11 +3416,12 @@ rqt_graph
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

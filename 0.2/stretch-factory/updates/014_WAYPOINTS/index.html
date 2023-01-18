@@ -14,10 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-factory/updates/014_WAYPOINTS/">
       
-      
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -25,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -123,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -130,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3307,15 +3310,14 @@
                   
 
 
-
 <h1 id="014_waypoints">014_WAYPOINTS</h1>
 <h3 id="background"><strong>Background</strong></h3>
 <p>x</p>
 <h3 id="update-firmware">Update Firmware</h3>
 <p>Install the latest version of the firmware for the Wacc, Pimu, and Steppers. </p>
 <p>NOTE: For now you will want the<code>sync_timestamp</code>branch of the git repository. You'll need to pull it down.</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/repos
-&gt;&gt;$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/hello-robot/stretch_firmware<span class="w"> </span>-b<span class="w"> </span>via_trajectory
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ <span class="nb">cd</span> ~/repos
+&gt;&gt;$ git clone https://github.com/hello-robot/stretch_firmware -b via_trajectory
 </code></pre></div>
 <p>Then follow <a href="https://github.com/hello-robot/stretch_firmware">the tutorial for upgrading firmware</a> (Note your Stretch may already have the Arduino IDE installed and configured). </p>
 <h3 id="update-yaml">Update YAML</h3>
@@ -3337,12 +3339,12 @@ robot_timestamp_manager:
 <p><strong>Note</strong>: This fix is only applied to the current user account. If there are other existing user accounts they will want to apply this fix as well. </p>
 <h3 id="update-stretch-body">Update Stretch Body</h3>
 <p>NOTE: For now pull down the  <code>sync_timestamp</code> branch of the git repository and install that.</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/repos
-&gt;&gt;$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/hello-robot/stretch_body<span class="w"> </span>-b<span class="w"> </span>sync_timestamp
-&gt;&gt;$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/repos/stretch_body/body
-&gt;&gt;$<span class="w"> </span>./local_install.sh
-&gt;&gt;$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>../tools
-&gt;&gt;$<span class="w"> </span>./local_install.sh
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ <span class="nb">cd</span> ~/repos
+&gt;&gt;$ git clone https://github.com/hello-robot/stretch_body -b sync_timestamp
+&gt;&gt;$ <span class="nb">cd</span> ~/repos/stretch_body/body
+&gt;&gt;$ ./local_install.sh
+&gt;&gt;$ <span class="nb">cd</span> ../tools
+&gt;&gt;$ ./local_install.sh
 </code></pre></div>
 <p>FUTURE:</p>
 <p>First, move to the latest Stretch Body package (version &gt;=0.0.20)</p>
@@ -3350,53 +3352,53 @@ robot_timestamp_manager:
 </code></pre></div>
 <h3 id="try-it-out">Try It Out</h3>
 <p>Now test it out. Try running the timestamp jog tool.</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>stretch_robot_timestamps_jog.py<span class="w"> </span>--display
-For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </span>S<span class="w"> </span>T<span class="w"> </span>R<span class="w"> </span>E<span class="w"> </span>T<span class="w"> </span>C<span class="w"> </span>H<span class="w"> </span><span class="o">(</span>TM<span class="o">)</span><span class="w"> </span>RESEARCH<span class="w"> </span>EDITION<span class="w"> </span>from<span class="w"> </span>Hello<span class="w"> </span>Robot<span class="w"> </span>Inc.
-------<span class="w"> </span>Timestamp<span class="w"> </span>Manager<span class="w"> </span>-----
-Sync<span class="w"> </span>mode<span class="w"> </span>enabled<span class="w">    </span>:<span class="w"> </span><span class="m">1</span>
-Status<span class="w"> </span>ID<span class="w">            </span>:<span class="w"> </span><span class="m">121</span>
-Wall<span class="w"> </span><span class="nb">time</span><span class="w">            </span>:<span class="w"> </span><span class="m">1607575532</span>.977621
-Hardware<span class="w"> </span>sync<span class="w">        </span>:<span class="w"> </span><span class="m">1607575532</span>.939872
-Pimu<span class="w"> </span>IMU<span class="w">             </span>:<span class="w"> </span><span class="m">1607575532</span>.930712
-Lift<span class="w"> </span>Encdoer<span class="w">         </span>:<span class="w"> </span><span class="m">1607575532</span>.938915
-Arm<span class="w"> </span>Encoder<span class="w">          </span>:<span class="w"> </span><span class="m">1607575532</span>.938884
-Right<span class="w"> </span>Wheel<span class="w"> </span>Encoder<span class="w">  </span>:<span class="w"> </span><span class="m">1607575532</span>.939187
-Left<span class="w"> </span>Wheel<span class="w"> </span>Encoder<span class="w">   </span>:<span class="w"> </span><span class="m">1607575532</span>.938882
-Wacc<span class="w"> </span>Accel<span class="w">           </span>:<span class="w"> </span><span class="m">1607575532</span>.934294
-------<span class="w"> </span>Timestamp<span class="w"> </span>Manager<span class="w"> </span>-----
-Sync<span class="w"> </span>mode<span class="w"> </span>enabled<span class="w">    </span>:<span class="w"> </span><span class="m">1</span>
-Status<span class="w"> </span>ID<span class="w">            </span>:<span class="w"> </span><span class="m">125</span>
-Wall<span class="w"> </span><span class="nb">time</span><span class="w">            </span>:<span class="w"> </span><span class="m">1607575533</span>.187324
-Hardware<span class="w"> </span>sync<span class="w">        </span>:<span class="w"> </span><span class="m">1607575533</span>.148872
-Pimu<span class="w"> </span>IMU<span class="w">             </span>:<span class="w"> </span><span class="m">1607575533</span>.140704
-Lift<span class="w"> </span>Encdoer<span class="w">         </span>:<span class="w"> </span><span class="m">1607575533</span>.147775
-Arm<span class="w"> </span>Encoder<span class="w">          </span>:<span class="w"> </span><span class="m">1607575533</span>.148192
-Right<span class="w"> </span>Wheel<span class="w"> </span>Encoder<span class="w">  </span>:<span class="w"> </span><span class="m">1607575533</span>.148234
-Left<span class="w"> </span>Wheel<span class="w"> </span>Encoder<span class="w">   </span>:<span class="w"> </span><span class="m">1607575533</span>.147883
-Wacc<span class="w"> </span>Accel<span class="w">           </span>:<span class="w"> </span><span class="m">1607575533</span>.142721
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_robot_timestamps_jog.py --display
+For use with S T R E T C H <span class="o">(</span>TM<span class="o">)</span> RESEARCH EDITION from Hello Robot Inc.
+------ Timestamp Manager -----
+Sync mode enabled    : <span class="m">1</span>
+Status ID            : <span class="m">121</span>
+Wall <span class="nb">time</span>            : <span class="m">1607575532</span>.977621
+Hardware sync        : <span class="m">1607575532</span>.939872
+Pimu IMU             : <span class="m">1607575532</span>.930712
+Lift Encdoer         : <span class="m">1607575532</span>.938915
+Arm Encoder          : <span class="m">1607575532</span>.938884
+Right Wheel Encoder  : <span class="m">1607575532</span>.939187
+Left Wheel Encoder   : <span class="m">1607575532</span>.938882
+Wacc Accel           : <span class="m">1607575532</span>.934294
+------ Timestamp Manager -----
+Sync mode enabled    : <span class="m">1</span>
+Status ID            : <span class="m">125</span>
+Wall <span class="nb">time</span>            : <span class="m">1607575533</span>.187324
+Hardware sync        : <span class="m">1607575533</span>.148872
+Pimu IMU             : <span class="m">1607575533</span>.140704
+Lift Encdoer         : <span class="m">1607575533</span>.147775
+Arm Encoder          : <span class="m">1607575533</span>.148192
+Right Wheel Encoder  : <span class="m">1607575533</span>.148234
+Left Wheel Encoder   : <span class="m">1607575533</span>.147883
+Wacc Accel           : <span class="m">1607575533</span>.142721
 ...
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>stretch_robot_timestamps_jog.py<span class="w"> </span>--sensor_delta
-For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </span>S<span class="w"> </span>T<span class="w"> </span>R<span class="w"> </span>E<span class="w"> </span>T<span class="w"> </span>C<span class="w"> </span>H<span class="w"> </span><span class="o">(</span>TM<span class="o">)</span><span class="w"> </span>RESEARCH<span class="w"> </span>EDITION<span class="w"> </span>from<span class="w"> </span>Hello<span class="w"> </span>Robot<span class="w"> </span>Inc.
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_robot_timestamps_jog.py --sensor_delta
+For use with S T R E T C H <span class="o">(</span>TM<span class="o">)</span> RESEARCH EDITION from Hello Robot Inc.
 
-Starting<span class="w"> </span>sensor<span class="w"> </span>timestamp<span class="w"> </span>analysis...
-Sync<span class="w"> </span>mode<span class="w"> </span>enabled:<span class="w"> </span><span class="m">1</span>
-Time<span class="w"> </span>align<span class="w"> </span>status:<span class="w"> </span><span class="m">0</span>
-Use<span class="w"> </span>skew<span class="w"> </span>compensation:<span class="w"> </span><span class="m">1</span>
+Starting sensor timestamp analysis...
+Sync mode enabled: <span class="m">1</span>
+Time align status: <span class="m">0</span>
+Use skew compensation: <span class="m">1</span>
 ---------------------------
-DT<span class="w"> </span>Pimu<span class="w"> </span>IMU<span class="w">            </span>:-10152
-DT<span class="w"> </span>Left<span class="w"> </span>Wheel<span class="w"> </span>Encoder<span class="w">  </span>:-717
-DT<span class="w"> </span>Right<span class="w"> </span>Wheel<span class="w"> </span>Encoder<span class="w"> </span>:-1068
-DT<span class="w"> </span>Lift<span class="w"> </span>Encoder<span class="w">        </span>:-361
-DT<span class="w"> </span>Arm<span class="w"> </span>Encoder<span class="w">         </span>:-337
-DT<span class="w"> </span>Wacc<span class="w"> </span>Accel<span class="w">          </span>:5703
+DT Pimu IMU            :-10152
+DT Left Wheel Encoder  :-717
+DT Right Wheel Encoder :-1068
+DT Lift Encoder        :-361
+DT Arm Encoder         :-337
+DT Wacc Accel          :5703
 ---------------------------
-DT<span class="w"> </span>Pimu<span class="w"> </span>IMU<span class="w">            </span>:-7148
-DT<span class="w"> </span>Left<span class="w"> </span>Wheel<span class="w"> </span>Encoder<span class="w">  </span>:-708
-DT<span class="w"> </span>Right<span class="w"> </span>Wheel<span class="w"> </span>Encoder<span class="w"> </span>:-953
-DT<span class="w"> </span>Lift<span class="w"> </span>Encoder<span class="w">        </span>:-470
-DT<span class="w"> </span>Arm<span class="w"> </span>Encoder<span class="w">         </span>:-864
-DT<span class="w"> </span>Wacc<span class="w"> </span>Accel<span class="w">          </span>:84
+DT Pimu IMU            :-7148
+DT Left Wheel Encoder  :-708
+DT Right Wheel Encoder :-953
+DT Lift Encoder        :-470
+DT Arm Encoder         :-864
+DT Wacc Accel          :84
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_robot_timestamps_jog.py --sensor_stats
 </code></pre></div>
@@ -3417,8 +3419,6 @@ DT<span class="w"> </span>Wacc<span class="w"> </span>Accel<span class="w">     
       </main>
       
         <footer class="md-footer">
-  
-    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3491,11 +3491,12 @@ DT<span class="w"> </span>Wacc<span class="w"> </span>Accel<span class="w">     
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

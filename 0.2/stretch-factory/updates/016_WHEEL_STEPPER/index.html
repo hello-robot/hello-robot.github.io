@@ -14,10 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-factory/updates/016_WHEEL_STEPPER/">
       
-      
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -25,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -123,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -130,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3293,42 +3296,41 @@
                   
 
 
-
 <h1 id="016_wheel_stepper">016_WHEEL_STEPPER</h1>
 <h2 id="background"><strong>Background</strong></h2>
 <p>This update configures the robot (stretch-re1-1065) to use a new left wheel module.</p>
 <h2 id="clone-the-repo">Clone the repo</h2>
 <p>First, configure the software:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/repos
-&gt;&gt;$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/hello-robot/stretch_factory
-&gt;&gt;$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>stretch_factory/updates/016_WHEEL_STEPPER
-&gt;&gt;$<span class="w"> </span>./configure_new_stepper.py
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ <span class="nb">cd</span> ~/repos
+&gt;&gt;$ git clone https://github.com/hello-robot/stretch_factory
+&gt;&gt;$ <span class="nb">cd</span> stretch_factory/updates/016_WHEEL_STEPPER
+&gt;&gt;$ ./configure_new_stepper.py
 </code></pre></div>
 <h2 id="test-the-motor">Test the Motor</h2>
 <p>Next power down the robot. Power the robot back on and check that the board is on the bus:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>ls<span class="w"> </span>/dev/hello-motor-left-wheel
-/dev/hello-motor-left-wheel<span class="w">  </span>
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ ls /dev/hello-motor-left-wheel
+/dev/hello-motor-left-wheel  
 </code></pre></div>
 <p>Finally, check that the base moves correctly. Use the <code>f</code> and <code>b</code> commands to jog the base forward and back.</p>
-<div class="highlight"><pre><span></span><code>stretch_base_jog.py<span class="w"> </span>
-For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </span>S<span class="w"> </span>T<span class="w"> </span>R<span class="w"> </span>E<span class="w"> </span>T<span class="w"> </span>C<span class="w"> </span>H<span class="w"> </span><span class="o">(</span>TM<span class="o">)</span><span class="w"> </span>RESEARCH<span class="w"> </span>EDITION<span class="w"> </span>from<span class="w"> </span>Hello<span class="w"> </span>Robot<span class="w"> </span>Inc.
+<div class="highlight"><pre><span></span><code>stretch_base_jog.py 
+For use with S T R E T C H <span class="o">(</span>TM<span class="o">)</span> RESEARCH EDITION from Hello Robot Inc.
 
 --------------
-m:<span class="w"> </span>menu
+m: menu
 
-<span class="m">1</span>:<span class="w"> </span>rate<span class="w"> </span>slow
-<span class="m">2</span>:<span class="w"> </span>rate<span class="w"> </span>default
-<span class="m">3</span>:<span class="w"> </span>rate<span class="w"> </span>fast
-<span class="m">4</span>:<span class="w"> </span>rate<span class="w"> </span>max
-w:<span class="w"> </span>CW/CCW<span class="w"> </span><span class="m">90</span><span class="w"> </span>deg
-x:<span class="w"> </span>forward-&gt;<span class="w"> </span>back<span class="w"> </span><span class="m">0</span>.5m
-y:<span class="w"> </span>spin<span class="w"> </span>at<span class="w"> </span><span class="m">22</span>.5deg/s
+<span class="m">1</span>: rate slow
+<span class="m">2</span>: rate default
+<span class="m">3</span>: rate fast
+<span class="m">4</span>: rate max
+w: CW/CCW <span class="m">90</span> deg
+x: forward-&gt; back <span class="m">0</span>.5m
+y: spin at <span class="m">22</span>.5deg/s
 
-f<span class="w"> </span>/<span class="w"> </span>b<span class="w"> </span>/<span class="w"> </span>l<span class="w"> </span>/<span class="w"> </span>r<span class="w"> </span>:<span class="w"> </span>small<span class="w"> </span>forward<span class="w"> </span>/<span class="w"> </span>back<span class="w"> </span>/<span class="w"> </span>left<span class="w"> </span>/<span class="w"> </span>right
-F<span class="w"> </span>/<span class="w"> </span>B<span class="w"> </span>/<span class="w"> </span>L<span class="w"> </span>/<span class="w"> </span>R<span class="w"> </span>:<span class="w"> </span>large<span class="w"> </span>forward<span class="w"> </span>/<span class="w"> </span>back<span class="w"> </span>/<span class="w"> </span>left<span class="w"> </span>/<span class="w"> </span>right
-o:<span class="w"> </span>freewheel
-p:<span class="w"> </span>pretty<span class="w"> </span>print
-q:<span class="w"> </span>quit
+f / b / l / r : small forward / back / left / right
+F / B / L / R : large forward / back / left / right
+o: freewheel
+p: pretty print
+q: quit
 
 Input?
 </code></pre></div>
@@ -3347,8 +3349,6 @@ Input?
       </main>
       
         <footer class="md-footer">
-  
-    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3421,11 +3421,12 @@ Input?
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

@@ -14,10 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-factory/python/tools/">
       
-      
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -25,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -123,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -130,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3264,16 +3267,15 @@
                   
 
 
-
 <h1 id="stretch-factory-tools">Stretch Factory Tools</h1>
 <p>The list of tools can be found by tab completion of 'REx' at the command line:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>REx
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ REx
 
-REx_base_calibrate_imu_collect.py<span class="w">         </span>REx_cliff_sensor_calibrate.py<span class="w">             </span>REx_dynamixel_reboot.py<span class="w">                   </span>REx_hello_dynamixel_jog.py<span class="w">                </span>REx_stepper_gains.py
-REx_base_calibrate_imu_process.py<span class="w">         </span>REx_D435i_check.py<span class="w">                        </span>REx_dynamixel_set_baud.py<span class="w">                 </span>REx_stepper_calibration_flash_to_YAML.py<span class="w">  </span>REx_stepper_jog.py
-REx_base_calibrate_wheel_separation.py<span class="w">    </span>REx_dynamixel_id_change.py<span class="w">                </span>REx_firmware_updater.py<span class="w">                   </span>REx_stepper_calibration_run.py<span class="w">            </span>REx_stepper_mechaduino_menu.py
-REx_calibrate_guarded_contact.py<span class="w">          </span>REx_dynamixel_id_scan.py<span class="w">                  </span>REx_gamepad_configure.py<span class="w">                  </span>REx_stepper_calibration_YAML_to_flash.p<span class="w">   </span>REx_usb_reset.py
-REx_calibrate_range.py<span class="w">                    </span>REx_dynamixel_jog.py<span class="w">                      </span>REx_gripper_calibrate.py<span class="w">                  </span>REx_stepper_ctrl_tuning.py<span class="w">                </span>REx_wacc_calibrate.py
+REx_base_calibrate_imu_collect.py         REx_cliff_sensor_calibrate.py             REx_dynamixel_reboot.py                   REx_hello_dynamixel_jog.py                REx_stepper_gains.py
+REx_base_calibrate_imu_process.py         REx_D435i_check.py                        REx_dynamixel_set_baud.py                 REx_stepper_calibration_flash_to_YAML.py  REx_stepper_jog.py
+REx_base_calibrate_wheel_separation.py    REx_dynamixel_id_change.py                REx_firmware_updater.py                   REx_stepper_calibration_run.py            REx_stepper_mechaduino_menu.py
+REx_calibrate_guarded_contact.py          REx_dynamixel_id_scan.py                  REx_gamepad_configure.py                  REx_stepper_calibration_YAML_to_flash.p   REx_usb_reset.py
+REx_calibrate_range.py                    REx_dynamixel_jog.py                      REx_gripper_calibrate.py                  REx_stepper_ctrl_tuning.py                REx_wacc_calibrate.py
 </code></pre></div>
 <p>These tools are used during the factory system 'bringup' of the robot. They are organized by subsystem:</p>
 <ul>
@@ -3285,17 +3287,17 @@ REx_calibrate_range.py<span class="w">                    </span>REx_dynamixel_j
 <li>REx_wacc*</li>
 </ul>
 <p>The tools will generally interact with the lowest level interface of the hardware, make measurements, and write calibration data to the robot's YAML or devices EEPROM. For example, the following script calibrates the wrist accelerometer such that the gravity term is 9.8m/s^2.</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>REx_wacc_calibrate_gravity.py
-Ensure<span class="w"> </span>base<span class="w"> </span>is<span class="w"> </span>level<span class="w"> </span>and<span class="w"> </span>arm<span class="w"> </span>is<span class="w"> </span>retracted.<span class="w"> </span>Hit<span class="w"> </span>enter<span class="w"> </span>when<span class="w"> </span>ready
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ REx_wacc_calibrate_gravity.py
+Ensure base is level and arm is retracted. Hit enter when ready
 
-Itr<span class="w"> </span><span class="m">0</span><span class="w"> </span>Val<span class="w"> </span><span class="m">9</span>.32055700006
+Itr <span class="m">0</span> Val <span class="m">9</span>.32055700006
 ...
-Itr<span class="w"> </span><span class="m">99</span><span class="w"> </span>Val<span class="w"> </span><span class="m">9</span>.34092651895
-Got<span class="w"> </span>a<span class="w"> </span>average<span class="w"> </span>value<span class="w"> </span>of<span class="w"> </span><span class="m">9</span>.29669019184
-Scalar<span class="w"> </span>of<span class="w"> </span><span class="m">1</span>.05485391012
-Write<span class="w"> </span>parameters<span class="w"> </span>to<span class="w"> </span>stretch_re1_factory_params.yaml<span class="w"> </span><span class="o">(</span>y/n<span class="o">)</span>?<span class="w"> </span><span class="o">[</span>y<span class="o">]</span>
+Itr <span class="m">99</span> Val <span class="m">9</span>.34092651895
+Got a average value of <span class="m">9</span>.29669019184
+Scalar of <span class="m">1</span>.05485391012
+Write parameters to stretch_re1_factory_params.yaml <span class="o">(</span>y/n<span class="o">)</span>? <span class="o">[</span>y<span class="o">]</span>
 y
-Writing<span class="w"> </span>yaml...
+Writing yaml...
 </code></pre></div>
 <p><strong>Caution: It is possible to break your robot by running these tools.</strong> If not used properly these tools may not respect joint torque and position limits. They may overwrite existing calibration data as well. </p>
 
@@ -3313,8 +3315,6 @@ Writing<span class="w"> </span>yaml...
       </main>
       
         <footer class="md-footer">
-  
-    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3387,11 +3387,12 @@ Writing<span class="w"> </span>yaml...
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

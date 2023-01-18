@@ -14,10 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-factory/updates/018_GRIPPER_CALIBRATION/">
       
-      
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -25,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -123,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -130,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3286,7 +3289,6 @@
                   
 
 
-
 <h1 id="018_gripper_calibration">018_GRIPPER_CALIBRATION</h1>
 <h3 id="background"><strong>Background</strong></h3>
 <p>The Stretch gripper is calibrated to define the closed position, 'zero' or home position, and fully open position of the gripper. 
@@ -3297,20 +3299,20 @@ Recalibrating may be necessary if replacing the gripper, or if the gripper is no
 </code></pre></div>
 Now run the gripper calibration script. This script will take you through the step-by-step process of calibration.
 1. First, the script automatically finds the gripper closed position.
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>RE1_gripper_calibrate.py<span class="w"> </span>
-Hit<span class="w"> </span>enter<span class="w"> </span>to<span class="w"> </span>find<span class="w"> </span>zero
-Moving<span class="w"> </span>to<span class="w"> </span>first<span class="w"> </span>hardstop...
-Contact<span class="w"> </span>at<span class="w"> </span>position:<span class="w"> </span><span class="m">0</span>
-Hit<span class="w"> </span>first<span class="w"> </span>hardstop,<span class="w"> </span>marking<span class="w"> </span>to<span class="w"> </span>zero<span class="w"> </span>ticks
-Homing<span class="w"> </span>is<span class="w"> </span>now<span class="w">  </span><span class="m">4895</span>
-Raw<span class="w"> </span>position:<span class="w"> </span><span class="m">12</span>
-Moving<span class="w"> </span>to<span class="w"> </span>calibrated<span class="w"> </span>zero:<span class="w"> </span><span class="o">(</span>rad<span class="o">)</span>
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ RE1_gripper_calibrate.py 
+Hit enter to find zero
+Moving to first hardstop...
+Contact at position: <span class="m">0</span>
+Hit first hardstop, marking to zero ticks
+Homing is now  <span class="m">4895</span>
+Raw position: <span class="m">12</span>
+Moving to calibrated zero: <span class="o">(</span>rad<span class="o">)</span>
 </code></pre></div>
 <img src="images/gripper_close_position.jpg" width="200"><br/></p>
 <ol>
 <li>Next you are asked to manually set the 'zero' or home position, entering '1' or '2' to open or close the fingers until they barely don't touch, as pictured. 
 <div class="highlight"><pre><span></span><code>---------------------------------------------------
-Enter<span class="w"> </span><span class="m">1</span><span class="w"> </span>to<span class="w"> </span>open<span class="w"> </span>fingers.<span class="w"> </span>Enter<span class="w"> </span><span class="m">2</span><span class="w"> </span>to<span class="w"> </span>close<span class="w"> </span>fingers.<span class="w"> </span>Enter<span class="w"> </span><span class="m">3</span><span class="w"> </span>when<span class="w"> </span>the<span class="w"> </span>fingertips<span class="w"> </span>are<span class="w"> </span>just<span class="w"> </span>barely<span class="w"> </span>not<span class="w"> </span>touching.
+Enter <span class="m">1</span> to open fingers. Enter <span class="m">2</span> to close fingers. Enter <span class="m">3</span> when the fingertips are just barely not touching.
 <span class="m">1</span>
 <span class="m">1</span>
 <span class="m">1</span>
@@ -3318,13 +3320,13 @@ Enter<span class="w"> </span><span class="m">1</span><span class="w"> </span>to<
 <span class="m">1</span>
 <span class="m">2</span>
 <span class="m">3</span>
-<span class="o">(</span><span class="s1">&#39;Setting zero at:&#39;</span>,<span class="w"> </span><span class="m">5639</span><span class="o">)</span>
+<span class="o">(</span><span class="s1">&#39;Setting zero at:&#39;</span>, <span class="m">5639</span><span class="o">)</span>
 </code></pre></div>
 <img src="images/gripper_zero_position.jpg" width="200"><br/></li>
 <li>Next you are asked to manually set the fully open position, entering '1' or '2' to open or close the fingers until the fingers are fully open and stop moving.
 <div class="highlight"><pre><span></span><code>---------------------------------------------------
-Enter<span class="w"> </span><span class="m">1</span><span class="w"> </span>to<span class="w"> </span>open<span class="w"> </span>fingers.<span class="w"> </span>Enter<span class="w"> </span><span class="m">2</span><span class="w"> </span>to<span class="w"> </span>close<span class="w"> </span>fingers.<span class="w"> </span>Enter<span class="w"> </span><span class="m">3</span><span class="w"> </span>when<span class="w"> </span>the<span class="w"> </span>fingertips<span class="w"> </span>are<span class="w"> </span>fully<span class="w"> </span>open,<span class="w"> </span>
-and<span class="w"> </span>no<span class="w"> </span>further<span class="w"> </span>opening<span class="w"> </span>motion<span class="w"> </span>is<span class="w"> </span>possible
+Enter <span class="m">1</span> to open fingers. Enter <span class="m">2</span> to close fingers. Enter <span class="m">3</span> when the fingertips are fully open, 
+and no further opening motion is possible
 <span class="m">1</span>
 <span class="m">1</span>
 .
@@ -3333,14 +3335,14 @@ and<span class="w"> </span>no<span class="w"> </span>further<span class="w"> </s
 <span class="m">1</span>
 <span class="m">2</span>
 <span class="m">3</span>
-<span class="o">(</span><span class="s1">&#39;Setting open at:&#39;</span>,<span class="w"> </span><span class="m">8500</span><span class="o">)</span>
+<span class="o">(</span><span class="s1">&#39;Setting open at:&#39;</span>, <span class="m">8500</span><span class="o">)</span>
 </code></pre></div>
 <img src="images/gripper_open_position.jpg" width="200"><br/></li>
 <li>Finally, the script will move the gripper to the closed, open, and zero positions. Verify that the gripper moves to the expected poses and save the calibration.
-<div class="highlight"><pre><span></span><code>Hit<span class="w"> </span>enter<span class="w"> </span>to<span class="w"> </span>close
-Hit<span class="w"> </span>enter<span class="w"> </span>to<span class="w"> </span>open
-Hit<span class="w"> </span>enter<span class="w"> </span>to<span class="w"> </span>go<span class="w"> </span>to<span class="w"> </span>zero
-Save<span class="w"> </span>calibration<span class="w"> </span><span class="o">[</span>y<span class="o">]</span>?y
+<div class="highlight"><pre><span></span><code>Hit enter to close
+Hit enter to open
+Hit enter to go to zero
+Save calibration <span class="o">[</span>y<span class="o">]</span>?y
 </code></pre></div></li>
 </ol>
 
@@ -3358,8 +3360,6 @@ Save<span class="w"> </span>calibration<span class="w"> </span><span class="o">[
       </main>
       
         <footer class="md-footer">
-  
-    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3432,11 +3432,12 @@ Save<span class="w"> </span>calibration<span class="w"> </span><span class="o">[
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

@@ -14,14 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_body/tutorial_dynamixel_servos/">
       
-      
-        <link rel="prev" href="../tutorial_robot_sensors/">
-      
-      
-        <link rel="next" href="../tutorial_parameter_management/">
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -29,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -127,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -134,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3494,103 +3493,102 @@
                   
 
 
-
 <h1 id="tutorial-working-with-dynamixel-servos">Tutorial: Working with Dynamixel Servos</h1>
 <p>In this tutorial we will go into the details with Dynamixel servos and Stretch.</p>
 <h2 id="overview">Overview</h2>
 <p>Stretch comes with two Dynamixel buses - one for the head and one for the end-of-arm:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>ls<span class="w">  </span>/dev/hello-dynamixel-*
-/dev/hello-dynamixel-head<span class="w">  </span>/dev/hello-dynamixel-wrist
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ ls  /dev/hello-dynamixel-*
+/dev/hello-dynamixel-head  /dev/hello-dynamixel-wrist
 </code></pre></div>
 <p>Typically, users will interact with these devices through either the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/head.py">Head</a> or <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/end_of_arm.py">EndOfArm</a> interfaces.  This tutorial is for users looking to work directly with the servos from the provided servo tools or through Stretch Body's low level Dynamixel API. </p>
 <h2 id="servo-tools">Servo Tools</h2>
 <p><strong>NOTE</strong>: The servo tools here are part of the <a href="https://github.com/hello-robot/stretch_factory">Stretch Factory package</a> which is installed as a part of Stretch Body.</p>
 <h3 id="jogging-the-servos">Jogging the Servos</h3>
 <p>You can directly command each servo using the command line tool <code>REx_dynamixel_servo_jog.py</code>. This can be useful for debugging new servos added to the end-of-arm tool during system bring-up. For example, to command the head pan servo:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>REx_dynamixel_jog.py<span class="w"> </span>/dev/hello-dynamixel-head<span class="w"> </span><span class="m">11</span>
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:011<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Succeeded.<span class="w"> </span>Dynamixel<span class="w"> </span>model<span class="w"> </span>number<span class="w"> </span>:<span class="w"> </span><span class="m">1080</span>
-------<span class="w"> </span>MENU<span class="w"> </span>-------
-m:<span class="w"> </span>menu
-a:<span class="w"> </span>increment<span class="w"> </span>position<span class="w"> </span><span class="m">50</span><span class="w"> </span>tick
-b:<span class="w"> </span>decrement<span class="w"> </span>position<span class="w"> </span><span class="m">50</span><span class="w"> </span>tick
-A:<span class="w"> </span>increment<span class="w"> </span>position<span class="w"> </span><span class="m">500</span><span class="w"> </span>ticks
-B:<span class="w"> </span>decrement<span class="w"> </span>position<span class="w"> </span><span class="m">500</span><span class="w"> </span>ticks
-v:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>profile<span class="w"> </span>velocity
-u:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>profile<span class="w"> </span>acceleration
-z:<span class="w"> </span>zero<span class="w"> </span>position
-h:<span class="w"> </span>show<span class="w"> </span>homing<span class="w"> </span>offset
-o:<span class="w"> </span>zero<span class="w"> </span>homing<span class="w"> </span>offset
-q:<span class="w"> </span>got<span class="w"> </span>to<span class="w"> </span>position
-p:<span class="w"> </span>ping
-r:<span class="w"> </span>reboot
-w:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>max<span class="w"> </span>pwm
-t:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>max<span class="w"> </span>temp
-i:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>id
-d:<span class="w"> </span>disable<span class="w"> </span>torque
-e:<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>torque
+<div class="highlight"><pre><span></span><code>$ REx_dynamixel_jog.py /dev/hello-dynamixel-head <span class="m">11</span>
+<span class="o">[</span>Dynamixel ID:011<span class="o">]</span> ping Succeeded. Dynamixel model number : <span class="m">1080</span>
+------ MENU -------
+m: menu
+a: increment position <span class="m">50</span> tick
+b: decrement position <span class="m">50</span> tick
+A: increment position <span class="m">500</span> ticks
+B: decrement position <span class="m">500</span> ticks
+v: <span class="nb">set</span> profile velocity
+u: <span class="nb">set</span> profile acceleration
+z: zero position
+h: show homing offset
+o: zero homing offset
+q: got to position
+p: ping
+r: reboot
+w: <span class="nb">set</span> max pwm
+t: <span class="nb">set</span> max temp
+i: <span class="nb">set</span> id
+d: disable torque
+e: <span class="nb">enable</span> torque
 -------------------
 </code></pre></div>
 <h3 id="rebooting-the-servos">Rebooting the Servos</h3>
 <p>Under high-load conditions the servos may enter an error state to protect themselves from thermal overload. In this case, the red LED on the servo will flash (if visible). In addition, the servo will be unresponsive to motion commands. In this case, allow the overheating servo to cool down and reboot the servos using the <code>stretch_robot_dynamixel_reboot.py</code> tool: </p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>stretch_robot_dynamixel_reboot.py
-For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </span>S<span class="w"> </span>T<span class="w"> </span>R<span class="w"> </span>E<span class="w"> </span>T<span class="w"> </span>C<span class="w"> </span>H<span class="w"> </span><span class="o">(</span>TM<span class="o">)</span><span class="w"> </span>RESEARCH<span class="w"> </span>EDITION<span class="w"> </span>from<span class="w"> </span>Hello<span class="w"> </span>Robot<span class="w"> </span>Inc.
+<div class="highlight"><pre><span></span><code>$ stretch_robot_dynamixel_reboot.py
+For use with S T R E T C H <span class="o">(</span>TM<span class="o">)</span> RESEARCH EDITION from Hello Robot Inc.
 
-----<span class="w"> </span>Rebooting<span class="w"> </span>Head<span class="w"> </span>----<span class="w"> </span>
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:011<span class="o">]</span><span class="w"> </span>Reboot<span class="w"> </span>Succeeded.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:012<span class="o">]</span><span class="w"> </span>Reboot<span class="w"> </span>Succeeded.
-----<span class="w"> </span>Rebooting<span class="w"> </span>Wrist<span class="w"> </span>----<span class="w"> </span>
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:013<span class="o">]</span><span class="w"> </span>Reboot<span class="w"> </span>Succeeded.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:014<span class="o">]</span><span class="w"> </span>Reboot<span class="w"> </span>Succeeded.
+---- Rebooting Head ---- 
+<span class="o">[</span>Dynamixel ID:011<span class="o">]</span> Reboot Succeeded.
+<span class="o">[</span>Dynamixel ID:012<span class="o">]</span> Reboot Succeeded.
+---- Rebooting Wrist ---- 
+<span class="o">[</span>Dynamixel ID:013<span class="o">]</span> Reboot Succeeded.
+<span class="o">[</span>Dynamixel ID:014<span class="o">]</span> Reboot Succeeded.
 </code></pre></div>
 <h3 id="identify-servos-on-the-bus">Identify Servos on the Bus</h3>
 <p>If it is unclear which servos are on the bus, and at what baud rate, you can use the <code>REx_dynamixel_id_scan.py</code> tool. Here we see that the two head servos are at ID 11 and 12 at baud 57600.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>RE1_dynamixel_id_scan.py<span class="w"> </span>/dev/hello-dynamixel-head<span class="w"> </span>--baud<span class="w"> </span><span class="m">57600</span>
-Scanning<span class="w"> </span>bus<span class="w"> </span>/dev/hello-dynamixel-head<span class="w"> </span>at<span class="w"> </span>baud<span class="w"> </span>rate<span class="w"> </span><span class="m">57600</span>
+<div class="highlight"><pre><span></span><code>$ RE1_dynamixel_id_scan.py /dev/hello-dynamixel-head --baud <span class="m">57600</span>
+Scanning bus /dev/hello-dynamixel-head at baud rate <span class="m">57600</span>
 ----------------------------------------------------------
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:000<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:001<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:002<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:003<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:004<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:005<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:006<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:007<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:008<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:009<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:010<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:011<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Succeeded.<span class="w"> </span>Dynamixel<span class="w"> </span>model<span class="w"> </span>number<span class="w"> </span>:<span class="w"> </span><span class="m">1080</span>
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:012<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Succeeded.<span class="w"> </span>Dynamixel<span class="w"> </span>model<span class="w"> </span>number<span class="w"> </span>:<span class="w"> </span><span class="m">1060</span>
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:013<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:014<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:015<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:016<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:017<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:018<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:019<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:020<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:021<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:022<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:023<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:024<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Failed.
+<span class="o">[</span>Dynamixel ID:000<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:001<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:002<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:003<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:004<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:005<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:006<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:007<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:008<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:009<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:010<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:011<span class="o">]</span> ping Succeeded. Dynamixel model number : <span class="m">1080</span>
+<span class="o">[</span>Dynamixel ID:012<span class="o">]</span> ping Succeeded. Dynamixel model number : <span class="m">1060</span>
+<span class="o">[</span>Dynamixel ID:013<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:014<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:015<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:016<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:017<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:018<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:019<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:020<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:021<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:022<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:023<span class="o">]</span> ping Failed.
+<span class="o">[</span>Dynamixel ID:024<span class="o">]</span> ping Failed.
 </code></pre></div>
 <h3 id="setting-the-servo-baud-rate">Setting the Servo Baud Rate</h3>
 <p>Stretch ships with its Dynamixels servos configured to baudrate=115200.  When adding your own servos to the end-of-arm tool, you may want to set the servo baud using the <code>RE1_dynamixel_set_baud.py</code> tool. For example:</p>
-<p><div class="highlight"><pre><span></span><code>$<span class="w"> </span>REx_dynamixel_set_baud.py<span class="w"> </span>/dev/hello-dynamixel-wrist<span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">115200</span>
+<p><div class="highlight"><pre><span></span><code>$ REx_dynamixel_set_baud.py /dev/hello-dynamixel-wrist <span class="m">13</span> <span class="m">115200</span>
 ---------------------
-Checking<span class="w"> </span>servo<span class="w"> </span>current<span class="w"> </span>baud<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="m">57600</span>
+Checking servo current baud <span class="k">for</span> <span class="m">57600</span>
 ----
-Identified<span class="w"> </span>current<span class="w"> </span>baud<span class="w"> </span>of<span class="w"> </span><span class="m">57600</span>.<span class="w"> </span>Changing<span class="w"> </span>baud<span class="w"> </span>to<span class="w"> </span><span class="m">115200</span>
-Success<span class="w"> </span>at<span class="w"> </span>changing<span class="w"> </span>baud
+Identified current baud of <span class="m">57600</span>. Changing baud to <span class="m">115200</span>
+Success at changing baud
 </code></pre></div>
 <strong>Note</strong>: Earlier units of Stretch RE1 may be running Dynamixel servos at baud 57600</p>
 <h3 id="setting-the-servo-id">Setting the Servo ID</h3>
 <p>Dynamixel servos come with ID=1 from the factory. When adding your own servos to the end-of-arm tool, you may want to set the servo ID using the <code>REx_dynamixel_id_change.py</code> tool. For example:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>RE1x_dynamixel_id_change.py<span class="w"> </span>/dev/hello-dynamixel-wrist<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">13</span><span class="w"> </span>--baud<span class="w"> </span><span class="m">115200</span>
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:001<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Succeeded.<span class="w"> </span>Dynamixel<span class="w"> </span>model<span class="w"> </span>number<span class="w"> </span>:<span class="w"> </span><span class="m">1080</span>
-Ready<span class="w"> </span>to<span class="w"> </span>change<span class="w"> </span>ID<span class="w"> </span><span class="m">1</span><span class="w"> </span>to<span class="w"> </span><span class="m">13</span>.<span class="w"> </span>Hit<span class="w"> </span>enter<span class="w"> </span>to<span class="w"> </span><span class="k">continue</span>:
+<div class="highlight"><pre><span></span><code>$ RE1x_dynamixel_id_change.py /dev/hello-dynamixel-wrist <span class="m">1</span> <span class="m">13</span> --baud <span class="m">115200</span>
+<span class="o">[</span>Dynamixel ID:001<span class="o">]</span> ping Succeeded. Dynamixel model number : <span class="m">1080</span>
+Ready to change ID <span class="m">1</span> to <span class="m">13</span>. Hit enter to <span class="k">continue</span>:
 
-<span class="o">[</span>Dynamixel<span class="w"> </span>ID:013<span class="o">]</span><span class="w"> </span>ping<span class="w"> </span>Succeeded.<span class="w"> </span>Dynamixel<span class="w"> </span>model<span class="w"> </span>number<span class="w"> </span>:<span class="w"> </span><span class="m">1080</span>
-Success<span class="w"> </span>at<span class="w"> </span>setting<span class="w"> </span>ID<span class="w"> </span>to<span class="w"> </span><span class="m">13</span>
+<span class="o">[</span>Dynamixel ID:013<span class="o">]</span> ping Succeeded. Dynamixel model number : <span class="m">1080</span>
+Success at setting ID to <span class="m">13</span>
 </code></pre></div>
 <h2 id="stretch-body-dynamixel-api">Stretch Body Dynamixel API</h2>
 <p>Stretch Body's low level Dynamixel API includes a hierarchy of three classes</p>
@@ -3618,42 +3616,42 @@ Success<span class="w"> </span>at<span class="w"> </span>setting<span class="w">
 <p>The <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/end_of_arm.py">EndOfArm</a> class derives from DynamixelXChain in order to provide an extensible interface that supports a user integrating additional DOF to the robot. The tutorial <a href="../tutorial_custom_wrist_dof/">Adding Custom Wrist DOF</a> explains how to do this.</p>
 <h3 id="dynamixelhelloxl430">DynamixelHelloXL430</h3>
 <p>DynamixelHelloXL430 provides an interface to servo motion that is consistent with the Stretch Body lift, arm, and base joints. It also manages the servo parameters and calibration. Let's explore this interface further. From iPython let's look at the status message for DynamixelHelloXL430</p>
-<div class="highlight"><pre><span></span><code>import<span class="w"> </span>stretch_body.dynamixel_hello_XL430<span class="w"> </span>
+<div class="highlight"><pre><span></span><code>import stretch_body.dynamixel_hello_XL430 
 
-<span class="nv">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>stretch_body.dynamixel_hello_XL430.DynamixelHelloXL430<span class="o">(</span><span class="s1">&#39;head_pan&#39;</span><span class="o">)</span>
+<span class="nv">m</span> <span class="o">=</span> stretch_body.dynamixel_hello_XL430.DynamixelHelloXL430<span class="o">(</span><span class="s1">&#39;head_pan&#39;</span><span class="o">)</span>
 m.startup<span class="o">()</span>
 
 m.pretty_print<span class="o">()</span>
------<span class="w"> </span>HelloXL430<span class="w"> </span>------<span class="w"> </span>
-Name<span class="w"> </span>head_pan
-Position<span class="w"> </span><span class="o">(</span>rad<span class="o">)</span><span class="w"> </span>-0.0
-Position<span class="w"> </span><span class="o">(</span>deg<span class="o">)</span><span class="w"> </span>-0.0
-Position<span class="w"> </span><span class="o">(</span>ticks<span class="o">)</span><span class="w"> </span><span class="m">1250</span>
-Velocity<span class="w"> </span><span class="o">(</span>rad/s<span class="o">)</span><span class="w"> </span>-0.0
-Velocity<span class="w"> </span><span class="o">(</span>ticks/s<span class="o">)</span><span class="w"> </span><span class="m">0</span>
-Effort<span class="w"> </span><span class="o">(</span>%<span class="o">)</span><span class="w"> </span><span class="m">0</span>.0
-Effort<span class="w"> </span><span class="o">(</span>ticks<span class="o">)</span><span class="w"> </span><span class="m">0</span>
-Temp<span class="w"> </span><span class="m">34</span>.0
-Comm<span class="w"> </span>Errors<span class="w"> </span><span class="m">0</span>
-Hardware<span class="w"> </span>Error<span class="w"> </span><span class="m">0</span>
-Hardware<span class="w"> </span>Error:<span class="w"> </span>Input<span class="w"> </span>Voltage<span class="w"> </span>Error:<span class="w">  </span>False
-Hardware<span class="w"> </span>Error:<span class="w"> </span>Overheating<span class="w"> </span>Error:<span class="w">  </span>False
-Hardware<span class="w"> </span>Error:<span class="w"> </span>Motor<span class="w"> </span>Encoder<span class="w"> </span>Error:<span class="w">  </span>False
-Hardware<span class="w"> </span>Error:<span class="w"> </span>Electrical<span class="w"> </span>Shock<span class="w"> </span>Error:<span class="w">  </span>False
-Hardware<span class="w"> </span>Error:<span class="w"> </span>Overload<span class="w"> </span>Error:<span class="w">  </span>False
-Watchdog<span class="w"> </span>Errors:<span class="w">  </span><span class="m">0</span>
-Timestamp<span class="w"> </span>PC<span class="w"> </span><span class="m">1661552966</span>.7202659
-Range<span class="w"> </span><span class="o">(</span>ticks<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="m">0</span>,<span class="w"> </span><span class="m">3827</span><span class="o">]</span>
-Range<span class="w"> </span><span class="o">(</span>rad<span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="m">1</span>.9174759848570513<span class="w">  </span>,<span class="w">  </span>-3.953068490381297<span class="w"> </span><span class="o">]</span>
-Stalled<span class="w"> </span>True
-Stall<span class="w"> </span>Overload<span class="w"> </span>False
-Is<span class="w"> </span>Calibrated<span class="w"> </span><span class="m">0</span>
+----- HelloXL430 ------ 
+Name head_pan
+Position <span class="o">(</span>rad<span class="o">)</span> -0.0
+Position <span class="o">(</span>deg<span class="o">)</span> -0.0
+Position <span class="o">(</span>ticks<span class="o">)</span> <span class="m">1250</span>
+Velocity <span class="o">(</span>rad/s<span class="o">)</span> -0.0
+Velocity <span class="o">(</span>ticks/s<span class="o">)</span> <span class="m">0</span>
+Effort <span class="o">(</span>%<span class="o">)</span> <span class="m">0</span>.0
+Effort <span class="o">(</span>ticks<span class="o">)</span> <span class="m">0</span>
+Temp <span class="m">34</span>.0
+Comm Errors <span class="m">0</span>
+Hardware Error <span class="m">0</span>
+Hardware Error: Input Voltage Error:  False
+Hardware Error: Overheating Error:  False
+Hardware Error: Motor Encoder Error:  False
+Hardware Error: Electrical Shock Error:  False
+Hardware Error: Overload Error:  False
+Watchdog Errors:  <span class="m">0</span>
+Timestamp PC <span class="m">1661552966</span>.7202659
+Range <span class="o">(</span>ticks<span class="o">)</span> <span class="o">[</span><span class="m">0</span>, <span class="m">3827</span><span class="o">]</span>
+Range <span class="o">(</span>rad<span class="o">)</span> <span class="o">[</span> <span class="m">1</span>.9174759848570513  ,  -3.953068490381297 <span class="o">]</span>
+Stalled True
+Stall Overload False
+Is Calibrated <span class="m">0</span>
 </code></pre></div>
 <p>We see that it reports the position in both radians (with respect to the joint frame) and ticks (with respect to the servo encoder). DynamixelHelloXL430 handles the calibration between the two using its method <code>ticks_to_world_rad</code> through the following params:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>stretch_params.py<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>head_pan<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">&#39;_t &#39;</span>
-...<span class="w">              </span>
-stretch_configuration_params.yaml<span class="w">         </span>param.head_pan.range_t<span class="w">           </span><span class="o">[</span><span class="m">0</span>,<span class="w"> </span><span class="m">3827</span><span class="o">]</span><span class="w">                     </span>
-stretch_configuration_params.yaml<span class="w">         </span>param.head_pan.zero_t<span class="w">            </span><span class="m">1250</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep head_pan <span class="p">|</span> grep <span class="s1">&#39;_t &#39;</span>
+...              
+stretch_configuration_params.yaml         param.head_pan.range_t           <span class="o">[</span><span class="m">0</span>, <span class="m">3827</span><span class="o">]</span>                     
+stretch_configuration_params.yaml         param.head_pan.zero_t            <span class="m">1250</span> 
 </code></pre></div>
 <p>In addition to <code>move_to</code> and <code>move_by</code>, the class also implements a splined trajectory interface as discussed in the <a href="../tutorial_splined_trajectories/">Splined Trajectory Tutorial</a>. </p>
 <h3 id="dynamixelxl430">DynamixelXL430</h3>
@@ -3689,42 +3687,40 @@ stretch_configuration_params.yaml<span class="w">         </span>param.head_pan.
         <footer class="md-footer">
   
     
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
-          
-          <a href="../tutorial_robot_sensors/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Robot Sensors" rel="prev">
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        <a href="../tutorial_robot_sensors/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Robot Sensors" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Robot Sensors
             </div>
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Previous
-                </span>
-                Robot Sensors
-              </div>
-            </div>
-          </a>
+          </div>
+        </a>
+      
+      
         
-        
-          
-          <a href="../tutorial_parameter_management/" class="md-footer__link md-footer__link--next" aria-label="Next: Parameter Management" rel="next">
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Next
-                </span>
-                Parameter Management
-              </div>
+        <a href="../tutorial_parameter_management/" class="md-footer__link md-footer__link--next" aria-label="Next: Parameter Management" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Parameter Management
             </div>
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3797,11 +3793,12 @@ stretch_configuration_params.yaml<span class="w">         </span>param.head_pan.
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

@@ -14,14 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_body/tutorial_robot_motion/">
       
-      
-        <link rel="prev" href="../tutorial_stretch_body_api/">
-      
-      
-        <link rel="next" href="../tutorial_robot_sensors/">
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -29,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -127,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -134,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3496,7 +3495,6 @@
                   
 
 
-
 <h1 id="tutorial-robot-motion">Tutorial: Robot Motion</h1>
 <p>As we've seen in previous tutorials, commanding robot motion can be simple and straight forward. For example, incremental motion of the arm can be commanded by:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -3585,9 +3583,9 @@
 <li>a: acceleration of motion</li>
 </ul>
 <p>We provide 'default' settings for the velocity and acceleration settings, as well as 'fast', and 'slow' settings. These values have been tuned to be appropriate for safe motion of the robot. These values can queried  using the <code>stretch_params.py</code> tool:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;<span class="nv">$stretch_params</span>.py<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>arm<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>motion<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>default
-stretch_body.robot_params.nominal_params<span class="w">      </span>param.arm.motion.fast.accel_m<span class="w">     </span><span class="m">0</span>.14<span class="w">                           </span>
-stretch_body.robot_params.nominal_params<span class="w">      </span>param.arm.motion.fast.vel_m<span class="w">       </span><span class="m">0</span>.14<span class="w"> </span>
+<div class="highlight"><pre><span></span><code>&gt;&gt;<span class="nv">$stretch_params</span>.py <span class="p">|</span> grep arm <span class="p">|</span> grep motion <span class="p">|</span> grep default
+stretch_body.robot_params.nominal_params      param.arm.motion.fast.accel_m     <span class="m">0</span>.14                           
+stretch_body.robot_params.nominal_params      param.arm.motion.fast.vel_m       <span class="m">0</span>.14 
 </code></pre></div>
 <p>We see that the arm motion in 'default' mode will move with a velocity of 0.14 m/s and an acceleration of 0.14 m/s^2. </p>
 <p>The <code>move_by</code> and <code>move_to</code> commands support optional motion profile parameters. For example, for a fast motion: </p>
@@ -3600,8 +3598,8 @@ stretch_body.robot_params.nominal_params<span class="w">      </span>param.arm.m
 <p>The motion will use the 'default' motion profile settings if no values are specified.</p>
 <h2 id="motion-limits">Motion Limits</h2>
 <p>All joints obey motion limits which are specified in the robot parameters. </p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>stretch_params.py<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>arm<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>range_m
-stretch_user_params.yaml<span class="w">          </span>param.arm.range_m<span class="w">     </span><span class="o">[</span><span class="m">0</span>.0,<span class="w"> </span><span class="m">0</span>.515<span class="o">]</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep arm <span class="p">|</span> grep range_m
+stretch_user_params.yaml          param.arm.range_m     <span class="o">[</span><span class="m">0</span>.0, <span class="m">0</span>.515<span class="o">]</span> 
 </code></pre></div>
 <p>These are the mechanical limits of the joint. These limits have been set at the factory to prevent damage to the hardware. It is not recommended to set them to be greater than the factory specified values. However, they can be further limited if desired by setting soft motion limits:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">stretch_body.robot</span>
@@ -3779,11 +3777,11 @@ stretch_user_params.yaml<span class="w">          </span>param.arm.range_m<span 
 <p>For more information on guarded motion, see the <a href="../tutorial_contact_models/">Contact Models Tutorial</a></p>
 <h3 id="synchronized-motion">Synchronized Motion</h3>
 <p>The Arm, Lift, and Base actuators have a hardware synchronization mechanism. This allows for stepper controller commands to be time synchronized across joints.  This behavior can be disabled via the user YAML. By default the settings are:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>stretch_params.py<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>enable_sync_mode
-stretch_body.robot_params.nominal_params<span class="w">   </span>param.hello-motor-arm.gains.enable_sync_mode<span class="w">         </span><span class="m">1</span><span class="w">                             </span>
-stretch_body.robot_params.nominal_params<span class="w">   </span>param.hello-motor-left-wheel.gains.enable_sync_mode<span class="w">  </span><span class="m">1</span><span class="w">                             </span>
-stretch_body.robot_params.nominal_params<span class="w">   </span>param.hello-motor-lift.gains.enable_sync_mode<span class="w">        </span><span class="m">1</span><span class="w">                             </span>
-stretch_body.robot_params.nominal_params<span class="w">   </span>param.hello-motor-right-wheel.gains.enable_sync_mode<span class="w"> </span><span class="m">1</span><span class="w">  </span>
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep enable_sync_mode
+stretch_body.robot_params.nominal_params   param.hello-motor-arm.gains.enable_sync_mode         <span class="m">1</span>                             
+stretch_body.robot_params.nominal_params   param.hello-motor-left-wheel.gains.enable_sync_mode  <span class="m">1</span>                             
+stretch_body.robot_params.nominal_params   param.hello-motor-lift.gains.enable_sync_mode        <span class="m">1</span>                             
+stretch_body.robot_params.nominal_params   param.hello-motor-right-wheel.gains.enable_sync_mode <span class="m">1</span>  
 </code></pre></div>
 <h3 id="motion-status">Motion Status</h3>
 <p>It can be useful to poll the status of a joint during motion in order to modify the robot behavior, etc. The useful status values include:</p>
@@ -3851,42 +3849,40 @@ stretch_body.robot_params.nominal_params<span class="w">   </span>param.hello-mo
         <footer class="md-footer">
   
     
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
-          
-          <a href="../tutorial_stretch_body_api/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Stretch Body API" rel="prev">
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        <a href="../tutorial_stretch_body_api/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Stretch Body API" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Stretch Body API
             </div>
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Previous
-                </span>
-                Stretch Body API
-              </div>
-            </div>
-          </a>
+          </div>
+        </a>
+      
+      
         
-        
-          
-          <a href="../tutorial_robot_sensors/" class="md-footer__link md-footer__link--next" aria-label="Next: Robot Sensors" rel="next">
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Next
-                </span>
-                Robot Sensors
-              </div>
+        <a href="../tutorial_robot_sensors/" class="md-footer__link md-footer__link--next" aria-label="Next: Robot Sensors" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Robot Sensors
             </div>
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3959,11 +3955,12 @@ stretch_body.robot_params.nominal_params<span class="w">   </span>param.hello-mo
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

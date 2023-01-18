@@ -14,14 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/updating_software/">
       
-      
-        <link rel="prev" href="../untethered_operation/">
-      
-      
-        <link rel="next" href="../../stretch_body/">
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -29,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -127,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -134,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3452,7 +3451,6 @@
                   
 
 
-
 <h1 id="updating-stretch-software">Updating Stretch Software</h1>
 <p>Stretch's software is improved with new features and bug fixes with each update. In this guide, we cover when and how to update the various software components on your Stretch.</p>
 <h2 id="when-to-update">When to Update</h2>
@@ -3469,24 +3467,24 @@
 <span class="go">git pull</span>
 </code></pre></div></p>
 <p>To replace the ROS Melodic catkin_ws in Ubuntu 18.04, execute:
-<div class="highlight"><pre><span></span><code><span class="gp"># </span>Create<span class="w"> </span>a<span class="w"> </span>ROS<span class="w"> </span>workspace
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>Create a ROS workspace
 <span class="go">./factory/18.04/stretch_create_catkin_workspace.sh -w &lt;optional-path-to-ws&gt;</span>
 </code></pre></div></p>
 <p>To replace the ROS Noetic catkin_ws in Ubuntu 20.04, execute:
-<div class="highlight"><pre><span></span><code><span class="gp"># </span>Create<span class="w"> </span>a<span class="w"> </span>ROS<span class="w"> </span>workspace
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>Create a ROS workspace
 <span class="go">./factory/20.04/stretch_create_catkin_workspace.sh -w &lt;optional-path-to-ws&gt;</span>
 </code></pre></div></p>
 <p>To replace the ROS 2 Galactic ament_ws in Ubuntu 20.04, execute:
-<div class="highlight"><pre><span></span><code><span class="gp"># </span>Create<span class="w"> </span>a<span class="w"> </span>ROS2<span class="w"> </span>workspace
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>Create a ROS2 workspace
 <span class="go">./factory/20.04/stretch_create_ament_workspace.sh -w &lt;optional-path-to-ws&gt;</span>
 </code></pre></div></p>
 <h3 id="stretch-body-python-sdk">Stretch Body Python SDK</h3>
 <p>Stretch Body is the Python SDK to the robot. It abstracts away the low level details of communication with the embedded devices and provides an intuitive API to working with the robot. You may update it using the following commands depending on the Python version.</p>
 <p>If you are using Python2, execute:
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>hello-robot-stretch-body
-<span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>hello-robot-stretch-body-tools
-<span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>hello-robot-stretch-factory
-<span class="gp">$ </span>pip3<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>hello_robot_stretch_body_tools_py3
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>pip install -U hello-robot-stretch-body
+<span class="gp">$ </span>pip install -U hello-robot-stretch-body-tools
+<span class="gp">$ </span>pip install -U hello-robot-stretch-factory
+<span class="gp">$ </span>pip3 install -U hello_robot_stretch_body_tools_py3
 </code></pre></div></p>
 <p>For Python3, execute:
 <div class="highlight"><pre><span></span><code><span class="go">python3 -m pip -q install --no-warn-script-location hello-robot-stretch-body</span>
@@ -3496,13 +3494,13 @@
 </code></pre></div></p>
 <h3 id="stretch-firmware">Stretch Firmware</h3>
 <p>The firmware and the Python SDK (called Stretch Body) communicate on an established protocol. Therefore, it is important to maintain a protocol match between the different firmware and Stretch Body versions. Fortunately, there is a script that handles this automatically. In the command line, run the following command:</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>REx_firmware_updater.py<span class="w"> </span>--status
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>REx_firmware_updater.py --status
 </code></pre></div>
 <p>This script will automatically determine what version is currently running on the robot and provide a recommendation for a next step. Follow the next steps provided by the firmware updater script.</p>
 <h3 id="ubuntu">Ubuntu</h3>
 <p>The operating system upon which Stretch is built is called Ubuntu. This operating system provides the underlying packages that power Stretch's software packages. Furthermore, users of Stretch depend on this operating system and the underlying packages to develop software on Stretch. Therefore, it is important to keep the OS and these underlying packages up to date. In the command line, run the following command:</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo<span class="w"> </span>apt<span class="w"> </span>update
-<span class="gp">$ </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt update
+<span class="gp">$ </span>sudo apt upgrade
 </code></pre></div>
 <p><a href="https://en.wikipedia.org/wiki/APT_(software)">Apt</a> is the package manager that handles updates for all Ubuntu packages.</p>
 <h2 id="troubleshooting">Troubleshooting</h2>
@@ -3517,7 +3515,7 @@ Please upgrade the firmware and/or version of Stretch Body.
 ----------------
 </code></pre></div>
 <p>This error appears because the low level Python SDK and the firmware cannot communicate to each other. There is a protocol mismatch preventing communication between the two. Simply run the following script and follow its recommendations to upgrade/downgrade the firmware as necessary to match the protocol level of Stretch Body.</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>REx_firmware_updater.py<span class="w"> </span>--status
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>REx_firmware_updater.py --status
 </code></pre></div>
 <hr />
 <div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks.</div>
@@ -3538,42 +3536,40 @@ Please upgrade the firmware and/or version of Stretch Body.
         <footer class="md-footer">
   
     
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
-          
-          <a href="../untethered_operation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Untethered Operation" rel="prev">
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        <a href="../untethered_operation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Untethered Operation" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Untethered Operation
             </div>
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Previous
-                </span>
-                Untethered Operation
-              </div>
-            </div>
-          </a>
+          </div>
+        </a>
+      
+      
         
-        
-          
-          <a href="../../stretch_body/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview" rel="next">
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Next
-                </span>
-                Overview
-              </div>
+        <a href="../../stretch_body/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Overview
             </div>
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3646,11 +3642,12 @@ Please upgrade the firmware and/or version of Stretch Body.
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

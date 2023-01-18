@@ -14,10 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-factory/updates/010_WRIST_SWAP/">
       
-      
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -25,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -123,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -130,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3300,85 +3303,84 @@
                   
 
 
-
 <h1 id="010_wrist_swap">010_WRIST_SWAP</h1>
 <h3 id="background"><strong>Background</strong></h3>
 <p>After installing a new wrist module the system UDEV needs to be updated</p>
 <h3 id="update-udev">Update UDEV</h3>
 <p>First, pull down the files</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/repos
-&gt;&gt;$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/hello-robot/stretch_factory
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ <span class="nb">cd</span> ~/repos
+&gt;&gt;$ git clone https://github.com/hello-robot/stretch_factory
 </code></pre></div>
 <p>Now copy them over</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>stretch_factory/updates/010_WRIST_SWAP
-&gt;&gt;$<span class="w"> </span>sudo<span class="w"> </span>cp<span class="w"> </span>*.rules<span class="w"> </span>/etc/udev/rules.d
-&gt;&gt;$<span class="w"> </span>sudo<span class="w"> </span>cp<span class="w"> </span>*.rules<span class="w"> </span>/etc/hello-robot/stretch-re1-1013/udev
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ <span class="nb">cd</span> stretch_factory/updates/010_WRIST_SWAP
+&gt;&gt;$ sudo cp *.rules /etc/udev/rules.d
+&gt;&gt;$ sudo cp *.rules /etc/hello-robot/stretch-re1-1013/udev
 </code></pre></div>
 <p>Now reboot. After reboot check that the new wrist shows up on the bus</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>ls<span class="w"> </span>/dev/hello-dynamixel-wrist
-&gt;&gt;$<span class="w"> </span>ls<span class="w"> </span>/dev/hello-wacc
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ ls /dev/hello-dynamixel-wrist
+&gt;&gt;$ ls /dev/hello-wacc
 </code></pre></div>
 <h3 id="test-wrist">Test Wrist</h3>
 <p>Then check that the Wacc is reporting sensor data back:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w">  </span>stretch_wacc_jog.py<span class="w"> </span>
-For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </span>S<span class="w"> </span>T<span class="w"> </span>R<span class="w"> </span>E<span class="w"> </span>T<span class="w"> </span>C<span class="w"> </span>H<span class="w"> </span><span class="o">(</span>TM<span class="o">)</span><span class="w"> </span>RESEARCH<span class="w"> </span>EDITION<span class="w"> </span>from<span class="w"> </span>Hello<span class="w"> </span>Robot<span class="w"> </span>Inc.
+<div class="highlight"><pre><span></span><code>&gt;&gt;$  stretch_wacc_jog.py 
+For use with S T R E T C H <span class="o">(</span>TM<span class="o">)</span> RESEARCH EDITION from Hello Robot Inc.
 
-------<span class="w"> </span>MENU<span class="w"> </span>-------
-m:<span class="w"> </span>menu
-r:<span class="w"> </span>reset<span class="w"> </span>board
-a:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D2<span class="w"> </span>on
-b:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D2<span class="w"> </span>off
-c:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D3<span class="w"> </span>on
-d:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D3<span class="w"> </span>off
+------ MENU -------
+m: menu
+r: reset board
+a: <span class="nb">set</span> D2 on
+b: <span class="nb">set</span> D2 off
+c: <span class="nb">set</span> D3 on
+d: <span class="nb">set</span> D3 off
 -------------------
 
 ------------------------------
-Ax<span class="w"> </span><span class="o">(</span>m/s^2<span class="o">)</span><span class="w"> </span><span class="m">9</span>.8684213638
-Ay<span class="w"> </span><span class="o">(</span>m/s^2<span class="o">)</span><span class="w"> </span><span class="m">0</span>.506848096848
-Az<span class="w"> </span><span class="o">(</span>m/s^2<span class="o">)</span><span class="w"> </span><span class="m">0</span>.361166000366
-A0<span class="w"> </span><span class="m">381</span>
-D0<span class="w"> </span><span class="o">(</span>In<span class="o">)</span><span class="w"> </span><span class="m">1</span>
-D1<span class="w"> </span><span class="o">(</span>In<span class="o">)</span><span class="w"> </span><span class="m">1</span>
-D2<span class="w"> </span><span class="o">(</span>Out<span class="o">)</span><span class="w"> </span><span class="m">0</span>
-D3<span class="w"> </span><span class="o">(</span>Out<span class="o">)</span><span class="w"> </span><span class="m">0</span>
-Single<span class="w"> </span>Tap<span class="w"> </span>Count<span class="w"> </span><span class="m">25</span>
-State<span class="w">  </span><span class="m">0</span>
-Debug<span class="w"> </span><span class="m">0</span>
-Timestamp<span class="w"> </span><span class="m">1601320914</span>.65
-Board<span class="w"> </span>version:<span class="w"> </span>Wacc.Guthrie.V1
-Firmware<span class="w"> </span>version:<span class="w"> </span>Wacc.v0.0.1p0
-------<span class="w"> </span>MENU<span class="w"> </span>-------
-m:<span class="w"> </span>menu
-r:<span class="w"> </span>reset<span class="w"> </span>board
-a:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D2<span class="w"> </span>on
-b:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D2<span class="w"> </span>off
-c:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D3<span class="w"> </span>on
-d:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D3<span class="w"> </span>off
+Ax <span class="o">(</span>m/s^2<span class="o">)</span> <span class="m">9</span>.8684213638
+Ay <span class="o">(</span>m/s^2<span class="o">)</span> <span class="m">0</span>.506848096848
+Az <span class="o">(</span>m/s^2<span class="o">)</span> <span class="m">0</span>.361166000366
+A0 <span class="m">381</span>
+D0 <span class="o">(</span>In<span class="o">)</span> <span class="m">1</span>
+D1 <span class="o">(</span>In<span class="o">)</span> <span class="m">1</span>
+D2 <span class="o">(</span>Out<span class="o">)</span> <span class="m">0</span>
+D3 <span class="o">(</span>Out<span class="o">)</span> <span class="m">0</span>
+Single Tap Count <span class="m">25</span>
+State  <span class="m">0</span>
+Debug <span class="m">0</span>
+Timestamp <span class="m">1601320914</span>.65
+Board version: Wacc.Guthrie.V1
+Firmware version: Wacc.v0.0.1p0
+------ MENU -------
+m: menu
+r: reset board
+a: <span class="nb">set</span> D2 on
+b: <span class="nb">set</span> D2 off
+c: <span class="nb">set</span> D3 on
+d: <span class="nb">set</span> D3 off
 -------------------
 </code></pre></div>
 <p>Finally, jog the wrist yaw joint:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>stretch_wrist_yaw_home.py<span class="w"> </span>
-For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </span>S<span class="w"> </span>T<span class="w"> </span>R<span class="w"> </span>E<span class="w"> </span>T<span class="w"> </span>C<span class="w"> </span>H<span class="w"> </span><span class="o">(</span>TM<span class="o">)</span><span class="w"> </span>RESEARCH<span class="w"> </span>EDITION<span class="w"> </span>from<span class="w"> </span>Hello<span class="w"> </span>Robot<span class="w"> </span>Inc.
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_wrist_yaw_home.py 
+For use with S T R E T C H <span class="o">(</span>TM<span class="o">)</span> RESEARCH EDITION from Hello Robot Inc.
 
-Moving<span class="w"> </span>to<span class="w"> </span>first<span class="w"> </span>hardstop...
-Contact<span class="w"> </span>at<span class="w"> </span>position:<span class="w"> </span>-3029
-Hit<span class="w"> </span>first<span class="w"> </span>hardstop,<span class="w"> </span>marking<span class="w"> </span>to<span class="w"> </span>zero<span class="w"> </span>ticks
-Raw<span class="w"> </span>position:<span class="w"> </span><span class="m">14</span>
-Moving<span class="w"> </span>to<span class="w"> </span>calibrated<span class="w"> </span>zero:<span class="w"> </span><span class="o">(</span>rad<span class="o">)</span>
+Moving to first hardstop...
+Contact at position: -3029
+Hit first hardstop, marking to zero ticks
+Raw position: <span class="m">14</span>
+Moving to calibrated zero: <span class="o">(</span>rad<span class="o">)</span>
 </code></pre></div>
 <h3 id="update-wacc-calibration">Update Wacc Calibration</h3>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>pip2<span class="w"> </span>install<span class="w"> </span>hello-robot-stretch-factory
-&gt;&gt;$<span class="w"> </span>RE1_wacc_calibrate.py
-RE1_wacc_calibrate.py<span class="w"> </span>
-Calibrating<span class="w"> </span>Wacc.<span class="w"> </span>Ensure<span class="w"> </span>arm<span class="w"> </span>is<span class="w"> </span>retracted<span class="w"> </span>and<span class="w"> </span>level<span class="w"> </span>to<span class="w"> </span>ground
-Hit<span class="w"> </span>enter<span class="w"> </span>when<span class="w"> </span>ready
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ pip2 install hello-robot-stretch-factory
+&gt;&gt;$ RE1_wacc_calibrate.py
+RE1_wacc_calibrate.py 
+Calibrating Wacc. Ensure arm is retracted and level to ground
+Hit enter when ready
 
-Itr<span class="w"> </span><span class="m">0</span><span class="w"> </span>Val<span class="w"> </span><span class="m">9</span>.59977857901
+Itr <span class="m">0</span> Val <span class="m">9</span>.59977857901
 ...
-Itr<span class="w"> </span><span class="m">99</span><span class="w"> </span>Val<span class="w"> </span><span class="m">10</span>.1095601333
-Got<span class="w"> </span>a<span class="w"> </span>average<span class="w"> </span>value<span class="w"> </span>of<span class="w"> </span><span class="m">10</span>.1372113882
-Gravity<span class="w"> </span>scalar<span class="w"> </span>of<span class="w"> </span><span class="m">0</span>.967391<span class="w"> </span>within<span class="w"> </span>bounds<span class="w"> </span>of<span class="w"> </span><span class="m">0</span>.900000<span class="w"> </span>to<span class="w"> </span><span class="m">1</span>.100000
-Writing<span class="w"> </span>yaml...
+Itr <span class="m">99</span> Val <span class="m">10</span>.1095601333
+Got a average value of <span class="m">10</span>.1372113882
+Gravity scalar of <span class="m">0</span>.967391 within bounds of <span class="m">0</span>.900000 to <span class="m">1</span>.100000
+Writing yaml...
 </code></pre></div>
 <p>Now copy the updated YAML to /etc so that it will be available to other (new) user  accounts.</p>
 <div class="highlight"><pre><span></span><code>&gt;&gt;$ cd ~/stretch_user/stretch-re1-1013
@@ -3400,8 +3402,6 @@ Writing<span class="w"> </span>yaml...
       </main>
       
         <footer class="md-footer">
-  
-    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3474,11 +3474,12 @@ Writing<span class="w"> </span>yaml...
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

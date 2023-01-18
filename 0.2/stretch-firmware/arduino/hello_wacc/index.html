@@ -14,10 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-firmware/arduino/hello_wacc/">
       
-      
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -25,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -123,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -130,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3299,7 +3302,6 @@
                   
 
 
-
 <h1 id="stretch-re1re2-wacc-firmware">Stretch RE1/RE2 - Wacc Firmware</h1>
 <p>The Stretch Wacc Firmware runs on the Wacc PCBA found inside the robot arm. Wacc stands for the 'Wrist + Accelerometer' board. The Wacc firmware provides</p>
 <ul>
@@ -3319,7 +3321,7 @@
 <h2 id="using-the-expansion-dio-header">Using the Expansion DIO Header</h2>
 <h3 id="factory-interface">Factory Interface</h3>
 <p>By default the Expansion DIO header is configured in firmware to provide two digital inputs, two digital outputs, and an analog input. This can be seen in the <a href="https://github.com/hello-robot/stretch_firmware/blob/master/arduino/hello_wacc/Common.h">Wacc_status</a> structure.</p>
-<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">__attribute__</span><span class="w"> </span><span class="p">((</span><span class="n">packed</span><span class="p">))</span><span class="w"> </span><span class="n">Wacc_Status</span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">__attribute__</span><span class="w"> </span><span class="p">((</span><span class="n">packed</span><span class="p">))</span><span class="w"> </span><span class="n">Wacc_Status</span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">ax</span><span class="p">;</span><span class="w"> </span><span class="c1">//Accelerometer AX</span>
 <span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">ay</span><span class="p">;</span><span class="w"> </span><span class="c1">//Accelerometer AY</span>
 <span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">az</span><span class="p">;</span><span class="w"> </span><span class="c1">//Accelerometer AZ</span>
@@ -3329,10 +3331,10 @@
 <span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">d2</span><span class="p">;</span><span class="w"> </span><span class="c1">//expansion header digital out</span>
 <span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">d3</span><span class="p">;</span><span class="w"> </span><span class="c1">//expansion header digital out</span>
 <span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">single_tap_count</span><span class="p">;</span><span class="w"> </span><span class="c1">//Accelerometer tap count</span>
-<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">state</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">timestamp</span><span class="p">;</span><span class="w"> </span><span class="c1">//ms, overflows every 50 days</span>
-<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">debug</span><span class="p">;</span>
-<span class="p">};</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">debug</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 </code></pre></div>
 <p>The user can interact with these pins through the <a href="https://hello-robot.github.io/stretch_body_guide/">Stretch Body python interface</a>. </p>
 <h3 id="custom-interface">Custom Interface</h3>
@@ -3352,8 +3354,6 @@
       </main>
       
         <footer class="md-footer">
-  
-    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3426,11 +3426,12 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

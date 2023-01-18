@@ -14,10 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-factory/updates/013_WACC_INSTALL/">
       
-      
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -25,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -123,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -130,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3307,7 +3310,6 @@
                   
 
 
-
 <h1 id="013_wacc_install">013_WACC_INSTALL</h1>
 <h2 id="background"><strong>Background</strong></h2>
 <p>This update installs and configures a new Wacc (Wrist + Accelerometer) board. You will need</p>
@@ -3321,55 +3323,55 @@
 </ul>
 <h2 id="update-the-wacc-board-serial-numbers">Update the Wacc board serial numbers</h2>
 <p>First, on the robot run:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/repos
-&gt;&gt;$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/hello-robot/stretch_factory
-&gt;&gt;$<span class="w"> </span>chmod<span class="w"> </span>a+rw<span class="w"> </span><span class="nv">$HELLO_FLEET_PATH</span>/<span class="nv">$HELLO_FLEET_ID</span>/udev/*
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ <span class="nb">cd</span> ~/repos
+&gt;&gt;$ git clone https://github.com/hello-robot/stretch_factory
+&gt;&gt;$ chmod a+rw <span class="nv">$HELLO_FLEET_PATH</span>/<span class="nv">$HELLO_FLEET_ID</span>/udev/*
 </code></pre></div>
 <p>Now attach the USB cable into a USB port of the robot trunk. Run the updating tool as shown below. You will
 - Plug in USB when prompted
 - Hit enter
 - Unplug and plug in USB when prompted
 - Hit enter</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>stretch_factory/updates/013_WACC_INSTALL
-&gt;&gt;$<span class="w"> </span>sudo<span class="w"> </span>dmesg<span class="w"> </span>-c
-&gt;&gt;$<span class="w"> </span>./add_new_wacc_pcba.py<span class="w"> </span>
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ <span class="nb">cd</span> stretch_factory/updates/013_WACC_INSTALL
+&gt;&gt;$ sudo dmesg -c
+&gt;&gt;$ ./add_new_wacc_pcba.py 
 ----------------------
-Adding<span class="w"> </span>WACC<span class="w"> </span>PCBA<span class="w"> </span>to<span class="w"> </span>robot:<span class="w">  </span>stretch-re1-1039
-Plug<span class="w"> </span>/<span class="w"> </span>Reset<span class="w"> </span>Dynamixel<span class="w"> </span>device<span class="w"> </span>now...
-Press<span class="w"> </span><span class="k">return</span><span class="w"> </span>when<span class="w"> </span><span class="k">done</span>
+Adding WACC PCBA to robot:  stretch-re1-1039
+Plug / Reset Dynamixel device now...
+Press <span class="k">return</span> when <span class="k">done</span>
 
-<span class="o">[</span><span class="m">1035443</span>.643968<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">1</span>-1.3.2.1:<span class="w"> </span>new<span class="w"> </span>high-speed<span class="w"> </span>USB<span class="w"> </span>device<span class="w"> </span>number<span class="w"> </span><span class="m">12</span><span class="w"> </span>using<span class="w"> </span>xhci_hcd
-<span class="o">[</span><span class="m">1035443</span>.844182<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">1</span>-1.3.2.1:<span class="w"> </span>New<span class="w"> </span>USB<span class="w"> </span>device<span class="w"> </span>found,<span class="w"> </span><span class="nv">idVendor</span><span class="o">=</span>1a40,<span class="w"> </span><span class="nv">idProduct</span><span class="o">=</span><span class="m">0101</span>
-<span class="o">[</span><span class="m">1035443</span>.844199<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">1</span>-1.3.2.1:<span class="w"> </span>New<span class="w"> </span>USB<span class="w"> </span>device<span class="w"> </span>strings:<span class="w"> </span><span class="nv">Mfr</span><span class="o">=</span><span class="m">0</span>,<span class="w"> </span><span class="nv">Product</span><span class="o">=</span><span class="m">1</span>,<span class="w"> </span><span class="nv">SerialNumber</span><span class="o">=</span><span class="m">0</span>
-<span class="o">[</span><span class="m">1035443</span>.844208<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">1</span>-1.3.2.1:<span class="w"> </span>Product:<span class="w"> </span>USB<span class="w"> </span><span class="m">2</span>.0<span class="w"> </span>Hub
-<span class="o">[</span><span class="m">1035443</span>.845851<span class="o">]</span><span class="w"> </span>hub<span class="w"> </span><span class="m">1</span>-1.3.2.1:1.0:<span class="w"> </span>USB<span class="w"> </span>hub<span class="w"> </span>found
-<span class="o">[</span><span class="m">1035443</span>.845923<span class="o">]</span><span class="w"> </span>hub<span class="w"> </span><span class="m">1</span>-1.3.2.1:1.0:<span class="w"> </span><span class="m">4</span><span class="w"> </span>ports<span class="w"> </span>detected
-<span class="o">[</span><span class="m">1035444</span>.252052<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">1</span>-1.3.2.1.2:<span class="w"> </span>new<span class="w"> </span>full-speed<span class="w"> </span>USB<span class="w"> </span>device<span class="w"> </span>number<span class="w"> </span><span class="m">15</span><span class="w"> </span>using<span class="w"> </span>xhci_hcd
-<span class="o">[</span><span class="m">1035444</span>.479616<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">1</span>-1.3.2.1.2:<span class="w"> </span>New<span class="w"> </span>USB<span class="w"> </span>device<span class="w"> </span>found,<span class="w"> </span><span class="nv">idVendor</span><span class="o">=</span><span class="m">0403</span>,<span class="w"> </span><span class="nv">idProduct</span><span class="o">=</span><span class="m">6001</span>
-<span class="o">[</span><span class="m">1035444</span>.479625<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">1</span>-1.3.2.1.2:<span class="w"> </span>New<span class="w"> </span>USB<span class="w"> </span>device<span class="w"> </span>strings:<span class="w"> </span><span class="nv">Mfr</span><span class="o">=</span><span class="m">1</span>,<span class="w"> </span><span class="nv">Product</span><span class="o">=</span><span class="m">2</span>,<span class="w"> </span><span class="nv">SerialNumber</span><span class="o">=</span><span class="m">3</span>
-<span class="o">[</span><span class="m">1035444</span>.479631<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">1</span>-1.3.2.1.2:<span class="w"> </span>Product:<span class="w"> </span>FT232R<span class="w"> </span>USB<span class="w"> </span>UART
-<span class="o">[</span><span class="m">1035444</span>.479636<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">1</span>-1.3.2.1.2:<span class="w"> </span>Manufacturer:<span class="w"> </span>FTDI
-<span class="o">[</span><span class="m">1035444</span>.479640<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">1</span>-1.3.2.1.2:<span class="w"> </span>SerialNumber:<span class="w"> </span>AQ00X8TJ
-<span class="o">[</span><span class="m">1035444</span>.483900<span class="o">]</span><span class="w"> </span>ftdi_sio<span class="w"> </span><span class="m">1</span>-1.3.2.1.2:1.0:<span class="w"> </span>FTDI<span class="w"> </span>USB<span class="w"> </span>Serial<span class="w"> </span>Device<span class="w"> </span>converter<span class="w"> </span>detected
-<span class="o">[</span><span class="m">1035444</span>.484043<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">1</span>-1.3.2.1.2:<span class="w"> </span>Detected<span class="w"> </span>FT232RL
-<span class="o">[</span><span class="m">1035444</span>.484466<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">1</span>-1.3.2.1.2:<span class="w"> </span>FTDI<span class="w"> </span>USB<span class="w"> </span>Serial<span class="w"> </span>Device<span class="w"> </span>converter<span class="w"> </span>now<span class="w"> </span>attached<span class="w"> </span>to<span class="w"> </span>ttyUSB3
-<span class="o">[</span><span class="m">1035445</span>.459995<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">1</span>-1.3.2.1.3:<span class="w"> </span>new<span class="w"> </span>full-speed<span class="w"> </span>USB<span class="w"> </span>device<span class="w"> </span>number<span class="w"> </span><span class="m">17</span><span class="w"> </span>using<span class="w"> </span>xhci_hcd
-
----------------------------
-Found<span class="w"> </span>Dynamixel<span class="w"> </span>device<span class="w"> </span>with<span class="w"> </span>SerialNumber<span class="w"> </span>AQ00X8TJ
-Writing<span class="w"> </span>UDEV<span class="w"> </span><span class="k">for</span><span class="w">  </span>AQ00X8TJ
-Overwriting<span class="w"> </span>existing<span class="w"> </span>entry...
-Plug<span class="w"> </span>/<span class="w"> </span>Reset<span class="w"> </span><span class="k">in</span><span class="w"> </span>Arduino<span class="w"> </span>device<span class="w"> </span>now...
-Press<span class="w"> </span><span class="k">return</span><span class="w"> </span>when<span class="w"> </span><span class="k">done</span>
+<span class="o">[</span><span class="m">1035443</span>.643968<span class="o">]</span> usb <span class="m">1</span>-1.3.2.1: new high-speed USB device number <span class="m">12</span> using xhci_hcd
+<span class="o">[</span><span class="m">1035443</span>.844182<span class="o">]</span> usb <span class="m">1</span>-1.3.2.1: New USB device found, <span class="nv">idVendor</span><span class="o">=</span>1a40, <span class="nv">idProduct</span><span class="o">=</span><span class="m">0101</span>
+<span class="o">[</span><span class="m">1035443</span>.844199<span class="o">]</span> usb <span class="m">1</span>-1.3.2.1: New USB device strings: <span class="nv">Mfr</span><span class="o">=</span><span class="m">0</span>, <span class="nv">Product</span><span class="o">=</span><span class="m">1</span>, <span class="nv">SerialNumber</span><span class="o">=</span><span class="m">0</span>
+<span class="o">[</span><span class="m">1035443</span>.844208<span class="o">]</span> usb <span class="m">1</span>-1.3.2.1: Product: USB <span class="m">2</span>.0 Hub
+<span class="o">[</span><span class="m">1035443</span>.845851<span class="o">]</span> hub <span class="m">1</span>-1.3.2.1:1.0: USB hub found
+<span class="o">[</span><span class="m">1035443</span>.845923<span class="o">]</span> hub <span class="m">1</span>-1.3.2.1:1.0: <span class="m">4</span> ports detected
+<span class="o">[</span><span class="m">1035444</span>.252052<span class="o">]</span> usb <span class="m">1</span>-1.3.2.1.2: new full-speed USB device number <span class="m">15</span> using xhci_hcd
+<span class="o">[</span><span class="m">1035444</span>.479616<span class="o">]</span> usb <span class="m">1</span>-1.3.2.1.2: New USB device found, <span class="nv">idVendor</span><span class="o">=</span><span class="m">0403</span>, <span class="nv">idProduct</span><span class="o">=</span><span class="m">6001</span>
+<span class="o">[</span><span class="m">1035444</span>.479625<span class="o">]</span> usb <span class="m">1</span>-1.3.2.1.2: New USB device strings: <span class="nv">Mfr</span><span class="o">=</span><span class="m">1</span>, <span class="nv">Product</span><span class="o">=</span><span class="m">2</span>, <span class="nv">SerialNumber</span><span class="o">=</span><span class="m">3</span>
+<span class="o">[</span><span class="m">1035444</span>.479631<span class="o">]</span> usb <span class="m">1</span>-1.3.2.1.2: Product: FT232R USB UART
+<span class="o">[</span><span class="m">1035444</span>.479636<span class="o">]</span> usb <span class="m">1</span>-1.3.2.1.2: Manufacturer: FTDI
+<span class="o">[</span><span class="m">1035444</span>.479640<span class="o">]</span> usb <span class="m">1</span>-1.3.2.1.2: SerialNumber: AQ00X8TJ
+<span class="o">[</span><span class="m">1035444</span>.483900<span class="o">]</span> ftdi_sio <span class="m">1</span>-1.3.2.1.2:1.0: FTDI USB Serial Device converter detected
+<span class="o">[</span><span class="m">1035444</span>.484043<span class="o">]</span> usb <span class="m">1</span>-1.3.2.1.2: Detected FT232RL
+<span class="o">[</span><span class="m">1035444</span>.484466<span class="o">]</span> usb <span class="m">1</span>-1.3.2.1.2: FTDI USB Serial Device converter now attached to ttyUSB3
+<span class="o">[</span><span class="m">1035445</span>.459995<span class="o">]</span> usb <span class="m">1</span>-1.3.2.1.3: new full-speed USB device number <span class="m">17</span> using xhci_hcd
 
 ---------------------------
-Found<span class="w"> </span>Arduino<span class="w"> </span>device<span class="w"> </span>with<span class="w"> </span>SerialNumber<span class="w"> </span>C209885C50524653312E3120FF101E39
-Writing<span class="w"> </span>UDEV<span class="w"> </span><span class="k">for</span><span class="w">  </span>hello-wacc<span class="w"> </span>C209885C50524653312E3120FF101E39
-Overwriting<span class="w"> </span>existing<span class="w"> </span>entry...
+Found Dynamixel device with SerialNumber AQ00X8TJ
+Writing UDEV <span class="k">for</span>  AQ00X8TJ
+Overwriting existing entry...
+Plug / Reset <span class="k">in</span> Arduino device now...
+Press <span class="k">return</span> when <span class="k">done</span>
+
 ---------------------------
-Found<span class="w"> </span>Arduino<span class="w"> </span>device<span class="w"> </span>with<span class="w"> </span>SerialNumber<span class="w"> </span>C209885C50524653312E3120FF101E39
-Writing<span class="w"> </span>UDEV<span class="w"> </span><span class="k">for</span><span class="w">  </span>hello-wacc<span class="w"> </span>C209885C50524653312E3120FF101E39
-Overwriting<span class="w"> </span>existing<span class="w"> </span>entry...
+Found Arduino device with SerialNumber C209885C50524653312E3120FF101E39
+Writing UDEV <span class="k">for</span>  hello-wacc C209885C50524653312E3120FF101E39
+Overwriting existing entry...
+---------------------------
+Found Arduino device with SerialNumber C209885C50524653312E3120FF101E39
+Writing UDEV <span class="k">for</span>  hello-wacc C209885C50524653312E3120FF101E39
+Overwriting existing entry...
 </code></pre></div>
 <h2 id="install-the-new-wacc-board">Install the new Wacc board</h2>
 <ol>
@@ -3417,73 +3419,73 @@ Overwriting<span class="w"> </span>existing<span class="w"> </span>entry...
 </ol>
 <h2 id="check-the-wacc-functionality">Check the Wacc functionality</h2>
 <p>Power the robot back on and check that the board is on the bus</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>ls<span class="w"> </span>/dev/hello-dynamixel-wrist
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ ls /dev/hello-dynamixel-wrist
 hello-dynamixel-wrist
-&gt;&gt;$<span class="w"> </span>ls<span class="w"> </span>/dev/hello-wacc
+&gt;&gt;$ ls /dev/hello-wacc
 hello-wacc
 </code></pre></div>
 <p>Then check that the Wacc is reporting sensor data back:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w">  </span>stretch_wacc_jog.py<span class="w"> </span>
-For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </span>S<span class="w"> </span>T<span class="w"> </span>R<span class="w"> </span>E<span class="w"> </span>T<span class="w"> </span>C<span class="w"> </span>H<span class="w"> </span><span class="o">(</span>TM<span class="o">)</span><span class="w"> </span>RESEARCH<span class="w"> </span>EDITION<span class="w"> </span>from<span class="w"> </span>Hello<span class="w"> </span>Robot<span class="w"> </span>Inc.
+<div class="highlight"><pre><span></span><code>&gt;&gt;$  stretch_wacc_jog.py 
+For use with S T R E T C H <span class="o">(</span>TM<span class="o">)</span> RESEARCH EDITION from Hello Robot Inc.
 
-------<span class="w"> </span>MENU<span class="w"> </span>-------
-m:<span class="w"> </span>menu
-r:<span class="w"> </span>reset<span class="w"> </span>board
-a:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D2<span class="w"> </span>on
-b:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D2<span class="w"> </span>off
-c:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D3<span class="w"> </span>on
-d:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D3<span class="w"> </span>off
+------ MENU -------
+m: menu
+r: reset board
+a: <span class="nb">set</span> D2 on
+b: <span class="nb">set</span> D2 off
+c: <span class="nb">set</span> D3 on
+d: <span class="nb">set</span> D3 off
 -------------------
 
 ------------------------------
-Ax<span class="w"> </span><span class="o">(</span>m/s^2<span class="o">)</span><span class="w"> </span><span class="m">9</span>.8684213638
-Ay<span class="w"> </span><span class="o">(</span>m/s^2<span class="o">)</span><span class="w"> </span><span class="m">0</span>.506848096848
-Az<span class="w"> </span><span class="o">(</span>m/s^2<span class="o">)</span><span class="w"> </span><span class="m">0</span>.361166000366
-A0<span class="w"> </span><span class="m">381</span>
-D0<span class="w"> </span><span class="o">(</span>In<span class="o">)</span><span class="w"> </span><span class="m">1</span>
-D1<span class="w"> </span><span class="o">(</span>In<span class="o">)</span><span class="w"> </span><span class="m">1</span>
-D2<span class="w"> </span><span class="o">(</span>Out<span class="o">)</span><span class="w"> </span><span class="m">0</span>
-D3<span class="w"> </span><span class="o">(</span>Out<span class="o">)</span><span class="w"> </span><span class="m">0</span>
-Single<span class="w"> </span>Tap<span class="w"> </span>Count<span class="w"> </span><span class="m">25</span>
-State<span class="w">  </span><span class="m">0</span>
-Debug<span class="w"> </span><span class="m">0</span>
-Timestamp<span class="w"> </span><span class="m">1601320914</span>.65
-Board<span class="w"> </span>version:<span class="w"> </span>Wacc.Guthrie.V1
-Firmware<span class="w"> </span>version:<span class="w"> </span>Wacc.v0.0.1p0
-------<span class="w"> </span>MENU<span class="w"> </span>-------
-m:<span class="w"> </span>menu
-r:<span class="w"> </span>reset<span class="w"> </span>board
-a:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D2<span class="w"> </span>on
-b:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D2<span class="w"> </span>off
-c:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D3<span class="w"> </span>on
-d:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D3<span class="w"> </span>off
+Ax <span class="o">(</span>m/s^2<span class="o">)</span> <span class="m">9</span>.8684213638
+Ay <span class="o">(</span>m/s^2<span class="o">)</span> <span class="m">0</span>.506848096848
+Az <span class="o">(</span>m/s^2<span class="o">)</span> <span class="m">0</span>.361166000366
+A0 <span class="m">381</span>
+D0 <span class="o">(</span>In<span class="o">)</span> <span class="m">1</span>
+D1 <span class="o">(</span>In<span class="o">)</span> <span class="m">1</span>
+D2 <span class="o">(</span>Out<span class="o">)</span> <span class="m">0</span>
+D3 <span class="o">(</span>Out<span class="o">)</span> <span class="m">0</span>
+Single Tap Count <span class="m">25</span>
+State  <span class="m">0</span>
+Debug <span class="m">0</span>
+Timestamp <span class="m">1601320914</span>.65
+Board version: Wacc.Guthrie.V1
+Firmware version: Wacc.v0.0.1p0
+------ MENU -------
+m: menu
+r: reset board
+a: <span class="nb">set</span> D2 on
+b: <span class="nb">set</span> D2 off
+c: <span class="nb">set</span> D3 on
+d: <span class="nb">set</span> D3 off
 -------------------
 </code></pre></div>
 <p>Finally, home the wrist yaw joint to ensure that it is working.</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>stretch_wrist_yaw_home.py<span class="w"> </span>
-For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </span>S<span class="w"> </span>T<span class="w"> </span>R<span class="w"> </span>E<span class="w"> </span>T<span class="w"> </span>C<span class="w"> </span>H<span class="w"> </span><span class="o">(</span>TM<span class="o">)</span><span class="w"> </span>RESEARCH<span class="w"> </span>EDITION<span class="w"> </span>from<span class="w"> </span>Hello<span class="w"> </span>Robot<span class="w"> </span>Inc.
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_wrist_yaw_home.py 
+For use with S T R E T C H <span class="o">(</span>TM<span class="o">)</span> RESEARCH EDITION from Hello Robot Inc.
 
-Moving<span class="w"> </span>to<span class="w"> </span>first<span class="w"> </span>hardstop...
-Contact<span class="w"> </span>at<span class="w"> </span>position:<span class="w"> </span>-3029
-Hit<span class="w"> </span>first<span class="w"> </span>hardstop,<span class="w"> </span>marking<span class="w"> </span>to<span class="w"> </span>zero<span class="w"> </span>ticks
-Raw<span class="w"> </span>position:<span class="w"> </span><span class="m">14</span>
-Moving<span class="w"> </span>to<span class="w"> </span>calibrated<span class="w"> </span>zero:<span class="w"> </span><span class="o">(</span>rad<span class="o">)</span>
+Moving to first hardstop...
+Contact at position: -3029
+Hit first hardstop, marking to zero ticks
+Raw position: <span class="m">14</span>
+Moving to calibrated zero: <span class="o">(</span>rad<span class="o">)</span>
 </code></pre></div>
 <h2 id="update-wacc-calibration">Update Wacc Calibration</h2>
-<p><div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>RE1_wacc_calibrate.py
-RE1_wacc_calibrate.py<span class="w"> </span>
-Calibrating<span class="w"> </span>Wacc.<span class="w"> </span>Ensure<span class="w"> </span>arm<span class="w"> </span>is<span class="w"> </span>retracted<span class="w"> </span>and<span class="w"> </span>level<span class="w"> </span>to<span class="w"> </span>ground
-Hit<span class="w"> </span>enter<span class="w"> </span>when<span class="w"> </span>ready
+<p><div class="highlight"><pre><span></span><code>&gt;&gt;$ RE1_wacc_calibrate.py
+RE1_wacc_calibrate.py 
+Calibrating Wacc. Ensure arm is retracted and level to ground
+Hit enter when ready
 
-Itr<span class="w"> </span><span class="m">0</span><span class="w"> </span>Val<span class="w"> </span><span class="m">9</span>.59977857901
+Itr <span class="m">0</span> Val <span class="m">9</span>.59977857901
 ...
-Itr<span class="w"> </span><span class="m">99</span><span class="w"> </span>Val<span class="w"> </span><span class="m">10</span>.1095601333
-Got<span class="w"> </span>a<span class="w"> </span>average<span class="w"> </span>value<span class="w"> </span>of<span class="w"> </span><span class="m">10</span>.1372113882
-Gravity<span class="w"> </span>scalar<span class="w"> </span>of<span class="w"> </span><span class="m">0</span>.967391<span class="w"> </span>within<span class="w"> </span>bounds<span class="w"> </span>of<span class="w"> </span><span class="m">0</span>.900000<span class="w"> </span>to<span class="w"> </span><span class="m">1</span>.100000
-Writing<span class="w"> </span>yaml...
+Itr <span class="m">99</span> Val <span class="m">10</span>.1095601333
+Got a average value of <span class="m">10</span>.1372113882
+Gravity scalar of <span class="m">0</span>.967391 within bounds of <span class="m">0</span>.900000 to <span class="m">1</span>.100000
+Writing yaml...
 </code></pre></div>
 Note: If the RE1* tools are not present you can install them as</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$<span class="w"> </span>pip2<span class="w"> </span>install<span class="w"> </span>hello-robot-stretch-factory
+<div class="highlight"><pre><span></span><code>&gt;&gt;$ pip2 install hello-robot-stretch-factory
 </code></pre></div>
 
 
@@ -3500,8 +3502,6 @@ Note: If the RE1* tools are not present you can install them as</p>
       </main>
       
         <footer class="md-footer">
-  
-    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3574,11 +3574,12 @@ Note: If the RE1* tools are not present you can install them as</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

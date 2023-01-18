@@ -14,14 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-firmware/docs/tutorial_spi_sensor/">
       
-      
-        <link rel="prev" href="../tutorial_i2c_sensor/">
-      
-      
-        <link rel="next" href="../tutorial_serial_sensor/">
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -29,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -127,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -134,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3286,7 +3285,6 @@
                   
 
 
-
 <p><img alt="" src="../images/banner.png" />
 <strong>NOTE</strong> It is possible to brick the Wacc board by incorrectly configuring the hardware peripherals of the SAMD uC. Therefore, when integrating your custom hardware into the Wacc we strongly recommend emulating the Wacc board until the functionality is complete. The tutorial <a href="../tutorial_wacc_emulation/">Wacc Emulation</a> describes how to configure an Adafruit Metro M0 Express to behave as a stand-in for a Wacc board.</p>
 <p><strong>NOTE</strong>: These tutorials may require the latest version of Stretch Body. If necessary, please update your install.</p>
@@ -3309,40 +3307,40 @@
 <h3 id="code-walk-through">Code Walk-through</h3>
 <p>The code is straightforward and is a natural extension of the code described in the  <a href="../tutorial_data_transfer/">Data Transfer</a> tutorial. A few sections to highlight in the  <a href="https://github.com/hello-robot/stretch_firmware/tree/master/tutorials/arduino/hello_wacc_spi">hello_wacc_spi</a> sketch are:</p>
 <p>First, in the sketch <code>setup()</code> we configure the slave select pin to be an output</p>
-<div class="highlight"><pre><span></span><code><span class="n">pinMode</span><span class="p">(</span><span class="n">HEADER_SPI_SS</span><span class="p">,</span><span class="n">OUTPUT</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="n">pinMode</span><span class="p">(</span><span class="n">HEADER_SPI_SS</span><span class="p">,</span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <p>Next in <code>setupWacc()</code> we add code to configure the SPI</p>
-<div class="highlight"><pre><span></span><code><span class="n">SPISettings</span><span class="w"> </span><span class="nf">settingsA</span><span class="p">(</span><span class="mi">100000</span><span class="p">,</span><span class="w"> </span><span class="n">MSBFIRST</span><span class="p">,</span><span class="w"> </span><span class="n">SPI_MODE1</span><span class="p">);</span>
-<span class="n">SPI</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
-<span class="n">SPI</span><span class="p">.</span><span class="n">beginTransaction</span><span class="p">(</span><span class="n">settingsA</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="n">SPISettings</span><span class="w"> </span><span class="nf">settingsA</span><span class="p">(</span><span class="mi">100000</span><span class="p">,</span><span class="w"> </span><span class="n">MSBFIRST</span><span class="p">,</span><span class="w"> </span><span class="n">SPI_MODE1</span><span class="p">);</span><span class="w"></span>
+<span class="n">SPI</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w"></span>
+<span class="n">SPI</span><span class="p">.</span><span class="n">beginTransaction</span><span class="p">(</span><span class="n">settingsA</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <p>In <code>Wacc.cpp</code> we add the SPI code:</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SPI.h&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SPI.h&gt;</span><span class="cp"></span>
 
 <span class="kt">uint8_t</span><span class="w"> </span><span class="n">spi_out</span><span class="p">[</span><span class="mi">9</span><span class="p">];</span><span class="w">   </span><span class="c1">//SPI data out</span>
 <span class="kt">uint8_t</span><span class="w"> </span><span class="n">spi_in</span><span class="p">[</span><span class="mi">9</span><span class="p">];</span><span class="w">    </span><span class="c1">//SPI data in</span>
 <span class="kt">uint8_t</span><span class="w"> </span><span class="n">ds_spi_cnt</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">//Down sample counter</span>
 <span class="kt">float</span><span class="w"> </span><span class="n">FS_SPI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w">    </span><span class="c1">//Rate to run transactions (Hz)</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">spiTransaction</span><span class="p">()</span>
-<span class="p">{</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">HEADER_SPI_SS</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">spiTransaction</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">HEADER_SPI_SS</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">SPI</span><span class="p">.</span><span class="n">transfer</span><span class="p">(</span><span class="sc">&#39;X&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">//Mark start of transaction</span>
-<span class="w">  </span><span class="n">memcpy</span><span class="p">(</span><span class="n">spi_out</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">&amp;</span><span class="n">cmd</span><span class="p">.</span><span class="n">calc</span><span class="p">),</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">Calc_Command</span><span class="p">));</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">9</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="o">++</span><span class="p">)</span>
-<span class="w">    </span><span class="n">spi_in</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SPI</span><span class="p">.</span><span class="n">transfer</span><span class="p">(</span><span class="n">spi_out</span><span class="p">[</span><span class="n">idx</span><span class="p">]);</span>
-<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">HEADER_SPI_SS</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
-<span class="w">  </span><span class="n">memcpy</span><span class="p">((</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">&amp;</span><span class="n">stat</span><span class="p">.</span><span class="n">calc</span><span class="p">),</span><span class="n">spi_in</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w">  </span><span class="k">sizeof</span><span class="p">(</span><span class="n">Calc_Status</span><span class="p">));</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="n">memcpy</span><span class="p">(</span><span class="n">spi_out</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">&amp;</span><span class="n">cmd</span><span class="p">.</span><span class="n">calc</span><span class="p">),</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">Calc_Command</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">9</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">spi_in</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SPI</span><span class="p">.</span><span class="n">transfer</span><span class="p">(</span><span class="n">spi_out</span><span class="p">[</span><span class="n">idx</span><span class="p">]);</span><span class="w"></span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">HEADER_SPI_SS</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">memcpy</span><span class="p">((</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">&amp;</span><span class="n">stat</span><span class="p">.</span><span class="n">calc</span><span class="p">),</span><span class="n">spi_in</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w">  </span><span class="k">sizeof</span><span class="p">(</span><span class="n">Calc_Status</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>Here, the 9 bytes of the <code>Calc_Command</code> are transferred out and the 4 bytes of the <code>Calc_Status</code> are received. </p>
 <p><strong>Note: This simple communication protocol is not robust, using an 'X' to demarcate the start of a transaction</strong></p>
 <p>Finally, we call the <code>spiTransaction()</code> function at a rate of <code>FS_SPI</code> by adding to <code>stepWaccController()</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ds_spi_cnt</span><span class="o">++</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="p">(</span><span class="n">FS_CTRL</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">FS_SPI</span><span class="p">))</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="n">ds_spi_cnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="n">spiTransaction</span><span class="p">();</span>
-<span class="w">  </span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ds_spi_cnt</span><span class="o">++</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="p">(</span><span class="n">FS_CTRL</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">FS_SPI</span><span class="p">))</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">ds_spi_cnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">spiTransaction</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h3 id="wire-up-the-boards">Wire Up the Boards</h3>
 <p>Next, wire the Metro to the Expansion Header as:</p>
@@ -3379,62 +3377,62 @@
 <p><strong>Note: Other Arduino boards can be used. However 5V Arduinos boards will need their SPI lines level shifted to 3V3.</strong></p>
 <h3 id="test-the-calculator">Test the Calculator</h3>
 <p>Now, test the setup using the provided tool, <a href="https://github.com/hello-robot/stretch_firmware/tree/master/tutorials/python/stretch_wacc_calc_jog.py">stretch_wacc_calc_jog.py</a>. As shown below, The Arduino Uno performs the calculation of 12*13 and the result is report back to Stretch Body.</p>
-<div class="highlight"><pre><span></span><code>hello-robot@stretch-re1-100x:~$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>repos/stretch_firmware/tutorial/python/
-hello-robot@stretch-re1-100x:~/repos/stretch_firmware/tutorial/python$<span class="w"> </span>./stretch_wacc_calc_jog.py<span class="w"> </span>
-------<span class="w"> </span>MENU<span class="w"> </span>-------
-m:<span class="w"> </span>menu
-r:<span class="w"> </span>reset<span class="w"> </span>board
-a:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D2<span class="w"> </span>on
-b:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D2<span class="w"> </span>off
-c:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D3<span class="w"> </span>on
-d:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D3<span class="w"> </span>off
-X:<span class="w"> </span><span class="k">do</span><span class="w"> </span>calculation
+<div class="highlight"><pre><span></span><code>hello-robot@stretch-re1-100x:~$ <span class="nb">cd</span> repos/stretch_firmware/tutorial/python/
+hello-robot@stretch-re1-100x:~/repos/stretch_firmware/tutorial/python$ ./stretch_wacc_calc_jog.py 
+------ MENU -------
+m: menu
+r: reset board
+a: <span class="nb">set</span> D2 on
+b: <span class="nb">set</span> D2 off
+c: <span class="nb">set</span> D3 on
+d: <span class="nb">set</span> D3 off
+X: <span class="k">do</span> calculation
 -------------------
 X
----Calculate<span class="w"> </span>Op<span class="o">(</span>Var1,Var2<span class="o">)</span><span class="w"> </span>---
-<span class="nv">Op</span><span class="o">=</span><span class="m">0</span>:<span class="w"> </span>Add
-<span class="nv">Op</span><span class="o">=</span><span class="m">1</span>:<span class="w"> </span>Mult
-<span class="nv">Op</span><span class="o">=</span><span class="m">2</span>:<span class="w"> </span>Div
-Enter<span class="w"> </span>Op
+---Calculate Op<span class="o">(</span>Var1,Var2<span class="o">)</span> ---
+<span class="nv">Op</span><span class="o">=</span><span class="m">0</span>: Add
+<span class="nv">Op</span><span class="o">=</span><span class="m">1</span>: Mult
+<span class="nv">Op</span><span class="o">=</span><span class="m">2</span>: Div
+Enter Op
 <span class="m">1</span>
-Enter<span class="w"> </span>Var1
+Enter Var1
 <span class="m">12</span>
-Enter<span class="w"> </span>Var2
+Enter Var2
 <span class="m">13</span>
-------<span class="w"> </span>MENU<span class="w"> </span>-------
-m:<span class="w"> </span>menu
-r:<span class="w"> </span>reset<span class="w"> </span>board
-a:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D2<span class="w"> </span>on
-b:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D2<span class="w"> </span>off
-c:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D3<span class="w"> </span>on
-d:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D3<span class="w"> </span>off
-X:<span class="w"> </span><span class="k">do</span><span class="w"> </span>calculation
+------ MENU -------
+m: menu
+r: reset board
+a: <span class="nb">set</span> D2 on
+b: <span class="nb">set</span> D2 off
+c: <span class="nb">set</span> D3 on
+d: <span class="nb">set</span> D3 off
+X: <span class="k">do</span> calculation
 -------------------
 
 ------------------------------
-Ax<span class="w"> </span><span class="o">(</span>m/s^2<span class="o">)</span><span class="w"> </span><span class="m">0</span>.0488623343408
-Ay<span class="w"> </span><span class="o">(</span>m/s^2<span class="o">)</span><span class="w"> </span><span class="m">0</span>.155020624399
-Az<span class="w"> </span><span class="o">(</span>m/s^2<span class="o">)</span><span class="w"> </span>-10.0049753189
-A0<span class="w"> </span><span class="m">349</span>
-D0<span class="w"> </span><span class="o">(</span>In<span class="o">)</span><span class="w"> </span><span class="m">0</span>
-D1<span class="w"> </span><span class="o">(</span>In<span class="o">)</span><span class="w"> </span><span class="m">1</span>
-D2<span class="w"> </span><span class="o">(</span>Out<span class="o">)</span><span class="w"> </span><span class="m">70</span>
-D3<span class="w"> </span><span class="o">(</span>Out<span class="o">)</span><span class="w"> </span><span class="m">0</span>
-Single<span class="w"> </span>Tap<span class="w"> </span>Count<span class="w"> </span><span class="m">26</span>
-State<span class="w">  </span><span class="m">0</span>
-Debug<span class="w"> </span><span class="m">0</span>
-Timestamp<span class="w"> </span><span class="m">1591588745</span>.27
-Board<span class="w"> </span>version:<span class="w"> </span>Wacc.Guthrie.V1
-Firmware<span class="w"> </span>version:<span class="w"> </span>Wacc.v0.0.1pMySPI
-Calc:<span class="w"> </span><span class="m">156</span>.0
-------<span class="w"> </span>MENU<span class="w"> </span>-------
-m:<span class="w"> </span>menu
-r:<span class="w"> </span>reset<span class="w"> </span>board
-a:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D2<span class="w"> </span>on
-b:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D2<span class="w"> </span>off
-c:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D3<span class="w"> </span>on
-d:<span class="w"> </span><span class="nb">set</span><span class="w"> </span>D3<span class="w"> </span>off
-X:<span class="w"> </span><span class="k">do</span><span class="w"> </span>calculation
+Ax <span class="o">(</span>m/s^2<span class="o">)</span> <span class="m">0</span>.0488623343408
+Ay <span class="o">(</span>m/s^2<span class="o">)</span> <span class="m">0</span>.155020624399
+Az <span class="o">(</span>m/s^2<span class="o">)</span> -10.0049753189
+A0 <span class="m">349</span>
+D0 <span class="o">(</span>In<span class="o">)</span> <span class="m">0</span>
+D1 <span class="o">(</span>In<span class="o">)</span> <span class="m">1</span>
+D2 <span class="o">(</span>Out<span class="o">)</span> <span class="m">70</span>
+D3 <span class="o">(</span>Out<span class="o">)</span> <span class="m">0</span>
+Single Tap Count <span class="m">26</span>
+State  <span class="m">0</span>
+Debug <span class="m">0</span>
+Timestamp <span class="m">1591588745</span>.27
+Board version: Wacc.Guthrie.V1
+Firmware version: Wacc.v0.0.1pMySPI
+Calc: <span class="m">156</span>.0
+------ MENU -------
+m: menu
+r: reset board
+a: <span class="nb">set</span> D2 on
+b: <span class="nb">set</span> D2 off
+c: <span class="nb">set</span> D3 on
+d: <span class="nb">set</span> D3 off
+X: <span class="k">do</span> calculation
 -------------------
 </code></pre></div>
 <hr />
@@ -3456,42 +3454,40 @@ X:<span class="w"> </span><span class="k">do</span><span class="w"> </span>calcu
         <footer class="md-footer">
   
     
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
-          
-          <a href="../tutorial_i2c_sensor/" class="md-footer__link md-footer__link--prev" aria-label="Previous: I2C Sensor" rel="prev">
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        <a href="../tutorial_i2c_sensor/" class="md-footer__link md-footer__link--prev" aria-label="Previous: I2C Sensor" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              I2C Sensor
             </div>
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Previous
-                </span>
-                I2C Sensor
-              </div>
-            </div>
-          </a>
+          </div>
+        </a>
+      
+      
         
-        
-          
-          <a href="../tutorial_serial_sensor/" class="md-footer__link md-footer__link--next" aria-label="Next: Serial Sensor" rel="next">
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Next
-                </span>
-                Serial Sensor
-              </div>
+        <a href="../tutorial_serial_sensor/" class="md-footer__link md-footer__link--next" aria-label="Next: Serial Sensor" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Serial Sensor
             </div>
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3564,11 +3560,12 @@ X:<span class="w"> </span><span class="k">do</span><span class="w"> </span>calcu
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

@@ -14,10 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-install/docs/contributing/">
       
-      
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -25,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -123,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -130,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3300,7 +3303,6 @@
                   
 
 
-
 <h1 id="contributing-to-stretch-install">Contributing to Stretch Install</h1>
 <p>Thank you for considering contributing to this repository. Stretch Install houses bash scripts and tutorials that enable users to setup/configure their robots. This guide explains the layout of this repo and how best to make and test changes.</p>
 <h2 id="repo-layout">Repo Layout</h2>
@@ -3322,7 +3324,7 @@
 <p>Once you're ready to make changes to this repo, you can <a href="https://github.com/hello-robot/stretch_docs/fork">fork it on Github</a>.</p>
 <h2 id="contributing-to-the-tutorials">Contributing to the tutorials</h2>
 <p>The tutorials in the <code>docs/</code> folder are markdown files that get rendered into our https://docs.hello-robot.com site. If you edit them and file a pull request towards this repo, the changes to the tutorials will get reflected on the docs site. In order to live preview changes to these tutorials, first install mkdocs using:</p>
-<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>mkdocs<span class="w"> </span>mkdocs-material<span class="w"> </span><span class="nv">mkdocstrings</span><span class="o">==</span><span class="m">0</span>.17.0<span class="w"> </span>pytkdocs<span class="o">[</span>numpy-style<span class="o">]</span><span class="w"> </span><span class="nv">jinja2</span><span class="o">=</span><span class="m">3</span>.0.3
+<div class="highlight"><pre><span></span><code>python3 -m pip install mkdocs mkdocs-material <span class="nv">mkdocstrings</span><span class="o">==</span><span class="m">0</span>.17.0 pytkdocs<span class="o">[</span>numpy-style<span class="o">]</span> <span class="nv">jinja2</span><span class="o">=</span><span class="m">3</span>.0.3
 </code></pre></div>
 <p>Then, run the dev server using:</p>
 <div class="highlight"><pre><span></span><code>python3 -m mkdocs serve
@@ -3330,11 +3332,11 @@
 <p>Now you can make additions or changes to the source markdown files and see the changes reflected live in the browser.</p>
 <h2 id="contributing-to-the-installation-scripts">Contributing to the installation scripts</h2>
 <p>If you are looking to change scripts/assets of an existing software installation (e.g. Ubuntu 18.04/20.04), look within the <code>factory/&lt;&gt;.04/</code> directory and make changes to the appriopriate files. If you're looking to add support for a new Ubuntu distro (e.g. Ubuntu 19.04), create <code>factory/19.04</code> with assets from a previous installation and tweak the scripts until they works correctly for the Ubuntu distro you are targeting. Then, edit the high level scripts (e.g. <code>stretch_new_*_install.sh</code>) to call your distro's specific assets correctly. Ensuring that the tutorials in the <code>docs/</code> work for your new distro is a good way to ensure that your <code>factory/&lt;&gt;.04/</code> directory works correctly. Since bash scripts change behavior based on the underlying system, it can be helpful to use containers to create reproducible behaviors while you're developing support for the new distro. <a href="https://multipass.run/install">Multipass</a> works well on Ubuntu systems. You can create a new container emulating any Ubuntu distro using the command:</p>
-<div class="highlight"><pre><span></span><code>multipass<span class="w"> </span>launch<span class="w"> </span>-c<span class="w"> </span><span class="m">6</span><span class="w"> </span>-d<span class="w"> </span>30G<span class="w"> </span>-m<span class="w"> </span>7G<span class="w"> </span>-n<span class="w"> </span>&lt;container-name&gt;<span class="w"> </span><span class="m">19</span>.04
+<div class="highlight"><pre><span></span><code>multipass launch -c <span class="m">6</span> -d 30G -m 7G -n &lt;container-name&gt; <span class="m">19</span>.04
 </code></pre></div>
 <p>Swap <code>19.04</code> in the above command with the distro you're targeting. The above command creates a containers with 30GB disk space, 7GB swap, 6 cores, and the name <code>&lt;container-name&gt;</code>. We've found that at least 30GB disk space is needed for the Ubuntu 18.04/20.04 installations.</p>
 <p>Then, you can access the shell of your new container using:</p>
-<div class="highlight"><pre><span></span><code>multipass<span class="w"> </span>shell<span class="w"> </span>&lt;container-name&gt;
+<div class="highlight"><pre><span></span><code>multipass shell &lt;container-name&gt;
 </code></pre></div>
 <p>Other helpful multipass subcommand include <code>transfer</code>, which allows you to transfer files to the container, and <code>delete</code>, which allows you to delete the container. See the <a href="https://multipass.run/docs">multipass docs</a> for more details.</p>
 <h2 id="filing-a-pull-request">Filing a Pull Request</h2>
@@ -3354,8 +3356,6 @@
       </main>
       
         <footer class="md-footer">
-  
-    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3428,11 +3428,12 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>

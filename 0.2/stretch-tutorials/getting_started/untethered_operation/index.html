@@ -14,14 +14,8 @@
       
         <link rel="canonical" href="https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/untethered_operation/">
       
-      
-        <link rel="prev" href="../command_line_tools/">
-      
-      
-        <link rel="next" href="../updating_software/">
-      
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -29,10 +23,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
       
       
 
@@ -127,6 +122,8 @@
       <form class="md-header__option" data-md-component="palette">
         
           
+          
+          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -134,6 +131,8 @@
             </label>
           
         
+          
+          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -3588,7 +3587,6 @@
                   
 
 
-
 <h1 id="untethered-operation">Untethered Operation</h1>
 <p>As a mobile manipulator,  Stretch can only go so far when tethered to the monitor, keyboard, and mouse setup. This guide will explain three methods of setting up the Stretch for untethered usage.</p>
 <p>These methods typically require a wireless network, but it is possible to set up any of these methods without a wireless network by <a href="#hotspot">setting up a hotspot</a>.</p>
@@ -3597,10 +3595,10 @@
 <p>This is the recommended approach if you are running Windows or MacOS. This method requires a Virtual Network Computing (VNC) package. Using any of the free or paid options available for Windows, MacOS, and Chrome will be fine since they all use the Remote Frame Buffer (RFB) protocol to communicate with the robot. If you're using Ubuntu, Remmina Remote Desktop Client will be installed by default.</p>
 <h4 id="how-to">How To</h4>
 <p>While Stretch is tethered to the monitor, keyboard, and mouse setup, first verify that the robot is connected to the wireless network then install Vino VNC server using the following command:</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>vino
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt install vino
 </code></pre></div>
 <p>Go to System Settings. Select the Sharing tab and turn it on then, turn on Screen Sharing and choose a password. If you plan to connect to the robot from a Windows or MacOS machine, then open a terminal and run the following command.</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo<span class="w"> </span>gsettings<span class="w"> </span><span class="nb">set</span><span class="w"> </span>org.gnome.Vino<span class="w"> </span>require-encryption<span class="w"> </span><span class="nb">false</span>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo gsettings <span class="nb">set</span> org.gnome.Vino require-encryption <span class="nb">false</span>
 </code></pre></div>
 <p>Finally, we need the robot's IP address, username, and password. Open a terminal and run <code>ifconfig</code>, which will print out the network information of the machine. In the wireless section (typically named wlp2s0), look for something that looks like "inet 10.0.0.15". The four numbers represent the IP address of the robot on the local network. The robot's default username and password is printed on papers that came in the tools box alongside the robot.</p>
 <p>VNC will only function properly with an external display attached to the robot. Using a dummy HDMI dongle when operating the robot untethered via VNC is recommended. One possible dummy HDMI dongle can be found on Amazon <a href="https://www.amazon.com/gp/product/B07BBT9NCZ/">here</a>. On your computer, connect to the same wireless network as the robot and open the VNC package being used. Using the robot's IP address and username, initialize a new connection to the robot. The robot's desktop will open in a new window.</p>
@@ -3611,17 +3609,17 @@
 <p>While the <a href="#remote-desktop">Remote Desktop</a> approach is easy to set up, graphics and interaction with the remote desktop is often slow. In this method, we will use SSH and X Server to accomplish the same a bit faster. SSH stands for Secure Shell, enabling one to remotely use the terminal (shell) of another machine. X Server is used on many Unix variants to render the Windowed GUI of applications. With SSH and X Server, it is possible to render a Windowed GUI of an application running on the robot on your computer's screen.</p>
 <p>The first step is to identify the robot's IP address on the local network. While  Stretch is tethered to the monitor, keyboard, and mouse, verify that the robot is connected to a wireless network. Then, open a terminal and run <code>ifconfig</code>, which will print out the network information of the machine. In the wireless section (typically named wlp2s0), look for something that looks like "inet 10.0.0.15". The four numbers represent the IP address of the robot on the local network. Using any other machine on the same local network, I can SSH into the robot using this IP address. Take note of the username and password of the robot. The default combo is printed on papers that came in the tools box alongside the robot.</p>
 <p>To SSH into the robot, run the following. It will require the password and may ask you to add the robot to the known hosts.</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>ssh<span class="w"> </span>-X<span class="w"> </span>username@ip-address
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>ssh -X username@ip-address
 </code></pre></div>
 <p>Now that you're SSH-ed into the robot, you can disconnect any wires from the robot. You can accomplish any of the same tasks through the terminal. For example, you can type in <code>ipython</code> and interact with the robot using Stretch Body, as explained in the <a href="../quick_start_guide_re2/#start-coding">Quick Start Guide</a>.</p>
 <p>Furthermore, Windowed GUI applications that would have displayed on the monitor will now display on your SSH-ed machine. For example, we can open Rviz to visualize what the robot is seeing. Open two terminals and SSH into the robot as explained above. In the first, run <code>roslaunch stretch_core stretch_driver.launch</code>. You should see some information print out in the terminal. In the second, run <code>rviz</code>. A window will pop up and information about the robot can be visualized by clicking on <code>Add -&gt; RobotModel</code> and <code>Add -&gt; By Topic -&gt; /Scan</code>. Additional information on how to use ROS tools can be found in <a href="http://wiki.ros.org/ROS/Tutorials">ROS's tutorials</a> or in our <a href="../#ros-interface">Stretch ROS guides</a>.</p>
 <h4 id="moving-files-tofrom-the-robot-wirelessly">Moving files to/from the robot wirelessly</h4>
 <p>It's common to need to move files to/from the robot wirelessly and a tool similar to SSH can help with this: Secure Copy (SCP).</p>
 <p>To send the files from your computer to the robot, run:
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>scp<span class="w"> </span>./filename<span class="w"> </span>username@ip-address:~/path/to/put/it/
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>scp ./filename username@ip-address:~/path/to/put/it/
 </code></pre></div></p>
 <p>To copy the files from the robot to your computer, run the reverse:
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>scp<span class="w"> </span>username@ip-address:/path/to/filename<span class="w"> </span>~/path/to/put/it/
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>scp username@ip-address:/path/to/filename ~/path/to/put/it/
 </code></pre></div></p>
 <p>This works for <a href="https://stackoverflow.com/a/11304926/4753010">copying directories</a> and their contents as well.</p>
 <h2 id="ros-remote-master">ROS Remote Master</h2>
@@ -3631,12 +3629,12 @@
 <p>If you are developing ROS code to test on Stretch and you already have ROS installed on your Ubuntu computer, then there is an easier way of using Rviz than the method described in <a href="#ssh-x-server">SSH &amp; X Server</a>. In the ROS world, this concept is known as "remote master".</p>
 <p>First, identify your robot's and computer's IP address on the network (e.g. using <code>ifconfig</code>). These are <code>robot-ip-address</code> and <code>computer-ip-address</code> respectively.</p>
 <p>Next, run the following on the robot:</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">ROS_IP</span><span class="o">=</span>robot-ip-address
-<span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://robot-ip-address:11311/
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span><span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>robot-ip-address
+<span class="gp">$ </span><span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://robot-ip-address:11311/
 </code></pre></div>
 <p>Next, start the ROS launch files on the robot as you normally would. Finally, on your computer, run:</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">ROS_IP</span><span class="o">=</span>computer-ip-address
-<span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://robot-ip-address:11311
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span><span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>computer-ip-address
+<span class="gp">$ </span><span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://robot-ip-address:11311
 </code></pre></div>
 <p>If you use ROS Remote Master often, you can export these environment variables in your <a href="https://www.maketecheasier.com/what-is-bashrc/">bashrc</a>.</p>
 <p>Tools like <a href="http://wiki.ros.org/rostopic">rostopic</a> and <a href="http://wiki.ros.org/rosservice">rosservice</a> can now be used on your computer as you would have on the robot. For example, you can use <code>rostopic list</code> on your computer to print out the topics available on the robot. Additional information can be found in the ROS <a href="http://wiki.ros.org/ROS/Tutorials/MultipleMachines">Multiple Machines Tutorial</a>.</p>
@@ -3655,10 +3653,10 @@
 <h3 id="public-key-authentication">Public Key Authentication</h3>
 <p>The method of SSH described in <a href="#ssh-x-server">SSH &amp; X Server</a> uses basic password authentication when connecting. There is a better and more-secure method of SSH-ing into the robot called Public Key Authentication. This method will allow multiple developers to SSH into the robot without having to share the robot's admin password.</p>
 <p>The first step is to generate public and private keys on your computer. Linux and MacOS machines can simply open the terminal and run:</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-f<span class="w"> </span>&lt;key_filepath_without_extension&gt;<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;&lt;some comment&gt;&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>ssh-keygen -t ed25519 -f &lt;key_filepath_without_extension&gt; -C <span class="s2">&quot;&lt;some comment&gt;&quot;</span>
 </code></pre></div>
 <p>It will prompt you to enter a password. If you do, you'll need it to use the private key when you SSH into the robot. Next, we give the robot the public key. Linux and MacOS machines can run:</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>ssh-copy-id<span class="w"> </span>-i<span class="w"> </span>&lt;key_filepath_without_extension&gt;<span class="w"> </span>username@ip-address
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>ssh-copy-id -i &lt;key_filepath_without_extension&gt; username@ip-address
 </code></pre></div>
 <p>This requires you to know the username and ip-address of the robot. Instructions on how to find this information is found in the <a href="#ssh-x-server">SSH &amp; X Server</a> section. You may now SSH into the robot as normal, and no prompt for the robot's password will appear.</p>
 <hr />
@@ -3680,42 +3678,40 @@
         <footer class="md-footer">
   
     
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
-          
-          <a href="../command_line_tools/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Command Line Tools" rel="prev">
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        <a href="../command_line_tools/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Command Line Tools" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Command Line Tools
             </div>
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Previous
-                </span>
-                Command Line Tools
-              </div>
-            </div>
-          </a>
+          </div>
+        </a>
+      
+      
         
-        
-          
-          <a href="../updating_software/" class="md-footer__link md-footer__link--next" aria-label="Next: Updating Software" rel="next">
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Next
-                </span>
-                Updating Software
-              </div>
+        <a href="../updating_software/" class="md-footer__link md-footer__link--next" aria-label="Next: Updating Software" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Updating Software
             </div>
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3788,11 +3784,12 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>
