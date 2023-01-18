@@ -3,9 +3,7 @@
 # Welcome
 This is your jumping off point for Stretch tutorials, hardware manuals, and APIs. 
 
-We wish you success in your development journey with Stretch. Please contact us at [support@hello-robot.com](mailto:support@hello-robot.com) if you don't find what you're looking for.
-
---The Hello Robot team
+Please contact us at [support@hello-robot.com](mailto:support@hello-robot.com) if you don't find what you're looking for. We wish you success in your development journey with Stretch!
 
 # New to Stretch?
 We recommend you follow the [Getting to Know Stretch Tutorials](https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/). 
