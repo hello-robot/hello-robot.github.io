@@ -3374,7 +3374,7 @@ DONE! COMPLETE THESE POST INSTALL STEPS:
 <p>Next, if your robot has the <a href="https://hello-robot.com/stretch-dex-wrist">Stretch Dex Wrist</a>, we'll configure the software to recognize it. <strong>Skip this step if you are not using the Dex Wrist.</strong></p>
 <div class="highlight"><pre><span></span><code>cd ~/stretch_install
 ./stretch_new_dex_wrist_install.sh
-REx_calibrate_guarded_contact.py
+REx_calibrate_guarded_contact.py --arm
 </code></pre></div>
 <p>Finally, execute the following to confirm the new robot install was set up successfully.</p>
 <div class="highlight"><pre><span></span><code>stretch_robot_system_check.py

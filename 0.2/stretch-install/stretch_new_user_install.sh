@@ -97,7 +97,7 @@ if [[ $factory_osdir = "18.04" ]]; then
     echo "INSTALLATION OF USER LEVEL PIP2 PACKAGES"
     echo "###########################################"
     echo "Upgrade pip3"
-    python3 -m pip -q install --no-warn-script-location --user --upgrade pip &>> $REDIRECT_LOGFILE
+    python3 -m pip -q install --user --upgrade pip &>> $REDIRECT_LOGFILE
     echo "Install setuptools"
     python2 -m pip -q install setuptools-scm==5.0.2 &>> $REDIRECT_LOGFILE
     echo "Install Stretch Body (this might take a while)"
