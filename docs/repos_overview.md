@@ -18,9 +18,9 @@ This is the starting off point for exploring the many code repositories that pow
 We welcome code contributions from the community to improve this documentation or the software stack. To report an issue or contribute to a Stretch repo, please visit the repo's Github page and either file an issue or fork the repository of interest and raise a PR.
 
 ## License
-This documentation is only to be used for an authentic Stretch RE1 or RE2 robot produced and sold by Hello Robot Inc.
+This documentation is only to be used for an authentic Stretch robot produced and sold by Hello Robot Inc.
 
 All Hello Robot documentation and related materials are released under the [Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)](https://creativecommons.org/licenses/by-nd/4.0) license.
 
 ------
-<div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks. The Stretch RE1 and RE2 robots are covered by U.S. Patent 11,230,000 and other patents pending.</div>
+<div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks. The Stretch robots are covered by U.S. Patent 11,230,000 and other patents pending.</div>
