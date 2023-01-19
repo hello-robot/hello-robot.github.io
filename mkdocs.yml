@@ -10,7 +10,6 @@ theme:
  features:
    - navigation.instant
    - navigation.footer
-   - navigation.tracking
  #font: Arial
  palette:
   - scheme: default
