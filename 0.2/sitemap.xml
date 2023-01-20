@@ -1226,6 +1226,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_tool_share/dex_to_standard/</loc>
+         <lastmod>2023-01-20</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_tool_share/dexwrist/</loc>
          <lastmod>2023-01-20</lastmod>
          <changefreq>daily</changefreq>
