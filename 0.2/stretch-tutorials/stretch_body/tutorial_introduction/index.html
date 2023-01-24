@@ -3581,7 +3581,7 @@
 
 
 <h1 id="tutorial-introduction-to-stretch-body">Tutorial: Introduction to Stretch Body</h1>
-<p>The Stretch_Body package provides a low level Python API to the Stretch hardware.  The Stretch_Body package is intended for advanced users who prefer to not use ROS to control the robot. It assumes a moderate level of experience programming robot sensors and actuators.</p>
+<p>The Stretch_Body package provides a low-level Python API to the Stretch hardware.  The Stretch_Body package is intended for advanced users who prefer to not use ROS to control the robot. It assumes a moderate level of experience programming robot sensors and actuators.</p>
 <p>The package is available on <a href="https://github.com/hello-robot/stretch_body">Git and installable via Pip</a>.</p>
 <p>It encapsulates the:</p>
 <ul>
@@ -3589,11 +3589,11 @@
 <li>Arm </li>
 <li>Lift </li>
 <li>Head actuators</li>
-<li>End -of-arm-actuators</li>
-<li>Wrist  board with accelerometer (Wacc)</li>
+<li>End-of-arm-actuators</li>
+<li>Wrist board with accelerometer (Wacc)</li>
 <li>Base power and IMU board (Pimu)</li>
 </ul>
-<p>As shown below, the primary programming interface to Stretch Body is the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py">Robot class</a>.  This class encapsulates the various hardware module classes  (e.g. Lift, Arm, etc). Each of these modules then communicate the robot's firmware over USB using various utility classes.</p>
+<p>As shown below, the primary programming interface to Stretch Body is the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py">Robot class</a>. This class encapsulates the various hardware module classes  (e.g. Lift, Arm, etc). Each of these modules then communicates with the robot firmware over USB using various utility classes.</p>
 <p><img alt="alt_text" src="../images/stretch_body_overview.png" title="image_tooltip" /></p>
 <p>Stretch also includes 3rd party hardware devices that are not accessible through Stretch_Body. However, it is possible to directly access this hardware through open-source Python packages:</p>
 <ul>
@@ -3606,7 +3606,7 @@
 <div class="highlight"><pre><span></span><code>&gt;&gt;$ ipython
 In <span class="o">[</span><span class="m">1</span><span class="o">]</span>: 
 </code></pre></div>
-<p>And type in the following:</p>
+<p>Then type in the following:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3629,7 +3629,7 @@ In <span class="o">[</span><span class="m">1</span><span class="o">]</span>:
 
 <span class="n">robot</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-<p>As you can see, this prints all Robot sensor and state data to the console every 250ms. </p>
+<p>As you can see, this prints all robot sensors and state data to the console every 250ms. </p>
 <p>Looking at this in detail:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">4</span>
 <span class="normal">5</span>
@@ -3637,7 +3637,7 @@ In <span class="o">[</span><span class="m">1</span><span class="o">]</span>:
 <span class="n">robot</span><span class="o">=</span><span class="n">stretch_body</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">Robot</span><span class="p">()</span>
 <span class="n">robot</span><span class="o">.</span><span class="n">startup</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-<p>Here we instantiated an instance of our Robot. The call to <code>startup()</code> opens the serial ports to the various devices, loads the Robot YAML parameters, and launches a few helper threads.</p>
+<p>Here we instantiated an instance of our robot through the Robot class. The call to <code>startup()</code> opens the serial ports to the various devices, loads the robot YAML parameters, and launches a few helper threads.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">7</span>
 <span class="normal">8</span>
 <span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
@@ -3647,9 +3647,9 @@ In <span class="o">[</span><span class="m">1</span><span class="o">]</span>:
 <p>The call to <code>pretty_print()</code> prints to console all of the robot's sensor and state data. The sensor data is automatically updated in the background by a helper thread.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">robot</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-<p>Finally, the <code>stop()</code> method shuts down the Robot threads and cleanly closes the open serial ports.</p>
+<p>Finally, the <code>stop()</code> method shuts down the threads and cleanly closes the open serial ports.</p>
 <h3 id="units">Units</h3>
-<p>The Robot API uses SI units of:</p>
+<p>The Robot API uses SI units:</p>
 <ul>
 <li>meters</li>
 <li>radians</li>
@@ -3664,7 +3664,7 @@ In <span class="o">[</span><span class="m">1</span><span class="o">]</span>:
 <li>pos_r: radians</li>
 </ul>
 <h3 id="the-robot-status">The Robot Status</h3>
-<p>The Robot derives from the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/device.py">Device class</a>. It also encapsulates a number of other Devices:</p>
+<p>The Robot derives from the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/device.py">Device class</a>. It also encapsulates several other Devices:</p>
 <ul>
 <li><a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/head.py">robot.head</a></li>
 <li><a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/arm.py">robot.arm</a></li>
@@ -3681,14 +3681,12 @@ In <span class="o">[</span><span class="m">1</span><span class="o">]</span>:
         <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pos&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;vel&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;force&#39;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span> \
                        <span class="s1">&#39;motor&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">motor</span><span class="o">.</span><span class="n">status</span><span class="p">,</span><span class="s1">&#39;timestamp_pc&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
 </code></pre></div>
-<p>The Status dictionaries are  automatically updated by a background thread of the Robot at around 25Hz. The Status data can be accessed via the Robot. For example:</p>
+<p>The Status dictionaries are automatically updated by a background thread of the Robot class at around 25Hz. The Status data can be accessed via the Robot class as below:</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;pos&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mf">0.25</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Arm extension greater than 0.25m&#39;</span><span class="p">)</span>
 </code></pre></div>
 <p>If an instantaneous snapshot of the entire Robot Status is needed, the <code>get_status()</code> method can be used instead:</p>
 <div class="highlight"><pre><span></span><code><span class="n">status</span><span class="o">=</span><span class="n">robot</span><span class="o">.</span><span class="n">get_status</span><span class="p">()</span>
-<span class="k">if</span> <span class="n">status</span><span class="p">[</span><span class="s1">&#39;arm&#39;</span><span class="p">][</span><span class="s1">&#39;pos&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mf">0.25</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Arm extension greater than 0.25m&#39;</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="the-robot-command">The Robot Command</h3>
 <p>In contrast to the Robot Status which pulls data from the Devices, the Robot Command pushes data to the Devices.</p>
@@ -3729,12 +3727,33 @@ In <span class="o">[</span><span class="m">1</span><span class="o">]</span>:
 <p>The <code>move_by()</code> method queues up the command to the stepper motor controller. However, the command does not yet execute.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">robot</span><span class="o">.</span><span class="n">push_command</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-<p>The <code>push_command()</code> causes all queued up commands to be executed at once. This allows for synchronization of motion across joints. For example, the following code will cause the base, arm, and lift to initiate motion simultaneously:</p>
-<div class="highlight"><pre><span></span><code><span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">move_by</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<p>The <code>push_command()</code> causes all queued-up commands to be executed at once. This allows for the synchronization of motion across joints. For example, the following code will cause the base, arm, and lift to initiate motion simultaneously:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">stretch_body.robot</span>
+
+<span class="n">robot</span><span class="o">=</span><span class="n">stretch_body</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">Robot</span><span class="p">()</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">startup</span><span class="p">()</span>
+
+<span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">move_by</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="n">robot</span><span class="o">.</span><span class="n">lift</span><span class="o">.</span><span class="n">move_by</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="n">robot</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">translate_by</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="n">robot</span><span class="o">.</span><span class="n">push_command</span><span class="p">()</span>
-</code></pre></div>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
+
+<span class="n">robot</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
 <p><strong>NOTE</strong>: In this example we call <code>sleep()</code> to allow time for the motion to complete before initiating a new motion.</p>
 <p><strong>NOTE</strong>: The Dynamixel servos do not use the Hello Robot communication protocol. As such, the head, wrist, and gripper will move immediately upon issuing a motion command. </p>
 <hr />

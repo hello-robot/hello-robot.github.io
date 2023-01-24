@@ -3527,9 +3527,9 @@
 
 
 <h1 id="tutorial-stretch-body-command-line-tools">Tutorial: Stretch Body Command Line Tools</h1>
-<p>Stretch Body includes the package <a href="https://github.com/hello-robot/stretch_body/tree/master/tools">hello-robot-stretch-body-tools</a> --  a suite of command line tools that allow direct interaction with hardware subsystems. </p>
+<p>Stretch Body includes the package <a href="https://github.com/hello-robot/stretch_body/tree/master/tools">hello-robot-stretch-body-tools</a> - a suite of command line tools that allow direct interaction with hardware subsystems. </p>
 <p>These tools are useful when developing and debugging applications. They also serve as code examples when developing applications for Stretch_Body.</p>
-<p>These tools can be found by tab completion of  'stretch_' from a terminal.</p>
+<p>These tools can be found by tab completion of 'stretch_' from a terminal.</p>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>stretch_
 
 <span class="go">stretch_about.py</span>
@@ -3567,7 +3567,7 @@
 <span class="go">stretch_wrist_yaw_jog.py</span>
 <span class="go">stretch_xbox_controller_teleop.py</span>
 </code></pre></div>
-<p>All tools accept '--help' as a command line argument to learn its function. For example:</p>
+<p>All tools accept the '--help' flag as a command line argument to describe its function. For example:</p>
 <div class="highlight"><pre><span></span><code><span class="go">&gt;&gt;$ stretch_pimu_scope.py --help</span>
 <span class="go">For use with S T R E T C H (R) RESEARCH EDITION from Hello Robot Inc.</span>
 <span class="go">---------------------------------------------------------------------</span>
@@ -3597,8 +3597,8 @@
 <span class="go">  --heading   Scope base imu Heading</span>
 <span class="go">  --bump      Scope base imu bump level</span>
 </code></pre></div>
-<h3 id="commonly-used-tools">Commonly Used Tools</h3>
-<p>These are the tools a typical user will want to become familiar with.</p>
+<h2 id="commonly-used-tools">Commonly Used Tools</h2>
+<p>These are the tools a typical user is expected to interact with regularly and would benefit from becoming familiar with.</p>
 <table>
 <thead>
 <tr>
@@ -3613,7 +3613,7 @@
 </tr>
 <tr>
 <td><strong>stretch_robot_system_check.py</strong></td>
-<td>Scans for all hardware devices and ensure they are present on the bus and reporting valid values. Useful to verify that the robot is in good working order prior to commanding motion. It will report all success in green, failures in red.</td>
+<td>Scans for all hardware devices and ensures they are present on the bus and reporting valid values. Useful to verify that the robot is in good working order prior to commanding motion. It will report all success in green, failures in red.</td>
 </tr>
 <tr>
 <td><strong>stretch_robot_stow.py</strong></td>
@@ -3629,7 +3629,7 @@
 </tr>
 <tr>
 <td><strong>stretch_robot_dynamixel_reboot.py</strong></td>
-<td>This will reset all Dynamixels in the robot, which may be needed if a servo overheats during high use and enters an error state.</td>
+<td>Resets all Dynamixels in the robot, which might be necessary if a servo overheats during use and enters an error state.</td>
 </tr>
 </tbody>
 </table>

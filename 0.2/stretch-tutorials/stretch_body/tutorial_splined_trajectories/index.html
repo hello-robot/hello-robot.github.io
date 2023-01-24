@@ -3571,9 +3571,9 @@
 <h1 id="tutorial-splined-trajectories">Tutorial: Splined Trajectories</h1>
 <p>Stretch Body supports splined trajectory controllers across all of its joints. This enables Stretch to achieve smooth and coordinated full-body control of the robot. </p>
 <h2 id="what-are-splined-trajectories">What are Splined Trajectories?</h2>
-<p>A splined trajectory is a smooth path that a robot joint follows over a specific period of time. <a href="https://en.wikipedia.org/wiki/Spline_(mathematics)">Cubic or quintic splines</a> are used to represent the trajectory. As shown below, the splines (blue) are defined by a series of user provided waypoints (black dot). A waypoint is simply a target position, velocity, and optional acceleration at a given time. The spline ensures continuity and smoothness when interpolating between the waypoint targets.</p>
+<p>A splined trajectory is a smooth path that a robot joint follows over a specific period of time. <a href="https://en.wikipedia.org/wiki/Spline_(mathematics)">Cubic or quintic splines</a> are used to represent the trajectory. As shown below, the splines (blue) are defined by a series of user-provided waypoints (black dot). A waypoint is simply a target position, velocity, and optional acceleration at a given time. The spline ensures continuity and smoothness when interpolating between the waypoint targets.</p>
 <p>During execution, the trajectory controller uses this splined representation to compute the instantaneous desired position, velocity, and acceleration of the joint (red). On Stretch, this instantaneous target is then passed to a lower-level position or velocity controller. </p>
-<p>Splined trajectories are particularly useful when you want to coordinate motion across several joints. Because the trajectory representation is time based, it is straightforward to encode multi-joint coordination. Stretch Body supports both cubic and quintic spline. A quintic spline waypoint includes acceleration in the waypoint target, while a cubic spline does not. </p>
+<p>Splined trajectories are particularly useful when you want to coordinate motion across several joints. Because the trajectory representation is time-based, it is straightforward to encode multi-joint coordination. Stretch Body supports both cubic and quintic splines. A quintic spline waypoint includes acceleration in the waypoint target, while a cubic spline does not.</p>
 <p><img alt="alt_text" src="../images/splined_traj.png" title="image_tooltip" /></p>
 <h2 id="the-splined-trajectory-tool">The Splined Trajectory Tool</h2>
 <p>Stretch Body includes <a href="https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_trajectory_jog.py">a graphical tool for exploring splined trajectory control</a> on the robot:</p>
@@ -3599,12 +3599,15 @@ optional arguments:
 </code></pre></div>
 <p>The tool GUI allows you to interactively construct a splined trajectory and then execute it on the robot. For example, on the arm:</p>
 <p><img alt="alt_text" src="../images/traj_gui.png" title="image_tooltip" /></p>
-<p><strong>NOTE</strong>: Use caution when commanding the base. Ensure that attached cables are long enough to support base motion. Alternatively you may want to put the base on top of a book so the wheel don't touch the ground.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use caution when commanding the base. Ensure that the attached cables are long enough to support the base motion. Alternatively, you may want to put the base on top of a book so the wheels don't touch the ground.</p>
+</div>
 <p>Finally, you can explore a full-body trajectory using the non-GUI version of the tool:</p>
 <div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_trajectory_jog.py --full_body
 </code></pre></div>
 <h2 id="programming-trajectories">Programming Trajectories</h2>
-<p>Programming a splined trajectory is straightforward. Try the following from iPython:</p>
+<p>Programming a splined trajectory is straightforward. For example, try the following from iPython:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">stretch_body.robot</span>
 <span class="n">r</span><span class="o">=</span><span class="n">stretch_body</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">Robot</span><span class="p">()</span>
 <span class="n">r</span><span class="o">.</span><span class="n">startup</span><span class="p">()</span>
@@ -3633,17 +3636,17 @@ optional arguments:
 <li>This will execute a Cubic spline as we did not pass in accelerations to in <code>r.arm.trajectory.add</code></li>
 <li>The call to <code>r.arm.follow_trajectory</code> is non-blocking and the trajectory generation is handled by a background thread of the Robot class</li>
 </ul>
-<p>If you're interested in exploring the trajectory API further the <a href="https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_trajectory_jog.py">code for the <code>stretch_trajectory_jog.py</code></a>is a great reference to get started.</p>
+<p>If you're interested in exploring the trajectory API further the <a href="https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_trajectory_jog.py">code for the <code>stretch_trajectory_jog.py</code></a> is a great reference to get started.</p>
 <h2 id="advanced-controller-parameters">Advanced: Controller Parameters</h2>
-<p>Sometimes the robot motion isn't quite what is expected when executing a splined trajectories. It is important that the trajectory be well-formed, meaning that it:</p>
+<p>Sometimes the robot's motion isn't quite what is expected when executing a splined trajectory. It is important that the trajectory be well-formed, meaning that it:</p>
 <ul>
 <li>Respects the maximum velocity and accelerations limits of the joint</li>
-<li>Doesn't create a large 'excursion' outside of the acceptable range of motion in order to hit a target waypoint</li>
+<li>Doesn't create a large 'excursion' outside of the acceptable range of motion to hit a target waypoint</li>
 <li>Doesn't have waypoints so closely spaced together that it exceeds the nominal control rates of Stretch (~10-20 Hz)</li>
 </ul>
-<p>For example, the arm trajectory below has a large excursion outside of the joints range of motion (white). This is because the second waypoint expects a non-zero velocity when the arm reaches full extension. </p>
+<p>For example, the arm trajectory below has a large excursion outside of the joint's range of motion (white). This is because the second waypoint expects a non-zero velocity when the arm reaches full extension.</p>
 <p><img alt="" src="../images/bad_trajectory.png" /></p>
-<p>Often the trajectory waypoints will be generated from a motion planner. It is important that this planner incorporates the position, velocity, and acceleration constraints of the joint. These can be found by, for example</p>
+<p>Often the trajectory waypoints will be generated from a motion planner. It is important for the planner to incorporate the position, velocity, and acceleration constraints of the joint. These can be found by, for example:</p>
 <div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep arm <span class="p">|</span> grep motion <span class="p">|</span> grep trajectory
 stretch_body.robot_params.nominal_params  param.arm.motion.trajectory_max.vel_m    <span class="m">0</span>.4             
 stretch_body.robot_params.nominal_params param.arm.motion.trajectory_max.accel_m   <span class="m">0</span>.4 
@@ -3651,9 +3654,13 @@ stretch_body.robot_params.nominal_params param.arm.motion.trajectory_max.accel_m
 &gt;&gt;$ stretch_params.py <span class="p">|</span> grep arm <span class="p">|</span> grep range_m
 stretch_user_params.yaml       param.arm.range_m      <span class="o">[</span><span class="m">0</span>.0, <span class="m">0</span>.515<span class="o">]</span> 
 </code></pre></div>
-<p>Fortunately the Stretch Body <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/trajectories.py">Trajectory</a> classes do some preliminary feasibility checking of trajectories using the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/hello_utils.py#L290">is_segment_feasible function</a>. This checks if the generated motions lie within the constraints of the <code>trajectory_max</code> parameters.</p>
-<p>It is generally important for the waypoints to be spaced far apart. Stretch isn't a dynamic and fast moving robot, so there isn't a practical advantage to closely spaced waypoints at any rate. </p>
-<p>The stepper controllers (arm, lift, and base) can be updated at approximately 20 Hz maximum. Therefore, if your waypoints are spaced 50 ms apart, you run the risk of overflowing the stepper controller. Likewise, the Dynamixel joints can be updated at approximately 12 Hz. As a rule of thumb, spacing the waypoints over 100 ms apart is a good idea.</p>
+<p>Fortunately, the Stretch Body <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/trajectories.py">Trajectory</a> classes do some preliminary feasibility checking of trajectories using the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/hello_utils.py#L290">is_segment_feasible function</a>. This checks if the generated motions lie within the constraints of the <code>trajectory_max</code> parameters.</p>
+<p>It is generally important for the waypoints to be spaced far apart. Stretch isn't a dynamic and fast-moving robot, so there isn't a practical advantage to closely spaced waypoints at any rate.</p>
+<p>The stepper controllers (arm, lift, and base) can be updated at approximately 20 Hz maximum. Therefore, if your waypoints are spaced 50 ms apart, you run the risk of overflowing the stepper controller. Likewise, the Dynamixel joints can be updated at approximately 12 Hz. </p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>As a rule of thumb, spacing the waypoints over 100 ms apart is a good idea.</p>
+</div>
 <hr />
 <div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks.</div>
 

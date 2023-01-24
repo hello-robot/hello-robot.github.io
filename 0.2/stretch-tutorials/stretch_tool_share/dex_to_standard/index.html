@@ -3569,7 +3569,7 @@
 
 
 <h1 id="dex-to-standard-wrist">Dex to Standard Wrist</h1>
-<p>This tutorial will guide you through the steps of replacing a gripper with Dex Wrist (3-DoF) for one with a Standard Wrist (1-DoF).</p>
+<p>This tutorial will guide you through the steps of replacing a gripper with a Dex Wrist (3-DoF) for one with a Standard Wrist (1-DoF).</p>
 <h2 id="parts-and-tools-required">Parts and Tools Required</h2>
 <p>Please note that this procedure does not require any additional parts or tools apart from the ones that were shipped with the robot.
  - 8 <a href="https://www.mcmaster.com/90236A104/">M2x6mm Torx FHCS bolts</a>
@@ -3580,7 +3580,7 @@
  - 2mm Hex key</p>
 <h2 id="removing-dex-wrist-gripper">Removing Dex Wrist Gripper</h2>
 <p>Here we describe removing the Dex Wrist gripper. Please ensure that the robot is turned off before proceeding.</p>
-<p>First, inspect the parts and ensure that you have everthing you need for the procedure.</p>
+<p>First, inspect the parts and ensure that you have everything you need for the procedure.</p>
 <p><img alt="Dex Wrist" src="https://raw.githubusercontent.com/hello-robot/stretch_hardware_guides/master/docs/images/dex_wrist_cable_detail.png" /></p>
 <p>Now, remove the cable clip by unscrewing the M2.5x8mm bolts and then unplug the Dynamixel cable out of the wrist pitch servo (pink).</p>
 <p><img alt="Remove the cable" src="https://raw.githubusercontent.com/hello-robot/stretch_hardware_guides/master/docs/images/dex_wrist_cable_route_rs.png" /></p>
@@ -3598,7 +3598,7 @@
 <p><img alt="Alignment hole" src="https://raw.githubusercontent.com/hello-robot/stretch_hardware_guides/master/docs/images/dex_wrist_C_rs.png" /></p>
 <p>Then, route the Dynamixel cable through the center of the standard gripper mounting bracket and install the bracket with the eight screws and T6 Torx wrench. Make sure the forward marking on the bracket matches the forward marking on the wrist yaw.</p>
 <p><img alt="image alt text" src="https://raw.githubusercontent.com/hello-robot/stretch_hardware_guides/master/docs/images/re2/gripper_mount_a_rs.png" /></p>
-<p>Now, affix the four screws, with the shorter two going to the servo side, to hold the gripper to the bracket. Lastly, route the dynamixel cable through the back of the gripper and plug it securely into the servo.</p>
+<p>Now, affix the four screws, with the shorter two going to the servo side, to hold the gripper to the bracket. Lastly, route the Dynamixel cable through the back of the gripper and plug it securely into the servo.</p>
 <p><img alt="image alt text" src="https://raw.githubusercontent.com/hello-robot/stretch_hardware_guides/master/docs/images/re2/gripper_mount_b_rs.png" /></p>
 <h2 id="software-instructions">Software Instructions</h2>
 <p>Once the hardware has been replaced, it's time to make the software changes for Stretch to recognize the Standart Wrist gripper. Turn on the robot and follow the instructions below.</p>
@@ -3606,7 +3606,7 @@
 <div class="highlight"><pre><span></span><code>python3 dex_to_standard_configure_params.py
 </code></pre></div></p>
 <p>Next, to ensure the correct gripper is recognized by ROS, we need to update the URDF. For this, first open the stretch_description.xacro file like below.
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/catkin_ws/src/stretch_ros/stretch_description
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/catkin_ws/src/stretch_ros/stretch_description/urdf
 gedit stretch_description.xacro
 </code></pre></div></p>
 <p>Then, replace the contents of the file with the default <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_description/urdf/stretch_description.xacro">stretch_description.xacro</a>.</p>

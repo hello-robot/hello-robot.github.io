@@ -643,13 +643,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#using-the-robot-class" class="md-nav__link">
-    Using the Robot class
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#stretch_body.robot.Robot" class="md-nav__link">
     Robot
   </a>
@@ -772,11 +765,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-device-classes" class="md-nav__link">
-    The Device Classes
+  <a href="#the-device-class" class="md-nav__link">
+    The Device Class
   </a>
   
-    <nav class="md-nav" aria-label="The Device Classes">
+    <nav class="md-nav" aria-label="The Device Class">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4364,13 +4357,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#using-the-robot-class" class="md-nav__link">
-    Using the Robot class
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#stretch_body.robot.Robot" class="md-nav__link">
     Robot
   </a>
@@ -4493,11 +4479,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-device-classes" class="md-nav__link">
-    The Device Classes
+  <a href="#the-device-class" class="md-nav__link">
+    The Device Class
   </a>
   
-    <nav class="md-nav" aria-label="The Device Classes">
+    <nav class="md-nav" aria-label="The Device Class">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5229,11 +5215,10 @@
 
 
 <h1 id="stretch-body-api-reference">Stretch Body API Reference</h1>
-<p>Stretch Body is the Python interface to working with the Stretch RE1. This page serves as a reference of the interfaces defined in the <code>stretch_body</code> library. 
+<p>Stretch Body is the Python interface for working with Stretch. This page serves as a reference for the interfaces defined in the <code>stretch_body</code> library. 
 See the <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_body/">Stretch Body Tutorials</a> for additional information on working with this library.</p>
 <h2 id="the-robot-class">The Robot Class</h2>
-<h3 id="using-the-robot-class">Using the Robot class</h3>
-<p>The most common interface to Stretch is the <a href="#stretch_body.robot.Robot">Robot</a> class. It is typically initialized as:</p>
+<p>The most common interface to Stretch is the <a href="#stretch_body.robot.Robot">Robot</a> class. This class encapsulates all devices on the robot. It is typically initialized as:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5256,7 +5241,7 @@ See the <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_body
 
 <span class="c1"># interact with the robot here</span>
 </code></pre></div></td></tr></table></div>
-<p>The <a href="#stretch_body.robot.Robot.startup"><code>startup()</code></a> and <a href="#stretch_body.robot.Robot.home"><code>home()</code></a> methods starts communication with and homes each of the robot's devices, respectively. Through the <a href="#stretch_body.robot.Robot">Robot</a> class, users can interact with all other devices on the robot. For example, continuing the example above:</p>
+<p>The <a href="#stretch_body.robot.Robot.startup"><code>startup()</code></a> and <a href="#stretch_body.robot.Robot.home"><code>home()</code></a> methods start communication with and home each of the robot's devices, respectively. Through the <a href="#stretch_body.robot.Robot">Robot</a> class, users can interact with all devices on the robot. For example, continuing the example above:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
@@ -5281,7 +5266,8 @@ See the <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_body
 
 <span class="n">r</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-<p>Each of these devices are defined in other modules within <code>stretch_body</code>. In the <a href="#the-device-classes">following section</a>, we'll look at the API of these classes. The <a href="#stretch_body.robot.Robot.stop"><code>stop()</code></a> method shuts down communication with the robot's devices. All of <a href="#stretch_body.robot.Robot">Robot's</a> subroutines are documented below.</p>
+<p>Each of these devices is defined in separate modules within <code>stretch_body</code>. In the following section, we'll look at the API of these classes. The <a href="#stretch_body.robot.Robot.stop"><code>stop()</code></a> method shuts down communication with the robot's devices.</p>
+<p>All methods in the <a href="#stretch_body.robot.Robot">Robot</a> class are documented below.</p>
 
 
   <div class="doc doc-object doc-class">
@@ -5589,9 +5575,9 @@ Blocking.</p>
 
   </div>
 
-<h2 id="the-device-classes">The Device Classes</h2>
-<p>The <code>stretch_body</code> library is modular in design. Each subcomponent of Stretch is defined in its own class and <a href="#the-robot-class">the Robot class</a> provides an interface that ties all of these classes together. This modularity allows users to plug in new/modified subcomponents into the <a href="#stretch_body.robot.Robot">Robot</a> interface by extending a device class.</p>
-<p>It is possible to interface with a single subcomponent of Stretch by initializing its device class directly. In this section, we'll look at the API of seven device classes: the <a href="#stretch_body.arm.Arm">arm</a>, <a href="#stretch_body.lift.Lift">lift</a>, <a href="#stretch_body.base.Base">base</a>, <a href="#stretch_body.head.Head">head</a>, <a href="#stretch_body.end_of_arm.EndOfArm">end of arm</a>, <a href="#stretch_body.wacc.Wacc">wacc</a>, and <a href="#stretch_body.pimu.Pimu">pimu</a> subcomponents of Stretch.</p>
+<h2 id="the-device-class">The Device Class</h2>
+<p>The <code>stretch_body</code> library is modular in design. Each subcomponent of Stretch is defined in its class and the <a href="#the-robot-class">Robot class</a> provides an interface that ties all of these classes together. This modularity allows users to plug in new/modified subcomponents into the <a href="#stretch_body.robot.Robot">Robot</a> interface by extending the Device class.</p>
+<p>It is possible to interface with a single subcomponent of Stretch by initializing its device class directly. In this section, we'll look at the API of seven subclasses of the Device class: the <a href="#stretch_body.arm.Arm">Arm</a>, <a href="#stretch_body.lift.Lift">Lift</a>, <a href="#stretch_body.base.Base">Base</a>, <a href="#stretch_body.head.Head">Head</a>, <a href="#stretch_body.end_of_arm.EndOfArm">EndOfArm</a>, <a href="#stretch_body.wacc.Wacc">Wacc</a>, and <a href="#stretch_body.pimu.Pimu">Pimu</a> subcomponents of Stretch.</p>
 <h3 id="using-the-arm-class">Using the Arm class</h3>
 <p><img alt="Top down Stretch arm blueprint" src="../images/arm_top.png#only-light" />
 <img alt="Top down Stretch arm blueprint" src="../images/arm_top.png#only-dark" /></p>
@@ -5616,7 +5602,7 @@ Blocking.</p>
 
 <span class="c1"># interact with the arm here</span>
 </code></pre></div></td></tr></table></div>
-<p>Since both <a href="#stretch_body.arm.Arm">Arm</a> and <a href="#stretch_body.robot.Robot">Robot</a> subclass <a href="#stretch_body.device.Device">Device</a>, the same <a href="#stretch_body.arm.Arm.startup"><code>startup()</code></a> and <a href="#stretch_body.arm.Arm.stop"><code>stop()</code></a> methods are available here, as well as other <a href="#stretch_body.device.Device">Device</a> methods such as <a href="#stretch_body.arm.Arm.home"><code>home()</code></a>. Using the <a href="#stretch_body.arm.Arm">Arm</a> class, we can read the arm's current state and send commands to the joint. For example, continuing the example above:</p>
+<p>Since both <a href="#stretch_body.arm.Arm">Arm</a> and <a href="#stretch_body.robot.Robot">Robot</a> are subclasses of the <a href="#stretch_body.device.Device">Device</a> class, the same <a href="#stretch_body.arm.Arm.startup"><code>startup()</code></a> and <a href="#stretch_body.arm.Arm.stop"><code>stop()</code></a> methods are available here, as well as other <a href="#stretch_body.device.Device">Device</a> methods such as <a href="#stretch_body.arm.Arm.home"><code>home()</code></a>. Using the <a href="#stretch_body.arm.Arm">Arm</a> class, we can read the arm's current state and send commands to the joint. For example, continuing the example above:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
@@ -5647,7 +5633,8 @@ Blocking.</p>
 <span class="n">a</span><span class="o">.</span><span class="n">push_command</span><span class="p">()</span>
 <span class="n">a</span><span class="o">.</span><span class="n">motor</span><span class="o">.</span><span class="n">wait_until_at_setpoint</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-<p>The <a href="#stretch_body.arm.Arm.move_to"><code>move_to()</code></a> and <a href="#stretch_body.arm.Arm.move_by"><code>move_by()</code></a> methods queue absolute and relative commands to the arm respectively, while the nonblocking <a href="#stretch_body.arm.Arm.push_command"><code>push_command()</code></a> method pushes the queued command to the hardware for execution. Arm's attribute <code>motor</code>, an instance of the <a href="#stretch_body.stepper.Stepper">Stepper</a> class, has <a href="#stretch_body.stepper.Stepper.wait_until_at_setpoint"><code>wait_until_at_setpoint()</code></a> which blocks program execution until the joint reaches the commanded goal. With <a href="https://github.com/hello-robot/stretch_firmware/blob/master/tutorials/docs/updating_firmware.md">P1 or greater firmware</a> installed, it is also possible to queue a waypoint trajectory for the arm to follow:</p>
+<p>The <a href="#stretch_body.arm.Arm.move_to"><code>move_to()</code></a> and <a href="#stretch_body.arm.Arm.move_by"><code>move_by()</code></a> methods queue absolute and relative position commands to the arm, respectively, while the nonblocking <a href="#stretch_body.arm.Arm.push_command"><code>push_command()</code></a> method pushes the queued position commands to the hardware for execution.</p>
+<p>The attribute <code>motor</code>, an instance of the <a href="#stretch_body.stepper.Stepper">Stepper</a> class, has the method <a href="#stretch_body.stepper.Stepper.wait_until_at_setpoint"><code>wait_until_at_setpoint()</code></a> which blocks program execution until the joint reaches the commanded goal. With <a href="https://github.com/hello-robot/stretch_firmware/blob/master/tutorials/docs/updating_firmware.md">firmware P1 or greater</a> installed, it is also possible to queue a waypoint trajectory for the arm to follow:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span>
@@ -5670,7 +5657,8 @@ Blocking.</p>
 <span class="n">a</span><span class="o">.</span><span class="n">follow_trajectory</span><span class="p">()</span>
 <span class="kn">import</span> <span class="nn">time</span><span class="p">;</span> <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>Arm's attribute <code>trajectory</code>, an instance of the <a href="#stretch_body.trajectories.PrismaticTrajectory">PrismaticTrajectory</a> class, has <a href="#stretch_body.trajectories.PrismaticTrajectory.add"><code>add()</code></a> which adds a single waypoint in a linear sliding trajectory. For a well formed <code>trajectory</code> (see <a href="#stretch_body.trajectories.Spline.is_valid"><code>is_valid()</code></a>), the <a href="#stretch_body.arm.Arm.follow_trajectory"><code>follow_trajectory()</code></a> method kicks off trajectory following for the telescoping arm. It is also possible to dynamically restrict the arm joint's range:</p>
+<p>The attribute <code>trajectory</code>, an instance of the <a href="#stretch_body.trajectories.PrismaticTrajectory">PrismaticTrajectory</a> class, has the method <a href="#stretch_body.trajectories.PrismaticTrajectory.add"><code>add()</code></a> which adds a single waypoint in a linear sliding trajectory. For a well-formed <code>trajectory</code> (see <a href="#stretch_body.trajectories.Spline.is_valid"><code>is_valid()</code></a>), the <a href="#stretch_body.arm.Arm.follow_trajectory"><code>follow_trajectory()</code></a> method starts tracking the trajectory for the telescoping arm.</p>
+<p>It is also possible to dynamically restrict the arm joint range:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">37</span>
 <span class="normal">38</span>
 <span class="normal">39</span>
@@ -5699,7 +5687,8 @@ Blocking.</p>
 
 <span class="n">a</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-<p>The <a href="#stretch_body.arm.Arm.set_soft_motion_limit_min"><code>set_soft_motion_limit_min/max()</code></a> methods form the basis of an experimental <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_collision.py#L47">self-collision avoidance</a> system built into Stretch Body. All of <a href="#stretch_body.arm.Arm">Arm's</a> subroutines are documented below.</p>
+<p>The <a href="#stretch_body.arm.Arm.set_soft_motion_limit_min"><code>set_soft_motion_limit_min/max()</code></a> methods form the basis of an experimental <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_collision.py#L47">self-collision avoidance</a> system built into Stretch Body.</p>
+<p>All methods in the <a href="#stretch_body.arm.Arm">Arm class</a> are documented below.</p>
 
 
   <div class="doc doc-object doc-class">
@@ -5849,7 +5838,7 @@ return measured range-of-motion if measuring. Return None if not a valide measur
 
 <span class="c1"># interact with the lift here</span>
 </code></pre></div></td></tr></table></div>
-<p>The <a href="#stretch_body.lift.Lift.startup"><code>startup()</code></a> and <a href="#stretch_body.lift.Lift.home"><code>home()</code></a> methods are extended from the <a href="#stretch_body.device.Device">Device</a> class. Reading the lift's current state and sending commands to the joint occurs similarly to the <a href="#stretch_body.arm.Arm">Arm</a>:</p>
+<p>The <a href="#stretch_body.lift.Lift.startup"><code>startup()</code></a> and <a href="#stretch_body.lift.Lift.home"><code>home()</code></a> methods are extended from the <a href="#stretch_body.device.Device">Device</a> class. Reading the lift's current state and sending commands to the joint occurs similarly to the <a href="#stretch_body.arm.Arm">Arm</a> class:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
@@ -5862,7 +5851,7 @@ return measured range-of-motion if measuring. Return None if not a valide measur
 <span class="n">l</span><span class="o">.</span><span class="n">push_command</span><span class="p">()</span>
 <span class="n">l</span><span class="o">.</span><span class="n">motor</span><span class="o">.</span><span class="n">wait_until_at_setpoint</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-<p><a href="#stretch_body.lift.Lift">Lift's</a> attribute <code>status</code> is a dictionary of the joint's current status. This state information is updated in the background in real time by default (disable by initializing as <a href="#stretch_body.lift.Lift.startup"><code>startup(threading=False)</code></a>). Use the <a href="#stretch_body.lift.Lift.pretty_print"><code>pretty_print()</code></a> method to print out this state info in a human interpretable format. Setting up waypoint trajectories for the lift is also similar to the <a href="#stretch_body.arm.Arm">Arm</a>:</p>
+<p>The attribute <code>status</code> is a dictionary of the joint's current status. This state information is updated in the background in real-time by default (disable by initializing as <a href="#stretch_body.lift.Lift.startup"><code>startup(threading=False)</code></a>). Use the <a href="#stretch_body.lift.Lift.pretty_print"><code>pretty_print()</code></a> method to print out this state info in a human-interpretable format. Setting up waypoint trajectories for the lift is also similar to the <a href="#stretch_body.arm.Arm">Arm</a>:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
@@ -5883,7 +5872,8 @@ return measured range-of-motion if measuring. Return None if not a valide measur
 <span class="n">l</span><span class="o">.</span><span class="n">follow_trajectory</span><span class="p">()</span>
 <span class="kn">import</span> <span class="nn">time</span><span class="p">;</span> <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p><a href="#stretch_body.lift.Lift">Lift's</a> attribute <code>trajectory</code> is also an instance of the <a href="#stretch_body.trajectories.PrismaticTrajectory">PrismaticTrajectory</a> class, and by providing the instantaneous velocity argument <code>v_m</code> to the <a href="#stretch_body.trajectories.PrismaticTrajectory.add"><code>add()</code></a> method, a cubic spline has been loaded into the joint's <code>trajectory</code>. The call to <a href="#stretch_body.lift.Lift.follow_trajectory"><code>follow_trajectory()</code></a> begins hardware tracking of the spline. Finally, setting soft motion limits for the lift's range happens using:</p>
+<p>The attribute <code>trajectory</code> is also an instance of the <a href="#stretch_body.trajectories.PrismaticTrajectory">PrismaticTrajectory</a> class, and by providing the instantaneous velocity argument <code>v_m</code> to the <a href="#stretch_body.trajectories.PrismaticTrajectory.add"><code>add()</code></a> method, a cubic spline can be loaded into the joint's <code>trajectory</code>. The call to <a href="#stretch_body.lift.Lift.follow_trajectory"><code>follow_trajectory()</code></a> begins hardware tracking of the spline.</p>
+<p>Finally, setting soft motion limits for the lift's range can be done using:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">27</span>
 <span class="normal">28</span>
 <span class="normal">29</span>
@@ -5896,7 +5886,8 @@ return measured range-of-motion if measuring. Return None if not a valide measur
 
 <span class="n">l</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-<p>The <a href="#stretch_body.lift.Lift.set_soft_motion_limit_min"><code>set_soft_motion_limit_min/max()</code></a> methods perform clipping of the joint's range at the firmware level (can persist across reboots). All of <a href="#stretch_body.lift.Lift">Lift's</a> subroutines are documented below.</p>
+<p>The <a href="#stretch_body.lift.Lift.set_soft_motion_limit_min"><code>set_soft_motion_limit_min/max()</code></a> methods perform clipping of the joint's range at the firmware level (can persist across reboots).</p>
+<p>All methods in the <a href="#stretch_body.lift.Lift">Lift</a> class are documented below.</p>
 
 
   <div class="doc doc-object doc-class">
@@ -6070,7 +6061,7 @@ return measured range-of-motion if measuring. Return None if not a valide measur
 
 <span class="c1"># interact with the base here</span>
 </code></pre></div></td></tr></table></div>
-<p>Stretch's mobile base is a differential drive configuration. The left and right wheels are accessible through <a href="#stretch_body.base.Base">Base's</a> <code>left_wheel</code> and  <code>right_wheel</code> attributes, both of which are instances of the <a href="#stretch_body.stepper.Stepper">Stepper</a> class. The <a href="#stretch_body.base.Base.startup"><code>startup()</code></a> method is extended from the <a href="#stretch_body.device.Device">Device</a> class. Since the mobile base is unconstrained, there is no homing method. We can read the base's current state and send commands using:</p>
+<p>Stretch's mobile base is a differential drive configuration. The left and right wheels are accessible through <a href="#stretch_body.base.Base">Base</a> <code>left_wheel</code> and  <code>right_wheel</code> attributes, both of which are instances of the <a href="#stretch_body.stepper.Stepper">Stepper</a> class. The <a href="#stretch_body.base.Base.startup"><code>startup()</code></a> method is extended from the <a href="#stretch_body.device.Device">Device</a> class. Since the mobile base is unconstrained, there is no homing method. The <a href="#stretch_body.base.Base.pretty_print"><code>pretty_print()</code></a> method prints out mobile base state information in a human-interpretable format. We can read the base's current state and send commands using:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
@@ -6093,7 +6084,8 @@ return measured range-of-motion if measuring. Return None if not a valide measur
 <span class="n">b</span><span class="o">.</span><span class="n">push_command</span><span class="p">()</span>
 <span class="n">b</span><span class="o">.</span><span class="n">left_wheel</span><span class="o">.</span><span class="n">wait_until_at_setpoint</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-<p>The <a href="#stretch_body.base.Base.pretty_print"><code>pretty_print()</code></a> method prints out mobile base state info in a human interpretable format. The <a href="#stretch_body.base.Base.translate_by"><code>translate_by()</code></a> and <a href="#stretch_body.base.Base.rotate_by"><code>rotate_by()</code></a> methods send relative commands similar to the way <a href="#stretch_body.lift.Lift.move_by"><code>move_by()</code></a> behaves for the single degree of freedom joints. The mobile base also supports velocity control:</p>
+<p>The <a href="#stretch_body.base.Base.translate_by"><code>translate_by()</code></a> and <a href="#stretch_body.base.Base.rotate_by"><code>rotate_by()</code></a> methods send relative commands similar to the way <a href="#stretch_body.lift.Lift.move_by"><code>move_by()</code></a> behaves for the single degree of freedom joints.</p>
+<p>The mobile base also supports velocity control:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span>
@@ -6130,7 +6122,8 @@ return measured range-of-motion if measuring. Return None if not a valide measur
 <span class="n">b</span><span class="o">.</span><span class="n">enable_freewheel_mode</span><span class="p">()</span>
 <span class="n">b</span><span class="o">.</span><span class="n">push_command</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-<p>The <a href="#stretch_body.base.Base.set_translate_velocity"><code>set_translate_velocity()</code></a>/<a href="#stretch_body.base.Base.set_rotational_velocity"><code>set_rotational_velocity()</code></a> give velocity control over the translational/rotational components of the mobile base independently. The <a href="#stretch_body.base.Base.set_velocity"><code>set_velocity()</code></a> method gives control over both of these components simultaneously. To halt motion, you can command zero velocities or command the base into freewheel mode using <a href="#stretch_body.base.Base.enable_freewheel_mode"><code>enable_freewheel_mode()</code></a>. The mobile base also supports waypoint trajectory following, but the waypoints are part of the SE2 group (a.k.a. each of the base's desired waypoints is defined as a (x, y) point and a theta orientation):</p>
+<p>The <a href="#stretch_body.base.Base.set_translate_velocity"><code>set_translate_velocity()</code></a> and <a href="#stretch_body.base.Base.set_rotational_velocity"><code>set_rotational_velocity()</code></a> methods give velocity control over the translational and rotational components of the mobile base independently. The <a href="#stretch_body.base.Base.set_velocity"><code>set_velocity()</code></a> method gives control over both of these components simultaneously.</p>
+<p>To halt motion, you can command zero velocities or command the base into freewheel mode using <a href="#stretch_body.base.Base.enable_freewheel_mode"><code>enable_freewheel_mode()</code></a>. The mobile base also supports waypoint trajectory following, but the waypoints are part of the SE2 group, where a desired waypoint is defined as an (x, y) point and a theta orientation:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">39</span>
 <span class="normal">40</span>
 <span class="normal">41</span>
@@ -6163,9 +6156,10 @@ return measured range-of-motion if measuring. Return None if not a valide measur
 </code></pre></div></td></tr></table></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The <a href="#stretch_body.base.Base">Base's</a> waypoint trajectory following has no notion of obstacles in the environment. It will blindly follow the commanded waypoints. For obstacle avoidance, perception and a path planner should be employed.</p>
+<p>The <a href="#stretch_body.base.Base">Base</a> waypoint trajectory following has no notion of obstacles in the environment. It will blindly follow the commanded waypoints. For obstacle avoidance, we recommend employing perception and a path planner.</p>
 </div>
-<p><a href="#stretch_body.base.Base">Base's</a> attribute <code>trajectory</code> is an instance of the <a href="#stretch_body.trajectories.DiffDriveTrajectory">DiffDriveTrajectory</a> class. The call to <a href="#stretch_body.base.Base.follow_trajectory"><code>follow_trajectory()</code></a> begins hardware tracking of the spline. All of <a href="#stretch_body.base.Base">Base's</a> subroutines are documented below.</p>
+<p>The attribute <code>trajectory</code> is an instance of the <a href="#stretch_body.trajectories.DiffDriveTrajectory">DiffDriveTrajectory</a> class. The call to <a href="#stretch_body.base.Base.follow_trajectory"><code>follow_trajectory()</code></a> begins hardware tracking of the spline.</p>
+<p>All methods of the <a href="#stretch_body.base.Base">Base</a> class are documented below.</p>
 
 
   <div class="doc doc-object doc-class">
@@ -6984,7 +6978,7 @@ something.</p>
 <h3 id="using-the-head-class">Using the Head class</h3>
 <p><img alt="Stretch head blueprint" src="../images/tilt_detail_rs.png#only-light" />
 <img alt="Stretch head blueprint" src="../images/tilt_detail_rs.png#only-dark" /></p>
-<p>The interface to Stretch's head is the <a href="#stretch_body.head.Head">Head</a> class. Stretch's head contains a Intel Realsense D435i depth camera, so the pan/tilt joints in the head allows Stretch to swivel and capture depth imagery of its surrounding. The head is typically initialized as:</p>
+<p>The interface to Stretch's head is the <a href="#stretch_body.head.Head">Head</a> class. The head contains an Intel Realsense D435i depth camera. The pan and tilt joints in the head allow Stretch to swivel and capture depth imagery of its surrounding. The head is typically initialized as:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -7003,7 +6997,7 @@ something.</p>
 
 <span class="c1"># interact with the head here</span>
 </code></pre></div></td></tr></table></div>
-<p><a href="#stretch_body.head.Head">Head</a> is a subclass of <a href="#stretch_body.dynamixel_X_chain.DynamixelXChain">DynamixelXChain</a>, which in turn subclasses the <a href="#stretch_body.device.Device">Device</a> class. Therefore, some of <a href="#stretch_body.head.Head">Head's</a> methods, such as <a href="#stretch_body.head.Head.startup"><code>startup()</code></a> and <a href="#stretch_body.head.Head.home"><code>home()</code></a> methods are extended from the <a href="#stretch_body.device.Device">Device</a> class, while other come from the <a href="#stretch_body.dynamixel_X_chain.DynamixelXChain">DynamixelXChain</a> class. Reading the head's current state and sending commands to its revolute joints (head pan and tilt) happens using:</p>
+<p><a href="#stretch_body.head.Head">Head</a> is a subclass of the <a href="#stretch_body.dynamixel_X_chain.DynamixelXChain">DynamixelXChain</a> class, which in turn is a subclass of the <a href="#stretch_body.device.Device">Device</a> class. Therefore, some of <a href="#stretch_body.head.Head">Head's</a> methods, such as <a href="#stretch_body.head.Head.startup"><code>startup()</code></a> and <a href="#stretch_body.head.Head.home"><code>home()</code></a> are extended from the <a href="#stretch_body.device.Device">Device</a> class, while others come from the <a href="#stretch_body.dynamixel_X_chain.DynamixelXChain">DynamixelXChain</a> class. Reading the head's current state and sending commands to its revolute joints (head pan and tilt) can be achieved using:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
@@ -7038,7 +7032,11 @@ something.</p>
 <span class="n">h</span><span class="o">.</span><span class="n">pose</span><span class="p">(</span><span class="s1">&#39;ahead&#39;</span><span class="p">)</span>
 <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p><a href="#stretch_body.head.Head">Head's</a> attribute <code>status</code> is a dictionary of dictionaries, where each subdictionary is the status of one of the head's joints. This state information is updated in the background in real time by default (disable by initializing as <a href="#stretch_body.head.Head.startup"><code>startup(threading=False)</code></a>). Use the <a href="#stretch_body.head.Head.pretty_print"><code>pretty_print()</code></a> method to print out this state info in a human interpretable format. Commanding the head's revolute joints is done through the <a href="#stretch_body.head.Head.move_to"><code>move_to()</code></a> and <a href="#stretch_body.head.Head.move_by"><code>move_by()</code></a> methods. Notice that unlike the previous joints, no push command call is required here. These joints are Dynamixel servos, which behave differently than the Hello Robot steppers. Their commands are not queued; they're executed as soon as they're received. <a href="#stretch_body.head.Head">Head's</a> two joints, the 'head_pan' and 'head_tilt', are instances of the <a href="#stretch_body.dynamixel_hello_XL430.DynamixelHelloXL430">DynamixelHelloXL430</a> class, and are retreiveable using the <a href="#stretch_body.head.Head.get_joint"><code>get_joint()</code></a> method. They have the <a href="#stretch_body.dynamixel_hello_XL430.DynamixelHelloXL430.wait_until_at_setpoint"><code>wait_until_at_setpoint()</code></a> method, which blocks program execution until the joint reaches the commanded goal. The <a href="#stretch_body.head.Head.pose"><code>pose()</code></a> method makes it easy to command the head to common head poses (e.g. looking 'ahead', at the end of arm 'tool', obstacles in front of the 'wheels', or 'up'). The head supports waypoint trajectories as well:</p>
+<p>The attribute <code>status</code> is a dictionary of dictionaries, where each subdictionary is the status of one of the head's joints. This state information is updated in the background in real-time by default (disable by initializing as <a href="#stretch_body.head.Head.startup"><code>startup(threading=False)</code></a>). Use the <a href="#stretch_body.head.Head.pretty_print"><code>pretty_print()</code></a> method to print out this state information in a human-interpretable format. </p>
+<p>Commanding the head's revolute joints is done through the <a href="#stretch_body.head.Head.move_to"><code>move_to()</code></a> and <a href="#stretch_body.head.Head.move_by"><code>move_by()</code></a> methods. Notice that, unlike the previous joints, no push command call is required here. These joints are Dynamixel servos, which behave differently than the Hello Robot steppers. Their commands are not queued and are executed as soon as they're received.</p>
+<p><a href="#stretch_body.head.Head">Head's</a> two joints, the 'head_pan' and 'head_tilt' are instances of the <a href="#stretch_body.dynamixel_hello_XL430.DynamixelHelloXL430">DynamixelHelloXL430</a> class and are retrievable using the <a href="#stretch_body.head.Head.get_joint"><code>get_joint()</code></a> method. They have the <a href="#stretch_body.dynamixel_hello_XL430.DynamixelHelloXL430.wait_until_at_setpoint"><code>wait_until_at_setpoint()</code></a> method, which blocks program execution until the joint reaches the commanded goal.</p>
+<p>The <a href="#stretch_body.head.Head.pose"><code>pose()</code></a> method makes it easy to command the head to common head poses (e.g. looking 'ahead', at the end-of-arm 'tool', obstacles in front of the 'wheels', or 'up').</p>
+<p>The head supports waypoint trajectories as well:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">27</span>
 <span class="normal">28</span>
 <span class="normal">29</span>
@@ -7061,7 +7059,8 @@ something.</p>
 <span class="n">h</span><span class="o">.</span><span class="n">follow_trajectory</span><span class="p">()</span>
 <span class="kn">import</span> <span class="nn">time</span><span class="p">;</span> <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>The head pan/tilt <a href="#stretch_body.dynamixel_hello_XL430.DynamixelHelloXL430">DynamixelHelloXL430</a> instances have an attribute <code>trajectory</code>, which is an instance of the <a href="#stretch_body.trajectories.RevoluteTrajectory">RevoluteTrajectory</a> class. The call to <a href="#stretch_body.dynamixel_X_chain.DynamixelXChain.follow_trajectory"><code>follow_trajectory()</code></a> begins software tracking of the spline. Finally, setting soft motion limits for the head's pan/tilt range happens using:</p>
+<p>The head pan and tilt <a href="#stretch_body.dynamixel_hello_XL430.DynamixelHelloXL430">DynamixelHelloXL430</a> instances have an attribute <code>trajectory</code>, which is an instance of the <a href="#stretch_body.trajectories.RevoluteTrajectory">RevoluteTrajectory</a> class. The call to <a href="#stretch_body.dynamixel_X_chain.DynamixelXChain.follow_trajectory"><code>follow_trajectory()</code></a> begins software tracking of the spline.</p>
+<p>Finally, setting soft motion limits for the head's pan and tilt range can be achieved using:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">38</span>
 <span class="normal">39</span>
 <span class="normal">40</span>
@@ -7080,7 +7079,8 @@ something.</p>
 
 <span class="n">h</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-<p>The <a href="#stretch_body.dynamixel_X_chain.DynamixelXChain.set_soft_motion_limit_min"><code>set_soft_motion_limit_min/max()</code></a> methods perform clipping of the joint's range at the software level (cannot persist across reboots). All of <a href="#stretch_body.head.Head">Head's</a> subroutines are documented below.</p>
+<p>The <a href="#stretch_body.dynamixel_X_chain.DynamixelXChain.set_soft_motion_limit_min"><code>set_soft_motion_limit_min/max()</code></a> methods perform clipping of the joint's range at the software level (cannot persist across reboots).</p>
+<p>All methods of the <a href="#stretch_body.head.Head">Head</a> class are documented below.</p>
 
 
   <div class="doc doc-object doc-class">
@@ -7283,7 +7283,7 @@ a_r: list, accelerations for trapezoidal motion profile (rad/s^2)</p>
   </div>
 
 <h3 id="using-the-endofarm-class">Using the EndOfArm class</h3>
-<p>The interface to Stretch's end of arm is the <a href="#stretch_body.end_of_arm.EndOfArm">EndOfArm</a> class. It is typically initialized as:</p>
+<p>The interface to Stretch's end-of-arm is the <a href="#stretch_body.end_of_arm.EndOfArm">EndOfArm</a> class. It is typically initialized as:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -7302,7 +7302,7 @@ a_r: list, accelerations for trapezoidal motion profile (rad/s^2)</p>
 
 <span class="n">e</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-<p><a href="#stretch_body.end_of_arm.EndOfArm">EndOfArm's</a> subroutines are documented below.</p>
+<p>All methods of the <a href="#stretch_body.end_of_arm.EndOfArm">EndOfArm</a> class are documented below.</p>
 
 
   <div class="doc doc-object doc-class">
@@ -7570,7 +7570,7 @@ Allows for conditional logic when switching end-of-arm tools</p>
 
 <span class="n">w</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-<p><a href="#stretch_body.wacc.Wacc">Wacc's</a> subroutines are documented below.</p>
+<p>All methods of the <a href="#stretch_body.wacc.Wacc">Wacc</a> class are documented below.</p>
 
 
   <div class="doc doc-object doc-class">
@@ -7655,7 +7655,7 @@ Based on that version, replaces PimuBase class inheritance with a inheritance to
   </div>
 
 <h3 id="using-the-pimu-class">Using the Pimu class</h3>
-<p>The interface to Stretch's power board is the <a href="#stretch_body.pimu.Pimu">Pimu</a> (power + IMU) class. This board provides an 9 DOF IMUthat is accessible from the <a href="#stretch_body.pimu.Pimu">Pimu</a> class. It is typically initialized as:</p>
+<p>The interface to Stretch's power board is the <a href="#stretch_body.pimu.Pimu">Pimu</a> (power + IMU) class. This board provides a 9-DOF IMU that is accessible from the <a href="#stretch_body.pimu.Pimu">Pimu</a> class. It is typically initialized as:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -7674,7 +7674,7 @@ Based on that version, replaces PimuBase class inheritance with a inheritance to
 
 <span class="n">p</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-<p><a href="#stretch_body.pimu.Pimu">Pimu's</a> subroutines are documented below.</p>
+<p>All methods of the <a href="#stretch_body.pimu.Pimu">Pimu</a> class are documented below.</p>
 
 
   <div class="doc doc-object doc-class">

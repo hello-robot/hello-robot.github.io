@@ -3527,18 +3527,21 @@
 
 
 <h1 id="tutorial-custom-wrist-dof">Tutorial: Custom Wrist DOF</h1>
-<p>In this tutorial we explore how to add additional degrees of freedom to the Stretch wrist. </p>
-<p>Stretch exposes a Dynamixel X-Series TTL control bus at the end of its arm. It uses the <a href="https://emanual.robotis.com/docs/en/dxl/x/xl430-w250/">Dynamixel XL430-W250</a> for the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/wrist_yaw.py">WristYaw</a> and the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/stretch_gripper.py">StretchGripper</a>  degrees of freedom that come standard with the robot. </p>
+<p>In this tutorial, we explore how to add additional degrees of freedom to the Stretch wrist. </p>
+<p>Stretch exposes a Dynamixel X-Series TTL control bus at the end of its arm. It uses the <a href="https://emanual.robotis.com/docs/en/dxl/x/xl430-w250/">Dynamixel XL430-W250</a> for the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/wrist_yaw.py">Wrist Yaw</a> and the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/stretch_gripper.py">Stretch Gripper</a> that comes standard with the robot. </p>
 <p>See the <a href="https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/hardware_guide_re2/#wrist-tool-plate">Hardware User Guide</a> to learn how to mechanically attach additional DOFs to the robot.</p>
-<p><strong>Note: Stretch is compatible with <a href="https://emanual.robotis.com/docs/en/dxl/x/">any Dynamixel X Series servo</a> that utilizes the TTL level Multidrop Bus.</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Stretch is compatible with any <a href="https://emanual.robotis.com/docs/en/dxl/x/">Dynamixel X Series servo</a> that utilizes the TTL level Multidrop Bus.</p>
+</div>
 <h2 id="adding-a-custom-dof">Adding a Custom DOF</h2>
 <p>Adding one or more custom Dynamixel X Series servos to Stretch wrist involves:</p>
 <ul>
 <li>Creating a new class that derives from <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/dynamixel_hello_XL430.py">DynamixelHelloXL430</a></li>
-<li>Adding YAML parameters to <code>stretch_user_params.yaml</code>that configure the servo as desired</li>
+<li>Adding YAML parameters to <code>stretch_user_params.yaml</code> that configure the servo as desired</li>
 <li>Adding YAML parameters to <code>stretch_user_params.yaml</code> that tell Stretch to include this class in its EndOfArm list of servos</li>
 </ul>
-<p>Let's create a new DOF called MyWristPitch in a file named <a href="../custom_wrist_dof/my_wrist_pitch.py">my_wrist_pitch.py</a>.  Place the file somewhere on the $PYTHONPATH.</p>
+<p>Let's create a new DOF called MyWristPitch in a file named <a href="../custom_wrist_dof/my_wrist_pitch.py">my_wrist_pitch.py</a>. Place the file somewhere on the $PYTHONPATH.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">stretch_body.dynamixel_hello_XL430</span> <span class="kn">import</span> <span class="n">DynamixelHelloXL430</span>
 <span class="kn">from</span> <span class="nn">stretch_body.hello_utils</span> <span class="kn">import</span> <span class="o">*</span>
 
@@ -3551,7 +3554,7 @@
     <span class="k">def</span> <span class="nf">pose</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">v_r</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">a_r</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">move_to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">poses</span><span class="p">[</span><span class="n">p</span><span class="p">],</span><span class="n">v_r</span><span class="p">,</span><span class="n">a_r</span><span class="p">)</span>
 </code></pre></div>
-<p>Now let's add the tools' parameters to your <code>stretch_user_params.yaml</code> in order to configure this servo. You may want to adapt these parameters to your application but the nominal values <a href="../custom_wrist_dof/stretch_user_params.yaml">found here</a> usually work well. Below we highlight some of the more useful parameters.</p>
+<p>Now let's add the tools' parameters to your <code>stretch_user_params.yaml</code> to configure this servo. You may want to adapt these parameters to your application but the nominal values <a href="../custom_wrist_dof/stretch_user_params.yaml">found here</a> usually work well. Below we highlight some of the more useful parameters.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">my_wrist_pitch</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w">                         </span><span class="c1">#ID on the Dynamixel bus</span><span class="w"></span>
 <span class="w">  </span><span class="nt">range_t</span><span class="p">:</span><span class="w">                      </span><span class="c1">#Range of servo, in ticks</span><span class="w"></span>
@@ -3561,8 +3564,8 @@
 <span class="w">  </span><span class="nt">use_multiturn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w">              </span><span class="c1">#Single turn or multi-turn mode of rotation</span><span class="w"></span>
 <span class="w">  </span><span class="nt">zero_t</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2048</span><span class="w">                  </span><span class="c1">#Position in ticks that corresponds to zero radians</span><span class="w"></span>
 </code></pre></div>
-<p>For this example we are assuming a single turn joint that doesn't require hardstop based homing. We also assume the servo has the Robotis default ID of 1.</p>
-<p>At this point your MyWristPitch class is ready to use. Plug the servo into the cable leaving the Stretch WristYaw joint. Experiment with the API from iPython</p>
+<p>For this example, we are assuming a single-turn joint that doesn't require hard stop-based homing. We also assume the servo has the Robotis default ID of 1.</p>
+<p>At this point, your MyWristPitch class is ready to use. Plug the servo into the cable leaving the Stretch WristYaw joint. Experiment with the API from iPython</p>
 <div class="highlight"><pre><span></span><code><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">my_wrist_pitch</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">w</span><span class="o">=</span><span class="n">wrist_pitch</span><span class="o">.</span><span class="n">WristPitch</span><span class="p">()</span>
@@ -3575,14 +3578,14 @@
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">w</span><span class="o">.</span><span class="n">pose</span><span class="p">(</span><span class="s1">&#39;tool_down&#39;</span><span class="p">)</span>
 </code></pre></div>
-<p>Finally, you'll want to make your WristPitch available from <code>stretch_body.robot</code> Add the following <a href="../custom_wrist_dof/stretch_user_params.yaml">YAML</a> to your <code>stretch_user_params.yaml</code></p>
+<p>Finally, you'll want to make your WristPitch available from <code>stretch_body.robot</code>. Add the following <a href="../custom_wrist_dof/stretch_user_params.yaml">YAML</a> to your <code>stretch_user_params.yaml</code></p>
 <div class="highlight"><pre><span></span><code><span class="nt">end_of_arm</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">devices</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">wrist_pitch</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="nt">py_class_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WristPitch</span><span class="w"></span>
 <span class="w">      </span><span class="nt">py_module_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wrist_pitch</span><span class="w"></span>
 </code></pre></div>
-<p>This tells <code>stretch_body.robot</code> to manage a wrist_<code>pitch.WristPitch</code>instance and add it to the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/end_of_arm.py">EndOfArm</a> list of tools. Try it from iPython:</p>
+<p>This tells <code>stretch_body.robot</code> to manage a <code>wrist_pitch.WristPitch</code> instance and add it to the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/end_of_arm.py">EndOfArm</a> list of tools. Try it from iPython:</p>
 <div class="highlight"><pre><span></span><code><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">stretch_body.robot</span> <span class="k">as</span> <span class="nn">robot</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">r</span><span class="o">=</span><span class="n">robot</span><span class="o">.</span><span class="n">Robot</span><span class="p">()</span>
