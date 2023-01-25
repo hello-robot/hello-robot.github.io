@@ -3627,16 +3627,12 @@
 <h2 id="what-is-guarded-contact">What is Guarded Contact?</h2>
 <p>Guarded contact is our term for the Stretch contact sensitive behaviors. The guarded contact behavior is simply:</p>
 <ol>
-<li>
-<p>Detect when the actuator effort exceeds a user-specified threshold during joint motion.</p>
-</li>
-<li>
-<p>If the threshold is exceeded:</p>
-</li>
-<li>
-<p>Enable the default safety controller for the joint</p>
-</li>
+<li>Detect when the actuator effort exceeds a user-specified threshold during joint motion.</li>
+<li>If the threshold is exceeded:<ol>
+<li>Enable the default safety controller for the joint</li>
 <li>Remain in safety mode until a subsequent joint command is received</li>
+</ol>
+</li>
 </ol>
 <p>Practically this enables the arm, for example, to move out yet stop upon collision. Let's test this out with the following script:</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
