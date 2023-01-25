@@ -1131,6 +1131,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/navigation_simple_commander/</loc>
+         <lastmod>2023-01-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/navigation_stack/</loc>
          <lastmod>2023-01-25</lastmod>
          <changefreq>daily</changefreq>
