@@ -3703,26 +3703,26 @@
 </p>
 
 <p>Begin by running the stretch <code>driver.launch</code> file.</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 <p>To activate the <a href="https://www.intelrealsense.com/depth-camera-d435i/">RealSense camera</a> and publish topics to be visualized, run the following launch file in a new terminal.</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_core d435i_low_resolution.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_core d435i_low_resolution.launch
 </code></pre></div>
 <p>Within this tutorial package, there is an RViz config file with the topics for perception already in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.</p>
-<div class="highlight"><pre><span></span><code>rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/perception_example.rviz
+<div class="shell-prompt highlight"><pre><span></span><code>rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/perception_example.rviz
 </code></pre></div>
 <h2 id="capture-image-with-image_view">Capture Image with image_view</h2>
 <p>There are a couple of methods to save an image using the <a href="http://wiki.ros.org/image_view">image_view</a> package.</p>
 <p><strong>OPTION 1:</strong> Use the <code>image_view</code> node to open a simple image viewer for ROS <em>sensor_msgs/image</em> topics. In a new terminal, execute:</p>
-<div class="highlight"><pre><span></span><code>rosrun image_view image_view image:<span class="o">=</span>/camera/color/image_raw_upright_view
+<div class="shell-prompt highlight"><pre><span></span><code>rosrun image_view image_view image:<span class="o">=</span>/camera/color/image_raw_upright_view
 </code></pre></div>
 <p>Then you can save the current image by right-clicking on the display window. By default, images will be saved as frame000.jpg, frame000.jpg, etc. Note, that the image will be saved to the terminal's current work directory.</p>
 <p><strong>OPTION 2:</strong> Use the <code>image_saver</code> node to save an image to the terminal's current work directory. In a new terminal, execute:</p>
-<div class="highlight"><pre><span></span><code>rosrun image_view image_saver image:<span class="o">=</span>/camera/color/image_raw_upright_view
+<div class="shell-prompt highlight"><pre><span></span><code>rosrun image_view image_saver image:<span class="o">=</span>/camera/color/image_raw_upright_view
 </code></pre></div>
 <h2 id="capture-image-with-python-script">Capture Image with Python Script</h2>
 <p>In this section, we will use a Python node to capture an image from the <a href="https://www.intelrealsense.com/depth-camera-d435i/">RealSense camera</a>. Execute the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/capture_image.py">capture_image.py</a> node to save a .jpeg image of the image topic <code>/camera/color/image_raw_upright_view</code>. In a terminal, execute:</p>
-<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/catkin_ws/src/stretch_tutorials/src
+<p><div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span> ~/catkin_ws/src/stretch_tutorials/src
 python3 capture_image.py
 </code></pre></div>
 An image named <strong>camera_image.jpeg</strong> is saved in the <strong>stored_data</strong> folder in this package.</p>
@@ -3835,7 +3835,7 @@ Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this dec
 <p>Give control to ROS.  This will allow the callback to be called whenever new messages come in.  If we don't put this line in, then the node will not work, and ROS will not process any messages.</p>
 <h2 id="edge-detection">Edge Detection</h2>
 <p>In this section, we highlight a node that utilizes the <a href="https://www.geeksforgeeks.org/python-opencv-canny-function/">Canny Edge filter</a> algorithm to detect the edges from an image and convert it back as a ROS image to be visualized in RViz. In a terminal, execute:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/catkin_ws/src/stretch_tutorials/src
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span> ~/catkin_ws/src/stretch_tutorials/src
 python3 edge_detection.py
 </code></pre></div>
 <p>The node will publish a new Image topic named <code>/image_edge_detection</code>. This can be visualized in RViz and a gif is provided below for reference.</p>

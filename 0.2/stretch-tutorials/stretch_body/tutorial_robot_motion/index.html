@@ -3841,10 +3841,11 @@
 <li>a: acceleration of motion</li>
 </ul>
 <p>We provide 'defaults' for the velocity and acceleration settings, as well as 'fast', and 'slow' settings. These values have been tuned to be appropriate for the safe movement of the robot. These values can be queried using the <code>stretch_params.py</code> tool:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;<span class="nv">$stretch_params</span>.py <span class="p">|</span> grep arm <span class="p">|</span> grep motion <span class="p">|</span> grep default
-stretch_body.robot_params.nominal_params      param.arm.motion.fast.accel_m     <span class="m">0</span>.14                           
-stretch_body.robot_params.nominal_params      param.arm.motion.fast.vel_m       <span class="m">0</span>.14 
+<p><div class="shell-prompt highlight"><pre><span></span><code>stretch_params.py <span class="p">|</span> grep arm <span class="p">|</span> grep motion <span class="p">|</span> grep default
 </code></pre></div>
+<div class="no-copy highlight"><pre><span></span><code>stretch_body.robot_params.nominal_params      param.arm.motion.fast.accel_m     <span class="m">0</span>.14                           
+stretch_body.robot_params.nominal_params      param.arm.motion.fast.vel_m       <span class="m">0</span>.14
+</code></pre></div></p>
 <p>We see that the arm motion in 'default' mode will move with a velocity of 0.14 m/s and an acceleration of 0.14 m/s^2. </p>
 <p>The <code>move_by</code> and <code>move_to</code> commands support optional motion profile parameters. For example, for a fast motion: </p>
 <div class="highlight"><pre><span></span><code><span class="n">v</span> <span class="o">=</span> <span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;motion&#39;</span><span class="p">][</span><span class="s1">&#39;fast&#39;</span><span class="p">][</span><span class="s1">&#39;vel_m&#39;</span><span class="p">]</span>
@@ -3856,9 +3857,10 @@ stretch_body.robot_params.nominal_params      param.arm.motion.fast.vel_m       
 <p>The motion will use the 'default' motion profile settings if no values are specified.</p>
 <h2 id="motion-limits">Motion Limits</h2>
 <p>All joints obey motion limits which are specified in the robot parameters. </p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep arm <span class="p">|</span> grep range_m
-stretch_user_params.yaml          param.arm.range_m     <span class="o">[</span><span class="m">0</span>.0, <span class="m">0</span>.515<span class="o">]</span> 
+<p><div class="shell-prompt highlight"><pre><span></span><code>stretch_params.py <span class="p">|</span> grep arm <span class="p">|</span> grep range_m
 </code></pre></div>
+<div class="no-copy highlight"><pre><span></span><code>stretch_user_params.yaml          param.arm.range_m     <span class="o">[</span><span class="m">0</span>.0, <span class="m">0</span>.515<span class="o">]</span> 
+</code></pre></div></p>
 <p>These are the mechanical limits of the joints and have been set at the factory to prevent damage to the hardware. It is not recommended to set them to be greater than the factory-specified values. However, they can be further limited if desired by setting soft motion limits:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">stretch_body.robot</span>
 <span class="n">robot</span><span class="o">=</span><span class="n">stretch_body</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">Robot</span><span class="p">()</span>

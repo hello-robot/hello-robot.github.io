@@ -4207,8 +4207,8 @@
 
 <h1 id="command-line-tools">Command Line Tools</h1>
 <p>The Stretch robot comes with a set of command line tools that are helpful for introspection during general use or while troubleshooting issues. This page provides an overview of these tools. If you like, visit the <a href="https://github.com/hello-robot/stretch_body/tree/master/tools/bin">stretch_body</a> repository to have a look under the hood.</p>
-<p>You can execute these commands from anywhere in the terminal. We recommend you to execute these commands as we follow each one of them. You can also find the description for the utility each tool provides by passing the optional '-h' flag along with the tool name in the terminal. For example, from anywhere in the terminal execute:
-<div class="highlight"><pre><span></span><code><span class="go">stretch_about.py -h</span>
+<p>You can execute these commands from anywhere in the terminal. We recommend you execute these commands as we follow each one of them. You can also find the description for the utility each tool provides by passing the optional '-h' flag along with the tool name in the terminal. For example, from anywhere in the terminal execute:
+<div class="shell-prompt highlight"><pre><span></span><code>stretch_about.py -h
 </code></pre></div></p>
 <h2 id="system-information">System Information</h2>
 <h3 id="stretch_aboutpy">stretch_about.py</h3>
@@ -4220,18 +4220,18 @@
 <h3 id="stretch_paramspy">stretch_params.py</h3>
 <p>This tool prints the Stretch parameters to the console.</p>
 <h3 id="stretch_robot_monitorpy">stretch_robot_monitor.py</h3>
-<p>This tool runs the Robot Monitor and prints to console.</p>
+<p>This tool runs the Robot Monitor and prints to the console.</p>
 <h3 id="stretch_robot_urdf_visualizerpy">stretch_robot_urdf_visualizer.py</h3>
 <p>This tool allows you to visualize robot URDF.</p>
 <h2 id="introspection">Introspection</h2>
 <h3 id="stretch_robot_system_checkpy">stretch_robot_system_check.py</h3>
-<p>This tool checks that all robot hardware is present and reporting sane values.</p>
+<p>This tool checks that all robot hardware is present and is reporting sane values.</p>
 <h3 id="stretch_robot_battery_checkpy">stretch_robot_battery_check.py</h3>
-<p>This is a tool to print battery state to console.</p>
+<p>This is a tool to print the battery state to the console.</p>
 <h3 id="stretch_hardware_echopy">stretch_hardware_echo.py</h3>
 <p>This tool echoes the robot and computer hardware details to the console.</p>
 <h3 id="stretch_robot_dynamixel_rebootpy">stretch_robot_dynamixel_reboot.py</h3>
-<p>This tool reboots all Dynamixel servos on robot.</p>
+<p>This tool reboots all Dynamixel servos on the robot.</p>
 <h3 id="stretch_pimu_scopepy">stretch_pimu_scope.py</h3>
 <p>This tool allows you to visualize Pimu (Power+IMU) board data with an oscilloscope. Pass the '-h' flag along with the command to see optional arguments.</p>
 <h3 id="stretch_wacc_scopepy">stretch_wacc_scope.py</h3>
@@ -4246,7 +4246,7 @@
 <h3 id="stretch_robot_homepy">stretch_robot_home.py</h3>
 <p>This tool calibrates the robot by finding zeros for all robot joints.</p>
 <h3 id="stretch_gripper_homepy">stretch_gripper_home.py</h3>
-<p>This tool calibrates the gripper position by closing until motion stops.</p>
+<p>This tool calibrates the gripper position by closing until the motion stops.</p>
 <h3 id="stretch_wrist_yaw_homepy">stretch_wrist_yaw_home.py</h3>
 <p>This tool calibrates the wrist_yaw position by moving to both hardstops.</p>
 <h3 id="stretch_arm_homepy">stretch_arm_home.py</h3>
@@ -4255,7 +4255,7 @@
 <p>This tool calibrates the lift position by moving to the upper hardstop.</p>
 <h2 id="jogging-joints">Jogging Joints</h2>
 <h3 id="stretch_robot_jogpy">stretch_robot_jog.py</h3>
-<p>This tool prints all robot data to console.</p>
+<p>This tool prints all robot data to the console.</p>
 <h3 id="stretch_gripper_jogpy">stretch_gripper_jog.py</h3>
 <p>This tool allows you to jog the griper from the keyboard.</p>
 <h3 id="stretch_wrist_yaw_jogpy">stretch_wrist_yaw_jog.py</h3>
@@ -4272,18 +4272,18 @@
 <h3 id="stretch_wacc_jogpy">stretch_wacc_jog.py</h3>
 <p>This tool allows you to command and query the Wacc (Wrist Accelerometer) board from the keyboard.</p>
 <h3 id="stretch_pimu_jogpy">stretch_pimu_jog.py</h3>
-<p>This tool allows you to comnmand and query the Pimu (Power+IMU) board from the keyboard.</p>
+<p>This tool allows you to command and query the Pimu (Power+IMU) board from the keyboard.</p>
 <h3 id="stretch_rp_lidar_jogpy">stretch_rp_lidar_jog.py</h3>
 <p>This is a tool to control the RP-Lidar. Pass the '-h' flag along with the command to see optional arguments.</p>
 <h3 id="stretch_trajectory_jogpy">stretch_trajectory_jog.py</h3>
 <p>This tool allows you to test out splined trajectories on the various joint from a GUI or text menu. Pass the '-h' flag along with the command to see optional arguments.</p>
 <h2 id="teleoperation">Teleoperation</h2>
 <h3 id="stretch_robot_stowpy">stretch_robot_stow.py</h3>
-<p>This tool moves robot to stow position.</p>
+<p>This tool moves the robot to stow position.</p>
 <h3 id="stretch_robot_keyboard_teleoppy">stretch_robot_keyboard_teleop.py</h3>
 <p>This tool allows you to control the robot base, lift, arm, head, and tool from the keyboard.</p>
 <h3 id="stretch_xbox_controller_teleoppy">stretch_xbox_controller_teleop.py</h3>
-<p>This tool allows you to jog the robot from an XBox Controller.</p>
+<p>This tool allows you to jog the robot from an Xbox Controller.</p>
 
 
 

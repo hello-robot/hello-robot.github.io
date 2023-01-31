@@ -3560,7 +3560,7 @@
 <span class="c1">## MoveIt! Without Hardware</span>
 To begin running MoveIt! on stretch, run the demo launch file. This doesn<span class="err">&#39;</span>t require any simulator or robot to run.
 
-<span class="sb">```</span>bash
+<span class="sb">```</span><span class="o">{</span>.bash .shell-prompt<span class="o">}</span>
 roslaunch stretch_moveit_config demo.launch
 </code></pre></div></p>
 <p>This will bring up an RViz instance where you can move the robot around using <a href="http://wiki.ros.org/rviz/Tutorials/Interactive%20Markers%3A%20Getting%20Started">interactive markers</a> and create plans between poses. You can reference the bottom gif as a guide to plan and execute motion.</p>
@@ -3598,17 +3598,17 @@ roslaunch stretch_moveit_config demo.launch
 
 To run in Gazebo, execute:
 
-<div class="highlight"><pre><span></span><code>roslaunch stretch_gazebo gazebo.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_gazebo gazebo.launch
 </code></pre></div>
 
 Then, in a new terminal, execute:
 
-<div class="highlight"><pre><span></span><code>roslaunch stretch_core teleop_twist.launch twist_topic:<span class="o">=</span>/stretch_diff_drive_controller/cmd_vel linear:<span class="o">=</span><span class="m">1</span>.0 angular:<span class="o">=</span><span class="m">2</span>.0 teleop_type:<span class="o">=</span>keyboard
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_core teleop_twist.launch twist_topic:<span class="o">=</span>/stretch_diff_drive_controller/cmd_vel linear:<span class="o">=</span><span class="m">1</span>.0 angular:<span class="o">=</span><span class="m">2</span>.0 teleop_type:<span class="o">=</span>keyboard
 </code></pre></div>
 
 In a separate terminal, launch:
 
-<div class="highlight"><pre><span></span><code>roslaunch stretch_moveit_config demo_gazebo.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_moveit_config demo_gazebo.launch
 </code></pre></div>
 
 This will launch a Rviz instance that visualizes the joints with markers and an empty world in Gazebo with Stretch and load all the controllers. There are pre-defined positions for each joint group for demonstration purposes. There are three joint groups, namely stretch_arm, stretch_gripper and stretch_head that can be controlled individually via the Motion Planning Rviz plugin. Start and goal positions for joints can be selected similarly to [this moveit tutorial](https://ros-planning.github.io/moveit_tutorials/doc/quickstart_in_rviz/quickstart_in_rviz_tutorial.html#choosing-specific-start-goal-states).
@@ -3616,13 +3616,13 @@ This will launch a Rviz instance that visualizes the joints with markers and an 
 <p align="center">
 <h2 id="running-gazebo-with-moveit-and-stretch">Running Gazebo with MoveIt! and Stretch</h2>
 <p>To run in Gazebo, execute:</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_gazebo gazebo.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_gazebo gazebo.launch
 </code></pre></div>
 <p>Then, in a new terminal, execute:</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_core teleop_twist.launch twist_topic:<span class="o">=</span>/stretch_diff_drive_controller/cmd_vel linear:<span class="o">=</span><span class="m">1</span>.0 angular:<span class="o">=</span><span class="m">2</span>.0 teleop_type:<span class="o">=</span>keyboard
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_core teleop_twist.launch twist_topic:<span class="o">=</span>/stretch_diff_drive_controller/cmd_vel linear:<span class="o">=</span><span class="m">1</span>.0 angular:<span class="o">=</span><span class="m">2</span>.0 teleop_type:<span class="o">=</span>keyboard
 </code></pre></div>
 <p>In a separate terminal, launch:</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_moveit_config demo_gazebo.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_moveit_config demo_gazebo.launch
 </code></pre></div>
 <p>This will launch a Rviz instance that visualizes the joints with markers and an empty world in Gazebo with Stretch and load all the controllers. There are pre-defined positions for each joint group for demonstration purposes. There are three joint groups, namely stretch_arm, stretch_gripper and stretch_head that can be controlled individually via the Motion Planning Rviz plugin. Start and goal positions for joints can be selected similarly to <a href="https://ros-planning.github.io/moveit_tutorials/doc/quickstart_in_rviz/quickstart_in_rviz_tutorial.html#choosing-specific-start-goal-states">this moveit tutorial</a>.</p>
 <p align="center">

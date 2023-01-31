@@ -3626,13 +3626,13 @@
 <h2 id="example-3">Example 3</h2>
 <p>This example aims to combine the two previous examples and have Stretch utilize its laser scan data to avoid collision with objects as it drives forward.</p>
 <p>Begin by running the following command in a new terminal.</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 <p>Then, in a new terminal, type the following to activate the LiDAR sensor.</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_core rplidar.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_core rplidar.launch
 </code></pre></div>
 <p>To set <code>navigation</code> mode and to activate the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/avoider.py">avoider.py</a> node, type the following in a new terminal.</p>
-<div class="highlight"><pre><span></span><code>rosservice call /switch_to_navigation_mode
+<div class="shell-prompt highlight"><pre><span></span><code>rosservice call /switch_to_navigation_mode
 <span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 avoider.py
 </code></pre></div>

@@ -3668,13 +3668,13 @@
 <h2 id="perception-introduction">Perception Introduction</h2>
 <p>The Stretch robot is equipped with the <a href="https://www.intelrealsense.com/depth-camera-d435i/">Intel RealSense D435i camera</a>, an essential component that allows the robot to measure and analyze the world around it. In this tutorial, we are going to showcase how to visualize the various topics published by the camera.</p>
 <p>Begin by running the stretch <code>driver.launch</code> file.</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 <p>To activate the <a href="https://www.intelrealsense.com/depth-camera-d435i/">RealSense camera</a> and publish topics to be visualized, run the following launch file in a new terminal.</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_core d435i_low_resolution.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_core d435i_low_resolution.launch
 </code></pre></div>
 <p>Within this tutorial package, there is an <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/rviz/perception_example.rviz">RViz config file</a> with the topics for perception already in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.</p>
-<div class="highlight"><pre><span></span><code>rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/perception_example.rviz
+<div class="shell-prompt highlight"><pre><span></span><code>rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/perception_example.rviz
 </code></pre></div>
 <h3 id="pointcloud2-display">PointCloud2 Display</h3>
 <p>A list of displays on the left side of the interface can visualize the camera data. Each display has its properties and status that notify a user if topic messages are received.</p>

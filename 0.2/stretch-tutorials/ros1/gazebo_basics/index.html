@@ -3604,7 +3604,7 @@
 <h1 id="spawning-stretch-in-simulation-gazebo">Spawning Stretch in Simulation (Gazebo)</h1>
 <h2 id="empty-world-simulation">Empty World Simulation</h2>
 <p>To spawn Stretch in Gazebo's default empty world run the following command in your terminal.</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_gazebo gazebo.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_gazebo gazebo.launch
 </code></pre></div>
 <p>This will bring up the robot in the gazebo simulation similar to the image shown below.</p>
 <p align="center">
@@ -3613,10 +3613,10 @@
 
 <h2 id="custom-world-simulation">Custom World Simulation</h2>
 <p>In Gazebo, you can spawn Stretch in various worlds. First, source the Gazebo world files by running the following command in a terminal:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;source /usr/share/gazebo/setup.sh&quot;</span>
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;source /usr/share/gazebo/setup.sh&quot;</span>
 </code></pre></div>
 <p>Then using the world argument, you can spawn Stretch in the Willow Garage world by running the following:</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_gazebo gazebo.launch world:<span class="o">=</span>worlds/willowgarage.world
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_gazebo gazebo.launch world:<span class="o">=</span>worlds/willowgarage.world
 </code></pre></div>
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/stretch_willowgarage_world.png"/>

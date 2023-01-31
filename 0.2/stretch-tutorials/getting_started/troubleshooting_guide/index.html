@@ -3640,18 +3640,18 @@
 <h2 id="rpc-transport-errors-stretch-doesnt-respond-to-commands">RPC Transport Errors (Stretch doesn't respond to commands)</h2>
 <p>If more than one instance of Stretch Body's <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py">Robot</a> class is instantiated at a time, Stretch Body will report communication errors and will not always execute motion commands as expected. This is because the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py">Robot</a> class manages communications with the robot hardware and it doesn't support multiple writes to the USB devices.</p>
 <p>These errors can appear as</p>
-<div class="highlight"><pre><span></span><code>Transport RX Error on RPC_ACK_SEND_BLOCK_MORE False 0 102
+<div class="no-copy highlight"><pre><span></span><code>Transport RX Error on RPC_ACK_SEND_BLOCK_MORE False <span class="m">0</span> <span class="m">102</span>
 ---- Debug Exception
 --------------- New RPC -------------------------
 Framer sent RPC_START_NEW_RPC
 ...
 </code></pre></div>
 <p>or as</p>
-<div class="highlight"><pre><span></span><code>IOError(None): None
+<div class="no-copy highlight"><pre><span></span><code>IOError<span class="o">(</span>None<span class="o">)</span>: None
 ...
 </code></pre></div>
 <p>To check if an instance of <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py">Robot</a> is already instantiated, you may use the Unix <a href="https://www.unixtutorial.org/commands/top">top</a> command to monitor active processes. You may use the Unix <a href="https://linuxize.com/post/pkill-command-in-linux/">pkill</a> command to end the background instance of Robot.</p>
-<div class="shell-prompt highlight"><pre><span></span><code>$ pkill -9 python
+<div class="shell-prompt highlight"><pre><span></span><code>pkill -9 python
 </code></pre></div>
 <p>As shipped, Stretch launches <a href="https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_xbox_controller_teleop.py">stretch_xbox_controller_teleop.py</a> upon boot. It is necessary to turn off this automatic launch feature, otherwise, your own Robot instance will conflict with this script. Additionally, if you are logged into multiple accounts, a Robot instance may be active in another user account.</p>
 <p>To turn it off, search for 'Startup' from Ubuntu Activities. Uncheck the box for 'hello_robot_xbox_teleop'.</p>

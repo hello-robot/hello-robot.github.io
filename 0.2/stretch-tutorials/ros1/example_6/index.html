@@ -3644,10 +3644,10 @@
 </p>
 
 <p>Begin by running the following command in a terminal.</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 <p>Switch the mode to <code>position</code> mode using a rosservice call. Then run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/effort_sensing.py">effort_sensing.py</a> node. In a new terminal, execute:</p>
-<div class="highlight"><pre><span></span><code>rosservice call /switch_to_position_mode
+<div class="shell-prompt highlight"><pre><span></span><code>rosservice call /switch_to_position_mode
 <span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 effort_sensing.py
 </code></pre></div>
@@ -3883,7 +3883,7 @@ python3 effort_sensing.py
 <span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;2022-06-30_11:26:20-AM&#39;</span>
 </code></pre></div>
 <p>Once you have changed the file name, then run the following in a new command.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 stored_data_plotter.py
 </code></pre></div>
 <p>Because this is not a node, you don't need <code>roscore</code> to run this script. Please review the comments in the python script for additional guidance.</p>

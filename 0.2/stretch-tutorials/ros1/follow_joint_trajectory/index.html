@@ -3753,10 +3753,10 @@
 </p>
 
 <p>Begin by running the following command in a terminal.</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 <p>In a new terminal, switch the mode to <code>position</code> mode using a rosservice call. Then run the stow command node.</p>
-<div class="highlight"><pre><span></span><code>rosservice call /switch_to_position_mode
+<div class="shell-prompt highlight"><pre><span></span><code>rosservice call /switch_to_position_mode
 <span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 stow_command.py
 </code></pre></div>

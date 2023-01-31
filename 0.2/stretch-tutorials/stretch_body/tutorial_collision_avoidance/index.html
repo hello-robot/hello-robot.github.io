@@ -3692,11 +3692,13 @@
 <p>Self collisions are still possible while using the collision-avoidance system. The factory default collision models are coarse and not necessarily complete.</p>
 </div>
 <p>This system is turned off by default starting with Stretch 2. It may be turned off by default on many RE1 systems. First check if the collision detection system is turned on:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep use_collision_manager
-stretch_body.robot_params.nominal_params       param.robot.use_collision_manager         <span class="m">1</span>
+<div class="shell-prompt highlight"><pre><span></span><code>stretch_params.py <span class="p">|</span> grep use_collision_manager
 </code></pre></div>
+<p>Output:
+<div class="no-copy highlight"><pre><span></span><code>stretch_body.robot_params.nominal_params       param.robot.use_collision_manager         <span class="m">1</span>
+</code></pre></div></p>
 <p>If it is turned off you can enable it by adding the following to your stretch_user_yaml.py:</p>
-<div class="highlight"><pre><span></span><code>robot:
+<div class="no-copy highlight"><pre><span></span><code>robot:
   use_collision_manager: <span class="m">1</span>
 </code></pre></div>
 <h2 id="common-self-collisions">Common Self Collisions</h2>
@@ -3710,9 +3712,11 @@ stretch_body.robot_params.nominal_params       param.robot.use_collision_manager
 </ul>
 <h2 id="joint-limits">Joint Limits</h2>
 <p>The collision avoidance system works by dynamically modifying the acceptable range of motion for each joint. By default, a joint's range is set to the physical hard stop limits. For example, the lift has a mechanical throw of 1.1m:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;<span class="nv">$stretch_params</span>.py <span class="p">|</span> grep range <span class="p">|</span> grep lift
-stretch_body.robot_params.factory_params       param.lift.range_m      <span class="o">[</span><span class="m">0</span>.0, <span class="m">1</span>.1<span class="o">]</span>                
+<div class="shell-prompt highlight"><pre><span></span><code>stretch_params.py <span class="p">|</span> grep range <span class="p">|</span> grep lift
 </code></pre></div>
+<p>Output:
+<div class="no-copy highlight"><pre><span></span><code>stretch_body.robot_params.factory_params       param.lift.range_m      <span class="o">[</span><span class="m">0</span>.0, <span class="m">1</span>.1<span class="o">]</span>                
+</code></pre></div></p>
 <p>A reduced range of motion can be set at run-time by setting the Soft Motion Limit. For example, to limit the lift range of motion to 0.3 meters off the base:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">stretch_body.robot</span> <span class="k">as</span> <span class="nn">robot</span>
 <span class="n">r</span><span class="o">=</span><span class="n">robot</span><span class="o">.</span><span class="n">Robot</span><span class="p">()</span>
@@ -3738,10 +3742,12 @@ stretch_body.robot_params.factory_params       param.lift.range_m      <span cla
 <h2 id="collision-models">Collision Models</h2>
 <p>The <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_collision.py">RobotCollision</a> class manages a set of <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_collision.py">RobotCollisionModels</a>. Each <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_collision.py">RobotCollisionModel</a> computes the soft limits for a subset of joints based on a simple geometric model. This geometric model captures the enumerated set of potential collisions listed above.</p>
 <p>We can see which collision models will execute when <code>use_collision_manager</code> is set to 1:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep collision <span class="p">|</span> grep enabled
-stretch_body.robot_params.nominal_params    param.collision_arm_camera.enabled           <span class="m">1</span>                             
-stretch_body.robot_params.nominal_params    param.collision_stretch_gripper.enabled      <span class="m">1</span>  
+<div class="shell-prompt highlight"><pre><span></span><code>stretch_params.py <span class="p">|</span> grep collision <span class="p">|</span> grep enabled
 </code></pre></div>
+<p>Output:
+<div class="no-copy highlight"><pre><span></span><code>stretch_body.robot_params.nominal_params    param.collision_arm_camera.enabled           <span class="m">1</span>                             
+stretch_body.robot_params.nominal_params    param.collision_stretch_gripper.enabled      <span class="m">1</span>  
+</code></pre></div></p>
 <p>We see two models. One that protects the camera from the arm, and one that protects the base from the gripper. Each model is registered with the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_collision.py">RobotCollision</a> instance as a loadable plug-in. The <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py">Robot</a> class calls the <code>RobotCollision.step</code> method periodically at approximately 10hz. </p>
 <p><code>RobotCollision.step</code> computes the 'AND' of the limits specified across each Collision Model such that the most restrictive joint limits are set for each joint using the <code>set_soft_motion_limit_min</code> and <code>set_soft_motion_limt_max</code> methods. </p>
 <h2 id="default-collision-models">Default Collision Models</h2>
@@ -3843,7 +3849,7 @@ stretch_body.robot_params.nominal_params    param.collision_stretch_gripper.enab
 </code></pre></div>
 In this example, we include the <code>safety_margin</code> as a way to introduce some hysteresis around state changes to avoid toggling between the soft limits.</p>
 <p>The following command should be run to add the working directory to the PYTHONPATH env. This can also be added to our <code>.bashrc</code> to permanently edit the path:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$ <span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PYTHONPATH</span>:/&lt;path_to_modules&gt;
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PYTHONPATH</span>:/&lt;path_to_modules&gt;
 </code></pre></div>
 <p>Next, we configure RobotCollision to use our CollisionArmTable model in <code>stretch_re1_user_yaml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">robot_collision</span><span class="p">:</span><span class="w"></span>
@@ -3856,7 +3862,7 @@ In this example, we include the <code>safety_margin</code> as a way to introduce
 <span class="w">  </span><span class="nt">py_module_name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;collision_arm_table&#39;</span><span class="w"></span>
 </code></pre></div>
 <p>Finally, test out the model by driving the arm and lift around using the Xbox teleoperation tool:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_xbox_controller_teleop.py
+<div class="shell-prompt highlight"><pre><span></span><code>stretch_xbox_controller_teleop.py
 </code></pre></div>
 <hr />
 <div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks.</div>

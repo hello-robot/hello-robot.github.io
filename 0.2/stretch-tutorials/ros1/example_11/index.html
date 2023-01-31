@@ -3626,17 +3626,17 @@
 <h2 id="example-11">Example 11</h2>
 <p>This tutorial highlights how to create a <a href="http://docs.ros.org/en/melodic/api/sensor_msgs/html/msg/PointCloud.html">PointCloud</a> message from the data of a <a href="http://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/PointCloud2.html">PointCloud2</a> message type, then transform the PointCloud's reference link to a different frame. The data published by RealSense is referencing its <code>camera_color_optical_frame</code> link, and we will be changing its reference to the <code>base_link</code>.</p>
 <p>Begin by starting up the stretch driver launch file.</p>
-<p><div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
+<p><div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 To activate the <a href="https://www.intelrealsense.com/depth-camera-d435i/">RealSense camera</a> and publish topics to be visualized, run the following launch file in a new terminal.</p>
-<p><div class="highlight"><pre><span></span><code>roslaunch stretch_core d435i_low_resolution.launch
+<p><div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_core d435i_low_resolution.launch
 </code></pre></div>
 Then run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/pointcloud_transformer.py">pointCloud_transformer.py</a> node. In a new terminal, execute:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 pointcloud_transformer.py
 </code></pre></div>
 <p>Within this tutorial package, there is an <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/rviz/PointCloud_transformer_example.rviz">RViz config file</a> with the <code>PointCloud</code> in the Display tree. You can visualize this topic and the robot model by running the command below in a new terminal.</p>
-<div class="highlight"><pre><span></span><code>rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/PointCloud_transformer_example.rviz
+<div class="shell-prompt highlight"><pre><span></span><code>rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/PointCloud_transformer_example.rviz
 </code></pre></div>
 <p>The GIF below visualizes what happens when running the previous node.</p>
 <p align="center">

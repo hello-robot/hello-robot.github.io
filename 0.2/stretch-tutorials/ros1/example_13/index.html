@@ -3647,7 +3647,7 @@
 <p>First, begin by building a map of the space the robot will be navigating in. If you need a refresher on how to do this, then check out the <a href="../navigation_stack/">Navigation Stack tutorial</a>.</p>
 <h2 id="getting-started">Getting Started</h2>
 <p>Next, with your created map, we can navigate the robot around the mapped space. Run:</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_navigation navigation.launch map_yaml:<span class="o">=</span><span class="si">${</span><span class="nv">HELLO_FLEET_PATH</span><span class="si">}</span>/maps/&lt;map_name&gt;.yaml
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_navigation navigation.launch map_yaml:<span class="o">=</span><span class="si">${</span><span class="nv">HELLO_FLEET_PATH</span><span class="si">}</span>/maps/&lt;map_name&gt;.yaml
 </code></pre></div>
 <p>Where <code>${HELLO_FLEET_PATH}</code> is the path of the <code>&lt;map_name&gt;.yaml</code> file.</p>
 <div class="admonition note">
@@ -3659,7 +3659,7 @@
 </p>
 
 <p>Now we are going to use a node to send a move_base goal half a meter in front of the map's origin. run the following command in a new terminal to execute the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/navigation.py">navigation.py</a> node.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 navigation.py
 </code></pre></div>
 <h3 id="the-code">The Code</h3>

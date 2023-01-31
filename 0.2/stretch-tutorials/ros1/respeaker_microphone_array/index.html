@@ -3632,7 +3632,7 @@
 <h3 id="stretch-body-package">Stretch Body Package</h3>
 <p>In this section we will use command line tools in the <a href="https://github.com/hello-robot/stretch_body">Stretch_Body</a> package, a low-level Python API for Stretch's hardware, to directly interact with the ReSpeaker.</p>
 <p>Begin by typing the following command in a new terminal.</p>
-<div class="highlight"><pre><span></span><code>stretch_respeaker_test.py
+<div class="shell-prompt highlight"><pre><span></span><code>stretch_respeaker_test.py
 </code></pre></div>
 <p>The following will be displayed in your terminal:</p>
 <div class="no-copy highlight"><pre><span></span><code>For use with S T R E T C H <span class="o">(</span>TM<span class="o">)</span> RESEARCH EDITION from Hello Robot Inc.
@@ -3648,11 +3648,11 @@
 <h3 id="respeaker_ros-package">ReSpeaker_ROS Package</h3>
 <p>A <a href="https://index.ros.org/p/respeaker_ros/#melodic">ROS package for the ReSpeaker</a> is utilized for this section.</p>
 <p>Begin by running the <code>sample_respeaker.launch</code> file in a terminal.</p>
-<div class="highlight"><pre><span></span><code>roslaunch respeaker_ros sample_respeaker.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch respeaker_ros sample_respeaker.launch
 </code></pre></div>
 <p>This will bring up the necessary nodes that will allow the ReSpeaker to implement a voice and sound interface with the robot.</p>
 <p>Below are executables you can run to see the ReSpeaker results.</p>
-<div class="highlight"><pre><span></span><code>rostopic <span class="nb">echo</span> /sound_direction    <span class="c1"># Result of Direction (in Radians) of Audio</span>
+<div class="shell-prompt highlight"><pre><span></span><code>rostopic <span class="nb">echo</span> /sound_direction    <span class="c1"># Result of Direction (in Radians) of Audio</span>
 rostopic <span class="nb">echo</span> /sound_localization <span class="c1"># Result of Direction as Pose (Quaternion values)</span>
 rostopic <span class="nb">echo</span> /is_speeching       <span class="c1"># Result of Voice Activity Detector</span>
 rostopic <span class="nb">echo</span> /audio              <span class="c1"># Raw audio data</span>
@@ -3660,7 +3660,7 @@ rostopic <span class="nb">echo</span> /speech_audio       <span class="c1"># Raw
 rostopic <span class="nb">echo</span> /speech_to_text     <span class="c1"># Voice recognition</span>
 </code></pre></div>
 <p>An example is when you run the <code>speech_to_text</code> executable and speak near the microphone array. In a new terminal, execute:</p>
-<div class="highlight"><pre><span></span><code>hello-robot@stretch-re1-1005:~$ rostopic <span class="nb">echo</span> /speech_to_text
+<div class="shell-prompt highlight"><pre><span></span><code>rostopic <span class="nb">echo</span> /speech_to_text
 </code></pre></div>
 <p>In this instance, "hello robot" was said. The following will be displayed in your terminal:</p>
 <div class="no-copy highlight"><pre><span></span><code>transcript:
@@ -3669,7 +3669,7 @@ confidence: <span class="o">[]</span>
 ---
 </code></pre></div>
 <p>You can also set various parameters via <code>dynamic_reconfigure</code> by running the following command in a new terminal.</p>
-<div class="highlight"><pre><span></span><code>rosrun rqt_reconfigure rqt_reconfigure
+<div class="shell-prompt highlight"><pre><span></span><code>rosrun rqt_reconfigure rqt_reconfigure
 </code></pre></div>
 
 

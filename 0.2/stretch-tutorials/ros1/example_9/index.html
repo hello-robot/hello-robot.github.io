@@ -3626,14 +3626,14 @@
 <h2 id="example-9">Example 9</h2>
 <p>This example aims to combine the <a href="../respeaker_microphone_array/">ReSpeaker Microphone Array</a> and <a href="../follow_joint_trajectory/">Follow Joint Trajectory</a> tutorials to voice teleoperate the mobile base of the Stretch robot.</p>
 <p>Begin by running the following command in a new terminal.</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 <p>Switch the mode to <code>position</code> mode using a rosservice call. Then run the <code>respeaker.launch</code> file. In a new terminal, execute:</p>
-<div class="highlight"><pre><span></span><code>rosservice call /switch_to_position_mode
+<div class="shell-prompt highlight"><pre><span></span><code>rosservice call /switch_to_position_mode
 roslaunch stretch_core respeaker.launch
 </code></pre></div>
 <p>Then run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/voice_teleoperation_base.py">voice_teleoperation_base.py</a> node in a new terminal.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 voice_teleoperation_base.py
 </code></pre></div>
 <p>In terminal 3, a menu of voice commands is printed. You can reference this menu layout below.  </p>

@@ -3653,13 +3653,14 @@
 </code></pre></div>
 <h2 id="runstop-functions">Runstop Functions</h2>
 <p>The Runstop deactivates all robot motion. It can be triggered by the physical button on the robot's head. It can also be triggered by internal monitors of the system state. The default configuration of these parameters is:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep stop_at
-stretch_body.robot_params.nominal_params param.pimu.config.stop_at_cliff       <span class="m">0</span>                             
+<p><div class="shell-prompt highlight"><pre><span></span><code>stretch_params.py <span class="p">|</span> grep stop_at
+</code></pre></div>
+<div class="no-copy highlight"><pre><span></span><code>stretch_body.robot_params.nominal_params param.pimu.config.stop_at_cliff       <span class="m">0</span>                             
 stretch_body.robot_params.nominal_params param.pimu.config.stop_at_high_current   <span class="m">0</span>                             
 stretch_body.robot_params.nominal_params param.pimu.config.stop_at_low_voltage  <span class="m">1</span>                             
 stretch_body.robot_params.nominal_params param.pimu.config.stop_at_runstop <span class="m">1</span>                             
 stretch_body.robot_params.nominal_params param.pimu.config.stop_at_tilt   <span class="m">0</span> 
-</code></pre></div>
+</code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3698,8 +3699,9 @@ stretch_body.robot_params.nominal_params param.pimu.config.stop_at_tilt   <span 
 <h2 id="robot-monitor">Robot Monitor</h2>
 <p>The <a href="https://github.com/hello-robot/stretch_body/blob/master/python/stretch_body/robot_monitor.py">Robot Monitor</a> is a thread that monitors the Robot Status data for significant events. For example, it can monitor the error flags from the Dynamixel servos and notify when a thermal overload occurs. The Robot Monitor logs warnings to a log file by default.</p>
 <p>The default parameters associated with RobotMonitor are:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep monitor
-...             
+<p><div class="shell-prompt highlight"><pre><span></span><code>stretch_params.py <span class="p">|</span> grep monitor
+</code></pre></div>
+<div class="no-copy highlight"><pre><span></span><code>...             
 stretch_body.robot_params.nominal_params   param.robot.use_monitor            <span class="m">1</span>               
 stretch_body.robot_params.nominal_params  param.robot_monitor.monitor_base_bump_event    <span class="m">1</span>                        
 stretch_body.robot_params.nominal_params   param.robot_monitor.monitor_base_cliff_event          <span class="m">1</span>                             
@@ -3710,7 +3712,7 @@ stretch_body.robot_params.nominal_params   param.robot_monitor.monitor_over_tilt
 stretch_body.robot_params.nominal_params     param.robot_monitor.monitor_runstop        <span class="m">1</span>                     
 stretch_body.robot_params.nominal_params     param.robot_monitor.monitor_voltage                 <span class="m">1</span>             
 stretch_body.robot_params.nominal_params      param.robot_monitor.monitor_wrist_single_tap          <span class="m">1</span>
-</code></pre></div>
+</code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3762,15 +3764,15 @@ stretch_body.robot_params.nominal_params      param.robot_monitor.monitor_wrist_
 <span class="w">  </span><span class="nt">log_to_console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
 </code></pre></div>
 <p>Then run the tool and hit the Runstop button, and then hold it down for 2 seconds:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_robot_monitor.py
-stretch_robot_monitor.py 
-For use with S T R E T C H <span class="o">(</span>R<span class="o">)</span> RESEARCH EDITION from Hello Robot Inc.
+<p><div class="shell-prompt highlight"><pre><span></span><code>stretch_robot_monitor.py
+</code></pre></div>
+<div class="no-copy highlight"><pre><span></span><code>For use with S T R E T C H <span class="o">(</span>R<span class="o">)</span> RESEARCH EDITION from Hello Robot Inc.
 ---------------------------------------------------------------------
 
 Starting Robot Monitor. Ctrl-C to <span class="nb">exit</span>
 <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>robot_monitor<span class="o">]</span>: Runstop activated
 <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>robot_monitor<span class="o">]</span>: Runstop deactivated
-</code></pre></div>
+</code></pre></div></p>
 <h2 id="robot-sentry">Robot Sentry</h2>
 <p>The <a href="https://github.com/hello-robot/stretch_body/blob/master/python/stretch_body/robot_sentry.py">Robot Sentry</a> is a thread that can override and also generate commands to the robot hardware. Its purpose is to keep the robot operating within a safe regime. For example, the Robot Sentry monitors the position of the Lift and Arm and limits the maximum base velocity and acceleration to reduce the chance of toppling. The Robot Sentry reports events to the log file as well. </p>
 <table>

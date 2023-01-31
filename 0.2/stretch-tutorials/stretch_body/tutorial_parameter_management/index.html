@@ -3637,7 +3637,8 @@
 <span class="n">a</span><span class="o">=</span><span class="n">stretch_body</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">Arm</span><span class="p">()</span>
 
 <span class="n">a</span><span class="o">.</span><span class="n">params</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">7</span><span class="p">]:</span> 
+</code></pre></div>
+<div class="no-copy highlight"><pre><span></span><code><span class="n">Out</span><span class="p">[</span><span class="mi">7</span><span class="p">]:</span> 
 <span class="p">{</span><span class="s1">&#39;chain_pitch&#39;</span><span class="p">:</span> <span class="mf">0.0167</span><span class="p">,</span>
  <span class="s1">&#39;chain_sprocket_teeth&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
  <span class="s1">&#39;gr_spur&#39;</span><span class="p">:</span> <span class="mf">3.875</span><span class="p">,</span>
@@ -3658,8 +3659,8 @@
 </code></pre></div>
 <p>or to access another device params:</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span><span class="o">.</span><span class="n">robot_params</span><span class="p">[</span><span class="s1">&#39;lift&#39;</span><span class="p">]</span>
-
-<span class="n">Out</span><span class="p">[</span><span class="mi">9</span><span class="p">]:</span> 
+</code></pre></div>
+<div class="no-copy highlight"><pre><span></span><code><span class="n">Out</span><span class="p">[</span><span class="mi">9</span><span class="p">]:</span> 
 <span class="p">{</span><span class="s1">&#39;calibration_range_bounds&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.094</span><span class="p">,</span> <span class="mf">1.106</span><span class="p">],</span>
  <span class="s1">&#39;contact_model&#39;</span><span class="p">:</span> <span class="s1">&#39;effort_pct&#39;</span><span class="p">,</span>
  <span class="s1">&#39;contact_model_homing&#39;</span><span class="p">:</span> <span class="s1">&#39;effort_pct&#39;</span><span class="p">,</span>
@@ -3723,18 +3724,20 @@
 </table>
 <p>This allows the user to override any of the parameters by defining it in their <code>stretch_user_params.yaml</code>. It also allows Hello Robot to periodically update parameters defined in the Python files via Pip updates.</p>
 <p>The tool <code>stretch_params.py</code> will print out all of the robot parameters as well as their origin. For example:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;<span class="nv">$stretch_params</span>.py 
-<span class="c1">############################################################ Parameters for stretch-re2-2002 </span>
+<p><div class="shell-prompt highlight"><pre><span></span><code>stretch_params.py 
+</code></pre></div>
+<div class="no-copy highlight"><pre><span></span><code><span class="c1">############################################################ Parameters for stretch-re2-xxxx </span>
 Origin          Parameter                                                              Value                         
 --------------------------------------------------------------------------------------------------------------------------------- ...         
 stretch_body.robot_params.nominal_params         param.arm.chain_pitch          <span class="m">0</span>.0167                        
 stretch_body.robot_params.nominal_params         param.arm.chain_sprocket_teeth         <span class="m">10</span>                                     ...               
 stretch_configuration_params.yaml       param.arm.contact_models.effort_pct.contact_thresh_default     <span class="o">[</span>-45.0, <span class="m">45</span>.0<span class="o">]</span>         
-</code></pre></div>
+</code></pre></div></p>
 <h2 id="manually-querying-and-modifying-parameters">Manually Querying and Modifying Parameters</h2>
 <p>A quick way to query parameters is with the <code>stretch_params.py</code> tool. For example, to look at parameters relating to the arm motion:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep arm <span class="p">|</span> grep motion
-stretch_body.robot_params.nominal_params    param.arm.motion.default.accel_m    <span class="m">0</span>.14                          
+<p><div class="shell-prompt highlight"><pre><span></span><code>stretch_params.py <span class="p">|</span> grep arm <span class="p">|</span> grep motion
+</code></pre></div>
+<div class="no-copy highlight"><pre><span></span><code>stretch_body.robot_params.nominal_params    param.arm.motion.default.accel_m    <span class="m">0</span>.14                          
 stretch_body.robot_params.nominal_params    param.arm.motion.default.vel_m      <span class="m">0</span>.14                          
 stretch_body.robot_params.nominal_params    param.arm.motion.fast.accel_m       <span class="m">0</span>.3                           
 stretch_body.robot_params.nominal_params    param.arm.motion.fast.vel_m         <span class="m">0</span>.3                           
@@ -3743,7 +3746,7 @@ stretch_body.robot_params.nominal_params    param.arm.motion.max.vel_m          
 stretch_body.robot_params.nominal_params    param.arm.motion.slow.accel_m       <span class="m">0</span>.05                          
 stretch_body.robot_params.nominal_params    param.arm.motion.slow.vel_m         <span class="m">0</span>.05                          
 ...               
-</code></pre></div>
+</code></pre></div></p>
 <p>The tool displays each parameter's value as well as which parameter file it was loaded from.</p>
 <p>For example, if you want to override the default motion settings for the arm, you could add the following to your <code>stretch_user_params.yaml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">arm</span><span class="p">:</span><span class="w"></span>
@@ -3753,10 +3756,11 @@ stretch_body.robot_params.nominal_params    param.arm.motion.slow.vel_m         
 <span class="w">      </span><span class="nt">accel_m</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span><span class="w"></span>
 </code></pre></div>
 <p>Run the tool again and we see:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep arm <span class="p">|</span> grep motion <span class="p">|</span> grep default
-stretch_body.robot_params.nominal_params    param.arm.motion.default.accel_m    <span class="m">0</span>.1                          
-stretch_body.robot_params.nominal_params    param.arm.motion.default.vel_m      <span class="m">0</span>.1  
+<p><div class="shell-prompt highlight"><pre><span></span><code>stretch_params.py <span class="p">|</span> grep arm <span class="p">|</span> grep motion <span class="p">|</span> grep default
 </code></pre></div>
+<div class="no-copy highlight"><pre><span></span><code>stretch_body.robot_params.nominal_params    param.arm.motion.default.accel_m    <span class="m">0</span>.1                          
+stretch_body.robot_params.nominal_params    param.arm.motion.default.vel_m      <span class="m">0</span>.1  
+</code></pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The factory parameter settings should suffice for most use cases. </p>

@@ -3686,13 +3686,13 @@
 <h2 id="tf2-static-broadcaster">tf2 Static Broadcaster</h2>
 <p>For the tf2 static broadcaster node, we will be publishing three child static frames in reference to the <code>link_mast</code>, <code>link_lift</code>, and <code>link_wrist_yaw</code> frames.</p>
 <p>Begin by starting up the stretch driver launch file.</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 <p>Within this tutorial package, there is an <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/rviz/tf2_broadcaster_example.rviz">RViz config file</a> with the topics for the transform frames in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.</p>
-<div class="highlight"><pre><span></span><code>rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/tf2_broadcaster_example.rviz
+<div class="shell-prompt highlight"><pre><span></span><code>rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/tf2_broadcaster_example.rviz
 </code></pre></div>
 <p>Then run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/tf2_broadcaster.py">tf2_broadcaster.py</a> node to visualize three static frames. In a new terminal, execute:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 tf2_broadcaster.py
 </code></pre></div>
 <p>The GIF below visualizes what happens when running the previous node.</p>
@@ -3705,8 +3705,7 @@ python3 tf2_broadcaster.py
 <p>If you would like to see how the static frames update while the robot is in motion, run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/stow_command.py">stow_command_node.py</a> and observe the tf frames in RViz.</p>
 </div>
 <p>In a terminal, execute:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 4</span>
-<span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 stow_command.py
 </code></pre></div>
 <p align="center">

@@ -3629,10 +3629,10 @@
 </p>
 
 <p>Let's bring up Stretch in the Willow Garage world from the <a href="../gazebo_basics/">gazebo basics tutorial</a> and RViz by using the following command.</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_gazebo gazebo.launch world:<span class="o">=</span>worlds/willowgarage.world rviz:<span class="o">=</span><span class="nb">true</span>
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_gazebo gazebo.launch world:<span class="o">=</span>worlds/willowgarage.world rviz:<span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
 <p>The <code>rviz</code> flag will open an RViz window to visualize a variety of ROS topics. In a new terminal, run the following commands to execute the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/marker.py">marker.py</a> node.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 marker.py
 </code></pre></div>
 <p>The GIF below demonstrates how to add a new <code>Marker</code> display type, and change the topic name from <code>/visualization_marker</code> to <code>/balloon</code>. A red sphere marker should appear above the Stretch robot.</p>
@@ -3754,7 +3754,7 @@ You need to import <code>rospy</code> if you are writing a ROS <a href="http://w
     <span class="n">balloon</span><span class="o">.</span><span class="n">publish_marker</span><span class="p">()</span>
     <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
 </code></pre></div>
-<p>This loop is a fairly standard rospy construct: checking the <code>rospy.is_shutdown()</code> flag and then doing work. You have to check <code>is_shutdown()</code> to check if your program should exit (e.g. if there is a <code>Ctrl-c</code> or otherwise). The loop calls <code>rate.sleep()</code>, which sleeps just long enough to maintain the desired rate through the loop.</p>
+<p>This loop is a fairly standard rospy construct: checking the <code>rospy.is_shutdown()</code> flag and then doing work. You have to check <code>is_shutdown()</code> to check if your program should exit (e.g. if there is a <code>Ctrl+c</code> or otherwise). The loop calls <code>rate.sleep()</code>, which sleeps just long enough to maintain the desired rate through the loop.</p>
 
 
 

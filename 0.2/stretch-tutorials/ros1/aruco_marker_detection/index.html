@@ -3641,19 +3641,19 @@
 <p>For this tutorial, we will go over how to detect Stretch's ArUco markers and review the files that hold the information for the tags.</p>
 <h3 id="visualize-aruco-markers-in-rviz">Visualize ArUco Markers in RViz</h3>
 <p>Begin by running the stretch driver launch file.</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 <p>To activate the RealSense camera and publish topics to be visualized, run the following launch file in a new terminal.</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_core d435i_low_resolution.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_core d435i_low_resolution.launch
 </code></pre></div>
 <p>Next, in a new terminal, run the stretch ArUco launch file which will bring up the <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/nodes/detect_aruco_markers">detect_aruco_markers</a> node.</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_aruco.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_core stretch_aruco.launch
 </code></pre></div>
 <p>Within this tutorial package, there is an <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/rviz/aruco_detector_example.rviz">RViz config file</a> with the topics for the transform frames in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.</p>
-<div class="highlight"><pre><span></span><code>rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/aruco_detector_example.rviz
+<div class="shell-prompt highlight"><pre><span></span><code>rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/aruco_detector_example.rviz
 </code></pre></div>
 <p>You are going to need to teleoperate Stretch's head to detect the ArUco marker tags. Run the following command in a new terminal and control the head to point the camera toward the markers.   </p>
-<div class="highlight"><pre><span></span><code>rosrun stretch_core keyboard_teleop
+<div class="shell-prompt highlight"><pre><span></span><code>rosrun stretch_core keyboard_teleop
 </code></pre></div>
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/aruco_detector.gif"/>

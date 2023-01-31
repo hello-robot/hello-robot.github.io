@@ -3755,9 +3755,11 @@
 <p>In this tutorial, we will go into the details with Dynamixel servos and Stretch.</p>
 <h2 id="overview">Overview</h2>
 <p>Stretch comes with two Dynamixel buses - one for the head and one for the end-of-arm:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$ ls  /dev/hello-dynamixel-*
-/dev/hello-dynamixel-head  /dev/hello-dynamixel-wrist
+<div class="shell-prompt highlight"><pre><span></span><code>ls  /dev/hello-dynamixel-*
 </code></pre></div>
+<p>Output:
+<div class="no-copy highlight"><pre><span></span><code>/dev/hello-dynamixel-head  /dev/hello-dynamixel-wrist
+</code></pre></div></p>
 <p>Typically, users will interact with these devices through either the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/head.py">Head</a> or the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/end_of_arm.py">EndOfArm</a> interfaces.  This tutorial is for users looking to work directly with the servos from the provided servo tools or through Stretch Body's low-level Dynamixel API. </p>
 <h2 id="servo-tools">Servo Tools</h2>
 <div class="admonition note">
@@ -3766,8 +3768,10 @@
 </div>
 <h3 id="jogging-the-servos">Jogging the Servos</h3>
 <p>You can directly command each servo using the command line tool <code>REx_dynamixel_servo_jog.py</code>. This can be useful for debugging new servos added to the end-of-arm tool during system bring-up. For example, to command the head pan servo:</p>
-<div class="highlight"><pre><span></span><code>$ REx_dynamixel_jog.py /dev/hello-dynamixel-head <span class="m">11</span>
-<span class="o">[</span>Dynamixel ID:011<span class="o">]</span> ping Succeeded. Dynamixel model number : <span class="m">1080</span>
+<div class="shell-prompt highlight"><pre><span></span><code>REx_dynamixel_jog.py /dev/hello-dynamixel-head <span class="m">11</span>
+</code></pre></div>
+<p>Output:
+<div class="no-copy highlight"><pre><span></span><code><span class="o">[</span>Dynamixel ID:011<span class="o">]</span> ping Succeeded. Dynamixel model number : <span class="m">1080</span>
 ------ MENU -------
 m: menu
 a: increment position <span class="m">50</span> tick
@@ -3788,11 +3792,13 @@ i: <span class="nb">set</span> id
 d: disable torque
 e: <span class="nb">enable</span> torque
 -------------------
-</code></pre></div>
+</code></pre></div></p>
 <h3 id="rebooting-the-servos">Rebooting the Servos</h3>
 <p>Under high-load conditions, the servos may enter an error state to protect themselves from thermal overload. In this case, the red LED on the servo will flash (if visible). In addition, the servo will be unresponsive to motion commands. In this case, allow the overheating servo to cool down and reboot the servos using the <code>stretch_robot_dynamixel_reboot.py</code> tool: </p>
-<div class="highlight"><pre><span></span><code>$ stretch_robot_dynamixel_reboot.py
-For use with S T R E T C H <span class="o">(</span>TM<span class="o">)</span> RESEARCH EDITION from Hello Robot Inc.
+<div class="shell-prompt highlight"><pre><span></span><code>stretch_robot_dynamixel_reboot.py
+</code></pre></div>
+<p>Output:
+<div class="no-copy highlight"><pre><span></span><code>For use with S T R E T C H <span class="o">(</span>TM<span class="o">)</span> RESEARCH EDITION from Hello Robot Inc.
 
 ---- Rebooting Head ---- 
 <span class="o">[</span>Dynamixel ID:011<span class="o">]</span> Reboot Succeeded.
@@ -3800,11 +3806,13 @@ For use with S T R E T C H <span class="o">(</span>TM<span class="o">)</span> RE
 ---- Rebooting Wrist ---- 
 <span class="o">[</span>Dynamixel ID:013<span class="o">]</span> Reboot Succeeded.
 <span class="o">[</span>Dynamixel ID:014<span class="o">]</span> Reboot Succeeded.
-</code></pre></div>
+</code></pre></div></p>
 <h3 id="identify-servos-on-the-bus">Identify Servos on the Bus</h3>
 <p>If it is unclear which servos are on the bus, and at what baud rate, you can use the <code>REx_dynamixel_id_scan.py</code> tool. Here we see that the two head servos are at ID <code>11</code> and <code>12</code> at baud <code>57600</code>.</p>
-<div class="highlight"><pre><span></span><code>$ REx_dynamixel_id_scan.py /dev/hello-dynamixel-head --baud <span class="m">57600</span>
-Scanning bus /dev/hello-dynamixel-head at baud rate <span class="m">57600</span>
+<div class="shell-prompt highlight"><pre><span></span><code>REx_dynamixel_id_scan.py /dev/hello-dynamixel-head --baud <span class="m">57600</span>
+</code></pre></div>
+<p>Output:
+<div class="no-copy highlight"><pre><span></span><code>Scanning bus /dev/hello-dynamixel-head at baud rate <span class="m">57600</span>
 ----------------------------------------------------------
 <span class="o">[</span>Dynamixel ID:000<span class="o">]</span> ping Failed.
 <span class="o">[</span>Dynamixel ID:001<span class="o">]</span> ping Failed.
@@ -3831,29 +3839,33 @@ Scanning bus /dev/hello-dynamixel-head at baud rate <span class="m">57600</span>
 <span class="o">[</span>Dynamixel ID:022<span class="o">]</span> ping Failed.
 <span class="o">[</span>Dynamixel ID:023<span class="o">]</span> ping Failed.
 <span class="o">[</span>Dynamixel ID:024<span class="o">]</span> ping Failed.
-</code></pre></div>
+</code></pre></div></p>
 <h3 id="setting-the-servo-baud-rate">Setting the Servo Baud Rate</h3>
 <p>Stretch ships with its Dynamixel servos configured to <code>baudrate=115200</code>.  When adding your servos to the end-of-arm tool, you may want to set the servo baud using the <code>REx_dynamixel_set_baud.py</code> tool. For example:</p>
-<div class="highlight"><pre><span></span><code>$ REx_dynamixel_set_baud.py /dev/hello-dynamixel-wrist <span class="m">13</span> <span class="m">115200</span>
----------------------
+<div class="shell-prompt highlight"><pre><span></span><code>REx_dynamixel_set_baud.py /dev/hello-dynamixel-wrist <span class="m">13</span> <span class="m">115200</span>
+</code></pre></div>
+<p>Output:
+<div class="no-copy highlight"><pre><span></span><code>---------------------
 Checking servo current baud <span class="k">for</span> <span class="m">57600</span>
 ----
 Identified current baud of <span class="m">57600</span>. Changing baud to <span class="m">115200</span>
 Success at changing baud
-</code></pre></div>
+</code></pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Earlier units of Stretch RE1 may be running Dynamixel servos at baud 57600.</p>
 </div>
 <h3 id="setting-the-servo-id">Setting the Servo ID</h3>
 <p>Dynamixel servos come with <code>ID=1</code> from the factory. When adding your servos to the end-of-arm tool, you may want to set the servo ID using the <code>REx_dynamixel_id_change.py</code> tool. For example:</p>
-<div class="highlight"><pre><span></span><code>$ REx_dynamixel_id_change.py /dev/hello-dynamixel-wrist <span class="m">1</span> <span class="m">13</span> --baud <span class="m">115200</span>
-<span class="o">[</span>Dynamixel ID:001<span class="o">]</span> ping Succeeded. Dynamixel model number : <span class="m">1080</span>
+<div class="shell-prompt highlight"><pre><span></span><code>REx_dynamixel_id_change.py /dev/hello-dynamixel-wrist <span class="m">1</span> <span class="m">13</span> --baud <span class="m">115200</span>
+</code></pre></div>
+<p>Output:
+<div class="no-copy highlight"><pre><span></span><code><span class="o">[</span>Dynamixel ID:001<span class="o">]</span> ping Succeeded. Dynamixel model number : <span class="m">1080</span>
 Ready to change ID <span class="m">1</span> to <span class="m">13</span>. Hit enter to <span class="k">continue</span>:
 
 <span class="o">[</span>Dynamixel ID:013<span class="o">]</span> ping Succeeded. Dynamixel model number : <span class="m">1080</span>
 Success at setting ID to <span class="m">13</span>
-</code></pre></div>
+</code></pre></div></p>
 <h2 id="stretch-body-dynamixel-api">Stretch Body Dynamixel API</h2>
 <p>Stretch Body's low-level Dynamixel API includes a hierarchy of three classes</p>
 <table>
@@ -3883,43 +3895,46 @@ Success at setting ID to <span class="m">13</span>
 <p>The <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/end_of_arm.py">EndOfArm</a> class derives from DynamixelXChain to provide an extensible interface that supports a user in integrating additional degrees of freedom to the robot. The tutorial <a href="../tutorial_custom_wrist_dof/">Adding Custom Wrist DoF</a> explains how to do this.</p>
 <h3 id="dynamixelhelloxl430">DynamixelHelloXL430</h3>
 <p>DynamixelHelloXL430 provides an interface to servo motion that is consistent with the Stretch Body lift, arm, and base joints. It also manages the servo parameters and calibration. Let's explore this interface further. From iPython, let's look at the status message for DynamixelHelloXL430</p>
-<div class="highlight"><pre><span></span><code>import stretch_body.dynamixel_hello_XL430 
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">stretch_body.dynamixel_hello_XL430</span> 
 
-<span class="nv">m</span> <span class="o">=</span> stretch_body.dynamixel_hello_XL430.DynamixelHelloXL430<span class="o">(</span><span class="s1">&#39;head_pan&#39;</span><span class="o">)</span>
-m.startup<span class="o">()</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">stretch_body</span><span class="o">.</span><span class="n">dynamixel_hello_XL430</span><span class="o">.</span><span class="n">DynamixelHelloXL430</span><span class="p">(</span><span class="s1">&#39;head_pan&#39;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">startup</span><span class="p">()</span>
 
-m.pretty_print<span class="o">()</span>
------ HelloXL430 ------ 
-Name head_pan
-Position <span class="o">(</span>rad<span class="o">)</span> -0.0
-Position <span class="o">(</span>deg<span class="o">)</span> -0.0
-Position <span class="o">(</span>ticks<span class="o">)</span> <span class="m">1250</span>
-Velocity <span class="o">(</span>rad/s<span class="o">)</span> -0.0
-Velocity <span class="o">(</span>ticks/s<span class="o">)</span> <span class="m">0</span>
-Effort <span class="o">(</span>%<span class="o">)</span> <span class="m">0</span>.0
-Effort <span class="o">(</span>ticks<span class="o">)</span> <span class="m">0</span>
-Temp <span class="m">34</span>.0
-Comm Errors <span class="m">0</span>
-Hardware Error <span class="m">0</span>
-Hardware Error: Input Voltage Error:  False
-Hardware Error: Overheating Error:  False
-Hardware Error: Motor Encoder Error:  False
-Hardware Error: Electrical Shock Error:  False
-Hardware Error: Overload Error:  False
-Watchdog Errors:  <span class="m">0</span>
-Timestamp PC <span class="m">1661552966</span>.7202659
-Range <span class="o">(</span>ticks<span class="o">)</span> <span class="o">[</span><span class="m">0</span>, <span class="m">3827</span><span class="o">]</span>
-Range <span class="o">(</span>rad<span class="o">)</span> <span class="o">[</span> <span class="m">1</span>.9174759848570513  ,  -3.953068490381297 <span class="o">]</span>
-Stalled True
-Stall Overload False
-Is Calibrated <span class="m">0</span>
+<span class="n">m</span><span class="o">.</span><span class="n">pretty_print</span><span class="p">()</span>
 </code></pre></div>
+<p>Output:
+<div class="no-copy highlight"><pre><span></span><code><span class="o">-----</span> <span class="n">HelloXL430</span> <span class="o">------</span> 
+<span class="n">Name</span> <span class="n">head_pan</span>
+<span class="n">Position</span> <span class="p">(</span><span class="n">rad</span><span class="p">)</span> <span class="o">-</span><span class="mf">0.0</span>
+<span class="n">Position</span> <span class="p">(</span><span class="n">deg</span><span class="p">)</span> <span class="o">-</span><span class="mf">0.0</span>
+<span class="n">Position</span> <span class="p">(</span><span class="n">ticks</span><span class="p">)</span> <span class="mi">1250</span>
+<span class="n">Velocity</span> <span class="p">(</span><span class="n">rad</span><span class="o">/</span><span class="n">s</span><span class="p">)</span> <span class="o">-</span><span class="mf">0.0</span>
+<span class="n">Velocity</span> <span class="p">(</span><span class="n">ticks</span><span class="o">/</span><span class="n">s</span><span class="p">)</span> <span class="mi">0</span>
+<span class="n">Effort</span> <span class="p">(</span><span class="o">%</span><span class="p">)</span> <span class="mf">0.0</span>
+<span class="n">Effort</span> <span class="p">(</span><span class="n">ticks</span><span class="p">)</span> <span class="mi">0</span>
+<span class="n">Temp</span> <span class="mf">34.0</span>
+<span class="n">Comm</span> <span class="n">Errors</span> <span class="mi">0</span>
+<span class="n">Hardware</span> <span class="n">Error</span> <span class="mi">0</span>
+<span class="n">Hardware</span> <span class="n">Error</span><span class="p">:</span> <span class="n">Input</span> <span class="n">Voltage</span> <span class="n">Error</span><span class="p">:</span>  <span class="kc">False</span>
+<span class="n">Hardware</span> <span class="n">Error</span><span class="p">:</span> <span class="n">Overheating</span> <span class="n">Error</span><span class="p">:</span>  <span class="kc">False</span>
+<span class="n">Hardware</span> <span class="n">Error</span><span class="p">:</span> <span class="n">Motor</span> <span class="n">Encoder</span> <span class="n">Error</span><span class="p">:</span>  <span class="kc">False</span>
+<span class="n">Hardware</span> <span class="n">Error</span><span class="p">:</span> <span class="n">Electrical</span> <span class="n">Shock</span> <span class="n">Error</span><span class="p">:</span>  <span class="kc">False</span>
+<span class="n">Hardware</span> <span class="n">Error</span><span class="p">:</span> <span class="n">Overload</span> <span class="n">Error</span><span class="p">:</span>  <span class="kc">False</span>
+<span class="n">Watchdog</span> <span class="n">Errors</span><span class="p">:</span>  <span class="mi">0</span>
+<span class="n">Timestamp</span> <span class="n">PC</span> <span class="mf">1661552966.7202659</span>
+<span class="n">Range</span> <span class="p">(</span><span class="n">ticks</span><span class="p">)</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3827</span><span class="p">]</span>
+<span class="n">Range</span> <span class="p">(</span><span class="n">rad</span><span class="p">)</span> <span class="p">[</span> <span class="mf">1.9174759848570513</span>  <span class="p">,</span>  <span class="o">-</span><span class="mf">3.953068490381297</span> <span class="p">]</span>
+<span class="n">Stalled</span> <span class="kc">True</span>
+<span class="n">Stall</span> <span class="n">Overload</span> <span class="kc">False</span>
+<span class="n">Is</span> <span class="n">Calibrated</span> <span class="mi">0</span>
+</code></pre></div></p>
 <p>We see that it reports the position in both radians (with respect to the joint frame) and ticks (with respect to the servo encoder). DynamixelHelloXL430 handles the calibration between the two using its method <code>ticks_to_world_rad</code> through the following params:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep head_pan <span class="p">|</span> grep <span class="s1">&#39;_t &#39;</span>
-...              
-stretch_configuration_params.yaml         param.head_pan.range_t           <span class="o">[</span><span class="m">0</span>, <span class="m">3827</span><span class="o">]</span>                     
-stretch_configuration_params.yaml         param.head_pan.zero_t            <span class="m">1250</span> 
+<div class="shell-prompt highlight"><pre><span></span><code>stretch_params.py <span class="p">|</span> grep head_pan <span class="p">|</span> grep <span class="s1">&#39;_t &#39;</span>
 </code></pre></div>
+<p>Output:
+<div class="no-copy highlight"><pre><span></span><code>stretch_configuration_params.yaml         param.head_pan.range_t           <span class="o">[</span><span class="m">0</span>, <span class="m">3827</span><span class="o">]</span>                     
+stretch_configuration_params.yaml         param.head_pan.zero_t            <span class="m">1250</span> 
+</code></pre></div></p>
 <p>In addition to <code>move_to</code> and <code>move_by</code>, the class also implements a splined trajectory interface as discussed in the <a href="../tutorial_splined_trajectories/">Splined Trajectory Tutorial</a>. </p>
 <h3 id="dynamixelxl430">DynamixelXL430</h3>
 <p>DynamixelXL430 provides a thin wrapper to the <a href="http://emanual.robotis.com/docs/en/dxl/x/xl430-w250/#control-table">Robotis Dynamixel SDK</a>. You may choose to interact with the servo at this level as well. For example, to jog the head_pan 200 ticks:

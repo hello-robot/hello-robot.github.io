@@ -3599,10 +3599,10 @@
 
 <h2 id="visualizing-with-rviz">Visualizing with RViz</h2>
 <p>You can utilize RViz to visualize Stretch's sensor information. To begin, in a terminal, run the stretch driver launch file.</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 <p>Then, run the following command in a separate terminal to bring up a simple RViz configuration of the Stretch robot.</p>
-<div class="highlight"><pre><span></span><code>rosrun rviz rviz -d <span class="sb">`</span>rospack find stretch_core<span class="sb">`</span>/rviz/stretch_simple_test.rviz
+<div class="shell-prompt highlight"><pre><span></span><code>rosrun rviz rviz -d <span class="sb">`</span>rospack find stretch_core<span class="sb">`</span>/rviz/stretch_simple_test.rviz
 </code></pre></div>
 <p>An RViz window should open, allowing you to see the various DisplayTypes in the display tree on the left side of the window.</p>
 <p align="center">
@@ -3617,7 +3617,7 @@
 <p>There are further tutorials for RViz which can be found <a href="http://wiki.ros.org/rviz/Tutorials">here</a>.</p>
 <h2 id="running-rviz-and-gazebo-simulation">Running RViz and Gazebo (Simulation)</h2>
 <p>Let's bring up Stretch in the willow garage world from the <a href="../gazebo_basics/">gazebo basics tutorial</a> and RViz by using the following command.</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_gazebo gazebo.launch world:<span class="o">=</span>worlds/willowgarage.world rviz:<span class="o">=</span><span class="nb">true</span>
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_gazebo gazebo.launch world:<span class="o">=</span>worlds/willowgarage.world rviz:<span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
 <p>The <code>rviz</code> flag will open an RViz window to visualize a variety of ROS topics.</p>
 <p align="center">

@@ -3644,10 +3644,10 @@
 
 <p>The goal of this example is to give you an enhanced understanding of how to control the mobile base by sending <code>Twist</code> messages to a Stretch robot.</p>
 <p>Begin by running the following command in a new terminal.</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 <p>Switch to <code>navigation</code> mode using a rosservice call. Then, in a new terminal, drive the robot forward with the <a href="https://github.com/hello-robot/stretch_tutorials/tree/noetic/src/move.py">move.py</a> node.</p>
-<div class="highlight"><pre><span></span><code>rosservice call /switch_to_navigation_mode
+<div class="shell-prompt highlight"><pre><span></span><code>rosservice call /switch_to_navigation_mode
 <span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 move.py
 </code></pre></div>
@@ -3748,7 +3748,7 @@ python3 move.py
 <div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;/stretch_diff_drive_controller/cmd_vel&#39;</span><span class="p">,</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <p>After saving the edited node, bring up <a href="../gazebo_basics/">Stretch in the empty world simulation</a>. To drive the robot with the node, type the following in a new terminal</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 move.py
 </code></pre></div>
 <p>To stop the node from sending twist messages, type <code>Ctrl</code> + <code>c</code>.</p>

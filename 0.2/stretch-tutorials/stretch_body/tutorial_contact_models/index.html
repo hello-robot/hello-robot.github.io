@@ -3736,11 +3736,12 @@
 <p class="admonition-title">Warning</p>
 <p>The parameters <code>contact_thresh_pos_N</code> and <code>contact_thresh_neg_N</code> are deprecated and no longer supported.</p>
 </div>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep arm <span class="p">|</span> grep contact
-...                                              
+<p><div class="shell-prompt highlight"><pre><span></span><code>stretch_params.py <span class="p">|</span> grep arm <span class="p">|</span> grep contact
+</code></pre></div>
+<div class="no-copy highlight"><pre><span></span><code>...                                              
 stretch_configuration_params.yaml            param.arm.contact_models.effort_pct.contact_thresh_default    <span class="o">[</span>-45.0, <span class="m">45</span>.0<span class="o">]</span>    
 ...
-</code></pre></div>
+</code></pre></div></p>
 <h2 id="contact-models">Contact Models</h2>
 <p>A contact model is simply a function that, given a user-specified contact threshold, computes the motor current at which the motor controller will trigger a guarded contact. The following contact models are currently implemented:</p>
 <h3 id="the-effort-pct-contact-model">The Effort-Pct Contact Model</h3>
@@ -3796,8 +3797,9 @@ stretch_configuration_params.yaml            param.arm.contact_models.effort_pct
 <h2 id="advanced-calibrating-contact-thresholds">Advanced: Calibrating Contact Thresholds</h2>
 <p>The Stretch Factory package provides a tool to allow advanced users to recalibrate the default guarded contact thresholds. This tool can be useful if you've added additional payload to the arm and are experiencing false-positive guarded contact detections.</p>
 <p>The tool sweeps the joint through its range of motion for <code>n-cycle</code> iterations. It computes the maximum contact forces in both directions, adds padding, <code>contact_thresh_calibration_margin</code>, to this value, and stores it to the robot's configuration YAML.</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$ REx_calibrate_guarded_contact.py -h
-For use with S T R E T C H <span class="o">(</span>R<span class="o">)</span> RESEARCH EDITION from Hello Robot Inc.
+<p><div class="shell-prompt highlight"><pre><span></span><code>REx_calibrate_guarded_contact.py -h
+</code></pre></div>
+<div class="no-copy highlight"><pre><span></span><code>For use with S T R E T C H <span class="o">(</span>R<span class="o">)</span> RESEARCH EDITION from Hello Robot Inc.
 ---------------------------------------------------------------------
 
 usage: REx_calibrate_guarded_contact.py <span class="o">[</span>-h<span class="o">]</span> <span class="o">(</span>--lift <span class="p">|</span> --arm<span class="o">)</span> <span class="o">[</span>--ncycle NCYCLE<span class="o">]</span>
@@ -3809,7 +3811,7 @@ optional arguments:
   --lift           Calibrate the lift joint
   --arm            Calibrate the arm joint  
   --ncycle NCYCLE  Number of sweeps to run <span class="o">[</span><span class="m">4</span><span class="o">]</span>  
-</code></pre></div>
+</code></pre></div></p>
 <hr />
 <div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks.</div>
 

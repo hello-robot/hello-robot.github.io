@@ -3638,8 +3638,9 @@
 <p><img alt="alt_text" src="../images/splined_traj.png" title="image_tooltip" /></p>
 <h2 id="the-splined-trajectory-tool">The Splined Trajectory Tool</h2>
 <p>Stretch Body includes <a href="https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_trajectory_jog.py">a graphical tool for exploring splined trajectory control</a> on the robot:</p>
-<div class="highlight"><pre><span></span><code>stretch_trajectory_jog.py -h
-usage: stretch_trajectory_jog.py <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--text<span class="o">]</span> <span class="o">[</span>--preloaded_traj <span class="o">{</span><span class="m">1</span>,2,3<span class="o">}]</span> <span class="o">(</span>--head_pan <span class="p">|</span> --head_tilt <span class="p">|</span> --wrist_yaw <span class="p">|</span> --gripper <span class="p">|</span> --arm <span class="p">|</span> --lift <span class="p">|</span> --base_translate <span class="p">|</span> --base_rotate <span class="p">|</span> --full_body<span class="o">)</span>
+<p><div class="shell-prompt highlight"><pre><span></span><code>stretch_trajectory_jog.py -h
+</code></pre></div>
+<div class="no-copy highlight"><pre><span></span><code>usage: stretch_trajectory_jog.py <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--text<span class="o">]</span> <span class="o">[</span>--preloaded_traj <span class="o">{</span><span class="m">1</span>,2,3<span class="o">}]</span> <span class="o">(</span>--head_pan <span class="p">|</span> --head_tilt <span class="p">|</span> --wrist_yaw <span class="p">|</span> --gripper <span class="p">|</span> --arm <span class="p">|</span> --lift <span class="p">|</span> --base_translate <span class="p">|</span> --base_rotate <span class="p">|</span> --full_body<span class="o">)</span>
 
 Test out splined trajectories on the various joint from a GUI or text menu.
 
@@ -3657,7 +3658,7 @@ optional arguments:
   --base_translate      Test translational trajectories on diff-drive base
   --base_rotate         Test rotational trajectories on diff-drive base
   --full_body           Test trajectories on all joints at once
-</code></pre></div>
+</code></pre></div></p>
 <p>The tool GUI allows you to interactively construct a splined trajectory and then execute it on the robot. For example, on the arm:</p>
 <p><img alt="alt_text" src="../images/traj_gui.png" title="image_tooltip" /></p>
 <div class="admonition note">
@@ -3665,7 +3666,7 @@ optional arguments:
 <p>Use caution when commanding the base. Ensure that the attached cables are long enough to support the base motion. Alternatively, you may want to put the base on top of a book so the wheels don't touch the ground.</p>
 </div>
 <p>Finally, you can explore a full-body trajectory using the non-GUI version of the tool:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_trajectory_jog.py --full_body
+<div class="shell-prompt highlight"><pre><span></span><code>stretch_trajectory_jog.py --full_body
 </code></pre></div>
 <h2 id="programming-trajectories">Programming Trajectories</h2>
 <p>Programming a splined trajectory is straightforward. For example, try the following from iPython:</p>
@@ -3707,14 +3708,16 @@ optional arguments:
 </ul>
 <p>For example, the arm trajectory below has a large excursion outside of the joint's range of motion (white). This is because the second waypoint expects a non-zero velocity when the arm reaches full extension.</p>
 <p><img alt="" src="../images/bad_trajectory.png" /></p>
-<p>Often the trajectory waypoints will be generated from a motion planner. It is important for the planner to incorporate the position, velocity, and acceleration constraints of the joint. These can be found by, for example:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep arm <span class="p">|</span> grep motion <span class="p">|</span> grep trajectory
-stretch_body.robot_params.nominal_params  param.arm.motion.trajectory_max.vel_m    <span class="m">0</span>.4             
-stretch_body.robot_params.nominal_params param.arm.motion.trajectory_max.accel_m   <span class="m">0</span>.4 
-
-&gt;&gt;$ stretch_params.py <span class="p">|</span> grep arm <span class="p">|</span> grep range_m
-stretch_user_params.yaml       param.arm.range_m      <span class="o">[</span><span class="m">0</span>.0, <span class="m">0</span>.515<span class="o">]</span> 
+<p>Often the trajectory waypoints will be generated from a motion planner. The planner needs to incorporate the position, velocity, and acceleration constraints of the joint. These can be found by, for example:</p>
+<p><div class="shell-prompt highlight"><pre><span></span><code>stretch_params.py <span class="p">|</span> grep arm <span class="p">|</span> grep motion <span class="p">|</span> grep trajectory
 </code></pre></div>
+<div class="no-copy highlight"><pre><span></span><code>stretch_body.robot_params.nominal_params  param.arm.motion.trajectory_max.vel_m    <span class="m">0</span>.4             
+stretch_body.robot_params.nominal_params param.arm.motion.trajectory_max.accel_m   <span class="m">0</span>.4
+</code></pre></div></p>
+<p><div class="shell-prompt highlight"><pre><span></span><code>stretch_params.py <span class="p">|</span> grep arm <span class="p">|</span> grep range_m
+</code></pre></div>
+<div class="no-copy highlight"><pre><span></span><code>stretch_user_params.yaml       param.arm.range_m      <span class="o">[</span><span class="m">0</span>.0, <span class="m">0</span>.515<span class="o">]</span> 
+</code></pre></div></p>
 <p>Fortunately, the Stretch Body <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/trajectories.py">Trajectory</a> classes do some preliminary feasibility checking of trajectories using the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/hello_utils.py#L290">is_segment_feasible function</a>. This checks if the generated motions lie within the constraints of the <code>trajectory_max</code> parameters.</p>
 <p>It is generally important for the waypoints to be spaced far apart. Stretch isn't a dynamic and fast-moving robot, so there isn't a practical advantage to closely spaced waypoints at any rate.</p>
 <p>The stepper controllers (arm, lift, and base) can be updated at approximately 20 Hz maximum. Therefore, if your waypoints are spaced 50 ms apart, you run the risk of overflowing the stepper controller. Likewise, the Dynamixel joints can be updated at approximately 12 Hz. </p>

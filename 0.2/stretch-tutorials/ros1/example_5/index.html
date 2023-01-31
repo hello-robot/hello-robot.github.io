@@ -3627,10 +3627,10 @@
 <p>In this example, we will review a Python script that prints out the positions of a selected group of Stretch joints. This script is helpful if you need the joint positions after you teleoperated Stretch with the Xbox controller or physically moved the robot to the desired configuration after hitting the run stop button.</p>
 <p>If you are looking for a continuous print of the joint states while Stretch is in action, then you can use the <a href="http://wiki.ros.org/rostopic">rostopic command-line tool</a> shown in the <a href="../internal_state_of_stretch/">Internal State of Stretch Tutorial</a>.</p>
 <p>Begin by starting up the stretch driver launch file.</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 <p>You can then hit the run-stop button (you should hear a beep and the LED light in the button blink) and move the robot's joints to a desired configuration. Once you are satisfied with the configuration, hold the run-stop button until you hear a beep. Then run the following command to execute the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/joint_state_printer.py">joint_state_printer.py</a> which will print the joint positions of the lift, arm, and wrist. In a new terminal, execute:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 joint_state_printer.py
 </code></pre></div>
 <p>Your terminal will output the <code>position</code> information of the previously mentioned joints shown below.

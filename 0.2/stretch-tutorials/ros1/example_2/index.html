@@ -3654,17 +3654,17 @@ end angle, <code>angle_max</code>, are closely located along the x-axis of Stret
 
 <p>Knowing the orientation of the LiDAR allows us to filter the scan values for a desired range. In this case, we are only considering the scan ranges in front of the stretch robot.</p>
 <p>First, open a terminal and run the stretch driver launch file.</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 <p>Then in a new terminal run the <code>rplidar.launch</code> file from <code>stretch_core</code>.</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_core rplidar.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_core rplidar.launch
 </code></pre></div>
 <p>To filter the lidar scans for ranges that are directly in front of Stretch (width of 1 meter) run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/scan_filter.py">scan_filter.py</a> node by typing the following in a new terminal.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 scan_filter.py
 </code></pre></div>
 <p>Then run the following command in a separate terminal to bring up a simple RViz configuration of the Stretch robot.</p>
-<div class="highlight"><pre><span></span><code>rosrun rviz rviz -d <span class="sb">`</span>rospack find stretch_core<span class="sb">`</span>/rviz/stretch_simple_test.rviz
+<div class="shell-prompt highlight"><pre><span></span><code>rosrun rviz rviz -d <span class="sb">`</span>rospack find stretch_core<span class="sb">`</span>/rviz/stretch_simple_test.rviz
 </code></pre></div>
 <p>Change the topic name from the LaserScan display from <em>/scan</em> to <em>/filter_scan</em>.</p>
 <p align="center">
