@@ -3638,27 +3638,22 @@
   <h1>ArUco Marker Detection</h1>
 
 <h2 id="aruco-marker-detector">ArUco Marker Detector</h2>
-<p>For this tutorial, we will go over how to detect Stretch's ArUco markers and how to files the hold the information for each tag.</p>
+<p>For this tutorial, we will go over how to detect Stretch's ArUco markers and review the files that hold the information for the tags.</p>
 <h3 id="visualize-aruco-markers-in-rviz">Visualize ArUco Markers in RViz</h3>
 <p>Begin by running the stretch driver launch file.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch stretch_core stretch_driver.launch
+<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 <p>To activate the RealSense camera and publish topics to be visualized, run the following launch file in a new terminal.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-roslaunch stretch_core d435i_low_resolution.launch
+<div class="highlight"><pre><span></span><code>roslaunch stretch_core d435i_low_resolution.launch
 </code></pre></div>
-<p>Next, run the stretch ArUco launch file which will bring up the <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/nodes/detect_aruco_markers">detect_aruco_markers</a> node.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 3</span>
-roslaunch stretch_core stretch_aruco.launch
+<p>Next, in a new terminal, run the stretch ArUco launch file which will bring up the <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/nodes/detect_aruco_markers">detect_aruco_markers</a> node.</p>
+<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_aruco.launch
 </code></pre></div>
-<p>Within this tutorial package, there is an <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/rviz/aruco_detector_example.rviz">RViz config file</a> with the topics for transform frames in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 4</span>
-rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/aruco_detector_example.rviz
+<p>Within this tutorial package, there is an <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/rviz/aruco_detector_example.rviz">RViz config file</a> with the topics for the transform frames in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.</p>
+<div class="highlight"><pre><span></span><code>rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/aruco_detector_example.rviz
 </code></pre></div>
-<p>You are going to need to teleoperate Stretch's head to detect the ArUco marker tags. Run the following command in a new terminal and control the head in order to point the camera towards the markers.   </p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 5</span>
-rosrun stretch_core keyboard_teleop
+<p>You are going to need to teleoperate Stretch's head to detect the ArUco marker tags. Run the following command in a new terminal and control the head to point the camera toward the markers.   </p>
+<div class="highlight"><pre><span></span><code>rosrun stretch_core keyboard_teleop
 </code></pre></div>
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/aruco_detector.gif"/>
@@ -3687,31 +3682,34 @@ rosrun stretch_core keyboard_teleop
 <div class="highlight"><pre><span></span><code><span class="s">&#39;length_mm&#39;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">23.5</span><span class="w"></span>
 </code></pre></div>
 <p>The <code>length_mm</code> value used by <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/nodes/detect_aruco_markers">detect_aruco_markers</a> is important for estimating the pose of an ArUco marker.</p>
-<p><strong>IMPORTANT NOTE:</strong> If the actual width and height of the marker do not match this value, then pose estimation will be poor. Thus, carefully measure custom Aruco markers.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the actual width and height of the marker do not match this value, then pose estimation will be poor. Thus, carefully measure custom Aruco markers.</p>
+</div>
 <div class="highlight"><pre><span></span><code><span class="s">&#39;use_rgb_only&#39;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span><span class="w"></span>
 </code></pre></div>
 <p>If <code>use_rgb_only</code> is <code>True</code>, <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/nodes/detect_aruco_markers">detect_aruco_markers</a> will ignore depth images from the <a href="https://www.intelrealsense.com/depth-camera-d435i/">Intel RealSense D435i depth camera</a> when estimating the pose of the marker and will instead only use RGB images from the D435i.</p>
-<p><div class="highlight"><pre><span></span><code><span class="s">&#39;name&#39;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&#39;wrist_top&#39;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="s">&#39;name&#39;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&#39;wrist_top&#39;</span><span class="w"></span>
 </code></pre></div>
-<code>name</code> is used for the text string of the ArUco marker’s <a href="http://docs.ros.org/en/melodic/api/visualization_msgs/html/msg/Marker.html">ROS Marker</a> in the <a href="http://docs.ros.org/en/melodic/api/visualization_msgs/html/msg/MarkerArray.html">ROS MarkerArray</a> Message published by the <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/nodes/detect_aruco_markers">detect_aruco_markers</a> ROS node.</p>
+<p><code>name</code> is used for the text string of the ArUco marker’s <a href="http://docs.ros.org/en/melodic/api/visualization_msgs/html/msg/Marker.html">ROS Marker</a> in the <a href="http://docs.ros.org/en/melodic/api/visualization_msgs/html/msg/MarkerArray.html">ROS MarkerArray</a> Message published by the <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/nodes/detect_aruco_markers">detect_aruco_markers</a> ROS node.</p>
 <div class="highlight"><pre><span></span><code><span class="s">&#39;link&#39;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&#39;link_aruco_top_wrist&#39;</span><span class="w"></span>
 </code></pre></div>
 <p><code>link</code> is currently used by <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_calibration/nodes/collect_head_calibration_data">stretch_calibration</a>. It is the name of the link associated with a body-mounted ArUco marker in the <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_description/urdf/stretch_aruco.xacro">robot’s URDF</a>.</p>
 <p>It’s good practice to add an entry to <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yaml</a> for each ArUco marker you use.</p>
 <h3 id="create-a-new-aruco-marker">Create a New ArUco Marker</h3>
 <p>At Hello Robot, we’ve used the following guide when generating new ArUco markers.</p>
-<p>We generate ArUco markers using a 6x6 bit grid (36 bits) with 250 unique codes. This corresponds with<a href="https://docs.opencv.org/3.4/d9/d6a/group__aruco.html"> DICT_6X6_250 defined in OpenCV</a>. We generate markers using this <a href="https://chev.me/arucogen/">online ArUco marker generator</a> by setting the Dictionary entry to 6x6 and then setting the Marker ID and Marker size, mm as appropriate for the specific application. We strongly recommend to measure the actual marker by hand prior to adding an entry for it to <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yaml</a>.</p>
+<p>We generate ArUco markers using a 6x6-bit grid (36 bits) with 250 unique codes. This corresponds with<a href="https://docs.opencv.org/3.4/d9/d6a/group__aruco.html"> DICT_6X6_250 defined in OpenCV</a>. We generate markers using this <a href="https://chev.me/arucogen/">online ArUco marker generator</a> by setting the Dictionary entry to 6x6 and then setting the Marker ID and Marker size, mm as appropriate for the specific application. We strongly recommend measuring the actual marker by hand before adding an entry for it to <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yaml</a>.</p>
 <p>We select marker ID numbers using the following ranges.</p>
 <ul>
-<li>0 - 99 : reserved for users</li>
-<li>100 - 249 : reserved for official use by Hello Robot Inc.</li>
-<li>100 - 199 : reserved for robots with distinct sets of body-mounted markers<ul>
+<li>0 - 99: reserved for users</li>
+<li>100 - 249: reserved for official use by Hello Robot Inc.</li>
+<li>100 - 199: reserved for robots with distinct sets of body-mounted markers<ul>
 <li>Allows different robots near each other to use distinct sets of body-mounted markers to avoid confusion. This could be valuable for various uses of body-mounted markers, including calibration, visual servoing, visual motion capture, and multi-robot tasks.</li>
 <li>5 markers per robot = 2 on the mobile base + 2 on the wrist + 1 on the shoulder</li>
 <li>20 distinct sets = 100 available ID numbers / 5 ID numbers per robot</li>
 </ul>
 </li>
-<li>200 - 249 : reserved for official accessories<ul>
+<li>200 - 249: reserved for official accessories<ul>
 <li>245 for the prototype docking station</li>
 <li>246-249 for large floor markers</li>
 </ul>

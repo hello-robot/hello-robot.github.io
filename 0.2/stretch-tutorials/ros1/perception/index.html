@@ -3666,22 +3666,19 @@
   <h1>Perception</h1>
 
 <h2 id="perception-introduction">Perception Introduction</h2>
-<p>The Stretch robot is equipped with the <a href="https://www.intelrealsense.com/depth-camera-d435i/">Intel RealSense D435i camera</a>, an essential component that allows the robot to measure and analyze the world around it. In this tutorial, we are going to showcase how to visualize the various topics published from the camera.</p>
+<p>The Stretch robot is equipped with the <a href="https://www.intelrealsense.com/depth-camera-d435i/">Intel RealSense D435i camera</a>, an essential component that allows the robot to measure and analyze the world around it. In this tutorial, we are going to showcase how to visualize the various topics published by the camera.</p>
 <p>Begin by running the stretch <code>driver.launch</code> file.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch stretch_core stretch_driver.launch
+<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 <p>To activate the <a href="https://www.intelrealsense.com/depth-camera-d435i/">RealSense camera</a> and publish topics to be visualized, run the following launch file in a new terminal.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-roslaunch stretch_core d435i_low_resolution.launch
+<div class="highlight"><pre><span></span><code>roslaunch stretch_core d435i_low_resolution.launch
 </code></pre></div>
 <p>Within this tutorial package, there is an <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/rviz/perception_example.rviz">RViz config file</a> with the topics for perception already in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 3</span>
-rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/perception_example.rviz
+<div class="highlight"><pre><span></span><code>rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/perception_example.rviz
 </code></pre></div>
 <h3 id="pointcloud2-display">PointCloud2 Display</h3>
 <p>A list of displays on the left side of the interface can visualize the camera data. Each display has its properties and status that notify a user if topic messages are received.</p>
-<p>For the <code>PointCloud2</code> display, a <a href="http://docs.ros.org/en/lunar/api/sensor_msgs/html/msg/PointCloud2.html">sensor_msgs/pointCloud2</a> message named <em>/camera/depth/color/points</em>, is received and the gif below demonstrates the various display properties when visualizing the data.</p>
+<p>For the <code>PointCloud2</code> display, a <a href="http://docs.ros.org/en/lunar/api/sensor_msgs/html/msg/PointCloud2.html">sensor_msgs/pointCloud2</a> message named <code>/camera/depth/color/points</code> is received and the GIF below demonstrates the various display properties when visualizing the data.</p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/perception_rviz.gif"/>
 </p>
@@ -3693,13 +3690,13 @@ rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/perce
 </p>
 
 <h3 id="camera-display">Camera Display</h3>
-<p>The <code>Camera</code> display is similar to that of the <code>Image</code> display. In this setting, the rendering window also visualizes other displays, such as the PointCloud2, the RobotModel, and Grid Displays. The <strong>visibility</strong> property can toggle what displays your are interested in visualizing.</p>
+<p>The <code>Camera</code> display is similar to that of the <code>Image</code> display. In this setting, the rendering window also visualizes other displays, such as the PointCloud2, the RobotModel, and Grid Displays. The <code>visibility</code> property can toggle what displays you are interested in visualizing.</p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/perception_camera.gif"/>
 </p>
 
 <h3 id="depthcloud-display">DepthCloud Display</h3>
-<p>The <code>DepthCloud</code> display is visualized in the main RViz window. This display takes in the depth image and RGB image, provided by the RealSense, to visualize and register a point cloud.</p>
+<p>The <code>DepthCloud</code> display is visualized in the main RViz window. This display takes in the depth image and RGB image provided by RealSense to visualize and register a point cloud.</p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/perception_depth.gif"/>
 </p>

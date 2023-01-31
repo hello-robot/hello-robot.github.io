@@ -3709,31 +3709,29 @@
 <h3 id="xbox-controller-teleoperating">Xbox Controller Teleoperating</h3>
 <p>If you have not already had a look at the <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/quick_start_guide_re2/#hello-world-demo">Xbox Controller Teleoperation</a> section in the Quick Start guide, now might be a good time to try it.</p>
 <h3 id="keyboard-teleoperating-full-body">Keyboard Teleoperating: Full Body</h3>
-<p>For full body teleoperation with the keyboard, you first need to run the <code>stretch_driver.launch</code> in a terminal.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch stretch_core stretch_driver.launch
+<p>For full-body teleoperation with the keyboard, you first need to run the <code>stretch_driver.launch</code> in a terminal.</p>
+<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
-Then in a new terminal, type the following command</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-rosrun stretch_core keyboard_teleop
+<p>Then in a new terminal, type the following command</p>
+<div class="highlight"><pre><span></span><code>rosrun stretch_core keyboard_teleop
 </code></pre></div>
-<p>Below are the keyboard commands that allow a user to control all of Stretch's joints.<br />
-<div class="highlight"><pre><span></span><code>---------- KEYBOARD TELEOP MENU -----------
+<p>Below are the keyboard commands that allow a user to control all of Stretch's joints.</p>
+<div class="no-copy highlight"><pre><span></span><code>---------- KEYBOARD TELEOP MENU -----------
 
               i HEAD UP                    
  j HEAD LEFT            l HEAD RIGHT       
               , HEAD DOWN                  
 
 
- 7 BASE ROTATE LEFT     9 BASE ROTATE RIGHT
+ <span class="m">7</span> BASE ROTATE LEFT     <span class="m">9</span> BASE ROTATE RIGHT
  home                   page-up            
 
 
-              8 LIFT UP                    
+              <span class="m">8</span> LIFT UP                    
               up-arrow                     
- 4 BASE FORWARD         6 BASE BACK        
+ <span class="m">4</span> BASE FORWARD         <span class="m">6</span> BASE BACK        
  left-arrow             right-arrow        
-              2 LIFT DOWN                  
+              <span class="m">2</span> LIFT DOWN                  
               down-arrow                   
 
 
@@ -3742,8 +3740,8 @@ rosrun stretch_core keyboard_teleop
               x ARM IN                     
 
 
-              5 GRIPPER CLOSE              
-              0 GRIPPER OPEN               
+              <span class="m">5</span> GRIPPER CLOSE              
+              <span class="m">0</span> GRIPPER OPEN               
 
   step size:  b BIG, m MEDIUM, s SMALL     
 
@@ -3751,64 +3749,59 @@ rosrun stretch_core keyboard_teleop
 
 -------------------------------------------
 </code></pre></div>
-To stop the node from sending twist messages, type <strong>Ctrl</strong> + <strong>c</strong>.</p>
+<p>To stop the node from sending twist messages, press <code>Ctrl</code> + <code>c</code> in the terminal.</p>
 <h3 id="keyboard-teleoperating-mobile-base">Keyboard Teleoperating: Mobile Base</h3>
 <p>Begin by running the following command in your terminal:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch stretch_core stretch_driver.launch
+<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
-<p>To teleoperate a Stretch's mobile base with the keyboard, you first need to switch the mode to <em>nagivation</em> for the robot to receive <em>Twist</em> messages. This is done using a rosservice call in a new terminal. In the same terminal run the teleop_twist_keyboard node with the argument remapping the <em>cmd_vel</em> topic name to <em>stretch/cmd_vel</em>.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-rosservice call /switch_to_navigation_mode
+<p>To teleoperate a Stretch's mobile base with the keyboard, you first need to switch the mode to <code>navigation</code> for the robot to receive <code>Twist</code> messages. This is done using a rosservice call in a new terminal. In the same terminal run the teleop_twist_keyboard node with the argument remapping the <em>cmd_vel</em> topic name to <em>stretch/cmd_vel</em>.</p>
+<div class="highlight"><pre><span></span><code>rosservice call /switch_to_navigation_mode
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:<span class="o">=</span>stretch/cmd_vel
 </code></pre></div>
-<p>Below are the keyboard commands that allow a user to move Stretch's base.<br />
-<div class="highlight"><pre><span></span><code>Reading from the keyboard  and Publishing to Twist!
+<p>Below are the keyboard commands that allow a user to move Stretch's base.  </p>
+<div class="no-copy highlight"><pre><span></span><code>Reading from the keyboard  and Publishing to Twist!
 ---------------------------
 Moving around:
    u    i    o
    j    k    l
    m    ,    .
 
-For Holonomic mode (strafing), hold down the shift key:
+For Holonomic mode <span class="o">(</span>strafing<span class="o">)</span>, hold down the <span class="nb">shift</span> key:
 ---------------------------
    U    I    O
    J    K    L
    M    &lt;    &gt;
 
-t : up (+z)
-b : down (-z)
+t : up <span class="o">(</span>+z<span class="o">)</span>
+b : down <span class="o">(</span>-z<span class="o">)</span>
 
-anything else : stop
+anything <span class="k">else</span> : stop
 
-q/z : increase/decrease max speeds by 10%
-w/x : increase/decrease only linear speed by 10%
-e/c : increase/decrease only angular speed by 10%
+q/z : increase/decrease max speeds by <span class="m">10</span>%
+w/x : increase/decrease only linear speed by <span class="m">10</span>%
+e/c : increase/decrease only angular speed by <span class="m">10</span>%
 
 CTRL-C to quit
 
-currently:  speed 0.5   turn 1.0
+currently:  speed <span class="m">0</span>.5   turn <span class="m">1</span>.0
 </code></pre></div>
-To stop the node from sending twist messages, type <strong>Ctrl</strong> + <strong>c</strong>.</p>
+<p>To stop the node from sending twist messages, type <code>Ctrl</code> + <code>c</code>.</p>
 <h3 id="create-a-node-for-mobile-base-teleoperating">Create a node for Mobile Base Teleoperating</h3>
-<p>To move Stretch's mobile base using a python script, please look at <a href="../example_1/">example 1</a> for reference.</p>
+<p>To move Stretch's mobile base using a python script, please look at <a href="../example_1/">Teleoperate Stretch with a node</a> for reference.</p>
 <h2 id="teleoperating-in-gazebo">Teleoperating in Gazebo</h2>
 <h3 id="keyboard-teleoperating-mobile-base_1">Keyboard Teleoperating: Mobile Base</h3>
-<p>For keyboard teleoperation of the Stretch's mobile base, first <a href="../gazebo_basics/">startup Stretch in simulation</a>. Then run the following command in a new terminal.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch stretch_gazebo gazebo.launch
+<p>For keyboard teleoperation of the Stretch's mobile base, first, <a href="../gazebo_basics/">startup Stretch in simulation</a>. Then run the following command in a new terminal.</p>
+<div class="highlight"><pre><span></span><code>roslaunch stretch_gazebo gazebo.launch
 </code></pre></div>
 <p>In a new terminal, type the following</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-roslaunch stretch_core teleop_twist.launch twist_topic:<span class="o">=</span>/stretch_diff_drive_controller/cmd_vel linear:<span class="o">=</span><span class="m">1</span>.0 angular:<span class="o">=</span><span class="m">2</span>.0 teleop_type:<span class="o">=</span>keyboard <span class="c1"># or use teleop_type:=joystick if you have a controller</span>
+<div class="highlight"><pre><span></span><code>roslaunch stretch_core teleop_twist.launch twist_topic:<span class="o">=</span>/stretch_diff_drive_controller/cmd_vel linear:<span class="o">=</span><span class="m">1</span>.0 angular:<span class="o">=</span><span class="m">2</span>.0 teleop_type:<span class="o">=</span>keyboard
 </code></pre></div>
-The same keyboard commands will be presented to a user to move the robot.</p>
+<p>The same keyboard commands will be presented to a user to move the robot.</p>
 <h3 id="xbox-controller-teleoperating_1">Xbox Controller Teleoperating</h3>
-<p>An alternative for robot base teleoperation is to use an Xbox controller. Stop the keyboard teleoperation node by typing <strong>Ctrl</strong> + <strong>c</strong> in the terminal where the command was executed. Then connect the Xbox controller device to your local machine and run the following command.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-roslaunch stretch_core teleop_twist.launch twist_topic:<span class="o">=</span>/stretch_diff_drive_controller/cmd_vel linear:<span class="o">=</span><span class="m">1</span>.0 angular:<span class="o">=</span><span class="m">2</span>.0 teleop_type:<span class="o">=</span>joystick
+<p>An alternative for robot base teleoperation is to use an Xbox controller. Stop the keyboard teleoperation node by typing <code>Ctrl</code> + <code>c</code> in the terminal where the command was executed. Then connect the Xbox controller device to your local machine and run the following command.</p>
+<div class="highlight"><pre><span></span><code>roslaunch stretch_core teleop_twist.launch twist_topic:<span class="o">=</span>/stretch_diff_drive_controller/cmd_vel linear:<span class="o">=</span><span class="m">1</span>.0 angular:<span class="o">=</span><span class="m">2</span>.0 teleop_type:<span class="o">=</span>joystick
 </code></pre></div>
-Note that the teleop_twist_joy package has a deadman switch by default which disables the drive commands to be published unless pressed. For a Logitech F310 joystick, this button is A.</p>
+<p>Note that the teleop_twist_joy package has a deadman switch by default which disables the drive commands to be published unless pressed. For a Logitech F310 joystick, this button is A.</p>
 
 
 

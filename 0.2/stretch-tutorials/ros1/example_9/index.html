@@ -3624,42 +3624,39 @@
   <h1>Voice Teleoperation of Base</h1>
 
 <h2 id="example-9">Example 9</h2>
-<p>The aim of example 9 is to combine the <a href="../respeaker_microphone_array/">ReSpeaker Microphone Array</a> and <a href="../follow_joint_trajectory/">Follow Joint Trajectory</a> tutorials to voice teleoperate the mobile base of the Stretch robot.</p>
+<p>This example aims to combine the <a href="../respeaker_microphone_array/">ReSpeaker Microphone Array</a> and <a href="../follow_joint_trajectory/">Follow Joint Trajectory</a> tutorials to voice teleoperate the mobile base of the Stretch robot.</p>
 <p>Begin by running the following command in a new terminal.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch stretch_core stretch_driver.launch
+<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
-Switch the mode to <em>position</em> mode using a rosservice call. Then run the <code>respeaker.launch</code> file.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-rosservice call /switch_to_position_mode
+<p>Switch the mode to <code>position</code> mode using a rosservice call. Then run the <code>respeaker.launch</code> file. In a new terminal, execute:</p>
+<div class="highlight"><pre><span></span><code>rosservice call /switch_to_position_mode
 roslaunch stretch_core respeaker.launch
 </code></pre></div>
-Then run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/voice_teleoperation_base.py">voice_teleoperation_base.py</a> node in a new terminal.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 3</span>
-<span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+<p>Then run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/voice_teleoperation_base.py">voice_teleoperation_base.py</a> node in a new terminal.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 voice_teleoperation_base.py
 </code></pre></div>
-In terminal 3, a menu of voice commands is printed. You can reference this menu layout below.  </p>
-<p><div class="highlight"><pre><span></span><code>------------ VOICE TELEOP MENU ------------
+<p>In terminal 3, a menu of voice commands is printed. You can reference this menu layout below.  </p>
+<div class="no-copy highlight"><pre><span></span><code>------------ VOICE TELEOP MENU ------------
 
 VOICE COMMANDS              
-&quot;forward&quot;: BASE FORWARD                   
-&quot;back&quot;   : BASE BACK                      
-&quot;left&quot;   : BASE ROTATE LEFT               
-&quot;right&quot;  : BASE ROTATE RIGHT              
-&quot;stretch&quot;: BASE ROTATES TOWARDS SOUND     
+<span class="s2">&quot;forward&quot;</span>: BASE FORWARD                   
+<span class="s2">&quot;back&quot;</span>   : BASE BACK                      
+<span class="s2">&quot;left&quot;</span>   : BASE ROTATE LEFT               
+<span class="s2">&quot;right&quot;</span>  : BASE ROTATE RIGHT              
+<span class="s2">&quot;stretch&quot;</span>: BASE ROTATES TOWARDS SOUND     
 
 STEP SIZE                 
-&quot;big&quot;    : BIG                            
-&quot;medium&quot; : MEDIUM                         
-&quot;small&quot;  : SMALL                          
+<span class="s2">&quot;big&quot;</span>    : BIG                            
+<span class="s2">&quot;medium&quot;</span> : MEDIUM                         
+<span class="s2">&quot;small&quot;</span>  : SMALL                          
 
 
-&quot;quit&quot;   : QUIT AND CLOSE NODE            
+<span class="s2">&quot;quit&quot;</span>   : QUIT AND CLOSE NODE            
 
 -------------------------------------------
 </code></pre></div>
-To stop the node from sending twist messages, type <strong>Ctrl</strong> + <strong>c</strong> or say "<strong>quit</strong>".</p>
+<p>To stop the node from sending twist messages, type <code>Ctrl</code> + <code>c</code> or say "<strong>quit</strong>".</p>
 <h3 id="the-code">The Code</h3>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 
@@ -3870,10 +3867,10 @@ To stop the node from sending twist messages, type <strong>Ctrl</strong> + <stro
 </code></pre></div>
 <h3 id="the-code-explained">The Code Explained</h3>
 <p>This code is similar to that of the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/multipoint_command.py">multipoint_command</a> and <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/joint_state_printer.py">joint_state_printer</a> node. Therefore, this example will highlight sections that are different from those tutorials. Now let's break the code down.</p>
-<p><div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 </code></pre></div>
-Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python script.</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
+<p>Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python script.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">rospy</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
@@ -3884,15 +3881,15 @@ Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this dec
 <span class="kn">import</span> <span class="nn">hello_helpers.hello_misc</span> <span class="k">as</span> <span class="nn">hm</span>
 <span class="kn">from</span> <span class="nn">speech_recognition_msgs.msg</span> <span class="kn">import</span> <span class="n">SpeechRecognitionCandidates</span>
 </code></pre></div>
-You need to import rospy if you are writing a ROS Node. Import the <code>FollowJointTrajectoryGoal</code> from the <code>control_msgs.msg</code> package to control the Stretch robot. Import <code>JointTrajectoryPoint</code> from the <code>trajectory_msgs</code> package to define robot trajectories. The <code>hello_helpers</code> package consists of a module that provides various Python scripts used across stretch_ros. In this instance, we are importing the <code>hello_misc</code> script.  Import <code>sensor_msgs.msg</code> so that we can subscribe to JointState messages.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">GetVoiceCommands</span><span class="p">:</span>
+<p>You need to import <code>rospy</code> if you are writing a ROS Node. Import the <code>FollowJointTrajectoryGoal</code> from the <code>control_msgs.msg</code> package to control the Stretch robot. Import <code>JointTrajectoryPoint</code> from the <code>trajectory_msgs</code> package to define robot trajectories. The <code>hello_helpers</code> package consists of a module that provides various Python scripts used across stretch_ros. In this instance, we are importing the <code>hello_misc</code> script.  Import <code>sensor_msgs.msg</code> so that we can subscribe to JointState messages.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">GetVoiceCommands</span><span class="p">:</span>
 </code></pre></div>
-Create a class that subscribes to the speech to text recognition messages, prints a voice command menu, and defines step size for translational and rotational mobile base motion.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">step_size</span> <span class="o">=</span> <span class="s1">&#39;medium&#39;</span>
+<p>Create a class that subscribes to the <code>speech-to-text</code> recognition messages, prints a voice command menu, and defines step size for translational and rotational mobile base motion.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">step_size</span> <span class="o">=</span> <span class="s1">&#39;medium&#39;</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">rad_per_deg</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">180.0</span>
 </code></pre></div>
-Set the default step size as medium and create a float value, <em>self.rad_per_deg</em>, to convert degrees to radians.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">small_deg</span> <span class="o">=</span> <span class="mf">5.0</span>
+<p>Set the default step size as medium and create a float value, <code>self.rad_per_deg</code>, to convert degrees to radians.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">small_deg</span> <span class="o">=</span> <span class="mf">5.0</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">small_rad</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rad_per_deg</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">small_deg</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">small_translate</span> <span class="o">=</span> <span class="mf">0.025</span>
 
@@ -3904,18 +3901,18 @@ Set the default step size as medium and create a float value, <em>self.rad_per_d
 <span class="bp">self</span><span class="o">.</span><span class="n">big_rad</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rad_per_deg</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">big_deg</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">big_translate</span> <span class="o">=</span> <span class="mf">0.1</span>
 </code></pre></div>
-Define the three rotation and translation step sizes.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">voice_command</span> <span class="o">=</span> <span class="kc">None</span>
+<p>Define the three rotation and translation step sizes.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">voice_command</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">sound_direction</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">speech_to_text_sub</span>  <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s2">&quot;/speech_to_text&quot;</span><span class="p">,</span>  <span class="n">SpeechRecognitionCandidates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback_speech</span><span class="p">)</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">sound_direction_sub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s2">&quot;/sound_direction&quot;</span><span class="p">,</span> <span class="n">Int32</span><span class="p">,</span>                       <span class="bp">self</span><span class="o">.</span><span class="n">callback_direction</span><span class="p">)</span>
 </code></pre></div>
-Initialize the voice command and sound direction to values that will not result in moving the base.</p>
-<p>Set up two subscribers.  The first one subscribes to the topic <em>/speech_to_text</em>, looking for <code>SpeechRecognitionCandidates</code> messages.  When a message comes in, ROS is going to pass it to the function <code>callback_speech</code> automatically. The second subscribes to <em>/sound_direction</em> message and passes it to the <code>callback_direction</code> function.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">sound_direction</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">data</span> <span class="o">*</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">rad_per_deg</span>
+<p>Initialize the voice command and sound direction to values that will not result in moving the base.</p>
+<p>Set up two subscribers.  The first one subscribes to the topic <code>/speech_to_text</code>, looking for <code>SpeechRecognitionCandidates</code> messages.  When a message comes in, ROS is going to pass it to the function <code>callback_speech</code> automatically. The second subscribes to <code>/sound_direction</code> message and passes it to the <code>callback_direction</code> function.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">sound_direction</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">data</span> <span class="o">*</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">rad_per_deg</span>
 </code></pre></div>
-The <code>callback_direction</code> function converts the <em>sound_direction</em> topic from degrees to radians.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">step_size</span> <span class="o">==</span> <span class="s1">&#39;small&#39;</span><span class="p">:</span>
+<p>The <code>callback_direction</code> function converts the <code>sound_direction</code> topic from degrees to radians.</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">step_size</span> <span class="o">==</span> <span class="s1">&#39;small&#39;</span><span class="p">:</span>
     <span class="n">inc</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;rad&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">small_rad</span><span class="p">,</span> <span class="s1">&#39;translate&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">small_translate</span><span class="p">}</span>
 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">step_size</span> <span class="o">==</span> <span class="s1">&#39;medium&#39;</span><span class="p">:</span>
     <span class="n">inc</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;rad&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">medium_rad</span><span class="p">,</span> <span class="s1">&#39;translate&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">medium_translate</span><span class="p">}</span>
@@ -3923,8 +3920,8 @@ The <code>callback_direction</code> function converts the <em>sound_direction</e
     <span class="n">inc</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;rad&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">big_rad</span><span class="p">,</span> <span class="s1">&#39;translate&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">big_translate</span><span class="p">}</span>
 <span class="k">return</span> <span class="n">inc</span>
 </code></pre></div>
-The <code>callback_speech</code> stores the increment size for translational and rotational base motion to <em>inc</em>. The increment size is contingent on the <em>self.step_size</em> string value.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">command</span> <span class="o">=</span> <span class="kc">None</span>
+<p>The <code>callback_speech</code> stores the increment size for translational and rotational base motion in <code>inc</code>. The increment size is contingent on the <code>self.step_size</code> string value.</p>
+<div class="highlight"><pre><span></span><code><span class="n">command</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">voice_command</span> <span class="o">==</span> <span class="s1">&#39;forward&#39;</span><span class="p">:</span>
     <span class="n">command</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;joint&#39;</span><span class="p">:</span> <span class="s1">&#39;translate_mobile_base&#39;</span><span class="p">,</span> <span class="s1">&#39;inc&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_inc</span><span class="p">()[</span><span class="s1">&#39;translate&#39;</span><span class="p">]}</span>
 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">voice_command</span> <span class="o">==</span> <span class="s1">&#39;back&#39;</span><span class="p">:</span>
@@ -3936,18 +3933,18 @@ The <code>callback_speech</code> stores the increment size for translational and
 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">voice_command</span> <span class="o">==</span> <span class="s1">&#39;stretch&#39;</span><span class="p">:</span>
     <span class="n">command</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;joint&#39;</span><span class="p">:</span> <span class="s1">&#39;rotate_mobile_base&#39;</span><span class="p">,</span> <span class="s1">&#39;inc&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">sound_direction</span><span class="p">}</span>
 </code></pre></div>
-In the <code>get_command()</code> function, the <em>command</em> is initialized as None, or set as a dictionary where the <em>joint</em> and <em>inc</em> values are stored. The <em>command</em> message type is dependent on the <em>self.voice_command</em> string value.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">voice_command</span> <span class="o">==</span> <span class="s2">&quot;small&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">voice_command</span> <span class="o">==</span> <span class="s2">&quot;medium&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">voice_command</span> <span class="o">==</span> <span class="s2">&quot;big&quot;</span><span class="p">):</span>
+<p>In the <code>get_command()</code> function, the <code>command</code> is initialized as <code>None</code>, or set as a dictionary where the <code>joint</code> and <code>inc</code> values are stored. The <code>command</code> message type is dependent on the <code>self.voice_command</code> string value.</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">voice_command</span> <span class="o">==</span> <span class="s2">&quot;small&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">voice_command</span> <span class="o">==</span> <span class="s2">&quot;medium&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">voice_command</span> <span class="o">==</span> <span class="s2">&quot;big&quot;</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">step_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">voice_command</span>
     <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s1">&#39;Step size = </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">step_size</span><span class="p">))</span>
 </code></pre></div>
-Based on the <em>self.voice_command</em> value, set the step size for the increments.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">voice_command</span> <span class="o">==</span> <span class="s1">&#39;quit&#39;</span><span class="p">:</span>
+<p>Based on the <code>self.voice_command</code> value set the step size for the increments.</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">voice_command</span> <span class="o">==</span> <span class="s1">&#39;quit&#39;</span><span class="p">:</span>
     <span class="n">rospy</span><span class="o">.</span><span class="n">signal_shutdown</span><span class="p">(</span><span class="s2">&quot;done&quot;</span><span class="p">)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-If the <em>self.voice_command</em> is equal to "quit", then initiate a clean shutdown of ROS and exit the Python interpreter.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">VoiceTeleopNode</span><span class="p">(</span><span class="n">hm</span><span class="o">.</span><span class="n">HelloNode</span><span class="p">):</span>
+<p>If the <code>self.voice_command</code> is equal to <code>quit</code>, then initiate a clean shutdown of ROS and exit the Python interpreter.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">VoiceTeleopNode</span><span class="p">(</span><span class="n">hm</span><span class="o">.</span><span class="n">HelloNode</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A class that inherits the HelloNode class from hm and sends joint trajectory</span>
 <span class="sd">    commands.</span>
@@ -3963,8 +3960,8 @@ If the <em>self.voice_command</em> is equal to "quit", then initiate a clean shu
         <span class="bp">self</span><span class="o">.</span><span class="n">joint_state</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">speech</span> <span class="o">=</span> <span class="n">GetVoiceCommands</span><span class="p">()</span>
 </code></pre></div>
-A class that inherits the <code>HelloNode</code> class from <code>hm</code>, declares object from the <code>GetVoiceCommands</code> class, and sends joint trajectory commands.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">send_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">):</span>
+<p>A class that inherits the <code>HelloNode</code> class from <code>hm</code> declares object from the <code>GetVoiceCommands</code> class and sends joint trajectory commands.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">send_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function that makes an action call and sends base joint trajectory goals</span>
 <span class="sd">    :param self: The self reference.</span>
@@ -3975,32 +3972,32 @@ A class that inherits the <code>HelloNode</code> class from <code>hm</code>, dec
         <span class="n">point</span> <span class="o">=</span> <span class="n">JointTrajectoryPoint</span><span class="p">()</span>
         <span class="n">point</span><span class="o">.</span><span class="n">time_from_start</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
 </code></pre></div>
-The <code>send_command</code> function stores the joint state message and uses a conditional statement to send joint trajectory goals. Also, assign <em>point</em> as a <code>JointTrajectoryPoint</code> message type.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">trajectory_goal</span> <span class="o">=</span> <span class="n">FollowJointTrajectoryGoal</span><span class="p">()</span>
+<p>The <code>send_command</code> function stores the joint state message and uses a conditional statement to send joint trajectory goals. Also, assign <code>point</code> as a <code>JointTrajectoryPoint</code> message type.</p>
+<div class="highlight"><pre><span></span><code><span class="n">trajectory_goal</span> <span class="o">=</span> <span class="n">FollowJointTrajectoryGoal</span><span class="p">()</span>
 <span class="n">trajectory_goal</span><span class="o">.</span><span class="n">goal_time_tolerance</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
 </code></pre></div>
-Assign <em>trajectory_goal</em> as a <code>FollowJointTrajectoryGoal</code> message type.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">joint_name</span> <span class="o">=</span> <span class="n">command</span><span class="p">[</span><span class="s1">&#39;joint&#39;</span><span class="p">]</span>
+<p>Assign <code>trajectory_goal</code> as a <code>FollowJointTrajectoryGoal</code> message type.</p>
+<div class="highlight"><pre><span></span><code><span class="n">joint_name</span> <span class="o">=</span> <span class="n">command</span><span class="p">[</span><span class="s1">&#39;joint&#39;</span><span class="p">]</span>
 <span class="n">trajectory_goal</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">joint_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">joint_name</span><span class="p">]</span>
 </code></pre></div>
-Extract the joint name from the command dictionary.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">inc</span> <span class="o">=</span> <span class="n">command</span><span class="p">[</span><span class="s1">&#39;inc&#39;</span><span class="p">]</span>
+<p>Extract the joint name from the command dictionary.</p>
+<div class="highlight"><pre><span></span><code><span class="n">inc</span> <span class="o">=</span> <span class="n">command</span><span class="p">[</span><span class="s1">&#39;inc&#39;</span><span class="p">]</span>
 <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s1">&#39;inc = </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">inc</span><span class="p">))</span>
 <span class="n">new_value</span> <span class="o">=</span> <span class="n">inc</span>
 </code></pre></div>
-Extract the increment type from the command dictionary.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">point</span><span class="o">.</span><span class="n">positions</span> <span class="o">=</span> <span class="p">[</span><span class="n">new_value</span><span class="p">]</span>
+<p>Extract the increment type from the command dictionary.</p>
+<div class="highlight"><pre><span></span><code><span class="n">point</span><span class="o">.</span><span class="n">positions</span> <span class="o">=</span> <span class="p">[</span><span class="n">new_value</span><span class="p">]</span>
 <span class="n">trajectory_goal</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="p">[</span><span class="n">point</span><span class="p">]</span>
 </code></pre></div>
-Assign the new value position to the trajectory goal message type.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">trajectory_client</span><span class="o">.</span><span class="n">send_goal</span><span class="p">(</span><span class="n">trajectory_goal</span><span class="p">)</span>
+<p>Assign the new value position to the trajectory goal message type.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">trajectory_client</span><span class="o">.</span><span class="n">send_goal</span><span class="p">(</span><span class="n">trajectory_goal</span><span class="p">)</span>
 <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s1">&#39;Done sending command.&#39;</span><span class="p">)</span>
 </code></pre></div>
-Make the action call and send goal of the new joint position.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">speech</span><span class="o">.</span><span class="n">print_commands</span><span class="p">()</span>
+<p>Make the action call and send the goal of the new joint position.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">speech</span><span class="o">.</span><span class="n">print_commands</span><span class="p">()</span>
 </code></pre></div>
-Reprint the voice command menu after the trajectory goal is sent.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<p>Reprint the voice command menu after the trajectory goal is sent.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
       <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">      The main function that instantiates the HelloNode class, initializes the subscriber,</span>
 <span class="sd">      and call other methods in both the VoiceTeleopNode and GetVoiceCommands classes.</span>
@@ -4011,20 +4008,20 @@ Reprint the voice command menu after the trajectory goal is sent.</p>
       <span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span><span class="p">)</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">speech</span><span class="o">.</span><span class="n">print_commands</span><span class="p">()</span>
 </code></pre></div>
-The main function instantiates the <code>HelloNode</code> class, initializes the subscriber, and call other methods in both the <code>VoiceTeleopNode</code> and <code>GetVoiceCommands</code> classes.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
+<p>The main function instantiates the <code>HelloNode</code> class, initializes the subscriber, and calls other methods in both the <code>VoiceTeleopNode</code> and <code>GetVoiceCommands</code> classes.</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
   <span class="n">command</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">speech</span><span class="o">.</span><span class="n">get_command</span><span class="p">()</span>
   <span class="bp">self</span><span class="o">.</span><span class="n">send_command</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
   <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
 </code></pre></div>
-Run a while loop to continuously check speech commands and send those commands to execute an action.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+<p>Run a while loop to continuously check speech commands and send those commands to execute an action.</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
   <span class="n">node</span> <span class="o">=</span> <span class="n">VoiceTeleopNode</span><span class="p">()</span>
   <span class="n">node</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
   <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s1">&#39;interrupt received, so shutting down&#39;</span><span class="p">)</span>
 </code></pre></div>
-Declare a <code>VoiceTeleopNode</code> object. Then execute the <code>main()</code> method.</p>
+<p>Declare a <code>VoiceTeleopNode</code> object. Then execute the <code>main()</code> method.</p>
 
 
 

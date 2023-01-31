@@ -3644,18 +3644,16 @@
 
 <p>The goal of this example is to give you an enhanced understanding of how to control the mobile base by sending <code>Twist</code> messages to a Stretch robot.</p>
 <p>Begin by running the following command in a new terminal.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch stretch_core stretch_driver.launch
+<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
-<p>Switch the mode to <em>navigation</em> mode using a rosservice call. Then drive the robot forward with the <a href="https://github.com/hello-robot/stretch_tutorials/tree/noetic/src/move.py">move.py</a> node.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-rosservice call /switch_to_navigation_mode
+<p>Switch to <code>navigation</code> mode using a rosservice call. Then, in a new terminal, drive the robot forward with the <a href="https://github.com/hello-robot/stretch_tutorials/tree/noetic/src/move.py">move.py</a> node.</p>
+<div class="highlight"><pre><span></span><code>rosservice call /switch_to_navigation_mode
 <span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 move.py
 </code></pre></div>
-To stop the node from sending twist messages, type <strong>Ctrl</strong> + <strong>c</strong>.</p>
+<p>To stop the node from sending twist messages, type <code>Ctrl</code> + <code>c</code>.</p>
 <h3 id="the-code">The Code</h3>
-<p>Below is the code which will send <em>Twist</em> messages to drive the robot forward.</p>
+<p>Below is the code which will send <code>Twist</code> messages to drive the robot forward.</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 
 <span class="kn">import</span> <span class="nn">rospy</span>
@@ -3698,45 +3696,49 @@ To stop the node from sending twist messages, type <strong>Ctrl</strong> + <stro
 </code></pre></div>
 <h3 id="the-code-explained">The Code Explained</h3>
 <p>Now let's break the code down.</p>
-<p><div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 </code></pre></div>
-Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rospy</span>
+<p>Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rospy</span>
 <span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">Twist</span>
 </code></pre></div>
-You need to import <code>rospy</code> if you are writing a ROS <a href="http://wiki.ros.org/Nodes">Node</a>. The <code>geometry_msgs.msg</code> import is so that we can send velocity commands to the robot.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Move</span><span class="p">:</span>
+<p>You need to import <code>rospy</code> if you are writing a ROS <a href="http://wiki.ros.org/Nodes">Node</a>. The <code>geometry_msgs.msg</code> import is so that we can send velocity commands to the robot.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Move</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;/stretch/cmd_vel&#39;</span><span class="p">,</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="c1">#/stretch_diff_drive_controller/cmd_vel for gazebo</span>
 </code></pre></div>
-This section of code defines the talker's interface to the rest of ROS. <code>pub = rospy.Publisher("/stretch/cmd_vel", Twist, queue_size=1)</code> declares that your node is publishing to the <em>/stretch/cmd_vel</em> topic using the message type <code>Twist</code>. The <code>queue_size</code> argument limits the amount of queued messages if any subscriber is not receiving them fast enough.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">command</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span>
+<p>This section of code defines the talker's interface to the rest of ROS. <code>pub = rospy.Publisher("/stretch/cmd_vel", Twist, queue_size=1)</code> declares that your node is publishing to the <code>/stretch/cmd_vel</code> topic using the message type <code>Twist</code>. The <code>queue_size</code> argument limits the amount of queued messages if any subscriber is not receiving them fast enough.</p>
+<div class="highlight"><pre><span></span><code><span class="n">command</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span>
 </code></pre></div>
-Make a <code>Twist</code> message. We're going to set all of the elements, since we can't depend on them defaulting to safe values.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">command</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.1</span>
+<p>Make a <code>Twist</code> message. We're going to set all of the elements since we can't depend on them defaulting to safe values.</p>
+<div class="highlight"><pre><span></span><code><span class="n">command</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.1</span>
 <span class="n">command</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="n">command</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
 </code></pre></div>
-A <code>Twist</code> data structure has three linear velocities (in meters per second), along each of the axes. For Stretch, it will only pay attention to the x velocity, since it can't directly move in the y direction or the z direction.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">command</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
+<p>A <code>Twist</code> data structure has three linear velocities (in meters per second), along each of the axes. For Stretch, it will only pay attention to the x velocity, since it can't directly move in the y or the z direction.</p>
+<div class="highlight"><pre><span></span><code><span class="n">command</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="n">command</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="n">command</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
 </code></pre></div>
-A <code>Twist</code> message also has three rotational velocities (in radians per second). The Stretch will only respond to rotations around the z (vertical) axis.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+<p>A <code>Twist</code> message also has three rotational velocities (in radians per second). Stretch will only respond to rotations around the z (vertical) axis.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
 </code></pre></div>
-Publish the <code>Twist</code> commands in the previously defined topic name <em>/stretch/cmd_vel</em>.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;move&#39;</span><span class="p">)</span>
+<p>Publish the <code>Twist</code> commands in the previously defined topic name <code>/stretch/cmd_vel</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;move&#39;</span><span class="p">)</span>
 <span class="n">base_motion</span> <span class="o">=</span> <span class="n">Move</span><span class="p">()</span>
 <span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div>
-The next line, <code>rospy.init_node(NAME, ...)</code>, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. <strong>NOTE:</strong> the name must be a base name, i.e. it cannot contain any slashes "/".</p>
-<p>The <code>rospy.Rate()</code> function creates a Rate object. With the help of its method <code>sleep()</code>, it offers a convenient way for looping at the desired rate. With its argument of 10, we should expect to go through the loop 10 times per second (as long as our processing time does not exceed 1/10th of a second!)</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
+<p>The next line, <code>rospy.init_node(NAME, ...)</code>, is very important as it tells rospy the name of your node. Until rospy has this information, it cannot start communicating with the ROS Master. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the name must be a base name, i.e. it cannot contain any slashes "/".</p>
+</div>
+<p>The <code>rospy.Rate()</code> function creates a Rate object. With the help of its method <code>sleep()</code>, it offers a convenient way for looping at the desired rate. With its argument of 10, we should expect to go through the loop 10 times per second (as long as our processing time does not exceed 1/10th of a second!).</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
     <span class="n">base_motion</span><span class="o">.</span><span class="n">move_forward</span><span class="p">()</span>
     <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
 </code></pre></div>
-This loop is a fairly standard rospy construct: checking the <code>rospy.is_shutdown()</code> flag and then doing work. You have to check <code>is_shutdown()</code> to check if your program should exit (e.g. if there is a <strong>Ctrl-C</strong> or otherwise). The loop calls <code>rate.sleep()</code>, which sleeps just long enough to maintain the desired rate through the loop.</p>
+<p>This loop is a fairly standard rospy construct: checking the <code>rospy.is_shutdown()</code> flag and then doing work. You have to check <code>is_shutdown()</code> to check if your program should exit (e.g. if there is a <code>Ctrl-C</code> event or otherwise). The loop calls <code>rate.sleep()</code>, which sleeps just long enough to maintain the desired rate through the loop.</p>
 <h2 id="move-stretch-in-simulation">Move Stretch in Simulation</h2>
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/move.gif"/>
@@ -3745,11 +3747,11 @@ This loop is a fairly standard rospy construct: checking the <code>rospy.is_shut
 <p>Using your preferred text editor, modify the topic name of the published <code>Twist</code> messages. Please review the edit in the <strong>move.py</strong> script below.</p>
 <div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;/stretch_diff_drive_controller/cmd_vel&#39;</span><span class="p">,</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-<p>After saving the edited node, bringup <a href="../gazebo_basics/">Stretch in the empty world simulation</a>. To drive the robot with the node, type the following in a new terminal</p>
-<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+<p>After saving the edited node, bring up <a href="../gazebo_basics/">Stretch in the empty world simulation</a>. To drive the robot with the node, type the following in a new terminal</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 move.py
 </code></pre></div>
-To stop the node from sending twist messages, type <strong>Ctrl</strong> + <strong>c</strong>.</p>
+<p>To stop the node from sending twist messages, type <code>Ctrl</code> + <code>c</code>.</p>
 
 
 

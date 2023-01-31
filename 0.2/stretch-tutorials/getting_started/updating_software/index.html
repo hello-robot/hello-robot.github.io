@@ -3712,53 +3712,53 @@
 <h1 id="updating-stretch-software">Updating Stretch Software</h1>
 <p>Stretch's software is improved with new features and bug fixes with each update. In this guide, we cover when and how to update the various software components on your Stretch.</p>
 <h2 id="when-to-update">When to Update</h2>
-<p>We develop our software publicly on Github, allowing anyone to follow/propose the development of a code feature or bug fix. While we wholeheartedly welcome collaboration on Github, it is not necessary to be active on Github to follow our software releases. We announce every major release of software on our <a href="https://forum.hello-robot.com/c/announcements">forum</a>. These are stable releases with code that has been extensively tested on many Stretch robots. To be notified of new releases, create an account on the forum and click the bell icon in the top left of the <a href="https://forum.hello-robot.com/c/announcements/6">announcements section</a>. The forum is also available to report issues and ask questions about any of our software packages.</p>
+<p>We develop our software publicly on GitHub, allowing anyone to follow and propose the development of a code feature or bug fix. While we wholeheartedly welcome collaboration on GitHub, it is not necessary to be active on GitHub to follow our software releases. We announce every major release of software on our <a href="https://forum.hello-robot.com/c/announcements">forum</a>. These are stable releases with code that has been extensively tested on many Stretch robots. To be notified of new releases, create an account on the forum and click the bell icon in the top left of the <a href="https://forum.hello-robot.com/c/announcements/6">announcements section</a>. The forum is also available to report issues and ask questions about any of our software packages.</p>
 <h2 id="how-to-update">How to Update</h2>
 <p>Each Stretch is shipped with firmware, a Python SDK, and ROS packages developed specifically for Stretch. At the moment, there are three separate processes for updating each of these components.</p>
 <h3 id="stretch-ros">Stretch ROS</h3>
-<p>Stretch ROS is the <a href="https://www.ros.org/about-ros/">Robot Operating System</a> (ROS) interface to the robot. Many robotics developers find ROS useful to bootstrap their robotics software developments. Depending on whether you want to setup a ROS or ROS 2 workspace, the easiest way to download the most recent updates in the stretch_ros and stretch_ros2 repos, while resolving all source built dependencies at the same time, is by following the instructions in the <a href="https://github.com/hello-robot/stretch_install/blob/master/docs/ros_workspace.md">Creating a New ROS Workspace</a> section in the stretch_install repo. </p>
+<p>Stretch ROS is the <a href="https://www.ros.org/about-ros/">Robot Operating System</a> (ROS) interface to the robot. Many robotics developers find ROS useful to bootstrap their robotics software developments. Depending on whether you want to set up a ROS or ROS 2 workspace, the easiest way to download the most recent updates in the stretch_ros and stretch_ros2 code repositories, while resolving all source-built dependencies at the same time, is by following the instructions in the <a href="https://github.com/hello-robot/stretch_install/blob/master/docs/ros_workspace.md">Creating a New ROS Workspace</a> section in the stretch_install repo. </p>
 <p><strong>Warning</strong>: Before you proceed, please ensure that all your personal files in the catkin or ament workspace have been backed up safely. This is important because executing the following set of commands deletes your existing workspace and replaces it with a fresh one.</p>
 <p>To download the stretch_install repo, execute:
-<div class="highlight"><pre><span></span><code><span class="go">cd ~/</span>
-<span class="go">git clone https://github.com/hello-robot/stretch_install.git</span>
-<span class="go">cd stretch_install</span>
-<span class="go">git pull</span>
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span> ~/
+git clone https://github.com/hello-robot/stretch_install.git
+<span class="nb">cd</span> stretch_install
+git pull
 </code></pre></div></p>
 <p>To replace the ROS Melodic catkin_ws in Ubuntu 18.04, execute:
-<div class="highlight"><pre><span></span><code><span class="gp"># </span>Create a ROS workspace
-<span class="go">./factory/18.04/stretch_create_catkin_workspace.sh -w &lt;optional-path-to-ws&gt;</span>
+<div class="shell-prompt highlight"><pre><span></span><code><span class="c1"># Create a ROS workspace</span>
+./factory/18.04/stretch_create_catkin_workspace.sh -w &lt;optional-path-to-ws&gt;
 </code></pre></div></p>
 <p>To replace the ROS Noetic catkin_ws in Ubuntu 20.04, execute:
-<div class="highlight"><pre><span></span><code><span class="gp"># </span>Create a ROS workspace
-<span class="go">./factory/20.04/stretch_create_catkin_workspace.sh -w &lt;optional-path-to-ws&gt;</span>
+<div class="shell-prompt highlight"><pre><span></span><code><span class="c1"># Create a ROS workspace</span>
+./factory/20.04/stretch_create_catkin_workspace.sh -w &lt;optional-path-to-ws&gt;
 </code></pre></div></p>
 <p>To replace the ROS 2 Galactic ament_ws in Ubuntu 20.04, execute:
-<div class="highlight"><pre><span></span><code><span class="gp"># </span>Create a ROS2 workspace
-<span class="go">./factory/20.04/stretch_create_ament_workspace.sh -w &lt;optional-path-to-ws&gt;</span>
+<div class="shell-prompt highlight"><pre><span></span><code><span class="c1"># Create a ROS2 workspace</span>
+./factory/20.04/stretch_create_ament_workspace.sh -w &lt;optional-path-to-ws&gt;
 </code></pre></div></p>
 <h3 id="stretch-body-python-sdk">Stretch Body Python SDK</h3>
-<p>Stretch Body is the Python SDK to the robot. It abstracts away the low level details of communication with the embedded devices and provides an intuitive API to working with the robot. You may update it using the following commands depending on the Python version.</p>
+<p>Stretch Body is the Python SDK for the robot. It abstracts away the low-level details of communication with the embedded devices and provides an intuitive API for working with the robot. You may update it using the following commands depending on the Python version.</p>
 <p>If you are using Python2, execute:
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>pip install -U hello-robot-stretch-body
-<span class="gp">$ </span>pip install -U hello-robot-stretch-body-tools
-<span class="gp">$ </span>pip install -U hello-robot-stretch-factory
-<span class="gp">$ </span>pip3 install -U hello_robot_stretch_body_tools_py3
+<div class="shell-prompt highlight"><pre><span></span><code>$ pip install -U hello-robot-stretch-body
+$ pip install -U hello-robot-stretch-body-tools
+$ pip install -U hello-robot-stretch-factory
+$ pip3 install -U hello_robot_stretch_body_tools_py3
 </code></pre></div></p>
 <p>For Python3, execute:
-<div class="highlight"><pre><span></span><code><span class="go">python3 -m pip -q install --no-warn-script-location hello-robot-stretch-body</span>
-<span class="go">python3 -m pip -q install --no-warn-script-location hello-robot-stretch-body-tools</span>
-<span class="go">python3 -m pip -q install --no-warn-script-location hello-robot-stretch-factory</span>
-<span class="go">python3 -m pip -q install --no-warn-script-location hello-robot-stretch-tool-share</span>
+<div class="shell-prompt highlight"><pre><span></span><code>python3 -m pip -q install --no-warn-script-location hello-robot-stretch-body
+python3 -m pip -q install --no-warn-script-location hello-robot-stretch-body-tools
+python3 -m pip -q install --no-warn-script-location hello-robot-stretch-factory
+python3 -m pip -q install --no-warn-script-location hello-robot-stretch-tool-share
 </code></pre></div></p>
 <h3 id="stretch-firmware">Stretch Firmware</h3>
 <p>The firmware and the Python SDK (called Stretch Body) communicate on an established protocol. Therefore, it is important to maintain a protocol match between the different firmware and Stretch Body versions. Fortunately, there is a script that handles this automatically. In the command line, run the following command:</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>REx_firmware_updater.py --status
+<div class="shell-prompt highlight"><pre><span></span><code>$ REx_firmware_updater.py --status
 </code></pre></div>
-<p>This script will automatically determine what version is currently running on the robot and provide a recommendation for a next step. Follow the next steps provided by the firmware updater script.</p>
+<p>This script will automatically determine what version is currently running on the robot and provide a recommendation for the next step. Follow the next steps provided by the firmware updater script.</p>
 <h3 id="ubuntu">Ubuntu</h3>
 <p>The operating system upon which Stretch is built is called Ubuntu. This operating system provides the underlying packages that power Stretch's software packages. Furthermore, users of Stretch depend on this operating system and the underlying packages to develop software on Stretch. Therefore, it is important to keep the OS and these underlying packages up to date. In the command line, run the following command:</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo apt update
-<span class="gp">$ </span>sudo apt upgrade
+<div class="shell-prompt highlight"><pre><span></span><code>$ sudo apt update
+$ sudo apt upgrade
 </code></pre></div>
 <p><a href="https://en.wikipedia.org/wiki/APT_(software)">Apt</a> is the package manager that handles updates for all Ubuntu packages.</p>
 <h2 id="troubleshooting">Troubleshooting</h2>
@@ -3772,8 +3772,8 @@ Disabling device.
 Please upgrade the firmware and/or version of Stretch Body.
 ----------------
 </code></pre></div>
-<p>This error appears because the low level Python SDK and the firmware cannot communicate to each other. There is a protocol mismatch preventing communication between the two. Simply run the following script and follow its recommendations to upgrade/downgrade the firmware as necessary to match the protocol level of Stretch Body.</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>REx_firmware_updater.py --status
+<p>This error appears because the low-level Python SDK and the firmware cannot communicate with each other. There is a protocol mismatch preventing communication between the two. Simply run the following script and follow its recommendations to upgrade/downgrade the firmware as necessary to match the protocol level of Stretch Body.</p>
+<div class="shell-prompt highlight"><pre><span></span><code>$ REx_firmware_updater.py --status
 </code></pre></div>
 <hr />
 <div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks.</div>

@@ -3682,28 +3682,29 @@
 
 
 <h1 id="example-10">Example 10</h1>
-<p>This tutorial provides you an idea of what tf2 can do in the Python track. We will elaborate how to create a tf2 static broadcaster and listener.</p>
+<p>This tutorial we will explain how to create a tf2 static broadcaster and listener.</p>
 <h2 id="tf2-static-broadcaster">tf2 Static Broadcaster</h2>
-<p>For the tf2 static broadcaster node, we will be publishing three child static frames in reference to the <em>link_mast</em>, <em>link_lift</em>, and <em>link_wrist_yaw</em> frames.</p>
+<p>For the tf2 static broadcaster node, we will be publishing three child static frames in reference to the <code>link_mast</code>, <code>link_lift</code>, and <code>link_wrist_yaw</code> frames.</p>
 <p>Begin by starting up the stretch driver launch file.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch stretch_core stretch_driver.launch
+<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
-Within this tutorial package, there is an <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/rviz/tf2_broadcaster_example.rviz">RViz config file</a> with the topics for transform frames in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/tf2_broadcaster_example.rviz
+<p>Within this tutorial package, there is an <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/rviz/tf2_broadcaster_example.rviz">RViz config file</a> with the topics for the transform frames in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.</p>
+<div class="highlight"><pre><span></span><code>rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/tf2_broadcaster_example.rviz
 </code></pre></div>
-Then run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/tf2_broadcaster.py">tf2_broadcaster.py</a> node to visualize three static frames.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 3</span>
-<span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+<p>Then run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/tf2_broadcaster.py">tf2_broadcaster.py</a> node to visualize three static frames. In a new terminal, execute:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 tf2_broadcaster.py
 </code></pre></div>
-<p>The gif below visualizes what happens when running the previous node.</p>
+<p>The GIF below visualizes what happens when running the previous node.</p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/tf2_broadcaster.gif"/>
 </p>
 
-<p><strong>OPTIONAL</strong>: If you would like to see how the static frames update while the robot is in motion, run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/stow_command.py">stow_command_node.py</a> and observe the tf frames in RViz.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you would like to see how the static frames update while the robot is in motion, run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/stow_command.py">stow_command_node.py</a> and observe the tf frames in RViz.</p>
+</div>
+<p>In a terminal, execute:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Terminal 4</span>
 <span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 stow_command.py
@@ -3788,13 +3789,13 @@ python3 stow_command.py
 <p><div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 </code></pre></div>
 Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rospy</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rospy</span>
 <span class="kn">import</span> <span class="nn">tf.transformations</span>
 <span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">TransformStamped</span>
 <span class="kn">from</span> <span class="nn">tf2_ros</span> <span class="kn">import</span> <span class="n">StaticTransformBroadcaster</span>
 </code></pre></div>
-You need to import rospy if you are writing a ROS <a href="http://wiki.ros.org/Nodes">Node</a>. Import <code>tf.transformations</code> to get quaternion values from Euler angles. Import the <code>TransformStamped</code> from the <code>geometry_msgs.msg</code> package because we will be publishing static frames and it requires this message type. The <code>tf2_ros</code> package provides an implementation of a <code>tf2_ros.StaticTransformBroadcaster</code> to help make the task of publishing transforms easier.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<p>You need to import rospy if you are writing a ROS <a href="http://wiki.ros.org/Nodes">Node</a>. Import <code>tf.transformations</code> to get quaternion values from Euler angles. Import the <code>TransformStamped</code> from the <code>geometry_msgs.msg</code> package because we will be publishing static frames and it requires this message type. The <code>tf2_ros</code> package provides an implementation of a <code>tf2_ros.StaticTransformBroadcaster</code> to help make the task of publishing transforms easier.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A function that creates a broadcast node and publishes three new transform</span>
 <span class="sd">    frames.</span>
@@ -3802,57 +3803,58 @@ You need to import rospy if you are writing a ROS <a href="http://wiki.ros.org/N
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">br</span> <span class="o">=</span> <span class="n">StaticTransformBroadcaster</span><span class="p">()</span>
 </code></pre></div>
-Here we create a <code>TransformStamped</code> object which will be the message we will send over once populated.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">mast</span> <span class="o">=</span> <span class="n">TransformStamped</span><span class="p">()</span>
+<p>Here we create a <code>TransformStamped</code> object which will be the message we will send over once populated.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">mast</span> <span class="o">=</span> <span class="n">TransformStamped</span><span class="p">()</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">mast</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">stamp</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">mast</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="s1">&#39;link_mast&#39;</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">mast</span><span class="o">.</span><span class="n">child_frame_id</span> <span class="o">=</span> <span class="s1">&#39;fk_link_mast&#39;</span>
 </code></pre></div>
-We need to give the transform being published a timestamp, we'll just stamp it with the current time, <code>rospy.Time.now()</code>. Then, we need to set the name of the parent frame of the link we're creating, in this case <em>link_mast</em>. Finally, we need to set the name of the child frame of the link we're creating. In this instance, the child frame is <em>fk_link_mast</em>.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">mast</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">translation</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
+<p>We need to give the transform being published a timestamp, we'll just stamp it with the current time, <code>rospy.Time.now()</code>. Then, we need to set the name of the parent frame of the link we're creating, in this case <code>link_mast</code>. Finally, we need to set the name of the child frame of the link we're creating. In this instance, the child frame is <code>fk_link_mast</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">mast</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">translation</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">mast</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">translation</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">2.0</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">mast</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">translation</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
 </code></pre></div>
-Set the translation values for the child frame.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">q</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">transformations</span><span class="o">.</span><span class="n">quaternion_from_euler</span><span class="p">(</span><span class="mf">1.5707</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5707</span><span class="p">)</span>
+<p>Set the translation values for the child frame.</p>
+<div class="highlight"><pre><span></span><code><span class="n">q</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">transformations</span><span class="o">.</span><span class="n">quaternion_from_euler</span><span class="p">(</span><span class="mf">1.5707</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5707</span><span class="p">)</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">wrist</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">rotation</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">wrist</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">rotation</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">wrist</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">rotation</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">wrist</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">rotation</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
 </code></pre></div>
-The <code>quaternion_from_euler()</code> function takes in a Euler angle argument and returns a quaternion values. Then set the rotation values to the transformed quaternions.</p>
-<p>This process will be completed for the <em>link_lift</em> and <em>link_wrist_yaw</em> as well.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">br</span><span class="o">.</span><span class="n">sendTransform</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">mast</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lift</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrist</span><span class="p">])</span>
+<p>The <code>quaternion_from_euler()</code> function takes in an Euler angle as an argument and returns a quaternion. Then set the rotation values to the transformed quaternions.</p>
+<p>This process will be completed for the <code>link_lift</code> and <code>link_wrist_yaw</code> as well.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">br</span><span class="o">.</span><span class="n">sendTransform</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">mast</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lift</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrist</span><span class="p">])</span>
 </code></pre></div>
-Send the three transforms using the <code>sendTransform()</code> function.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;tf2_broadcaster&#39;</span><span class="p">)</span>
+<p>Send the three transforms using the <code>sendTransform()</code> function.</p>
+<div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;tf2_broadcaster&#39;</span><span class="p">)</span>
 <span class="n">FixedFrameBroadcaster</span><span class="p">()</span>
 </code></pre></div>
-The next line, <code>rospy.init_node(NAME, ...)</code>, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. <strong>NOTE:</strong> the name must be a base name, i.e. it cannot contain any slashes "/".</p>
+<p>The next line, <code>rospy.init_node(NAME, ...)</code>, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The name must be a base name, i.e. it cannot contain any slashes "/".</p>
+</div>
 <p>Instantiate the <code>FixedFrameBroadcaster()</code> class.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
 </code></pre></div>
-Give control to ROS.  This will allow the callback to be called whenever new
+<p>Give control to ROS.  This will allow the callback to be called whenever new
 messages come in.  If we don't put this line in, then the node will not work,
 and ROS will not process any messages.</p>
 <h2 id="tf2-static-listener">tf2 Static Listener</h2>
-<p>In the previous section of the tutorial, we created a tf2 broadcaster to publish three static transform frames. In this section we will create a tf2 listener that will find the transform between <em>fk_link_lift</em> and <em>link_grasp_center</em>.</p>
+<p>In the previous section of the tutorial, we created a tf2 broadcaster to publish three static transform frames. In this section, we will create a tf2 listener that will find the transform between <code>fk_link_lift</code> and <code>link_grasp_center</code>.</p>
 <p>Begin by starting up the stretch driver launch file.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch stretch_core stretch_driver.launch
+<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
-Then run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/tf2_broadcaster.py">tf2_broadcaster.py</a> node to create the three static frames.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-<span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+<p>Then run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/tf2_broadcaster.py">tf2_broadcaster.py</a> node in a new terminal to create the three static frames.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 tf2_broadcaster.py
 </code></pre></div>
-Finally, run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/tf2_listener.py">tf2_listener.py</a> node to print the transform between two links.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 3</span>
-<span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+<p>Finally, run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/tf2_listener.py">tf2_listener.py</a> node in a separate terminal to print the transform between two links.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 tf2_listener.py
 </code></pre></div>
-Within the terminal the transform will be printed every 1 second. Below is an example of what will be printed in the terminal. There is also an image for reference of the two frames.</p>
-<div class="highlight"><pre><span></span><code><span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1659551318</span>.098168<span class="o">]</span>: The pose of target frame link_grasp_center with reference from fk_link_lift is:
+<p>Within the terminal, the transform will be printed every 1 second. Below is an example of what will be printed in the terminal. There is also an image for reference of the two frames.</p>
+<div class="no-copy highlight"><pre><span></span><code><span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1659551318</span>.098168<span class="o">]</span>: The pose of target frame link_grasp_center with reference from fk_link_lift is:
 translation:
   x: <span class="m">1</span>.08415191335
   y: -0.176147838153
@@ -3919,20 +3921,20 @@ Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this dec
 <span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">TransformStamped</span>
 <span class="kn">import</span> <span class="nn">tf2_ros</span>
 </code></pre></div>
-<p>You need to import rospy if you are writing a ROS <a href="http://wiki.ros.org/Nodes">Node</a>. Import the <code>TransformStamped</code> from the <code>geometry_msgs.msg</code> package because we will be publishing static frames and it requires this message type. The <code>tf2_ros</code> package provides an implementation of a <code>tf2_ros.TransformListener</code> to help make the task of receiving transforms easier.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">tf_buffer</span> <span class="o">=</span> <span class="n">tf2_ros</span><span class="o">.</span><span class="n">Buffer</span><span class="p">()</span>
+<p>You need to import <code>rospy</code> if you are writing a ROS <a href="http://wiki.ros.org/Nodes">Node</a>. Import the <code>TransformStamped</code> from the <code>geometry_msgs.msg</code> package because we will be publishing static frames and it requires this message type. The <code>tf2_ros</code> package provides an implementation of a <code>tf2_ros.TransformListener</code> to help make the task of receiving transforms easier.</p>
+<div class="highlight"><pre><span></span><code><span class="n">tf_buffer</span> <span class="o">=</span> <span class="n">tf2_ros</span><span class="o">.</span><span class="n">Buffer</span><span class="p">()</span>
 <span class="n">listener</span> <span class="o">=</span> <span class="n">tf2_ros</span><span class="o">.</span><span class="n">TransformListener</span><span class="p">(</span><span class="n">tf_buffer</span><span class="p">)</span>
 </code></pre></div>
-Here, we create a <code>TransformListener</code> object. Once the listener is created, it starts receiving tf2 transformations over the wire, and buffers them for up to 10 seconds.</p>
+<p>Here, we create a <code>TransformListener</code> object. Once the listener is created, it starts receiving tf2 transformations and buffers them for up to 10 seconds.</p>
 <p><div class="highlight"><pre><span></span><code><span class="n">from_frame_rel</span> <span class="o">=</span> <span class="s1">&#39;link_grasp_center&#39;</span>
 <span class="n">to_frame_rel</span> <span class="o">=</span> <span class="s1">&#39;fk_link_lift&#39;</span>
 </code></pre></div>
 Store frame names in variables that will be used to compute transformations.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
 <span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-The first line gives the listener some time to accumulate transforms. The second line is the rate the node is going to publish information (1 Hz).</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+<p>The first line gives the listener some time to accumulate transforms. The second line is the rate at which the node is going to publish information (1 Hz).</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
     <span class="n">trans</span> <span class="o">=</span> <span class="n">tf_buffer</span><span class="o">.</span><span class="n">lookup_transform</span><span class="p">(</span><span class="n">to_frame_rel</span><span class="p">,</span>
                                        <span class="n">from_frame_rel</span><span class="p">,</span>
                                        <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="p">())</span>
@@ -3941,15 +3943,19 @@ The first line gives the listener some time to accumulate transforms. The second
 <span class="k">except</span> <span class="p">(</span><span class="n">tf2_ros</span><span class="o">.</span><span class="n">LookupException</span><span class="p">,</span> <span class="n">tf2_ros</span><span class="o">.</span><span class="n">ConnectivityException</span><span class="p">,</span> <span class="n">tf2_ros</span><span class="o">.</span><span class="n">ExtrapolationException</span><span class="p">):</span>
     <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s1">&#39; Could not transform </span><span class="si">%s</span><span class="s1"> from </span><span class="si">%s</span><span class="s1"> &#39;</span><span class="p">,</span> <span class="n">to_frame_rel</span><span class="p">,</span> <span class="n">from_frame_rel</span><span class="p">)</span>
 </code></pre></div>
-Try to look up the transform we want. Use a try-except block, since it may fail on any single call, due to internal timing issues in the transform publishers. Look up transform between <em>from_frame_rel</em> and <em>to_frame_rel</em> frames with the <code>lookup_transform()</code> function.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;tf2_listener&#39;</span><span class="p">)</span>
+<p>Try to look up the transformation we want. Use a try-except block, since it may fail on any single call, due to internal timing issues in the transform publishers. Look up transform between <code>from_frame_rel</code> and <code>to_frame_rel</code> frames with the <code>lookup_transform()</code> function.</p>
+<div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;tf2_listener&#39;</span><span class="p">)</span>
 <span class="n">FrameListener</span><span class="p">()</span>
 </code></pre></div>
-The next line, <code>rospy.init_node(NAME, ...)</code>, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. <strong>NOTE:</strong> the name must be a base name, i.e. it cannot contain any slashes "/".</p>
+<p>The next line, <code>rospy.init_node(NAME, ...)</code>, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The name must be a base name, i.e. it cannot contain any slashes "/".</p>
+</div>
 <p>Instantiate the <code>FrameListener()</code> class.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
 </code></pre></div>
-Give control to ROS.  This will allow the callback to be called whenever new messages come in.  If we don't put this line in, then the node will not work, and ROS will not process any messages.</p>
+<p>Give control to ROS.  This will allow the callback to be called whenever new messages come in.  If we don't put this line in, then the node will not work, and ROS will not process any messages.</p>
 
 
 

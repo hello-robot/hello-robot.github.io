@@ -3624,25 +3624,21 @@
   <h1>PointCloud Transformation</h1>
 
 <h2 id="example-11">Example 11</h2>
-<p>This tutorial highlights how to create a <a href="http://docs.ros.org/en/melodic/api/sensor_msgs/html/msg/PointCloud.html">PointCloud</a> message from the data of a <a href="http://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/PointCloud2.html">PointCloud2</a> message type, then transform the PointCloud's reference link to a different frame. The data published by the RealSense is referencing its <em>camera_color_optical_frame</em> link, and we will be changing its reference to the <em>base_link</em>.</p>
+<p>This tutorial highlights how to create a <a href="http://docs.ros.org/en/melodic/api/sensor_msgs/html/msg/PointCloud.html">PointCloud</a> message from the data of a <a href="http://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/PointCloud2.html">PointCloud2</a> message type, then transform the PointCloud's reference link to a different frame. The data published by RealSense is referencing its <code>camera_color_optical_frame</code> link, and we will be changing its reference to the <code>base_link</code>.</p>
 <p>Begin by starting up the stretch driver launch file.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch stretch_core stretch_driver.launch
+<p><div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 To activate the <a href="https://www.intelrealsense.com/depth-camera-d435i/">RealSense camera</a> and publish topics to be visualized, run the following launch file in a new terminal.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-roslaunch stretch_core d435i_low_resolution.launch
+<p><div class="highlight"><pre><span></span><code>roslaunch stretch_core d435i_low_resolution.launch
 </code></pre></div>
-Then run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/pointcloud_transformer.py">pointCloud_transformer.py</a> node.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 3</span>
-<span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+Then run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/pointcloud_transformer.py">pointCloud_transformer.py</a> node. In a new terminal, execute:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 pointcloud_transformer.py
 </code></pre></div>
-Within this tutorial package, there is an <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/rviz/PointCloud_transformer_example.rviz">RViz config file</a> with the <code>PointCloud</code> in the Display tree. You can visualize this topic and the robot model by running the command below in a new terminal.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 4</span>
-rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/PointCloud_transformer_example.rviz
+<p>Within this tutorial package, there is an <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/rviz/PointCloud_transformer_example.rviz">RViz config file</a> with the <code>PointCloud</code> in the Display tree. You can visualize this topic and the robot model by running the command below in a new terminal.</p>
+<div class="highlight"><pre><span></span><code>rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/PointCloud_transformer_example.rviz
 </code></pre></div>
-The gif below visualizes what happens when running the previous node.</p>
+<p>The GIF below visualizes what happens when running the previous node.</p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/PointCloud_transformer.gif"/>
 </p>
@@ -3726,28 +3722,28 @@ The gif below visualizes what happens when running the previous node.</p>
 </code></pre></div>
 <h3 id="the-code-explained">The Code Explained</h3>
 <p>Now let's break the code down.</p>
-<p><div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 </code></pre></div>
-Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rospy</span>
+<p>Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rospy</span>
 <span class="kn">import</span> <span class="nn">tf</span>
 <span class="kn">import</span> <span class="nn">sensor_msgs.point_cloud2</span> <span class="k">as</span> <span class="nn">pc2</span>
 <span class="kn">from</span> <span class="nn">sensor_msgs.msg</span> <span class="kn">import</span> <span class="n">PointCloud2</span><span class="p">,</span> <span class="n">PointCloud</span>
 <span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">Point32</span>
 <span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="kn">import</span> <span class="n">Header</span>
 </code></pre></div>
-You need to import <code>rospy</code> if you are writing a ROS <a href="http://wiki.ros.org/Nodes">Node</a>. Import <code>tf</code> to utilize the <code>transformPointCloud</code> function. Import various the message types from <code>sensor_msgs</code>.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">pointcloud2_sub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s2">&quot;/camera/depth/color/points&quot;</span><span class="p">,</span> <span class="n">PointCloud2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback_pcl2</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<p>You need to import <code>rospy</code> if you are writing a ROS <a href="http://wiki.ros.org/Nodes">Node</a>. Import <code>tf</code> to utilize the <code>transformPointCloud</code> function. Import various message types from <code>sensor_msgs</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">pointcloud2_sub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s2">&quot;/camera/depth/color/points&quot;</span><span class="p">,</span> <span class="n">PointCloud2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback_pcl2</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-Set up a subscriber.  We're going to subscribe to the topic <em>/camera/depth/color/points</em>, looking for <code>PointCloud2</code> message.  When a message comes in, ROS is going to pass it to the function <code>callback_pcl2()</code> automatically.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">pointcloud_pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s2">&quot;/camera_cloud&quot;</span><span class="p">,</span> <span class="n">PointCloud</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<p>Set up a subscriber.  We're going to subscribe to the topic <code>/camera/depth/color/points</code>, looking for <code>PointCloud2</code> message.  When a message comes in, ROS is going to pass it to the function <code>callback_pcl2()</code> automatically.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">pointcloud_pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s2">&quot;/camera_cloud&quot;</span><span class="p">,</span> <span class="n">PointCloud</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-This section of code defines the talker's interface to the rest of ROS. <code>self.pointcloud_pub = rospy.Publisher("/camera_cloud", PointCloud, queue_size=1)</code> declares that your node is publishing to the <em>/camera_cloud</em> topic using the message type <code>PointCloud</code>.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">pcl2_cloud</span> <span class="o">=</span> <span class="kc">None</span>
+<p>This section of code defines the talker's interface to the rest of ROS. <code>self.pointcloud_pub = rospy.Publisher("/camera_cloud", PointCloud, queue_size=1)</code> declares that your node is publishing to the <code>/camera_cloud</code> topic using the message type <code>PointCloud</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">pcl2_cloud</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">listener</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">TransformListener</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mf">10.0</span><span class="p">))</span>
 </code></pre></div>
-The first line of code initializes <em>self.pcl2_cloud</em> to store the <code>PointCloud2</code> message. The second line creates a <code>tf.TransformListener</code> object. Once the listener is created, it starts receiving tf transformations over the wire, and buffers them for up to 10 seconds.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">callback_pcl2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">msg</span><span class="p">):</span>
+<p>The first line of code initializes <code>self.pcl2_cloud</code> to store the <code>PointCloud2</code> message. The second line creates a <code>tf.TransformListener</code> object. Once the listener is created, it starts receiving tf transformations and buffers them for up to 10 seconds.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">callback_pcl2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">msg</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Callback function that stores the PointCloud2 message.</span>
 <span class="sd">    :param self: The self reference.</span>
@@ -3755,19 +3751,19 @@ The first line of code initializes <em>self.pcl2_cloud</em> to store the <code>P
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">pcl2_cloud</span> <span class="o">=</span> <span class="n">msg</span>
 </code></pre></div>
-The callback function that stores the the <code>PointCloud2</code> message.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">temp_cloud</span> <span class="o">=</span> <span class="n">PointCloud</span><span class="p">()</span>
+<p>The callback function then stores the <code>PointCloud2</code> message.</p>
+<div class="highlight"><pre><span></span><code><span class="n">temp_cloud</span> <span class="o">=</span> <span class="n">PointCloud</span><span class="p">()</span>
 <span class="n">temp_cloud</span><span class="o">.</span><span class="n">header</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pcl2_cloud</span><span class="o">.</span><span class="n">header</span>
 </code></pre></div>
-Create a <code>PointCloud</code> for temporary use. Set the temporary PointCloud's header to the stored <code>PointCloud2</code> header.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">pc2</span><span class="o">.</span><span class="n">read_points</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pcl2_cloud</span><span class="p">,</span> <span class="n">skip_nans</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<p>Create a <code>PointCloud</code> for temporary use. Set the temporary PointCloud header to the stored <code>PointCloud2</code> header.</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">pc2</span><span class="o">.</span><span class="n">read_points</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pcl2_cloud</span><span class="p">,</span> <span class="n">skip_nans</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
   <span class="n">temp_cloud</span><span class="o">.</span><span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Point32</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
 </code></pre></div>
-Use a for loop to extract <code>PointCloud2</code> data into a list of x, y, z points and append those values to the <code>PointCloud</code> message, <em>temp_cloud</em>.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">transformed_cloud</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_pointcloud</span><span class="p">(</span><span class="n">temp_cloud</span><span class="p">)</span>
+<p>Use a for loop to extract <code>PointCloud2</code> data into a list of x, y, and z points and append those values to the <code>PointCloud</code> message, <code>temp_cloud</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">transformed_cloud</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_pointcloud</span><span class="p">(</span><span class="n">temp_cloud</span><span class="p">)</span>
 </code></pre></div>
-Utilize the <code>transform_pointcloud</code> function to transform the points in the <code>PointCloud</code> message to reference the <em>base_link</em></p>
-<p><div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
+<p>Utilize the <code>transform_pointcloud</code> function to transform the points in the <code>PointCloud</code> message to reference the <code>base_link</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">new_cloud</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">listener</span><span class="o">.</span><span class="n">transformPointCloud</span><span class="p">(</span><span class="s2">&quot;base_link&quot;</span> <span class="p">,</span><span class="n">msg</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">new_cloud</span>
@@ -3776,24 +3772,28 @@ Utilize the <code>transform_pointcloud</code> function to transform the points i
         <span class="k">except</span> <span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">LookupException</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">ConnectivityException</span><span class="p">,</span><span class="n">tf</span><span class="o">.</span><span class="n">ExtrapolationException</span><span class="p">):</span>
             <span class="k">pass</span>
 </code></pre></div>
-Try to look up and transform the <code>PointCloud</code> input. Use a try-except block, since it may fail on any single call, due to internal timing issues in the transform publishers. Transform the point cloud data from <em>camera_color_optical_frame</em> to <em>base_link</em> with the <code>transformPointCloud()</code> function.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">pointcloud_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">transformed_cloud</span><span class="p">)</span>
+<p>Try to look up and transform the <code>PointCloud</code> input. Use a try-except block, since it may fail on any single call, due to internal timing issues in the transform publishers. Transform the point cloud data from <code>camera_color_optical_frame</code> to <code>base_link</code> with the <code>transformPointCloud()</code> function.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">pointcloud_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">transformed_cloud</span><span class="p">)</span>
 </code></pre></div>
-Publish the new transformed <code>PointCloud</code>.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;pointcloud_transformer&#39;</span><span class="p">,</span><span class="n">anonymous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<p>Publish the new transformed <code>PointCloud</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;pointcloud_transformer&#39;</span><span class="p">,</span><span class="n">anonymous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">PCT</span> <span class="o">=</span> <span class="n">PointCloudTransformer</span><span class="p">()</span>
 </code></pre></div>
-The next line, <code>rospy.init_node(NAME, ...)</code>, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. <strong>NOTE:</strong> the name must be a base name, i.e. it cannot contain any slashes "/".</p>
+<p>The next line, <code>rospy.init_node(NAME, ...)</code>, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The name must be a base name, i.e. it cannot contain any slashes "/".</p>
+</div>
 <p>Declare a <code>PointCloudTransformer</code> object.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-The first line gives the listener some time to accumulate transforms. The second line is the rate the node is going to publish information (1 Hz).</p>
-<p><div class="highlight"><pre><span></span><code>  <span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
+<p>The first line gives the listener some time to accumulate transforms. The second line is the rate at which the node is going to publish information (1 Hz).</p>
+<div class="highlight"><pre><span></span><code>  <span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
       <span class="n">PCT</span><span class="o">.</span><span class="n">pcl_transformer</span><span class="p">()</span>
       <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
 </code></pre></div>
-Run a while loop until the node is shutdown. Within the while loop run the <code>pcl_transformer()</code> method.</p>
+<p>Run a while loop until the node is shut down. Within the while loop run the <code>pcl_transformer()</code> method.</p>
 
 
 

@@ -3624,21 +3624,23 @@
   <h1>Print Joint States</h1>
 
 <h2 id="example-5">Example 5</h2>
-<p>In this example, we will review a Python script that prints out the positions of a selected group of Stretch's joints. This script is helpful if you need the joint positions after you teleoperated Stretch with the Xbox controller or physically moved the robot to the desired configuration after hitting the run stop button.</p>
+<p>In this example, we will review a Python script that prints out the positions of a selected group of Stretch joints. This script is helpful if you need the joint positions after you teleoperated Stretch with the Xbox controller or physically moved the robot to the desired configuration after hitting the run stop button.</p>
 <p>If you are looking for a continuous print of the joint states while Stretch is in action, then you can use the <a href="http://wiki.ros.org/rostopic">rostopic command-line tool</a> shown in the <a href="../internal_state_of_stretch/">Internal State of Stretch Tutorial</a>.</p>
 <p>Begin by starting up the stretch driver launch file.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch stretch_core stretch_driver.launch
+<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
-You can then hit the run-stop button (you should hear a beep and the LED light in the button blink) and move the robot's joints to a desired configuration. Once you are satisfied with the configuration, hold the run-stop button until you hear a beep. Then run the following command to excecute the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/joint_state_printer.py">joint_state_printer.py</a> which will print the joint positions of the lift, arm, and wrist.</p>
-<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+<p>You can then hit the run-stop button (you should hear a beep and the LED light in the button blink) and move the robot's joints to a desired configuration. Once you are satisfied with the configuration, hold the run-stop button until you hear a beep. Then run the following command to execute the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/joint_state_printer.py">joint_state_printer.py</a> which will print the joint positions of the lift, arm, and wrist. In a new terminal, execute:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 joint_state_printer.py
 </code></pre></div>
-Your terminal will output the <code>position</code> information of the previously mentioned joints shown below.
-<div class="highlight"><pre><span></span><code>name: [&#39;joint_lift&#39;, &#39;wrist_extension&#39;, &#39;joint_wrist_yaw&#39;]
-position: [0.6043133175850597, 0.19873586673129257, 0.017257283863713464]
-</code></pre></div>
-<strong>IMPORTANT NOTE:</strong> Stretch's arm has 4 prismatic joints and the sum of these positions gives the <em>wrist_extension</em> distance. The <em>wrist_extension</em> is needed when sending <a href="../follow_joint_trajectory/">joint trajectory commands</a> to the robot. Further, you <strong>can not</strong> actuate an individual arm joint. Here is an image of the arm joints for reference:</p>
+<p>Your terminal will output the <code>position</code> information of the previously mentioned joints shown below.
+<div class="no-copy highlight"><pre><span></span><code>name: <span class="o">[</span><span class="s1">&#39;joint_lift&#39;</span>, <span class="s1">&#39;wrist_extension&#39;</span>, <span class="s1">&#39;joint_wrist_yaw&#39;</span><span class="o">]</span>
+position: <span class="o">[</span><span class="m">0</span>.6043133175850597, <span class="m">0</span>.19873586673129257, <span class="m">0</span>.017257283863713464<span class="o">]</span>
+</code></pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Stretch's arm has four prismatic joints and the sum of their positions gives the <em>wrist_extension</em> distance. The <em>wrist_extension</em> is needed when sending <a href="../follow_joint_trajectory/">joint trajectory commands</a> to the robot. Further, you can not actuate an individual arm joint. Here is an image of the arm joints for reference:</p>
+</div>
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/joints.png"/>
 </p>
@@ -3699,26 +3701,26 @@ position: [0.6043133175850597, 0.19873586673129257, 0.017257283863713464]
 </code></pre></div>
 <h3 id="the-code-explained">The Code Explained</h3>
 <p>Now let's break the code down.</p>
-<p><div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 </code></pre></div>
-Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rospy</span>
+<p>Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rospy</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">sensor_msgs.msg</span> <span class="kn">import</span> <span class="n">JointState</span>
 </code></pre></div>
-You need to import <code>rospy</code> if you are writing a ROS <a href="http://wiki.ros.org/Nodes">Node</a>. Import <code>sensor_msgs.msg</code> so that we can subscribe to <code>JointState</code> messages.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">sub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;joint_states&#39;</span><span class="p">,</span> <span class="n">JointState</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+<p>You need to import <code>rospy</code> if you are writing a ROS <a href="http://wiki.ros.org/Nodes">Node</a>. Import <code>sensor_msgs.msg</code> so that we can subscribe to <code>JointState</code> messages.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">sub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;joint_states&#39;</span><span class="p">,</span> <span class="n">JointState</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
-Set up a subscriber.  We're going to subscribe to the topic "<em>joint_states</em>", looking for <code>JointState</code> messages.  When a message comes in, ROS is going to pass it to the function "callback" automatically</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+<p>Set up a subscriber.  We're going to subscribe to the topic <code>joint_states</code>, looking for <code>JointState</code> messages.  When a message comes in, ROS is going to pass it to the function "callback" automatically</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">joint_states</span> <span class="o">=</span> <span class="n">msg</span>
 </code></pre></div>
-This is the callback function where he <code>JointState</code> messages are stored as <em>self.joint_states</em>. Further information about the this message type can be found here: <a href="http://docs.ros.org/en/lunar/api/sensor_msgs/html/msg/JointState.html">JointState Message</a></p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">print_states</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">joints</span><span class="p">):</span>
+<p>This is the callback function where the <code>JointState</code> messages are stored as <code>self.joint_states</code>. Further information about this message type can be found here: <a href="http://docs.ros.org/en/lunar/api/sensor_msgs/html/msg/JointState.html">JointState Message</a></p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">print_states</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">joints</span><span class="p">):</span>
     <span class="n">joint_positions</span> <span class="o">=</span> <span class="p">[]</span>
 </code></pre></div>
-This is the <code>print_states()</code> function which takes in a list of joints of interest as its argument. the is also an empty list set as <em>joint_positions</em> and this is where the positions of the requested joints will be appended.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">joint</span> <span class="ow">in</span> <span class="n">joints</span><span class="p">:</span>
+<p>This is the <code>print_states()</code> function which takes in a list of joints of interest as its argument. the is also an empty list set as <code>joint_positions</code> and this is where the positions of the requested joints will be appended.</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">joint</span> <span class="ow">in</span> <span class="n">joints</span><span class="p">:</span>
   <span class="k">if</span> <span class="n">joint</span> <span class="o">==</span> <span class="s2">&quot;wrist_extension&quot;</span><span class="p">:</span>
     <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">joint_states</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;joint_arm_l0&#39;</span><span class="p">)</span>
     <span class="n">joint_positions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">joint_states</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
@@ -3726,26 +3728,26 @@ This is the <code>print_states()</code> function which takes in a list of joints
   <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">joint_states</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">joint</span><span class="p">)</span>
   <span class="n">joint_positions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">joint_states</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
 </code></pre></div>
-In this section of the code, a forloop is used to parse the names of the requested joints from the <em>self.joint_states</em> list. The <code>index()</code> function returns the index a of the name of the requested joint and appends the respective position to our <em>joint_positions</em> list.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">signal_shutdown</span><span class="p">(</span><span class="s2">&quot;done&quot;</span><span class="p">)</span>
+<p>In this section of the code, a for loop is used to parse the names of the requested joints from the <code>self.joint_states</code> list. The <code>index()</code> function returns the index of the name of the requested joint and appends the respective position to the <code>joint_positions</code> list.</p>
+<div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">signal_shutdown</span><span class="p">(</span><span class="s2">&quot;done&quot;</span><span class="p">)</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-The first line of code initiates a clean shutdown of ROS. The second line of code exits the Python interpreter.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;joint_state_printer&#39;</span><span class="p">,</span> <span class="n">anonymous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<p>The first line of code initiates a clean shutdown of ROS. The second line of code exits the Python interpreter.</p>
+<div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;joint_state_printer&#39;</span><span class="p">,</span> <span class="n">anonymous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">JSP</span> <span class="o">=</span> <span class="n">JointStatePublisher</span><span class="p">()</span>
 <span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">.1</span><span class="p">)</span>
 </code></pre></div>
-The next line, <code>rospy.init_node(NAME, ...)</code>, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. <strong>NOTE:</strong> the name must be a base name, i.e. it cannot contain any slashes "/".</p>
+<p>The next line, <code>rospy.init_node(NAME, ...)</code>, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. <strong>NOTE:</strong> the name must be a base name, i.e. it cannot contain any slashes "/".</p>
 <p>Declare object, <em>JSP</em>, from the <code>JointStatePublisher</code> class.</p>
 <p>The use of the <code>rospy.sleep()</code> function is to allow the <em>JSP</em> class to initialize all of its features before requesting to publish joint positions of desired joints (running the <code>print_states()</code> method).</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">joints</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;joint_lift&quot;</span><span class="p">,</span> <span class="s2">&quot;wrist_extension&quot;</span><span class="p">,</span> <span class="s2">&quot;joint_wrist_yaw&quot;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">joints</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;joint_lift&quot;</span><span class="p">,</span> <span class="s2">&quot;wrist_extension&quot;</span><span class="p">,</span> <span class="s2">&quot;joint_wrist_yaw&quot;</span><span class="p">]</span>
 <span class="c1">#joints = [&quot;joint_head_pan&quot;,&quot;joint_head_tilt&quot;, joint_gripper_finger_left&quot;, &quot;joint_gripper_finger_right&quot;]</span>
 <span class="n">JSP</span><span class="o">.</span><span class="n">print_states</span><span class="p">(</span><span class="n">joints</span><span class="p">)</span>
 </code></pre></div>
-Create a list of the desired joints that you want positions to be printed. Then use that list as an argument for the <code>print_states()</code> method.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
+<p>Create a list of the desired joints that you want positions to be printed. Then use that list as an argument for the <code>print_states()</code> method.</p>
+<div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
 </code></pre></div>
-Give control to ROS with <code>rospy.spin()</code>. This will allow the callback to be called whenever new messages come in. If we don't put this line in, then the node will not work, and ROS will not process any messages.</p>
+<p>Give control to ROS with <code>rospy.spin()</code>. This will allow the callback to be called whenever new messages come in. If we don't put this line in, then the node will not work, and ROS will not process any messages.</p>
 
 
 

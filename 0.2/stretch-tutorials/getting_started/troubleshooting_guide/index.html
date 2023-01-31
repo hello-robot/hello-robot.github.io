@@ -439,7 +439,7 @@
       
         <li class="md-nav__item">
   <a href="#xbox-teleoperation-is-not-working" class="md-nav__link">
-    XBox teleoperation is not working
+    Xbox teleoperation is not working
   </a>
   
 </li>
@@ -3581,7 +3581,7 @@
       
         <li class="md-nav__item">
   <a href="#xbox-teleoperation-is-not-working" class="md-nav__link">
-    XBox teleoperation is not working
+    Xbox teleoperation is not working
   </a>
   
 </li>
@@ -3617,15 +3617,14 @@
 
 <h1 id="stretch-troubleshooting-guide">Stretch Troubleshooting Guide</h1>
 <p>This guide covers common issues and ways to resolve them. Please check the <a href="https://forum.hello-robot.com">Hello Robot Forum</a> for additional topics not covered here.</p>
-<h2 id="xbox-teleoperation-is-not-working">XBox teleoperation is not working</h2>
+<h2 id="xbox-teleoperation-is-not-working">Xbox teleoperation is not working</h2>
 <p>The provided Easy SMX wireless controller can accidentally be placed in the wrong mode. The mode is indicated by the round illuminated ring (shown as Connect below). The top 2 LEDs only should be illuminated. If a different LED pattern is shown then the button mapping expected by <a href="https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_xbox_controller_teleop.py">stretch_xbox_controller_teleop.py</a> will be incorrect.</p>
 <p>To set the controller into the correct mode:</p>
 <ul>
 <li>Hold the center button down for 5s. It will switch modes. Release.</li>
-<li>Repeat until top half of ring (upper two lights) are illuminated.</li>
+<li>Repeat until the top half of the ring (upper two lights) is illuminated.</li>
 </ul>
 <p>In addition, check that the provided USB dongle is plugged into the robot USB port in its trunk.</p>
-<p>. </p>
 <p><img alt="" src="../images/xbox.png" /></p>
 <h2 id="battery-is-not-staying-charged">Battery is not staying charged</h2>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Stretch RE1</label><label for="__tabbed_1_2">Stretch 2</label></div>
@@ -3639,7 +3638,7 @@
 </div>
 </div>
 <h2 id="rpc-transport-errors-stretch-doesnt-respond-to-commands">RPC Transport Errors (Stretch doesn't respond to commands)</h2>
-<p>If more than one instance of Stretch Body's <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py">Robot</a> class is instantiated at a time, Stretch Body will report communication errors and will not always execute motion commands as expected. This is because <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py">Robot</a>  manages communications with the robot hardware and it doesn't support multiple writes to the USB devices.</p>
+<p>If more than one instance of Stretch Body's <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py">Robot</a> class is instantiated at a time, Stretch Body will report communication errors and will not always execute motion commands as expected. This is because the <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py">Robot</a> class manages communications with the robot hardware and it doesn't support multiple writes to the USB devices.</p>
 <p>These errors can appear as</p>
 <div class="highlight"><pre><span></span><code>Transport RX Error on RPC_ACK_SEND_BLOCK_MORE False 0 102
 ---- Debug Exception
@@ -3651,10 +3650,10 @@ Framer sent RPC_START_NEW_RPC
 <div class="highlight"><pre><span></span><code>IOError(None): None
 ...
 </code></pre></div>
-<p>To check if a instance of <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py">Robot</a> is already instantiated, you may use the Unix <a href="https://www.unixtutorial.org/commands/top">top</a> command to monitor active processes. You may use the Unix <a href="https://linuxize.com/post/pkill-command-in-linux/">pkill</a> command to end the background instance of Robot.</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>pkill -9 python
+<p>To check if an instance of <a href="https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py">Robot</a> is already instantiated, you may use the Unix <a href="https://www.unixtutorial.org/commands/top">top</a> command to monitor active processes. You may use the Unix <a href="https://linuxize.com/post/pkill-command-in-linux/">pkill</a> command to end the background instance of Robot.</p>
+<div class="shell-prompt highlight"><pre><span></span><code>$ pkill -9 python
 </code></pre></div>
-<p>As shipped, Stretch launches <a href="https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_xbox_controller_teleop.py">stretch_xbox_controller_teleop.py</a> upon boot. It is necessary to turn off this automatic launch feature, otherwise your own Robot instance will conflict with this script. Additionally, if you are logged into multiple accounts, a Robot instance may be active in another user account.</p>
+<p>As shipped, Stretch launches <a href="https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_xbox_controller_teleop.py">stretch_xbox_controller_teleop.py</a> upon boot. It is necessary to turn off this automatic launch feature, otherwise, your own Robot instance will conflict with this script. Additionally, if you are logged into multiple accounts, a Robot instance may be active in another user account.</p>
 <p>To turn it off, search for 'Startup' from Ubuntu Activities. Uncheck the box for 'hello_robot_xbox_teleop'.</p>
 <p><img alt="" src="../images/xbox_off_rs.png" /></p>
 <hr />

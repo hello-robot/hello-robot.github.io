@@ -3703,32 +3703,26 @@
 </p>
 
 <p>Begin by running the stretch <code>driver.launch</code> file.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch stretch_core stretch_driver.launch
+<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
-To activate the <a href="https://www.intelrealsense.com/depth-camera-d435i/">RealSense camera</a> and publish topics to be visualized, run the following launch file in a new terminal.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-roslaunch stretch_core d435i_low_resolution.launch
+<p>To activate the <a href="https://www.intelrealsense.com/depth-camera-d435i/">RealSense camera</a> and publish topics to be visualized, run the following launch file in a new terminal.</p>
+<div class="highlight"><pre><span></span><code>roslaunch stretch_core d435i_low_resolution.launch
 </code></pre></div>
-Within this tutorial package, there is an RViz config file with the topics for perception already in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 3</span>
-rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/perception_example.rviz
+<p>Within this tutorial package, there is an RViz config file with the topics for perception already in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.</p>
+<div class="highlight"><pre><span></span><code>rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/perception_example.rviz
 </code></pre></div>
 <h2 id="capture-image-with-image_view">Capture Image with image_view</h2>
 <p>There are a couple of methods to save an image using the <a href="http://wiki.ros.org/image_view">image_view</a> package.</p>
-<p><strong>OPTION 1:</strong> Use the <code>image_view</code> node to open a simple image viewer for ROS <em>sensor_msgs/image</em> topics.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 4</span>
-rosrun image_view image_view image:<span class="o">=</span>/camera/color/image_raw_upright_view
+<p><strong>OPTION 1:</strong> Use the <code>image_view</code> node to open a simple image viewer for ROS <em>sensor_msgs/image</em> topics. In a new terminal, execute:</p>
+<div class="highlight"><pre><span></span><code>rosrun image_view image_view image:<span class="o">=</span>/camera/color/image_raw_upright_view
 </code></pre></div>
-Then you can save the current image by right-clicking on the display window. By deafult, images will be saved as frame000.jpg, frame000.jpg, etc. Note, that the image will be saved to the terminal's current work directory.</p>
-<p><strong>OPTION 2:</strong> Use the <code>image_saver</code> node to save an image to the terminals current work directory.
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 4</span>
-rosrun image_view image_saver image:<span class="o">=</span>/camera/color/image_raw_upright_view
-</code></pre></div></p>
+<p>Then you can save the current image by right-clicking on the display window. By default, images will be saved as frame000.jpg, frame000.jpg, etc. Note, that the image will be saved to the terminal's current work directory.</p>
+<p><strong>OPTION 2:</strong> Use the <code>image_saver</code> node to save an image to the terminal's current work directory. In a new terminal, execute:</p>
+<div class="highlight"><pre><span></span><code>rosrun image_view image_saver image:<span class="o">=</span>/camera/color/image_raw_upright_view
+</code></pre></div>
 <h2 id="capture-image-with-python-script">Capture Image with Python Script</h2>
-<p>In this section, you can use a Python node to capture an image from the <a href="https://www.intelrealsense.com/depth-camera-d435i/">RealSense camera</a>. Execute the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/capture_image.py">capture_image.py</a> node to save a .jpeg image of the image topic <em>/camera/color/image_raw_upright_view</em>.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 4</span>
-<span class="nb">cd</span> ~/catkin_ws/src/stretch_tutorials/src
+<p>In this section, we will use a Python node to capture an image from the <a href="https://www.intelrealsense.com/depth-camera-d435i/">RealSense camera</a>. Execute the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/capture_image.py">capture_image.py</a> node to save a .jpeg image of the image topic <code>/camera/color/image_raw_upright_view</code>. In a terminal, execute:</p>
+<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/catkin_ws/src/stretch_tutorials/src
 python3 capture_image.py
 </code></pre></div>
 An image named <strong>camera_image.jpeg</strong> is saved in the <strong>stored_data</strong> folder in this package.</p>
@@ -3785,17 +3779,17 @@ An image named <strong>camera_image.jpeg</strong> is saved in the <strong>stored
 <p><div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 </code></pre></div>
 Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rospy</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rospy</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">cv2</span>
 </code></pre></div>
-You need to import <code>rospy</code> if you are writing a ROS <a href="http://wiki.ros.org/Nodes">Node</a>. There are functions from sys, os, and cv2 that are required within this code. cv2 is a library of Python functions that implements computer vision algorithms. Further information about cv2 can be found here: <a href="https://www.geeksforgeeks.org/opencv-python-tutorial/">OpenCV Python</a>.</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sensor_msgs.msg</span> <span class="kn">import</span> <span class="n">Image</span>
+<p>You need to import <code>rospy</code> if you are writing a ROS <a href="http://wiki.ros.org/Nodes">Node</a>. There are functions from <code>sys</code>, <code>os</code>, and <code>cv2</code> that are required within this code. <code>cv2</code> is a library of Python functions that implements computer vision algorithms. Further information about cv2 can be found here: <a href="https://www.geeksforgeeks.org/opencv-python-tutorial/">OpenCV Python</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sensor_msgs.msg</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="kn">from</span> <span class="nn">cv_bridge</span> <span class="kn">import</span> <span class="n">CvBridge</span><span class="p">,</span> <span class="n">CvBridgeError</span>
 </code></pre></div>
-The <code>sensor_msgs.msg</code> is imported so that we can subscribe to ROS <code>Image</code> messages. Import <a href="http://wiki.ros.org/cv_bridge">CvBridge</a> to convert between ROS <code>Image</code> messages and OpenCV images.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<p>The <code>sensor_msgs.msg</code> is imported so that we can subscribe to ROS <code>Image</code> messages. Import <a href="http://wiki.ros.org/cv_bridge">CvBridge</a> to convert between ROS <code>Image</code> messages and OpenCV images.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A function that initializes a CvBridge class, subscriber, and save path.</span>
 <span class="sd">    :param self: The self reference.</span>
@@ -3804,8 +3798,8 @@ The <code>sensor_msgs.msg</code> is imported so that we can subscribe to ROS <co
     <span class="bp">self</span><span class="o">.</span><span class="n">sub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;/camera/color/image_raw&#39;</span><span class="p">,</span> <span class="n">Image</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">save_path</span> <span class="o">=</span> <span class="s1">&#39;/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data&#39;</span>
 </code></pre></div>
-Initialize the CvBridge class, the subscriber, and the directory of where the captured image will be stored.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+<p>Initialize the CvBridge class, the subscriber, and the directory where the captured image will be stored.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A callback function that converts the ROS image to a cv2 image and stores the</span>
 <span class="sd">    image.</span>
@@ -3817,31 +3811,34 @@ Initialize the CvBridge class, the subscriber, and the directory of where the ca
     <span class="k">except</span> <span class="n">CvBridgeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s1">&#39;CV Bridge error: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
 </code></pre></div>
-Try to convert the ROS Image message to a cv2 Image message using the <code>imgmsg_to_cv2()</code> function.  </p>
-<p><div class="highlight"><pre><span></span><code><span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;camera_image.jpeg&#39;</span>
+<p>Try to convert the ROS Image message to a cv2 Image message using the <code>imgmsg_to_cv2()</code> function.  </p>
+<div class="highlight"><pre><span></span><code><span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;camera_image.jpeg&#39;</span>
 <span class="n">completeName</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">save_path</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
 <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">completeName</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
 </code></pre></div>
-Join the directory and file name using the <code>path.join()</code> function. Then use the <code>imwrite()</code> function to save the image.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">signal_shutdown</span><span class="p">(</span><span class="s2">&quot;done&quot;</span><span class="p">)</span>
+<p>Join the directory and file name using the <code>path.join()</code> function. Then use the <code>imwrite()</code> function to save the image.</p>
+<div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">signal_shutdown</span><span class="p">(</span><span class="s2">&quot;done&quot;</span><span class="p">)</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-The first line of code initiates a clean shutdown of ROS. The second line of code exits the Python interpreter.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;capture_image&#39;</span><span class="p">,</span> <span class="n">argv</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+<p>The first line of code initiates a clean shutdown of ROS. The second line of code exits the Python interpreter.</p>
+<div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;capture_image&#39;</span><span class="p">,</span> <span class="n">argv</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
 <span class="n">CaptureImage</span><span class="p">()</span>
 </code></pre></div>
-The next line, <code>rospy.init_node(NAME, ...)</code>, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. <strong>NOTE:</strong> the name must be a base name, i.e. it cannot contain any slashes "/".</p>
+<p>The next line, <code>rospy.init_node(NAME, ...)</code>, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The name must be a base name, i.e. it cannot contain any slashes "/".</p>
+</div>
 <p>Instantiate the <code>CaptureImage()</code> class.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
 </code></pre></div>
-Give control to ROS.  This will allow the callback to be called whenever new messages come in.  If we don't put this line in, then the node will not work, and ROS will not process  any messages.</p>
+<p>Give control to ROS.  This will allow the callback to be called whenever new messages come in.  If we don't put this line in, then the node will not work, and ROS will not process any messages.</p>
 <h2 id="edge-detection">Edge Detection</h2>
-<p>In this section, we highlight a node that utilizes the <a href="https://www.geeksforgeeks.org/python-opencv-canny-function/">Canny Edge filter</a> algorithm to detect the edges from an image and convert it back as a ROS image to be visualized in RViz. Begin by running the following commands.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 4</span>
-<span class="nb">cd</span> ~/catkin_ws/src/stretch_tutorials/src
+<p>In this section, we highlight a node that utilizes the <a href="https://www.geeksforgeeks.org/python-opencv-canny-function/">Canny Edge filter</a> algorithm to detect the edges from an image and convert it back as a ROS image to be visualized in RViz. In a terminal, execute:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/catkin_ws/src/stretch_tutorials/src
 python3 edge_detection.py
 </code></pre></div>
-The node will publish a new Image topic named <em>/image_edge_detection</em>. This can be visualized in RViz and a gif is provided below for reference.</p>
+<p>The node will publish a new Image topic named <code>/image_edge_detection</code>. This can be visualized in RViz and a gif is provided below for reference.</p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/camera_image_edge_detection.gif"/>
 </p>
@@ -3900,21 +3897,18 @@ The node will publish a new Image topic named <em>/image_edge_detection</em>. Th
     <span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
 </code></pre></div>
 <h3 id="the-code-explained_1">The Code Explained</h3>
-<p>Since that there are similarities in the capture image node, we will only breakdown the different components of the edge detection node.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">lower_thres</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">upper_thres</span> <span class="o">=</span> <span class="mi">200</span>
+<p>Since there are similarities in the capture image node, we will only break down the different components of the edge detection node.</p>
+<p>Define the lower and upper bounds of the Hysteresis Thresholds.</p>
+<div class="highlight"><pre><span></span><code><span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Canny</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lower_thres</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">upper_thres</span><span class="p">)</span>
 </code></pre></div>
-Define lower and upper bounds of the Hysteresis Thresholds.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Canny</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lower_thres</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">upper_thres</span><span class="p">)</span>
+<p>Run the Canny Edge function to detect edges from the cv2 image.</p>
+<div class="highlight"><pre><span></span><code><span class="n">image_msg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bridge</span><span class="o">.</span><span class="n">cv2_to_imgmsg</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="s1">&#39;passthrough&#39;</span><span class="p">)</span>
 </code></pre></div>
-Run the Canny Edge function to detect edges from the cv2 image.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">image_msg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bridge</span><span class="o">.</span><span class="n">cv2_to_imgmsg</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="s1">&#39;passthrough&#39;</span><span class="p">)</span>
-</code></pre></div>
-Convert the cv2 image back to a ROS image so it can be published.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">image_msg</span><span class="o">.</span><span class="n">header</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">header</span>
+<p>Convert the cv2 image back to a ROS image so it can be published.</p>
+<div class="highlight"><pre><span></span><code><span class="n">image_msg</span><span class="o">.</span><span class="n">header</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">header</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">image_msg</span><span class="p">)</span>
 </code></pre></div>
-Publish the ROS image with the same header as the subscribed ROS message.</p>
+<p>Publish the ROS image with the same header as the subscribed ROS message.</p>
 
 
 

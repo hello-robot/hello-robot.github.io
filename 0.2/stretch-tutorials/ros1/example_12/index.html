@@ -1244,7 +1244,7 @@
       
         <li class="md-nav__item">
   <a href="#modifying-stretch-marker-dictionary-yaml-file" class="md-nav__link">
-    Modifying Stretch Marker Dictionary YAML File.
+    Modifying Stretch Marker Dictionary YAML File
   </a>
   
 </li>
@@ -3594,7 +3594,7 @@
       
         <li class="md-nav__item">
   <a href="#modifying-stretch-marker-dictionary-yaml-file" class="md-nav__link">
-    Modifying Stretch Marker Dictionary YAML File.
+    Modifying Stretch Marker Dictionary YAML File
   </a>
   
 </li>
@@ -3643,9 +3643,9 @@
 
 <h1 id="example-12">Example 12</h1>
 <p>For this example, we will send follow joint trajectory commands for the head camera to search and locate an ArUco tag. In this instance, a Stretch robot will try to locate the docking station's ArUco tag.</p>
-<h2 id="modifying-stretch-marker-dictionary-yaml-file">Modifying Stretch Marker Dictionary YAML File.</h2>
-<p>When defining the ArUco markers on Stretch, hello robot utilizes a YAML file, <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yaml</a>, that holds the information about the markers. A further breakdown of the yaml file can be found in our <a href="../aruco_marker_detection/">Aruco Marker Detection</a> tutorial.</p>
-<p>Below is what the needs to be included in the <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yaml</a> file so the <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/nodes/detect_aruco_markers">detect_aruco_markers</a> node can find the docking station's ArUco tag.</p>
+<h2 id="modifying-stretch-marker-dictionary-yaml-file">Modifying Stretch Marker Dictionary YAML File</h2>
+<p>When defining the ArUco markers on Stretch, hello robot utilizes a YAML file, <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yaml</a>, that holds the information about the markers. A further breakdown of the YAML file can be found in our <a href="../aruco_marker_detection/">Aruco Marker Detection</a> tutorial.</p>
+<p>Below is what needs to be included in the <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yaml</a> file so the <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/nodes/detect_aruco_markers">detect_aruco_markers</a> node can find the docking station's ArUco tag.</p>
 <div class="highlight"><pre><span></span><code><span class="s">&#39;245&#39;</span><span class="p p-Indicator">:</span><span class="w"></span>
 <span class="w">  </span><span class="s">&#39;length_mm&#39;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">88.0</span><span class="w"></span>
 <span class="w">  </span><span class="s">&#39;use_rgb_only&#39;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span><span class="w"></span>
@@ -3654,24 +3654,19 @@
 </code></pre></div>
 <h2 id="getting-started">Getting Started</h2>
 <p>Begin by running the stretch driver launch file.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch stretch_core stretch_driver.launch
+<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
 <p>To activate the RealSense camera and publish topics to be visualized, run the following launch file in a new terminal.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-roslaunch stretch_core d435i_high_resolution.launch
+<div class="highlight"><pre><span></span><code>roslaunch stretch_core d435i_high_resolution.launch
 </code></pre></div>
-<p>Next, run the stretch ArUco launch file which will bring up the <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/nodes/detect_aruco_markers">detect_aruco_markers</a> node.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 3</span>
-roslaunch stretch_core stretch_aruco.launch
+<p>Next, run the stretch ArUco launch file which will bring up the <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/nodes/detect_aruco_markers">detect_aruco_markers</a> node. In a new terminal, execute:</p>
+<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_aruco.launch
 </code></pre></div>
-<p>Within this tutorial package, there is an <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/rviz/aruco_detector_example.rviz">RViz config file</a> with the topics for transform frames in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 4</span>
-rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/aruco_detector_example.rviz
+<p>Within this tutorial package, there is an <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/rviz/aruco_detector_example.rviz">RViz config file</a> with the topics for the transform frames in the Display tree. You can visualize these topics and the robot model by running the command below in a new terminal.</p>
+<div class="highlight"><pre><span></span><code>rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/aruco_detector_example.rviz
 </code></pre></div>
-<p>Then run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/aruco_tag_locator.py">aruco_tag_locator.py</a> node.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 5</span>
-<span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+<p>Then run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/aruco_tag_locator.py">aruco_tag_locator.py</a> node. In a new terminal, execute:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 aruco_tag_locator.py
 </code></pre></div>
 <p align="center">
@@ -3819,10 +3814,10 @@ python3 aruco_tag_locator.py
 </code></pre></div>
 <h3 id="the-code-explained">The Code Explained</h3>
 <p>Now let's break the code down.</p>
-<p><div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 </code></pre></div>
-Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rospy</span>
+<p>Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rospy</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">tf2_ros</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -3834,8 +3829,8 @@ Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this dec
 <span class="kn">from</span> <span class="nn">trajectory_msgs.msg</span> <span class="kn">import</span> <span class="n">JointTrajectoryPoint</span>
 <span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">TransformStamped</span>
 </code></pre></div>
-You need to import <code>rospy</code> if you are writing a ROS <a href="http://wiki.ros.org/Nodes">Node</a>. Import other python modules needed for this node. Import the <code>FollowJointTrajectoryGoal</code> from the <a href="http://wiki.ros.org/control_msgs">control_msgs.msg</a> package to control the Stretch robot. Import <code>JointTrajectoryPoint</code> from the <a href="http://wiki.ros.org/trajectory_msgs">trajectory_msgs</a> package to define robot trajectories. The <a href="https://github.com/hello-robot/stretch_ros/tree/master/hello_helpers">hello_helpers</a> package consists of a module the provides various Python scripts used across <a href="https://github.com/hello-robot/stretch_ros">stretch_ros</a>. In this instance we are importing the <code>hello_misc</code> script.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<p>You need to import <code>rospy</code> if you are writing a ROS <a href="http://wiki.ros.org/Nodes">Node</a>. Import other python modules needed for this node. Import the <code>FollowJointTrajectoryGoal</code> from the <a href="http://wiki.ros.org/control_msgs">control_msgs.msg</a> package to control the Stretch robot. Import <code>JointTrajectoryPoint</code> from the <a href="http://wiki.ros.org/trajectory_msgs">trajectory_msgs</a> package to define robot trajectories. The <a href="https://github.com/hello-robot/stretch_ros/tree/master/hello_helpers">hello_helpers</a> package consists of a module that provides various Python scripts used across <a href="https://github.com/hello-robot/stretch_ros">stretch_ros</a>. In this instance, we are importing the <code>hello_misc</code> script.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A function that initializes the subscriber and other needed variables.</span>
 <span class="sd">    :param self: The self reference.</span>
@@ -3847,24 +3842,24 @@ You need to import <code>rospy</code> if you are writing a ROS <a href="http://w
 
     <span class="bp">self</span><span class="o">.</span><span class="n">joint_state</span> <span class="o">=</span> <span class="kc">None</span>
 </code></pre></div>
-The <code>LocateArUcoTag</code> class inherits the <code>HelloNode</code> class from <code>hm</code> and is instantiated.</p>
-<p>Set up a subscriber with <code>rospy.Subscriber('/stretch/joint_states', JointState, self.joint_states_callback)</code>.  We're going to subscribe to the topic "<em>stretch/joint_states</em>", looking for <code>JointState</code> messages.  When a message comes in, ROS is going to pass it to the function <code>joint_states_callback()</code> automatically.</p>
-<p><code>rospy.Publisher('ArUco_transform', TransformStamped, queue_size=10)</code> declares that your node is publishing to the <em>ArUco_transform</em> topic using the message type <code>TransformStamped</code>. The <code>queue_size</code> argument limits the amount of queued messages if any subscriber is not receiving them fast enough.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">min_pan_position</span> <span class="o">=</span> <span class="o">-</span><span class="mf">4.10</span>
+<p>The <code>LocateArUcoTag</code> class inherits the <code>HelloNode</code> class from <code>hm</code> and is instantiated.</p>
+<p>Set up a subscriber with <code>rospy.Subscriber('/stretch/joint_states', JointState, self.joint_states_callback)</code>.  We're going to subscribe to the topic <code>stretch/joint_states</code>, looking for <code>JointState</code> messages.  When a message comes in, ROS is going to pass it to the function <code>joint_states_callback()</code> automatically.</p>
+<p><code>rospy.Publisher('ArUco_transform', TransformStamped, queue_size=10)</code> declares that your node is publishing to the <code>ArUco_transform</code> topic using the message type <code>TransformStamped</code>. The <code>queue_size</code> argument limits the amount of queued messages if any subscriber is not receiving them fast enough.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">min_pan_position</span> <span class="o">=</span> <span class="o">-</span><span class="mf">4.10</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">max_pan_position</span> <span class="o">=</span>  <span class="mf">1.50</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">pan_num_steps</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">pan_step_size</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">min_pan_position</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_pan_position</span><span class="p">)</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">pan_num_steps</span>
 </code></pre></div>
-Provide the minimum and maximum joint positions for the head pan. These values are needed for sweeping the head to search for the ArUco tag. We also define the number of steps for the sweep, then create the step size for the head pan joint.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">min_tilt_position</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.75</span>
+<p>Provide the minimum and maximum joint positions for the head pan. These values are needed for sweeping the head to search for the ArUco tag. We also define the number of steps for the sweep, then create the step size for the head pan joint.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">min_tilt_position</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.75</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">tilt_num_steps</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">tilt_step_size</span> <span class="o">=</span> <span class="n">pi</span><span class="o">/</span><span class="mi">16</span>
 </code></pre></div>
-Set the minimum position of the tilt joint, the number of steps, and the size of each step.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">rot_vel</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1"># radians per sec</span>
+<p>Set the minimum position of the tilt joint, the number of steps, and the size of each step.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">rot_vel</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1"># radians per sec</span>
 </code></pre></div>
-Define the head actuation rotational velocity.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">joint_states_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+<p>Define the head actuation rotational velocity.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">joint_states_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A callback function that stores Stretch&#39;s joint states.</span>
 <span class="sd">    :param self: The self reference.</span>
@@ -3872,8 +3867,8 @@ Define the head actuation rotational velocity.</p>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">joint_state</span> <span class="o">=</span> <span class="n">msg</span>
 </code></pre></div>
-The <code>joint_states_callback()</code> function stores Stretch's joint states.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">send_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">):</span>
+<p>The <code>joint_states_callback()</code> function stores Stretch's joint states.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">send_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Handles single joint control commands by constructing a FollowJointTrajectoryGoal</span>
 <span class="sd">    message and sending it to the trajectory_client created in hello_misc.</span>
@@ -3886,28 +3881,28 @@ The <code>joint_states_callback()</code> function stores Stretch's joint states.
         <span class="n">trajectory_goal</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">joint_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">joint_name</span><span class="p">]</span>
         <span class="n">point</span> <span class="o">=</span> <span class="n">JointTrajectoryPoint</span><span class="p">()</span>
 </code></pre></div>
-Assign <em>trajectory_goal</em> as a <code>FollowJointTrajectoryGoal</code> message type. Then extract the string value from the <code>joint</code> key. Also, assign <em>point</em> as a <code>JointTrajectoryPoint</code> message type.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="s1">&#39;delta&#39;</span> <span class="ow">in</span> <span class="n">command</span><span class="p">:</span>
+<p>Assign <code>trajectory_goal</code> as a <code>FollowJointTrajectoryGoal</code> message type. Then extract the string value from the <code>joint</code> key. Also, assign <code>point</code> as a <code>JointTrajectoryPoint</code> message type.</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="s1">&#39;delta&#39;</span> <span class="ow">in</span> <span class="n">command</span><span class="p">:</span>
     <span class="n">joint_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">joint_state</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">joint_name</span><span class="p">)</span>
     <span class="n">joint_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">joint_state</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="n">joint_index</span><span class="p">]</span>
     <span class="n">delta</span> <span class="o">=</span> <span class="n">command</span><span class="p">[</span><span class="s1">&#39;delta&#39;</span><span class="p">]</span>
     <span class="n">new_value</span> <span class="o">=</span> <span class="n">joint_value</span> <span class="o">+</span> <span class="n">delta</span>
     <span class="n">point</span><span class="o">.</span><span class="n">positions</span> <span class="o">=</span> <span class="p">[</span><span class="n">new_value</span><span class="p">]</span>
 </code></pre></div>
-Check to see if <code>delta</code> is a key in the command dictionary. Then get the current position of the joint and add the delta as a a new position value.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">elif</span> <span class="s1">&#39;position&#39;</span> <span class="ow">in</span> <span class="n">command</span><span class="p">:</span>
+<p>Check to see if <code>delta</code> is a key in the command dictionary. Then get the current position of the joint and add the delta as a new position value.</p>
+<div class="highlight"><pre><span></span><code><span class="k">elif</span> <span class="s1">&#39;position&#39;</span> <span class="ow">in</span> <span class="n">command</span><span class="p">:</span>
     <span class="n">point</span><span class="o">.</span><span class="n">positions</span> <span class="o">=</span> <span class="p">[</span><span class="n">command</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]]</span>
 </code></pre></div>
-Check to see if <code>position</code>is a key in the command dictionary. Then extract the position value.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">point</span><span class="o">.</span><span class="n">velocities</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">rot_vel</span><span class="p">]</span>
+<p>Check to see if <code>position</code> is a key in the command dictionary. Then extract the position value.</p>
+<div class="highlight"><pre><span></span><code><span class="n">point</span><span class="o">.</span><span class="n">velocities</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">rot_vel</span><span class="p">]</span>
 <span class="n">trajectory_goal</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="p">[</span><span class="n">point</span><span class="p">]</span>
 <span class="n">trajectory_goal</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">stamp</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
 <span class="n">trajectory_goal</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="s1">&#39;base_link&#39;</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">trajectory_client</span><span class="o">.</span><span class="n">send_goal</span><span class="p">(</span><span class="n">trajectory_goal</span><span class="p">)</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">trajectory_client</span><span class="o">.</span><span class="n">wait_for_result</span><span class="p">()</span>
 </code></pre></div>
-Then <code>trajectory_goal.trajectory.points</code> is defined by the positions set in <em>point</em>. Specify the coordinate frame that we want (<em>base_link</em>) and set the time to be now. Make the action call and send the goal. The last line of code waits for the result before it exits the python script.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">find_tag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag_name</span><span class="o">=</span><span class="s1">&#39;docking_station&#39;</span><span class="p">):</span>
+<p>Then <code>trajectory_goal.trajectory.points</code> is defined by the positions set in <code>point</code>. Specify the coordinate frame that we want (<em>base_link</em>) and set the time to be now. Make the action call and send the goal. The last line of code waits for the result before it exits the python script.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">find_tag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag_name</span><span class="o">=</span><span class="s1">&#39;docking_station&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A function that actuates the camera to search for a defined ArUco tag</span>
 <span class="sd">    marker. Then the function returns the pose</span>
@@ -3921,16 +3916,15 @@ Then <code>trajectory_goal.trajectory.points</code> is defined by the positions 
     <span class="n">tilt_command</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;joint&#39;</span><span class="p">:</span> <span class="s1">&#39;joint_head_tilt&#39;</span><span class="p">,</span> <span class="s1">&#39;position&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_tilt_position</span><span class="p">}</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">send_command</span><span class="p">(</span><span class="n">tilt_command</span><span class="p">)</span>
 </code></pre></div>
-Create a dictionaries to get the head in its initial position for its search and send the commands the the <code>send_command()</code> function.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tilt_num_steps</span><span class="p">):</span>
+<p>Create a dictionary to get the head in its initial position for its search and send the commands with the <code>send_command()</code> function.</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tilt_num_steps</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pan_num_steps</span><span class="p">):</span>
         <span class="n">pan_command</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;joint&#39;</span><span class="p">:</span> <span class="s1">&#39;joint_head_pan&#39;</span><span class="p">,</span> <span class="s1">&#39;delta&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">pan_step_size</span><span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">send_command</span><span class="p">(</span><span class="n">pan_command</span><span class="p">)</span>
         <span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 </code></pre></div>
-Utilize nested for loop to sweep the pan and tilt in increments. Then update the <em>joint_head_pan</em> position by the <em>pan_step_size</em>.
-Use <code>rospy.sleep()</code> function to give time for system to do a Transform lookup before next step.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+<p>Utilize a nested for loop to sweep the pan and tilt in increments. Then update the <code>joint_head_pan</code> position by the <code>pan_step_size</code>. Use <code>rospy.sleep()</code> function to give time to the system to do a Transform lookup before the next step.</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
     <span class="n">transform</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tf_buffer</span><span class="o">.</span><span class="n">lookup_transform</span><span class="p">(</span><span class="s1">&#39;base_link&#39;</span><span class="p">,</span>
                                                 <span class="n">tag_name</span><span class="p">,</span>
                                                 <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="p">())</span>
@@ -3940,40 +3934,40 @@ Use <code>rospy.sleep()</code> function to give time for system to do a Transfor
 <span class="k">except</span> <span class="p">(</span><span class="n">tf2_ros</span><span class="o">.</span><span class="n">LookupException</span><span class="p">,</span> <span class="n">tf2_ros</span><span class="o">.</span><span class="n">ConnectivityException</span><span class="p">,</span> <span class="n">tf2_ros</span><span class="o">.</span><span class="n">ExtrapolationException</span><span class="p">):</span>
     <span class="k">continue</span>
 </code></pre></div>
-Use a try-except block to look up the transform between the <em>base_link</em> and requested ArUco tag. Then publish and return the <code>TransformStamped</code> message.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">pan_command</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;joint&#39;</span><span class="p">:</span> <span class="s1">&#39;joint_head_pan&#39;</span><span class="p">,</span> <span class="s1">&#39;position&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_pan_position</span><span class="p">}</span>
+<p>Use a try-except block to look up the transform between the <em>base_link</em> and the requested ArUco tag. Then publish and return the <code>TransformStamped</code> message.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pan_command</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;joint&#39;</span><span class="p">:</span> <span class="s1">&#39;joint_head_pan&#39;</span><span class="p">,</span> <span class="s1">&#39;position&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_pan_position</span><span class="p">}</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">send_command</span><span class="p">(</span><span class="n">pan_command</span><span class="p">)</span>
 <span class="n">tilt_command</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;joint&#39;</span><span class="p">:</span> <span class="s1">&#39;joint_head_tilt&#39;</span><span class="p">,</span> <span class="s1">&#39;delta&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">tilt_step_size</span><span class="p">}</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">send_command</span><span class="p">(</span><span class="n">tilt_command</span><span class="p">)</span>
 <span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">.25</span><span class="p">)</span>
 </code></pre></div>
-Begin sweep with new tilt angle.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<p>Begin sweep with new tilt angle.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function that initiates the issue_command function.</span>
 <span class="sd">    :param self: The self reference.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">hm</span><span class="o">.</span><span class="n">HelloNode</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;aruco_tag_locator&#39;</span><span class="p">,</span> <span class="s1">&#39;aruco_tag_locator&#39;</span><span class="p">,</span> <span class="n">wait_for_first_pointcloud</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
-Create a funcion, <code>main()</code>, to do all of the setup for the <code>hm.HelloNode</code> class and initialize the <code>aruco_tag_locator</code> node.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">static_broadcaster</span> <span class="o">=</span> <span class="n">tf2_ros</span><span class="o">.</span><span class="n">StaticTransformBroadcaster</span><span class="p">()</span>
+<p>Create a function, <code>main()</code>, to do the setup for the <code>hm.HelloNode</code> class and initialize the <code>aruco_tag_locator</code> node.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">static_broadcaster</span> <span class="o">=</span> <span class="n">tf2_ros</span><span class="o">.</span><span class="n">StaticTransformBroadcaster</span><span class="p">()</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">tf_buffer</span> <span class="o">=</span> <span class="n">tf2_ros</span><span class="o">.</span><span class="n">Buffer</span><span class="p">()</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">listener</span> <span class="o">=</span> <span class="n">tf2_ros</span><span class="o">.</span><span class="n">TransformListener</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tf_buffer</span><span class="p">)</span>
 <span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
 </code></pre></div>
-Create a StaticTranformBoradcaster Node. Also, start a tf buffer that will store the tf information for a few seconds.Then set up a tf listener, which will subscribe to all of the relevant tf topics, and keep track of the information. Include <code>rospy.sleep(1.0)</code> to give the listener some time to accumulate transforms.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s1">&#39;Searching for docking ArUco tag.&#39;</span><span class="p">)</span>
+<p>Create a StaticTranformBoradcaster Node. Also, start a tf buffer that will store the tf information for a few seconds. Then set up a tf listener, which will subscribe to all of the relevant tf topics, and keep track of the information. Include <code>rospy.sleep(1.0)</code> to give the listener some time to accumulate transforms.</p>
+<div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s1">&#39;Searching for docking ArUco tag.&#39;</span><span class="p">)</span>
 <span class="n">pose</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_tag</span><span class="p">(</span><span class="s2">&quot;docking_station&quot;</span><span class="p">)</span>
 </code></pre></div>
-Notify Stretch is searching for the ArUco tag with a <code>rospy.loginfo()</code> function. Then search for the ArUco marker for the docking station.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<p>Notice Stretch is searching for the ArUco tag with a <code>rospy.loginfo()</code> function. Then search for the ArUco marker for the docking station.</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">node</span> <span class="o">=</span> <span class="n">LocateArUcoTag</span><span class="p">()</span>
         <span class="n">node</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
     <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
         <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s1">&#39;interrupt received, so shutting down&#39;</span><span class="p">)</span>
 </code></pre></div>
-Declare <code>LocateArUcoTag</code> object. Then run the <code>main()</code> method.</p>
+<p>Declare <code>LocateArUcoTag</code> object. Then run the <code>main()</code> method.</p>
 
 
 

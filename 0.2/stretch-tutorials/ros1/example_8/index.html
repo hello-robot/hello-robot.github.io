@@ -3607,16 +3607,14 @@
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/respeaker.jpg"/>
 </p>
 
-<p>Begin by running the <code>respeaker.launch</code> file in a terminal.
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch respeaker_ros sample_respeaker.launch
+<p>Begin by running the <code>respeaker.launch</code> file in a terminal.</p>
+<p><div class="highlight"><pre><span></span><code>roslaunch respeaker_ros sample_respeaker.launch
 </code></pre></div>
-Then run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/speech_text.py">speech_text.py</a> node.</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-<span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+Then run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/speech_text.py">speech_text.py</a> node. In a new terminal, execute:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 speech_text.py
 </code></pre></div>
-The ReSpeaker will be listening and will start to interpret speech and save the transcript to a text file.  To stop shutdown the node, type <strong>Ctrl</strong> + <strong>c</strong> in the terminal.</p>
+<p>The ReSpeaker will be listening and will start to interpret speech and save the transcript to a text file.  To shut down the node, type <code>Ctrl</code> + <code>c</code> in the terminal.</p>
 <h3 id="the-code">The Code</h3>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 
@@ -3658,46 +3656,50 @@ The ReSpeaker will be listening and will start to interpret speech and save the 
 </code></pre></div>
 <h3 id="the-code-explained">The Code Explained</h3>
 <p>Now let's break the code down.</p>
-<p><div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 </code></pre></div>
-Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rospy</span>
+<p>Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rospy</span>
 <span class="kn">import</span> <span class="nn">os</span>
 </code></pre></div>
-You need to import <code>rospy</code> if you are writing a ROS <a href="http://wiki.ros.org/Nodes">Node</a>.</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">speech_recognition_msgs.msg</span> <span class="kn">import</span> <span class="n">SpeechRecognitionCandidates</span>
+<p>You need to import <code>rospy</code> if you are writing a ROS <a href="http://wiki.ros.org/Nodes">Node</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">speech_recognition_msgs.msg</span> <span class="kn">import</span> <span class="n">SpeechRecognitionCandidates</span>
 </code></pre></div>
-Import <code>SpeechRecognitionCandidates</code> from the <code>speech_recgonition_msgs.msg</code> so that we can receive the interpreted speech.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<p>Import <code>SpeechRecognitionCandidates</code> from the <code>speech_recgonition_msgs.msg</code> so that we can receive the interpreted speech.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Initialize subscriber and directory to save speech to text file.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">sub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s2">&quot;speech_to_text&quot;</span><span class="p">,</span> <span class="n">SpeechRecognitionCandidates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
-Set up a subscriber.  We're going to subscribe to the topic "<em>speech_to_text</em>", looking for <code>SpeechRecognitionCandidates</code> messages. When a message comes in, ROS is going to pass it to the function "callback" automatically.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">save_path</span> <span class="o">=</span> <span class="s1">&#39;/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data</span>
+<p>Set up a subscriber.  We're going to subscribe to the topic <code>speech_to_text</code>, looking for <code>SpeechRecognitionCandidates</code> messages. When a message comes in, ROS is going to pass it to the function "callback" automatically.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">save_path</span> <span class="o">=</span> <span class="s1">&#39;/home/hello-robot/catkin_ws/src/stretch_tutorials/stored_data</span>
 </code></pre></div>
-Define the directory to save the text file.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">transcript</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span><span class="n">msg</span><span class="o">.</span><span class="n">transcript</span><span class="p">))</span>
+<p>Define the directory to save the text file.</p>
+<div class="highlight"><pre><span></span><code><span class="n">transcript</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span><span class="n">msg</span><span class="o">.</span><span class="n">transcript</span><span class="p">))</span>
 </code></pre></div>
-Take all items in the iterable list and join them into a single string named transcript.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;speech.txt&#39;</span>
+<p>Take all items in the iterable list and join them into a single string named transcript.</p>
+<div class="highlight"><pre><span></span><code><span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;speech.txt&#39;</span>
 <span class="n">completeName</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">save_path</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
 </code></pre></div>
-Define the file name and create a complete path directory.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">completeName</span><span class="p">,</span> <span class="s2">&quot;a+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_object</span><span class="p">:</span>
+<p>Define the file name and create a complete path directory.</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">completeName</span><span class="p">,</span> <span class="s2">&quot;a+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_object</span><span class="p">:</span>
     <span class="n">file_object</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">file_object</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">transcript</span><span class="p">)</span>
 </code></pre></div>
-Append the transcript to the text file.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;speech_text&#39;</span><span class="p">)</span>
+<p>Append the transcript to the text file.</p>
+<div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;speech_text&#39;</span><span class="p">)</span>
 <span class="n">SpeechText</span><span class="p">()</span>
 </code></pre></div>
-The next line, <code>rospy.init_node(NAME, ...)</code>, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. <strong>NOTE:</strong> the name must be a base name, i.e. it cannot contain any slashes "/".</p>
+<p>The next line, <code>rospy.init_node(NAME, ...)</code>, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The name must be a base name, i.e. it cannot contain any slashes "/".</p>
+</div>
 <p>Instantiate the <code>SpeechText()</code> class.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
 </code></pre></div>
-Give control to ROS.  This will allow the callback to be called whenever new
+<p>Give control to ROS.  This will allow the callback to be called whenever new
 messages come in.  If we don't put this line in, then the node will not work,
 and ROS will not process any messages.</p>
 

@@ -3598,35 +3598,33 @@
   <h1>RViz Basics</h1>
 
 <h2 id="visualizing-with-rviz">Visualizing with RViz</h2>
-<p>You can utilize RViz to visualize Stretch's sensor information. To begin, run the stretch driver launch file.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch stretch_core stretch_driver.roslaunch
+<p>You can utilize RViz to visualize Stretch's sensor information. To begin, in a terminal, run the stretch driver launch file.</p>
+<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
-<p>Then run the following command to bring up a simple RViz configuration of the Stretch robot.
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-rosrun rviz rviz -d <span class="sb">`</span>rospack find stretch_core<span class="sb">`</span>/rviz/stretch_simple_test.rviz
+<p>Then, run the following command in a separate terminal to bring up a simple RViz configuration of the Stretch robot.</p>
+<div class="highlight"><pre><span></span><code>rosrun rviz rviz -d <span class="sb">`</span>rospack find stretch_core<span class="sb">`</span>/rviz/stretch_simple_test.rviz
 </code></pre></div>
-An RViz window should open, allowing you to see the various DisplayTypes in the display tree on the left side of the window.</p>
+<p>An RViz window should open, allowing you to see the various DisplayTypes in the display tree on the left side of the window.</p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/simple_rviz.png"/>
 </p>
 
-<p>If you want the visualize Stretch's <a href="http://wiki.ros.org/rviz/DisplayTypes/TF">tf transform tree</a>, you need to add the display type to the RViz window. First, click the <em>Add</em> button and include the <em>TF</em>  type in the display. You will then see all of the transform frames of the Stretch robot, and the visualization can be toggled off and on by clicking the checkbox next to the tree. Below is a gif for reference.</p>
+<p>If you want to visualize Stretch's <a href="http://wiki.ros.org/rviz/DisplayTypes/TF">tf transform tree</a>, you need to add the display type to the RViz window. First, click the <em>Add</em> button and include the <em>TF</em>  type in the display. You will then see all of the transform frames of the Stretch robot, and the visualization can be toggled off and on by clicking the checkbox next to the tree. Below is a gif for reference.</p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/rviz_adding_tf.gif"/>
 </p>
 
-<p>There are further tutorials for RViz and can be found <a href="http://wiki.ros.org/rviz/Tutorials">here</a>.</p>
+<p>There are further tutorials for RViz which can be found <a href="http://wiki.ros.org/rviz/Tutorials">here</a>.</p>
 <h2 id="running-rviz-and-gazebo-simulation">Running RViz and Gazebo (Simulation)</h2>
-<p>Let's bringup stretch in the willowgarage world from the <a href="../gazebo_basics/">gazebo basics tutorial</a> and RViz by using the following command.</p>
-<p><div class="highlight"><pre><span></span><code>roslaunch stretch_gazebo gazebo.launch world:<span class="o">=</span>worlds/willowgarage.world rviz:<span class="o">=</span><span class="nb">true</span>
+<p>Let's bring up Stretch in the willow garage world from the <a href="../gazebo_basics/">gazebo basics tutorial</a> and RViz by using the following command.</p>
+<div class="highlight"><pre><span></span><code>roslaunch stretch_gazebo gazebo.launch world:<span class="o">=</span>worlds/willowgarage.world rviz:<span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
-the <code>rviz</code> flag will open an RViz window  to visualize a variety of ROS topics.</p>
+<p>The <code>rviz</code> flag will open an RViz window to visualize a variety of ROS topics.</p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/willowgarage_with_rviz.png"/>
 </p>
 
-<p>Bringup the <a href="../teleoperating_stretch/">keyboard teleop</a> to drive Stretch and observe its sensor input.</p>
+<p>Bring up the <a href="../teleoperating_stretch/">keyboard teleop</a> node to drive Stretch and observe its sensor input.</p>
 
 
 

@@ -3624,23 +3624,23 @@
   <h1>Filter Laser Scans</h1>
 
 <h2 id="example-2">Example 2</h2>
-<p>The aim of this example is to provide instruction on how to filter scan messages.</p>
-<p>For robots with laser scanners, ROS provides a special Message type in the <a href="http://wiki.ros.org/sensor_msgs">sensor_msgs</a> package called <a href="http://docs.ros.org/en/api/sensor_msgs/html/msg/LaserScan.html">LaserScan</a> to hold information about a given scan. Let's take a look at the message specification itself:</p>
-<p><div class="highlight"><pre><span></span><code># Laser scans angles are measured counter clockwise, with Stretch&#39;s LiDAR having
-# both angle_min and angle_max facing forward (very closely along the x-axis)
+<p>This example aims to provide instructions on how to filter scan messages.</p>
+<p>For robots with laser scanners, ROS provides a special Message type in the <a href="http://wiki.ros.org/sensor_msgs">sensor_msgs</a> package called <a href="http://docs.ros.org/en/api/sensor_msgs/html/msg/LaserScan.html">LaserScan</a> to hold information about a given scan. Let's take a look at the message specifications:</p>
+<div class="no-copy highlight"><pre><span></span><code><span class="c1"># Laser scans angles are measured counter clockwise, with Stretch&#39;s LiDAR having</span>
+<span class="c1"># both angle_min and angle_max facing forward (very closely along the x-axis)</span>
 
 Header header
-float32 angle_min        # start angle of the scan [rad]
-float32 angle_max        # end angle of the scan [rad]
-float32 angle_increment  # angular distance between measurements [rad]
-float32 time_increment   # time between measurements [seconds]
-float32 scan_time        # time between scans [seconds]
-float32 range_min        # minimum range value [m]
-float32 range_max        # maximum range value [m]
-float32[] ranges         # range data [m] (Note: values &lt; range_min or &gt; range_max should be discarded)
-float32[] intensities    # intensity data [device-specific units]
+float32 angle_min        <span class="c1"># start angle of the scan [rad]</span>
+float32 angle_max        <span class="c1"># end angle of the scan [rad]</span>
+float32 angle_increment  <span class="c1"># angular distance between measurements [rad]</span>
+float32 time_increment   <span class="c1"># time between measurements [seconds]</span>
+float32 scan_time        <span class="c1"># time between scans [seconds]</span>
+float32 range_min        <span class="c1"># minimum range value [m]</span>
+float32 range_max        <span class="c1"># maximum range value [m]</span>
+float32<span class="o">[]</span> ranges         <span class="c1"># range data [m] (Note: values &lt; range_min or &gt; range_max should be discarded)</span>
+float32<span class="o">[]</span> intensities    <span class="c1"># intensity data [device-specific units]</span>
 </code></pre></div>
-The above message tells you everything you need to know about a scan. Most importantly, you have the angle of each hit and its distance (range) from the scanner. If you want to work with raw range data, then the above message is all you need. There is also an image below that illustrates the components of the message type.</p>
+<p>The above message tells you everything you need to know about a scan. Most importantly, you have the angle of each hit and its distance (range) from the scanner. If you want to work with raw range data, then the above message is all you need. There is also an image below that illustrates the components of the message type.</p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/lidar.png"/>
 </p>
@@ -3654,23 +3654,19 @@ end angle, <code>angle_max</code>, are closely located along the x-axis of Stret
 
 <p>Knowing the orientation of the LiDAR allows us to filter the scan values for a desired range. In this case, we are only considering the scan ranges in front of the stretch robot.</p>
 <p>First, open a terminal and run the stretch driver launch file.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1</span>
-roslaunch stretch_core stretch_driver.launch
+<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
 </code></pre></div>
-<p>Then in a new terminal run the <code>rplidar.launch</code> file from <code>stretch_core</code>.
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-roslaunch stretch_core rplidar.launch
-</code></pre></div></p>
+<p>Then in a new terminal run the <code>rplidar.launch</code> file from <code>stretch_core</code>.</p>
+<div class="highlight"><pre><span></span><code>roslaunch stretch_core rplidar.launch
+</code></pre></div>
 <p>To filter the lidar scans for ranges that are directly in front of Stretch (width of 1 meter) run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/scan_filter.py">scan_filter.py</a> node by typing the following in a new terminal.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 3</span>
-<span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 scan_filter.py
 </code></pre></div>
-<p>Then run the following command to bring up a simple RViz configuration of the Stretch robot.
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 4</span>
-rosrun rviz rviz -d <span class="sb">`</span>rospack find stretch_core<span class="sb">`</span>/rviz/stretch_simple_test.rviz
+<p>Then run the following command in a separate terminal to bring up a simple RViz configuration of the Stretch robot.</p>
+<div class="highlight"><pre><span></span><code>rosrun rviz rviz -d <span class="sb">`</span>rospack find stretch_core<span class="sb">`</span>/rviz/stretch_simple_test.rviz
 </code></pre></div>
-Change the topic name from the LaserScan display from <em>/scan</em> to <em>/filter_scan</em>.</p>
+<p>Change the topic name from the LaserScan display from <em>/scan</em> to <em>/filter_scan</em>.</p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/scanfilter.gif"/>
 </p>
@@ -3716,46 +3712,50 @@ Change the topic name from the LaserScan display from <em>/scan</em> to <em>/fil
 </code></pre></div>
 <h3 id="the-code-explained">The Code Explained</h3>
 <p>Now let's break the code down.</p>
-<p><div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 </code></pre></div>
-Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rospy</span>
+<p>Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rospy</span>
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">linspace</span><span class="p">,</span> <span class="n">inf</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span>
 <span class="kn">from</span> <span class="nn">sensor_msgs.msg</span> <span class="kn">import</span> <span class="n">LaserScan</span>
 </code></pre></div>
-You need to import <code>rospy</code> if you are writing a ROS <a href="http://wiki.ros.org/Nodes">Node</a>. There are functions from <code>numpy</code> and <code>math</code> that are required within this code, thus why linspace, inf, and sin are imported. The <code>sensor_msgs.msg</code> import is so that we can subscribe and publish <code>LaserScan</code> messages.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">1</span>
+<p>You need to import <code>rospy</code> if you are writing a ROS <a href="http://wiki.ros.org/Nodes">Node</a>. There are functions from <code>numpy</code> and <code>math</code> that are required within this code, that's why <code>linspace</code>, <code>inf</code>, and <code>sin</code> are imported. The <code>sensor_msgs.msg</code> import is so that we can subscribe and publish <code>LaserScan</code> messages.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">extent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="mf">2.0</span>
 </code></pre></div>
-We're going to assume that the robot is pointing up the x-axis, so that any points with y coordinates further than half of the defined width (1 meter) from the axis are not considered.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">sub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;/scan&#39;</span><span class="p">,</span> <span class="n">LaserScan</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+<p>We're going to assume that the robot is pointing up the x-axis so that any points with y coordinates further than half of the defined width (1 meter) from the axis are not considered.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">sub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;/scan&#39;</span><span class="p">,</span> <span class="n">LaserScan</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 </code></pre></div>
-Set up a subscriber.  We're going to subscribe to the topic <em>scan</em>, looking for <code>LaserScan</code> messages.  When a message comes in, ROS is going to pass it to the function "callback" automatically.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;filtered_scan&#39;</span><span class="p">,</span> <span class="n">LaserScan</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<p>Set up a subscriber.  We're going to subscribe to the topic <code>scan</code>, looking for <code>LaserScan</code> messages.  When a message comes in, ROS is going to pass it to the function <code>callback</code> automatically.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;filtered_scan&#39;</span><span class="p">,</span> <span class="n">LaserScan</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div>
-<code>pub = rospy.Publisher("filtered_scan", LaserScan, queue_size=10)</code> declares that your node is publishing to the <em>filtered_scan</em> topic using the message type <code>LaserScan</code>. This lets the master tell any nodes listening on <em>filtered_scan</em> that we are going to publish data on that topic.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">angles</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">angle_min</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">angle_max</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">))</span>
+<p><code>pub = rospy.Publisher("filtered_scan", LaserScan, queue_size=10)</code> declares that your node is publishing to the <code>filtered_scan</code> topic using the message type <code>LaserScan</code>. This lets the master tell any nodes listening on <code>filtered_scan</code> that we are going to publish data on that topic.</p>
+<div class="highlight"><pre><span></span><code><span class="n">angles</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">angle_min</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">angle_max</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">))</span>
 </code></pre></div>
-This line of code utilizes linspace to compute each angle of the subscribed scan.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">points</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">theta</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">2.5</span> <span class="ow">or</span> <span class="n">theta</span> <span class="o">&gt;</span> <span class="mf">2.5</span><span class="p">)</span> <span class="k">else</span> <span class="n">inf</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span><span class="n">theta</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">,</span> <span class="n">angles</span><span class="p">)]</span>
+<p>This line of code utilizes <code>linspace</code> to compute each angle of the subscribed scan.</p>
+<div class="highlight"><pre><span></span><code><span class="n">points</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">theta</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">2.5</span> <span class="ow">or</span> <span class="n">theta</span> <span class="o">&gt;</span> <span class="mf">2.5</span><span class="p">)</span> <span class="k">else</span> <span class="n">inf</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span><span class="n">theta</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">,</span> <span class="n">angles</span><span class="p">)]</span>
 </code></pre></div>
-Here we are computing the y coordinates of the ranges that are <strong>below -2.5</strong> and <strong>above 2.5</strong> radians of the scan angles. These limits are sufficient for considering scan ranges in front of Stretch, but these values can be altered to your preference.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">new_ranges</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">extent</span> <span class="k">else</span> <span class="n">inf</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">,</span> <span class="n">points</span><span class="p">)]</span>
+<p>Here we are computing the y coordinates of the ranges that are <strong>below -2.5</strong> and <strong>above 2.5</strong> radians of the scan angles. These limits are sufficient for considering scan ranges in front of Stretch, but these values can be altered to your preference.</p>
+<div class="highlight"><pre><span></span><code><span class="n">new_ranges</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">extent</span> <span class="k">else</span> <span class="n">inf</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">,</span> <span class="n">points</span><span class="p">)]</span>
 </code></pre></div>
-If the absolute value of a point's y-coordinate is under <em>self.extent</em> then keep the range, otherwise use inf, which means "no return".</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span> <span class="o">=</span> <span class="n">new_ranges</span>
+<p>If the absolute value of a point's y-coordinate is under <code>self.extent</code> then keep the range, otherwise use inf, which means "no return".</p>
+<div class="highlight"><pre><span></span><code><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span> <span class="o">=</span> <span class="n">new_ranges</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 </code></pre></div>
-Substitute in the new ranges in the original message, and republish it.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;scan_filter&#39;</span><span class="p">)</span>
+<p>Substitute the new ranges in the original message, and republish it.</p>
+<div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;scan_filter&#39;</span><span class="p">)</span>
 <span class="n">ScanFilter</span><span class="p">()</span>
 </code></pre></div>
-The next line, <code>rospy.init_node(NAME, ...)</code>, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. <strong>NOTE:</strong> the name must be a base name, i.e. it cannot contain any slashes "/".</p>
+<p>The next line, <code>rospy.init_node(NAME, ...)</code>, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The name must be a base name, i.e. it cannot contain any slashes "/".</p>
+</div>
 <p>Instantiate the class with <code>ScanFilter()</code></p>
-<p><div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
 </code></pre></div>
-Give control to ROS.  This will allow the callback to be called whenever new
+<p>Give control to ROS.  This will allow the callback to be called whenever new
 messages come in.  If we don't put this line in, then the node will not work,
 and ROS will not process any messages.</p>
 

@@ -3642,22 +3642,24 @@
 
 
 <h1 id="example-13">Example 13</h1>
-<p>In this example, we will be utilizing the <a href="http://wiki.ros.org/move_base">move_base ROS node</a>, a component of the <a href="http://wiki.ros.org/navigation?distro=melodic">ROS navigation stack</a> to send base goals to the Stretch robot.</p>
+<p>In this example, we will be utilizing the <a href="http://wiki.ros.org/move_base">move_base package</a>, a component of the <a href="http://wiki.ros.org/navigation?distro=melodic">ROS navigation stack</a>, to send base goals to the Stretch robot.</p>
 <h2 id="build-a-map">Build a map</h2>
 <p>First, begin by building a map of the space the robot will be navigating in. If you need a refresher on how to do this, then check out the <a href="../navigation_stack/">Navigation Stack tutorial</a>.</p>
 <h2 id="getting-started">Getting Started</h2>
 <p>Next, with your created map, we can navigate the robot around the mapped space. Run:</p>
-<p><div class="highlight"><pre><span></span><code>roslaunch stretch_navigation navigation.launch map_yaml:<span class="o">=</span><span class="si">${</span><span class="nv">HELLO_FLEET_PATH</span><span class="si">}</span>/maps/&lt;map_name&gt;.yaml
+<div class="highlight"><pre><span></span><code>roslaunch stretch_navigation navigation.launch map_yaml:<span class="o">=</span><span class="si">${</span><span class="nv">HELLO_FLEET_PATH</span><span class="si">}</span>/maps/&lt;map_name&gt;.yaml
 </code></pre></div>
-Where <code>${HELLO_FLEET_PATH}</code> is the path of the <code>&lt;map_name&gt;.yaml</code> file.</p>
-<p><strong>IMPORTANT NOTE:</strong> It's likely that the robot's location in the map does not match the robot's location in the real space. In the top bar of Rviz, use 2D Pose Estimate to lay an arrow down roughly where the robot is located in the real space. Below is a gif for reference.</p>
+<p>Where <code>${HELLO_FLEET_PATH}</code> is the path of the <code>&lt;map_name&gt;.yaml</code> file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It's likely that the robot's location on the map does not match the robot's location in real space. In the top bar of Rviz, use <code>2D Pose Estimate</code> to lay an arrow down roughly where the robot is located in real space. Below is a gif for reference.</p>
+</div>
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/2D_pose_estimate.gif"/>
 </p>
 
-<p>Now we are going to use a node to send a a move base goal half a meter in front of the map's origin. run the following command to execute the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/navigation.py">navigation.py</a> node.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 2</span>
-<span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
+<p>Now we are going to use a node to send a move_base goal half a meter in front of the map's origin. run the following command in a new terminal to execute the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/navigation.py">navigation.py</a> node.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws/src/stretch_tutorials/src/
 python3 navigation.py
 </code></pre></div>
 <h3 id="the-code">The Code</h3>
@@ -3740,28 +3742,28 @@ python3 navigation.py
 </code></pre></div>
 <h3 id="the-code-explained">The Code Explained</h3>
 <p>Now let's break the code down.</p>
-<p><div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 </code></pre></div>
-Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rospy</span>
+<p>Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python3 script.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rospy</span>
 <span class="kn">import</span> <span class="nn">actionlib</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">move_base_msgs.msg</span> <span class="kn">import</span> <span class="n">MoveBaseAction</span><span class="p">,</span> <span class="n">MoveBaseGoal</span>
 <span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">Quaternion</span>
 <span class="kn">from</span> <span class="nn">tf</span> <span class="kn">import</span> <span class="n">transformations</span>
 </code></pre></div>
-You need to import <code>rospy</code> if you are writing a ROS <a href="http://wiki.ros.org/Nodes">Node</a>.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">actionlib</span><span class="o">.</span><span class="n">SimpleActionClient</span><span class="p">(</span><span class="s1">&#39;move_base&#39;</span><span class="p">,</span> <span class="n">MoveBaseAction</span><span class="p">)</span>
+<p>You need to import <code>rospy</code> if you are writing a ROS <a href="http://wiki.ros.org/Nodes">Node</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">actionlib</span><span class="o">.</span><span class="n">SimpleActionClient</span><span class="p">(</span><span class="s1">&#39;move_base&#39;</span><span class="p">,</span> <span class="n">MoveBaseAction</span><span class="p">)</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">wait_for_server</span><span class="p">()</span>
 <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">: Made contact with move_base server&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
 </code></pre></div>
-Set up a client for the navigation action. On the Stretch, this is called <code>move_base</code>, and has type <code>MoveBaseAction</code>.  Once we make the client, we wait for the server to be ready.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">goal</span> <span class="o">=</span> <span class="n">MoveBaseGoal</span><span class="p">()</span>
+<p>Set up a client for the navigation action. On the Stretch, this is called <code>move_base</code>, and has type <code>MoveBaseAction</code>.  Once we make the client, we wait for the server to be ready.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">goal</span> <span class="o">=</span> <span class="n">MoveBaseGoal</span><span class="p">()</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">goal</span><span class="o">.</span><span class="n">target_pose</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="s1">&#39;map&#39;</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">goal</span><span class="o">.</span><span class="n">target_pose</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">stamp</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="p">()</span>
 </code></pre></div>
-Make a goal for the action. Specify the coordinate frame that we want, in this instance the <em>map</em>. Then we set the time to be now.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">goal</span><span class="o">.</span><span class="n">target_pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
+<p>Make a goal for the action. Specify the coordinate frame that we want, in this instance the <code>map</code> frame. Then we set the time to be now.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">goal</span><span class="o">.</span><span class="n">target_pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">goal</span><span class="o">.</span><span class="n">target_pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">goal</span><span class="o">.</span><span class="n">target_pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">goal</span><span class="o">.</span><span class="n">target_pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
@@ -3769,8 +3771,8 @@ Make a goal for the action. Specify the coordinate frame that we want, in this i
 <span class="bp">self</span><span class="o">.</span><span class="n">goal</span><span class="o">.</span><span class="n">target_pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">goal</span><span class="o">.</span><span class="n">target_pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="mf">1.0</span>
 </code></pre></div>
-Initialize a position in the coordinate frame.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_quaternion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">theta</span><span class="p">):</span>
+<p>Initialize a position in the coordinate frame.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_quaternion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">theta</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A function to build Quaternians from Euler angles. Since the Stretch only</span>
 <span class="sd">    rotates around z, we can zero out the other angles.</span>
@@ -3778,8 +3780,8 @@ Initialize a position in the coordinate frame.</p>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">Quaternion</span><span class="p">(</span><span class="o">*</span><span class="n">transformations</span><span class="o">.</span><span class="n">quaternion_from_euler</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">theta</span><span class="p">))</span>
 </code></pre></div>
-A function that transforms Euler angles to quaternions and returns those values.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">go_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<p>A function that transforms Euler angles to quaternions and returns those values.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">go_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Drive the robot to a particular pose on the map. The Stretch only needs</span>
 <span class="sd">    (x, y) coordinates and a heading.</span>
@@ -3790,17 +3792,17 @@ A function that transforms Euler angles to quaternions and returns those values.
     <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">: Heading for (</span><span class="si">{1}</span><span class="s1">, </span><span class="si">{2}</span><span class="s1">) at </span><span class="si">{3}</span><span class="s1"> radians&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
     <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">))</span>
 </code></pre></div>
-The <code>go_to()</code> function takes in the 3 arguments, the x and y coordinates in the <em>map</em> frame, and the heading.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">goal</span><span class="o">.</span><span class="n">target_pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+<p>The <code>go_to()</code> function takes in the 3 arguments, the x and y coordinates in the <code>map</code> frame, and the heading.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">goal</span><span class="o">.</span><span class="n">target_pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">goal</span><span class="o">.</span><span class="n">target_pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">goal</span><span class="o">.</span><span class="n">target_pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_quaternion</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
 </code></pre></div>
-The <code>MoveBaseGoal()</code> data structure has three goal positions (in meters), along each of the axes. For Stretch, it will only pay attention to the x and y coordinates, since it can't move in the z direction.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">send_goal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">goal</span><span class="p">,</span> <span class="n">done_cb</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">done_callback</span><span class="p">)</span>
+<p>The <code>MoveBaseGoal()</code> data structure has three goal positions (in meters), along each of the axes. For Stretch, it will only pay attention to the x and y coordinates, since it can't move in the z-direction.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">send_goal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">goal</span><span class="p">,</span> <span class="n">done_cb</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">done_callback</span><span class="p">)</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">wait_for_result</span><span class="p">()</span>
 </code></pre></div>
-Send the goal and include the <code>done_callback()</code> function in one of the arguments in <code>send_goal()</code>.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">done_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+<p>Send the goal and include the <code>done_callback()</code> function in one of the arguments in <code>send_goal()</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">done_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The done_callback function will be called when the joint action is complete.</span>
 <span class="sd">    :param self: The self reference.</span>
@@ -3812,15 +3814,19 @@ Send the goal and include the <code>done_callback()</code> function in one of th
     <span class="k">else</span><span class="p">:</span>
         <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">: FAILED in reaching the goal.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
 </code></pre></div>
-Conditional statement to print whether the goal status in the <code>MoveBaseActionResult</code> succeeded or failed.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;navigation&#39;</span><span class="p">,</span> <span class="n">argv</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+<p>Conditional statement to print whether the goal status in the <code>MoveBaseActionResult</code> succeeded or failed.</p>
+<div class="highlight"><pre><span></span><code><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;navigation&#39;</span><span class="p">,</span> <span class="n">argv</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
 <span class="n">nav</span> <span class="o">=</span> <span class="n">StretchNavigation</span><span class="p">()</span>
 </code></pre></div>
-The next line, <code>rospy.init_node(NAME, ...)</code>, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master. <strong>NOTE:</strong> the name must be a base name, i.e. it cannot contain any slashes "/".</p>
+<p>The next line, <code>rospy.init_node(NAME, ...)</code>, is very important as it tells rospy the name of your node -- until rospy has this information, it cannot start communicating with the ROS Master.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The name must be a base name, i.e. it cannot contain any slashes "/".</p>
+</div>
 <p>Declare the <code>StretchNavigation</code> object.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">nav</span><span class="o">.</span><span class="n">go_to</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">nav</span><span class="o">.</span><span class="n">go_to</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
 </code></pre></div>
-Send a move base goal half a meter in front of the map's origin.</p>
+<p>Send a move base goal half a meter in front of the map's origin.</p>
 
 
 
