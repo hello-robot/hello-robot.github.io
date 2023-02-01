@@ -3630,15 +3630,18 @@
 
 
 <h1 id="getting-started">Getting Started</h1>
-<p><strong>NOTE</strong>: ROS 2 tutorials are still under active development. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ROS 2 tutorials are still under active development. </p>
+</div>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
-<li>A Stretch RE1 or RE2 robot, turned on and connected to a keyboard, mouse, and monitor<ul>
+<li>A Stretch RE1 or Stretch 2 robot, turned on and connected to a keyboard, mouse, and monitor<ul>
 <li>Alternatively, setup <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/untethered_operation/">untethered operation</a>. This avoids the HDMI/USB cables getting pulled while the robot is moving.</li>
 </ul>
 </li>
 <li>Running the Ubuntu 20.04 software stack<ul>
-<li>All RE2s ship with Ubuntu 20.04, however RE1s had shipped with Ubuntu 18.04 until summer 2022. RE1 users should run <code>lsb_release -sd</code> in a terminal and confirm "Ubuntu 20.04.5 LTS" or similar is printed out. If you are running Ubuntu 18.04, follow the <a href="https://docs.hello-robot.com/0.2/stretch-install/docs/robot_install/">upgrade guide</a>.</li>
+<li>All Stretch 2 robots ship with Ubuntu 20.04, however RE1s had shipped with Ubuntu 18.04 until summer 2022. RE1 users should run <code>lsb_release -sd</code> in a terminal and confirm "Ubuntu 20.04.5 LTS" or similar is printed out. If you are running Ubuntu 18.04, follow the <a href="https://docs.hello-robot.com/0.2/stretch-install/docs/robot_install/">upgrade guide</a>.</li>
 </ul>
 </li>
 <li>Already went through the <a href="../../getting_started/quick_start_guide_re2/#start-coding">Start Coding section of the Getting Started guide</a> (hello_robot_xbox_teleop must not be running in the background)</li>
@@ -3653,14 +3656,14 @@
 <p>While Stretch ROS2 is in beta, there will be frequent updates to the ROS2 software. Therefore, it makes sense to refresh the ROS2 software to the latest available release. In the ROS and ROS2 world, software is organized into "ROS Workspaces", where packages can be developed, compiled, and be made available to run from the command line. We are going to refresh the ROS2 workspace, which is called "~/ament_ws" and available in the home directory. Follow the <a href="https://docs.hello-robot.com/0.2/stretch-install/docs/ros_workspace/">Create a new ROS Workspace guide</a> to run the <code>stretch_create_ament_workspace.sh</code> script. This will delete the existing "~/ament_ws", create a new one with all of the required ROS2 packages for Stretch, and compile it.</p>
 <h2 id="testing-keyboard-teleop">Testing Keyboard Teleop</h2>
 <p>We can test whether the ROS2 workspace was enabled successfully by testing out the ROS2 drivers package, called "stretch_core", with keyboard teleop. In one terminal, we'll launch Stretch's ROS2 drivers using:</p>
-<div class="highlight"><pre><span></span><code>ros2 launch stretch_core stretch_driver.launch.py mode:<span class="o">=</span>manipulation
+<div class="shell-prompt highlight"><pre><span></span><code>ros2 launch stretch_core stretch_driver.launch.py mode:<span class="o">=</span>manipulation
 </code></pre></div>
 <p>In the second terminal, launch the keyboard teleop node using:
-<div class="highlight"><pre><span></span><code>ros2 run stretch_core keyboard_teleop
+<div class="shell-prompt highlight"><pre><span></span><code>ros2 run stretch_core keyboard_teleop
 </code></pre></div></p>
 <p>The following menu will be outputted to the terminal and you can press a key to move the corresponding joint on the robot. When you're ready to exit, press <strong>Ctrl + C</strong>.</p>
-<div class="highlight"><pre><span></span><code>[INFO] [1672878953.011453154] [keyboard_teleop]: keyboard_teleop started
-[INFO] [1672878953.041154084] [keyboard_teleop]: Node keyboard_teleop connected to /stop_the_robot service.
+<div class="no-copy highlight"><pre><span></span><code><span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1672878953</span>.011453154<span class="o">]</span> <span class="o">[</span>keyboard_teleop<span class="o">]</span>: keyboard_teleop started
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1672878953</span>.041154084<span class="o">]</span> <span class="o">[</span>keyboard_teleop<span class="o">]</span>: Node keyboard_teleop connected to /stop_the_robot service.
 ---------- KEYBOARD TELEOP MENU -----------
 
               i HEAD UP                    
@@ -3668,15 +3671,15 @@
               , HEAD DOWN                  
 
 
- 7 BASE ROTATE LEFT     9 BASE ROTATE RIGHT
+ <span class="m">7</span> BASE ROTATE LEFT     <span class="m">9</span> BASE ROTATE RIGHT
  home                   page-up            
 
 
-              8 LIFT UP                    
+              <span class="m">8</span> LIFT UP                    
               up-arrow                     
- 4 BASE FORWARD         6 BASE BACK        
+ <span class="m">4</span> BASE FORWARD         <span class="m">6</span> BASE BACK        
  left-arrow             right-arrow        
-              2 LIFT DOWN                  
+              <span class="m">2</span> LIFT DOWN                  
               down-arrow                   
 
 
@@ -3685,8 +3688,8 @@
               x ARM IN                     
 
 
-              5 GRIPPER CLOSE              
-              0 GRIPPER OPEN               
+              <span class="m">5</span> GRIPPER CLOSE              
+              <span class="m">0</span> GRIPPER OPEN               
 
   step size:  b BIG, m MEDIUM, s SMALL     
 

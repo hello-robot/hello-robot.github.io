@@ -3624,26 +3624,28 @@
   <h1>Filter Laser Scans</h1>
 
 <h2 id="example-2">Example 2</h2>
-<p><strong>NOTE</strong>: ROS 2 tutorials are still under active development. </p>
-<p>The aim of this example is to provide instruction on how to filter scan messages.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ROS 2 tutorials are still under active development. </p>
+</div>
+<p>This example aims to provide instructions on how to filter scan messages.</p>
 <p>For robots with laser scanners, ROS provides a special Message type in the <a href="https://github.com/ros2/common_interfaces/tree/galactic/sensor_msgs">sensor_msgs</a> package called <a href="https://github.com/ros2/common_interfaces/blob/galactic/sensor_msgs/msg/LaserScan.msg">LaserScan</a> to hold information about a given scan. Let's take a look at the message specification itself:</p>
-<p><div class="highlight"><pre><span></span><code>#
-# Laser scans angles are measured counter clockwise,
-# with Stretch&#39;s LiDAR having both angle_min and angle_max facing forward
-# (very closely along the x-axis) of the device frame
-#
-std_msgs/Header header   # timestamp data in a particular coordinate frame
-float32 angle_min        # start angle of the scan [rad]
-float32 angle_max        # end angle of the scan [rad]
-float32 angle_increment  # angular distance between measurements [rad]
-float32 time_increment   # time between measurements [seconds]
-float32 scan_time        # time between scans [seconds]
-float32 range_min        # minimum range value [m]
-float32 range_max        # maximum range value [m]
-float32[] ranges         # range data [m] (Note: values &lt; range_min or &gt; range_max should be discarded)
-float32[] intensities    # intensity data [device-specific units]
+<div class="no-copy highlight"><pre><span></span><code><span class="c1"># Laser scans angles are measured counter clockwise,</span>
+<span class="c1"># with Stretch&#39;s LiDAR having both angle_min and angle_max facing forward</span>
+<span class="c1"># (very closely along the x-axis) of the device frame</span>
+<span class="c1">#</span>
+std_msgs/Header header   <span class="c1"># timestamp data in a particular coordinate frame</span>
+float32 angle_min        <span class="c1"># start angle of the scan [rad]</span>
+float32 angle_max        <span class="c1"># end angle of the scan [rad]</span>
+float32 angle_increment  <span class="c1"># angular distance between measurements [rad]</span>
+float32 time_increment   <span class="c1"># time between measurements [seconds]</span>
+float32 scan_time        <span class="c1"># time between scans [seconds]</span>
+float32 range_min        <span class="c1"># minimum range value [m]</span>
+float32 range_max        <span class="c1"># maximum range value [m]</span>
+float32<span class="o">[]</span> ranges         <span class="c1"># range data [m] (Note: values &lt; range_min or &gt; range_max should be discarded)</span>
+float32<span class="o">[]</span> intensities    <span class="c1"># intensity data [device-specific units]</span>
 </code></pre></div>
-The above message tells you everything you need to know about a scan. Most importantly, you have the angle of each hit and its distance (range) from the scanner. If you want to work with raw range data, then the above message is all you need. There is also an image below that illustrates the components of the message type.</p>
+<p>The above message tells you everything you need to know about a scan. Most importantly, you have the angle of each hit and its distance (range) from the scanner. If you want to work with raw range data, then the above message is all you need. There is also an image below that illustrates the components of the message type.</p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/lidar.png"/>
 </p>
@@ -3653,23 +3655,22 @@ end angle, <code>angle_max</code>, are closely located along the x-axis of Stret
 <p align="center">
   <img height=500 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/stretch_axes.png"/>
   <img height=500 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/scan_angles.png"/>
-
 </p>
 
 <p>Knowing the orientation of the LiDAR allows us to filter the scan values for a desired range. In this case, we are only considering the scan ranges in front of the stretch robot.</p>
 <p>First, open a terminal and run the stretch driver launch file.</p>
-<div class="highlight"><pre><span></span><code>ros2 launch stretch_core stretch_driver.launch.py
+<div class="shell-prompt highlight"><pre><span></span><code>ros2 launch stretch_core stretch_driver.launch.py
 </code></pre></div>
 <p>Then in a new terminal run the rplidar launch file from <code>stretch_core</code>.
-<div class="highlight"><pre><span></span><code>ros2 launch stretch_core rplidar.launch.py
+<div class="shell-prompt highlight"><pre><span></span><code>ros2 launch stretch_core rplidar.launch.py
 </code></pre></div></p>
 <p>To filter the lidar scans for ranges that are directly in front of Stretch (width of 1 meter) run the scan filter node by typing the following in a new terminal.</p>
-<div class="highlight"><pre><span></span><code>ros2 run stretch_ros_tutorials scan_filter
+<div class="shell-prompt highlight"><pre><span></span><code>ros2 run stretch_ros_tutorials scan_filter
 </code></pre></div>
 <p>Then run the following command to bring up a simple RViz configuration of the Stretch robot.
-<div class="highlight"><pre><span></span><code>ros2 run rviz2 rviz2 -d <span class="sb">`</span>ros2 pkg prefix stretch_calibration<span class="sb">`</span>/rviz/stretch_simple_test.rviz
-</code></pre></div>
-Change the topic name from the LaserScan display from <em>/scan</em> to <em>/filter_scan</em>.</p>
+<div class="shell-prompt highlight"><pre><span></span><code>ros2 run rviz2 rviz2 -d <span class="sb">`</span>ros2 pkg prefix stretch_calibration<span class="sb">`</span>/rviz/stretch_simple_test.rviz
+</code></pre></div></p>
+<p>Change the topic name from the LaserScan display from <em>/scan</em> to <em>/filter_scan</em>.</p>
 <p align="center">
   <img height=600 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/scanfilter.gif"/>
 </p>
@@ -3710,23 +3711,23 @@ Change the topic name from the LaserScan display from <em>/scan</em> to <em>/fil
 <p><div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 </code></pre></div>
 Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python script.</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rclpy</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rclpy</span>
 <span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">linspace</span><span class="p">,</span> <span class="n">inf</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span>
 <span class="kn">from</span> <span class="nn">sensor_msgs.msg</span> <span class="kn">import</span> <span class="n">LaserScan</span>
 </code></pre></div>
-You need to import rclpy if you are writing a ROS Node. There are functions from numpy and math that are required within this code, that's why linspace, inf, and sin are imported. The sensor_msgs.msg import is so that we can subscribe and publish LaserScan messages.</p>
+<p>You need to import rclpy if you are writing a ROS Node. There are functions from numpy and math that are required within this code, that's why linspace, inf, and sin are imported. The sensor_msgs.msg import is so that we can subscribe and publish LaserScan messages.</p>
 <p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">extent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="mf">2.0</span>
 </code></pre></div>
 We're going to assume that the robot is pointing up the x-axis, so that any points with y coordinates further than half of the defined width (1 meter) from the axis are not considered.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">sub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">LaserScan</span><span class="p">,</span> <span class="s1">&#39;/scan&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">scan_filter_callback</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">sub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">LaserScan</span><span class="p">,</span> <span class="s1">&#39;/scan&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">scan_filter_callback</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 </code></pre></div>
-Set up a subscriber.  We're going to subscribe to the topic "/scan", looking for LaserScan messages.  When a message comes in, ROS is going to pass it to the function "callback" automatically.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">pub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">LaserScan</span><span class="p">,</span> <span class="s1">&#39;/filtered_scan&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<p>Set up a subscriber.  We're going to subscribe to the topic "/scan", looking for LaserScan messages.  When a message comes in, ROS is going to pass it to the function "callback" automatically.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">pub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">LaserScan</span><span class="p">,</span> <span class="s1">&#39;/filtered_scan&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 </code></pre></div>
-This declares that your node is publishing to the <em>filtered_scan</em> topic using the message type LaserScan. This lets any nodes listening on <em>filtered_scan</em> that we are going to publish data on that topic.</p>
+<p>This declares that your node is publishing to the <em>filtered_scan</em> topic using the message type LaserScan. This lets any nodes listening on <em>filtered_scan</em> that we are going to publish data on that topic.</p>
 <p><div class="highlight"><pre><span></span><code><span class="n">angles</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">angle_min</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">angle_max</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">))</span>
 </code></pre></div>
 This line of code utilizes linspace to compute each angle of the subscribed scan.</p>
@@ -3739,16 +3740,16 @@ If the absolute value of a point's y-coordinate is under <em>self.extent</em> th
 <p><div class="highlight"><pre><span></span><code><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span> <span class="o">=</span> <span class="n">new_ranges</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 </code></pre></div>
-Substitute in the new ranges in the original message, and republish it.</p>
+Substitute the new ranges in the original message, and republish it.</p>
 <p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
     <span class="n">scan_filter</span> <span class="o">=</span> <span class="n">ScanFilter</span><span class="p">()</span>
 </code></pre></div>
 The next line, rclpy.init_node initializes the node. In this case, your node will take on the name 'stretch_scan_filter'. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".</p>
 <p>Setup Scanfilter class with <code>scan_filter = Scanfilter()</code></p>
-<p><div class="highlight"><pre><span></span><code><span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">scan_filter</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">scan_filter</span><span class="p">)</span>
 </code></pre></div>
-Give control to ROS.  This will allow the callback to be called whenever new
+<p>Give control to ROS.  This will allow the callback to be called whenever new
 messages come in.  If we don't put this line in, then the node will not work,
 and ROS will not process any messages.</p>
 

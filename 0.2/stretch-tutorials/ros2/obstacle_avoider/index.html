@@ -1660,13 +1660,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#warnings" class="md-nav__link">
-    Warnings
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#see-it-in-action" class="md-nav__link">
     See It In Action
   </a>
@@ -3608,13 +3601,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#warnings" class="md-nav__link">
-    Warnings
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#see-it-in-action" class="md-nav__link">
     See It In Action
   </a>
@@ -3644,7 +3630,7 @@
 
 
 <h1 id="obstacle-avoider">Obstacle Avoider</h1>
-<p>In this tutorial we will work with Stretch to detect and avoid obstacles using the onboard RPlidar A1 laser scanner and learn how to filter laser scan data. If you want to know more about the laser scanner setup on Stretch and how to get it up and running, we recommend visiting the previous tutorials on <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/example_2/">Filtering Laser Scans</a> and <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/example_3/">Mobile Base Collision Avoidance</a>.</p>
+<p>In this tutorial, we will work with Stretch to detect and avoid obstacles using the onboard RPlidar A1 laser scanner and learn how to filter laser scan data. If you want to know more about the laser scanner setup on Stretch and how to get it up and running, we recommend visiting the previous tutorials on <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/example_2/">Filtering Laser Scans</a> and <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/example_3/">Mobile Base Collision Avoidance</a>.</p>
 <p>A major drawback of using any ToF (Time of Flight) sensor is the inherent inaccuracies as a result of occlusions and weird reflection and diffraction phenomena the light pulses are subject to in an unstructured environment. This results in unexpected and undesired noise that can get in the way of an otherwise extremely useful sensor. Fortunately, it is easy to account for and eliminate these inaccuracies to a great extent by filering out the noise. We will do this with a ROS package called <a href="http://wiki.ros.org/laser_filters">laser_filters</a> that comes prebuilt with some pretty handy laser scan message filters.</p>
 <p>By the end of this tutorial, you will be able to tweak them for your particular use case and publish and visualize them on the /scan_filtered topic using RViz. So let’s jump in! We will look at three filters from this package that have been tuned to work well with Stretch in an array of scenarios.</p>
 <h2 id="laserscan-filtering">LaserScan Filtering</h2>
@@ -3655,43 +3641,48 @@
 <p><img alt="laser_filtering" src="https://user-images.githubusercontent.com/97639181/196327251-c39f3cbb-c898-48c8-ae28-2683564061d9.gif" /></p>
 <h2 id="avoidance-logic">Avoidance logic</h2>
 <p>Now, let’s use what we have learned so far to upgrade the collision avoidance demo in a way that Stretch is able to scan an entire room autonomously without bumping into things or people. To account for dynamic obstacles getting too close to the robot, we will define a keepout distance of 0.4 m - detections below this value stop the robot. To keep Stretch from getting too close to static obstacles, we will define another variable called turning distance of 0.75 m - frontal detections below this value make Stretch turn to the left until it sees a clear path ahead.</p>
-<p>Building up on the <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/example_1/">teleoperation</a> using velocity commands tutorial, let's implement a simple logic for obstacle avoidance. The logic can be broken down into three steps:
-1. If the minimum value from the frontal scans is greater than 0.75 m, then continue to move forward
-2. If the minimum value from the frontal scans is less than 0.75 m, then turn to the right until this is no longer true
-3. If the minimum value from the overall scans is less than 0.4 m, then stop the robot</p>
-<h2 id="warnings">Warnings</h2>
-<p>If you see Stretch try to run over your lazy cat or headbutt a wall, just press the bright runstop button on Stretch's head to calm it down. For pure navigation tasks, it's also safer to stow Stretch's arm in. Execute the command:
-<div class="highlight"><pre><span></span><code>stretch_robot_stow.py
+<p>Building up on the <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/example_1/">teleoperation</a> using velocity commands tutorial, let's implement a simple logic for obstacle avoidance. The logic can be broken down into three steps:</p>
+<ol>
+<li>If the minimum value from the frontal scans is greater than 0.75 m, then continue to move forward</li>
+<li>If the minimum value from the frontal scans is less than 0.75 m, then turn to the right until this is no longer true</li>
+<li>If the minimum value from the overall scans is less than 0.4 m, then stop the robot</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning<p>If you see Stretch try to run over your lazy cat or headbutt a wall, just press the bright runstop button on Stretch's head to calm it down. For pure navigation tasks, it's also safer to stow Stretch's arm in. </p>
+</p>
+</div>
+<p>Execute the command:
+<div class="shell-prompt highlight"><pre><span></span><code>stretch_robot_stow.py
 </code></pre></div></p>
 <h2 id="see-it-in-action">See It In Action</h2>
 <p>Alright, let's see it in action! Execute the following command to run the scripts:
-<div class="highlight"><pre><span></span><code>ros2 launch stretch_core rplidar_keepout.launch.py
+<div class="shell-prompt highlight"><pre><span></span><code>ros2 launch stretch_core rplidar_keepout.launch.py
 </code></pre></div></p>
 <p><img alt="avoidance" src="https://user-images.githubusercontent.com/97639181/196327294-1b2dde5e-2fdc-4a67-a188-ae6b1f5e6a06.gif" /></p>
 <h2 id="code-breakdown">Code Breakdown:</h2>
 <p>Let's jump into the code to see how things work under the hood. Follow along <a href="https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_core/stretch_core/avoider.py">here</a> to have a look at the entire script.</p>
-<p>The turning distance is defined by the distance attribute and the keepout distance is defined by the keepout attribute.
+<p>The turning distance is defined by the distance attribute and the keepout distance is defined by the keepout attribute.</p>
 <div class="highlight"><pre><span></span><code>        <span class="bp">self</span><span class="o">.</span><span class="n">distance</span> <span class="o">=</span> <span class="mf">0.75</span> <span class="c1"># robot turns at this distance</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">keepout</span> <span class="o">=</span> <span class="mf">0.4</span> <span class="c1"># robot stops at this distance</span>
-</code></pre></div></p>
-<p>To pass velocity commands to the mobile base, we publish the translational and rotational velocities to the /stretch/cmd_vel topic. To subscribe to the filtered laser scans from the laser scanner, we subscribe to the /scan_filtered topic. While you are at it, go ahead and check the behavior by switching to the /scan topic instead. See why filtering is necessary?
+</code></pre></div>
+<p>To pass velocity commands to the mobile base, we publish the translational and rotational velocities to the /stretch/cmd_vel topic. To subscribe to the filtered laser scans from the laser scanner, we subscribe to the /scan_filtered topic. While you are at it, go ahead and check the behavior by switching to the /scan topic instead. See why filtering is necessary?</p>
 <div class="highlight"><pre><span></span><code>        <span class="bp">self</span><span class="o">.</span><span class="n">publisher_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">Twist</span><span class="p">,</span> <span class="s1">&#39;/stretch/cmd_vel&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">#/stretch_diff_drive_controller/cmd_vel for gazebo</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">subscriber_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">LaserScan</span><span class="p">,</span> <span class="s1">&#39;/scan_filtered&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lidar_callback</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-</code></pre></div></p>
-<p>lidar_callback() is the callback function for the laser scanner that gets called every time a new message is received.
+</code></pre></div>
+<p>lidar_callback() is the callback function for the laser scanner that gets called every time a new message is received.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">lidar_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
-</code></pre></div></p>
-<p>When the scan message is filtered, all the ranges that are filtered out are assigned the nan (not a number) value. This can get in the way of computing the minimum. Therefore, we reassign these values to inf (infinity). 
+</code></pre></div>
+<p>When the scan message is filtered, all the ranges that are filtered out are assigned the nan (not a number) value. This can get in the way of computing the minimum. Therefore, we reassign these values to inf (infinity).</p>
 <div class="highlight"><pre><span></span><code>        <span class="n">all_points</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">isnan</span><span class="p">(</span><span class="n">r</span><span class="p">))</span> <span class="k">else</span> <span class="n">inf</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">]</span>
-</code></pre></div></p>
-<p>Next, we compute the two minimums that are neccessary for the avoidance logic to work - the overall minimum and the frontal minimum named min_all and min_front respectively.
+</code></pre></div>
+<p>Next, we compute the two minimums that are necessary for the avoidance logic to work - the overall minimum and the frontal minimum named min_all and min_front respectively.</p>
 <div class="highlight"><pre><span></span><code>        <span class="n">front_points</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">theta</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">2.5</span> <span class="ow">or</span> <span class="n">theta</span> <span class="o">&gt;</span> <span class="mf">2.5</span><span class="p">)</span> <span class="k">else</span> <span class="n">inf</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span><span class="n">theta</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">,</span> <span class="n">angles</span><span class="p">)]</span>
         <span class="n">front_ranges</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">extent</span> <span class="k">else</span> <span class="n">inf</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">,</span> <span class="n">front_points</span><span class="p">)]</span>
 
         <span class="n">min_front</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">front_ranges</span><span class="p">)</span>
         <span class="n">min_all</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">all_points</span><span class="p">)</span>
-</code></pre></div></p>
-<p>Finally, we check the minimum values against the distance and keepout attributes to set the rotational and linear velocities of the mobile base with the set_speed() method.
+</code></pre></div>
+<p>Finally, we check the minimum values against the distance and keepout attributes to set the rotational and linear velocities of the mobile base with the set_speed() method.</p>
 <div class="highlight"><pre><span></span><code>        <span class="k">if</span><span class="p">(</span><span class="n">min_all</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">keepout</span><span class="p">):</span>
             <span class="n">lin_vel</span> <span class="o">=</span> <span class="mf">0.0</span>
             <span class="n">rot_vel</span> <span class="o">=</span> <span class="mf">0.0</span>
@@ -3703,7 +3694,7 @@
             <span class="n">rot_vel</span> <span class="o">=</span> <span class="mf">0.0</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">set_speed</span><span class="p">(</span><span class="n">lin_vel</span><span class="p">,</span> <span class="n">rot_vel</span><span class="p">)</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>That wasn't too hard, was it? Now, feel free to play with this code and change the attributes to see how it affects Stretch's behavior.</p>
 
 

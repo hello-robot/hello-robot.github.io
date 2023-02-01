@@ -3624,16 +3624,19 @@
   <h1>Teleoperate Stretch with a Node</h1>
 
 <h2 id="example-1">Example 1</h2>
-<p><strong>NOTE</strong>: ROS 2 tutorials are still under active development. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ROS 2 tutorials are still under active development. </p>
+</div>
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/move_stretch.gif"/>
 </p>
 
 <p>The goal of this example is to give you an enhanced understanding of how to control the mobile base by sending <code>Twist</code> messages to a Stretch robot.</p>
-<div class="highlight"><pre><span></span><code>ros2 launch stretch_core stretch_driver.launch.py
+<div class="shell-prompt highlight"><pre><span></span><code>ros2 launch stretch_core stretch_driver.launch.py
 </code></pre></div>
 <p>To drive the robot in circles with the move node, type the following in a new terminal.</p>
-<p><div class="highlight"><pre><span></span><code>ros2 run stetch_ros_tutorials move
+<p><div class="shell-prompt highlight"><pre><span></span><code>ros2 run stetch_ros_tutorials move
 </code></pre></div>
 To stop the node from sending twist messages, type <strong>Ctrl</strong> + <strong>c</strong>.</p>
 <h3 id="the-code">The Code</h3>
@@ -3691,13 +3694,13 @@ This section of code defines the talker's interface to the rest of ROS. self.pub
 We create a timer with a period of 0.5 seconds. This timer ensures that the function move_around is called every 0.5 seconds. This ensures a constant rate of 2Hz for the execution loop.</p>
 <p><div class="highlight"><pre><span></span><code><span class="n">command</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span>
 </code></pre></div>
-Make a Twist message.  We're going to set all of the elements, since we
+Make a Twist message.  We're going to set all of the elements since we
 can't depend on them defaulting to safe values.</p>
 <p><div class="highlight"><pre><span></span><code>        <span class="n">command</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="n">command</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="n">command</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
 </code></pre></div>
-A Twist has three linear velocities (in meters per second), along each of the axes. For Stretch, it will only pay attention to the x velocity, since it can't directly move in the y direction or the z direction. We set the linear velocities to 0.</p>
+A Twist has three linear velocities (in meters per second), along each of the axes. For Stretch, it will only pay attention to the x velocity, since it can't directly move in the y direction or the z-direction. We set the linear velocities to 0.</p>
 <p><div class="highlight"><pre><span></span><code>        <span class="n">command</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="n">command</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="n">command</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.5</span>
@@ -3727,7 +3730,7 @@ After saving the edited node, bringup [Stretch in the empty world simulation](ga
 cd catkin_ws/src/stretch_ros_turotials/src/
 python3 move.py
 ``` -->
-<p>To stop the node from sending twist messages, type <strong>Ctrl</strong> + <strong>c</strong>.</p>
+<p>To stop the node from sending twist messages, type <code>Ctrl + c</code>.</p>
 
 
 

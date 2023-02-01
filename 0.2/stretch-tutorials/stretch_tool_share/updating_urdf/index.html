@@ -3584,23 +3584,23 @@
   <h1>Updating URDF</h1>
 
 <h2 id="changing-the-tool">Changing the Tool</h2>
-<p>If you wish to remove the default gripper and add a different tool, you will typically edit /stretch_description/urdf/stretch_description.xacro. Specifically, you will replace the following line in order to include the xacro for the new tool and then follow directions within stretch_ros/stretch_calibration to generate a new calibrated urdf file (stretch.urdf) that includes the new tool.</p>
+<p>If you wish to remove the default gripper and add a different tool, you will typically edit /stretch_description/urdf/stretch_description.xacro. Specifically, you will replace the following line to include the XACRO for the new tool and then follow directions within stretch_ros/stretch_calibration to generate a new calibrated URDF file (stretch.urdf) that includes the new tool.</p>
 <p><code>&lt;xacro:include filename="stretch_gripper.xacro" /&gt;</code></p>
-<p>As an example we provide the xacro <code>stretch_dry_erase_marker.xacro</code> and its dependent mesh files with stretch_ros. </p>
+<p>As an example, we provide the <code>stretch_dry_erase_marker.xacro</code> file and its dependent mesh files with stretch_ros. </p>
 <p>Some of the tools found in the <a href="https://github.com/hello-robot/stretch_tool_share/">Stretch Body Tool Share</a> include URDF data. To integrate these tools into the URDF for your Stretch</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$ <span class="nb">cd</span> ~/repos
-&gt;&gt;$ git clone https://github.com/hello-robot/stretch_tool_share
-&gt;&gt;$ <span class="nb">cd</span> stretch_tool_share/&lt;tool name&gt;
-&gt;&gt;$ cp stretch_description/urdf/* ~/catkin_ws/src/stretch_ros/stretch_description/urdf/
-&gt;&gt;$ cp stretch_description/meshes/* ~/catkin_ws/src/stretch_ros/stretch_description/meshes/
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span> ~/repos
+git clone https://github.com/hello-robot/stretch_tool_share
+<span class="nb">cd</span> stretch_tool_share/&lt;tool name&gt;
+cp stretch_description/urdf/* ~/catkin_ws/src/stretch_ros/stretch_description/urdf/
+cp stretch_description/meshes/* ~/catkin_ws/src/stretch_ros/stretch_description/meshes/
 </code></pre></div>
-<p>Next add the xacro for the particular tool to <code>/stretch_description/urdf/stretch_description.xacro</code>. Then you can generate and preview the uncalibrated URDF:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$ <span class="nb">cd</span> ~/catkin_ws/src/stretch_ros/stretch_description/urdf
-&gt;&gt;$ cp stretch.urdf stretch.urdf.bak
-&gt;&gt;$ rosrun stretch_calibration update_urdf_after_xacro_change.sh
+<p>Next add the XACRO file for the particular tool to <code>/stretch_description/urdf/stretch_description.xacro</code>. Then you can generate and preview the uncalibrated URDF:</p>
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span> ~/catkin_ws/src/stretch_ros/stretch_description/urdf
+cp stretch.urdf stretch.urdf.bak
+rosrun stretch_calibration update_urdf_after_xacro_change.sh
 </code></pre></div>
 <p>Now visualize the new tool</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$ roslaunch stretch_calibration simple_test_head_calibration.launch
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch stretch_calibration simple_test_head_calibration.launch
 </code></pre></div>
 
 

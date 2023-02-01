@@ -1674,13 +1674,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#warnings" class="md-nav__link">
-    Warnings
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#see-it-in-action" class="md-nav__link">
     See It In Action
   </a>
@@ -3608,13 +3601,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#warnings" class="md-nav__link">
-    Warnings
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#see-it-in-action" class="md-nav__link">
     See It In Action
   </a>
@@ -3664,16 +3650,18 @@ Now that we know how to program stretch to return the transform between known re
 2. Travel straight to the goal position. This would be the euclidean distance between the start and the goal positions.
 3. Turn phi degrees to attain the goal orientation. This would be the correction angle necessary to align the robot y-axis with the marker x-axis.</p>
 <p>Luckily, we know how to command Stretch to execute a trajectory using the joint trajectory server. If you are just starting, have a look at the <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/follow_joint_trajectory/">Follow Joint Trajectory Commands</a> tutorial to know how to command Stretch using the Joint trajectory Server.</p>
-<h2 id="warnings">Warnings</h2>
-<p>Since we won't be using the arm for this demo, it's safer to stow Stretch's arm in. Execute the command:
-<div class="highlight"><pre><span></span><code>stretch_robot_stow.py
-</code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Since we won't be using the arm for this demo, it's safer to stow Stretch's arm in.</p>
+</div>
+<div class="shell-prompt highlight"><pre><span></span><code>stretch_robot_stow.py
+</code></pre></div>
 <h2 id="see-it-in-action">See It In Action</h2>
 <p>First, we need to point the camera towards the marker. To do this, you could use the keyboard teleop node. To do this, run:
-<div class="highlight"><pre><span></span><code>ros2 launch stretch_core keyboard_teleop.launch.py
+<div class="shell-prompt highlight"><pre><span></span><code>ros2 launch stretch_core keyboard_teleop.launch.py
 </code></pre></div></p>
 <p>When you are ready, execute the following command:
-<div class="highlight"><pre><span></span><code>ros2 launch stretch_core align_to_aruco.launch.py
+<div class="shell-prompt highlight"><pre><span></span><code>ros2 launch stretch_core align_to_aruco.launch.py
 </code></pre></div></p>
 <p align="center">
     <img src="https://user-images.githubusercontent.com/97639181/196327520-7a3b6743-8e2c-4ec0-8603-ba9baff7aa34.gif" width="400">

@@ -4040,12 +4040,13 @@ stretch_body.robot_params.nominal_params      param.arm.motion.fast.vel_m       
 <p>For more information on guarded motion, see the <a href="../tutorial_contact_models/">Contact Models Tutorial</a></p>
 <h3 id="synchronized-motion">Synchronized Motion</h3>
 <p>The Arm, Lift, and Base actuators have a hardware synchronization mechanism. This allows for stepper controller commands to be time synchronized across joints.  This behavior can be disabled via the user YAML. By default the settings are:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;$ stretch_params.py <span class="p">|</span> grep enable_sync_mode
-stretch_body.robot_params.nominal_params   param.hello-motor-arm.gains.enable_sync_mode         <span class="m">1</span>                             
+<p><div class="shell-prompt highlight"><pre><span></span><code>stretch_params.py <span class="p">|</span> grep enable_sync_mode
+</code></pre></div>
+<div class="no-copy highlight"><pre><span></span><code>stretch_body.robot_params.nominal_params   param.hello-motor-arm.gains.enable_sync_mode         <span class="m">1</span>                             
 stretch_body.robot_params.nominal_params   param.hello-motor-left-wheel.gains.enable_sync_mode  <span class="m">1</span>                             
 stretch_body.robot_params.nominal_params   param.hello-motor-lift.gains.enable_sync_mode        <span class="m">1</span>                             
 stretch_body.robot_params.nominal_params   param.hello-motor-right-wheel.gains.enable_sync_mode <span class="m">1</span>  
-</code></pre></div>
+</code></pre></div></p>
 <h3 id="motion-status">Motion Status</h3>
 <p>It can be useful to poll the status of a joint during a motion to modify the robot's behavior, etc. The useful status values include:</p>
 <div class="highlight"><pre><span></span><code><span class="n">robot</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;pos&#39;</span><span class="p">]</span>                     <span class="c1">#Joint position</span>

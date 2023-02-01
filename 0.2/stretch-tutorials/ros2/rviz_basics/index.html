@@ -3584,14 +3584,17 @@
   <h1>RViz Basics</h1>
 
 <h2 id="visualizing-with-rviz">Visualizing with RViz</h2>
-<p><strong>NOTE</strong>: ROS 2 tutorials are still under active development. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ROS 2 tutorials are still under active development. </p>
+</div>
 <p>You can utilize RViz to visualize Stretch's sensor information. To begin, run the stretch driver launch file.</p>
-<div class="highlight"><pre><span></span><code>ros2 launch stretch_core stretch_driver.launch.py
+<div class="shell-prompt highlight"><pre><span></span><code>ros2 launch stretch_core stretch_driver.launch.py
 </code></pre></div>
-<p>Then run the following command to bring up a simple RViz configuration of the Stretch robot.
-<div class="highlight"><pre><span></span><code>ros2 run rviz2 rviz2 -d <span class="sb">`</span>ros2 pkg prefix --share stretch_calibration<span class="sb">`</span>/rviz/stretch_simple_test.rviz
+<p>Then run the following command to bring up a simple RViz configuration of the Stretch robot.</p>
+<div class="shell-prompt highlight"><pre><span></span><code>ros2 run rviz2 rviz2 -d <span class="sb">`</span>ros2 pkg prefix --share stretch_calibration<span class="sb">`</span>/rviz/stretch_simple_test.rviz
 </code></pre></div>
-An RViz window should open, allowing you to see the various DisplayTypes in the display tree on the left side of the window.</p>
+<p>An RViz window should open, allowing you to see the various DisplayTypes in the display tree on the left side of the window.</p>
 <p><img alt="image" src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/simple_rviz.png" /></p>
 <p>If you want to visualize Stretch's <a href="http://wiki.ros.org/rviz/DisplayTypes/TF">tf transform tree</a>, you need to add the display type to the RViz window. First, click on the <em>Add</em> button and include the <em>TF</em>  type to the display. You will then see all of the transform frames of the Stretch robot and the visualization can be toggled off and on by clicking the checkbox next to the tree. Below is a gif for reference.</p>
 <p><img alt="image" src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/rviz_adding_tf.gif" /></p>

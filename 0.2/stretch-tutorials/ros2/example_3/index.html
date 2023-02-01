@@ -3624,17 +3624,20 @@
   <h1>Mobile Base Collision Avoidance</h1>
 
 <h2 id="example-3">Example 3</h2>
-<p><strong>NOTE</strong>: ROS 2 tutorials are still under active development. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ROS 2 tutorials are still under active development. </p>
+</div>
 <p>The aim of example 3 is to combine the two previous examples and have Stretch utilize its laser scan data to avoid collision with objects as it drives forward.</p>
-<p><div class="highlight"><pre><span></span><code>ros2 launch stretch_core stretch_driver.launch.py
+<div class="shell-prompt highlight"><pre><span></span><code>ros2 launch stretch_core stretch_driver.launch.py
 </code></pre></div>
-Then in a new terminal type the following to activate the LiDAR sensor.
-<div class="highlight"><pre><span></span><code>ros2 launch stretch_core rplidar.launch.py
+<p>Then in a new terminal type the following to activate the LiDAR sensor.</p>
+<div class="shell-prompt highlight"><pre><span></span><code>ros2 launch stretch_core rplidar.launch.py
 </code></pre></div>
-To activate the avoider node, type the following in a new terminal.
-<div class="highlight"><pre><span></span><code>ros2 run stretch_ros_tutorials avoider
+<p>To activate the avoider node, type the following in a new terminal.</p>
+<div class="shell-prompt highlight"><pre><span></span><code>ros2 run stretch_ros_tutorials avoider
 </code></pre></div>
-To stop the node from sending twist messages, type <strong>Ctrl</strong> + <strong>c</strong> in the terminal running the avoider node.</p>
+<p>To stop the node from sending twist messages, type <strong>Ctrl</strong> + <strong>c</strong> in the terminal running the avoider node.</p>
 <p align="center">
   <img height=600 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/avoider.gif"/>
 </p>
@@ -3680,29 +3683,29 @@ To stop the node from sending twist messages, type <strong>Ctrl</strong> + <stro
 </code></pre></div>
 <h3 id="the-code-explained">The Code Explained</h3>
 <p>Now let's break the code down.</p>
-<p><div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 </code></pre></div>
-Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python script.</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rclpy</span>
+<p>Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python script.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rclpy</span>
 <span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">linspace</span><span class="p">,</span> <span class="n">inf</span><span class="p">,</span> <span class="n">tanh</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span>
 <span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">Twist</span>
 <span class="kn">from</span> <span class="nn">sensor_msgs.msg</span> <span class="kn">import</span> <span class="n">LaserScan</span>
 </code></pre></div>
-You need to import rclpy if you are writing a ROS Node. There are functions from numpy and math that are required within this code, thus linspace, inf, tanh, and sin are imported. The sensor_msgs.msg import is so that we can subscribe to LaserScan messages. The geometry_msgs.msg import is so that we can send velocity commands to the robot.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">publisher_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">Twist</span><span class="p">,</span> <span class="s1">&#39;/stretch/cmd_vel&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<p>You need to import rclpy if you are writing a ROS Node. There are functions from numpy and math that are required within this code, thus linspace, inf, tanh, and sin are imported. The sensor_msgs.msg import is so that we can subscribe to LaserScan messages. The geometry_msgs.msg import is so that we can send velocity commands to the robot.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">publisher_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">Twist</span><span class="p">,</span> <span class="s1">&#39;/stretch/cmd_vel&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-This declares that your node is publishing to the /stretch/cmd_vel topic using the message type Twist.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">subscriber_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">LaserScan</span><span class="p">,</span> <span class="s1">&#39;/scan&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_speed</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<p>This declares that your node is publishing to the /stretch/cmd_vel topic using the message type Twist.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">subscriber_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">LaserScan</span><span class="p">,</span> <span class="s1">&#39;/scan&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_speed</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 </code></pre></div>
-Set up a subscriber.  We're going to subscribe to the topic "/scan", looking for LaserScan messages.  When a message comes in, ROS is going to pass it to the function "set_speed" automatically.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">1</span>
+<p>Set up a subscriber.  We're going to subscribe to the topic "/scan", looking for LaserScan messages.  When a message comes in, ROS is going to pass it to the function "set_speed" automatically.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">extent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="mf">2.0</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">distance</span> <span class="o">=</span> <span class="mf">0.5</span>
 </code></pre></div>
-<em>self.width</em> is the width of the laser scan we want in front of Stretch. Since Stretch's front is pointing in the x-axis, any points with y coordinates further than half of the defined width (<em>self.extent</em>) from the x-axis are not considered. <em>self.distance</em> defines the stopping distance from an object.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">twist</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span>
+<p><em>self.width</em> is the width of the laser scan we want in front of Stretch. Since Stretch's front is pointing in the x-axis, any points with y coordinates further than half of the defined width (<em>self.extent</em>) from the x-axis are not considered. <em>self.distance</em> defines the stopping distance from an object.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">twist</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
@@ -3710,29 +3713,29 @@ Set up a subscriber.  We're going to subscribe to the topic "/scan", looking for
 <span class="bp">self</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
 </code></pre></div>
-Allocate a Twist to use, and set everything to zero.  We're going to do this when the class is initiating. Redefining this within the callback function, <code>set_speed()</code> can be more computationally taxing.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">angles</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">angle_min</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">angle_max</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">))</span>
+<p>Allocate a Twist to use, and set everything to zero.  We're going to do this when the class is initiating. Redefining this within the callback function, <code>set_speed()</code> can be more computationally taxing.</p>
+<div class="highlight"><pre><span></span><code><span class="n">angles</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">angle_min</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">angle_max</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">))</span>
 <span class="n">points</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">theta</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">2.5</span> <span class="ow">or</span> <span class="n">theta</span> <span class="o">&gt;</span> <span class="mf">2.5</span><span class="p">)</span> <span class="k">else</span> <span class="n">inf</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span><span class="n">theta</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">,</span> <span class="n">angles</span><span class="p">)]</span>
 <span class="n">new_ranges</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">extent</span> <span class="k">else</span> <span class="n">inf</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">,</span> <span class="n">points</span><span class="p">)]</span>
 </code></pre></div>
-This line of code utilizes linspace to compute each angle of the subscribed scan. Here we  compute the y coordinates of the ranges that are below -2.5 and above 2.5 radians of the scan angles. These limits are sufficient for considering scan ranges in front of Stretch, but these values can be altered to your preference. If the absolute value of a point's y-coordinate is under self.extent then keep the range, otherwise use inf, which means "no return".</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">error</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">new_ranges</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance</span>
+<p>This line of code utilizes linspace to compute each angle of the subscribed scan. Here we  compute the y coordinates of the ranges that are below -2.5 and above 2.5 radians of the scan angles. These limits are sufficient for considering scan ranges in front of Stretch, but these values can be altered to your preference. If the absolute value of a point's y-coordinate is under self.extent then keep the range, otherwise use inf, which means "no return".</p>
+<div class="highlight"><pre><span></span><code><span class="n">error</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">new_ranges</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance</span>
 </code></pre></div>
-Calculate the difference of the closest measured scan and where we want the robot to stop. We define this as <em>error</em>.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">tanh</span><span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">error</span> <span class="o">&gt;</span> <span class="mf">0.05</span> <span class="ow">or</span> <span class="n">error</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span>
+<p>Calculate the difference of the closest measured scan and where we want the robot to stop. We define this as <em>error</em>.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">tanh</span><span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">error</span> <span class="o">&gt;</span> <span class="mf">0.05</span> <span class="ow">or</span> <span class="n">error</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span>
 </code></pre></div>
-Set the speed according to a tanh function. This method gives a nice smooth mapping from distance to speed, and asymptotes at +/- 1</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">publisher_</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">twist</span><span class="p">)</span>
+<p>Set the speed according to a tanh function. This method gives a nice smooth mapping from distance to speed, and asymptotes at +/- 1</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">publisher_</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">twist</span><span class="p">)</span>
 </code></pre></div>
-Publish the Twist message.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<p>Publish the Twist message.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
     <span class="n">avoider</span> <span class="o">=</span> <span class="n">Avoider</span><span class="p">()</span>
     <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">avoider</span><span class="p">)</span>
     <span class="n">avoider</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span>
     <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
 </code></pre></div>
-The next line, rclpy.init() method initializes the node. In this case, your node will take on the name 'stretch_avoider'. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".</p>
+<p>The next line, rclpy.init() method initializes the node. In this case, your node will take on the name 'stretch_avoider'. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".</p>
 <p>Setup Avoider class with <code>avoider = Avioder()</code></p>
 <p>Give control to ROS with <code>rclpy.spin()</code>. This will allow the callback to be called whenever new messages come in. If we don't put this line in, then the node will not work, and ROS will not process any messages.</p>
 

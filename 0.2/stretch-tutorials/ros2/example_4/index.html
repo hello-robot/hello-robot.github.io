@@ -3624,16 +3624,19 @@
   <h1>Give Stretch a Balloon</h1>
 
 <h2 id="example-4">Example 4</h2>
-<p><strong>NOTE</strong>: ROS 2 tutorials are still under active development. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ROS 2 tutorials are still under active development. </p>
+</div>
 <p><img alt="image" src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/balloon.png" /></p>
-<p>Let's bringup stretch in RViz by using the following command.</p>
-<p><div class="highlight"><pre><span></span><code>ros2 launch stretch_core stretch_driver.launch.py
+<p>Let's bring up Stretch in RViz by using the following command.</p>
+<div class="shell-prompt highlight"><pre><span></span><code>ros2 launch stretch_core stretch_driver.launch.py
 ros2 run rviz2 rviz2 -d <span class="sb">`</span>ros2 pkg prefix stretch_calibrtion<span class="sb">`</span>/rviz/stretch_simple_test.rviz
 </code></pre></div>
-In a new terminal run the following commands to create a marker.</p>
-<p><div class="highlight"><pre><span></span><code>ros2 run stretch_ros_tutorials marker
+<p>In a new terminal run the following commands to create a marker.</p>
+<div class="shell-prompt highlight"><pre><span></span><code>ros2 run stretch_ros_tutorials marker
 </code></pre></div>
-The gif below demonstrates how to add a new <em>Marker</em> display type, and change the topic name from <code>visualization_marker</code> to <code>balloon</code>. A red sphere Marker should appear above the Stretch robot.</p>
+<p>The gif below demonstrates how to add a new <em>Marker</em> display type, and change the topic name from <code>visualization_marker</code> to <code>balloon</code>. A red sphere Marker should appear above the Stretch robot.</p>
 <p><img alt="image" src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/balloon.gif" /></p>
 <h3 id="the-code">The Code</h3>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
@@ -3676,51 +3679,51 @@ The gif below demonstrates how to add a new <em>Marker</em> display type, and ch
 </code></pre></div>
 <h3 id="the-code-explained">The Code Explained</h3>
 <p>Now let's break the code down.</p>
-<p><div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 </code></pre></div>
-Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python script.</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rclpy</span>
+<p>Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python script.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rclpy</span>
 <span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
 <span class="kn">from</span> <span class="nn">visualization_msgs.msg</span> <span class="kn">import</span> <span class="n">Marker</span>
 </code></pre></div>
-You need to import rclpy if you are writing a ROS 2 Node. Import the <code>Marker</code> type from the visualization_msgs.msg package. This import is required to publish a Marker, which will be visualized in RViz.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">publisher_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">Marker</span><span class="p">,</span> <span class="s1">&#39;balloon&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  
+<p>You need to import rclpy if you are writing a ROS 2 Node. Import the <code>Marker</code> type from the visualization_msgs.msg package. This import is required to publish a Marker, which will be visualized in RViz.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">publisher_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">Marker</span><span class="p">,</span> <span class="s1">&#39;balloon&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  
 </code></pre></div>
-This declares that your node is publishing to the <em>/ballon</em> topic using the message type <em>Twist</em>.</p>
+<p>This declares that your node is publishing to the <em>/ballon</em> topic using the message type <em>Twist</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="n">Marker</span><span class="p">()</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="s1">&#39;/base_link&#39;</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">stamp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_clock</span><span class="p">()</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">to_msg</span><span class="p">()</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">SPHERE</span>
 </code></pre></div>
 <p>Create a maker. Markers of all shapes share a common type. Set the frame ID and type. The frame ID is the frame in which the position of the marker is specified. The type is the shape of the marker. Further details on marker shapes can be found here: <a href="http://wiki.ros.org/rviz/DisplayTypes/Marker">RViz Markers</a></p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">0</span>
 </code></pre></div>
-Each marker has a unique ID number. If you have more than one marker that you want displayed at a given time, then each needs to have a unique ID number. If you publish a new marker with the same ID number of an existing marker, it will replace the existing marker with that ID number.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">ADD</span>
+<p>Each marker has a unique ID number. If you have more than one marker that you want displayed at a given time, then each needs to have a unique ID number. If you publish a new marker with the same ID number of an existing marker, it will replace the existing marker with that ID number.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">ADD</span>
 </code></pre></div>
-This line of code sets the action. You can add, delete, or modify markers.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">scale</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.5</span>
+<p>This line of code sets the action. You can add, delete, or modify markers.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">scale</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">scale</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">scale</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.5</span>
 </code></pre></div>
-These are the size parameters for the marker. These will vary by marker type.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="mf">1.0</span>
+<p>These are the size parameters for the marker. These will vary by marker type.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="mf">1.0</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">g</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="mf">0.0</span>
 </code></pre></div>
-Color of the object, specified as r/g/b/a, with values in the range of [0, 1].</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mf">1.0</span>
+<p>Color of the object, specified as r/g/b/a, with values in the range of [0, 1].</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mf">1.0</span>
 </code></pre></div>
-The alpha value is from 0 (invisible) to 1 (opaque). If you don't set this then it will automatically default to zero, making your marker invisible.</p>
+<p>The alpha value is from 0 (invisible) to 1 (opaque). If you don't set this then it will automatically default to zero, making your marker invisible.</p>
 <div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">2.0</span>
 </code></pre></div>
 <p>Specify the pose of the marker. Since spheres are rotationally invariant, we're only going to specify the positional elements. As usual, these are in the coordinate frame named in frame_id. In this case, the position will always be directly 2 meters above the frame_id (<em>base_link</em>), and will move with it.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">publish_marker</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">publish_marker</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">publisher_</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="p">)</span>
 </code></pre></div>
-Publish the Marker data structure to be visualized in RViz.</p>
+<p>Publish the Marker data structure to be visualized in RViz.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
     <span class="n">balloon</span> <span class="o">=</span> <span class="n">Balloon</span><span class="p">()</span>

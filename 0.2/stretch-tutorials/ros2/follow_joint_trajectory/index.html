@@ -3692,18 +3692,21 @@
   <h1>Follow Joint Trajectory Commands</h1>
 
 <h2 id="followjointtrajectory-commands">FollowJointTrajectory Commands</h2>
-<p><strong>NOTE</strong>: ROS 2 tutorials are still under active development. </p>
-<p>Stretch driver offers a <a href="http://docs.ros.org/en/api/control_msgs/html/action/FollowJointTrajectory.html"><code>FollowJointTrajectory</code></a> action service for its arm. Within this tutorial we will have a simple FollowJointTrajectory command sent to a Stretch robot to execute.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ROS 2 tutorials are still under active development. </p>
+</div>
+<p>Stretch driver offers a <a href="http://docs.ros.org/en/api/control_msgs/html/action/FollowJointTrajectory.html"><code>FollowJointTrajectory</code></a> action service for its arm. Within this tutorial, we will have a simple FollowJointTrajectory command sent to a Stretch robot to execute.</p>
 <h2 id="stow-command-example">Stow Command Example</h2>
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/stow_command.gif"/>
 </p>
 
 <p>Begin by launching stretch_driver in a terminal.</p>
-<div class="highlight"><pre><span></span><code>ros2 launch stretch_core stretch_driver.launch.py
+<div class="shell-prompt highlight"><pre><span></span><code>ros2 launch stretch_core stretch_driver.launch.py
 </code></pre></div>
 <p>In a new terminal type the following commands.</p>
-<div class="highlight"><pre><span></span><code>ros2 run stretch_ros_tutorials stow_command
+<div class="shell-prompt highlight"><pre><span></span><code>ros2 run stretch_ros_tutorials stow_command
 </code></pre></div>
 <p>This will send a FollowJointTrajectory command to stow Stretch's arm.</p>
 <h3 id="the-code">The Code</h3>
@@ -3769,7 +3772,7 @@
 <p><div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 </code></pre></div>
 Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python script.</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rclpy</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rclpy</span>
 <span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
 <span class="kn">from</span> <span class="nn">rclpy.duration</span> <span class="kn">import</span> <span class="n">Duration</span>
 <span class="kn">from</span> <span class="nn">rclpy.action</span> <span class="kn">import</span> <span class="n">ActionClient</span>
@@ -3778,16 +3781,16 @@ Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this dec
 <span class="kn">from</span> <span class="nn">trajectory_msgs.msg</span> <span class="kn">import</span> <span class="n">JointTrajectoryPoint</span>
 <span class="kn">from</span> <span class="nn">sensor_msgs.msg</span> <span class="kn">import</span> <span class="n">JointState</span>
 </code></pre></div>
-You need to import rclpy if you are writing a ROS 2 Node. Import the FollowJointTrajectory from the <a href="http://wiki.ros.org/control_msgs">control_msgs.msg</a> package to control the Stretch robot. Import JointTrajectoryPoint from the <a href="https://github.com/ros2/common_interfaces/tree/galactic/trajectory_msgs">trajectory_msgs</a> package to define robot trajectories.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">StowCommand</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+<p>You need to import rclpy if you are writing a ROS 2 Node. Import the FollowJointTrajectory from the <a href="http://wiki.ros.org/control_msgs">control_msgs.msg</a> package to control the Stretch robot. Import JointTrajectoryPoint from the <a href="https://github.com/ros2/common_interfaces/tree/galactic/trajectory_msgs">trajectory_msgs</a> package to define robot trajectories.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">StowCommand</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;stretch_stow_command&#39;</span><span class="p">)</span>
 </code></pre></div>
-The <code>StowCommand</code> class inherits from the <code>Node</code> class from and is initialized.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">issue_stow_command</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<p>The <code>StowCommand</code> class inherits from the <code>Node</code> class from and is initialized.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">issue_stow_command</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </code></pre></div>
-The <code>issue_stow_command()</code> method will stow Stretch's arm. Within the function, we set <em>stow_point</em> as a <code>JointTrajectoryPoint</code>and provide desired positions (in meters). These are the positions of the lift, wrist extension, and yaw of the wrist, respectively. These are defined in the next set of the code.</p>
-<p><div class="highlight"><pre><span></span><code>    <span class="n">stow_point1</span> <span class="o">=</span> <span class="n">JointTrajectoryPoint</span><span class="p">()</span>
+<p>The <code>issue_stow_command()</code> method will stow Stretch's arm. Within the function, we set <em>stow_point</em> as a <code>JointTrajectoryPoint</code>and provide desired positions (in meters). These are the positions of the lift, wrist extension, and yaw of the wrist, respectively. These are defined in the next set of the code.</p>
+<div class="highlight"><pre><span></span><code>    <span class="n">stow_point1</span> <span class="o">=</span> <span class="n">JointTrajectoryPoint</span><span class="p">()</span>
     <span class="n">stow_point2</span> <span class="o">=</span> <span class="n">JointTrajectoryPoint</span><span class="p">()</span>
     <span class="n">duration1</span> <span class="o">=</span> <span class="n">Duration</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
     <span class="n">duration2</span> <span class="o">=</span> <span class="n">Duration</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mf">4.0</span><span class="p">)</span>
@@ -3804,12 +3807,12 @@ The <code>issue_stow_command()</code> method will stow Stretch's arm. Within the
     <span class="n">trajectory_goal</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">stamp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_clock</span><span class="p">()</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">to_msg</span><span class="p">()</span>
     <span class="n">trajectory_goal</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="s1">&#39;base_link&#39;</span>
 </code></pre></div>
-Set <em>trajectory_goal</em> as a <code>FollowJointTrajectory.Goal()</code> and define the joint names as a list. Then <code>trajectory_goal.trajectory.points</code> is defined by the positions set in <em>stow_point</em>. Specify the coordinate frame that we want (base_link) and set the time to be now.</p>
+<p>Set <em>trajectory_goal</em> as a <code>FollowJointTrajectory.Goal()</code> and define the joint names as a list. Then <code>trajectory_goal.trajectory.points</code> is defined by the positions set in <em>stow_point</em>. Specify the coordinate frame that we want (base_link) and set the time to be now.</p>
 <p><div class="highlight"><pre><span></span><code>    <span class="bp">self</span><span class="o">.</span><span class="n">trajectory_client</span><span class="o">.</span><span class="n">send_goal_async</span><span class="p">(</span><span class="n">trajectory_goal</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Sent stow goal = </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">trajectory_goal</span><span class="p">))</span>
 </code></pre></div>
 Make the action call and send the goal.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 
     <span class="n">stow_command</span> <span class="o">=</span> <span class="n">StowCommand</span><span class="p">()</span>
@@ -3820,21 +3823,21 @@ Make the action call and send the goal.</p>
     <span class="n">stow_command</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span>
     <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
 </code></pre></div>
-Create a funcion, <code>main()</code>, to do all of the setup in the class and issue the stow command. Initialize the <code>StowCommand()</code> class and set it to <em>node</em> and run the <code>main()</code> function.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<p>Create a funcion, <code>main()</code>, to do all of the setup in the class and issue the stow command. Initialize the <code>StowCommand()</code> class and set it to <em>node</em> and run the <code>main()</code> function.</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </code></pre></div>
-To make the script executable call the main() function like above.</p>
+<p>To make the script executable call the main() function like above.</p>
 <h2 id="multipoint-command-example">Multipoint Command Example</h2>
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/multipoint.gif"/>
 </p>
 
 <p>If you have killed the above instance of stretch_driver relaunch it again through the terminal.</p>
-<div class="highlight"><pre><span></span><code>ros2 launch stretch_core stretch_driver.launch.py
+<div class="shell-prompt highlight"><pre><span></span><code>ros2 launch stretch_core stretch_driver.launch.py
 </code></pre></div>
 <p>In a new terminal type the following commands.</p>
-<div class="highlight"><pre><span></span><code>ros2 run stretch_ros_tutorials multipoint_command
+<div class="shell-prompt highlight"><pre><span></span><code>ros2 run stretch_ros_tutorials multipoint_command
 </code></pre></div>
 <p>This will send a list of JointTrajectoryPoint's to move Stretch's arm.</p>
 <h3 id="the-code_1">The Code</h3>
@@ -3912,13 +3915,16 @@ To make the script executable call the main() function like above.</p>
 </code></pre></div>
 <h3 id="the-code-explained_1">The Code Explained.</h3>
 <p>Seeing that there are similarities between the multipoint and stow command nodes, we will only breakdown the different components of the multipoint_command node.</p>
-<p><div class="highlight"><pre><span></span><code>        <span class="n">point1</span> <span class="o">=</span> <span class="n">JointTrajectoryPoint</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code>        <span class="n">point1</span> <span class="o">=</span> <span class="n">JointTrajectoryPoint</span><span class="p">()</span>
         <span class="n">point1</span><span class="o">.</span><span class="n">positions</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]</span>
         <span class="n">point1</span><span class="o">.</span><span class="n">time_from_start</span> <span class="o">=</span> <span class="n">duration1</span><span class="o">.</span><span class="n">to_msg</span><span class="p">()</span>
 </code></pre></div>
-Set <em>point1</em> as a <code>JointTrajectoryPoint</code>and provide desired positions (in meters). These are the positions of the lift, wrist extension, and yaw of the wrist, respectively.</p>
-<p><strong>IMPORTANT NOTE</strong>: The lift and wrist extension can only go up to 0.2 m/s. If you do not provide any velocities or accelerations for the lift or wrist extension, then they go to their default values. However, the Velocity and Acceleration of the wrist yaw will stay the same from the previous value unless updated.</p>
-<p><div class="highlight"><pre><span></span><code>        <span class="n">trajectory_goal</span> <span class="o">=</span> <span class="n">FollowJointTrajectory</span><span class="o">.</span><span class="n">Goal</span><span class="p">()</span>
+<p>Set <em>point1</em> as a <code>JointTrajectoryPoint</code>and provide desired positions (in meters). These are the positions of the lift, wrist extension, and yaw of the wrist, respectively.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The lift and wrist extension can only go up to 0.2 m/s. If you do not provide any velocities or accelerations for the lift or wrist extension, then they go to their default values. However, the Velocity and Acceleration of the wrist yaw will stay the same from the previous value unless updated.</p>
+</div>
+<div class="highlight"><pre><span></span><code>        <span class="n">trajectory_goal</span> <span class="o">=</span> <span class="n">FollowJointTrajectory</span><span class="o">.</span><span class="n">Goal</span><span class="p">()</span>
         <span class="n">trajectory_goal</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">joint_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;joint_lift&#39;</span><span class="p">,</span> <span class="s1">&#39;wrist_extension&#39;</span><span class="p">,</span> <span class="s1">&#39;joint_wrist_yaw&#39;</span><span class="p">]</span>
         <span class="n">trajectory_goal</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="p">[</span><span class="n">point0</span><span class="p">,</span> <span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">,</span> <span class="n">point3</span><span class="p">,</span> <span class="n">point4</span><span class="p">,</span> <span class="n">point5</span><span class="p">]</span>
         <span class="n">trajectory_goal</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">stamp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_clock</span><span class="p">()</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">to_msg</span><span class="p">()</span>
@@ -3926,7 +3932,7 @@ Set <em>point1</em> as a <code>JointTrajectoryPoint</code>and provide desired po
         <span class="bp">self</span><span class="o">.</span><span class="n">trajectory_client</span><span class="o">.</span><span class="n">send_goal_async</span><span class="p">(</span><span class="n">trajectory_goal</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Sent stow goal = </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">trajectory_goal</span><span class="p">))</span>
 </code></pre></div>
-Set <em>trajectory_goal</em> as a <code>FollowJointTrajectory.Goal()</code> and define the joint names as a list. Then <code>trajectory_goal.trajectory.points</code> is defined by a list of the 6 points. Specify the coordinate frame that we want (base_link) and set the time to be now.</p>
+<p>Set <em>trajectory_goal</em> as a <code>FollowJointTrajectory.Goal()</code> and define the joint names as a list. Then <code>trajectory_goal.trajectory.points</code> is defined by a list of the 6 points. Specify the coordinate frame that we want (base_link) and set the time to be now.</p>
 
 
 
