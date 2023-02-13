@@ -31,7 +31,7 @@ This is version 0.2 of the Stretch User Documentation. It is written with the fo
 | OS                       | Ubuntu 20.04               |
 | ROS | Noetic  and Melodic        |
 | Python                   | Python3                    |
-| Stretch Body| '>=0.4                     |
+| Stretch Body| >=0.4                     |
 
 You can access prior documentation suitable for older configurations (eg Ubuntu 18.04, ROS Melodic) [here](https://docs.hello-robot.com/0.1/). If you are on an older version and would like to upgrade the robot, follow the [Ubuntu 20.04 upgrade guide](https://docs.hello-robot.com/0.2/stretch-install/docs/robot_install/) or contact support.
 
