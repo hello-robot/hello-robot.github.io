@@ -3901,11 +3901,11 @@
 <p>If you are developing ROS code to test on Stretch and you already have ROS installed on your Ubuntu computer, then there is an easier way of using Rviz than the method described in <a href="#ssh-x-server">SSH &amp; X Server</a>. In the ROS world, this concept is known as "remote master".</p>
 <p>First, identify your robot's and computer's IP address on the network (e.g. using <code>ifconfig</code>). These are <code>robot-ip-address</code> and <code>computer-ip-address</code> respectively.</p>
 <p>Next, run the following on the robot:</p>
-<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>robot-ip-address
+<div class="no-copy highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>robot-ip-address
 <span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://robot-ip-address:11311/
 </code></pre></div>
 <p>Next, start the ROS launch files on the robot as you normally would. Finally, on your computer, run:</p>
-<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>computer-ip-address
+<div class="no-copy highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">ROS_IP</span><span class="o">=</span>computer-ip-address
 <span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://robot-ip-address:11311
 </code></pre></div>
 <p>If you use ROS Remote Master often, you can export these environment variables in your <a href="https://www.maketecheasier.com/what-is-bashrc/">bashrc</a>.</p>
