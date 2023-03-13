@@ -8,7 +8,7 @@ Please contact us at [support@hello-robot.com](mailto:support@hello-robot.com) i
 ## Version
 This is version 0.2 of the Stretch User Documentation. It is written with the following system configuration in mind:
 
-| Resource                 | Description                |
+| Descriptor                 | Version                |
 |--------------------------|----------------------------|
 | Model                    | Stretch RE1 or Stretch 2 |
 | OS                       | Ubuntu 20.04               |
@@ -16,12 +16,11 @@ This is version 0.2 of the Stretch User Documentation. It is written with the fo
 | Python                   | Python3                    |
 | Stretch Body| >=0.4                     |
 
-You can access prior documentation suitable for older configurations (eg Ubuntu 18.04, ROS Melodic) [here](https://docs.hello-robot.com/0.1/). If you are on an older version and would like to upgrade the robot, follow the [Ubuntu 20.04 upgrade guide](https://docs.hello-robot.com/0.2/stretch-install/docs/robot_install/) or contact support.
+You can access prior documentation suitable for older configurations (eg Ubuntu 18.04, ROS Melodic) [here](https://docs.hello-robot.com/0.1/).
 
 ## Safety
 
-!!! warning
-    The Stretch robot can potentially be dangerous if used without caution. All users must take the time to learn safe and best practices in operating Stretch prior to using the robot.
+**WARNING:** The Stretch robot can potentially be dangerous if used without caution. All users must take the time to learn safe and best practices in operating Stretch prior to using the robot.
 
 | Resource                                                     | Description                                    |
 | ------------------------------------------------------------ | ---------------------------------------------- |
@@ -30,7 +29,7 @@ You can access prior documentation suitable for older configurations (eg Ubuntu 
 | [Stretch Best Practices - Powered On Video](https://youtu.be/iEaapHNfEWA) | How to work with Stretch when its power is on  |
 
 ## Quick Start
-New to Stretch? We recommend following the below resources [Getting to Know Stretch Tutorials](https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/).
+New to Stretch? We recommend following the below resources to get started.
 
 | Resource                                                  | Description                                           |
 | --------------------------------------------------------- | ----------------------------------------------------- |
@@ -51,35 +50,35 @@ New to Stretch? We recommend following the below resources [Getting to Know Stre
 
 ## Hardware
 
-=== "Stretch RE2"
+=== "Stretch 2"
     
-    | Model | Guide                                                        | Description                                                  |
-    |-----| ------------------------------------------------------------ | ------------------------------------------------------------ |
-    | RE2| [Safety Guide](https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/safety_guide/)                     | Safety guide for users of the Stretch                        |
-    | RE2| [Battery Maintenance Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/battery_maintenance_guide_re2/) | Guide to care for and charge the Stretch RE2 Batteries       |
-    | RE2| [Hardware Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/hardware_guide_re2/)          | Specification and functional description of the Stretch RE2 Hardware |
-    | RE2| [Dex Wrist Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/dex_wrist_guide_re2/)        | Installing, configuring, and working with the Stretch RE2 Dex Wrist |
+    | Guide                                                        | Description                                                  |
+    | ------------------------------------------------------------ | ------------------------------------------------------------ |
+    | [Safety Guide](https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/safety_guide/)                     | Safety guide for users of the Stretch                        |
+    | [Battery Maintenance Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/battery_maintenance_guide_re2/) | Guide to care for and charge the Stretch RE2 Batteries       |
+    | [Hardware Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/hardware_guide_re2/)          | Specification and functional description of the Stretch RE2 Hardware |
+    | [Dex Wrist Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/dex_wrist_guide_re2/)        | Installing, configuring, and working with the Stretch RE2 Dex Wrist |
 
 === "Stretch RE1"
     
-    | Model | Guide                                                        | Description                                                  |
-    |-----| ------------------------------------------------------------ | ------------------------------------------------------------ |
-    | RE1| [Safety Guide](https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/safety_guide/)                     | Safety guide for users of the Stretch                        |
-    | RE1| [Battery Maintenance Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/battery_maintenance_guide_re1/) | Guide to care for and charge the Stretch RE1 Batteries       |
-    | RE1| [Hardware Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/hardware_guide_re1/)          | Specification and functional description of the Stretch RE1 Hardware |
-    | RE1| [Dex Wrist Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/dex_wrist_guide_re1/)        | Installing, configuring, and working with the Stretch RE1 Dex Wrist |
+    | Guide                                                        | Description                                                  |
+    | ------------------------------------------------------------ | ------------------------------------------------------------ |
+    | [Safety Guide](https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/safety_guide/)                     | Safety guide for users of the Stretch                        |
+    | [Battery Maintenance Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/battery_maintenance_guide_re1/) | Guide to care for and charge the Stretch RE1 Batteries       |
+    | [Hardware Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/hardware_guide_re1/)          | Specification and functional description of the Stretch RE1 Hardware |
+    | [Dex Wrist Guide](https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/dex_wrist_guide_re1/)        | Installing, configuring, and working with the Stretch RE1 Dex Wrist |
 
 ## Software
 
-|  | Repository                                               | Description                                        |
-|--|---------------------------------------------------------|----------------------------------------------------|
-| 1 | [Stretch Body](https://github.com/hello-robot/stretch_body) | Python SDK that allows you to interact with the hardware. |
-| 2 | [Stretch ROS](https://github.com/hello-robot/stretch_ros)   | ROS related code for Stretch. |
-| 3 | [Stretch ROS2](https://github.com/hello-robot/stretch_ros2) | ROS 2 related code for Stretch. |
-| 4 | [Stretch Factory](https://github.com/hello-robot/stretch_factory) | Factory Python tools for debug, testing and calibration. |
-| 5 | [Stretch Firmware](https://github.com/hello-robot/stretch_firmware) | Arduino code for the firmware that drives Stretch. |
-| 5 | [Stretch Tool Share](https://github.com/hello-robot/stretch_tool_share) | Hardware extensions to extend the capabilities of Stretch. |
-| 6 | [Stretch Install](https://github.com/hello-robot/stretch_install) | Installation scripts for Stretch. |
+| Repository                                               | Description                                        |
+|---------------------------------------------------------|----------------------------------------------------|
+| [Stretch Body](https://github.com/hello-robot/stretch_body) | Python SDK that allows you to interact with the hardware. |
+| [Stretch ROS](https://github.com/hello-robot/stretch_ros)   | ROS related code for Stretch. |
+| [Stretch ROS 2](https://github.com/hello-robot/stretch_ros2) | ROS 2 related code for Stretch. |
+| [Stretch Factory](https://github.com/hello-robot/stretch_factory) | Factory Python tools for debug, testing and calibration. |
+| [Stretch Firmware](https://github.com/hello-robot/stretch_firmware) | Arduino code for the firmware that drives Stretch. |
+| [Stretch Tool Share](https://github.com/hello-robot/stretch_tool_share) | Hardware extensions to extend the capabilities of Stretch. |
+| [Stretch Install](https://github.com/hello-robot/stretch_install) | Installation scripts for Stretch. |
 
 ## Where to Find Things 
 All of the documentation is searchable and accessible via the navigation menu on this site. Alternatively, you can view the markdown hosted on the [Hello Robot GitHub portal](https://github.com/hello-robot).
