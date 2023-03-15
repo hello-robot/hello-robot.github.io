@@ -103,7 +103,6 @@ nav:
     - Stretch Tool Share: '!include ./repos/stretch_tool_share/mkdocs.yml'
     - Stretch Install: '!include ./repos/stretch_install/mkdocs.yml'
     - Stretch Web Interface: '!include ./repos/stretch_web_interface/mkdocs.yml'
-    - Home New: README_updated.md
   - Hardware Guides: '!include ./repos/stretch_hardware_guides/mkdocs.yml'
   - Resources:
     - Stretch Forum: "https://forum.hello-robot.com/"
