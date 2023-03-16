@@ -3704,7 +3704,7 @@
 <p>Stretch's mobile base enables this capability and this tutorial will explore how we can autonomously plan and execute mobile base trajectories. Running this tutorial will require the robot to be untethered, so please ensure that the robot is adequately charged.</p>
 <h2 id="mapping">Mapping</h2>
 <p>The first step is to map the space that the robot will navigate in. The <code>offline_mapping.launch.py</code> file will enable you to do this. First, run:</p>
-<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_navigation<span class="w"> </span>offline_mapping.launch.py
+<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_nav2<span class="w"> </span>offline_mapping.launch.py
 </code></pre></div>
 <p>Rviz will show the robot and the map that is being constructed. Now, use the Xbox controller (see instructions below for using a keyboard) to teleoperate the robot around. To teleoperate the robot using the Xbox controller, keep the front left (LB) button pressed while using the right joystick for translation and rotation.</p>
 <p>Avoid sharp turns and revisit previously visited spots to form loop closures.</p>
@@ -3732,7 +3732,7 @@ ros2<span class="w"> </span>run<span class="w"> </span>nav2_map_server<span clas
 </code></pre></div>
 <h2 id="navigation">Navigation</h2>
 <p>Next, with <code>&lt;map_name&gt;.yaml</code>, we can navigate the robot around the mapped space. Run:</p>
-<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_navigation<span class="w"> </span>navigation.launch.py<span class="w"> </span>map:<span class="o">=</span><span class="si">${</span><span class="nv">HELLO_FLEET_PATH</span><span class="si">}</span>/maps/&lt;map_name&gt;.yaml
+<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_nav2<span class="w"> </span>navigation.launch.py<span class="w"> </span>map:<span class="o">=</span><span class="si">${</span><span class="nv">HELLO_FLEET_PATH</span><span class="si">}</span>/maps/&lt;map_name&gt;.yaml
 </code></pre></div>
 <p>A new RViz window should pop up with a <code>Startup</code> button in a menu at the bottom left of the window. Press the <code>Startup</code> button to kick-start all navigation related lifecycle nodes. Rviz will show the robot in the previously mapped space, however, it's likely that the robot's location on the map does not match the robot's location in the real space. To correct this, from the top bar of Rviz, use <code>2D Pose Estimate</code> to lay an arrow down roughly where the robot is located in real space. This gives an initial estimate of the robot's location to AMCL, the localization package. AMCL will better localize the robot once we pass the robot a <code>2D Nav Goal</code>. </p>
 <p>In the top bar of Rviz, use <code>2D Nav Goal</code> to lay down an arrow where you'd like the robot to navigate. In the terminal, you'll see Nav2 go through the planning phases and then navigate the robot to the goal. If planning fails, the robot will begin a recovery behavior - spinning around 180 degrees in place or backing up.</p>
@@ -3747,10 +3747,10 @@ ros2<span class="w"> </span>run<span class="w"> </span>nav2_map_server<span clas
 <h2 id="note">Note</h2>
 <p>The launch files expose the launch argument "teleop_type". By default, this argument is set to "joystick", which launches joystick teleop in the terminal with the Xbox controller that ships with Stretch. The Xbox controller utilizes a dead man's switch safety feature to avoid unintended movement of the robot. This is the switch located on the front left side of the controller marked "LB". Keep this switch pressed while translating or rotating the base using the joystick located on the right side of the Xbox controller.</p>
 <p>If the Xbox controller is not available, the following commands will launch mapping or navigation, respectively, with keyboard teleop:</p>
-<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_navigation<span class="w"> </span>offline_mapping.launch.py<span class="w"> </span>teleop_type:<span class="o">=</span>keyboard
+<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_nav2<span class="w"> </span>offline_mapping.launch.py<span class="w"> </span>teleop_type:<span class="o">=</span>keyboard
 </code></pre></div>
 <p>or</p>
-<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_navigation<span class="w"> </span>navigation.launch.py<span class="w"> </span>teleop_type:<span class="o">=</span>keyboard<span class="w"> </span>map:<span class="o">=</span><span class="si">${</span><span class="nv">HELLO_FLEET_PATH</span><span class="si">}</span>/maps/&lt;map_name&gt;.yaml
+<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_nav2<span class="w"> </span>navigation.launch.py<span class="w"> </span>teleop_type:<span class="o">=</span>keyboard<span class="w"> </span>map:<span class="o">=</span><span class="si">${</span><span class="nv">HELLO_FLEET_PATH</span><span class="si">}</span>/maps/&lt;map_name&gt;.yaml
 </code></pre></div>
 <h2 id="simple-commander-api">Simple Commander API</h2>
 <p>It is also possible to send 2D Pose Estimates and Nav Goals programmatically. In your own launch file, you may include <code>navigation.launch</code> to bring up the navigation stack. Then, you can send pose goals using the Nav2 simple commander API to navigate the robot programatically. We will explore this in the next tutorial.</p>

@@ -3695,9 +3695,11 @@
 <p>Begin by running the following command in a new terminal.</p>
 <div class="shell-prompt highlight"><pre><span></span><code>roslaunch<span class="w"> </span>stretch_core<span class="w"> </span>stretch_driver.launch
 </code></pre></div>
-<p>Switch the mode to <code>position</code> mode using a rosservice call. Then run the <code>respeaker.launch</code> file. In a new terminal, execute:</p>
+<p>Switch the mode to <code>position</code> mode using a rosservice call.</p>
 <div class="shell-prompt highlight"><pre><span></span><code>rosservice<span class="w"> </span>call<span class="w"> </span>/switch_to_position_mode
-roslaunch<span class="w"> </span>stretch_core<span class="w"> </span>respeaker.launch
+</code></pre></div>
+<p>Then run the <code>respeaker.launch</code> file. In a new terminal, execute:</p>
+<div class="shell-prompt highlight"><pre><span></span><code>roslaunch<span class="w"> </span>stretch_core<span class="w"> </span>respeaker.launch
 </code></pre></div>
 <p>Then run the <a href="https://github.com/hello-robot/stretch_tutorials/blob/noetic/src/voice_teleoperation_base.py">voice_teleoperation_base.py</a> node in a new terminal.</p>
 <div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>catkin_ws/src/stretch_tutorials/src/
