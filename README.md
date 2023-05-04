@@ -8,9 +8,13 @@ The content largely lives inside of independent repositories that include their 
 In order to create a development environment on a 20.04 Ubuntu machine:
 ```
 cd ~/repos
-git clone --recursive https://github.com/hello-robot/hello-robot.github.io
+git clone https://github.com/hello-robot/hello-robot.github.io
 cd hello-robot.github.io
 ./install.sh
+# choose a version of the documentation (e.g. 0.2)
+git checkout 0.2
+git submodule init
+git submodule update
 ```
 
 ## Branch Structure
@@ -80,18 +84,28 @@ git submodule add https://github.com/hello-robot/stretch_foo
 ```
 
 ## Updating a Submodule Repo
-If your submodule repos are stale try:
+Start by ensuring your submodules are present:
 
 ```
 cd ~/repos/hello-robot.github.io/repos
 git submodule init
-git submoudle update
+git submodule update
 ```
-Once the repos are present you can update them all to the latest master by:
+
+Once the repos are present you can update them all to the latest commit using:
 
 ```
-git submodule foreach git pull origin master
+git submodule update --recursive --remote
 ```
+
+Finally, if you want to update the submodules on Github (requires push access), commit the submodules update using:
+
+```
+git add .
+git commit -m 'Update all submodules'
+git push
+```
+
 ## Editing a Submodule Repo
 For example, Stretch Body:
 
