@@ -1,39 +1,41 @@
 [submodule "repos/stretch_firmware"]
 	path = repos/stretch_firmware
 	url = https://github.com/hello-robot/stretch_firmware
-	branch = features/mkdocs
+	branch = master
 [submodule "repos/stretch_body"]
 	path = repos/stretch_body
 	url = https://github.com/hello-robot/stretch_body
-	branch = feature/mkdocs
+	branch = master
 [submodule "repos/stretch_ros"]
 	path = repos/stretch_ros
 	url = https://github.com/hello-robot/stretch_ros
-	branch = feature/mkdocs
+	branch = master
 [submodule "repos/stretch_tool_share"]
 	path = repos/stretch_tool_share
 	url = https://github.com/hello-robot/stretch_tool_share
+	branch = master
 [submodule "repos/stretch_factory"]
 	path = repos/stretch_factory
 	url = https://github.com/hello-robot/stretch_factory
-	branch = features/mkdocs
-[submodule "repos/mkdocs-material-dib"]
-	path = repos/mkdocs-material-dib
-	url = https://github.com/dib-lab/mkdocs-material-dib.git
+	branch = master
 [submodule "repos/stretch_web_interface"]
 	path = repos/stretch_web_interface
 	url = https://github.com/hello-robot/stretch_web_interface
+	branch = master
 [submodule "repos/stretch_hardware_guides"]
 	path = repos/stretch_hardware_guides
 	url = https://github.com/hello-robot/stretch_hardware_guides
+	branch = master
 [submodule "repos/stretch_install"]
 	path = repos/stretch_install
 	url = https://github.com/hello-robot/stretch_install
+	branch = master
 [submodule "repos/stretch_tutorials"]
 	path = repos/stretch_tutorials
 	url = https://github.com/hello-robot/stretch_tutorials
-	branch = features/mkdocs
-
+	branch = master
 [submodule "repos/stretch_ros2"]
 	path = repos/stretch_ros2
 	url = https://github.com/hello-robot/stretch_ros2
+	branch = galactic
+
