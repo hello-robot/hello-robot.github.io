@@ -22,7 +22,9 @@ if args.arm:
     import stretch_body.arm
     j=stretch_body.arm.Arm()
 
-check_deprecated_contact_model_prismatic_joint(j, 'REx_calibrate_guarded_contacts.py', None, None, None, None)
+if j.robot_params['robot']['model_name']=='RE1V0':
+    print('This is tool is not yet supported for robot model RE1V0')
+    exit(1)
 
 if not j.startup(threaded=False):
     exit(1)

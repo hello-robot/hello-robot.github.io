@@ -82,7 +82,7 @@ nav:
      - Battery Maintenance Guide: ./docs/battery_maintenance_guide_re1.md
      - Hardware Guide: ./docs/hardware_guide_re1.md
      - DexWrist User Guide: ./docs/dex_wrist_guide_re1.md
- - Stretch RE2:
+ - Stretch 2:
      - Battery Maintenance Guide: ./docs/battery_maintenance_guide_re2.md
      - Hardware Guide: ./docs/hardware_guide_re2.md
      - DexWrist User Guide: ./docs/dex_wrist_guide_re2.md
