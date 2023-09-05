@@ -1,0 +1,32 @@
+# INSTALLATION
+#
+# First, copy this rules file into the following directory:
+#
+# /etc/udev/rules.d/
+#
+# Second, run the following command to make the new rule files become
+# active and then disconnect and reconnect the device.
+#
+# sudo udevadm control --reload
+#
+# When writing udev rules, you can find relevant information about a
+# device by running commands like the following with the appropriate
+# device file name. You can often find the device file name by running
+# dmesg from the command line right after plugging in the device.
+#
+# udevadm info -a /dev/ttyUSB0
+#
+# REFERENCES
+#
+# http://www.linuxfromscratch.org/lfs/view/6.2/chapter07/symlinks.html
+#
+
+
+#This rule is to make all Arduinos r/w permissions for the IDE
+KERNEL=="ttyACM*", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="804d",MODE:="0666", ATTRS{serial}=="FDC76DED5053334D332E3120FF120D1B", SYMLINK+="hello-pimu", ENV{ID_MM_DEVICE_IGNORE}="1"
+KERNEL=="ttyACM*", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="804d",MODE:="0666", ATTRS{serial}=="E0DEB4D150535134382E3120FF101022", SYMLINK+="hello-motor-arm", ENV{ID_MM_DEVICE_IGNORE}="1"
+KERNEL=="ttyACM*", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="804d",MODE:="0666", ATTRS{serial}=="CB07B4E650535134382E3120FF102A24", SYMLINK+="hello-motor-lift", ENV{ID_MM_DEVICE_IGNORE}="1"
+KERNEL=="ttyACM*", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="804d",MODE:="0666", ATTRS{serial}=="3F4C4C2450535134382E3120FF102E1E", SYMLINK+="hello-motor-left-wheel", ENV{ID_MM_DEVICE_IGNORE}="1"
+KERNEL=="ttyACM*", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="804d",MODE:="0666", ATTRS{serial}=="0315927D50535134382E3120FF102626", SYMLINK+="hello-motor-right-wheel", ENV{ID_MM_DEVICE_IGNORE}="1"
+KERNEL=="ttyACM*", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="804d",MODE:="0666", ATTRS{serial}=="CB01DAD4504A5230352E3120FF072312", SYMLINK+="hello-wacc", ENV{ID_MM_DEVICE_IGNORE}="1"
+

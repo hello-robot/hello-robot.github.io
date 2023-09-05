@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=hello_robot_audio
+Exec=/usr/bin/hello_robot_audio.sh
+Hidden=false
+X-GNOME-Autostart-enabled=true

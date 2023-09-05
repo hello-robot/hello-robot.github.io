@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>stretch_calibration</name>
+  <version>0.2.0</version>
+  <description>The stretch_calibration package</description>
+  <maintainer email="support@hello-robot.com">Hello Robot Inc.</maintainer>
+  <license>GPLv3</license>
+
+  <build_export_depend>rclcpp</build_export_depend>
+  <build_export_depend>rclpy</build_export_depend>
+  <build_export_depend>stretch_core</build_export_depend>
+  <build_export_depend>stretch_description</build_export_depend>
+  <build_export_depend>std_msgs</build_export_depend>
+  <build_export_depend>geometry_msgs</build_export_depend>
+  <build_export_depend>tf2</build_export_depend>
+  
+  <depend>sensor_msgs</depend>
+  <depend>actionlib_msgs</depend>
+  <depend>control_msgs</depend>
+  <depend>hello_helpers</depend>
+  <depend>trajectory_msgs</depend>
+  <depend>visualization_msgs</depend>
+  <depend>tf_transformations</depend>
+  
+  <exec_depend>realsense2_camera</exec_depend>
+  <exec_depend>ros2_numpy</exec_depend>
+
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

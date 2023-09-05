@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=hello_robot_lrf_off
+Exec= /usr/bin/hello_robot_lrf_off.py
+Hidden=false
+X-GNOME-Autostart-enabled=true
