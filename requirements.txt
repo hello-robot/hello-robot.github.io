@@ -1,0 +1,11 @@
+mkdocs
+mkdocs-material
+mkdocs-simple-plugin
+pytkdocs[numpy-style]
+jinja2==3.0.3
+Pygments
+mkdocstrings-python-legacy
+mike
+mkdocs-monorepo-plugin
+mkdocs-same-dir
+mkdocs-redirects

@@ -1,0 +1,36 @@
+name: Auto Deploy
+run-name: Edit by ${{ github.actor }} deployed ${{ github.ref }}
+on:
+  push:
+    branches:
+      - '*.*'
+jobs:
+  Mkdocs-Mike-Deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Print out debug info
+        run: echo "Repo ${{ github.repository }} | Branch ${{ github.ref }} | Runner ${{ runner.os }} | Event ${{ github.event_name }}"
+
+      - name: Check out docs repo
+        uses: actions/checkout@v3
+
+      - name: Setup Python3
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Pip dependencies
+        run: python3 -m pip install -r ./requirements.txt
+
+      - name: Configure Git user
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+      - name: Save Mike version
+        run: echo "mike_version=$(echo ${GITHUB_REF#refs/heads/})" >> "$GITHUB_ENV"
+
+      - name: Deploy with Mike
+        run: |
+          mike deploy --push $mike_version
