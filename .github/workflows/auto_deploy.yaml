@@ -15,7 +15,23 @@ jobs:
       - name: Check out docs repo
         uses: actions/checkout@v4
         with:
+          token: ${{ secrets.CI_TOKEN }}
           submodules: 'recursive'
+
+      - name: Configure Git user
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+      - name: Git submodule update
+        run: |
+          git pull --recurse-submodules
+          git submodule update --remote --recursive
+
+      - name: Commit submodule update (if any)
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git commit -am "Auto updated submodule references" && git push || echo "No changes to commit"
 
       - name: Setup Python3
         uses: actions/setup-python@v4
@@ -24,11 +40,6 @@ jobs:
 
       - name: Install Pip dependencies
         run: python3 -m pip install -r ./requirements.txt
-
-      - name: Configure Git user
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
 
       - name: Save Mike version
         run: echo "mike_version=$(echo ${GITHUB_REF#refs/heads/})" >> "$GITHUB_ENV"
