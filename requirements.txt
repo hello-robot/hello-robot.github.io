@@ -9,4 +9,3 @@ mike
 mkdocs-monorepo-plugin
 mkdocs-same-dir
 mkdocs-redirects
-hello-robot-stretch-body

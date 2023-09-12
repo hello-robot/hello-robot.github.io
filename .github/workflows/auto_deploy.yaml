@@ -30,11 +30,6 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
-      - name: Set fleet env vars
-        run: |
-          echo "HELLO_FLEET_PATH=$(pwd)" >> "$GITHUB_ENV"
-          echo "HELLO_FLEET_ID='config'" >> "$GITHUB_ENV"
-
       - name: Save Mike version
         run: echo "mike_version=$(echo ${GITHUB_REF#refs/heads/})" >> "$GITHUB_ENV"
 
