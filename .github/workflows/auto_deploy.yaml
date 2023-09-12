@@ -33,6 +33,9 @@ jobs:
       - name: Save Mike version
         run: echo "mike_version=$(echo ${GITHUB_REF#refs/heads/})" >> "$GITHUB_ENV"
 
+      - name: Git pull
+        run: git pull
+
       - name: Deploy with Mike
         run: |
           mike deploy --push $mike_version
