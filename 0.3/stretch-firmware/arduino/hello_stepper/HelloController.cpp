@@ -1,4 +1,5 @@
 /*
+/*
   -------------------------------------------------------------
   Hello Robot - Hello Stepper
 
@@ -28,14 +29,17 @@
 #include "SyncManager.h"
 #include "TimeManager.h"
 #include "TrajectoryManager.h"
+#include "TraceManager.h"
 
 void write_to_lookup(uint8_t page_id, float * data);
 
 
 Command cmd,cmd_in;
+CommandReply cmd_reply;
 Gains gains, gains_in;
 Trigger trg, trg_in;
 Status stat,stat_out;
+StatusAux stat_aux;
 EncCalib enc_calib_in;
 MotionLimits motion_limits;
 TrajectorySegment traj_seg_in;
@@ -45,28 +49,32 @@ Stepper_Board_Info board_info;
 FlashStorage(flash_gains, Gains);
 
 LoadTest load_test;
-bool dirty_cmd=false;
-bool dirty_gains=false;
-bool dirty_trigger=false;
-bool dirty_traj_seg=false;
-bool dirty_trigger_mark_on_contact=false;
+volatile int dirty_cmd=false;
+volatile int sync_irq_cnt_last=0;
+volatile bool dirty_gains=false;
+volatile bool dirty_trigger=false;
+volatile bool dirty_traj_seg=false;
+volatile bool dirty_trigger_mark_on_contact=false;
 
-bool diag_pos_calibrated = 0;
-bool diag_runstop_on=0;
-bool diag_near_pos_setpoint=0;
-bool diag_near_vel_setpoint=0;
-bool diag_is_moving=0;
-bool diag_at_current_limit=0;
-bool diag_is_mg_accelerating=0;
-bool diag_is_mg_moving=0;
-bool diag_calibration_rcvd=0;
-bool diag_waiting_on_sync=0;
+volatile bool diag_pos_calibrated = 0;
+volatile bool diag_runstop_on=0;
+volatile bool diag_near_pos_setpoint=0;
+volatile bool diag_near_vel_setpoint=0;
+volatile bool diag_is_moving=0;
+volatile bool diag_at_current_limit=0;
+volatile bool diag_is_mg_accelerating=0;
+volatile bool diag_is_mg_moving=0;
+volatile bool diag_calibration_rcvd=0;
+volatile bool diag_waiting_on_sync=0;
 
 
 int switch_to_menu_cnt=0;
 int board_reset_cnt=0;
 int guarded_event_cnt=0;
 bool motion_limits_set=0;
+volatile int cmd_cnt_exec=0;
+volatile int cmd_cnt_rpc=0;
+volatile int cmd_rpc_overflow=0;
 
 #define N_POS_HISTORY 250 //With TC4_LOOP_RATE 1000, log 0.25s of past motions
 float pos_history[N_POS_HISTORY];
@@ -86,6 +94,7 @@ float uMAX_N=0;
 float uMAX_PF=0;
 float uMAX_NF=0;
 int cntr=0;
+volatile uint16_t ctrl_cycle_cnt=0;
 
 //Filter params    
 volatile float efLPFa = 0.0; 
@@ -128,6 +137,11 @@ bool safety_override = false;
 bool guarded_override=false;
 int first_step_safety=10; //count down
 uint8_t board_id=0;
+
+int vel_watchdog=TC4_LOOP_RATE; //Watchdog counts down from 1s
+
+
+
 
 ///////////////////////// UTIL ///////////////////////////
 
@@ -199,7 +213,7 @@ void setupBoardVariants()
     k_c2e =(255/3.3)*10*rSense;
   }
   
-  if (BOARD_VARIANT==1 || BOARD_VARIANT==2)
+  if (BOARD_VARIANT>=1)
   {
     //The board uses two DRV8842 motor drivers. These are capable of 5.0A peak currents / 3.5A RMS
     // An iMax of 4.35A results in a uMax of 252. By default set at 8-bit pwm. 
@@ -238,6 +252,7 @@ void setupHelloController()
   memset(&trg_in, 0, sizeof(Trigger));
   memset(&stat, 0, sizeof(Status));
   memset(&stat_out, 0, sizeof(Status));
+  memset(&stat_aux, 0, sizeof(StatusAux));
   memset(&motion_limits, 0, sizeof(MotionLimits));
   memset(&pos_history, 0, N_POS_HISTORY*sizeof(float));
 
@@ -259,7 +274,7 @@ void setupHelloController()
 
 void enableMotorDrivers()
 {
-  if (BOARD_VARIANT==1 || BOARD_VARIANT==2)
+  if (BOARD_VARIANT>=1)
   {
     digitalWrite(MOTOR_SHUNT, HIGH); //Turn the shunt off (for lift dof)
     digitalWrite(DRV8842_NSLEEP_A, HIGH); //Logic high enables driver
@@ -268,7 +283,7 @@ void enableMotorDrivers()
 }
 void disableMotorDrivers()
 {
-  if (BOARD_VARIANT==1 || BOARD_VARIANT==2)
+  if (BOARD_VARIANT>=1)
   {
     digitalWrite(DRV8842_NSLEEP_A, LOW); //Logic high enables driver
     digitalWrite(DRV8842_NSLEEP_B, LOW); //Logic high enables driver
@@ -296,7 +311,6 @@ void stepHelloControllerRPC()
 }
 
 
-
 void handleNewRPC()
 {
   int ll,idx;
@@ -308,11 +322,18 @@ void handleNewRPC()
           memcpy(rpc_out + 1, (uint8_t *) (&board_info), sizeof(Stepper_Board_Info)); //Collect the status data
           num_byte_rpc_out=sizeof(Stepper_Board_Info)+1;
           break; 
-    case RPC_SET_COMMAND: 
+    case RPC_SET_COMMAND:
+          noInterrupts();
           memcpy(&cmd_in, rpc_in+1, sizeof(Command)); //copy in the command
+          cmd_cnt_rpc++;
+          cmd_reply.ctrl_cycle_cnt=ctrl_cycle_cnt;
+          if(dirty_cmd)
+            cmd_rpc_overflow++;
           dirty_cmd=1;
           rpc_out[0]=RPC_REPLY_COMMAND;
-          num_byte_rpc_out=1;
+          memcpy(rpc_out + 1, (uint8_t *) (&cmd_reply), sizeof(CommandReply)); //Collect the status data
+          num_byte_rpc_out=sizeof(CommandReply)+1;
+    interrupts();
           break;
     case RPC_SET_GAINS: 
           memcpy(&gains_in, rpc_in+1, sizeof(Gains)); //copy in the command
@@ -333,10 +354,15 @@ void handleNewRPC()
           memcpy(rpc_out + 1, (uint8_t *) (&fg), sizeof(Gains)); //Collect the status data
           num_byte_rpc_out=sizeof(Gains)+1;
           break; 
+    case RPC_READ_TRACE: 
+          num_byte_rpc_out=trace_manager.rpc_read(rpc_out);
+          break; 
+
     case RPC_SET_MENU_ON: 
           rpc_out[0]=RPC_REPLY_MENU_ON;
           num_byte_rpc_out=1;
           switch_to_menu_cnt=5; //allow 5 rpc cycles to pass before switch to menu mode, allows any RPC replies to go out
+          disableWDT();
           break; 
     case RPC_SET_TRIGGER: 
           memcpy(&trg_in, rpc_in+1, sizeof(Trigger)); //copy in the config
@@ -359,38 +385,69 @@ void handleNewRPC()
             board_reset_cnt=100;
           }
           break;
-    case RPC_GET_STATUS: 
+    case RPC_GET_STATUS:
+        //Make sure that at least one ctrl cycle has executed since the last SET_CMD
+        if (dirty_cmd && ctrl_cycle_cnt==cmd_reply.ctrl_cycle_cnt)
+        {
+            for(int i=0;i<10000;i++)
+            {
+                //delayMicroseconds(10);
+                    if(ctrl_cycle_cnt!=cmd_reply.ctrl_cycle_cnt)
+                        break;
+            }
+        }
+        noInterrupts();
+        stat_out.debug=ctrl_cycle_cnt;
+          //update_status();
           rpc_out[0]=RPC_REPLY_STATUS;
           memcpy(rpc_out + 1, (uint8_t *) (&stat_out), sizeof(Status)); //Collect the status data
           num_byte_rpc_out=sizeof(Status)+1;
+        interrupts();
           break;
-    case RPC_LOAD_TEST:
+    case RPC_GET_STATUS_AUX:
+       noInterrupts();
+          rpc_out[0]=RPC_REPLY_STATUS_AUX;
+          stat_aux.cmd_cnt_rpc=cmd_cnt_rpc;
+          stat_aux.cmd_cnt_exec=cmd_cnt_exec;
+          stat_aux.cmd_rpc_overflow=cmd_rpc_overflow;
+          stat_aux.sync_irq_cnt=sync_manager.sync_irq_cnt;
+          stat_aux.sync_irq_overflow=sync_manager.sync_irq_overflow;
+          memcpy(rpc_out + 1, (uint8_t *) (&stat_aux), sizeof(StatusAux)); //Collect the status data
+          num_byte_rpc_out=sizeof(StatusAux)+1;
+          interrupts();
+          break;
+
+    case RPC_LOAD_TEST_PUSH:
           memcpy(&load_test, rpc_in+1, sizeof(LoadTest)); //copy in the command
+          rpc_out[0]=RPC_REPLY_LOAD_TEST_PUSH;
+          num_byte_rpc_out=1;
+          break;
+    case RPC_LOAD_TEST_PULL:
           ll=load_test.data[0];
           for(int i=0;i<1023;i++)
             load_test.data[i]=load_test.data[i+1];
           load_test.data[1023]=ll;
-          rpc_out[0]=RPC_REPLY_LOAD_TEST;
-          memcpy(rpc_out + 1, (uint8_t *) (&load_test), sizeof(LoadTest)); 
+          rpc_out[0]=RPC_REPLY_LOAD_TEST_PULL;
+          memcpy(rpc_out + 1, (uint8_t *) (&load_test), sizeof(LoadTest));
           num_byte_rpc_out=sizeof(LoadTest)+1;
           break;
-    case RPC_SET_NEXT_TRAJECTORY_SEG: 
+    case RPC_SET_NEXT_TRAJECTORY_SEG:
+    noInterrupts();
           memcpy(&traj_seg_in, rpc_in+1, sizeof(TrajectorySegment)); //copy in the new segment
           traj_seg_reply.success=trajectory_manager.set_next_trajectory_segment(&traj_seg_in, motion_limits_set, diag_pos_calibrated, &motion_limits, &cmd_in);
-          memset(&(traj_seg_reply.error_message), 0, 100);
-          strcpy(traj_seg_reply.error_message, trajectory_manager.seg_load_error_message);
           rpc_out[0]=RPC_REPLY_SET_NEXT_TRAJECTORY_SEG;
-          memcpy(rpc_out + 1, (uint8_t *) (&traj_seg_reply), sizeof(TrajectorySegmentReply)); 
+          memcpy(rpc_out + 1, (uint8_t *) (&traj_seg_reply), sizeof(TrajectorySegmentReply));
           num_byte_rpc_out=sizeof(TrajectorySegmentReply)+1;
+     interrupts();
           break;
-    case RPC_START_NEW_TRAJECTORY: 
+    case RPC_START_NEW_TRAJECTORY:
+    noInterrupts();
           memcpy(&traj_seg_in, rpc_in+1, sizeof(TrajectorySegment)); //copy in the new segment
           traj_seg_reply.success=trajectory_manager.start_new_trajectory(&traj_seg_in, sync_manager.sync_mode_enabled, motion_limits_set, diag_pos_calibrated, &motion_limits, &cmd_in);
-          memset(&(traj_seg_reply.error_message), 0, 100);
-          strcpy(traj_seg_reply.error_message, trajectory_manager.seg_load_error_message);
           rpc_out[0]=RPC_REPLY_START_NEW_TRAJECTORY;
           memcpy(rpc_out + 1, (uint8_t *) (&traj_seg_reply), sizeof(TrajectorySegmentReply)); 
           num_byte_rpc_out=sizeof(TrajectorySegmentReply)+1;
+     interrupts();
           //stat.debug=trajectory_manager.dirty_seg_in;
           break;
     case RPC_RESET_TRAJECTORY: 
@@ -408,6 +465,7 @@ void handleNewRPC()
 
 void update_status()
 {
+stat.debug=cmd_rpc_overflow;
   //noInterrupts();
   //stat.timestamp=time_manager.get_encoder_timestamp();
   stat.effort= eff;
@@ -432,6 +490,8 @@ void update_status()
   stat.diag = sync_manager.sync_mode_enabled?     stat.diag| DIAG_IN_SYNC_MODE: stat.diag;
   stat.diag = trajectory_manager.is_trajectory_active()? stat.diag| DIAG_TRAJ_ACTIVE: stat.diag;
   stat.diag = trajectory_manager.is_trajectory_waiting_on_sync()? stat.diag| DIAG_TRAJ_WAITING_ON_SYNC: stat.diag;
+  stat.diag = trace_manager.trace_on ?     stat.diag| DIAG_IS_TRACE_ON: stat.diag;
+ 
   stat.traj_setpoint=trajectory_manager.q;
   stat.traj_id=trajectory_manager.get_id_current_segment();
 
@@ -440,7 +500,35 @@ void update_status()
   noInterrupts();
   memcpy((uint8_t *) (&stat_out),(uint8_t *) (&stat),sizeof(Status));
   interrupts();
+
+if (trace_manager.trace_on)
+{
+   if(TRACE_TYPE==TRACE_TYPE_DEBUG)
+  {
+    //Example of setting trace debug data
+    trace_manager.debug_msg.f_3=stat.pos;
+    trace_manager.update_trace_debug();
+  }
+
+  if(TRACE_TYPE==TRACE_TYPE_PRINT)
+  {
+  //Example of setting trace print data
+   //sprintf(trace_manager.print_msg.msg, "Pos: %d\n",(int)stat.pos);
+   //trace_manager.print_msg.x=stat.pos;
+   //trace_manager.print_msg.timestamp=stat.timestamp;
+   //trace_manager.update_trace_print();
+  }
+
+  if(TRACE_TYPE==TRACE_TYPE_STATUS)
+  {
+    trace_manager.update_trace_status(&stat_out);
+  }
 }
+  
+
+}
+
+
 
 
 ///////////////////////// Controller Loop  ///////////////////////////
@@ -452,10 +540,42 @@ float x_des_incr=0;
 float stiffness_target=0;
 
 float eff_max=0;
+float xdes=0;
+
+
+//Example of setting trace data
+void update_trace()
+{
+
+  stat.debug=mg.dt;
+   if(TRACE_TYPE==TRACE_TYPE_DEBUG)
+  {
+    trace_manager.debug_msg.f_1= xdes;
+    trace_manager.debug_msg.f_2=mg.t;
+    trace_manager.debug_msg.f_3=stat.pos;
+    trace_manager.debug_msg.u8_1=trace_manager.trace_write_idx;
+    trace_manager.debug_msg.u8_2=trace_manager.trace_on;
+    trace_manager.update_trace_debug();
+  }
+
+  if(TRACE_TYPE==TRACE_TYPE_PRINT)
+  {
+   sprintf(trace_manager.print_msg.msg, "Pos: %d\n",(int)stat.pos);
+   trace_manager.print_msg.x=stat.pos;
+   trace_manager.print_msg.timestamp=stat.timestamp;
+   trace_manager.update_trace_print();
+  }
+
+  if(TRACE_TYPE==TRACE_TYPE_STATUS)
+  {
+    trace_manager.update_trace_status(&stat_out);
+  }
+}
+
 
 void stepHelloController()
 {
-  float xdes;
+
   
  
   //noInterrupts();
@@ -482,6 +602,17 @@ void stepHelloController()
 
         if (trg.data & TRIGGER_BOARD_RESET)
           board_reset_cnt=100;
+
+        if (trg.data & TRIGGER_ENABLE_TRACE)
+        {
+            trace_manager.enable_trace();
+        }
+
+        if (trg.data & TRIGGER_DISABLE_TRACE)
+        {
+          trace_manager.disable_trace();
+        }
+        
     }
 
     if (board_reset_cnt)
@@ -530,6 +661,7 @@ void stepHelloController()
       guarded_mode_enabled = gains.config & CONFIG_ENABLE_GUARDED_MODE;
       flip_encoder_polarity = gains.config & CONFIG_FLIP_ENCODER_POLARITY;
       flip_effort_polarity = gains.config & CONFIG_FLIP_EFFORT_POLARITY;
+
 
       uMAX_P = current_to_effort(gains.iMax_pos);
       uMAX_N = current_to_effort(gains.iMax_neg);
@@ -626,7 +758,8 @@ void stepHelloController()
      
      diag_runstop_on=(sync_manager.runstop_active && runstop_enabled);
      //stat.debug=diag_runstop_on;//sync_manager.runstop_active;
-     if (diag_runstop_on)
+     //Force to safety mode on runstop or velocity watchdog
+     if (diag_runstop_on || (vel_watchdog==0 && (gains.config & CONFIG_ENABLE_VEL_WATCHDOG)))
      {
         //stat.debug++;
         cmd_in.mode=MODE_SAFETY;
@@ -637,22 +770,26 @@ void stepHelloController()
       safety_override=false;
 
     
-    update_status();
+
 
       /////////// Copy in new Command Data  ///////////
       
     //Determine new controller mode / controller settings
-    diag_waiting_on_sync = sync_manager.sync_mode_enabled && ((!sync_manager.motor_sync_triggered && dirty_cmd)||trajectory_manager.is_trajectory_waiting_on_sync());
+    //If sync_irq_cnt has incremented then it is a sync trigger
+    diag_waiting_on_sync = sync_manager.sync_mode_enabled && ((sync_manager.sync_irq_cnt==sync_irq_cnt_last && dirty_cmd)||trajectory_manager.is_trajectory_waiting_on_sync());
 
- 
+
+
+
     if (dirty_cmd)
     {
-      
-      if (!sync_manager.sync_mode_enabled || (sync_manager.sync_mode_enabled && sync_manager.motor_sync_triggered) || (sync_manager.sync_mode_enabled && cmd_in.mode == MODE_SAFETY) ) //Don't require sync to go into safety
+      if (!sync_manager.sync_mode_enabled || (sync_manager.sync_mode_enabled && (sync_manager.sync_irq_cnt != sync_irq_cnt_last))
+      || (sync_manager.sync_mode_enabled && cmd_in.mode == MODE_SAFETY) ) //Don't require sync to go into safety
       {
-        
-        
+        //New command is ready to ingest
+        cmd_cnt_exec++;
         diag_waiting_on_sync=false;
+        trajectory_manager.waiting_on_sync=false;
 
         if (guarded_override) //Reset on new command to track
           guarded_override=0;
@@ -662,14 +799,17 @@ void stepHelloController()
           cmd.mode=cmd_in.mode; 
         }
 
-        if (cmd.mode==MODE_POS_TRAJ_INCR  &&  cmd_in.incr_trigger != cmd.incr_trigger)
+      //Set the incremental position target if triggered
+       if (cmd.mode==MODE_POS_TRAJ_INCR  &&  cmd_in.incr_trigger != cmd.incr_trigger)
         {
           x_des_incr = yw + rad_to_deg(cmd_in.x_des);
+          //x_des_incr = xdes+ rad_to_deg(cmd_in.x_des);//Use xdes instead of yw so we don't add in steady state error
+          //stat.debug=yw;
           
         }
         else
           cmd.x_des=cmd_in.x_des;
-        
+          
         cmd.incr_trigger=cmd_in.incr_trigger;
         cmd.i_feedforward=cmd_in.i_feedforward;
         cmd.stiffness=cmd_in.stiffness;
@@ -722,7 +862,9 @@ void stepHelloController()
               break; 
           };
         }
+   
 
+          
       //Handle on-the-fly updates of velocity and accel commands  
       if (cmd.mode==MODE_VEL_TRAJ)
         vg.setMaxAcceleration(abs(rad_to_deg(cmd_in.a_des)));
@@ -745,15 +887,21 @@ void stepHelloController()
       }
      if (cmd.mode==MODE_VEL_TRAJ)
         vg.setMaxAcceleration(abs(rad_to_deg(cmd.a_des)));
+      
       dirty_cmd=0;
+      vel_watchdog=TC4_LOOP_RATE;//1s
+      sync_irq_cnt_last=sync_manager.sync_irq_cnt;
       }
-    }
+    } //dirty_cmd
 
-    
-    if (sync_manager.motor_sync_triggered)
-      trajectory_manager.waiting_on_sync=false;
-    
-    sync_manager.motor_sync_triggered=false;
+    if (cmd.mode==MODE_VEL_TRAJ || cmd.mode==MODE_VEL_PID)
+      vel_watchdog=max(0,vel_watchdog-1);
+    else
+      vel_watchdog=TC4_LOOP_RATE;
+
+
+   // sync_manager.motor_sync_triggered=false;
+
 
   if(cmd.mode!=MODE_SAFETY)
   {    
@@ -925,7 +1073,7 @@ void stepHelloController()
             u = (gains.pKp * e) + ITerm + DTerm;
             u=u*stiffness_target+current_to_effort(cmd.i_feedforward);
             diag_near_pos_setpoint=abs((x_des_incr -yw))<gains.pos_near_setpoint_d;
-            stat.debug=abs((x_des_incr -yw));
+            //stat.debug=abs((x_des_incr -yw));
             diag_near_vel_setpoint=0;
             diag_is_mg_accelerating=mg.isAccelerating();
             diag_is_mg_moving=mg.isMoving();
@@ -954,7 +1102,7 @@ void stepHelloController()
             u = (gains.pKp * e) + ITerm + DTerm;
             u=u*stiffness_target+current_to_effort(cmd.i_feedforward);
             diag_near_pos_setpoint=abs((rad_to_deg(cmd.x_des) -yw))<gains.pos_near_setpoint_d;
-            stat.debug=abs((rad_to_deg(cmd.x_des) -yw));
+            //stat.debug=abs((rad_to_deg(cmd.x_des) -yw));
             diag_near_vel_setpoint=0;
             diag_is_mg_accelerating=mg.isAccelerating();
             diag_is_mg_moving=mg.isMoving();
@@ -1098,7 +1246,9 @@ void stepHelloController()
   trg.data=0; //Clear triggers
   first_filter=false;
 
-    
+update_status();
+update_trace();
+ ctrl_cycle_cnt++;
 }
 
 ///////////////////////// Commutation Loop ///////////////////////////
@@ -1201,4 +1351,45 @@ void enableMGInterrupts() {   //enables the controller interrupt ("closed loop m
 void disableMGInterrupts() {  //disables the controller interrupt ("closed loop mode")
   TC4->COUNT16.CTRLA.reg &= ~TC_CTRLA_ENABLE;   // Disable TC4
   WAIT_TC16_REGS_SYNC(TC4)                      // wait for sync
+}
+
+/////////////////////// Watchdog //////////////////////////////////////
+// reference https://forum.arduino.cc/t/wdt-watchdog-timer-code/353610
+
+void WDTsync() {
+  while (WDT->STATUS.bit.SYNCBUSY == 1); //Just wait till WDT is free
+}
+
+void resetWDT() {
+  // reset the WDT watchdog timer.
+  // this must be called before the WDT resets the system
+  if(WDT->CTRL.bit.ENABLE!=1){
+    setupWDT(WDT_TIMEOUT_PERIOD);
+  }
+  WDT->CLEAR.reg= 0xA5; // reset the WDT
+  WDTsync(); 
+}
+
+void systemReset() {
+  // use the WDT watchdog timer to force a system reset.
+  // WDT MUST be running for this to work
+  WDT->CLEAR.reg= 0x00; // system reset via WDT
+  WDTsync(); 
+}
+
+void setupWDT( uint8_t period) {
+  // initialize the WDT watchdog timer
+
+  WDT->CTRL.reg = 0; // disable watchdog
+  WDTsync(); // sync is required
+
+  WDT->CONFIG.reg = min(period,11); // see Table 17-5 Timeout Period (valid values 0-11) (ms)
+
+  WDT->CTRL.reg = WDT_CTRL_ENABLE; //enable watchdog
+  WDTsync(); 
+}
+
+void disableWDT(){
+  WDT->CTRL.reg = 0; // disable watchdog
+  WDTsync(); // sync is required
 }

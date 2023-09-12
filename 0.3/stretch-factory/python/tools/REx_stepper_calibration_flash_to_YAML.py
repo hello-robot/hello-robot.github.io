@@ -14,6 +14,7 @@ motor = stepper.Stepper('/dev/'+args.stepper_name[0])
 if not motor.startup():
     exit(1)
 
+print('Reading calibration data from stepper...')
 data = motor.read_encoder_calibration_from_flash()
 print('Read data of len',len(data))
 print('Writing calibration data to YAML...')

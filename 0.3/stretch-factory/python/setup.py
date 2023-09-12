@@ -11,7 +11,7 @@ stretch_scripts=[f for f in ex_scripts if isfile(f)]
 
 setuptools.setup(
     name="hello_robot_stretch_factory",
-    version="0.3.9",
+    version="0.4.10",
     author="Hello Robot Inc.",
     author_email="support@hello-robot.com",
     description="Stretch Factory Tools",
@@ -25,5 +25,7 @@ setuptools.setup(
         "Operating System :: OS Independent",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)"
     ],
-    install_requires=['future', 'pyserial','pyusb','gitpython','hello-robot-stretch-body>=0.4.8','tabulate']
+
+    install_requires=['future', 'pyserial','pyusb','gitpython','hello-robot-stretch-body>=0.4.26','tabulate']
+
 )

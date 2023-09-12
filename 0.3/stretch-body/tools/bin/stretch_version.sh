@@ -26,33 +26,33 @@ git log -1
 echo
 echo "# -----------------------------------------------"
 echo
-echo "# python -m pip list | grep hello"
-python -m pip list | grep hello
+echo "# pip list | grep hello"
+pip list | grep hello
 echo
 echo "# -----------------------------------------------"
 echo
-echo "# python -m pip list | grep realsense"
-python -m pip list | grep realsense
+echo "# pip list | grep realsense"
+pip list | grep realsense
 echo
 echo "# -----------------------------------------------"
 echo
-echo "# python -m pip list | grep opencv"
-python -m pip list | grep opencv
+echo "# pip list | grep opencv"
+pip list | grep opencv
 echo
 echo "# -----------------------------------------------"
 echo
-echo "# python3 -m pip list | grep hello"
-python3 -m pip list | grep hello
+echo "# pip list | grep hello"
+pip list | grep hello
 echo
 echo "# -----------------------------------------------"
 echo
-echo "# python3 -m pip list | grep realsense"
-python3 -m pip list | grep realsense
+echo "# pip list | grep realsense"
+pip list | grep realsense
 echo
 echo "# -----------------------------------------------"
 echo
-echo "# python3 -m pip list | grep opencv"
-python3 -m pip list | grep opencv
+echo "# pip list | grep opencv"
+pip list | grep opencv
 echo
 echo "# -----------------------------------------------"
 echo

@@ -6,6 +6,7 @@ import cv2
 import numpy as np
 import math
 import ctypes
+import click
 
 from rclpy.node import Node
 from rclpy.duration import Duration
@@ -24,8 +25,9 @@ from geometry_msgs.msg import Point
 
 from cv_bridge import CvBridge, CvBridgeError
 
-from tf2_ros.static_transform_broadcaster import StaticTransformBroadcaster
+from tf2_ros.transform_broadcaster import TransformBroadcaster
 from tf_transformations import quaternion_from_matrix
+from hello_helpers.hello_misc import compare_versions
 
 import struct
 import cv2.aruco as aruco
@@ -530,8 +532,8 @@ class ArucoMarkerCollection:
         self.show_debug_images = show_debug_images
         
         self.marker_info = marker_info
-        self.aruco_dict = aruco.Dictionary_get(aruco.DICT_6X6_250)
-        self.aruco_detection_parameters =  aruco.DetectorParameters_create()
+        self.aruco_dict = aruco.getPredefinedDictionary(aruco.DICT_6X6_250)
+        self.aruco_detection_parameters =  aruco.DetectorParameters()
         # Apparently available in OpenCV 3.4.1, but not OpenCV 3.2.0.
         self.aruco_detection_parameters.cornerRefinementMethod = aruco.CORNER_REFINE_SUBPIX
         self.aruco_detection_parameters.cornerRefinementWinSize = 2
@@ -659,7 +661,7 @@ class DetectArucoNode(Node):
         self.wrist_top_marker_pub = self.create_publisher(Marker, '/aruco/wrist_top', 1)
         self.wrist_inside_marker_pub = self.create_publisher(Marker, '/aruco/wrist_inside', 1)
 
-        self.tf_broadcaster = StaticTransformBroadcaster(self)
+        self.tf_broadcaster = TransformBroadcaster(self)
 
     def image_callback(self, ros_rgb_image, ros_depth_image, rgb_camera_info):
         try:
@@ -797,7 +799,11 @@ class DetectArucoNode(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-
+    if compare_versions(cv2.__version__,'4.7') == -1:
+        txt = f"[ERROR] Found unsupported cv2 version({cv2.__version__}), Requires opencv-contrib-python>=4.7.0 " \
+              f"\n\t\t\tShutting down node detect_aruco_markers"
+        print(click.style(txt,fg='red'))
+        sys.exit()
     node = DetectArucoNode()
 
     logger = rclpy.logging.get_logger('logger')

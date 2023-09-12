@@ -15,3 +15,7 @@ repositories:
     type: git
     url: https://github.com/hello-binit/respeaker_ros/
     version: patch-1
+  stretch_tutorials:
+    type: git
+    url: https://github.com/hello-robot/stretch_tutorials.git
+    version: noetic

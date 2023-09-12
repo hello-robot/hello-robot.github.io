@@ -101,7 +101,6 @@ nav:
     - Basics:
         - Introduction: ./stretch_body/tutorial_introduction.md
         - Command line Tools: ./stretch_body/tutorial_command_line_tools.md
-        - Stretch Body API: ./stretch_body/tutorial_stretch_body_api.md
         - Robot Motion: ./stretch_body/tutorial_robot_motion.md
         - Robot Sensors: ./stretch_body/tutorial_robot_sensors.md
     - Advanced:
@@ -130,7 +129,7 @@ nav:
       - FUNMAP: https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap
       - Gazebo Basics:  ./ros1/gazebo_basics.md
     - Other Examples:
-      - Teleoperate Stretch with a Node: ./ros1/example_1.md
+      - Mobile Base Velocity Control: ./ros1/example_1.md
       - Filter Laser Scans: ./ros1/example_2.md
       - Mobile Base Collision Avoidance: ./ros1/example_3.md
       - Give Stretch a Balloon: ./ros1/example_4.md
@@ -149,6 +148,8 @@ nav:
     - Basics:
       - Getting Started: ./ros2/getting_started.md
       # - Teleoperating Stretch: ./ros2/teleoperating_stretch.md
+      - Introduction to ROS 2: ./ros2/intro_to_ros2.md
+      - Introduction to HelloNode: ./ros2/intro_to_hellonode.md
       - Follow Joint Trajectory Commands: ./ros2/follow_joint_trajectory.md
       - Internal State of Stretch: ./ros2/internal_state_of_stretch.md
       - RViz Basics: ./ros2/rviz_basics.md
@@ -168,7 +169,7 @@ nav:
       # - Other Nav Stack Features: ./ros2/other_nav_features.md
       # - Gazebo Basics:  ./ros2/gazebo_basics.md
     - Other Examples:
-      - Teleoperate Stretch with a Node: ./ros2/example_1.md
+      - Mobile Base Velocity Control: ./ros2/example_1.md
       - Filter Laser Scans: ./ros2/example_2.md
       - Mobile Base Collision Avoidance: ./ros2/example_3.md
       - Give Stretch a Balloon: ./ros2/example_4.md
@@ -181,6 +182,7 @@ nav:
       - Obstacle Avoider: ./ros2/obstacle_avoider.md
       - Align to ArUco: ./ros2/align_to_aruco.md
       - Deep Perception: ./ros2/deep_perception.md
+      - Avoiding Race Conditions and Deadlocks: ./ros2/avoiding_deadlocks_race_conditions.md
       # - PointCloud Transformation: ./ros2/example_11.md
       # - ArUco Tag Locator: ./ros2/example_12.md
 

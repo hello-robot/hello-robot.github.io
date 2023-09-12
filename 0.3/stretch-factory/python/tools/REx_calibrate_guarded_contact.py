@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+import os
+
 from stretch_body.hello_utils import *
 import stretch_body.scope
 import argparse
@@ -22,9 +24,7 @@ if args.arm:
     import stretch_body.arm
     j=stretch_body.arm.Arm()
 
-if j.robot_params['robot']['model_name']=='RE1V0':
-    print('This is tool is not yet supported for robot model RE1V0')
-    exit(1)
+check_deprecated_contact_model_prismatic_joint(j, 'REx_calibrate_guarded_contacts.py', None, None, None, None)
 
 if not j.startup(threaded=False):
     exit(1)
@@ -34,6 +34,17 @@ if not j.motor.status['pos_calibrated']:
     print('Joint not calibrated. Exiting.')
     exit(1)
 
+if args.lift:
+    click.secho("The Arm and Wrist yaw will need to be first homed. Ensure workspace is collision free.",fg="yellow")
+    click.confirm("Proceed?")
+    os.system('stretch_arm_home.py')
+    os.system('stretch_wrist_yaw_home.py')
+
+if args.arm:
+    click.secho("The Lift and Wrist yaw will need to be first homed. Ensure workspace is collision free.",fg="yellow")
+    click.confirm("Proceed?")
+    os.system('stretch_lift_home.py')
+    os.system('stretch_wrist_yaw_home.py')
 
 if (j.name in j.user_params and 'contact_models' in j.user_params[j.name]) and ('effort_pct' in j.user_params[j.name]['contact_models']) \
         and ('contact_thresh_default' in j.user_params[j.name]['contact_models']['effort_pct']):

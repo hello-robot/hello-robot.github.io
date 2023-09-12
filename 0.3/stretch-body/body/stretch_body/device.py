@@ -5,13 +5,17 @@ import time
 import logging, logging.config
 import threading
 import sys
+import os
 
 class DeviceTimestamp:
     def __init__(self):
+        self.reset()
+
+    def reset(self):
         self.timestamp_last = None
         self.timestamp_base = 0
-        self.timestamp_first= None
-        self.ts_start=time.time()
+        self.timestamp_first = None
+        self.ts_start = time.time()
 
     def set(self, ts): #take a timestamp from a uC in uS and put in terms of system clock
         if self.timestamp_last is None:  # First time
@@ -26,6 +30,7 @@ class DeviceTimestamp:
 
 class Device:
     logging_params = RobotParams.get_params()[1]['logging']
+    os.system('mkdir -p '+hello_utils.get_stretch_directory("/log/stretch_body_logger")) #Some robots may not have this directory yet
     logging.config.dictConfig(logging_params)
     """
     Generic base class for all custom Stretch hardware
@@ -100,19 +105,19 @@ class Device:
     def write_device_params(self,device_name, params,fleet_dir=None):
         raise DeprecationWarning('This method has been deprecated since v0.3.0')
 
-    def write_configuration_param_to_YAML(self,param_name,value,fleet_dir=None):
+    def write_configuration_param_to_YAML(self,param_name,value,fleet_dir=None,force_creation=False):
         """
         Update the robot configuration YAML with a new value
         """
-        self._write_param_to_YAML(param_name,value,filename='stretch_configuration_params.yaml',fleet_dir=fleet_dir)
+        self._write_param_to_YAML(param_name,value,filename='stretch_configuration_params.yaml',fleet_dir=fleet_dir,force_creation=force_creation)
 
-    def write_user_param_to_YAML(self, param_name, value, fleet_dir=None):
+    def write_user_param_to_YAML(self, param_name, value, fleet_dir=None,force_creation=False):
         """
         Update the robot configuration YAML with a new value
         """
-        self._write_param_to_YAML(param_name, value, filename='stretch_user_params.yaml', fleet_dir=fleet_dir)
+        self._write_param_to_YAML(param_name, value, filename='stretch_user_params.yaml', fleet_dir=fleet_dir,force_creation=force_creation)
 
-    def _write_param_to_YAML(self,param_name,value,filename,fleet_dir=None):
+    def _write_param_to_YAML(self,param_name,value,filename,fleet_dir=None,force_creation=False):
         """
         Update the YAML with a new value
         The param_name has the form device.key, or for a nested dictionary, device.key1.key2...
@@ -128,7 +133,14 @@ class Device:
                 else:
                     d = d[param_key]
             else:
-                print('Improper param_name in _write_param_to_YAML. Not able to update %s' % param_name)
+                if force_creation:
+                    if param_key == param_keys[-1]:
+                        d[param_key] = value
+                    else:
+                        d[param_key] = {}
+                        d=d[param_key]
+                else:
+                    print('Improper param_name in _write_param_to_YAML. Not able to update %s' % param_name)
         hello_utils.write_fleet_yaml(filename, cp, fleet_dir=fleet_dir)
 
     # ########### Thread interface #############

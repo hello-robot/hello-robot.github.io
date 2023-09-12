@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import argparse
 import math
 import yaml
@@ -10,9 +10,6 @@ import warnings
 from hello_helpers.gripper_conversion import GripperConversion
 import stretch_body.robot
 import stretch_body.hello_utils as hu
-import argparse
-parser=argparse.ArgumentParser(description='Visualize robot URDF')
-args=parser.parse_args()
 
 hu.print_stretch_re_use()
 warnings.filterwarnings("ignore")

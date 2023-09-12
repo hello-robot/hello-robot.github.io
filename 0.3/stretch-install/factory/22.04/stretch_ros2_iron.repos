@@ -1,0 +1,30 @@
+repositories:
+  ros2_numpy:
+    type: git
+    url: https://github.com/hello-binit/ros2_numpy
+    version: iron
+  realsense-ros:
+    type: git
+    url: https://github.com/IntelRealSense/realsense-ros.git
+    version: ros2-development
+  stretch_ros2:
+    type: git
+    url: https://github.com/hello-robot/stretch_ros2.git
+    version: iron
+  sllidar_ros2:
+    type: git
+    url: https://github.com/Slamtec/sllidar_ros2.git
+    version: main
+  stretch_tutorials:
+    type: git
+    url: https://github.com/hello-robot/stretch_tutorials.git
+    version: iron
+  respeaker_ros2:
+    type: git
+    url: https://github.com/hello-chintan/respeaker_ros2.git
+    version: iron
+  audio_common:
+    type: git
+    url: https://github.com/hello-chintan/audio_common.git
+    version: iron
+ 

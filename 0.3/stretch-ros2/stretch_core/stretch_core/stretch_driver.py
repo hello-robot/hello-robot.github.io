@@ -13,6 +13,7 @@ from tf_transformations import quaternion_from_euler
 import rclpy
 from rclpy.duration import Duration
 from rclpy.executors import MultiThreadedExecutor
+from rclpy.callback_groups import MutuallyExclusiveCallbackGroup
 from rclpy.node import Node
 
 from geometry_msgs.msg import Twist
@@ -143,10 +144,25 @@ class StretchDriver(Node):
 
         if self.use_robotis_end_of_arm:
             # assign relevant wrist status to variables
-            wrist_status = robot_status['end_of_arm']['wrist_yaw']
-            wrist_rad = wrist_status['pos']
-            wrist_vel = wrist_status['vel']
-            wrist_effort = wrist_status['effort']
+            wrist_yaw_status = robot_status['end_of_arm']['wrist_yaw']
+            wrist_yaw_rad = wrist_yaw_status['pos']
+            wrist_yaw_vel = wrist_yaw_status['vel']
+            wrist_yaw_effort = wrist_yaw_status['effort']
+            
+            dex_wrist_attached = False
+            if 'wrist_pitch' in robot_status['end_of_arm']:
+                dex_wrist_attached = True
+            
+            if dex_wrist_attached:
+                wrist_pitch_status = robot_status['end_of_arm']['wrist_pitch']
+                wrist_pitch_rad = wrist_pitch_status['pos']
+                wrist_pitch_vel = wrist_pitch_status['vel']
+                wrist_pitch_effort = wrist_pitch_status['effort']
+
+                wrist_roll_status = robot_status['end_of_arm']['wrist_roll']
+                wrist_roll_rad = wrist_roll_status['pos']
+                wrist_roll_vel = wrist_roll_status['vel']
+                wrist_roll_effort = wrist_roll_status['effort']
 
             # assign relevant gripper status to variables
             gripper_status = robot_status['end_of_arm']['stretch_gripper']
@@ -202,6 +218,19 @@ class StretchDriver(Node):
             t.transform.rotation.z = q[2]
             t.transform.rotation.w = q[3]
             self.tf_broadcaster.sendTransform(t)
+
+            b = TransformStamped()
+            b.header.stamp = current_time
+            b.header.frame_id = self.base_frame_id
+            b.child_frame_id = "base_footprint"
+            b.transform.translation.x = 0.0
+            b.transform.translation.y = 0.0
+            b.transform.translation.z = 0.0
+            b.transform.rotation.x = 0.0
+            b.transform.rotation.y = 0.0
+            b.transform.rotation.z = 0.0
+            b.transform.rotation.w = 1.0
+            self.tf_broadcaster.sendTransform(b)
 
         # publish odometry via the odom topic
         odom = Odometry()
@@ -284,12 +313,25 @@ class StretchDriver(Node):
             efforts.append(head_tilt_effort)
 
         if self.use_robotis_end_of_arm:
-            end_of_arm_joint_names = ['joint_wrist_yaw', 'joint_gripper_finger_left', 'joint_gripper_finger_right']
+            if dex_wrist_attached:
+                end_of_arm_joint_names = ['joint_wrist_yaw', 'joint_wrist_pitch', 'joint_wrist_roll', 'joint_gripper_finger_left', 'joint_gripper_finger_right']
+            else:
+                end_of_arm_joint_names = ['joint_wrist_yaw', 'joint_gripper_finger_left', 'joint_gripper_finger_right']
+            
             joint_state.name.extend(end_of_arm_joint_names)
 
-            positions.append(wrist_rad)
-            velocities.append(wrist_vel)
-            efforts.append(wrist_effort)
+            positions.append(wrist_yaw_rad)
+            velocities.append(wrist_yaw_vel)
+            efforts.append(wrist_yaw_effort)
+
+            if dex_wrist_attached:
+                positions.append(wrist_pitch_rad)
+                velocities.append(wrist_pitch_vel)
+                efforts.append(wrist_pitch_effort)
+
+                positions.append(wrist_roll_rad)
+                velocities.append(wrist_roll_vel)
+                efforts.append(wrist_roll_effort)
 
             positions.append(gripper_finger_rad)
             velocities.append(gripper_finger_vel)
@@ -382,8 +424,8 @@ class StretchDriver(Node):
             return True, 'Now in position mode.'
         return self.change_mode('position', code_to_run)
 
-    def turn_on_manipulation_mode(self):
-        # Manipulation mode is able to execute plans from
+    def turn_on_trajectory_mode(self):
+        # Trajectory mode is able to execute plans from
         # high level planners like MoveIt2. These planners
         # send whole robot waypoint trajectories to the
         # joint trajectory action server, and the underlying
@@ -398,8 +440,8 @@ class StretchDriver(Node):
                 return False, str(e)
             self.robot.base.first_step = True
             self.robot.base.pull_status()
-            return True, 'Now in manipulation mode.'
-        return self.change_mode('manipulation', code_to_run)
+            return True, 'Now in trajectory mode.'
+        return self.change_mode('trajectory', code_to_run)
 
     # SERVICE CALLBACKS ##############
 
@@ -443,8 +485,8 @@ class StretchDriver(Node):
         response.message = message
         return response
 
-    def manipulation_mode_service_callback(self, request, response):
-        success, message = self.turn_on_manipulation_mode()
+    def trajectory_mode_service_callback(self, request, response):
+        success, message = self.turn_on_trajectory_mode()
         response.success = success
         response.message = message
         return response
@@ -495,8 +537,8 @@ class StretchDriver(Node):
             self.turn_on_position_mode()
         elif mode == "navigation":
             self.turn_on_navigation_mode()
-        elif mode == "manipulation":
-            self.turn_on_manipulation_mode()
+        elif mode == "trajectory":
+            self.turn_on_trajectory_mode()
 
         self.declare_parameter('broadcast_odom_tf', False)
         self.broadcast_odom_tf = self.get_parameter('broadcast_odom_tf').value
@@ -572,7 +614,8 @@ class StretchDriver(Node):
         self.magnetometer_mobile_base_pub = self.create_publisher(MagneticField, 'magnetometer_mobile_base', 1)
         self.imu_wrist_pub = self.create_publisher(Imu, 'imu_wrist', 1)
 
-        self.create_subscription(Twist, "cmd_vel", self.set_mobile_base_velocity_callback, 1)
+        self.group = MutuallyExclusiveCallbackGroup()
+        self.create_subscription(Twist, "cmd_vel", self.set_mobile_base_velocity_callback, 1, callback_group=self.group)
 
         self.declare_parameter('rate', 15.0)
         self.joint_state_rate = self.get_parameter('rate').value
@@ -598,7 +641,6 @@ class StretchDriver(Node):
         # start action server for joint trajectories
         self.declare_parameter('action_server_rate', 15.0)
         self.action_server_rate = self.get_parameter('action_server_rate').value
-        self.joint_trajectory_action = JointTrajectoryAction(self, self.action_server_rate)
 
         self.diagnostics = StretchDiagnostics(self, self.robot)
 
@@ -610,9 +652,9 @@ class StretchDriver(Node):
                                                                    '/switch_to_position_mode',
                                                                    self.position_mode_service_callback)
 
-        self.switch_to_manipulation_mode_service = self.create_service(Trigger,
-                                                                       '/switch_to_manipulation_mode',
-                                                                       self.manipulation_mode_service_callback)
+        self.switch_to_trajectory_mode_service = self.create_service(Trigger,
+                                                                       '/switch_to_trajectory_mode',
+                                                                       self.trajectory_mode_service_callback)
 
         self.stop_the_robot_service = self.create_service(Trigger,
                                                           '/stop_the_robot',
@@ -625,7 +667,7 @@ class StretchDriver(Node):
         self.runstop_service = self.create_service(SetBool,
                                                    '/runstop',
                                                    self.runstop_service_callback)
-
+        
         # start loop to command the mobile base velocity, publish
         # odometry, and publish joint states
         timer_period = 1.0 / self.joint_state_rate
@@ -637,9 +679,15 @@ def main():
         rclpy.init()
         executor = MultiThreadedExecutor(num_threads=2)
         node = StretchDriver()
+        joint_trajectory_action = JointTrajectoryAction(node, node.action_server_rate)
         executor.add_node(node)
-        executor.add_node(node.joint_trajectory_action)
-        executor.spin()
+        executor.add_node(joint_trajectory_action)
+        try:
+            executor.spin()
+        finally:
+            executor.shutdown()
+            joint_trajectory_action.destroy_node()
+            node.destroy_node()
     except (KeyboardInterrupt, ThreadServiceExit):
         node.robot.stop()
 

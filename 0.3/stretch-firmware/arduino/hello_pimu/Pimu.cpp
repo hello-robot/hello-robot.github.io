@@ -22,6 +22,7 @@
 #include "SyncManager.h"
 #include "RunstopManager.h"
 #include "LightBarManager.h"
+#include "TraceManager.h"
 
 #define V_TO_RAW(v) v*1024/20.0 //per circuit
 #define RAW_TO_V(r) (float)r*0.01953125 //20.0/1024.0
@@ -51,16 +52,24 @@ SyncManager sync_manager(&runstop_manager);
 LightBarManager light_bar_manager;
 
 
+
+
+
 //////////////////////////////////////
 Pimu_Config cfg_in, cfg;
 Pimu_Trigger trg_in, trg;
 Pimu_Status stat, stat_out;
+Pimu_Status_Aux stat_aux;
+Pimu_Motor_Sync_Reply sync_reply;
 Pimu_Board_Info board_info;
-
+LoadTest load_test;
 
 void setupTimer4_and_5();
 void toggle_led(int rate_ms);
 uint32_t cycle_cnt=0;
+
+void resetWDT();
+void setupWDT(uint8_t period);
 
 
 /////////////////////////////////////////////////////////////////////////
@@ -76,6 +85,7 @@ float rad_to_deg(float x)
 #define TC5_TICKS_PER_CYCLE (int)( round(48000000 / 16 / FS)) //30,000 at 100hz, 16:1 prescalar TC5 is 32bit timer
 #define US_PER_TC5_CYCLE 1000000/FS //10000 at 100Hz
 #define US_PER_TC5_TICK 1000000.0*16/48000000 //0.33us resolution
+#define WDT_TIMEOUT_PERIOD 11 //ms range 0-11ms
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 void handle_trigger();
@@ -154,10 +164,12 @@ void setupPimu() {
   memset(&trg_in, 0, sizeof(Pimu_Trigger));
   memset(&trg, 0, sizeof(Pimu_Trigger));
   memset(&stat, 0, sizeof(Pimu_Status));
+  memset(&stat_aux, 0, sizeof(Pimu_Status_Aux));
   sprintf(board_info.board_variant, "Pimu.%d", BOARD_VARIANT);
   memcpy(&(board_info.firmware_version),FIRMWARE_VERSION,min(20,strlen(FIRMWARE_VERSION)));
   analog_manager.setupADC();
   setupTimer4_and_5();
+  setupWDT(WDT_TIMEOUT_PERIOD);
   time_manager.clock_zero();
   
 }
@@ -200,6 +212,7 @@ void stepPimuController()
 
 void handleNewRPC()
 {
+  int ll;
   switch(rpc_in[0])
   {
     case RPC_SET_PIMU_CONFIG: 
@@ -224,7 +237,14 @@ void handleNewRPC()
           rpc_out[0]=RPC_REPLY_PIMU_STATUS;
           memcpy(rpc_out + 1, (uint8_t *) (&stat_out), sizeof(Pimu_Status)); //Collect the status data
           num_byte_rpc_out=sizeof(Pimu_Status)+1;
-          break; 
+          break;
+
+     case RPC_GET_PIMU_STATUS_AUX:
+          stat_aux.foo=sync_manager.motor_sync_cnt;
+          rpc_out[0]=RPC_REPLY_PIMU_STATUS_AUX;
+          memcpy(rpc_out + 1, (uint8_t *) (&stat_aux), sizeof(Pimu_Status_Aux)); //Collect the status_aux data
+          num_byte_rpc_out=sizeof(Pimu_Status_Aux)+1;
+          break;
      case RPC_GET_PIMU_BOARD_INFO:
           rpc_out[0]=RPC_REPLY_PIMU_BOARD_INFO;
           memcpy(rpc_out + 1, (uint8_t *) (&board_info), sizeof(Pimu_Board_Info)); //Collect the status data
@@ -232,13 +252,32 @@ void handleNewRPC()
           state_boot_detected=true;
           break; 
      case RPC_SET_MOTOR_SYNC:
-          rpc_out[0]=RPC_REPLY_MOTOR_SYNC;
-          num_byte_rpc_out=1;
           noInterrupts();
           sync_manager.trigger_motor_sync();
-          sync_manager.step();
+          rpc_out[0]=RPC_REPLY_MOTOR_SYNC;
+          sync_reply.motor_sync_cnt=sync_manager.motor_sync_cnt;
+           memcpy(rpc_out + 1, (uint8_t *) (&sync_reply), sizeof(Pimu_Motor_Sync_Reply));
+          num_byte_rpc_out=sizeof(Pimu_Motor_Sync_Reply)+1;
           interrupts();
-          break; 
+
+          break;
+   case RPC_READ_TRACE: 
+          num_byte_rpc_out=trace_manager.rpc_read(rpc_out);
+          break;
+    case RPC_LOAD_TEST_PUSH:
+          memcpy(&load_test, rpc_in+1, sizeof(LoadTest)); //copy in the command
+          rpc_out[0]=RPC_REPLY_LOAD_TEST_PUSH;
+          num_byte_rpc_out=1;
+          break;
+    case RPC_LOAD_TEST_PULL:
+          ll=load_test.data[0];
+          for(int i=0;i<1023;i++)
+            load_test.data[i]=load_test.data[i+1];
+          load_test.data[1023]=ll;
+          rpc_out[0]=RPC_REPLY_LOAD_TEST_PULL;
+          memcpy(rpc_out + 1, (uint8_t *) (&load_test), sizeof(LoadTest));
+          num_byte_rpc_out=sizeof(LoadTest)+1;
+          break;
    default:
         break;
   };
@@ -247,6 +286,7 @@ void handleNewRPC()
 void stepPimuRPC()
 {
   stepTransport(handleNewRPC);
+  resetWDT();
 }
 
 
@@ -259,6 +299,14 @@ bool pulse_on=0;
 ////////////////////////////
 void handle_trigger()
 {
+    if (trg.data & TRIGGER_ENABLE_TRACE)
+    {
+      trace_manager.enable_trace();
+    }
+    if (trg.data & TRIGGER_DISABLE_TRACE)
+    {
+      trace_manager.disable_trace();
+    }
     if (trg.data & TRIGGER_LIGHTBAR_TEST)
     {
       light_bar_manager.start_test();
@@ -275,13 +323,11 @@ void handle_trigger()
     {
           runstop_manager.deactivate_runstop();
           runstop_manager.step(&cfg);
-          sync_manager.step();
     }
     if (trg.data & TRIGGER_RUNSTOP_ON)
     {
           runstop_manager.activate_runstop();
           runstop_manager.step(&cfg);
-          sync_manager.step();
     }
     if (trg.data & TRIGGER_CLIFF_EVENT_RESET)
     {
@@ -478,8 +524,62 @@ void update_status()
   stat.state= state_charger_connected ? stat.state|STATE_CHARGER_CONNECTED : stat.state;
   stat.state= state_boot_detected ? stat.state|STATE_BOOT_DETECTED : stat.state;
   stat.state= state_over_tilt_alert ? stat.state|STATE_OVER_TILT_ALERT : stat.state;
-  
+  stat.state = trace_manager.trace_on ?     stat.state | STATE_IS_TRACE_ON: stat.state;
   memcpy((uint8_t *) (&stat_out),(uint8_t *) (&stat),sizeof(Pimu_Status));
+
+  if(TRACE_TYPE==TRACE_TYPE_DEBUG)
+  {
+    //Example of setting trace debug data
+    trace_manager.debug_msg.f_3=stat.voltage;
+    trace_manager.update_trace_debug();
+  }
+
+  if(TRACE_TYPE==TRACE_TYPE_PRINT)
+  {
+  //Example of setting trace print data
+   sprintf(trace_manager.print_msg.msg, "Voltage: %d\n",(int)stat.voltage);
+   trace_manager.print_msg.x=stat.voltage;
+   trace_manager.print_msg.timestamp=stat.timestamp;
+   trace_manager.update_trace_print();
+  }
+
+  if(TRACE_TYPE==TRACE_TYPE_STATUS)
+  {
+    trace_manager.update_trace_status(&stat_out);
+  }
+}
+
+/////////////////////// Watchdog //////////////////////////////////////
+// reference https://forum.arduino.cc/t/wdt-watchdog-timer-code/353610
+
+void WDTsync() {
+  while (WDT->STATUS.bit.SYNCBUSY == 1); //Just wait till WDT is free
+}
+
+void resetWDT() {
+  // reset the WDT watchdog timer.
+  // this must be called before the WDT resets the system
+  WDT->CLEAR.reg= 0xA5; // reset the WDT
+  WDTsync(); 
+}
+
+void systemReset() {
+  // use the WDT watchdog timer to force a system reset.
+  // WDT MUST be running for this to work
+  WDT->CLEAR.reg= 0x00; // system reset via WDT
+  WDTsync(); 
+}
+
+void setupWDT( uint8_t period) {
+  // initialize the WDT watchdog timer
+
+  WDT->CTRL.reg = 0; // disable watchdog
+  WDTsync(); // sync is required
+
+  WDT->CONFIG.reg = min(period,11); // see Table 17-5 Timeout Period (valid values 0-11) (ms)
+
+  WDT->CTRL.reg = WDT_CTRL_ENABLE; //enable watchdog
+  WDTsync(); 
 }
 
 ////////////////////// Timer5 /////////////////////////////////////////

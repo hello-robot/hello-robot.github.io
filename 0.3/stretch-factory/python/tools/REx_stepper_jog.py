@@ -3,7 +3,7 @@ import sys
 import stretch_body.stepper as stepper
 import stretch_body.hello_utils as hu
 import argparse
-
+import time
 hu.print_stretch_re_use()
 
 parser=argparse.ArgumentParser(description='Menu interface to a Stepper controller')
@@ -41,6 +41,7 @@ def menu_top():
     print('z <val>: mark position')
     print('g: set gain')
     print('r: reset board')
+    print('l: load test')
 
 def menu_gains():
     print('-----------')
@@ -126,6 +127,14 @@ def step_interaction():
         if x[0]=='g':
             menu_gains()
             set_gains()
+        if x[0]=='l':
+            ts = time.time()
+            for i in range(100):
+                print('---------- Load Test %d ----------' % i)
+                motor.push_load_test()
+                motor.pull_load_test()
+            dt = time.time() - ts
+            print('Average roundtrip time for 1024 bytes (ms): %f' % (dt * 1000 / 100))
         if x[0]=='r':
             print('Resetting Board. Restart process...')
             motor.board_reset()

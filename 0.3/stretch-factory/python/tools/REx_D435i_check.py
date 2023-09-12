@@ -112,12 +112,12 @@ def check_install_v4l2():
     global check_log
     out = Popen("which v4l2-ctl", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE,close_fds=True).stdout.read()
     if len(out):
-        out = Popen("v4l2-ctl --all | grep -A 3 -i 'uvcvideo'", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE,close_fds=True).stdout.read()
+        out = Popen("v4l2-ctl --all | grep -A 3 -i 'uvcvideo'", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE,close_fds=True).stdout.read().decode("utf-8")
         check_log.append(out)
         print(out)
     else:
         print('"v4l2-utils" tool is required to be installed for logging USB video driver info.')
-        x = raw_input('Enter "y" to proceed with Installation of "v4l2-utils".\n')
+        x = input('Enter "y" to proceed with Installation of "v4l2-utils".\n')
         if x=='y' or x=='Y':
             print('Installing v4l2-utils tool.....')
             script = 'sudo apt-get install -y v4l-utils'
@@ -125,7 +125,7 @@ def check_install_v4l2():
             check = Popen("which v4l2-ctl", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE,close_fds=True).stdout.read()
             if check:
                 print(Fore.GREEN +'[Pass] "v4l2-utils" sucessfully installed'+Style.RESET_ALL+'\n\n')
-                out = Popen("v4l2-ctl --all | grep -A 3 -i 'uvcvideo'", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE,close_fds=True).stdout.read()
+                out = Popen("v4l2-ctl --all | grep -A 3 -i 'uvcvideo'", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE,close_fds=True).stdout.read().decode("utf-8")
                 check_log.append(out)
                 print(out)
             else:
@@ -143,7 +143,7 @@ def get_usb_busID():
     print('Starting D435i Check')
     print('====================')
     print('Searching for Realsense D435i in USB Bus...')
-    out = Popen("usb-devices | grep -B 5 -i 'RealSense' | grep -i 'Bus'", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE, close_fds=True).stdout.read()
+    out = Popen("usb-devices | grep -B 5 -i 'RealSense' | grep -i 'Bus'", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE, close_fds=True).stdout.read().decode("utf-8")
     if(len(out)):
         out_list = out.split(' ')
         bus_no = None
@@ -171,7 +171,7 @@ def get_usb_busID():
 
 def check_usb():
     global check_log
-    out = Popen("rs-enumerate-devices| grep Usb | grep 3.2", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE, close_fds=True).stdout.read()
+    out = Popen("rs-enumerate-devices| grep Usb | grep 3.2", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE, close_fds=True).stdout.read().decode("utf-8")
     if len(out):
         print(Fore.GREEN +'[Pass] Confirmed USB 3.2 connection to device'+Style.RESET_ALL)
         check_log.append('[Pass] Confirmed USB 3.2 connection to device')
@@ -181,15 +181,15 @@ def check_usb():
 
 def get_driver_versions():
     global check_log
-    fw_details = Popen("rs-fw-update -l | grep -i 'firmware'", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE, close_fds=True).stdout.read()
+    fw_details = Popen("rs-fw-update -l | grep -i 'firmware'", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE, close_fds=True).stdout.read().decode("utf-8")
     fw_details = fw_details.split(',')[3]
     fw_version = fw_details.split(' ')[-1]
     print('D435i Firmware version: %s'%(fw_version))
-    nuc_bios_version = Popen("sudo dmidecode -s bios-version", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE, close_fds=True).stdout.read()
-    system_version = Popen("sudo dmidecode -s system-version", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE, close_fds=True).stdout.read()
-    baseboard_version = Popen("sudo dmidecode -s baseboard-version", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE, close_fds=True).stdout.read()
-    processor_version = Popen("sudo dmidecode -s processor-version", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE, close_fds=True).stdout.read()
-    kernel_version = Popen("uname -r", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE, close_fds=True).stdout.read()
+    nuc_bios_version = Popen("sudo dmidecode -s bios-version", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE, close_fds=True).stdout.read().decode("utf-8")
+    system_version = Popen("sudo dmidecode -s system-version", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE, close_fds=True).stdout.read().decode("utf-8")
+    baseboard_version = Popen("sudo dmidecode -s baseboard-version", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE, close_fds=True).stdout.read().decode("utf-8")
+    processor_version = Popen("sudo dmidecode -s processor-version", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE, close_fds=True).stdout.read().decode("utf-8")
+    kernel_version = Popen("uname -r", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE, close_fds=True).stdout.read().decode("utf-8")
     check_install_v4l2()
     check_log.append('\nD435i Firmware version: %s\n'%(fw_version))
     check_log.append("Linux Kernel Version : %s"%(kernel_version))
@@ -200,7 +200,7 @@ def get_driver_versions():
     
 def check_ros():
     global check_log
-    ros_out = Popen("rostopic list", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE, close_fds=True,stderr=PIPE).stdout.read()
+    ros_out = Popen("rostopic list", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE, close_fds=True,stderr=PIPE).stdout.read().decode("utf-8")
     if ros_out:
         print(Fore.YELLOW+'[Warning] roscore is running in background. Recommended to stop roscore.'+Style.RESET_ALL)
         check_log.append('\nroscore is running in background')
@@ -289,7 +289,7 @@ def check_dmesg_thread():
     global thread_stop, check_log, pan_tilt_pos, dmesg_log
     print('\nMonitoring the DMESG Buffer for issues while collecting camera stream.\n\n')
     while thread_stop==False:
-        out = hdu.exec_process(['sudo', 'dmesg', '-c'], True).split('\n')
+        out = hdu.exec_process(['sudo', 'dmesg', '-c'], True).decode("utf-8").split('\n')
         filtered_out = []
         filters = ['uvc','usb','input','hid']
         for o in out:
@@ -364,7 +364,7 @@ def check_data_rate(target,robot=None):
         scan_head_thread.start()
 
     cmd='rs-data-collect -c /tmp/d435i_confg.cfg -f /tmp/d435i_log.csv -t %d -m %d'%(target['duration'],target['nframe'])
-    out = Popen(cmd, shell=True, bufsize=64, stdin=PIPE, stdout=PIPE,close_fds=True).stdout.read()    
+    out = Popen(cmd, shell=True, bufsize=64, stdin=PIPE, stdout=PIPE,close_fds=True).stdout.read().decode("utf-8")
     usbtop_proc.kill()
 
     ff=open('/tmp/d435i_log.csv') 
@@ -529,12 +529,12 @@ def check_install_usbtop():
     """
     Function to be executed at start. Checks for usbtop and if not prompts the user for installation.
     """
-    out = Popen("which usbtop", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE,close_fds=True).stdout.read()
+    out = Popen("which usbtop", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE,close_fds=True).stdout.read().decode("utf-8")
     if len(out):
         return None
     else:
         print('"usbtop" tool is required to be installed for running this test first time.')
-        x = raw_input('Enter "y" to proceed with Installation of "usbtop".\n')
+        x = input('Enter "y" to proceed with Installation of "usbtop".\n')
 
         if x=='y' or x=='Y':
             script = 'cd ~/'
@@ -547,7 +547,7 @@ def check_install_usbtop():
             script = script+';sudo make install'
             print('Installing usbtop tool.....')
             os.system(script)
-            check = Popen("which usbtop", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE,close_fds=True).stdout.read()
+            check = Popen("which usbtop", shell=True, bufsize=64, stdin=PIPE, stdout=PIPE,close_fds=True).stdout.read().decode("utf-8")
             if check:
                 print(Fore.GREEN +'[Pass] "usbtop" sucessfully installed'+Style.RESET_ALL+'\n\n')
             else:

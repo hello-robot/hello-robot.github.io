@@ -19,7 +19,7 @@ setuptools.setup(
         "Operating System :: OS Independent",
         "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)"
     ],
-    install_requires=['numpy', 'scipy', 'matplotlib', 'ipython', 'pandas', 'sympy', 'nose',
+    install_requires=['numpy==1.23.2', 'scipy', 'matplotlib==3.5.0', 'ipython', 'pandas', 'sympy', 'nose',
                       'inputs', 'drawnow', 'rplidar-roboticia', 'snakeviz', 'pyusb', 'SpeechRecognition', 'pixel-ring',
                       'click', 'cma', 'colorama',
                       'scikit-image', 'open3d', 'pyrealsense2', 'pathlib', 'psutil', 'gitpython', 'urdfpy',
@@ -30,7 +30,7 @@ setuptools.setup(
                       'dynamixel-sdk>=3.1; python_version >= "3.0.0"', # py2 gets dynamixel-sdk through ROS
                       'pyyaml>=5.1', # required for yaml.FullLoader
                       'hello-robot-stretch-tool-share>=0.2.6', # defines other Stretch end effectors
-                      'hello-robot-stretch-factory>=0.3.5','hello-robot-stretch-body-tools>=0.4.2'
-
+                      'hello-robot-stretch-factory>=0.3.5','hello-robot-stretch-body-tools>=0.4.2',
+                      'aioserial'
                       ]
 )

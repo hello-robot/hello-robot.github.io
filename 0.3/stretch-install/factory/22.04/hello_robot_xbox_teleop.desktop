@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=hello_robot_xbox_teleop
+Exec=/usr/bin/hello_robot_xbox_teleop.sh
+Hidden=false
+X-GNOME-Autostart-enabled=false

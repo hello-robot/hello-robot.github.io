@@ -21,7 +21,16 @@
 // Protocol 1: Add support for long timestamps
 // Version 0.2.0: Add support for RE2 (board variants)
 // Version 0.2.2: Initial production release RE2 Mitski
-#define FIRMWARE_VERSION "Wacc.v0.2.2p1"
+// Version 0.2.3: Add trace function
+// Version 0.2.4: Reorg timing to fix IRQ overruns
+// Version 0.3.0: Move to updated trace and protocol P2
+// Version 0.3.1: Added Watchdog timer (WDT) reset feature
+// Version 0.4.0: Move to fast transport V1 and P3
+// Version 0.5.0: Move to support for Transport V1
+// Version 0.5.1: Fix trace rollover issue
+
+#define FIRMWARE_VERSION "Wacc.v0.5.1p3"
+
 
 
 /////////////////////////////////////////////////////////////////
@@ -33,8 +42,21 @@
 #define RPC_REPLY_WACC_COMMAND 6
 #define RPC_GET_WACC_BOARD_INFO 7
 #define RPC_REPLY_WACC_BOARD_INFO 8
+#define RPC_READ_TRACE 9
+#define RPC_REPLY_READ_TRACE 10
+
+#define RPC_LOAD_TEST_PUSH 11
+#define RPC_REPLY_LOAD_TEST_PUSH 12
+#define RPC_LOAD_TEST_PULL 13
+#define RPC_REPLY_LOAD_TEST_PULL 14
+
 
 #define TRIGGER_BOARD_RESET  1
+#define TRIGGER_ENABLE_TRACE 2
+#define TRIGGER_DISABLE_TRACE 4
+
+#define STATE_IS_TRACE_ON 1        //Is trace recording
+
 
 /////////////////////////////////////////////////////////////////
 //From hello_wacc/variants.h
@@ -92,9 +114,16 @@ struct __attribute__ ((packed)) Wacc_Status{
   uint32_t debug;
 };
 
+
+/////////////////////////////////////////////////////////////////
+
 struct __attribute__ ((packed)) Wacc_Board_Info{
   char board_variant[20];
   char firmware_version[20];
+};
+
+struct __attribute__ ((packed)) LoadTest{
+  uint8_t data[1024];
 };
 
 /////////////////////////////////////////////////////////////////

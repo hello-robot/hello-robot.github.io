@@ -1,7 +1,12 @@
 #!/usr/bin/env python
 import argparse
-from stretch_factory.firmware_updater import *
+from stretch_factory.firmware_available import FirmwareAvailable
+from stretch_factory.firmware_recommended import FirmwareRecommended
+from stretch_factory.firmware_installed import FirmwareInstalled
+from stretch_factory.firmware_updater import FirmwareUpdater
 import os
+import click
+import stretch_factory.hello_device_utils as hdu
 
 parser = argparse.ArgumentParser(description='Upload Stretch firmware to microcontrollers')
 
@@ -13,7 +18,9 @@ group.add_argument("--install", help="Install the recommended firmware", action=
 group.add_argument("--install_version", help="Install a specific firmware version", action="store_true")
 group.add_argument("--install_branch", help="Install the HEAD of a specific branch", action="store_true")
 group.add_argument("--install_path", help="Install the firmware on the provided path (eg ./stretch_firmware/arduino)", type=str)
+group.add_argument("--resume", help="Resume an install in progress", action="store_true")
 group.add_argument("--mgmt", help="Display overview on firmware management", action="store_true")
+parser.add_argument("--map", help="Print mapping from ttyACMx to Hello device", action="store_true")
 
 parser.add_argument("--pimu", help="Upload Pimu firmware", action="store_true")
 parser.add_argument("--wacc", help="Upload Wacc firmware", action="store_true")
@@ -92,41 +99,39 @@ if args.mgmt:
     print(mgmt)
     exit()
 
+if args.map:
+        mapping = hdu.get_hello_ttyACMx_mapping()
+        click.secho('------------------------------------------', fg="yellow", bold=True)
+        for k in mapping['hello']:
+            print('%s | %s' % (k, mapping['hello'][k]))
+        click.secho('------------------------------------------', fg="yellow", bold=True)
+        for k in mapping['ACMx']:
+            print('%s | %s' % (k, mapping['ACMx'][k]))
+        click.secho('------------------------------------------', fg="yellow", bold=True)
+        print('')
+        exit()
+
 if args.current:
-    c = InstalledFirmware(use_device)
+    c = FirmwareInstalled(use_device)
     c.pretty_print()
     exit()
 
 if args.recommended:
-    r = RecommendedFirmware(use_device)
+    r = FirmwareRecommended(use_device)
     r.pretty_print()
     r.print_recommended_args()
     exit()
 
 if args.available:
-    a = AvailableFirmware(use_device)
+    a = FirmwareAvailable(use_device)
     a.pretty_print()
     exit()
 
-if args.install or args.install_version or args.install_branch or args.install_path:
-    cwd=os.getcwd()
-    u = FirmwareUpdater(use_device)
-    if not u.startup():
-        exit()
-    if args.install:
-        u.fw_recommended.pretty_print()
-        print('')
-        print('')
-        u.do_update(no_prompts=args.no_prompts,verbose=args.verbose)
-    elif args.install_version:
-        u.do_update_to(verbose=args.verbose)
-    elif args.install_branch:
-        u.do_update_to_branch(verbose=args.verbose)
-    elif args.install_path:
-        if args.install_path[0]!='/':
-            u.do_update_to_path(cwd+'/'+args.install_path,verbose=args.verbose)
-        else:
-            u.do_update_to_path(args.install_path,verbose=args.verbose)
+
+if args.resume or args.install or args.install_version or args.install_branch or args.install_path:
+    u = FirmwareUpdater(use_device, args)
+    success = u.run()
+    exit(0 if success else 1)
 else:
     parser.print_help()
 

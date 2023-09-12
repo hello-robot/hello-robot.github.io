@@ -2,7 +2,7 @@
 
 source /etc/os-release
 factory_osdir="$VERSION_ID"
-if [[ ! $factory_osdir =~ ^(18.04|20.04)$ ]]; then
+if [[ ! $factory_osdir =~ ^(18.04|20.04|22.04)$ ]]; then
     echo "Could not identify OS. Please contact Hello Robot Support."
     exit 1
 fi
@@ -24,22 +24,34 @@ REx_dynamixel_set_baud.py /dev/hello-dynamixel-wrist 13 115200
 echo "Configuring user YAML"
 ./factory/$factory_osdir/stretch_dex_wrist_yaml_configure.py $1
 
-echo "Setting up Stretch ROS and URDF"
-cd ~/catkin_ws/src/stretch_ros/
-git pull
+echo "Updating ROS or ROS 2 workspace to work with a dex wrist"
+echo "---------------------------------------------------------------------------"
+echo "Please source the ROS distribution you want to work with before proceeding"
+echo "---------------------------------------------------------------------------"
+if [ $ROS_VERSION = 1 ]
+then
+    echo "Setting up Stretch ROS and URDF"
+    cd ~/catkin_ws/src/stretch_ros/
+    git pull
 
-cd ~/repos
-git clone https://github.com/hello-robot/stretch_tool_share
-cd ~/repos/stretch_tool_share
-git pull
-cd ~/repos/stretch_tool_share/tool_share/stretch_dex_wrist/stretch_description
-cp urdf/stretch_dex_wrist.xacro ~/catkin_ws/src/stretch_ros/stretch_description/urdf
-cp urdf/stretch_description.xacro ~/catkin_ws/src/stretch_ros/stretch_description/urdf
-cp meshes/*.STL ~/catkin_ws/src/stretch_ros/stretch_description/meshes
+    cd ~/catkin_ws/src/stretch_ros/stretch_description/urdf
+    cp stretch_description_dex.xacro stretch_description.xacro
 
+    echo "Updating URDF calibration "
+    rosrun stretch_calibration update_urdf_after_xacro_change.sh
+    cd ~/catkin_ws/src/stretch_ros/stretch_description/urdf
+    ./export_urdf.sh
+else
+    echo "Updating Stretch ROS 2 and URDF"
+    cd ~/ament_ws/src/stretch_ros2
+    git pull
+    
+    cd ~/ament_ws
+    colcon build
+    source install/setup.bash
 
-echo "Updating URDF calibration "
-rosrun stretch_calibration update_urdf_after_xacro_change.sh
-cd ~/catkin_ws/src/stretch_ros/stretch_description/urdf
-./export_urdf.sh
-
+    ros2 run hello_helpers configure_wrist --dex
+    colcon build
+    cd ~/ament_ws/src/stretch_ros2/stretch_description/urdf
+    ./export_urdf.sh
+fi

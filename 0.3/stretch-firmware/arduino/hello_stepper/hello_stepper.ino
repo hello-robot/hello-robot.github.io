@@ -38,7 +38,6 @@ void setup()        // This code runs once at startup
   setupPins();                      // configure pins
   setupTCInterrupts();              // configure controller interrupt
   
-  
 
   SerialUSB.begin(2000000); 
   
@@ -71,7 +70,7 @@ void setup()        // This code runs once at startup
     enableMGInterrupts();
     enableMotorDrivers(); //Turn on now that gains are loaded
 #endif
-
+setupWDT(WDT_TIMEOUT_PERIOD);
 }
   
 
@@ -88,14 +87,17 @@ void loop()                 // main loop
 //Flash LED fast when in menu mode, slow in RPC mode
 if (hello_interface)
 {
+  resetWDT();
   stepHelloControllerRPC();
 }
 else
 {
+  disableWDT();
   serialCheck();
   toggle_led(200);
 }
 #else
+  disableWDT();
   serialCheck();              //must have this execute in loop for serial commands to function
 #endif
 

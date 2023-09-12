@@ -24,7 +24,15 @@
 // Version 0.2.3: Add support for motor shunt
 // Version 0.2.5: Initial production release RE2 Mitski
 // Version 0.2.6: Initial production release RE2 Nina
-#define FIRMWARE_VERSION_HR "Stepper.v0.2.6p1"
+// Version 0.2.7: Add velocity watchdog
+// Version 0.2.8: Add trace function
+// Version 0.3.0: Move to updated trace and protocol P2
+// Version 0.3.1: Added Watchdog timer (WDT) reset feture, halved trace buffer
+// Version 0.4.0: Move to fast motor sync, status_debug, drop traj error msg, and P3
+// Version 0.5.0: Move to support for Transport V1
+// Version 0.5.1: Move to int64_t for motion generator / fix trace rollover issue
+
+#define FIRMWARE_VERSION_HR "Stepper.v0.5.1p3"
 
 /////////////////////////////////////////////////////////////////
 
@@ -34,8 +42,8 @@
 #define RPC_REPLY_STATUS  4
 #define RPC_SET_GAINS  5
 #define RPC_REPLY_GAINS  6
-#define RPC_LOAD_TEST 7
-#define RPC_REPLY_LOAD_TEST 8
+#define RPC_LOAD_TEST_PUSH 7
+#define RPC_REPLY_LOAD_TEST_PUSH 8
 #define RPC_SET_TRIGGER  9
 #define RPC_REPLY_SET_TRIGGER 10
 #define RPC_SET_ENC_CALIB 11
@@ -54,6 +62,12 @@
 #define RPC_REPLY_START_NEW_TRAJECTORY 24
 #define RPC_RESET_TRAJECTORY 25
 #define RPC_REPLY_RESET_TRAJECTORY 26
+#define RPC_READ_TRACE 27
+#define RPC_REPLY_READ_TRACE 28
+#define RPC_GET_STATUS_AUX  29
+#define RPC_REPLY_STATUS_AUX  30
+#define RPC_LOAD_TEST_PULL 31
+#define RPC_REPLY_LOAD_TEST_PULL 32
 
 #define MODE_SAFETY 0
 #define MODE_FREEWHEEL 1
@@ -81,7 +95,7 @@
 #define DIAG_TRAJ_ACTIVE 4096             //Currently executing a splined trajectory
 #define DIAG_TRAJ_WAITING_ON_SYNC 8192    //Currently waiting on a sync signal before starting trajectory
 #define DIAG_IN_SYNC_MODE 16384           //Currently running in sync mode
-
+#define DIAG_IS_TRACE_ON 32768        //Is trace recording
 
 
 #define TRIGGER_MARK_POS  1
@@ -91,7 +105,8 @@
 #define TRIGGER_RESET_POS_CALIBRATED 16
 #define TRIGGER_POS_CALIBRATED 32
 #define TRIGGER_MARK_POS_ON_CONTACT 64
-
+#define TRIGGER_ENABLE_TRACE 128
+#define TRIGGER_DISABLE_TRACE 256
 
 #define CONFIG_SAFE_MODE_HOLD 1
 #define CONFIG_ENABLE_RUNSTOP 2
@@ -99,7 +114,8 @@
 #define CONFIG_ENABLE_GUARDED_MODE 8
 #define CONFIG_FLIP_ENCODER_POLARITY 16
 #define CONFIG_FLIP_EFFORT_POLARITY 32
-#define CONFIG_USE_POS_VEL_CTRL 64
+#define CONFIG_ENABLE_VEL_WATCHDOG 64
+
 
 
 
@@ -165,6 +181,15 @@ struct __attribute__ ((packed)) Status{
   uint16_t traj_id;             //Id of active trajectory segment
 };
 
+struct __attribute__ ((packed)) StatusAux{
+  uint16_t cmd_cnt_rpc;
+  uint16_t cmd_cnt_exec;
+  uint16_t cmd_rpc_overflow;
+  uint16_t sync_irq_cnt;
+  uint16_t sync_irq_overflow;
+  uint16_t ctrl_cycle_cnt;
+};
+
 /////////////////////////////////////////////////////////////////
 struct __attribute__ ((packed)) Command{
   uint8_t mode;
@@ -177,6 +202,11 @@ struct __attribute__ ((packed)) Command{
   float i_contact_neg; //A
   uint8_t incr_trigger;
 };
+
+struct __attribute__ ((packed)) CommandReply{
+  uint16_t ctrl_cycle_cnt;
+};
+
 
 struct __attribute__ ((packed)) LoadTest{
   uint8_t data[1024];
@@ -208,7 +238,6 @@ struct __attribute__ ((packed)) TrajectorySegment{
 
 struct __attribute__ ((packed)) TrajectorySegmentReply{
   uint8_t success;
-  char error_message[100];
 };
 
 /////////////////////////////////////////////////////////////////

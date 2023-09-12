@@ -38,7 +38,7 @@ configuration_params_template={
         'range_t': [1775,3150],
         'zero_t': 2048},
     'hello-motor-arm':{'serial_no': 'NA'},
-    'hello-motor-lift':{'serial_no': 'NA'},
+    'hello-motor-lift':{'serial_no': 'NA','gains':{'i_safety_feedforward':1.2}},
     'hello-motor-left-wheel':{'serial_no': 'NA'},
     'hello-motor-right-wheel':{'serial_no': 'NA'},
     'pimu':{
@@ -61,7 +61,7 @@ configuration_params_template={
         'accel_gravity_scale': 1.0}},
     'wrist_yaw':{
         'range_t': [0,9340],
-        'zero_t': 7175}}
+        'zero_t': 7005}}
 
 # ###################### NOMINAL PARAMS #####################################################
 #Parameters that are common across the RE2 fleet
@@ -73,7 +73,7 @@ nominal_params={
         'chain_sprocket_teeth': 10,
         'gr_spur': 3.875,
         'i_feedforward': 0,
-        'calibration_range_bounds':[0.515, 0.525],
+        'calibration_range_bounds':[0.514, 0.525],
         'contact_models':{
             'effort_pct': {'contact_thresh_calibration_margin':10.0,'contact_thresh_max': [-90.0, 90.0]}},
         'motion':{
@@ -91,7 +91,9 @@ nominal_params={
                 'vel_m': 0.05},
             'trajectory_max': {
                 'vel_m': 0.4,
-                'accel_m': 0.4}}},
+                'accel_m': 0.4},
+        'vel_brakezone_factor': 0.2},
+        'set_safe_velocity': 1},
     'base':{
         'usb_name_left_wheel': '/dev/hello-motor-left-wheel',
         'usb_name_right_wheel': '/dev/hello-motor-right-wheel',
@@ -178,7 +180,9 @@ nominal_params={
                 'vel': 1.0},
             'trajectory_max': {
                 'vel_r': 8.0,
-                'accel_r': 16.0}},
+                'accel_r': 16.0},
+            'vel_brakezone_factor': 1.5},
+        'set_safe_velocity': 1,
         'pid': [800, 200, 200],
         'pwm_homing': [-300,300],
         'pwm_limit': 885,
@@ -213,13 +217,15 @@ nominal_params={
                 'vel': 5.0},
             'max': {
                 'accel': 14.0,
-                'vel': 7.0},
+                'vel': 6.0},
             'slow': {
                 'accel': 4.0,
                 'vel': 1.0},
             'trajectory_max': {
                 'vel_r': 8.0,
-                'accel_r': 16.0}},
+                'accel_r': 16.0},
+            'vel_brakezone_factor': 1.2},
+        'set_safe_velocity': 1,
         'pid': [800,200,200],
         'pwm_homing': [-300,300],
         'pwm_limit': 885,
@@ -245,6 +251,7 @@ nominal_params={
             'enable_guarded_mode': 1,
             'enable_runstop': 1,
             'enable_sync_mode': 1,
+            'enable_vel_watchdog':0,
             'flip_effort_polarity': 0,
             'flip_encoder_polarity': 0,
             'iMax_neg': -4.35,
@@ -280,6 +287,7 @@ nominal_params={
             'enable_guarded_mode': 0,
             'enable_runstop': 1,
             'enable_sync_mode': 1,
+            'enable_vel_watchdog':1,
             'flip_effort_polarity': 1,
             'flip_encoder_polarity': 1,
             'iMax_neg': -4.35,
@@ -288,8 +296,8 @@ nominal_params={
             'i_contact_pos': 3.0,
             'i_safety_feedforward': 0.0,
             'pKd_d': 65.0,
-            'pKi_d': 0.01,
-            'pKi_limit': 50.0,
+            'pKi_d': 0.1,
+            'pKi_limit': 200.0,
             'pKp_d': 12.0,
             'pLPF': 80.0,
             'phase_advance_d': 1.8,
@@ -315,6 +323,7 @@ nominal_params={
             'enable_guarded_mode': 1,
             'enable_runstop': 1,
             'enable_sync_mode': 1,
+            'enable_vel_watchdog':0,
             'flip_effort_polarity': 1,
             'flip_encoder_polarity': 1,
             'iMax_neg': -4.35,
@@ -350,6 +359,7 @@ nominal_params={
             'enable_guarded_mode': 0,
             'enable_runstop': 1,
             'enable_sync_mode': 1,
+            'enable_vel_watchdog':1,
             'flip_effort_polarity': 0,
             'flip_encoder_polarity': 0,
             'iMax_neg': -4.35,
@@ -358,8 +368,8 @@ nominal_params={
             'i_contact_pos': 3.0,
             'i_safety_feedforward': 0.0,
             'pKd_d': 65.0,
-            'pKi_d': 0.01,
-            'pKi_limit': 50.0,
+            'pKi_d': 0.1,
+            'pKi_limit': 200.0,
             'pKp_d': 12.0,
             'pLPF': 80.0,
             'phase_advance_d': 1.8,
@@ -403,13 +413,15 @@ nominal_params={
               'vel_m': 0.05},
             'trajectory_max': {
               'accel_m': 0.3,
-              'vel_m': 0.15}},
+              'vel_m': 0.15},
+        'vel_brakezone_factor': 0.03},
+        'set_safe_velocity': 1,
           'pinion_t': 12},
     'pimu':{
       'usb_name': '/dev/hello-pimu',
       'base_fan_off': 70,
       'base_fan_on': 82,
-      'max_sync_rate_hz': 80.0,
+      'max_sync_rate_hz': 80.0, #deprecated with P3
       'config':{
         'accel_LPF': 20.0,
         'bump_thresh': 20.0,
@@ -430,10 +442,12 @@ nominal_params={
         'rates':{
             'DXLStatusThread_Hz': 15.0,
             'NonDXLStatusThread_Hz': 25.0,
-            'NonDXLStatusThread_monitor_downrate_int': 5,
-            'NonDXLStatusThread_collision_downrate_int': 5,
-            'NonDXLStatusThread_sentry_downrate_int': 2,
-            'NonDXLStatusThread_trajectory_downrate_int': 2},
+            'SystemMonitorThread_Hz': 15.0,
+            'SystemMonitorThread_monitor_downrate_int': 2,
+            'SystemMonitorThread_trace_downrate_int': 1,
+            'SystemMonitorThread_collision_downrate_int': 5,
+            'SystemMonitorThread_sentry_downrate_int': 1,
+            'SystemMonitorThread_nondxl_trajectory_downrate_int': 2},
         'tool': 'tool_stretch_gripper',
         'use_collision_manager': 0,
         'stow':{
@@ -444,7 +458,9 @@ nominal_params={
         'stretch_gripper': 0,
         'wrist_yaw': 3.4},
         'use_monitor': 1,
-        'use_sentry': 1},
+        'use_trace': 0,
+        'use_sentry': 1,
+        'use_asyncio':1},
     'robot_collision': {
         'models': ['collision_arm_camera']
     },
@@ -465,6 +481,10 @@ nominal_params={
         'stretch_gripper_overload': 1,
         'wrist_yaw_overload': 1,
         'stepper_is_moving_filter': 1},
+    'robot_trace':{
+        'n_samples_per_file':100,
+        'duration_limit_minutes':10.0
+    },
     'stretch_gripper':{
         'range_pad_t': [100.0, -100.0],
         'flip_encoder_polarity': 0,
@@ -490,7 +510,9 @@ nominal_params={
               'vel': 2.0},
             'trajectory_max': {
                 'vel_r': 50.0,
-                'accel_r': 100.0}},
+                'accel_r': 100.0},
+            'vel_brakezone_factor': 1},
+        'set_safe_velocity': 1,
         'pid': [640.0,0,0],
         'pwm_homing': [-400, 0],
         'pwm_limit': 885,
@@ -563,13 +585,15 @@ nominal_params={
               'vel': 2.5},
             'max':{
               'accel': 10,
-              'vel': 6.0},
+              'vel': 3.0},
             'slow':{
               'accel': 1.5,
               'vel': 0.75},
               'trajectory_max': {
                   'vel_r': 3.0,
-                  'accel_r': 3.0}},
+                  'accel_r': 3.0},
+            'vel_brakezone_factor': 1},
+        'set_safe_velocity': 1,
         'pid': [640,0,0],
         'pwm_homing': [-300,300],
         'pwm_limit': 885,
@@ -586,7 +610,7 @@ nominal_params={
         'baud': 115200,
         'enable_runstop': 1,
         'disable_torque_on_stop': 1,
-        'range_pad_t': [50.0, -50.0]},
+        'range_pad_t': [100.0, -100.0]},
     'respeaker': {'usb_name': '/dev/hello-respeaker'},
     'lidar': {'usb_name': '/dev/hello-lrf'}
 }

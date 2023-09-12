@@ -14,6 +14,13 @@ if [[ $HELLO_FLEET_ID ]]; then
     exit 1
 fi
 
+read -p "Plug in charger & attach clip-clamp. Ready to proceed (y/n)? " -n 1 -r
+echo
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    echo "Confirmation failed. Will not proceed with installation."
+    exit 1
+fi
+
 PS3="Select model type: "
 
 select model in stretch-re1 stretch-re2

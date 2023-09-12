@@ -48,6 +48,7 @@ def menu_top():
     print('o: zero homing offset')
     print('s: set homing offset')
     print('q: got to position')
+    print('j: show pose ticks')
     print('p: ping')
     print('r: reboot')
     print('w: set max pwm')
@@ -153,6 +154,8 @@ def step_interaction():
             m.disable_torque()
             m.enable_vel()
             m.enable_torque()
+        if x[0] == 'j':
+            print(f"Current pose ticks: {m.get_pos()}")
     else:
         m.pretty_print()
 

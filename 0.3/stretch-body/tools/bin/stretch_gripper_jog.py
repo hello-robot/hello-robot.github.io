@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 from __future__ import print_function
 import stretch_body.robot_params
 stretch_body.robot_params.RobotParams.set_logging_level("DEBUG")
@@ -61,7 +61,9 @@ def step_interaction():
         if x[0] == 'c':
             g.move_to(g.poses['close'], v_des, a_des)
         if x[0]=='r':
-            g.do_reboot()
+            g.motor.do_reboot()
+            print('Exiting after reboot.')
+            exit()
             
         if x[0] == '1':
             v_des = g.params['motion']['slow']['vel']
