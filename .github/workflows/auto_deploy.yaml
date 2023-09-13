@@ -24,8 +24,6 @@ jobs:
 
       - name: Git submodule update
         run: |
-          git submodule init
-          git submodule update
           git submodule update --remote --recursive
 
       - name: Commit submodule update (if any)
