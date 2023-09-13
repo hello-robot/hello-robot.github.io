@@ -22,6 +22,9 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
+      - name: Git pull
+        run: git pull
+
       - name: Git submodule update
         run: |
           git submodule update --remote --recursive
