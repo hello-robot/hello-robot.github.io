@@ -391,6 +391,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.hello-robot.com/0.3/stretch-install/factory/22.04/iron2humble_migration/</loc>
+         <lastmod>2023-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.hello-robot.com/0.3/stretch-ros/</loc>
          <lastmod>2023-09-14</lastmod>
          <changefreq>daily</changefreq>

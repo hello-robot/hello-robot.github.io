@@ -18,15 +18,15 @@ done
 REDIRECT_LOGFILE="$REDIRECT_LOGDIR/stretch_create_ament_workspace.`date '+%Y%m%d%H%M'`_redirected.txt"
 
 echo "###########################################"
-echo "CREATING IRON AMENT WORKSPACE at $AMENT_WSDIR"
+echo "CREATING HUMBLE AMENT WORKSPACE at $AMENT_WSDIR"
 echo "###########################################"
 
 echo "Ensuring correct version of ROS is sourced..."
-if [[ $ROS_DISTRO && ! $ROS_DISTRO = "iron" ]]; then
+if [[ $ROS_DISTRO && ! $ROS_DISTRO = "humble" ]]; then
     echo "Cannot create workspace while a conflicting ROS version is sourced. Exiting."
     exit 1
 fi
-source /opt/ros/iron/setup.bash
+source /opt/ros/humble/setup.bash
 
 if [[ -d $AMENT_WSDIR ]]; then
     echo "You are about to delete and replace the existing ament workspace. If you have any personal data in the workspace, please create a back up before proceeding."
@@ -54,7 +54,7 @@ cd $AMENT_WSDIR/src
 vcs import --input ~/stretch_install/factory/22.04/stretch_ros2_iron.repos >> $REDIRECT_LOGFILE
 echo "Fetch ROS packages' dependencies (this might take a while)..."
 cd $AMENT_WSDIR/
-rosdep install --rosdistro=iron -iyr --skip-keys="librealsense2" --from-paths src &>> $REDIRECT_LOGFILE
+rosdep install --rosdistro=humble -iyr --skip-keys="librealsense2" --from-paths src &>> $REDIRECT_LOGFILE
 echo "Compile the workspace (this might take a while)..."
 colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release &>> $REDIRECT_LOGFILE
 echo "Source setup.bash file..."

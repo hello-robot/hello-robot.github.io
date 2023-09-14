@@ -39,7 +39,7 @@ else
     elif [[ $factory_osdir = "20.04" ]]; then
         echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
     elif [[ $factory_osdir = "22.04" ]]; then
-        echo "source /opt/ros/iron/setup.bash" >> ~/.bashrc
+        echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
     fi
 fi
 
@@ -55,7 +55,7 @@ mkdir -p ~/stretch_user/models
 echo "Cloning Stretch deep perception models..."
 cd ~/stretch_user
 if [ ! -d "$HOME/stretch_user/stretch_deep_perception_models" ]; then
-    git clone https://github.com/hello-robot/stretch_deep_perception_models >> $REDIRECT_LOGFILE
+    git clone https://github.com/hello-robot/stretch_deep_perception_models &>> $REDIRECT_LOGFILE
 fi
 cd stretch_deep_perception_models
 git pull >> $REDIRECT_LOGFILE

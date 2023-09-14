@@ -2,7 +2,7 @@ repositories:
   ros2_numpy:
     type: git
     url: https://github.com/hello-binit/ros2_numpy
-    version: iron
+    version: humble
   realsense-ros:
     type: git
     url: https://github.com/IntelRealSense/realsense-ros.git
@@ -10,7 +10,7 @@ repositories:
   stretch_ros2:
     type: git
     url: https://github.com/hello-robot/stretch_ros2.git
-    version: iron
+    version: humble
   sllidar_ros2:
     type: git
     url: https://github.com/Slamtec/sllidar_ros2.git
@@ -18,13 +18,13 @@ repositories:
   stretch_tutorials:
     type: git
     url: https://github.com/hello-robot/stretch_tutorials.git
-    version: iron
+    version: humble
   respeaker_ros2:
     type: git
-    url: https://github.com/hello-chintan/respeaker_ros2.git
-    version: iron
+    url: https://github.com/hello-binit/respeaker_ros2.git
+    version: humble
   audio_common:
     type: git
-    url: https://github.com/hello-chintan/audio_common.git
-    version: iron
+    url: https://github.com/hello-binit/audio_common.git
+    version: humble
  
