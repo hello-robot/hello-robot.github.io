@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+set -u
 
 REDIRECT_LOGDIR="$HOME/stretch_user/log"
 CATKIN_WSDIR="$HOME/catkin_ws"
@@ -28,7 +29,7 @@ if [[ $ROS_DISTRO && ! $ROS_DISTRO = "noetic" ]]; then
 fi
 source /opt/ros/noetic/setup.bash
 
-if [[ -d $AMENT_WSDIR ]]; then
+if [[ -d $CATKIN_WSDIR ]]; then
     echo "You are about to delete and replace the existing catkin workspace. If you have any personal data in the workspace, please create a back up before proceeding."
     prompt_yes_no(){
     read -p "Do you want to continue? Press (y/n for yes/no): " x

@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+set -u
 
 REDIRECT_LOGDIR="$HOME/stretch_user/log"
 AMENT_WSDIR="$HOME/ament_ws"
