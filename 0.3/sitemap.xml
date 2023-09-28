@@ -1026,6 +1026,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.hello-robot.com/0.3/stretch-tutorials/ros2/aruco_marker_detection/</loc>
+         <lastmod>2023-09-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.hello-robot.com/0.3/stretch-tutorials/ros2/avoiding_deadlocks_race_conditions/</loc>
          <lastmod>2023-09-28</lastmod>
          <changefreq>daily</changefreq>
@@ -1076,6 +1081,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.hello-robot.com/0.3/stretch-tutorials/ros2/example_12/</loc>
+         <lastmod>2023-09-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.hello-robot.com/0.3/stretch-tutorials/ros2/example_2/</loc>
          <lastmod>2023-09-28</lastmod>
          <changefreq>daily</changefreq>
@@ -1087,6 +1097,31 @@
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/stretch-tutorials/ros2/example_4/</loc>
+         <lastmod>2023-09-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.3/stretch-tutorials/ros2/example_5/</loc>
+         <lastmod>2023-09-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.3/stretch-tutorials/ros2/example_6/</loc>
+         <lastmod>2023-09-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.3/stretch-tutorials/ros2/example_7/</loc>
+         <lastmod>2023-09-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.3/stretch-tutorials/ros2/example_8/</loc>
+         <lastmod>2023-09-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.3/stretch-tutorials/ros2/example_9/</loc>
          <lastmod>2023-09-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1162,6 +1197,16 @@
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/stretch-tutorials/ros2/perception/</loc>
+         <lastmod>2023-09-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.3/stretch-tutorials/ros2/respeaker_mic_array/</loc>
+         <lastmod>2023-09-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.3/stretch-tutorials/ros2/respeaker_topics/</loc>
          <lastmod>2023-09-28</lastmod>
          <changefreq>daily</changefreq>
     </url>

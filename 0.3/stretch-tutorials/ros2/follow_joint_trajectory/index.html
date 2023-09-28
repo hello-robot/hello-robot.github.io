@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://docs.hello-robot.com/0.3/stretch-tutorials/ros2/follow_joint_trajectory/">
       
       
-        <link rel="prev" href="../intro_to_hellonode/">
+        <link rel="prev" href="../navigation_simple_commander/">
       
       
-        <link rel="next" href="../internal_state_of_stretch/">
+        <link rel="next" href="../perception/">
       
       
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
@@ -1825,114 +1825,17 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Follow Joint Trajectory Commands
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../teleoperating_stretch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Follow Joint Trajectory Commands
+    Teleoperating Stretch
   </span>
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#followjointtrajectory-commands" class="md-nav__link">
-    FollowJointTrajectory Commands
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#stow-command-example" class="md-nav__link">
-    Stow Command Example
-  </a>
-  
-    <nav class="md-nav" aria-label="Stow Command Example">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-code" class="md-nav__link">
-    The Code
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-code-explained" class="md-nav__link">
-    The Code Explained
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#multipoint-command-example" class="md-nav__link">
-    Multipoint Command Example
-  </a>
-  
-    <nav class="md-nav" aria-label="Multipoint Command Example">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-code_1" class="md-nav__link">
-    The Code
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-code-explained_1" class="md-nav__link">
-    The Code Explained.
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2082,6 +1985,267 @@
 
               
             
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Follow Joint Trajectory Commands
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Follow Joint Trajectory Commands
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#followjointtrajectory-commands" class="md-nav__link">
+    FollowJointTrajectory Commands
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stow-command-example" class="md-nav__link">
+    Stow Command Example
+  </a>
+  
+    <nav class="md-nav" aria-label="Stow Command Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-code" class="md-nav__link">
+    The Code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-code-explained" class="md-nav__link">
+    The Code Explained
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multipoint-command-example" class="md-nav__link">
+    Multipoint Command Example
+  </a>
+  
+    <nav class="md-nav" aria-label="Multipoint Command Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-code_1" class="md-nav__link">
+    The Code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-code-explained_1" class="md-nav__link">
+    The Code Explained.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../perception/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Perception
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aruco_marker_detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ArUco Marker Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_2_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5_2_11" id="__nav_2_5_2_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ReSpeaker Microphone Array
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_5_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            ReSpeaker Microphone Array
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../respeaker_mic_array/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Respeaker Mic Array
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../respeaker_topics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Respeaker Topics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_funmap" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FUNMAP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2212,11 +2376,131 @@
   
   
     <li class="md-nav__item">
+      <a href="../example_5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Print Joint States
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example_6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Store Effort Values
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example_7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Capture Image
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example_8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Voice to Text
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example_9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Voice Teleoperation of Base
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../example_10/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Tf2 Broadcaster and Listener
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example_12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ArUco Tag Locator
   </span>
   
 
@@ -5091,7 +5375,7 @@
 <p>Now let's break the code down.</p>
 <p><div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 </code></pre></div>
-Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python script.</p>
+Every Python ROS <a href="https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python script.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rclpy</span>
 <span class="kn">from</span> <span class="nn">rclpy.duration</span> <span class="kn">import</span> <span class="n">Duration</span>
 <span class="kn">from</span> <span class="nn">control_msgs.action</span> <span class="kn">import</span> <span class="n">FollowJointTrajectory</span>
@@ -5099,7 +5383,7 @@ Every Python ROS <a href="http://wiki.ros.org/Nodes">Node</a> will have this dec
 <span class="kn">from</span> <span class="nn">hello_helpers.hello_misc</span> <span class="kn">import</span> <span class="n">HelloNode</span>
 <span class="kn">import</span> <span class="nn">time</span>
 </code></pre></div>
-<p>You need to import rclpy if you are writing a ROS 2 Node. Import the FollowJointTrajectory from the <a href="https://github.com/ros-controls/control_msgs/tree/master/control_msgs">control_msgs.action</a> package to control the Stretch robot. Import JointTrajectoryPoint from the <a href="https://github.com/ros2/common_interfaces/tree/rolling/trajectory_msgs/msg">trajectory_msgs</a> package to define robot trajectories.</p>
+<p>You need to import rclpy if you are writing a ROS 2 Node. Import the FollowJointTrajectory from the <a href="https://github.com/ros-controls/control_msgs/tree/master/control_msgs">control_msgs.action</a> package to control the Stretch robot. Import JointTrajectoryPoint from the <a href="https://github.com/ros2/common_interfaces/tree/humble/trajectory_msgs/msg">trajectory_msgs</a> package to define robot trajectories.</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">StowCommand</span><span class="p">(</span><span class="n">HelloNode</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">HelloNode</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -5280,7 +5564,7 @@ Make the action call and send the goal.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../intro_to_hellonode/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction to HelloNode">
+          <a href="../navigation_simple_commander/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Nav2 Simple Commander">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -5290,20 +5574,20 @@ Make the action call and send the goal.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Introduction to HelloNode
+                Nav2 Simple Commander
               </div>
             </div>
           </a>
         
         
           
-          <a href="../internal_state_of_stretch/" class="md-footer__link md-footer__link--next" aria-label="Next: Internal State of Stretch">
+          <a href="../perception/" class="md-footer__link md-footer__link--next" aria-label="Next: Perception">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Internal State of Stretch
+                Perception
               </div>
             </div>
             <div class="md-footer__button md-icon">
