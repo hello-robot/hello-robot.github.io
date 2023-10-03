@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-set -u
 
 REDIRECT_LOGDIR="$HOME/stretch_user/log"
 CATKIN_WSDIR="$HOME/catkin_ws"
