@@ -164,7 +164,7 @@ class DiscoverHelloDevices:
         input(click.style("WARNING: The Lift would drop, make sure the clamp is underneath lift. Then hit ENTER",
                           fg="yellow", bold=True))
         start_pose = self.get_all_stepper_poses()
-        input(click.style("Move the Lift joint manually and place the clamp underneath when done. Then hit ENTER",
+        input(click.style("Move the Lift joint manually to another position and place the clamp underneath when done. Then hit ENTER",
                           fg="blue",
                           bold=True))
         end_pose = self.get_all_stepper_poses()
@@ -185,7 +185,7 @@ class DiscoverHelloDevices:
         Find the Serial number of the Arm motor serial by detecting a manual movement
         """
         start_pose = self.get_all_stepper_poses()
-        input(click.style("Move the Arm joint manually and hit ENTER", fg="blue", bold=True))
+        input(click.style("Move the Arm joint manually to another position and hit ENTER", fg="blue", bold=True))
         end_pose = self.get_all_stepper_poses()
         moved_motors = self.get_moved_motor(start_pose, end_pose)
         cnt = list(moved_motors.values()).count(True)
@@ -204,7 +204,7 @@ class DiscoverHelloDevices:
         Find the Serial number of the wheel motors serial by detecting a manual movement
         """
         start_pose = self.get_all_stepper_poses()
-        input(click.style("Move the Base backward manually and hit ENTER", fg="blue", bold=True))
+        input(click.style("Move the Base backward manually to another position and hit ENTER", fg="blue", bold=True))
         end_pose = self.get_all_stepper_poses()
         moved_motors = self.get_moved_motor(start_pose, end_pose)
         cnt = list(moved_motors.values()).count(True)
@@ -216,7 +216,7 @@ class DiscoverHelloDevices:
             respectively. This logic is used to differentiate left wheel from right wheel"""
 
             start_pos1 = self.get_base_wheels_poses(wheel_motors[0], wheel_motors[1])
-            input(click.style("Move the base forward manually and hit ENTER", fg="blue", bold=True))
+            input(click.style("Move the base forward manually to another position and hit ENTER", fg="blue", bold=True))
             end_pose1 = self.get_base_wheels_poses(wheel_motors[0], wheel_motors[1])
             assumed_left_diff = start_pos1['left_wheel'] - end_pose1['left_wheel']
             assumed_right_diff = start_pos1['right_wheel'] - end_pose1['right_wheel']
@@ -273,14 +273,9 @@ class DiscoverHelloDevices:
             if found_ids[k] == [11, 12]:
                 head_sn = self.all_tty_devices[k]['serial']
                 self.hello_usb_alias[k] = "/dev/hello-dynamixel-head"
-            if self.robot_tool == "tool_stretch_dex_wrist":
-                if found_ids[k] == [13, 14, 15, 16]:
-                    wrist_sn = self.all_tty_devices[k]['serial']
-                    self.hello_usb_alias[k] = "/dev/hello-dynamixel-wrist"
-            else:
-                if found_ids[k] == [13, 14]:
-                    wrist_sn = self.all_tty_devices[k]['serial']
-                    self.hello_usb_alias[k] = "/dev/hello-dynamixel-wrist"
+            if 13 in found_ids[k]:
+                wrist_sn = self.all_tty_devices[k]['serial']
+                self.hello_usb_alias[k] = "/dev/hello-dynamixel-wrist"
         self.hello_dxl_sns["hello-dynamixel-head"] = head_sn
         self.hello_dxl_sns["hello-dynamixel-wrist"] = wrist_sn
         print("\n")
@@ -302,13 +297,16 @@ class DiscoverHelloDevices:
         print("Assigning FTDI devices SN to robot....")
         for k in list(self.hello_dxl_sns.keys()):
             try:
-                hdu.add_ftdi_udev_line(device_name=k, serial_no=self.hello_dxl_sns[k],
-                                       fleet_dir=hu.get_fleet_directory())
+                if self.hello_dxl_sns[k]:
+                    hdu.add_ftdi_udev_line(device_name=k, serial_no=self.hello_dxl_sns[k],
+                                        fleet_dir=hu.get_fleet_directory())
 
-                print("Pushing Udev files to /etc/udev/rules.d/....")
-                os.system("sudo cp {}udev/95-hello-arduino.rules /etc/udev/rules.d/".format(hu.get_fleet_directory()))
-                os.system("sudo cp {}udev/99-hello-dynamixel.rules /etc/udev/rules.d/".format(hu.get_fleet_directory()))
-                os.system("sudo udevadm control --reload; sudo udevadm trigger")
+                    print("Pushing Udev files to /etc/udev/rules.d/....")
+                    os.system("sudo cp {}udev/95-hello-arduino.rules /etc/udev/rules.d/".format(hu.get_fleet_directory()))
+                    os.system("sudo cp {}udev/99-hello-dynamixel.rules /etc/udev/rules.d/".format(hu.get_fleet_directory()))
+                    os.system("sudo udevadm control --reload; sudo udevadm trigger")
+                else:
+                    print(click.style('Unable to find SN of {}. Skipping.'.format(k), fg='red'))
             except Exception as err:
                 print(click.style('ERROR [{}]: {}'.format(k, str(err)), fg='red'))
         print(click.style('UDEV rules and stretch configuration files specific to Dynamixels updated', fg='green',
@@ -320,23 +318,33 @@ class DiscoverHelloDevices:
 
         for k in list(self.hello_stepper_sns.keys()):
             try:
-                hdu.add_arduino_udev_line(device_name=k, serial_no=self.hello_stepper_sns[k],
-                                          fleet_dir=hu.get_fleet_directory())
-                dev = Device(k)
-                dev.write_configuration_param_to_YAML("{}.serial_no".format(k), self.hello_stepper_sns[k],
-                                                      hu.get_fleet_directory())
+                if self.hello_stepper_sns[k]:
+                    hdu.add_arduino_udev_line(device_name=k, serial_no=self.hello_stepper_sns[k],
+                                            fleet_dir=hu.get_fleet_directory())
+                    dev = Device(k)
+                    dev.write_configuration_param_to_YAML("{}.serial_no".format(k), self.hello_stepper_sns[k],
+                                                        hu.get_fleet_directory())
+                else:
+                    print(click.style('Unable to find SN of {}. Skipping.'.format(k), fg='red'))
             except Exception as err:
                 print(click.style('ERROR [{}]: {}'.format(k, str(err)), fg='red'))
 
         print("Assigning Pimu and Wacc SN to robot....")
         try:
-            hdu.add_arduino_udev_line(device_name="hello-pimu", serial_no=self.hello_pimu_sn['hello-pimu'],
-                                      fleet_dir=hu.get_fleet_directory())
+            if self.hello_pimu_sn['hello-pimu']:
+                hdu.add_arduino_udev_line(device_name="hello-pimu", serial_no=self.hello_pimu_sn['hello-pimu'],
+                                        fleet_dir=hu.get_fleet_directory())
+            else:
+                print(click.style('Unable to find SN of {}. Skipping.'.format('hello-pimu'), fg='red'))
         except Exception as err:
             print(click.style('ERROR [{}]: {}'.format("hello-pimu", str(err)), fg='red'))
+
         try:
-            hdu.add_arduino_udev_line(device_name="hello-wacc", serial_no=self.hello_wacc_sn['hello-wacc'],
-                                      fleet_dir=hu.get_fleet_directory())
+            if self.hello_wacc_sn['hello-wacc']:
+                hdu.add_arduino_udev_line(device_name="hello-wacc", serial_no=self.hello_wacc_sn['hello-wacc'],
+                                        fleet_dir=hu.get_fleet_directory())
+            else:
+                print(click.style('Unable to find SN of {}. Skipping.'.format('hello-wacc'), fg='red'))
         except Exception as err:
             print(click.style('ERROR [{}]: {}'.format("hello-wacc", str(err)), fg='red'))
         print(click.style('UDEV rules and stretch configuration files specific to arduino devices updated', fg='green',
