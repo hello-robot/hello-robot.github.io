@@ -36,8 +36,7 @@ float high_current_alert= I_TO_RAW(6.0);
 float over_tilt_alert_deg = 10.0;
 int startup_cnt=500;
 
-float accel_LPFa=1.0; 
-float accel_LPFb=0.0;
+
     
 
 bool state_cliff_event=false;
@@ -64,7 +63,7 @@ Pimu_Status stat, stat_out;
 Pimu_Status_Aux stat_aux;
 Pimu_Motor_Sync_Reply sync_reply;
 Pimu_Board_Info board_info;
-IMU_Status imu_status;
+IMU_Status imu_stat;
 LoadTest load_test;
 
 void setupTimer4_and_5();
@@ -225,17 +224,17 @@ void handleNewRPC()
   {
     case RPC_SET_PIMU_CONFIG: 
           memcpy(&cfg_in, rpc_in+1, sizeof(Pimu_Config)); //copy in the config
-          //noInterrupts();
+          noInterrupts();
           update_config();
-          //interrupts();
+          interrupts();
           rpc_out[0]=RPC_REPLY_PIMU_CONFIG;
           num_byte_rpc_out=1;
           break;
     case RPC_SET_PIMU_TRIGGER: 
           memcpy(&trg, rpc_in+1, sizeof(Pimu_Trigger)); //copy in
-          //noInterrupts();
+          noInterrupts();
           handle_trigger();
-          //interrupts();
+          interrupts();
           rpc_out[0]=RPC_REPLY_PIMU_TRIGGER;
           memcpy(rpc_out+1,(uint8_t *)&(trg_in.data),sizeof(uint32_t));
           num_byte_rpc_out=1+sizeof(uint32_t);
@@ -266,7 +265,7 @@ void handleNewRPC()
           sync_reply.motor_sync_cnt=sync_manager.motor_sync_cnt;
            memcpy(rpc_out + 1, (uint8_t *) (&sync_reply), sizeof(Pimu_Motor_Sync_Reply));
           num_byte_rpc_out=sizeof(Pimu_Motor_Sync_Reply)+1;
-          //interrupts();
+          interrupts();
 
           break;
    case RPC_READ_TRACE: 
@@ -374,11 +373,8 @@ void handle_trigger()
 void update_config()
 {
     analog_manager.update_config(&cfg_in, &cfg);
-    if (cfg_in.accel_LPF!=cfg.accel_LPF) //Effort filter
-    {
-      accel_LPFa = exp(cfg_in.accel_LPF*-2*3.14159/FS); // z = e^st pole mapping
-      accel_LPFb = (1.0-accel_LPFa);
-    }
+    setIMUConfig(&cfg_in,&cfg);
+
     if (cfg_in.low_voltage_alert!=cfg.low_voltage_alert) 
     {
       low_voltage_alert=V_TO_RAW(cfg_in.low_voltage_alert);
@@ -392,10 +388,10 @@ void update_config()
     {
       over_tilt_alert_deg=rad_to_deg(cfg_in.over_tilt_alert);
     }
-
+    
 
     memcpy(&cfg,&cfg_in,sizeof(Pimu_Config));
-    setIMUCalibration(&cfg);
+    
 }
 ////////////////////////////
 
@@ -410,12 +406,11 @@ void update_fan()
   }
 }
 ////////////////////////////
-
 void update_imu()
 {
   stat.timestamp= time_manager.current_time_us();  //Tag timestamp just before reading IMU
-  stepIMU(&imu_status);
-  memcpy(&stat.imu,&imu_status, sizeof(IMU_Status));
+  stepIMU(&imu_stat);
+  memcpy(&stat.imu,&imu_stat, sizeof(IMU_Status));
 }
 
 ////////////////////////////
@@ -513,7 +508,7 @@ void update_cliff_monitor()
 void update_status()
 {
 
-  stat.debug=imu_b.irq_cnt;
+  //stat.debug=imu_b.irq_cnt;
 
   if(stat.imu.bump>cfg.bump_thresh) //Use the FW tap detector
       stat.bump_event_cnt++;
