@@ -23,7 +23,7 @@ fi
 
 PS3="Select model type: "
 
-select model in stretch-re1 stretch-re2
+select model in stretch-re1 stretch-re2 stretch-se3
 do
     echo "Selected model: $model"
 
@@ -33,6 +33,11 @@ do
   fi
 
  if [[ "$model" == "stretch-re2" ]]
+  then
+    break
+  fi
+
+ if [[ "$model" == "stretch-se3" ]]
   then
     break
   fi
