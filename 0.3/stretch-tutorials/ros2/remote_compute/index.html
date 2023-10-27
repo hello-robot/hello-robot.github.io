@@ -5317,7 +5317,7 @@ ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</
 ros2<span class="w"> </span>service<span class="w"> </span>call<span class="w"> </span>/stow_the_robot<span class="w"> </span>std_srvs/srv/Trigger
 </code></pre></div></p>
 <h2 id="5-offload-object-detection-node-to-remote-workstation">5. Offload Object Detection Node to Remote Workstation</h2>
-<p>From the workstation run the object detection node which runs a YoloV5 model.
+<p>From the workstation, run the <a href="https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_deep_perception/stretch_deep_perception/detect_objects.py">object detection node</a> which runs a YoloV5 model.
 <div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>run<span class="w"> </span>stretch_deep_perception<span class="w"> </span>detect_objects
 </code></pre></div>
 The node would start printing out the detected objects.
@@ -5347,7 +5347,7 @@ mouse<span class="w">  </span>detected
 </code></pre></div>
 <img alt="Object detection rviz" src="../images/remote_compute_object_detection_viz.png" /></p>
 <h2 id="6-offload-face-detection-node-to-remote-workstation">6. Offload Face  detection Node to Remote Workstation</h2>
-<p>From the workstation, run the face detection node. The face-detection node uses model parameters loaded from the stretch_deep_perception_models directory, whose <a href="https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_deep_perception/stretch_deep_perception/deep_learning_model_options.py#L5">path is pulled</a> from HELLO_FLEET_PATH environment variable. In our case, we will set the HELLO_FLEET_PATH environment variable to point to the home folder where the stretch_deep_perception_models directory was cloned.
+<p>From the workstation, run the <a href="https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_deep_perception/stretch_deep_perception/detect_faces.py">face detection node</a>. The face-detection node uses model parameters loaded from the stretch_deep_perception_models directory, whose <a href="https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_deep_perception/stretch_deep_perception/deep_learning_model_options.py#L5">path is pulled</a> from HELLO_FLEET_PATH environment variable. In our case, we will set the HELLO_FLEET_PATH environment variable to point to the home folder where the stretch_deep_perception_models directory was cloned.
 <div class="shell-prompt highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">HELLO_FLEET_PATH</span><span class="o">=</span>~/
 ros2<span class="w"> </span>run<span class="w"> </span>stretch_deep_perception<span class="w"> </span>detect_faces
 </code></pre></div>
