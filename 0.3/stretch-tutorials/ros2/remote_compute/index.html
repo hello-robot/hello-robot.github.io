@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.7">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.35e1ed30.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.4b4a2bd9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
@@ -5351,17 +5351,17 @@ mouse<span class="w">  </span>detected
 <div class="shell-prompt highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">HELLO_FLEET_PATH</span><span class="o">=</span>~/
 ros2<span class="w"> </span>run<span class="w"> </span>stretch_deep_perception<span class="w"> </span>detect_faces
 </code></pre></div>
-The node will load the
-<div class="shell-prompt highlight"><pre><span></span><code>head_detection_model.getUnconnectedOutLayers<span class="o">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="m">112</span><span class="o">]</span>
-head_detection_model<span class="w"> </span>output<span class="w"> </span>layer<span class="w"> </span><span class="nv">names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s1">&#39;detection_out&#39;</span><span class="o">]</span>
-head_detection_model<span class="w"> </span>output<span class="w"> </span>layer<span class="w"> </span><span class="nv">names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span><span class="s1">&#39;detection_out&#39;</span>,<span class="o">)</span>
-head_detection_model<span class="w"> </span>input<span class="w"> </span><span class="nv">layer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>&lt;dnn_Layer<span class="w"> </span>0x7f7d1e695cd0&gt;
+The node will load the face detection model network and start poblishing the detection.
+<div class="highlight"><pre><span></span><code>head_detection_model.getUnconnectedOutLayers() = [112]
+head_detection_model output layer names = [&#39;detection_out&#39;]
+head_detection_model output layer names = (&#39;detection_out&#39;,)
+head_detection_model input layer = &lt;dnn_Layer 0x7f7d1e695cd0&gt;
 .
 .
 .
-landmarks_model<span class="w"> </span>input<span class="w"> </span>layer<span class="w"> </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>align_fc3
-landmarks_model<span class="w"> </span><span class="nv">out_layer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>&lt;dnn_Layer<span class="w"> </span>0x7f7d1e695d30&gt;
-<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1698383830</span>.671699923<span class="o">]</span><span class="w"> </span><span class="o">[</span>DetectFacesNode<span class="o">]</span>:<span class="w"> </span>DetectFacesNode<span class="w"> </span>started
+landmarks_model input layer name = align_fc3
+landmarks_model out_layer = &lt;dnn_Layer 0x7f7d1e695d30&gt;
+[INFO] [1698383830.671699923] [DetectFacesNode]: DetectFacesNode started
 </code></pre></div></p>
 <h5 id="visualiza-in-rviz_1">Visualiza in Rviz</h5>
 <p><div class="shell-prompt highlight"><pre><span></span><code>rviz2<span class="w"> </span>-d<span class="w"> </span>~/ament_ws/install/stretch_deep_perception/share/stretch_deep_perception/rviz/face_detection.rviz
