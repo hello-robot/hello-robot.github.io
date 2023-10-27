@@ -12,28 +12,24 @@
         <meta name="author" content="Hello Robot Inc">
       
       
-        <link rel="canonical" href="https://docs.hello-robot.com/0.3/stretch-ros/">
+        <link rel="canonical" href="https://docs.hello-robot.com/0.3/stretch-tutorials/ros2/remote_compute/">
       
       
-        <link rel="prev" href="../stretch-body/CHANGELOG/">
       
       
-        <link rel="next" href="hello_helpers/">
-      
-      
-      <link rel="icon" href="../images/hello_robot_favicon.png">
+      <link rel="icon" href="../../../images/hello_robot_favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
     
     
       
-        <title>Overview - Stretch Documentation</title>
+        <title>Offloading Heavy Robot Compute to Remote Workstation - Stretch Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.35e1ed30.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.35e1ed30.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
       
       
 
@@ -52,11 +48,11 @@
       
     
     
-      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="../extra.css">
+      <link rel="stylesheet" href="../../../extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -85,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#melodic-deprecated" class="md-skip">
+        <a href="#offloading-heavy-robot-compute-to-remote-workstation" class="md-skip">
           Skip to content
         </a>
       
@@ -105,9 +101,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Stretch Documentation" class="md-header__button md-logo" aria-label="Stretch Documentation" data-md-component="logo">
+    <a href="../../.." title="Stretch Documentation" class="md-header__button md-logo" aria-label="Stretch Documentation" data-md-component="logo">
       
-  <img src="../images/hello_robot_logo_light.png" alt="logo">
+  <img src="../../../images/hello_robot_logo_light.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -124,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              Offloading Heavy Robot Compute to Remote Workstation
             
           </span>
         </div>
@@ -222,9 +218,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Stretch Documentation" class="md-nav__button md-logo" aria-label="Stretch Documentation" data-md-component="logo">
+    <a href="../../.." title="Stretch Documentation" class="md-nav__button md-logo" aria-label="Stretch Documentation" data-md-component="logo">
       
-  <img src="../images/hello_robot_logo_light.png" alt="logo">
+  <img src="../../../images/hello_robot_logo_light.png" alt="logo">
 
     </a>
     Stretch Documentation
@@ -238,7 +234,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -293,7 +289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/" class="md-nav__link">
+      <a href="../../" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -349,7 +345,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/getting_started/" class="md-nav__link">
+      <a href="../../getting_started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -405,7 +401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/getting_started/safety_guide/" class="md-nav__link">
+      <a href="../../getting_started/safety_guide/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -425,7 +421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/getting_started/quick_start_guide_re1/" class="md-nav__link">
+      <a href="../../getting_started/quick_start_guide_re1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -445,7 +441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/getting_started/quick_start_guide_re2/" class="md-nav__link">
+      <a href="../../getting_started/quick_start_guide_re2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -465,7 +461,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/getting_started/best_practices/" class="md-nav__link">
+      <a href="../../getting_started/best_practices/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -485,7 +481,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/getting_started/troubleshooting_guide/" class="md-nav__link">
+      <a href="../../getting_started/troubleshooting_guide/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -549,7 +545,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/getting_started/command_line_tools/" class="md-nav__link">
+      <a href="../../getting_started/command_line_tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -569,7 +565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/getting_started/untethered_operation/" class="md-nav__link">
+      <a href="../../getting_started/untethered_operation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -589,7 +585,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/getting_started/updating_software/" class="md-nav__link">
+      <a href="../../getting_started/updating_software/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -661,7 +657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/stretch_body/" class="md-nav__link">
+      <a href="../../stretch_body/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -717,7 +713,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/stretch_body/tutorial_introduction/" class="md-nav__link">
+      <a href="../../stretch_body/tutorial_introduction/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -737,7 +733,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/stretch_body/tutorial_command_line_tools/" class="md-nav__link">
+      <a href="../../stretch_body/tutorial_command_line_tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -757,7 +753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/stretch_body/tutorial_robot_motion/" class="md-nav__link">
+      <a href="../../stretch_body/tutorial_robot_motion/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -777,7 +773,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/stretch_body/tutorial_robot_sensors/" class="md-nav__link">
+      <a href="../../stretch_body/tutorial_robot_sensors/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -841,7 +837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/stretch_body/tutorial_dynamixel_servos/" class="md-nav__link">
+      <a href="../../stretch_body/tutorial_dynamixel_servos/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -861,7 +857,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/stretch_body/tutorial_parameter_management/" class="md-nav__link">
+      <a href="../../stretch_body/tutorial_parameter_management/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -881,7 +877,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/stretch_body/tutorial_splined_trajectories/" class="md-nav__link">
+      <a href="../../stretch_body/tutorial_splined_trajectories/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -901,7 +897,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/stretch_body/tutorial_collision_avoidance/" class="md-nav__link">
+      <a href="../../stretch_body/tutorial_collision_avoidance/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -921,7 +917,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/stretch_body/tutorial_contact_models/" class="md-nav__link">
+      <a href="../../stretch_body/tutorial_contact_models/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -941,7 +937,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/stretch_body/tutorial_tool_change/" class="md-nav__link">
+      <a href="../../stretch_body/tutorial_tool_change/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -961,7 +957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/stretch_body/tutorial_custom_wrist_dof/" class="md-nav__link">
+      <a href="../../stretch_body/tutorial_custom_wrist_dof/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -981,7 +977,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/stretch_body/tutorial_safe_coding/" class="md-nav__link">
+      <a href="../../stretch_body/tutorial_safe_coding/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1053,7 +1049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/" class="md-nav__link">
+      <a href="../../ros1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1109,7 +1105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/getting_started/" class="md-nav__link">
+      <a href="../../ros1/getting_started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1129,7 +1125,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/teleoperating_stretch/" class="md-nav__link">
+      <a href="../../ros1/teleoperating_stretch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1149,7 +1145,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/internal_state_of_stretch/" class="md-nav__link">
+      <a href="../../ros1/internal_state_of_stretch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1169,7 +1165,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/rviz_basics/" class="md-nav__link">
+      <a href="../../ros1/rviz_basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1189,7 +1185,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/navigation_stack/" class="md-nav__link">
+      <a href="../../ros1/navigation_stack/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1209,7 +1205,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/follow_joint_trajectory/" class="md-nav__link">
+      <a href="../../ros1/follow_joint_trajectory/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1229,7 +1225,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/perception/" class="md-nav__link">
+      <a href="../../ros1/perception/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1249,7 +1245,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/aruco_marker_detection/" class="md-nav__link">
+      <a href="../../ros1/aruco_marker_detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1269,7 +1265,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/respeaker_microphone_array/" class="md-nav__link">
+      <a href="../../ros1/respeaker_microphone_array/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1309,7 +1305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/gazebo_basics/" class="md-nav__link">
+      <a href="../../ros1/gazebo_basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1373,7 +1369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/example_1/" class="md-nav__link">
+      <a href="../../ros1/example_1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1393,7 +1389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/example_2/" class="md-nav__link">
+      <a href="../../ros1/example_2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1413,7 +1409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/example_3/" class="md-nav__link">
+      <a href="../../ros1/example_3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1433,7 +1429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/example_4/" class="md-nav__link">
+      <a href="../../ros1/example_4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1453,7 +1449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/example_5/" class="md-nav__link">
+      <a href="../../ros1/example_5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1473,7 +1469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/example_6/" class="md-nav__link">
+      <a href="../../ros1/example_6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1493,7 +1489,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/example_7/" class="md-nav__link">
+      <a href="../../ros1/example_7/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1513,7 +1509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/example_8/" class="md-nav__link">
+      <a href="../../ros1/example_8/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1533,7 +1529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/example_9/" class="md-nav__link">
+      <a href="../../ros1/example_9/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1553,7 +1549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/example_10/" class="md-nav__link">
+      <a href="../../ros1/example_10/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1573,7 +1569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/example_11/" class="md-nav__link">
+      <a href="../../ros1/example_11/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1593,7 +1589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/example_12/" class="md-nav__link">
+      <a href="../../ros1/example_12/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1613,7 +1609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/example_13/" class="md-nav__link">
+      <a href="../../ros1/example_13/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1633,7 +1629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros1/autodocking_nav_stack/" class="md-nav__link">
+      <a href="../../ros1/autodocking_nav_stack/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1705,7 +1701,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1761,7 +1757,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/getting_started/" class="md-nav__link">
+      <a href="../getting_started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1781,7 +1777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/intro_to_ros2/" class="md-nav__link">
+      <a href="../intro_to_ros2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1801,7 +1797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/intro_to_hellonode/" class="md-nav__link">
+      <a href="../intro_to_hellonode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1821,7 +1817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/teleoperating_stretch/" class="md-nav__link">
+      <a href="../teleoperating_stretch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1841,7 +1837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/internal_state_of_stretch/" class="md-nav__link">
+      <a href="../internal_state_of_stretch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1861,7 +1857,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/rviz_basics/" class="md-nav__link">
+      <a href="../rviz_basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1917,7 +1913,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/navigation_overview/" class="md-nav__link">
+      <a href="../navigation_overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1937,7 +1933,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/navigation_stack/" class="md-nav__link">
+      <a href="../navigation_stack/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1957,7 +1953,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/navigation_simple_commander/" class="md-nav__link">
+      <a href="../navigation_simple_commander/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1985,7 +1981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/follow_joint_trajectory/" class="md-nav__link">
+      <a href="../follow_joint_trajectory/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2005,7 +2001,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/perception/" class="md-nav__link">
+      <a href="../perception/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2025,7 +2021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/aruco_marker_detection/" class="md-nav__link">
+      <a href="../aruco_marker_detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2081,7 +2077,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/respeaker_mic_array/" class="md-nav__link">
+      <a href="../respeaker_mic_array/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2101,7 +2097,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/respeaker_topics/" class="md-nav__link">
+      <a href="../respeaker_topics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2193,7 +2189,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/example_1/" class="md-nav__link">
+      <a href="../example_1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2213,7 +2209,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/example_2/" class="md-nav__link">
+      <a href="../example_2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2233,7 +2229,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/example_3/" class="md-nav__link">
+      <a href="../example_3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2253,7 +2249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/example_4/" class="md-nav__link">
+      <a href="../example_4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2273,7 +2269,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/example_5/" class="md-nav__link">
+      <a href="../example_5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2293,7 +2289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/example_6/" class="md-nav__link">
+      <a href="../example_6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2313,7 +2309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/example_7/" class="md-nav__link">
+      <a href="../example_7/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2333,7 +2329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/example_8/" class="md-nav__link">
+      <a href="../example_8/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2353,7 +2349,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/example_9/" class="md-nav__link">
+      <a href="../example_9/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2373,7 +2369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/example_10/" class="md-nav__link">
+      <a href="../example_10/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2393,7 +2389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/example_12/" class="md-nav__link">
+      <a href="../example_12/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2413,7 +2409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/obstacle_avoider/" class="md-nav__link">
+      <a href="../obstacle_avoider/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2433,7 +2429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/align_to_aruco/" class="md-nav__link">
+      <a href="../align_to_aruco/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2453,7 +2449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/deep_perception/" class="md-nav__link">
+      <a href="../deep_perception/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2473,7 +2469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/ros2/avoiding_deadlocks_race_conditions/" class="md-nav__link">
+      <a href="../avoiding_deadlocks_race_conditions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2545,7 +2541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/stretch_tool_share/" class="md-nav__link">
+      <a href="../../stretch_tool_share/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2601,7 +2597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/stretch_tool_share/gripper_removal/" class="md-nav__link">
+      <a href="../../stretch_tool_share/gripper_removal/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2621,7 +2617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/stretch_tool_share/gripper_puller/" class="md-nav__link">
+      <a href="../../stretch_tool_share/gripper_puller/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2641,7 +2637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/stretch_tool_share/dry_erase_holder/" class="md-nav__link">
+      <a href="../../stretch_tool_share/dry_erase_holder/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2661,7 +2657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/stretch_tool_share/dexwrist/" class="md-nav__link">
+      <a href="../../stretch_tool_share/dexwrist/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2681,7 +2677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/stretch_tool_share/dex_to_standard/" class="md-nav__link">
+      <a href="../../stretch_tool_share/dex_to_standard/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2745,7 +2741,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tutorials/stretch_tool_share/updating_urdf/" class="md-nav__link">
+      <a href="../../stretch_tool_share/updating_urdf/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2786,20 +2782,18 @@
       
   
   
-    
-  
   
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -2813,7 +2807,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Code Repositories
@@ -2826,7 +2820,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repos_overview/" class="md-nav__link">
+      <a href="../../../repos_overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2882,7 +2876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-body/" class="md-nav__link">
+      <a href="../../../stretch-body/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2938,7 +2932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-body/docs/robot_parameters/" class="md-nav__link">
+      <a href="../../../stretch-body/docs/robot_parameters/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2986,7 +2980,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-body/CHANGELOG/" class="md-nav__link">
+      <a href="../../../stretch-body/CHANGELOG/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3012,20 +3006,18 @@
                 
   
   
-    
-  
   
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
         
           
           <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
@@ -3039,7 +3031,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
             Stretch ROS
@@ -3050,29 +3042,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Overview
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../stretch-ros/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3081,53 +3053,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    Overview
-  </a>
-  
-    <nav class="md-nav" aria-label="Overview">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#code-status-development-plans" class="md-nav__link">
-    Code Status &amp; Development Plans
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#licenses" class="md-nav__link">
-    Licenses
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3195,7 +3120,7 @@
   
   
     <li class="md-nav__item">
-      <a href="hello_helpers/" class="md-nav__link">
+      <a href="../../../stretch-ros/hello_helpers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3215,7 +3140,7 @@
   
   
     <li class="md-nav__item">
-      <a href="stretch_calibration/" class="md-nav__link">
+      <a href="../../../stretch-ros/stretch_calibration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3235,7 +3160,7 @@
   
   
     <li class="md-nav__item">
-      <a href="stretch_core/" class="md-nav__link">
+      <a href="../../../stretch-ros/stretch_core/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3255,7 +3180,7 @@
   
   
     <li class="md-nav__item">
-      <a href="stretch_deep_perception/" class="md-nav__link">
+      <a href="../../../stretch-ros/stretch_deep_perception/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3275,7 +3200,7 @@
   
   
     <li class="md-nav__item">
-      <a href="stretch_demos/" class="md-nav__link">
+      <a href="../../../stretch-ros/stretch_demos/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3295,7 +3220,7 @@
   
   
     <li class="md-nav__item">
-      <a href="stretch_description/" class="md-nav__link">
+      <a href="../../../stretch-ros/stretch_description/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3315,7 +3240,7 @@
   
   
     <li class="md-nav__item">
-      <a href="stretch_funmap/" class="md-nav__link">
+      <a href="../../../stretch-ros/stretch_funmap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3335,7 +3260,7 @@
   
   
     <li class="md-nav__item">
-      <a href="stretch_gazebo/" class="md-nav__link">
+      <a href="../../../stretch-ros/stretch_gazebo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3355,7 +3280,7 @@
   
   
     <li class="md-nav__item">
-      <a href="stretch_moveit_config/README.md" class="md-nav__link">
+      <a href="../../../stretch-ros/stretch_moveit_config/README.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3375,7 +3300,7 @@
   
   
     <li class="md-nav__item">
-      <a href="stretch_navigation/" class="md-nav__link">
+      <a href="../../../stretch-ros/stretch_navigation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3447,7 +3372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-ros2/" class="md-nav__link">
+      <a href="../../../stretch-ros2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3523,7 +3448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-ros2/hello_helpers/" class="md-nav__link">
+      <a href="../../../stretch-ros2/hello_helpers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3543,7 +3468,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-ros2/stretch_calibration/" class="md-nav__link">
+      <a href="../../../stretch-ros2/stretch_calibration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3563,7 +3488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-ros2/stretch_core/" class="md-nav__link">
+      <a href="../../../stretch-ros2/stretch_core/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3583,7 +3508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-ros2/stretch_dashboard/README.md" class="md-nav__link">
+      <a href="../../../stretch-ros2/stretch_dashboard/README.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3603,7 +3528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-ros2/stretch_deep_perception/" class="md-nav__link">
+      <a href="../../../stretch-ros2/stretch_deep_perception/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3623,7 +3548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-ros2/stretch_demos/README.md" class="md-nav__link">
+      <a href="../../../stretch-ros2/stretch_demos/README.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3643,7 +3568,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-ros2/stretch_description/" class="md-nav__link">
+      <a href="../../../stretch-ros2/stretch_description/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3663,7 +3588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-ros2/stretch_funmap/README.md" class="md-nav__link">
+      <a href="../../../stretch-ros2/stretch_funmap/README.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3683,7 +3608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-ros2/stretch_gazebo/README.md" class="md-nav__link">
+      <a href="../../../stretch-ros2/stretch_gazebo/README.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3703,7 +3628,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-ros2/stretch_moveit_config/README.md" class="md-nav__link">
+      <a href="../../../stretch-ros2/stretch_moveit_config/README.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3723,7 +3648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-ros2/stretch_navigation/README.md" class="md-nav__link">
+      <a href="../../../stretch-ros2/stretch_navigation/README.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3743,7 +3668,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-ros2/stretch_octomap/README.md" class="md-nav__link">
+      <a href="../../../stretch-ros2/stretch_octomap/README.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3763,7 +3688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-ros2/stretch_rtabmap/README.md" class="md-nav__link">
+      <a href="../../../stretch-ros2/stretch_rtabmap/README.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3835,7 +3760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-factory/" class="md-nav__link">
+      <a href="../../../stretch-factory/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3899,7 +3824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-firmware/" class="md-nav__link">
+      <a href="../../../stretch-firmware/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3955,7 +3880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-firmware/docs/tutorial_updating_firmware/" class="md-nav__link">
+      <a href="../../../stretch-firmware/docs/tutorial_updating_firmware/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4011,7 +3936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-firmware/docs/tutorials_overview/" class="md-nav__link">
+      <a href="../../../stretch-firmware/docs/tutorials_overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4031,7 +3956,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-firmware/docs/tutorial_data_transfer/" class="md-nav__link">
+      <a href="../../../stretch-firmware/docs/tutorial_data_transfer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4051,7 +3976,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-firmware/docs/tutorial_i2c_sensor/" class="md-nav__link">
+      <a href="../../../stretch-firmware/docs/tutorial_i2c_sensor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4071,7 +3996,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-firmware/docs/tutorial_spi_sensor/" class="md-nav__link">
+      <a href="../../../stretch-firmware/docs/tutorial_spi_sensor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4091,7 +4016,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-firmware/docs/tutorial_serial_sensor/" class="md-nav__link">
+      <a href="../../../stretch-firmware/docs/tutorial_serial_sensor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4111,7 +4036,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-firmware/docs/tutorial_wacc_emulation/" class="md-nav__link">
+      <a href="../../../stretch-firmware/docs/tutorial_wacc_emulation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4191,7 +4116,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tool-share/" class="md-nav__link">
+      <a href="../../../stretch-tool-share/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4247,7 +4172,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tool-share/tool_share/dry_erase_holder_V1/" class="md-nav__link">
+      <a href="../../../stretch-tool-share/tool_share/dry_erase_holder_V1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4267,7 +4192,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tool-share/tool_share/phone_holder_V1/" class="md-nav__link">
+      <a href="../../../stretch-tool-share/tool_share/phone_holder_V1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4287,7 +4212,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tool-share/tool_share/puller_v1/" class="md-nav__link">
+      <a href="../../../stretch-tool-share/tool_share/puller_v1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4307,7 +4232,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tool-share/tool_share/reactorx_wrist_V1/" class="md-nav__link">
+      <a href="../../../stretch-tool-share/tool_share/reactorx_wrist_V1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4327,7 +4252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tool-share/tool_share/swiffer_mount_V1/" class="md-nav__link">
+      <a href="../../../stretch-tool-share/tool_share/swiffer_mount_V1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4347,7 +4272,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tool-share/tool_share/tray_cup_holder_V1/" class="md-nav__link">
+      <a href="../../../stretch-tool-share/tool_share/tray_cup_holder_V1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4367,7 +4292,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tool-share/tool_share/wrist_USB_board_camera/" class="md-nav__link">
+      <a href="../../../stretch-tool-share/tool_share/wrist_USB_board_camera/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4387,7 +4312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tool-share/tool_share/arm_mounted_tray_V1/" class="md-nav__link">
+      <a href="../../../stretch-tool-share/tool_share/arm_mounted_tray_V1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4407,7 +4332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tool-share/tool_share/card_holder_V1.5/" class="md-nav__link">
+      <a href="../../../stretch-tool-share/tool_share/card_holder_V1.5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4427,7 +4352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tool-share/tool_share/stretch_dex_wrist/" class="md-nav__link">
+      <a href="../../../stretch-tool-share/tool_share/stretch_dex_wrist/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4447,7 +4372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tool-share/tool_share/stretch_docking_station/" class="md-nav__link">
+      <a href="../../../stretch-tool-share/tool_share/stretch_docking_station/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4467,7 +4392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tool-share/tool_share/stretch_RE1_arm/" class="md-nav__link">
+      <a href="../../../stretch-tool-share/tool_share/stretch_RE1_arm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4487,7 +4412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tool-share/tool_share/stretch_RE1_head/" class="md-nav__link">
+      <a href="../../../stretch-tool-share/tool_share/stretch_RE1_head/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4507,7 +4432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-tool-share/tool_share/stretch_teleop_kit/" class="md-nav__link">
+      <a href="../../../stretch-tool-share/tool_share/stretch_teleop_kit/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4579,7 +4504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-install/" class="md-nav__link">
+      <a href="../../../stretch-install/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4599,7 +4524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-install/docs/updating_software/" class="md-nav__link">
+      <a href="../../../stretch-install/docs/updating_software/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4619,7 +4544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-install/docs/add_new_user/" class="md-nav__link">
+      <a href="../../../stretch-install/docs/add_new_user/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4639,7 +4564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-install/docs/ros_workspace/" class="md-nav__link">
+      <a href="../../../stretch-install/docs/ros_workspace/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4659,7 +4584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-install/docs/robot_install/" class="md-nav__link">
+      <a href="../../../stretch-install/docs/robot_install/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4743,7 +4668,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-web-interface/" class="md-nav__link">
+      <a href="../../../stretch-web-interface/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4814,7 +4739,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-hardware-guides/" class="md-nav__link">
+      <a href="../../../stretch-hardware-guides/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4890,7 +4815,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-hardware-guides/docs/battery_maintenance_guide_re1/" class="md-nav__link">
+      <a href="../../../stretch-hardware-guides/docs/battery_maintenance_guide_re1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4910,7 +4835,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-hardware-guides/docs/hardware_guide_re1/" class="md-nav__link">
+      <a href="../../../stretch-hardware-guides/docs/hardware_guide_re1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4930,7 +4855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-hardware-guides/docs/dex_wrist_guide_re1/" class="md-nav__link">
+      <a href="../../../stretch-hardware-guides/docs/dex_wrist_guide_re1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4994,7 +4919,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-hardware-guides/docs/battery_maintenance_guide_re2/" class="md-nav__link">
+      <a href="../../../stretch-hardware-guides/docs/battery_maintenance_guide_re2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5014,7 +4939,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-hardware-guides/docs/hardware_guide_re2/" class="md-nav__link">
+      <a href="../../../stretch-hardware-guides/docs/hardware_guide_re2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5034,7 +4959,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stretch-hardware-guides/docs/dex_wrist_guide_re2/" class="md-nav__link">
+      <a href="../../../stretch-hardware-guides/docs/dex_wrist_guide_re2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5193,23 +5118,98 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    Overview
+  <a href="#1-setting-a-ros_domain_id" class="md-nav__link">
+    1. Setting a ROS_DOMAIN_ID
   </a>
   
-    <nav class="md-nav" aria-label="Overview">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-setup-the-workstation-to-work-with-stretch" class="md-nav__link">
+    2. Setup the Workstation to work with Stretch
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Setup the Workstation to work with Stretch">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#code-status-development-plans" class="md-nav__link">
-    Code Status &amp; Development Plans
+  <a href="#setup-essential-stretch_ros2-packages" class="md-nav__link">
+    Setup Essential stretch_ros2 Packages
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#licenses" class="md-nav__link">
-    Licenses
+  <a href="#setup-robot-urdf-and-meshes" class="md-nav__link">
+    Setup Robot URDF and Meshes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-stretch-deep-perception-models" class="md-nav__link">
+    Download Stretch Deep Perception Models
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-start-core-nodes-on-the-robot-compute" class="md-nav__link">
+    3. Start core Nodes on the Robot Compute
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-verify-remote-workstation-is-able-to-discover-stretch-nodes" class="md-nav__link">
+    4. Verify Remote Workstation is able to discover Stretch Nodes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-offload-object-detection-node-to-remote-workstation" class="md-nav__link">
+    5. Offload Object Detection Node to Remote Workstation
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Offload Object Detection Node to Remote Workstation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visualiza-in-rviz" class="md-nav__link">
+    Visualiza in Rviz
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-offload-face-detection-node-to-remote-workstation" class="md-nav__link">
+    6. Offload Face  detection Node to Remote Workstation
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Offload Face detection Node to Remote Workstation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visualiza-in-rviz_1" class="md-nav__link">
+    Visualiza in Rviz
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting-notes" class="md-nav__link">
+    Troubleshooting Notes
   </a>
   
 </li>
@@ -5234,179 +5234,147 @@
                   
 
 
-<h1 id="melodic-deprecated">Melodic Deprecated</h1>
-<p>This branch of <em>stretch_ros</em> is DEPRECATED. Please use the <a href="https://github.com/hello-robot/stretch_install/blob/master/docs/robot_install.md">Robot Install upgrade guide</a> to upgrade to Ubuntu 20.04/<a href="https://github.com/hello-robot/stretch_ros/tree/noetic">ROS Noetic</a> or Ubuntu 22.04/<a href="https://github.com/hello-robot/stretch_ros2/tree/humble">ROS2 Humble</a>. The Melodic README is saved below.</p>
-<hr />
-<h3 id="overview">Overview</h3>
-<p>The <em>stretch_ros</em> repository holds ROS related code for the Stretch RE1 mobile manipulator from Hello Robot Inc. 
-For an overview of the capabilities in this repository, we recommend you look at the <a href="https://forum.hello-robot.com/t/autonomy-video-details">following forum post</a>.</p>
-<p><strong>Please be aware that the code in this repository is currently under heavy development.</strong> </p>
-<table>
-<thead>
-<tr>
-<th>Resource</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="hello_helpers/">hello_helpers</a></td>
-<td>Miscellaneous helper code used across the stretch_ros repository</td>
-</tr>
-<tr>
-<td><a href="stretch_calibration/">stretch_calibration</a></td>
-<td>Creates and updates calibrated URDFs for the Stretch RE1</td>
-</tr>
-<tr>
-<td><a href="stretch_core/">stretch_core</a></td>
-<td>Enables basic use of the Stretch RE1 from ROS</td>
-</tr>
-<tr>
-<td><a href="stretch_deep_perception/">stretch_deep_perception</a></td>
-<td>Demonstrations that use open deep learning models to perceive the world</td>
-</tr>
-<tr>
-<td><a href="stretch_demos/">stretch_demos</a></td>
-<td>Demonstrations of simple autonomous manipulation</td>
-</tr>
-<tr>
-<td><a href="stretch_description/">stretch_description</a></td>
-<td>Generate and export URDFs</td>
-</tr>
-<tr>
-<td><a href="stretch_funmap/">stretch_funmap</a></td>
-<td>Demonstrations of Fast Unified Navigation, Manipulation And Planning (FUNMAP)</td>
-</tr>
-<tr>
-<td><a href="stretch_gazebo/">stretch_gazebo</a></td>
-<td>Support for simulation of Stretch in the Gazebo simulator</td>
-</tr>
-<tr>
-<td><a href="stretch_gazebo/">stretch_moveit_config</a></td>
-<td>Config files to use Stretch with the MoveIt Motion Planning Framework</td>
-</tr>
-<tr>
-<td><a href="stretch_navigation/">stretch_navigation</a></td>
-<td>Support for the ROS navigation stack, including move_base, gmapping, and AMCL</td>
-</tr>
-</tbody>
-</table>
-<h4 id="code-status-development-plans">Code Status &amp; Development Plans</h4>
-<p>We intend for the following high-level summary to provide guidance about the current state of the code and planned development activities.</p>
-<table>
-<thead>
-<tr>
-<th>Directory</th>
-<th>Testing Status</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>hello_helpers</td>
-<td>GOOD</td>
-<td></td>
-</tr>
-<tr>
-<td>stretch_calibration</td>
-<td>GOOD</td>
-<td></td>
-</tr>
-<tr>
-<td>stretch_core</td>
-<td>GOOD</td>
-<td></td>
-</tr>
-<tr>
-<td>stretch_deep_perception</td>
-<td>GOOD</td>
-<td></td>
-</tr>
-<tr>
-<td>stretch_demos</td>
-<td>FAIR</td>
-<td></td>
-</tr>
-<tr>
-<td>stretch_description</td>
-<td>GOOD</td>
-<td></td>
-</tr>
-<tr>
-<td>stretch_funmap</td>
-<td>FAIR</td>
-<td></td>
-</tr>
-<tr>
-<td>stretch_gazebo</td>
-<td>FAIR</td>
-<td>differs from stretch_core in its underlying controllers</td>
-</tr>
-<tr>
-<td>stretch_moveit_config</td>
-<td>FAIR</td>
-<td>does not support mobile base planning in ROS 1</td>
-</tr>
-<tr>
-<td>stretch_navigation</td>
-<td>GOOD</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="licenses">Licenses</h4>
-<p>This software is intended for use with the Stretch RE1 mobile manipulator, which is a robot produced and sold by Hello Robot Inc. For further information, including inquiries about dual licensing, please contact Hello Robot Inc.</p>
-<p>For license details for this repository, see the LICENSE files found in the directories. A summary of the licenses follows: </p>
-<table>
-<thead>
-<tr>
-<th>Directory</th>
-<th>License</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>hello_helpers</td>
-<td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a></td>
-</tr>
-<tr>
-<td>stretch_calibration</td>
-<td><a href="https://www.gnu.org/licenses/gpl-3.0.html">GPLv3</a></td>
-</tr>
-<tr>
-<td>stretch_core</td>
-<td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a></td>
-</tr>
-<tr>
-<td>stretch_deep_perception</td>
-<td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a></td>
-</tr>
-<tr>
-<td>stretch_demos</td>
-<td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a></td>
-</tr>
-<tr>
-<td>stretch_description</td>
-<td><a href="https://choosealicense.com/licenses/bsd-3-clause-clear/">BSD 3-Clause Clear License</a></td>
-</tr>
-<tr>
-<td>stretch_funmap</td>
-<td><a href="https://www.gnu.org/licenses/lgpl-3.0.en.html">LGPLv3</a></td>
-</tr>
-<tr>
-<td>stretch_gazebo</td>
-<td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a></td>
-</tr>
-<tr>
-<td>stretch_moveit_config</td>
-<td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a></td>
-</tr>
-<tr>
-<td>stretch_navigation</td>
-<td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a></td>
-</tr>
-</tbody>
-</table>
+<h1 id="offloading-heavy-robot-compute-to-remote-workstation">Offloading Heavy Robot Compute to Remote Workstation</h1>
+<p>In this tutorial, we will explore the method for offloading computationally intensive processes, such as running computer vision models, to a remote workstation computer. This approach offers several advantages such as:
+- Saving robot's processing power.
+- Increasing robot's efficiency by offloading high-power consuming processes. 
+- Utilizing available GPU hardware on powerful workstations to run large deep learning models.</p>
+<p>We will delve into the process of <strong>offloading <a href="https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_deep_perception">Stretch Deep Perception</a> ROS2 nodes</strong>. These nodes are known for their demanding computational requirements and are frequently used in <a href="https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_demos">Stretch Demos</a>. </p>
+<p><em>NOTE: All Stretch ROS2 packages are developed with Humble distro.</em></p>
+<h2 id="1-setting-a-ros_domain_id">1. Setting a ROS_DOMAIN_ID</h2>
+<p>ROS2 utilizes <a href="https://design.ros2.org/articles/ros_on_dds.html">DDS</a> as the default middleware for communication. <strong>DDS enables nodes within the same physical network to seamlessly discover one another and establish communication, provided they share the same <a href="https://docs.ros.org/en/humble/Concepts/Intermediate/About-Domain-ID.html">ROS_DOMAIN_ID</a></strong>. This powerful mechanism ensures secure message passing between remote nodes as intended.</p>
+<p>By default, all ROS 2 nodes are configured with domain ID 0. To avoid conflicts, select a domain ID from the range of 0 to 101, and then set this chosen domain ID as the value for the <code>ROS_DOMAIN_ID</code> environment variable in both the Workstation and the Robot.
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">ROS_DOMAIN_ID</span><span class="o">=</span>&lt;ID&gt;
+</code></pre></div></p>
+<h2 id="2-setup-the-workstation-to-work-with-stretch">2. Setup the Workstation to work with Stretch</h2>
+<p>The workstation needs to be installed with the stretch related ros2 packages to have access to robot meshes for Visualization in Rviz, custom interfaces dependencies and essential perception packages.</p>
+<p>This section assumes the workstation already has an active ROS2 distro and colcon dependencies pre-installed.
+You can find <a href="https://docs.ros.org/en/humble/Installation/Alternatives/Ubuntu-Install-Binary.html#">ROS2 Installation step for Ubuntu here</a>.</p>
+<h4 id="setup-essential-stretch_ros2-packages">Setup Essential stretch_ros2 Packages</h4>
+<p>Make sure the ROS2 distro is sourced.
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash
+</code></pre></div></p>
+<p>Create workspace directory and clone stretch_ros2 packages along with it's dependency packages to <code>src</code> folder.
+<div class="shell-prompt highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>~/ament_ws/src
+<span class="nb">cd</span><span class="w"> </span>~/ament_ws/src/
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/hello-robot/stretch_ros2
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/hello-binit/ros2_numpy<span class="w"> </span>-b<span class="w"> </span>humble
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/IntelRealSense/realsense-ros.git<span class="w"> </span>-b<span class="w"> </span>ros2-development
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Slamtec/sllidar_ros2.git<span class="w"> </span>-b<span class="w"> </span>main
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/hello-binit/respeaker_ros2.git<span class="w"> </span>-b<span class="w"> </span>humble
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/hello-binit/audio_common.git<span class="w"> </span>-b<span class="w"> </span>humble
+</code></pre></div></p>
+<p>Build and install all the packages present in source folder. 
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/ament_ws
+rosdep<span class="w"> </span>install<span class="w"> </span>--rosdistro<span class="o">=</span>humble<span class="w"> </span>-iyr<span class="w"> </span>--skip-keys<span class="o">=</span><span class="s2">&quot;librealsense2&quot;</span><span class="w"> </span>--from-paths<span class="w"> </span>src
+colcon<span class="w"> </span>build<span class="w"> </span>--cmake-args<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release
+</code></pre></div></p>
+<p>Make sure to source the workspace to discover the packages in it.
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>~/ament_ws/install/setup.bash
+</code></pre></div></p>
+<h4 id="setup-robot-urdf-and-meshes">Setup Robot URDF and Meshes</h4>
+<p>All the robots will have calibrated URDF with pre-configured mesh files in the stretch_description package directory that is specific to your actual robot. So we recommend you to <strong>copy the <code>stretch_description</code> directory that exists inside your robot and replace it with the one existing in the workstation</strong>. The Stretch Description directory exists in the path <code>~/ament_ws/src/stretch_ros2/stretch_description</code>.</p>
+<p>If you dont want to use the URDFs from the robot, you can manually generate the uncalibrated URDF w.r.t your robot configuration using the following commands:
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/ament_ws/src/stretch_ros2/stretch_description/urdf/
+
+<span class="c1">#if Dex-Wrist Installed</span>
+cp<span class="w"> </span>stretch_description_dex.xacro<span class="w"> </span>stretch_description.xacro
+
+<span class="c1">#if Standard Gripper</span>
+cp<span class="w"> </span>stretch_description_standard.xacro<span class="w"> </span>stretch_description.xacro
+
+ros2<span class="w"> </span>run<span class="w"> </span>stretch_calibration<span class="w"> </span>update_uncalibrated_urdf
+cp<span class="w"> </span>stretch_uncalibrated.urdf<span class="w"> </span>stretch.urdf
+</code></pre></div></p>
+<p>After setting up the stretch_description folder, re-build the workspace to update the package with latest changes.
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/ament_ws
+colcon<span class="w"> </span>build
+</code></pre></div></p>
+<h4 id="download-stretch-deep-perception-models">Download Stretch Deep Perception Models</h4>
+<p><a href="https://github.com/hello-robot/stretch_deep_perception_models">stretch_deep_perception_models</a> provides open deep learning models from third parties for use. We are cloning this directory to the home folder in the workstation.
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/<span class="w"> </span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/hello-robot/stretch_deep_perception_models
+</code></pre></div></p>
+<h2 id="3-start-core-nodes-on-the-robot-compute">3. Start core Nodes on the Robot Compute</h2>
+<p>Start the core driver nodes for controlling the robot, streaming the Lidar and realsense depth camera/s data using the <a href="https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_core">stretch_core</a> package.</p>
+<div class="shell-prompt highlight"><pre><span></span><code><span class="c1"># Terminal 1: Start the Stretch Driver Node</span>
+ros2<span class="w"> </span>launch<span class="w"> </span>stretch_core<span class="w"> </span>stretch_driver.launch.py
+<span class="c1"># Terminal 2: Start the realsense D435i stream.</span>
+ros2<span class="w"> </span>launch<span class="w"> </span>stretch_core<span class="w"> </span>d435i_high_resolution.launch.py
+<span class="c1"># Terminal 3: Start lidar.</span>
+ros2<span class="w"> </span>launch<span class="w"> </span>stretch_core<span class="w"> </span>rplidar.launch.py
+</code></pre></div>
+<h2 id="4-verify-remote-workstation-is-able-to-discover-stretch-nodes">4. Verify Remote Workstation is able to discover Stretch Nodes</h2>
+<p>After launching the above core nodes, all the robot control interfaces and sensor data streams should be exposed to all the other nodes in the same physical network with common ROS_DOMAIN_ID set.</p>
+<p>From the remote workstation try the following test commands:
+<div class="shell-prompt highlight"><pre><span></span><code><span class="c1"># Check if all robot topics are visible.</span>
+ros2<span class="w"> </span>topic<span class="w"> </span>list
+
+<span class="c1"># Check if able to receive a sensor data by printing from Joint States topic.</span>
+ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/joint_states
+
+<span class="c1"># Check if able to send commands to robot by triggering stow_the_robot service</span>
+ros2<span class="w"> </span>service<span class="w"> </span>call<span class="w"> </span>/stow_the_robot<span class="w"> </span>std_srvs/srv/Trigger
+</code></pre></div></p>
+<h2 id="5-offload-object-detection-node-to-remote-workstation">5. Offload Object Detection Node to Remote Workstation</h2>
+<p>From the workstation run the object detection node which runs a YoloV5 model.
+<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>run<span class="w"> </span>stretch_deep_perception<span class="w"> </span>detect_objects
+</code></pre></div>
+The node would start printing out the detected objects.
+<div class="shell-prompt highlight"><pre><span></span><code>Fusing<span class="w"> </span>layers...<span class="w"> </span>
+YOLOv5s<span class="w"> </span>summary:<span class="w"> </span><span class="m">213</span><span class="w"> </span>layers,<span class="w"> </span><span class="m">7225885</span><span class="w"> </span>parameters,<span class="w"> </span><span class="m">0</span><span class="w"> </span>gradients
+Adding<span class="w"> </span>AutoShape...<span class="w"> </span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1698379209</span>.925727618<span class="o">]</span><span class="w"> </span><span class="o">[</span>DetectObjectsNode<span class="o">]</span>:<span class="w"> </span>DetectObjectsNode<span class="w"> </span>started
+tv<span class="w">  </span>detected
+keyboard<span class="w">  </span>detected
+chair<span class="w">  </span>detected
+mouse<span class="w">  </span>detected
+mouse<span class="w">  </span>detected
+tv<span class="w">  </span>detected
+keyboard<span class="w">  </span>detected
+chair<span class="w">  </span>detected
+mouse<span class="w">  </span>detected
+mouse<span class="w">  </span>detected
+bowl<span class="w">  </span>detected
+tv<span class="w">  </span>detected
+keyboard<span class="w">  </span>detected
+chair<span class="w">  </span>detected
+mouse<span class="w">  </span>detected
+mouse<span class="w">  </span>detected
+</code></pre></div></p>
+<h5 id="visualiza-in-rviz">Visualiza in Rviz</h5>
+<p><div class="shell-prompt highlight"><pre><span></span><code>rviz2<span class="w"> </span>-d<span class="w"> </span>~/ament_ws/install/stretch_deep_perception/share/stretch_deep_perception/rviz/object_detection.rviz
+</code></pre></div>
+<img alt="Object detection rviz" src="../images/remote_compute_object_detection_viz.png" /></p>
+<h2 id="6-offload-face-detection-node-to-remote-workstation">6. Offload Face  detection Node to Remote Workstation</h2>
+<p>From the workstation, run the face detection node. The face-detection node uses model parameters loaded from the stretch_deep_perception_models directory, whose <a href="https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_deep_perception/stretch_deep_perception/deep_learning_model_options.py#L5">path is pulled</a> from HELLO_FLEET_PATH environment variable. In our case, we will set the HELLO_FLEET_PATH environment variable to point to the home folder where the stretch_deep_perception_models directory was cloned.
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">HELLO_FLEET_PATH</span><span class="o">=</span>~/
+ros2<span class="w"> </span>run<span class="w"> </span>stretch_deep_perception<span class="w"> </span>detect_faces
+</code></pre></div>
+The node will load the
+<div class="shell-prompt highlight"><pre><span></span><code>head_detection_model.getUnconnectedOutLayers<span class="o">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="m">112</span><span class="o">]</span>
+head_detection_model<span class="w"> </span>output<span class="w"> </span>layer<span class="w"> </span><span class="nv">names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s1">&#39;detection_out&#39;</span><span class="o">]</span>
+head_detection_model<span class="w"> </span>output<span class="w"> </span>layer<span class="w"> </span><span class="nv">names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span><span class="s1">&#39;detection_out&#39;</span>,<span class="o">)</span>
+head_detection_model<span class="w"> </span>input<span class="w"> </span><span class="nv">layer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>&lt;dnn_Layer<span class="w"> </span>0x7f7d1e695cd0&gt;
+.
+.
+.
+landmarks_model<span class="w"> </span>input<span class="w"> </span>layer<span class="w"> </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>align_fc3
+landmarks_model<span class="w"> </span><span class="nv">out_layer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>&lt;dnn_Layer<span class="w"> </span>0x7f7d1e695d30&gt;
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1698383830</span>.671699923<span class="o">]</span><span class="w"> </span><span class="o">[</span>DetectFacesNode<span class="o">]</span>:<span class="w"> </span>DetectFacesNode<span class="w"> </span>started
+</code></pre></div></p>
+<h5 id="visualiza-in-rviz_1">Visualiza in Rviz</h5>
+<p><div class="shell-prompt highlight"><pre><span></span><code>rviz2<span class="w"> </span>-d<span class="w"> </span>~/ament_ws/install/stretch_deep_perception/share/stretch_deep_perception/rviz/face_detection.rviz
+</code></pre></div>
+<img alt="Object detection rviz" src="../images/remote_compute_face_Detect.png" /></p>
+<h3 id="troubleshooting-notes">Troubleshooting Notes</h3>
+<ul>
+<li>Using a dedicated Wi-Fi router would increase the data transmission speeds significantly.</li>
+<li>Realtime PointCloud visualization in Rviz commonly lags because of subscribing to a large message data stream. We recommend turning off the point-cloud visualization in remote workstations when possible to decrease network overhead.</li>
+<li>If the nodes in the remote network are unable to discover robot running nodes, here are two debug steps:</li>
+<li>Check if you can ping between the robot and remote workstation computer.</li>
+<li>Use <code>ifconfig</code> command and compare the Network assigned IP addresses of both the robot and workstation. The first two parts of the IP address should normally match for both computers to discover each other in the network.</li>
+</ul>
 
 
 
@@ -5423,44 +5391,6 @@ For an overview of the capabilities in this repository, we recommend you look at
       
         <footer class="md-footer">
   
-    
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
-        
-          
-          <a href="../stretch-body/CHANGELOG/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Changelog">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                Changelog
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="hello_helpers/" class="md-footer__link md-footer__link--next" aria-label="Next: hello_helpers">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                hello_helpers
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
     
   
   <div class="md-footer-meta md-typeset">
@@ -5545,10 +5475,10 @@ For an overview of the capabilities in this repository, we recommend you look at
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.footer"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.aecac24b.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.aecac24b.min.js"></script>
       
     
   </body>
