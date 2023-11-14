@@ -76,6 +76,7 @@ configuration_params_template={
 nominal_params={
     'arm':{
         'usb_name': '/dev/hello-motor-arm',
+        'use_vel_traj': 1,
         'chain_pitch': 0.0167,
         'chain_sprocket_teeth': 10,
         'gr_spur': 3.875,
@@ -100,13 +101,14 @@ nominal_params={
             'trajectory_max': {
                 'vel_m': 0.3,
                 'accel_m': 0.5},
-                'vel_brakezone_factor': 0.2},
+                'vel_brakezone_factor': 0.03},
         'set_safe_velocity': 1},
     'base':{
         'usb_name_left_wheel': '/dev/hello-motor-left-wheel',
         'usb_name_right_wheel': '/dev/hello-motor-right-wheel',
         'force_N_per_A': 21.18, #Legacy
         'gr': 3.4,
+        'use_vel_traj': 0,
         'motion':{
             'default':{
                 'accel_m': 0.2,
@@ -188,7 +190,7 @@ nominal_params={
             'trajectory_max': {
                 'vel_r': 8.0,
                 'accel_r': 16.0},
-            'vel_brakezone_factor': 1.5},
+            'vel_brakezone_factor': 0.8},
         'set_safe_velocity': 1,
         'pid': [800, 200, 200],
         'pwm_homing': [-300,300],
@@ -312,7 +314,7 @@ nominal_params={
             'vKd_d': 0,
             'vKi_d': 0.005,
             'vKi_limit': 200,
-            'vKp_d': 0.2,
+            'vKp_d': 0.17,
             'vLPF': 30,
             'vTe_d': 50,
             'vel_near_setpoint_d': 3.5,
@@ -386,7 +388,7 @@ nominal_params={
             'vKd_d': 0,
             'vKi_d': 0.005,
             'vKi_limit': 200,
-            'vKp_d': 0.2,
+            'vKp_d': 0.17,
             'vLPF': 30,
             'vTe_d': 50,
             'vel_near_setpoint_d': 3.5,
@@ -398,6 +400,7 @@ nominal_params={
         'rated_current': 2.8},
     'lift':{
         'usb_name': '/dev/hello-motor-lift',
+        'use_vel_traj': 1,
         'belt_pitch_m': 0.005,
         'contact_models': {
             'effort_pct': {
@@ -421,7 +424,7 @@ nominal_params={
             'trajectory_max': {
                 'vel_m': 0.2,
                 'accel_m': 0.3},
-            'vel_brakezone_factor': 0.03},
+            'vel_brakezone_factor': 0.02},
         'set_safe_velocity': 1,
         'pinion_t': 12},
     'pimu':{
@@ -597,7 +600,7 @@ nominal_params={
             'trajectory_max': {
                 'vel_r': 3.0,
                 'accel_r': 3.0},
-            'vel_brakezone_factor': 1},
+            'vel_brakezone_factor': 0.2},
         'set_safe_velocity': 1,
         'pid': [640,0,0],
         'pwm_homing': [-300,300],
@@ -615,7 +618,11 @@ nominal_params={
         'enable_runstop': 1,
         'disable_torque_on_stop': 1},
     'respeaker': {'usb_name': '/dev/hello-respeaker'},
-    'lidar': {'usb_name': '/dev/hello-lrf'}
+    'lidar': {'usb_name': '/dev/hello-lrf'},
+    'stretch_gamepad':{
+        'enable_fn_button': 0,
+        'function_cmd':'',
+        'press_time_span':5}
 }
 # ###################### OLDER: FACTORY PARAMS #####################################################
 #The deprecated factory params dictionary for RE1.0 (5.1.2022)

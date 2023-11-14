@@ -2,7 +2,7 @@ repositories:
   stretch_ros:
     type: git
     url: https://github.com/hello-robot/stretch_ros/
-    version: dev/noetic
+    version: noetic
   realsense-ros:
     type: git
     url: https://github.com/IntelRealSense/realsense-ros.git

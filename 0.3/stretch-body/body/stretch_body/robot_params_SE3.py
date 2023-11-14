@@ -68,6 +68,7 @@ configuration_params_template={
 nominal_params={
     'arm':{
         'usb_name': '/dev/hello-motor-arm',
+        'use_vel_traj': 1,
         'force_N_per_A': 55.9,  # Legacy
         'chain_pitch': 0.0167,
         'chain_sprocket_teeth': 10,
@@ -99,6 +100,7 @@ nominal_params={
         'usb_name_right_wheel': '/dev/hello-motor-right-wheel',
         'force_N_per_A': 21.18,  # Legacy
         'gr': 3.8,
+        'use_vel_traj': 0,
         'motion':{
             'default':{
                 'accel_m': 0.12,
@@ -297,8 +299,8 @@ nominal_params={
             'i_contact_pos': 3.0,
             'i_safety_feedforward': 0.0,
             'pKd_d': 65.0,
-            'pKi_d': 0.1,
-            'pKi_limit': 200.0,
+            'pKi_d': 0.01,
+            'pKi_limit': 50.0,
             'pKp_d': 12.0,
             'pLPF': 80.0,
             'voltage_LPF':1.0,
@@ -309,7 +311,7 @@ nominal_params={
             'vKd_d': 0,
             'vKi_d': 0.005,
             'vKi_limit': 200,
-            'vKp_d': 0.2,
+            'vKp_d': 0.17,
             'vLPF': 30,
             'vTe_d': 50,
             'vel_near_setpoint_d': 3.5,
@@ -371,8 +373,8 @@ nominal_params={
             'i_contact_pos': 3.0,
             'i_safety_feedforward': 0.0,
             'pKd_d': 65.0,
-            'pKi_d': 0.1,
-            'pKi_limit': 200.0,
+            'pKi_d': 0.01,
+            'pKi_limit': 50.0,
             'pKp_d': 12.0,
             'pLPF': 80.0,
             'voltage_LPF':1.0,
@@ -383,7 +385,7 @@ nominal_params={
             'vKd_d': 0,
             'vKi_d': 0.005,
             'vKi_limit': 200,
-            'vKp_d': 0.2,
+            'vKp_d': 0.17,
             'vLPF': 30,
             'vTe_d': 50,
             'vel_near_setpoint_d': 3.5,
@@ -395,6 +397,7 @@ nominal_params={
         'rated_current': 2.8},
     'lift':{
         'usb_name': '/dev/hello-motor-lift',
+        'use_vel_traj': 1,
         'force_N_per_A': 75.0,  # Legacy
         'calibration_range_bounds': [1.094, 1.106],
         'contact_models': {
@@ -616,5 +619,9 @@ nominal_params={
         'disable_torque_on_stop': 1,
         'range_pad_t': [100.0, -100.0]},
     'respeaker': {'usb_name': '/dev/hello-respeaker'},
-    'lidar': {'usb_name': '/dev/hello-lrf'}
+    'lidar': {'usb_name': '/dev/hello-lrf'},
+    'stretch_gamepad':{
+        'enable_fn_button': 0,
+        'function_cmd':'',
+        'press_time_span':5}
 }

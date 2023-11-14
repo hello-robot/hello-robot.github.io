@@ -213,6 +213,15 @@ class FirmwareUpdater():
 
         self.print_upload_warning()
 
+        #First check that all calibration present
+        for device_name in self.target:
+            sketch_name = fwu.get_sketch_name(device_name)
+            if sketch_name == 'hello_stepper' and not fwu.does_stepper_have_encoder_calibration_YAML(device_name):
+                print('Encoder data has not been stored for %s and should be stored first.' % device_name)
+                print('First run REx_stepper_calibration_flash_to_YAML.py '+device_name)
+                print('Aborting firmware flash.')
+                return False
+
         #self.pretty_print_state()
         #Advance the state machine
         if self.state['no_prompts'] or click.confirm('Proceed with update??'):
@@ -338,9 +347,6 @@ class FirmwareUpdater():
 
         sketch_name=fwu.get_sketch_name(device_name)
 
-        if sketch_name == 'hello_stepper' and not fwu.does_stepper_have_encoder_calibration_YAML(device_name):
-            print('Encoder data has not been stored for %s and may be lost. Aborting firmware flash.' % device_name)
-            return False, False
 
         if port_name is None:
             print('Looking for device %s on bus' % device_name)
