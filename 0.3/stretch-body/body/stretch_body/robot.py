@@ -344,6 +344,15 @@ class Robot(Device):
             if (self.pimu.ts_last_motor_sync is None or ( ready and sync_required)):
                 self.pimu.trigger_motor_sync()
 
+    def wait_command(self, timeout=15.0):
+        time.sleep(0.5)
+        base_done = self.base.wait_while_is_moving(timeout=timeout)
+        arm_done = self.arm.wait_while_is_moving(timeout=timeout)
+        lift_done = self.lift.wait_while_is_moving(timeout=timeout)
+        head_done = self.head.wait_until_at_setpoint(timeout=timeout)
+        eoa_done = self.end_of_arm.wait_until_at_setpoint(timeout=timeout)
+        return base_done and arm_done and lift_done and head_done and eoa_done
+
     # ######### Waypoint Trajectory Interface ##############################
 
 
@@ -384,7 +393,14 @@ class Robot(Device):
 
     def is_calibrated(self):
         """
-        Returns true if homing-calibration has been run all joints that require it
+        DEPRECATED: replaced by Robot.is_homed()
+        """
+        self.logger.warn('is_calibrated() has been replaced by is_homed()')
+        return self.is_homed()
+
+    def is_homed(self):
+        """
+        Returns true if homing has been run all joints that require it
         """
         ready = self.lift.motor.status['pos_calibrated']
         ready = ready and self.arm.motor.status['pos_calibrated']
