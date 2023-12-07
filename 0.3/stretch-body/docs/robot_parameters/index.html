@@ -3126,6 +3126,30 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#parameters-for-command-line-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters for Command Line Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters for Command Line Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#show_sw_exc" class="md-nav__link">
+    <span class="md-ellipsis">
+      show_sw_exc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5420,6 +5444,30 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#parameters-for-command-line-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters for Command Line Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters for Command Line Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#show_sw_exc" class="md-nav__link">
+    <span class="md-ellipsis">
+      show_sw_exc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5508,6 +5556,23 @@
 </tbody>
 </table>
 <p>* <code>head_pan.use_multiturn</code> is <code>0</code> for most Stretch robots, except for some early RE1s. For those robots, the parameter is set to <code>1</code> in "stretch_configuration_params.yaml". </p>
+<h2 id="parameters-for-command-line-tools">Parameters for Command Line Tools</h2>
+<h3 id="show_sw_exc">show_sw_exc</h3>
+<p>In the <code>stretch_robot_system_check.py</code> tool, the "Checking Software" section is wrapped in a try/except because of the experimental nature of the code. The tool is introspecting the system and relying on resources/files to be available in specific places with specific formats. Since the tool's output needs to be easily understood, the error or exception cannot be shown (hence the try/except block). This parameter allows the tool to raise the exception and display it in the terminal. This is useful for debugging purposes.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>system_check.show_sw_exc</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
 
 
 
