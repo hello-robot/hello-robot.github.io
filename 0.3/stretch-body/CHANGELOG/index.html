@@ -3148,9 +3148,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#unreleased" class="md-nav__link">
+  <a href="#068-december-7-2023" class="md-nav__link">
     <span class="md-ellipsis">
-      unreleased
+      0.6.8 - December 7, 2023
     </span>
   </a>
   
@@ -5491,9 +5491,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#unreleased" class="md-nav__link">
+  <a href="#068-december-7-2023" class="md-nav__link">
     <span class="md-ellipsis">
-      unreleased
+      0.6.8 - December 7, 2023
     </span>
   </a>
   
@@ -5633,11 +5633,13 @@
 
 <h1 id="changelog">Changelog</h1>
 <p>The changes between releases of Stretch Body are documented here.</p>
-<h2 id="unreleased"><a href="">unreleased</a></h2>
+<h2 id="068-december-7-2023"><a href="https://pypi.org/project/hello-robot-stretch-body/0.6.8/">0.6.8</a> - December 7, 2023</h2>
 <ul>
-<li>Deprecate <code>robot.is_calibrated()</code> and introduce <code>robot.is_homed()</code> to match homing nomenclature used elsewhere (<a href="https://github.com/hello-robot/stretch_body/pull/212">PR link</a>)</li>
-<li>Added a <code>robot.wait_command()</code> method to easily block process execution until motion is completed (<a href="https://github.com/hello-robot/stretch_body/pull/211">PR link</a>)</li>
+<li>Deprecate <code>robot.is_calibrated()</code> and introduce <code>robot.is_homed()</code> to match homing nomenclature used elsewhere (<a href="https://github.com/hello-robot/stretch_body/pull/212">details</a>)</li>
+<li>Added a <code>robot.wait_command()</code> method to easily block process execution until motion is completed (<a href="https://github.com/hello-robot/stretch_body/pull/211">details</a>)</li>
 <li>Added Dex Wrist URDF visualization to the <code>stretch_robot_urdf_visualizer.py</code> tool</li>
+<li>Automatic checking for updates in background while homing + user notification about out-of-date software in <code>stretch_robot_system_check.py</code> (<a href="https://github.com/hello-robot/stretch_body/pull/213">details</a>)</li>
+<li>Add mutex locking on Stretch Body + introduce <code>stretch_free_robot_process.py</code> tool (<a href="https://github.com/hello-robot/stretch_body/pull/218">details</a>)</li>
 </ul>
 <h2 id="062-september-11-2023"><a href="https://github.com/hello-robot/stretch_body/pull/203">0.6.2</a> - September 11, 2023</h2>
 <ul>
