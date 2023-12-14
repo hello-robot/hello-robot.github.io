@@ -2,7 +2,7 @@
 
 import click
 import os
-from subprocess import Popen, PIPE
+from subprocess import Popen, PIPE, call, DEVNULL
 import stretch_body.stepper
 import stretch_body.pimu
 import stretch_body.wacc
@@ -31,6 +31,7 @@ class FirmwareUpdater():
         self.resume_tmp_filename='/tmp/REx_firmware_updater_resume.yaml'
         self.args=args
         state_from_yaml = self.from_yaml()
+        self.home_dir = os.path.expanduser('~')
 
         if args.resume:
             if not state_from_yaml:
@@ -225,6 +226,7 @@ class FirmwareUpdater():
         #self.pretty_print_state()
         #Advance the state machine
         if self.state['no_prompts'] or click.confirm('Proceed with update??'):
+            call('sudo echo', shell=True)
             print('\n\n\n')
             #Flash all devices
             for d in self.target:
@@ -244,10 +246,13 @@ class FirmwareUpdater():
                             if not upload_success: #Dont retry if compile failure
                                 #It may get here if the usb bus connectoin fails during flash
                                 #Attempt to reset the device and then try again
-                                print('Retrying firmware flash for %s'%d)
-                                port=fwu.get_port_name(d)
-                                if port is not None:
-                                    hdu.place_arduino_in_bootloader('/dev/'+port)
+
+                                click.secho('WARNING: Failed firmware flash for %s'%d, fg='red', bold=True)
+                                break
+                                # print('Retrying firmware flash for %s'%d)
+                                # port=fwu.get_port_name(d)
+                                # if port is not None:
+                                #     hdu.place_arduino_in_bootloader('/dev/'+port)
                            
                     else:
                         click.secho('WARNING: Unable to flash %s as device not valid'%d, fg="yellow", bold=True)
@@ -369,7 +374,7 @@ class FirmwareUpdater():
             else:
                 src_path = repo_path
 
-            compile_command = 'arduino-cli compile --config-file %s --fqbn hello-robot:samd:%s %s/arduino/%s' % (
+            compile_command = 'arduino-cli compile --config-file %s --fqbn hello-robot:samd:%s %s/arduino/%s --export-binaries' % (
             config_file, sketch_name, src_path, sketch_name)
             fwu.user_msg_log(compile_command, user_display=verbose)
             c = Popen(shlex.split(compile_command), shell=False, bufsize=64, stdin=PIPE, stdout=PIPE,
@@ -389,38 +394,83 @@ class FirmwareUpdater():
             else:
                 print('Success in firmware compile')
 
-            upload_command = 'arduino-cli upload  --config-file %s -p /dev/%s --fqbn hello-robot:samd:%s %s/arduino/%s' % (
-            config_file, port_name, sketch_name, src_path, sketch_name)
+        #     upload_command = 'arduino-cli upload  --config-file %s -p /dev/%s --fqbn hello-robot:samd:%s %s/arduino/%s' % (
+        #     config_file, port_name, sketch_name, src_path, sketch_name)
 
-            fwu.user_msg_log(upload_command, user_display=verbose)
-            u = Popen(shlex.split(upload_command), shell=False, bufsize=64, stdin=PIPE, stdout=PIPE,
-                      close_fds=True).stdout.read().strip()
+        #     fwu.user_msg_log(upload_command, user_display=verbose)
+        #     u = Popen(shlex.split(upload_command), shell=False, bufsize=64, stdin=PIPE, stdout=PIPE,
+        #               close_fds=True).stdout.read().strip()
 
-            if type(u) == bytes:
-                u = u.decode('utf-8')
-            uu = u.split('\n')
-            fwu.user_msg_log(u, user_display=False)
-            if verbose:
-                print(upload_command)
-                # Pretty print the result
-                for l in uu:
-                    k = l.split('\r')
-                    if len(k) == 1:
-                        print(k[0])
+        #     if type(u) == bytes:
+        #         u = u.decode('utf-8')
+        #     uu = u.split('\n')
+        #     fwu.user_msg_log(u, user_display=False)
+        #     if verbose:
+        #         print(upload_command)
+        #         # Pretty print the result
+        #         for l in uu:
+        #             k = l.split('\r')
+        #             if len(k) == 1:
+        #                 print(k[0])
+        #             else:
+        #                 for m in k:
+        #                     print(m)
+        #     success = uu[-1] == 'CPU reset.'
+
+        #     if not success:
+        #         print('Firmware flash. Failed to upload to %s' % (port_name))
+        #         return False, False
+        #     else:
+        #         click.secho('Success in firmware flash' , fg="green")
+        #         return False, True
+        # else:
+        #     print('Firmware update %s. Failed to find device %s' % (tag, device_name))
+        #     return False, False
+
+        ############## bug fix experimental code ################################################
+        if device_name == 'hello-pimu':
+                fw_file = '/arduino/hello_pimu/build/hello-robot.samd.hello_pimu/hello_pimu.ino.bin'
+
+        if 'hello-motor' in device_name:
+            fw_file = '/arduino/hello_stepper/build/hello-robot.samd.hello_stepper/hello_stepper.ino.bin'
+
+        if device_name == 'hello-wacc':
+            fw_file = '/arduino/hello_wacc/build/hello-robot.samd.hello_wacc/hello_wacc.ino.bin'
+
+        flash_command = self.home_dir+'/.arduino15/packages/arduino/tools/bossac/1.7.0/bossac -i -d --port='+port_name+ ' -U true -i -e -w -v '+src_path + fw_file+' -R' 
+        flash_sts = False, False
+        while True:
+            try:
+                print(f"#### Trying To place {device_name} in bootloader mode #######")
+                test_port = hdu.serial.Serial('/dev/'+port_name, baudrate=1200)
+                test_port.__del__()
+                time.sleep(2)
+        
+                if hdu.extract_udevadm_info('/dev/'+port_name,'ID_MODEL') == 'Arduino_Zero':
+                    click.secho(f'Success {device_name} in bootloader mode, Now Flashing!', fg="green", bold=True)
+                    time.sleep(1)
+            
+                    result = call(flash_command, shell=True, stdout=DEVNULL)
+                    if result == 0:
+                        click.secho(f'Success Flashing {device_name}', fg="green", bold=True)
+                        time.sleep(1)
+                        flash_sts = False, True
+                        break
                     else:
-                        for m in k:
-                            print(m)
-            success = uu[-1] == 'CPU reset.'
+                        click.secho(f'Flashing {device_name} FAILED', fg="red", bold=True)
+                        break
+                else:
+                    click.secho(f'{device_name} not in bootloader mode, retrying!', fg="yellow", bold=True)
+                    time.sleep(1)
+                    test_port = hdu.serial.Serial('/dev/'+port_name, baudrate=2000000)
+                    time.sleep(1)
+                    test_port.__del__()
+                    time.sleep(1) 
 
-            if not success:
-                print('Firmware flash. Failed to upload to %s' % (port_name))
-                return False, False
-            else:
-                click.secho('Success in firmware flash' , fg="green")
-                return False, True
-        else:
-            print('Firmware update %s. Failed to find device %s' % (tag, device_name))
-            return False, False
+            except TypeError:
+                continue
+        return flash_sts
+        ############## bug fix experimental code ################################################
 
 # ########################################################################################################3
     def wait_on_return_to_bus(self,device_name):
@@ -436,10 +486,10 @@ class FirmwareUpdater():
                 # Doesn't fully present on the USB bus with a serial No for Udev to find
                 # In does present as an 'Arduino Zero' product. This will attempt to reset it
                 # and re-present to the bus
-                # time.sleep(1.0)
-                # os.system('usbreset \"Arduino Zero\"')
-                # time.sleep(1.0)
-                # print('')
+                time.sleep(1.0)
+                click.secho(f'Resetting usb of {device_name} please wait a few seconds', fg="yellow", bold = False)
+                call('sudo usbreset \"Arduino Zero\"', shell=True, stdout=DEVNULL)
+                time.sleep(2.0)
             else:
                 found = True
                 break

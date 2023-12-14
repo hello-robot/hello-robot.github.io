@@ -54,7 +54,7 @@ if args.flash:
         print(Fore.RED + f"Failed to compile Arduino Sketch:{sketch_name}." + Style.RESET_ALL)
         sys.exit(1)
     print(Fore.GREEN + f"Compiled Arduino Sketch:{sketch_name} Successfully." + Style.RESET_ALL)
-    hdu.place_arduino_in_bootloader(port)
+    # hdu.place_arduino_in_bootloader(port)
     time.sleep(1.0)
 
     if not hdu.burn_arduino_firmware(port, sketch_name, a.repo_path, config_file=acli_path):
