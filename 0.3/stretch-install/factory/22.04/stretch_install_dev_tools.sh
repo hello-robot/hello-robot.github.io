@@ -23,10 +23,7 @@ function install_gh {
 install_gh &>> $REDIRECT_LOGFILE
 
 echo "Install Typora"
-wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add - &>> $REDIRECT_LOGFILE
-sudo add-apt-repository 'deb https://typora.io/linux ./' &>> $REDIRECT_LOGFILE
-sudo apt-get update >> $REDIRECT_LOGFILE
-sudo apt-get install --yes typora >> $REDIRECT_LOGFILE
+sudo snap install typora >> $REDIRECT_LOGFILE
 
 echo "Install PyCharm"
 sudo snap install pycharm-community --classic >> $REDIRECT_LOGFILE

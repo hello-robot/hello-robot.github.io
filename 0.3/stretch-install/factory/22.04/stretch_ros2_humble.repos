@@ -27,4 +27,19 @@ repositories:
     type: git
     url: https://github.com/hello-binit/audio_common.git
     version: humble
- 
+  stretch_teleop_interface:
+    type: git
+    url: https://github.com/hello-robot/stretch_teleop_interface.git
+    version: feature/ros2
+  rosbridge_suite:
+    type: git
+    url: https://github.com/hello-vinitha/rosbridge_suite.git
+    version: act2
+  tf2_web_republisher_py:
+    type: git
+    url: https://github.com/hello-vinitha/tf2_web_republisher_py.git
+    version: master
+  stretch_teleop_interface_msgs:
+    type: git
+    url: https://github.com/hello-chintan/stretch_teleop_interface_msgs.git
+    version: iron 

@@ -51,14 +51,38 @@ echo "Creating the workspace directory..."
 mkdir -p $AMENT_WSDIR/src
 echo "Cloning the workspace's packages..."
 cd $AMENT_WSDIR/src
-vcs import --input ~/stretch_install/factory/22.04/stretch_ros2_iron.repos >> $REDIRECT_LOGFILE
+vcs import --input ~/stretch_install/factory/22.04/stretch_ros2_humble.repos >> $REDIRECT_LOGFILE
 echo "Fetch ROS packages' dependencies (this might take a while)..."
 cd $AMENT_WSDIR/
 rosdep install --rosdistro=humble -iyr --skip-keys="librealsense2" --from-paths src &>> $REDIRECT_LOGFILE
+echo "Install web interface dependencies..."
+pip3 install pyquaternion &>> $REDIRECT_LOGFILE
+cd $AMENT_WSDIR/src/stretch_teleop_interface
+npm install &>> $REDIRECT_LOGFILE
+npx playwright install &>> $REDIRECT_LOGFILE
+echo "Generating web interface certs..."
+cd $AMENT_WSDIR/src/stretch_teleop_interface/certificates
+curl -JLO "https://dl.filippo.io/mkcert/latest?for=linux/amd64" &>> $REDIRECT_LOGFILE
+chmod +x mkcert-v*-linux-amd64
+sudo cp mkcert-v*-linux-amd64 /usr/local/bin/mkcert
+CAROOT=`pwd` mkcert --install &>> $REDIRECT_LOGFILE
+mkdir -p ~/.local/share/mkcert
+rm -rf ~/.local/share/mkcert/root*
+cp root* ~/.local/share/mkcert
+mkcert ${HELLO_FLEET_ID} ${HELLO_FLEET_ID}.local ${HELLO_FLEET_ID}.dev localhost 127.0.0.1 0.0.0.0 ::1 &>> $REDIRECT_LOGFILE
+rm mkcert-v*-linux-amd64
+cd $AMENT_WSDIR/src/stretch_teleop_interface
+touch .env
+echo certfile=${HELLO_FLEET_ID}+6.pem >> .env
+echo keyfile=${HELLO_FLEET_ID}+6-key.pem >> .env
+cd $AMENT_WSDIR/
 echo "Compile the workspace (this might take a while)..."
 colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release &>> $REDIRECT_LOGFILE
 echo "Source setup.bash file..."
 source $AMENT_WSDIR/install/setup.bash
+echo "Updating port privledges..."
+sudo sysctl -w net.ipv4.ip_unprivileged_port_start=80 &>> $REDIRECT_LOGFILE
+echo net.ipv4.ip_unprivileged_port_start=80 | sudo tee --append /etc/sysctl.d/99-sysctl.conf &>> $REDIRECT_LOGFILE
 echo "Update ~/.bashrc dotfile to source workspace..."
 echo "source $AMENT_WSDIR/install/setup.bash" >> ~/.bashrc
 echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
