@@ -1362,28 +1362,79 @@
         <li class="md-nav__item">
   <a href="#respeaker-microphone-array" class="md-nav__link">
     <span class="md-ellipsis">
-      ReSpeaker Microphone Array
+      Respeaker Microphone Array
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="ReSpeaker Microphone Array">
+    <nav class="md-nav" aria-label="Respeaker Microphone Array">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#stretch-body-package" class="md-nav__link">
+  <a href="#stretch-respeaker-tool" class="md-nav__link">
     <span class="md-ellipsis">
-      Stretch Body Package
+      Stretch Respeaker Tool
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#respeaker_ros-package" class="md-nav__link">
+  <a href="#respeaker-ros-package" class="md-nav__link">
     <span class="md-ellipsis">
-      ReSpeaker_ROS Package
+      Respeaker ROS Package
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Respeaker ROS Package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisite
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting started
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speech-recognition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Speech Recognition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#direction-of-arrival" class="md-nav__link">
+    <span class="md-ellipsis">
+      Direction of Arrival
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-reconfigure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic Reconfigure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -5396,28 +5447,79 @@
         <li class="md-nav__item">
   <a href="#respeaker-microphone-array" class="md-nav__link">
     <span class="md-ellipsis">
-      ReSpeaker Microphone Array
+      Respeaker Microphone Array
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="ReSpeaker Microphone Array">
+    <nav class="md-nav" aria-label="Respeaker Microphone Array">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#stretch-body-package" class="md-nav__link">
+  <a href="#stretch-respeaker-tool" class="md-nav__link">
     <span class="md-ellipsis">
-      Stretch Body Package
+      Stretch Respeaker Tool
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#respeaker_ros-package" class="md-nav__link">
+  <a href="#respeaker-ros-package" class="md-nav__link">
     <span class="md-ellipsis">
-      ReSpeaker_ROS Package
+      Respeaker ROS Package
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Respeaker ROS Package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisite
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting started
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speech-recognition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Speech Recognition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#direction-of-arrival" class="md-nav__link">
+    <span class="md-ellipsis">
+      Direction of Arrival
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-reconfigure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic Reconfigure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -5443,52 +5545,90 @@
 
   <h1>ReSpeaker Microphone Array</h1>
 
-<h2 id="respeaker-microphone-array">ReSpeaker Microphone Array</h2>
-<p>For this tutorial, we will get a high-level view of how to use Stretch's <a href="https://wiki.seeedstudio.com/ReSpeaker_Mic_Array_v2.0/">ReSpeaker Mic Array v2.0</a>.  </p>
+<h2 id="respeaker-microphone-array">Respeaker Microphone Array</h2>
+<p>In this tutorial, we will go over how to use Stretch's <a href="https://wiki.seeedstudio.com/ReSpeaker_Mic_Array_v2.0/">Respeaker Mic Array v2.0</a>.  </p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/respeaker.jpg"/>
 </p>
 
-<h3 id="stretch-body-package">Stretch Body Package</h3>
-<p>In this section we will use command line tools in the <a href="https://github.com/hello-robot/stretch_body">Stretch_Body</a> package, a low-level Python API for Stretch's hardware, to directly interact with the ReSpeaker.</p>
-<p>Begin by typing the following command in a new terminal.</p>
+<h3 id="stretch-respeaker-tool">Stretch Respeaker Tool</h3>
+<p>We'll begin by using the command-line Stretch Respeaker Tool to quickly try out the robot's microphone array and speakers. This tool doesn't use ROS, but we'll cover how to use the Respeaker from ROS in the next section. Type the following command in a new terminal:</p>
 <div class="shell-prompt highlight"><pre><span></span><code>stretch_respeaker_test.py
 </code></pre></div>
-<p>The following will be displayed in your terminal:</p>
-<div class="no-copy highlight"><pre><span></span><code>For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </span>S<span class="w"> </span>T<span class="w"> </span>R<span class="w"> </span>E<span class="w"> </span>T<span class="w"> </span>C<span class="w"> </span>H<span class="w"> </span><span class="o">(</span>TM<span class="o">)</span><span class="w"> </span>RESEARCH<span class="w"> </span>EDITION<span class="w"> </span>from<span class="w"> </span>Hello<span class="w"> </span>Robot<span class="w"> </span>Inc.
+<p>The following will be outputted in your terminal:</p>
+<div class="no-copy highlight"><pre><span></span><code>hello-robot@stretch-re1-1005:~$<span class="w"> </span>stretch_respeaker_test.py
+For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </span>S<span class="w"> </span>T<span class="w"> </span>R<span class="w"> </span>E<span class="w"> </span>T<span class="w"> </span>C<span class="w"> </span>H<span class="w"> </span><span class="o">(</span>TM<span class="o">)</span><span class="w"> </span>RESEARCH<span class="w"> </span>EDITION<span class="w"> </span>from<span class="w"> </span>Hello<span class="w"> </span>Robot<span class="w"> </span>Inc.
 
 *<span class="w"> </span>waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>audio...
 *<span class="w"> </span>recording<span class="w"> </span><span class="m">3</span><span class="w"> </span>seconds
 *<span class="w"> </span><span class="k">done</span>
 *<span class="w"> </span>playing<span class="w"> </span>audio
 *<span class="w"> </span><span class="k">done</span>
+
+*<span class="w"> </span>waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>audio...
 </code></pre></div>
-<p>The ReSpeaker Mico Array will wait until it hears audio loud enough to trigger its recording feature. Stretch will record audio for 3 seconds and then replay it through its speakers. This command line is a good method to see if the hardware is working correctly.</p>
-<p>To stop the python script, type <code>Ctrl</code> + <code>c</code> in the terminal.</p>
-<h3 id="respeaker_ros-package">ReSpeaker_ROS Package</h3>
-<p>A <a href="https://index.ros.org/p/respeaker_ros/#melodic">ROS package for the ReSpeaker</a> is utilized for this section.</p>
-<p>Begin by running the <code>sample_respeaker.launch</code> file in a terminal.</p>
-<div class="shell-prompt highlight"><pre><span></span><code>roslaunch<span class="w"> </span>respeaker_ros<span class="w"> </span>sample_respeaker.launch
+<p>The Stretch Respeaker tool will wait until it hears audio loud enough to trigger VAD (voice activity detection). Then, the tool will record audio for 3 seconds, replay it through its speakers, and go back to waiting for audio. This tool is a good way to confirm the hardware is working correctly.</p>
+<p>To stop the tool, type <strong>Ctrl</strong> + <strong>C</strong> in the terminal.</p>
+<h3 id="respeaker-ros-package">Respeaker ROS Package</h3>
+<h4 id="prerequisite">Prerequisite</h4>
+<p>Before getting started with the Respeaker ROS package, we'll confirm it is available to use. Type the following into a new terminal:</p>
+<div class="shell-prompt highlight"><pre><span></span><code>rospack<span class="w"> </span>find<span class="w"> </span>respeaker_ros
 </code></pre></div>
-<p>This will bring up the necessary nodes that will allow the ReSpeaker to implement a voice and sound interface with the robot.</p>
-<p>Below are executables you can run to see the ReSpeaker results.</p>
-<div class="shell-prompt highlight"><pre><span></span><code>rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/sound_direction<span class="w">    </span><span class="c1"># Result of Direction (in Radians) of Audio</span>
-rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/sound_localization<span class="w"> </span><span class="c1"># Result of Direction as Pose (Quaternion values)</span>
-rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/is_speeching<span class="w">       </span><span class="c1"># Result of Voice Activity Detector</span>
-rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/audio<span class="w">              </span><span class="c1"># Raw audio data</span>
+<p>If you get an error like <code>[rospack] Error: package 'respeaker_ros' not found</code>, refresh your ROS workspace using the <a href="https://github.com/hello-robot/stretch_install/blob/master/docs/ros_workspace.md">Creating a New ROS Workspace</a> tutorial.</p>
+<h4 id="getting-started">Getting started</h4>
+<p>Run the <code>respeaker.launch</code> file in a new terminal using:</p>
+<p><div class="shell-prompt highlight"><pre><span></span><code>roslaunch<span class="w"> </span>respeaker_ros<span class="w"> </span>respeaker.launch
+</code></pre></div>
+This will bring up the necessary ROS nodes to interface with the robot's microphone array and speakers. After initialization, you will see the following outputted in your terminal:</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1672818306</span>.618280<span class="o">]</span>:<span class="w"> </span>Initializing<span class="w"> </span>Respeaker<span class="w"> </span>device<span class="w"> </span><span class="o">(</span>takes<span class="w"> </span><span class="m">10</span><span class="w"> </span>seconds<span class="o">)</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1672818317</span>.082498<span class="o">]</span>:<span class="w"> </span>Respeaker<span class="w"> </span>device<span class="w"> </span>initialized<span class="w"> </span><span class="o">(</span>Version:<span class="w"> </span><span class="m">16</span><span class="o">)</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1672818317</span>.521955<span class="o">]</span>:<span class="w"> </span>Found<span class="w"> </span><span class="m">6</span>:<span class="w"> </span>ReSpeaker<span class="w"> </span><span class="m">4</span><span class="w"> </span>Mic<span class="w"> </span>Array<span class="w"> </span><span class="o">(</span>UAC1.0<span class="o">)</span>:<span class="w"> </span>USB<span class="w"> </span>Audio<span class="w"> </span><span class="o">(</span>hw:1,0<span class="o">)</span><span class="w"> </span><span class="o">(</span>channels:<span class="w"> </span><span class="m">6</span><span class="o">)</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1672818317</span>.526263<span class="o">]</span>:<span class="w"> </span>Using<span class="w"> </span>channels<span class="w"> </span>range<span class="o">(</span><span class="m">0</span>,<span class="w"> </span><span class="m">6</span><span class="o">)</span>
+</code></pre></div>
+<p>Explore some of the notable ROS topics being published using the following commands: </p>
+<div class="highlight"><pre><span></span><code>rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/audio<span class="w">              </span><span class="c1"># Raw audio data</span>
 rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/speech_audio<span class="w">       </span><span class="c1"># Raw audio data when there is speech</span>
+rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/sound_direction<span class="w">    </span><span class="c1"># Direction (in Degrees) of audio source</span>
+rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/sound_localization<span class="w"> </span><span class="c1"># Direction (in Quaternion part of SE3 pose) of audio source</span>
+rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/is_speeching<span class="w">       </span><span class="c1"># Result of Voice Activity Detector (VAD)</span>
 rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/speech_to_text<span class="w">     </span><span class="c1"># Voice recognition</span>
 </code></pre></div>
-<p>An example is when you run the <code>speech_to_text</code> executable and speak near the microphone array. In a new terminal, execute:</p>
-<div class="shell-prompt highlight"><pre><span></span><code>rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/speech_to_text
-</code></pre></div>
-<p>In this instance, "hello robot" was said. The following will be displayed in your terminal:</p>
-<div class="no-copy highlight"><pre><span></span><code>transcript:
+<h4 id="speech-recognition">Speech Recognition</h4>
+<p>In particular, the <code>/speech_to_text</code> topic can be helpful for prototyping voice command based programs. In a new terminal, run <code>rostopic echo /speech_to_text</code>. Then, stand near the robot and say "hello robot". You will see something like this outputted to the terminal:</p>
+<div class="highlight"><pre><span></span><code>transcript:
 <span class="w">  </span>-<span class="w"> </span>hello<span class="w"> </span>robot
-confidence:<span class="w"> </span><span class="o">[]</span>
----
+confidence:<span class="w"> </span><span class="o">[</span><span class="m">0</span>.9876290559768677<span class="o">]</span>
 </code></pre></div>
-<p>You can also set various parameters via <code>dynamic_reconfigure</code> by running the following command in a new terminal.</p>
+<p>A internet connection is required since the audio is being transcribed by the Google Speech API. To switch to using offline transciption, you can swap the speech recognizer used in the <a href="https://github.com/hello-binit/respeaker_ros/blob/4880cd50cb4b2272ca3221680632bdcf7390a978/scripts/speech_to_text.py#L73-L74">speech_to_text node</a>. See the <a href="https://pypi.org/project/SpeechRecognition/">SpeechRecognition docs</a> for other available speech recognizers.</p>
+<h4 id="direction-of-arrival">Direction of Arrival</h4>
+<p>The <code>/sound_direction</code> and <code>/sound_localization</code> topics give the DOA, or direction of arrival, in degrees and quaternion respectively. New messages are published when the DOA changes. And the 12 Respeaker LEDs show the DOA coarsely by coloring the LED closest to the DOA teal, while the rest of the LEDs show a darker blue color. In a new terminal, run <code>rostopic echo /sound_direction</code> or <code>rostopic echo /sound_localization</code>. Then, stand in front of the robot and say anything. You will see something like this outputted to the terminal:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># /sound_direction</span>
+data:<span class="w"> </span><span class="m">0</span>
+
+<span class="c1"># or /sound_localization</span>
+header:
+<span class="w">  </span>seq:<span class="w"> </span><span class="m">1</span>
+<span class="w">  </span>stamp:
+<span class="w">    </span>secs:<span class="w"> </span><span class="m">1672863834</span>
+<span class="w">    </span>nsecs:<span class="w"> </span><span class="m">646940469</span>
+<span class="w">  </span>frame_id:<span class="w"> </span><span class="s2">&quot;respeaker_base&quot;</span>
+pose:
+<span class="w">  </span>position:
+<span class="w">    </span>x:<span class="w"> </span><span class="m">0</span>.0
+<span class="w">    </span>y:<span class="w"> </span><span class="m">0</span>.0
+<span class="w">    </span>z:<span class="w"> </span><span class="m">0</span>.0
+<span class="w">  </span>orientation:
+<span class="w">    </span>x:<span class="w"> </span><span class="m">0</span>.0
+<span class="w">    </span>y:<span class="w"> </span><span class="m">0</span>.0
+<span class="w">    </span>z:<span class="w"> </span><span class="m">1</span>.0
+<span class="w">    </span>w:<span class="w"> </span><span class="m">0</span>.0
+</code></pre></div>
+<p>The DOA range in degrees is [-180, 180], and the diagram below shows the DOA range visually:</p>
+<div class="highlight"><pre><span></span><code>TODO
+</code></pre></div>
+<p>Due to echo-ing within the shell covering the Respeaker, the DOA can be inaccurate. If you are experiencing this issue, contact Hello Robot Support for instructions on removing the head shell, which will reduce echo. Furthermore, it's possible to get more accurate DOA with audio post-processing. The Respeaker calculates the DOA on-hardware, however audio streams from the four microphones are published, so it is possible to use real-time audio source localization software like <a href="https://wiki.seeedstudio.com/ReSpeaker_Mic_Array_v2.0/#realtime-sound-source-localization-and-tracking">ODAS</a> to better determine the DOA.</p>
+<h4 id="dynamic-reconfigure">Dynamic Reconfigure</h4>
+<p>You can also set various parameters via <code>dynamic_reconfigure</code>, by running the following command in a new terminal:</p>
 <div class="shell-prompt highlight"><pre><span></span><code>rosrun<span class="w"> </span>rqt_reconfigure<span class="w"> </span>rqt_reconfigure
 </code></pre></div>
 
