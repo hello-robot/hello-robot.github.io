@@ -1166,6 +1166,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.hello-robot.com/0.3/stretch-tutorials/ros2/feature_comparison/</loc>
+         <lastmod>2023-12-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.hello-robot.com/0.3/stretch-tutorials/ros2/follow_joint_trajectory/</loc>
          <lastmod>2023-12-24</lastmod>
          <changefreq>daily</changefreq>
