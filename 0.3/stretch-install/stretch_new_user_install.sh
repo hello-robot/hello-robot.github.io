@@ -72,7 +72,7 @@ fi
 echo "Setting up this user to start the robot's code automatically on boot..."
 mkdir -p ~/.config/autostart
 cp ~/stretch_install/factory/$factory_osdir/hello_robot_audio.desktop ~/.config/autostart/
-cp ~/stretch_install/factory/$factory_osdir/hello_robot_xbox_teleop.desktop ~/.config/autostart/
+cp ~/stretch_install/factory/$factory_osdir/hello_robot_gamepad_teleop.desktop ~/.config/autostart/
 cp ~/stretch_install/factory/$factory_osdir/hello_robot_lrf_off.desktop ~/.config/autostart/
 cp ~/stretch_install/factory/$factory_osdir/hello_robot_pimu_ping.desktop ~/.config/autostart/
 
