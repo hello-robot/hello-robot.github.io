@@ -45,6 +45,9 @@ if [[ -d $AMENT_WSDIR ]]; then
     prompt_yes_no
 fi
 
+. /etc/hello-robot/hello-robot.conf
+export HELLO_FLEET_ID HELLO_FLEET_ID
+export HELLO_FLEET_PATH=${HOME}/stretch_user
 echo "Deleting $AMENT_WSDIR if it already exists..."
 sudo rm -rf $AMENT_WSDIR
 echo "Creating the workspace directory..."
@@ -87,9 +90,6 @@ echo "Update ~/.bashrc dotfile to source workspace..."
 echo "source $AMENT_WSDIR/install/setup.bash" >> ~/.bashrc
 echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
 echo "Updating meshes in stretch_ros to this robot's batch..."
-. /etc/hello-robot/hello-robot.conf
-export HELLO_FLEET_ID HELLO_FLEET_ID
-export HELLO_FLEET_PATH=${HOME}/stretch_user
 $AMENT_WSDIR/src/stretch_ros2/stretch_description/batch/update_description.py >> $REDIRECT_LOGFILE
 echo "Setup uncalibrated robot URDF..."
 ros2 run stretch_calibration update_uncalibrated_urdf >> $REDIRECT_LOGFILE
