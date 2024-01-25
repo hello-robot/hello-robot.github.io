@@ -145,3 +145,23 @@ echo "Prevent screen dimming..."
 gsettings set org.gnome.desktop.session idle-delay 0 &> /dev/null || true
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0 &> /dev/null || true
 gsettings set org.gnome.settings-daemon.plugins.power idle-dim false &> /dev/null || true
+
+echo "Setting up motd..."
+if [ -d /etc/update-motd.d/ ]; then
+    sudo cp $DIR/motd/00-header /etc/update-motd.d/00-header
+    sudo chmod +x /etc/update-motd.d/00-header
+    sudo cp $DIR/motd/10-help-text /etc/update-motd.d/10-help-text
+    sudo chmod +x /etc/update-motd.d/10-help-text
+fi
+if [ -f /etc/update-motd.d/50-motd-news ]; then
+    sudo chmod -x /etc/update-motd.d/50-motd-news
+fi
+if [ -f /etc/update-motd.d/90-updates-available ]; then
+    sudo chmod -x /etc/update-motd.d/90-updates-available
+fi
+if [ -f /etc/update-motd.d/91-release-upgrade ]; then
+    sudo chmod -x /etc/update-motd.d/91-release-upgrade
+fi
+if [ -f /etc/update-motd.d/95-hwe-eol ]; then
+    sudo chmod -x /etc/update-motd.d/95-hwe-eol
+fi

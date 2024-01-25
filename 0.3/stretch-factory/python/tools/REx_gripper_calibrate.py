@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 from future.builtins import input
 import stretch_body.stretch_gripper as gripper
 import time
@@ -64,7 +64,7 @@ while not z_done:
 input('Hit enter to close')
 g.move_to(-100)
 input('Hit enter to open')
-g.move_to(50.0)
+g.move_to(g.world_rad_to_pct(g.ticks_to_world_rad(g.params['range_t'][1])))
 input('Hit enter to go to zero')
 g.move_to(0.0)
 time.sleep(4.0)
