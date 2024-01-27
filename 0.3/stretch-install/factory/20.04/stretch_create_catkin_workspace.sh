@@ -51,7 +51,7 @@ echo "Creating the workspace directory..."
 mkdir -p $CATKIN_WSDIR/src
 echo "Cloning the workspace's packages..."
 cd $CATKIN_WSDIR/src
-vcs import --input ~/stretch_install/factory/20.04/stretch_ros_noetic.repos >> $REDIRECT_LOGFILE
+vcs import --input ~/stretch_install/factory/20.04/stretch_ros_noetic.repos &>> $REDIRECT_LOGFILE
 echo "Fetch ROS packages' dependencies (this might take a while)..."
 cd $CATKIN_WSDIR/
 rosdep install --rosdistro=noetic -iy --skip-keys="librealsense2" --from-paths src &>> $REDIRECT_LOGFILE

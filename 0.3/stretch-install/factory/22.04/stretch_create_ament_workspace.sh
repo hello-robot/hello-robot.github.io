@@ -54,7 +54,7 @@ echo "Creating the workspace directory..."
 mkdir -p $AMENT_WSDIR/src
 echo "Cloning the workspace's packages..."
 cd $AMENT_WSDIR/src
-vcs import --input ~/stretch_install/factory/22.04/stretch_ros2_humble.repos >> $REDIRECT_LOGFILE
+vcs import --input ~/stretch_install/factory/22.04/stretch_ros2_humble.repos &>> $REDIRECT_LOGFILE
 echo "Fetch ROS packages' dependencies (this might take a while)..."
 cd $AMENT_WSDIR/
 rosdep install --rosdistro=humble -iyr --skip-keys="librealsense2" --from-paths src &>> $REDIRECT_LOGFILE
