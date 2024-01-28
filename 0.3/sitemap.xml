@@ -631,11 +631,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.hello-robot.com/0.3/stretch-tool-share/python/stretch_tool_share_se3/eoa_wrist_dw3_tool_tablet_12in/</loc>
-         <lastmod>2024-01-28</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://docs.hello-robot.com/0.3/stretch-tool-share/tool_share/arm_mounted_tray_V1/</loc>
          <lastmod>2024-01-28</lastmod>
          <changefreq>daily</changefreq>
@@ -742,6 +737,11 @@
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/stretch-tool-share/tool_share/wrist_USB_board_camera/</loc>
+         <lastmod>2024-01-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.hello-robot.com/0.3/stretch-tool-share/tool_share_SE3/eoa_wrist_dw3_tool_tablet_12in/</loc>
          <lastmod>2024-01-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
