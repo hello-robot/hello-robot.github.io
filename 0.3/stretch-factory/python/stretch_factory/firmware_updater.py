@@ -362,6 +362,7 @@ class FirmwareUpdater():
         """
         Return compile_fail, upload_success
         """
+        
         config_file = self.fw_available.repo_path + '/arduino-cli.yaml'
 
         fwu.user_msg_log('Config: ' + str(config_file), user_display=verbose)
@@ -446,6 +447,7 @@ class FirmwareUpdater():
         #     return False, False
 
         ############## bug fix experimental code ################################################
+        flash_port_name = None
         if device_name == 'hello-pimu':
                 fw_file = '/arduino/hello_pimu/build/hello-robot.samd.hello_pimu/hello_pimu.ino.bin'
 
@@ -455,19 +457,28 @@ class FirmwareUpdater():
         if device_name == 'hello-wacc':
             fw_file = '/arduino/hello_wacc/build/hello-robot.samd.hello_wacc/hello_wacc.ino.bin'
 
-        flash_command = self.home_dir+'/.arduino15/packages/arduino/tools/bossac/1.7.0/bossac -i -d --port='+port_name+ ' -U true -i -e -w -v '+src_path + fw_file+' -R' 
+        
         flash_sts = False, False
+        found_arduino_zero = False
         while True:
             try:
                 print(f"#### Trying To place {device_name} in bootloader mode #######")
                 test_port = hdu.serial.Serial('/dev/'+port_name, baudrate=1200)
                 test_port.__del__()
                 time.sleep(2)
-        
-                if hdu.extract_udevadm_info('/dev/'+port_name,'ID_MODEL') == 'Arduino_Zero':
-                    click.secho(f'Success {device_name} in bootloader mode, Now Flashing!', fg="green", bold=True)
+
+                bootloader_device = hdu.find_tty_devices()
+                for k in bootloader_device.keys():
+                    if bootloader_device[k]['model'] == 'Arduino_Zero':
+                        flash_port_name = k
+                        found_arduino_zero = True
+                        break
+
+                if found_arduino_zero:
+                    click.secho(f'Success {device_name} is in bootloader mode on {flash_port_name}, Now Flashing!', fg="green", bold=True)
                     time.sleep(1)
-            
+                    flash_command = self.home_dir+'/.arduino15/packages/arduino/tools/bossac/1.7.0/bossac -i -d --port='+flash_port_name+ ' -U true -i -e -w -v '+src_path + fw_file+' -R' 
+
                     result = call(flash_command, shell=True, stdout=DEVNULL)
                     if result == 0:
                         click.secho(f'Success Flashing {device_name}', fg="green", bold=True)
@@ -484,7 +495,6 @@ class FirmwareUpdater():
                     time.sleep(1)
                     test_port.__del__()
                     time.sleep(1) 
-
             except TypeError:
                 continue
         return flash_sts

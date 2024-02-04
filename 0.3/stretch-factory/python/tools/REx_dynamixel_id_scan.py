@@ -22,14 +22,14 @@ try:
         baud = DynamixelXL430.identify_baud_rate(id, args.usb_full_path)
         if baud !=-1:
             m = DynamixelXL430(id, args.usb_full_path,baud=baud)
+            m.startup()
             if not m.hw_valid:
                 print('Unable to open bus %s. Exiting'%args.usb_full_path)
                 exit(1)
             try:
-                m.startup()
                 nfind=nfind+1
             except DynamixelCommError:
-                print("Ping failed for ID %d and baud %d: "%(str(id),b))
+                print("Ping failed for ID %d and baud %d: "%(str(id),baud))
                 continue
             m.do_ping()
             m.stop()

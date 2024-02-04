@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import os
 import stretch_body.stepper
 from stretch_body.dynamixel_XL430 import DynamixelXL430, DynamixelCommError
@@ -300,11 +300,6 @@ class DiscoverHelloDevices:
                 if self.hello_dxl_sns[k]:
                     hdu.add_ftdi_udev_line(device_name=k, serial_no=self.hello_dxl_sns[k],
                                         fleet_dir=hu.get_fleet_directory())
-
-                    print("Pushing Udev files to /etc/udev/rules.d/....")
-                    os.system("sudo cp {}udev/95-hello-arduino.rules /etc/udev/rules.d/".format(hu.get_fleet_directory()))
-                    os.system("sudo cp {}udev/99-hello-dynamixel.rules /etc/udev/rules.d/".format(hu.get_fleet_directory()))
-                    os.system("sudo udevadm control --reload; sudo udevadm trigger")
                 else:
                     print(click.style('Unable to find SN of {}. Skipping.'.format(k), fg='red'))
             except Exception as err:
@@ -349,6 +344,17 @@ class DiscoverHelloDevices:
             print(click.style('ERROR [{}]: {}'.format("hello-wacc", str(err)), fg='red'))
         print(click.style('UDEV rules and stretch configuration files specific to arduino devices updated', fg='green',
                           bold=True))
+    
+    def push_udev_rules_to_etc(self,arduino=True,dynamixel=True):
+        print("\nPushing Udev files to /etc/udev/rules.d/")
+        if arduino:
+            os.system("sudo cp {}udev/95-hello-arduino.rules /etc/udev/rules.d/".format(hu.get_fleet_directory()))
+            os.system("sudo cp {}udev/95-hello-arduino.rules /etc/hello-robot/{}/udev/".format(hu.get_fleet_directory(),hu.get_fleet_id()))
+        if dynamixel:
+            os.system("sudo cp {}udev/99-hello-dynamixel.rules /etc/udev/rules.d/".format(hu.get_fleet_directory()))
+            os.system("sudo cp {}udev/99-hello-dynamixel.rules /etc/hello-robot/{}/udev/".format(hu.get_fleet_directory(),hu.get_fleet_id()))
+        os.system("sudo udevadm control --reload; sudo udevadm trigger")
+
 
     def run(self):
         if len(list(self.all_tty_devices.keys())) == 0:
@@ -361,6 +367,7 @@ class DiscoverHelloDevices:
         self.get_wheels_sn()
         self.get_dynamixel_sns()
         self.push_sns_to_udev_rules()
+        self.push_udev_rules_to_etc()
 
     def run_dynamixel(self):
         if len(list(self.all_tty_devices.keys())) == 0:
@@ -369,6 +376,7 @@ class DiscoverHelloDevices:
         self.get_dxl_devices()
         self.get_dynamixel_sns()
         self.push_dynamixel_sns_to_udev_rules()
+        self.push_udev_rules_to_etc(arduino=False)
 
     def run_arduino(self):
         if len(list(self.all_tty_devices.keys())) == 0:
@@ -379,6 +387,7 @@ class DiscoverHelloDevices:
         self.get_arm_sn()
         self.get_wheels_sn()
         self.push_arduino_sns_to_udev_rules()
+        self.push_udev_rules_to_etc(dynamixel=False)
 
 
 if args.list_tty:

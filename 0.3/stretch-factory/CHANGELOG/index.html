@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.7">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.f2e4d321.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -5317,6 +5317,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#053-feburary-3-2024" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.5.3 - Feburary 3, 2024
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#052-feburary-2-2024" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.5.2 - Feburary 2, 2024
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#050-january-24-2024" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.5.0 - January 24, 2024
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#0413-december-13-2023" class="md-nav__link">
     <span class="md-ellipsis">
       0.4.13 - December 13, 2023
@@ -5396,6 +5423,28 @@
 
 <h1 id="changelog">Changelog</h1>
 <p>The changes between releases of Stretch Factory is documented here.</p>
+<h2 id="053-feburary-3-2024"><a href="https://github.com/hello-robot/stretch_factory/pull/89">0.5.3</a> - Feburary 3, 2024</h2>
+<p>This release adds a new tool <code>REx_camera_set_symlink.py</code> that allows the user create a USB symlink to any USB camera that is plugged into the robot. The symlink is assigned by generating an Udev rule that records the following USB attributes of the plugged in camera: <code>[idVendor,idProduct,serial]</code>.</p>
+<p>Example Usage:
+By addressing a camera port:
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>REx_camera_set_symlink.py<span class="w"> </span>--port<span class="w"> </span>/dev/video6<span class="w"> </span>--symlink<span class="w"> </span>hello-new-camera
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </span>S<span class="w"> </span>T<span class="w"> </span>R<span class="w"> </span>E<span class="w"> </span>T<span class="w"> </span>C<span class="w"> </span>H<span class="w"> </span><span class="o">(</span>R<span class="o">)</span><span class="w"> </span>from<span class="w"> </span>Hello<span class="w"> </span>Robot<span class="w"> </span>Inc.
+---------------------------------------------------------------------
+
+Linking<span class="w"> </span>usb<span class="w"> </span>port:<span class="w"> </span>/dev/video6<span class="w"> </span>to<span class="w"> </span>symlink<span class="w"> </span>port:<span class="w"> </span>/dev/hello-new-camera
+Successfully<span class="w"> </span>generated<span class="w"> </span>udev<span class="w"> </span>rule<span class="w"> </span>at<span class="w"> </span>path:<span class="w"> </span>/etc/udev/rules.d/86-hello-new-camera.rules
+Successfully<span class="w"> </span>Identified<span class="w"> </span>device<span class="w"> </span>at<span class="w"> </span>port:<span class="w"> </span>/dev/hello-new-camera
+</code></pre></div></p>
+<h2 id="052-feburary-2-2024"><a href="https://github.com/hello-robot/stretch_factory/commit/a7df7e6cb8f617e2535738f23dac4c39dfca5eeb">0.5.2</a> - Feburary 2, 2024</h2>
+<p>There was a bug with the firmware updater tool, instead of before looking for the orginal dev/ttyACM port of the device when it is in bootloader state, it's been changed to look for the arduino zero device and use the associated dev/ttyACM port instead.</p>
+<h2 id="050-january-24-2024"><a href="https://github.com/hello-robot/stretch_factory/pull/88">0.5.0</a> - January 24, 2024</h2>
+<p>This release introduces the concept of "stepper types" to the Stretch Factory package. In P5 firmware, we introduced the ability for the uC on a stepper PCB to know which kind of stepper it is (i.e. arm, lift, right wheel, left wheel). In this release, the firmware updater checks if the stepper already knows its stepper type before erasing the flash memory through a new firmware flash. It saves the stepper_type, flashes the new firmware, then writes the stepper_type to flash memory. This release also introduces the new tool called REx_stepper_type.py tool for Hello Robot support members to be able to assist Stretch users in flashing their stepper_type bits.</p>
+<p>There's a couple benefits to each stepper knowing its stepper_type at the firmware level:</p>
+<ol>
+<li>The wheels on newer Stretch robots can take advantage of better runstop by actually disconnecting the H bridge from the motor. This makes it easier to backdrive the robot around by tilting the robot and pushing it like a vacuum cleaner.</li>
+<li>The system check tool can verify that the UDEV rules for each stepper agree with the stepper_type of the stepper. In case the UDEV rules get corrupted, this provides an additional level of redundancy.</li>
+</ol>
 <h2 id="0413-december-13-2023"><a href="https://github.com/hello-robot/stretch_factory/pull/73">0.4.13</a> - December 13, 2023</h2>
 <p>This release eliminates a failure case in the firmware updater where Hello devices are left in a soft-bricked (i.e. can be hardware reset) state from a failed firmware update attempt. The fix has been tested with 800+ firmware flashes on a variety of Stretch robots.</p>
 <h2 id="0311-january-17-2023"><a href="https://github.com/hello-robot/stretch_factory/pull/56">0.3.11</a> - January 17, 2023</h2>
@@ -5544,7 +5593,7 @@ This tool would require Stretch Body v0.4.11 and above.</p>
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.e1c3ead8.min.js"></script>
+      <script src="../../assets/javascripts/bundle.caa56a14.min.js"></script>
       
     
   </body>
