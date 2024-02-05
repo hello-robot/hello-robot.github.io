@@ -10,9 +10,9 @@
     "version": "0.2",
     "title": "0.2: Latest",
     "aliases": [
-      "beta",
       "latest",
-      "push"
+      "push",
+      "beta"
     ]
   },
   {
