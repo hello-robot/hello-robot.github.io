@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.7">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.8">
     
     
       
@@ -5317,6 +5317,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#054-feburary-7-2024" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.5.4 - Feburary 7, 2024
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#053-feburary-3-2024" class="md-nav__link">
     <span class="md-ellipsis">
       0.5.3 - Feburary 3, 2024
@@ -5423,6 +5432,29 @@
 
 <h1 id="changelog">Changelog</h1>
 <p>The changes between releases of Stretch Factory is documented here.</p>
+<h2 id="054-feburary-7-2024"><a href="https://github.com/hello-robot/stretch_factory/pull/93">0.5.4</a> - Feburary 7, 2024</h2>
+<p>This release adds a new tool <code>REx_xrandr_display.py</code> that allows users to programmatically change and revert the display resolution.</p>
+<p>Example Usage:
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>REx_xrandr_display.py<span class="w"> </span>--current
+For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </span>S<span class="w"> </span>T<span class="w"> </span>R<span class="w"> </span>E<span class="w"> </span>T<span class="w"> </span>C<span class="w"> </span>H<span class="w"> </span><span class="o">(</span>R<span class="o">)</span><span class="w"> </span>from<span class="w"> </span>Hello<span class="w"> </span>Robot<span class="w"> </span>Inc.
+---------------------------------------------------------------------
+
+Display<span class="w"> </span>Name:<span class="w">       </span>HDMI-1
+Display<span class="w"> </span>Resolution:<span class="w"> </span>1920x1080x60.00
+$<span class="w"> </span>REx_xrandr_display.py<span class="w"> </span>--set-720p
+For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </span>S<span class="w"> </span>T<span class="w"> </span>R<span class="w"> </span>E<span class="w"> </span>T<span class="w"> </span>C<span class="w"> </span>H<span class="w"> </span><span class="o">(</span>R<span class="o">)</span><span class="w"> </span>from<span class="w"> </span>Hello<span class="w"> </span>Robot<span class="w"> </span>Inc.
+---------------------------------------------------------------------
+
+$<span class="w"> </span>REx_xrandr_display.py<span class="w"> </span>--current
+For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </span>S<span class="w"> </span>T<span class="w"> </span>R<span class="w"> </span>E<span class="w"> </span>T<span class="w"> </span>C<span class="w"> </span>H<span class="w"> </span><span class="o">(</span>R<span class="o">)</span><span class="w"> </span>from<span class="w"> </span>Hello<span class="w"> </span>Robot<span class="w"> </span>Inc.
+---------------------------------------------------------------------
+
+Display<span class="w"> </span>Name:<span class="w">       </span>HDMI-1
+Display<span class="w"> </span>Resolution:<span class="w"> </span>1280x720x60.00
+$<span class="w"> </span>REx_xrandr_display.py<span class="w"> </span>--revert
+For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </span>S<span class="w"> </span>T<span class="w"> </span>R<span class="w"> </span>E<span class="w"> </span>T<span class="w"> </span>C<span class="w"> </span>H<span class="w"> </span><span class="o">(</span>R<span class="o">)</span><span class="w"> </span>from<span class="w"> </span>Hello<span class="w"> </span>Robot<span class="w"> </span>Inc.
+---------------------------------------------------------------------
+</code></pre></div></p>
 <h2 id="053-feburary-3-2024"><a href="https://github.com/hello-robot/stretch_factory/pull/89">0.5.3</a> - Feburary 3, 2024</h2>
 <p>This release adds a new tool <code>REx_camera_set_symlink.py</code> that allows the user create a USB symlink to any USB camera that is plugged into the robot. The symlink is assigned by generating an Udev rule that records the following USB attributes of the plugged in camera: <code>[idVendor,idProduct,serial]</code>.</p>
 <p>Example Usage:
@@ -5593,7 +5625,7 @@ This tool would require Stretch Body v0.4.11 and above.</p>
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.caa56a14.min.js"></script>
+      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
       
     
   </body>
