@@ -1,3 +1,7 @@
+!!! note "New Docs Coming Soon"
+
+    A new documentation for Stretch website is coming on March 4th, with a newly designed homepage and dozens of new articles/tutorials. The old docs website will still be available as version "0.2" in the nav bar.
+
 ![](./images/banner.png)
 
 # Welcome
