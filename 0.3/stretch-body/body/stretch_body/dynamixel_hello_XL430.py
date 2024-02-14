@@ -105,7 +105,6 @@ class DynamixelHelloXL430(Device):
             self.total_range = abs(self.ticks_to_world_rad(self.params['range_t'][0]) - self.ticks_to_world_rad(self.params['range_t'][1]))
             self.in_collision_stop = {'pos': False, 'neg': False}
             self.ts_collision_stop = {'pos': 0.0, 'neg': 0.0}
-            self.pos_current_ctrl_on_startup = False
         except KeyError:
             self.motor=None
 
@@ -224,7 +223,8 @@ class DynamixelHelloXL430(Device):
                 if not self.check_servo_errors():
                     self.hw_valid = False
                     return False
-                if self.pos_current_ctrl_on_startup:
+
+                if self.params['use_pos_current_ctrl']:
                     self.enable_pos_current_ctrl()
                 return True
             else:
@@ -245,6 +245,10 @@ class DynamixelHelloXL430(Device):
         Device.stop(self)
         self._waypoint_ts, self._waypoint_vel, self._waypoint_accel = None, None, None
         if self.hw_valid:
+            if self.watchdog_enabled:
+                self.disable_torque()
+                self.motor.disable_watchdog()
+                self.enable_torque()
             if self.params['disable_torque_on_stop']:
                 self.disable_torque()
             self.motor.stop(close_port)
@@ -440,9 +444,9 @@ class DynamixelHelloXL430(Device):
         in_collision: {'pos': False, 'neg': False},etc
         """
 
-        if in_collision['pos'] and in_collision['neg']:
-            print('Invalid IN_COLLISION for joint %s'%self.name)
-            return
+        # if in_collision['pos'] and in_collision['neg']:
+        #     print('Invalid IN_COLLISION for joint %s'%self.name)
+        #     return
 
         for dir in ['pos','neg']:
             if in_collision[dir] and not self.in_collision_stop[dir]:
@@ -669,11 +673,15 @@ class DynamixelHelloXL430(Device):
         if self.motor.dxl_model_name=='XM540-W270' or self.motor.dxl_model_name=='XM430-W350':
             if current_limit is None:
                 current_limit =self.params['current_limit_A']
+            if self.in_vel_mode:
+                self.enable_pos()
             self.motor.disable_torque()
             self.motor.set_current_limit(self.current_to_ticks(current_limit))
             self.motor.enable_pos_current()
             self.enable_torque()
             self.set_motion_params(force=True)
+        else:
+            self.logger.warning('Joint %s does not support POS_CURRENT_CTRL: %s' % self.name)
 
     def move_to(self,x_des, v_des=None, a_des=None):
         if self.was_runstopped:
@@ -795,8 +803,11 @@ class DynamixelHelloXL430(Device):
             self.motor.disable_torque()
             if self.params['use_multiturn']:
                 self.motor.enable_multiturn()
+            elif self.params['use_pos_current_ctrl']:
+                    self.enable_pos_current_ctrl()
             else:
                 self.motor.enable_pos()
+
             self.motor.enable_torque()
             self.set_motion_params(force=True)
             self.in_vel_mode = False

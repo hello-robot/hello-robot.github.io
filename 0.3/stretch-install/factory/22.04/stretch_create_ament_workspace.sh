@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+export COLCON_EXTENSION_BLOCKLIST=colcon_core.event_handler.desktop_notification
 
 REDIRECT_LOGDIR="$HOME/stretch_user/log"
 AMENT_WSDIR="$HOME/ament_ws"
@@ -57,14 +58,17 @@ cd $AMENT_WSDIR/src
 vcs import --input ~/stretch_install/factory/22.04/stretch_ros2_humble.repos &>> $REDIRECT_LOGFILE
 echo "Fetch ROS packages' dependencies (this might take a while)..."
 cd $AMENT_WSDIR/
-rosdep install --rosdistro=humble -iyr --skip-keys="librealsense2" --from-paths src &>> $REDIRECT_LOGFILE
+# The rosdep flags below have been chosen very carefully. Please review the docs before changing them.
+# https://docs.ros.org/en/independent/api/rosdep/html/commands.html
+rosdep install --rosdistro=humble -iy --skip-keys="librealsense2 realsense2_camera" --from-paths src &>> $REDIRECT_LOGFILE
+sudo apt remove -y ros-humble-librealsense2 ros-humble-realsense2-camera ros-humble-realsense2-camera-msgs &>> $REDIRECT_LOGFILE
 echo "Install web interface dependencies..."
 pip3 install pyquaternion &>> $REDIRECT_LOGFILE
-cd $AMENT_WSDIR/src/stretch_teleop_interface
+cd $AMENT_WSDIR/src/stretch_web_teleop
 npm install &>> $REDIRECT_LOGFILE
 npx playwright install &>> $REDIRECT_LOGFILE
 echo "Generating web interface certs..."
-cd $AMENT_WSDIR/src/stretch_teleop_interface/certificates
+cd $AMENT_WSDIR/src/stretch_web_teleop/certificates
 curl -JLO "https://dl.filippo.io/mkcert/latest?for=linux/amd64" &>> $REDIRECT_LOGFILE
 chmod +x mkcert-v*-linux-amd64
 sudo cp mkcert-v*-linux-amd64 /usr/local/bin/mkcert
@@ -74,7 +78,7 @@ rm -rf ~/.local/share/mkcert/root*
 cp root* ~/.local/share/mkcert
 mkcert ${HELLO_FLEET_ID} ${HELLO_FLEET_ID}.local ${HELLO_FLEET_ID}.dev localhost 127.0.0.1 0.0.0.0 ::1 &>> $REDIRECT_LOGFILE
 rm mkcert-v*-linux-amd64
-cd $AMENT_WSDIR/src/stretch_teleop_interface
+cd $AMENT_WSDIR/src/stretch_web_teleop
 touch .env
 echo certfile=${HELLO_FLEET_ID}+6.pem >> .env
 echo keyfile=${HELLO_FLEET_ID}+6-key.pem >> .env
@@ -89,8 +93,8 @@ echo net.ipv4.ip_unprivileged_port_start=80 | sudo tee --append /etc/sysctl.d/99
 echo "Update ~/.bashrc dotfile to source workspace..."
 echo "source $AMENT_WSDIR/install/setup.bash" >> ~/.bashrc
 echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
-echo "Updating meshes in stretch_ros to this robot's batch..."
-$AMENT_WSDIR/src/stretch_ros2/stretch_description/batch/update_description.py >> $REDIRECT_LOGFILE
+echo "Updating meshes and xacros to ROS from stretch_urdf package."
+/home/hello-robot/.local/bin/stretch_urdf_ros_update.py -y -v >> $REDIRECT_LOGFILE
 echo "Setup uncalibrated robot URDF..."
 ros2 run stretch_calibration update_uncalibrated_urdf >> $REDIRECT_LOGFILE
 echo "Setup calibrated robot URDF..."

@@ -88,6 +88,7 @@ echo "Install ROS 2 Dev Tools"
 install ros-dev-tools
 echo "Install colcon"
 install python3-colcon-common-extensions
+install python3-colcon-clean
 echo "Install rosdep"
 install python3-rosdep
 echo "Configure rosdep"

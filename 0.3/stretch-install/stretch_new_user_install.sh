@@ -34,6 +34,7 @@ else
     echo "export HELLO_FLEET_ID=${HELLO_FLEET_ID}">> ~/.bashrc
     echo "export PATH=\${PATH}:~/.local/bin" >> ~/.bashrc
     echo "export LRS_LOG_LEVEL=None #Debug" >> ~/.bashrc
+    echo "export PYTHONWARNINGS='ignore:setup.py install is deprecated,ignore:Invalid dash-separated options'" >> ~/.bashrc
     if [[ $factory_osdir = "18.04" ]]; then
         echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
     elif [[ $factory_osdir = "20.04" ]]; then
@@ -125,8 +126,12 @@ elif [[ $factory_osdir = "20.04" || $factory_osdir = "22.04" ]]; then
     python3 -m pip -q install --no-warn-script-location --upgrade hello-robot-stretch-tool-share &>> $REDIRECT_LOGFILE
     echo "Install Stretch Diagnostics"
     python3 -m pip -q install --no-warn-script-location --upgrade hello-robot-stretch-diagnostics &>> $REDIRECT_LOGFILE
+    echo "Install Stretch URDF"
+    python3 -m pip -q install --no-warn-script-location --upgrade hello-robot-stretch-urdf &>> $REDIRECT_LOGFILE
     echo "Upgrade prompt_toolkit"
     python3 -m pip -q install --no-warn-script-location -U prompt_toolkit &>> $REDIRECT_LOGFILE
+    echo "Remove setuptools-scm"
+    python3 -m pip -q uninstall -y setuptools-scm &>> $REDIRECT_LOGFILE
     echo ""
 fi
 

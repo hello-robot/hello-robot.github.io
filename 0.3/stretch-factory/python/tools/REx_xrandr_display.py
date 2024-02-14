@@ -126,6 +126,10 @@ elif args['set']:
     if len(dr_parts) != 3:
         print('Error: Resolution should have 3 parts. E.g. 1920x1080x60.00')
         sys.exit(1)
+    dr_parts_empty = [dr_part == '' for dr_part in dr_parts]
+    if any(dr_parts_empty):
+        print('Error: Resolution malformed. E.g. 1920x1080x60.00')
+        sys.exit(1)
     info = get_display_info()
     if desired_resolution not in info['available_resolutions']:
         closest_resolution = '1920x1080x60.00'
