@@ -3,6 +3,7 @@
     "version": "0.3",
     "title": "0.3: Experimental development",
     "aliases": [
+      "latest",
       "experimental"
     ]
   },
@@ -10,7 +11,6 @@
     "version": "0.2",
     "title": "0.2: Latest",
     "aliases": [
-      "latest",
       "beta",
       "push"
     ]
