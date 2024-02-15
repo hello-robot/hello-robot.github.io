@@ -1,3 +1,7 @@
+!!! note "Documentation for the recently announced Stretch 3"
+
+    A new documentation website for Stretch 3 is coming on March 4th, with a newly designed homepage and dozens of new articles/tutorials. The old docs website will still be available as version "0.2" in the nav bar.
+
 ![](./images/banner.png)
 
 # Welcome
