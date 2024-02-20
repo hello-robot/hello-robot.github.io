@@ -36,7 +36,10 @@
 // Version 0.6.2: Enable acceleration limits for VEL_PID
 // Version 0.6.3: Enable Decay pin of DRV8842 for lift stepper board to operate correctly
 // Version 0.7.0: Storying stepper_type to flash, to allow for wheel stepper motors to turn off when runstopped, fixed voltage input reading
-#define FIRMWARE_VERSION_HR "Stepper.v0.7.0p5"
+// Version 0.7.1: Add the guarded contact windowing and voltage normalization (variant>=3 only)
+// Version 0.7.2: Bug fix with 0.7.1 (minor)
+// Version 0.7.3: Issue with tag system, trying version bump
+#define FIRMWARE_VERSION_HR "Stepper.v0.7.3p5"
 
 /////////////////////////////////////////////////////////////////
 
