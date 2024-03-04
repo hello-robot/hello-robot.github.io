@@ -1,0 +1,449 @@
+{% extends "main.html" %}
+
+{% block tabs %}
+
+<style>
+
+    .md-main {
+        flex-grow: 0
+    }
+
+    .md-main__inner {
+        display: flex;
+        height: 100%;
+    }
+
+    .tx-container {
+        padding-top: .0rem;
+        background: rgb(255, 255, 255);
+    }
+
+    .tx-hero {
+        justify-content: center;
+    }
+
+    .tx-hero h1 {
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+
+    .tx-hero__content {
+        padding-bottom: 1rem;
+        margin: 0 auto;
+    }
+
+    .tx-hero__image{
+        order:1;
+    }
+
+    .tx-hero .md-button {
+        margin-top: .5rem;
+        margin-right: .5rem;
+        color: #333333;
+    }
+
+    .tx-hero .md-button--primary {
+        background-color: #1F883D;
+        color: white;
+        border-color: #1F883D;
+    }
+
+    .tx-hero .md-button:focus,
+    .tx-hero .md-button:hover {
+        background-color: var(--md-accent-fg-color);
+        color: var(--md-default-bg-color);
+        border-color: var(--md-accent-fg-color)
+    }
+
+    .tx-hero .md-button--primary:focus,
+    .tx-hero .md-button--primary:hover {
+        background-color: #106b2a;
+        color: white;
+        border-color: #0e5d24;
+    }
+
+    .feature-item h2 svg {
+        height: 30px;
+        float: left;
+        margin-right: 10px;
+        transform: translateY(10%);
+    }
+
+    .top-hr {
+        margin-top: 32px;
+    }
+
+    .feature-item {
+        margin-top: .5rem;
+        margin-right: .5rem;
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+        box-sizing: border-box;
+        padding: 0 15px;
+        word-break: break-word;
+    }
+
+    .feature-item h2 {
+        color: #333;
+        font-weight: 300;
+        font-size: 25px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: normal;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-family: inherit;
+    }
+
+    .feature-item a {
+        font-size: 18px;
+        line-height: 1.8em;
+        font-weight: 400;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        color: rgb(19, 19, 236);
+        margin-left: 10px;
+        display: block;
+    }
+
+    .feature-item a:hover {
+        text-decoration: underline;
+    }
+
+    @media screen and (max-width:30em) {
+        .tx-hero h1 {
+            font-size: 1.4rem;
+        }
+    }
+
+    @media screen and (min-width:30em) {
+        .top-hr {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 40rem;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 .2rem;
+        }
+
+        .feature-item {
+            flex: 1 0 40%;
+            min-width: 0;
+        }
+    }
+
+    @media screen and (max-width:60em) {
+        .tx-hero h1 {
+            text-align: center;
+        }
+
+        .tx-hero__content {
+            text-align: center;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        #hero-image {
+            width: 100%;
+        }
+    }
+
+    @media screen and (min-width:60em) {
+        .md-sidebar--secondary {
+            display: none
+        }
+
+        .tx-hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tx-hero__content {
+            max-width: 22rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            margin-left: 1.0rem;
+            margin-right: 4.0rem;
+            align-items: center;
+        }
+
+        .top-hr {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 51rem;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 .2rem;
+        }
+
+        .feature-item {
+            flex: 1 0 40%;
+            min-width: 0;
+        }
+    }
+
+    @media screen and (min-width:76.25em) {
+        .md-sidebar--primary {
+            display: none
+        }
+
+        .top-hr {
+            width: 100%;
+            display: flex;
+            max-width: 61rem;
+            margin-right: auto;
+            margin-left: auto;
+            padding: 0 .2rem;
+            flex-wrap: wrap;
+        }
+
+        .bottom-hr {
+            margin-top: 10px;
+            width: 100%;
+            display: flex;
+            max-width: 61rem;
+            margin-right: auto;
+            margin-left: auto;
+            padding: 0 .2rem;
+        }
+
+        .feature-item {
+            flex: 1 0 30%;
+            min-width: 0;
+        }
+    }
+
+    .hr {
+        border-bottom: 1px solid #eee;
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .text-center {
+        text-align: center;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 15px;
+        font-family: 'Lato', sans-serif;
+        font-size: 23px;
+        font-weight: 300;
+        padding-bottom: 10px;
+    }
+
+    .logos {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: row wrap;
+        margin: 0 auto;
+    }
+
+    .logos img {
+        flex: 1 1 auto;
+        padding: 25px;
+        max-height: 130px;
+        vertical-align: middle;
+    }
+
+    .hr-logos {
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+
+    .md-footer-meta__inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .md-footer-social {
+        padding-top: 20px;
+    }
+
+    :target {
+        background: #FDF1F5;
+    }
+
+    html {
+        scroll-padding-top: 4rem;
+    }
+</style>
+
+
+<!-- Main page Hero -->
+<section class="tx-container">
+    <div class="md-grid md-typeset">
+      <div class="tx-hero">
+
+        <!-- Custom Image -->
+        <div class="tx-hero__image">
+            <img id="hero-image" src="images/stretch3_hero.png" draggable="false">
+        </div>
+
+        <!-- Main Tagline -->
+        <div class="tx-hero__content">
+          <h1>Stretch Docs</h1>
+          <p>Welcome to your jumping off point for Stretch tutorials, hardware manuals, and APIs.</p>
+
+          <a href="getting_started/hello_robot/" title="Go to quick start tutorial" class="md-button md-button--primary">
+            Quickstart
+          </a>
+
+          <a href="hardware/safety_guide/" title="Go to safety tutorial" class="md-button">
+            Safety Guide
+          </a>
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- Main page subsections -->
+<div class="top-hr">
+
+    <div class="feature-item" id="getting-started">
+        <h2>
+            <span class="twemoji" style="display: inline-block; vertical-align: -4px;">
+                {% include ".icons/material/rocket.svg" %}
+            </span>
+            Getting Started
+        </h2>
+        <a href="getting_started/hello_robot/">Hello Robot!</a>
+        <a href="getting_started/connecting_to_stretch/">Connecting to Stretch</a>
+        <a href="getting_started/stretch_hardware_overview/">Stretch Hardware Overview</a>
+        <a href="getting_started/writing_code/">Writing Code</a>
+        <a href="getting_started/demos_mapping_and_navigation/">Demos</a>
+        <a href="getting_started/community_resources/">Community Resources</a>
+        <a href="getting_started/getting_help/">Getting Help</a>
+    </div>
+
+    <div class="feature-item" id="hardware-guides">
+        <h2>
+            <span class="twemoji" style="display: inline-block; vertical-align: -4px;">
+                {% include ".icons/material/electric-switch.svg" %}
+            </span>
+            Hardware Guides
+        </h2>
+        <a href="hardware/safety_guide/">Safety Guide</a>
+        <a href="hardware/hardware_guide_stretch_3/">Stretch 3 Hardware Guide</a>
+        <a href="hardware/battery_maintenance_guide_se3/">Battery Maintenance</a>
+    </div>
+
+    <div class="feature-item" id="software-overview">
+        <h2>
+            <span class="twemoji" style="display: inline-block; vertical-align: -4px;">
+                {% include ".icons/simple/bookstack.svg" %}
+            </span>
+            Software Overview
+        </h2>
+        <!-- <a href="software/architecture/">Software Architecture</a> -->
+        <a href="software/distributions/">Distributions & Roadmap</a>
+        <a href="software/updating_software/">Keeping your Software Up-to-date</a>
+        <a href="installation/robot_install/">Upgrading your Operating System</a>
+        <a href="software/changelogs/">Changelogs</a>
+        <!-- <a href="software/contributing/">Contributing</a> -->
+    </div>
+
+    <div class="feature-item" id="developing-with-stretch">
+        <h2>
+            <span class="twemoji" style="display: inline-block; vertical-align: -4px;">
+                {% include ".icons/material/developer-board.svg" %}
+            </span>
+            Developing with Stretch
+        </h2>
+        <a href="developing/basics/">The Basics</a>
+        <a href="python/moving/">Commanding Stretch to Move</a>
+        <!-- TODO:
+        <a href="tbd">Networking Guide</a>
+        <a href="developing/cli/">Command Line Tools</a>
+        <a href="developing/python/">Using Python with Stretch</a>
+        <a href="tbd">Using ROS 2 with Stretch</a>
+        <a href="tbd">Advanced Features</a>
+        <a href="tbd">Choosing your Navigation & Motion Planner</a>
+        <a href="tbd">Developing on the Web Interface</a>
+        <a href="tbd">Using Multiple Stretchs</a> -->
+    </div>
+
+<!-- TODO:
+    <div class="feature-item" id="python-tutorials">
+        <h2>
+            <span class="twemoji" style="display: inline-block; vertical-align: -4px;">
+                {% include ".icons/simple/python.svg" %}
+            </span>
+            Python Tutorials
+        </h2>
+        <a href="python/moving/">Commanding Stretch to Move</a>
+        <a href="python/sensors/">Working with Sensors</a>
+        <a href="python/audio/">Playing & Recording Audio</a>
+        <a href="python/pyfunmap/">Using PyFUNMAP</a>
+        <a href="python/ik/">Inverse Kinematics</a>
+        <a href="python/visual_servoing/">Visual Servoing</a>
+        <a href="tbd">Detecting ArUco Markers</a>
+        <a href="tbd">Reinforcement Learning</a>
+        <a href="python/other/">Other Stretch Python Libraries</a>
+    </div>
+-->
+
+    <div class="feature-item" id="ros2-tutorials">
+        <h2>
+            <span class="twemoji" style="display: inline-block; vertical-align: -4px;">
+                {% include ".icons/simple/ros.svg" %}
+            </span>
+            ROS 2 Tutorials
+        </h2>
+        <a href="ros2/getting_started/">Getting Started</a>
+        <a href="ros2/robot_drivers/">Robot Drivers</a>
+        <!-- <a href="ros2/writing_nodes/">Writing Nodes</a> -->
+        <a href="ros2/navigation_overview/">Navigation with Nav2</a>
+        <!-- <a href="ros2/moveit_basics/">Manipulation with MoveIt2</a> -->
+        <a href="https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_funmap#overview">FUNMAP</a>
+        <a href="ros2/perception/">Perception</a>
+        <a href="ros2/example_2/">Examples</a>
+    </div>
+
+    <div class="feature-item" id="extending-stretch">
+        <h2>
+            <span class="twemoji" style="display: inline-block; vertical-align: -4px;">
+                {% include ".icons/material/stretch-to-page.svg" %}
+            </span>
+            Extending Stretch
+        </h2>
+        <a href="extending_stretch/changing_tools/">Changing Tools</a>
+        <a href="extending_stretch/urdf_management/">URDF Management</a>
+        <a href="extending_stretch/extending_stretch_additional_hardware/">Extending Stretch with Additional Hardware</a>
+        <a href="https://github.com/hello-robot/stretch_tool_share/tree/master/tool_share/jetson_orin_agx_mount">Adding a Jetson to Stretch</a>
+        <a href="https://github.com/hello-robot/stretch_tutorials/blob/master/ros2/remote_compute.md">Using Stretch with a GPU</a>
+    </div>
+
+    <div class="feature-item" id="simulating-stretch">
+        <h2>
+            <span class="twemoji" style="display: inline-block; vertical-align: -4px;">
+                {% include ".icons/material/video-stabilization.svg" %}
+            </span>
+            Simulating Stretch
+        </h2>
+        <a href="https://github.com/google-deepmind/mujoco_menagerie/tree/main/hello_robot_stretch">MuJoCo</a>
+        <a href="https://forum.hello-robot.com/t/physical-aspects-of-the-robot-for-simulation/792">Simulation Parameters</a>
+    </div>
+
+    <div class="feature-item" id="knowledge-base">
+        <h2>
+            <span class="twemoji" style="display: inline-block; vertical-align: -4px;">
+                {% include ".icons/simple/discourse.svg" %}
+            </span>
+            Knowledge Base
+        </h2>
+        <a href="https://forum.hello-robot.com/t/working-with-aruco-markers/">Working with ArUco Markers</a>
+        <a href="https://forum.hello-robot.com/t/making-videos-of-stretch-lenses-lights-editors-and-more/">Making Videos of Stretch</a>
+        <a href="https://forum.hello-robot.com/t/occupancy-grids-vs-max-height-images/">Occupancy Grids vs. Max Height Images</a>
+    </div>
+
+</div>
+
+{% endblock %}
+{% block content %}{% endblock %}
