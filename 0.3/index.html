@@ -1,3 +1,5 @@
+<!-- Elements added to "main.html" will be displayed on all pages -->
+
 
 <!doctype html>
 <html lang="en" class="no-js">
@@ -16,19 +18,19 @@
       
       
       
-        <link rel="next" href="stretch-tutorials/">
+        <link rel="next" href="getting_started/hello_robot/">
       
       
       <link rel="icon" href="images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.10">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.9">
     
     
       
-        <title>Stretch Documentation</title>
+        <title>Stretch Docs</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.f2e4d321.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -50,8 +52,6 @@
       
     
     
-      <link rel="stylesheet" href="assets/_mkdocstrings.css">
-    
       <link rel="stylesheet" href="extra.css">
     
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
@@ -61,7 +61,19 @@
     
     
     
-  </head>
+    <!-- main.html | Added "navigation.instant" support -->
+    <link rel="canonical" href=".">
+
+   <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -79,11 +91,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#welcome" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -100,7 +107,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Stretch Documentation" class="md-header__button md-logo" aria-label="Stretch Documentation" data-md-component="logo">
+    <a href="." title="Stretch Docs" class="md-header__button md-logo" aria-label="Stretch Docs" data-md-component="logo">
       
   <img src="images/hello_robot_logo_light.png" alt="logo">
 
@@ -113,7 +120,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Stretch Documentation
+            Stretch Docs
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -132,21 +139,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
-    
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
-      </label>
-    
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="hello-robot-dark" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
-    
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
-      </label>
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
     
   
 </form>
@@ -202,14 +195,457 @@
     <div class="md-container" data-md-component="container">
       
       
-        
-          
-        
-      
+
+<style>
+
+    .md-main {
+        flex-grow: 0
+    }
+
+    .md-main__inner {
+        display: flex;
+        height: 100%;
+    }
+
+    .tx-container {
+        padding-top: .0rem;
+        background: rgb(255, 255, 255);
+    }
+
+    .tx-hero {
+        justify-content: center;
+    }
+
+    .tx-hero h1 {
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+
+    .tx-hero__content {
+        padding-bottom: 1rem;
+        margin: 0 auto;
+    }
+
+    .tx-hero__image{
+        order:1;
+    }
+
+    .tx-hero .md-button {
+        margin-top: .5rem;
+        margin-right: .5rem;
+        color: #333333;
+    }
+
+    .tx-hero .md-button--primary {
+        background-color: #1F883D;
+        color: white;
+        border-color: #1F883D;
+    }
+
+    .tx-hero .md-button:focus,
+    .tx-hero .md-button:hover {
+        background-color: var(--md-accent-fg-color);
+        color: var(--md-default-bg-color);
+        border-color: var(--md-accent-fg-color)
+    }
+
+    .tx-hero .md-button--primary:focus,
+    .tx-hero .md-button--primary:hover {
+        background-color: #106b2a;
+        color: white;
+        border-color: #0e5d24;
+    }
+
+    .feature-item h2 svg {
+        height: 30px;
+        float: left;
+        margin-right: 10px;
+        transform: translateY(10%);
+    }
+
+    .top-hr {
+        margin-top: 32px;
+    }
+
+    .feature-item {
+        margin-top: .5rem;
+        margin-right: .5rem;
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+        box-sizing: border-box;
+        padding: 0 15px;
+        word-break: break-word;
+    }
+
+    .feature-item h2 {
+        color: #333;
+        font-weight: 300;
+        font-size: 25px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: normal;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-family: inherit;
+    }
+
+    .feature-item a {
+        font-size: 18px;
+        line-height: 1.8em;
+        font-weight: 400;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        color: rgb(19, 19, 236);
+        margin-left: 10px;
+        display: block;
+    }
+
+    .feature-item a:hover {
+        text-decoration: underline;
+    }
+
+    @media screen and (max-width:30em) {
+        .tx-hero h1 {
+            font-size: 1.4rem;
+        }
+    }
+
+    @media screen and (min-width:30em) {
+        .top-hr {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 40rem;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 .2rem;
+        }
+
+        .feature-item {
+            flex: 1 0 40%;
+            min-width: 0;
+        }
+    }
+
+    @media screen and (max-width:60em) {
+        .tx-hero h1 {
+            text-align: center;
+        }
+
+        .tx-hero__content {
+            text-align: center;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        #hero-image {
+            width: 100%;
+        }
+    }
+
+    @media screen and (min-width:60em) {
+        .md-sidebar--secondary {
+            display: none
+        }
+
+        .tx-hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tx-hero__content {
+            max-width: 22rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            margin-left: 1.0rem;
+            margin-right: 4.0rem;
+            align-items: center;
+        }
+
+        .top-hr {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 51rem;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 .2rem;
+        }
+
+        .feature-item {
+            flex: 1 0 40%;
+            min-width: 0;
+        }
+    }
+
+    @media screen and (min-width:76.25em) {
+        .md-sidebar--primary {
+            display: none
+        }
+
+        .top-hr {
+            width: 100%;
+            display: flex;
+            max-width: 61rem;
+            margin-right: auto;
+            margin-left: auto;
+            padding: 0 .2rem;
+            flex-wrap: wrap;
+        }
+
+        .bottom-hr {
+            margin-top: 10px;
+            width: 100%;
+            display: flex;
+            max-width: 61rem;
+            margin-right: auto;
+            margin-left: auto;
+            padding: 0 .2rem;
+        }
+
+        .feature-item {
+            flex: 1 0 30%;
+            min-width: 0;
+        }
+    }
+
+    .hr {
+        border-bottom: 1px solid #eee;
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .text-center {
+        text-align: center;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 15px;
+        font-family: 'Lato', sans-serif;
+        font-size: 23px;
+        font-weight: 300;
+        padding-bottom: 10px;
+    }
+
+    .logos {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: row wrap;
+        margin: 0 auto;
+    }
+
+    .logos img {
+        flex: 1 1 auto;
+        padding: 25px;
+        max-height: 130px;
+        vertical-align: middle;
+    }
+
+    .hr-logos {
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+
+    .md-footer-meta__inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .md-footer-social {
+        padding-top: 20px;
+    }
+
+    :target {
+        background: #FDF1F5;
+    }
+
+    html {
+        scroll-padding-top: 4rem;
+    }
+</style>
+
+
+<!-- Main page Hero -->
+<section class="tx-container">
+    <div class="md-grid md-typeset">
+      <div class="tx-hero">
+
+        <!-- Custom Image -->
+        <div class="tx-hero__image">
+            <img id="hero-image" src="images/stretch3_hero.png" draggable="false">
+        </div>
+
+        <!-- Main Tagline -->
+        <div class="tx-hero__content">
+          <h1>Stretch Docs</h1>
+          <p>Welcome to your jumping off point for Stretch tutorials, hardware manuals, and APIs.</p>
+
+          <a href="getting_started/hello_robot/" title="Go to quick start tutorial" class="md-button md-button--primary">
+            Quickstart
+          </a>
+
+          <a href="hardware/safety_guide/" title="Go to safety tutorial" class="md-button">
+            Safety Guide
+          </a>
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- Main page subsections -->
+<div class="top-hr">
+
+    <div class="feature-item" id="getting-started">
+        <h2>
+            <span class="twemoji" style="display: inline-block; vertical-align: -4px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20 22-3.86-1.55c.7-1.53 1.2-3.11 1.51-4.72L20 22M7.86 20.45 4 22l2.35-6.27c.31 1.61.81 3.19 1.51 4.72M12 2s5 2 5 10c0 3.1-.75 5.75-1.67 7.83A2 2 0 0 1 13.5 21h-3a2 2 0 0 1-1.83-1.17C7.76 17.75 7 15.1 7 12c0-8 5-10 5-10m0 10c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2Z"/></svg>
+            </span>
+            Getting Started
+        </h2>
+        <a href="getting_started/hello_robot/">Hello Robot!</a>
+        <a href="getting_started/connecting_to_stretch/">Connecting to Stretch</a>
+        <a href="getting_started/stretch_hardware_overview/">Stretch Hardware Overview</a>
+        <a href="getting_started/writing_code/">Writing Code</a>
+        <a href="getting_started/demos_mapping_and_navigation/">Demos</a>
+        <a href="getting_started/community_resources/">Community Resources</a>
+        <a href="getting_started/getting_help/">Getting Help</a>
+    </div>
+
+    <div class="feature-item" id="hardware-guides">
+        <h2>
+            <span class="twemoji" style="display: inline-block; vertical-align: -4px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1 11h2.17C3.58 9.83 4.69 9 6 9c.65 0 1.25.21 1.74.56l6.7-4.69 1.14 1.63-6.69 4.7c.07.25.11.52.11.8a3 3 0 0 1-3 3 2.99 2.99 0 0 1-2.83-2H1v-2m22 0v2h-2.17A2.99 2.99 0 0 1 18 15a3 3 0 0 1-3-3 3 3 0 0 1 3-3c1.31 0 2.42.83 2.83 2H23M6 11a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1m12 0a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1Z"/></svg>
+            </span>
+            Hardware Guides
+        </h2>
+        <a href="hardware/safety_guide/">Safety Guide</a>
+        <a href="hardware/hardware_guide_stretch_3/">Stretch 3 Hardware Guide</a>
+        <a href="hardware/battery_maintenance_guide_se3/">Battery Maintenance</a>
+    </div>
+
+    <div class="feature-item" id="software-overview">
+        <h2>
+            <span class="twemoji" style="display: inline-block; vertical-align: -4px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.301 17.615c-.13-.34-.522-1.512-.133-2.432l9.827 5.674a.329.329 0 0 0 .33 0L24 12.962v2.354l-13.84 7.99L.3 17.615zm-.11-8.652c-.288.877.015 2.058.124 2.426l9.845 5.684L24 9.083V6.726l-13.675 7.896a.329.329 0 0 1-.33 0L.19 8.963zm13.17-1.936a.332.332 0 0 1-.485-.207l-.28-1.133-2.126-.176a.33.33 0 0 1-.138-.614l5.578-3.22-1.702-.983-13.51 7.8 9.462 5.462 13.51-7.8-4.4-2.54-5.91 3.41zm-.182-1.729.232.938 5.198-3.001-2.04-1.178-4.993 2.884 1.31.108a.33.33 0 0 1 .293.25zM24 9.845 10.325 17.74a.329.329 0 0 1-.33 0L.168 12.067c-.39.919.003 2.091.133 2.43l9.859 5.693L24 12.2V9.844z"/></svg>
+            </span>
+            Software Overview
+        </h2>
+        <!-- <a href="software/architecture/">Software Architecture</a> -->
+        <a href="software/distributions/">Distributions & Roadmap</a>
+        <a href="software/updating_software/">Keeping your Software Up-to-date</a>
+        <a href="installation/robot_install/">Upgrading your Operating System</a>
+        <a href="software/changelogs/">Changelogs</a>
+        <!-- <a href="software/contributing/">Contributing</a> -->
+    </div>
+
+    <div class="feature-item" id="developing-with-stretch">
+        <h2>
+            <span class="twemoji" style="display: inline-block; vertical-align: -4px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 9V7h-2V5a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2h2v-2h-2v-2h2v-2h-2V9h2m-4 10H4V5h14v14M6 13h5v4H6v-4m6-6h4v3h-4V7M6 7h5v5H6V7m6 4h4v6h-4v-6Z"/></svg>
+            </span>
+            Developing with Stretch
+        </h2>
+        <a href="developing/basics/">The Basics</a>
+        <a href="python/moving/">Commanding Stretch to Move</a>
+        <!-- TODO:
+        <a href="tbd">Networking Guide</a>
+        <a href="developing/cli/">Command Line Tools</a>
+        <a href="developing/python/">Using Python with Stretch</a>
+        <a href="tbd">Using ROS 2 with Stretch</a>
+        <a href="tbd">Advanced Features</a>
+        <a href="tbd">Choosing your Navigation & Motion Planner</a>
+        <a href="tbd">Developing on the Web Interface</a>
+        <a href="tbd">Using Multiple Stretchs</a> -->
+    </div>
+
+<!-- TODO:
+    <div class="feature-item" id="python-tutorials">
+        <h2>
+            <span class="twemoji" style="display: inline-block; vertical-align: -4px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.25.18.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/></svg>
+            </span>
+            Python Tutorials
+        </h2>
+        <a href="python/moving/">Commanding Stretch to Move</a>
+        <a href="python/sensors/">Working with Sensors</a>
+        <a href="python/audio/">Playing & Recording Audio</a>
+        <a href="python/pyfunmap/">Using PyFUNMAP</a>
+        <a href="python/ik/">Inverse Kinematics</a>
+        <a href="python/visual_servoing/">Visual Servoing</a>
+        <a href="tbd">Detecting ArUco Markers</a>
+        <a href="tbd">Reinforcement Learning</a>
+        <a href="python/other/">Other Stretch Python Libraries</a>
+    </div>
+-->
+
+    <div class="feature-item" id="ros2-tutorials">
+        <h2>
+            <span class="twemoji" style="display: inline-block; vertical-align: -4px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.807 0C1.353 0 .173 1.22.173 2.722c0 1.504 1.18 2.723 2.634 2.723 1.455 0 2.635-1.22 2.635-2.723S4.262 0 2.807 0zM12 0c-1.455 0-2.634 1.22-2.634 2.722 0 1.504 1.18 2.723 2.634 2.723 1.455 0 2.634-1.22 2.634-2.723S13.454 0 12 0zm9.193 0c-1.455 0-2.635 1.22-2.635 2.722 0 1.504 1.18 2.723 2.635 2.723 1.455 0 2.634-1.22 2.634-2.723S22.647 0 21.193 0zM2.807 9.277C1.353 9.277.173 10.497.173 12s1.18 2.722 2.634 2.722c1.455 0 2.635-1.219 2.635-2.722 0-1.504-1.18-2.723-2.635-2.723zm9.193 0c-1.455 0-2.634 1.22-2.634 2.723s1.18 2.722 2.634 2.722c1.455 0 2.634-1.219 2.634-2.722 0-1.504-1.18-2.723-2.634-2.723zm9.193 0c-1.455 0-2.635 1.22-2.635 2.723s1.18 2.722 2.635 2.722c1.455 0 2.634-1.219 2.634-2.722 0-1.504-1.18-2.723-2.634-2.723zM2.807 18.555c-1.454 0-2.634 1.22-2.634 2.722C.173 22.781 1.353 24 2.807 24c1.455 0 2.635-1.22 2.635-2.723s-1.18-2.722-2.635-2.722zm9.193 0c-1.455 0-2.634 1.22-2.634 2.722C9.366 22.781 10.546 24 12 24c1.455 0 2.634-1.22 2.634-2.723s-1.18-2.722-2.634-2.722zm9.193 0c-1.455 0-2.635 1.22-2.635 2.722 0 1.504 1.18 2.723 2.635 2.723 1.455 0 2.634-1.22 2.634-2.723s-1.18-2.722-2.634-2.722z"/></svg>
+            </span>
+            ROS 2 Tutorials
+        </h2>
+        <a href="ros2/getting_started/">Getting Started</a>
+        <a href="ros2/robot_drivers/">Robot Drivers</a>
+        <!-- <a href="ros2/writing_nodes/">Writing Nodes</a> -->
+        <a href="ros2/navigation_overview/">Navigation with Nav2</a>
+        <!-- <a href="ros2/moveit_basics/">Manipulation with MoveIt2</a> -->
+        <a href="https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_funmap#overview">FUNMAP</a>
+        <a href="ros2/perception/">Perception</a>
+        <a href="ros2/example_2/">Examples</a>
+    </div>
+
+    <div class="feature-item" id="extending-stretch">
+        <h2>
+            <span class="twemoji" style="display: inline-block; vertical-align: -4px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 2H4c-1.11 0-2 .89-2 2v16c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V4c0-1.11-.89-2-2-2M9 19H5v-4l1.29 1.29 1.54-1.54 1.42 1.42-1.54 1.54m.12-8.46L6.29 7.71 5 9V5h4L7.71 6.29l1.54 1.54M19 19h-4l1.29-1.29-1.54-1.54 1.42-1.42 1.54 1.54L19 15m0-6-1.29-1.29-1.54 1.54-1.42-1.42 1.54-1.54L15 5h4"/></svg>
+            </span>
+            Extending Stretch
+        </h2>
+        <a href="extending_stretch/changing_tools/">Changing Tools</a>
+        <a href="extending_stretch/urdf_management/">URDF Management</a>
+        <a href="extending_stretch/extending_stretch_additional_hardware/">Extending Stretch with Additional Hardware</a>
+        <a href="https://github.com/hello-robot/stretch_tool_share/tree/master/tool_share/jetson_orin_agx_mount">Adding a Jetson to Stretch</a>
+        <a href="https://github.com/hello-robot/stretch_tutorials/blob/master/ros2/remote_compute.md">Using Stretch with a GPU</a>
+    </div>
+
+    <div class="feature-item" id="simulating-stretch">
+        <h2>
+            <span class="twemoji" style="display: inline-block; vertical-align: -4px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2m0 2v12h16V6H4m3.24.58 11.59 3.11-2.07 7.73-11.59-3.11 2.07-7.73Z"/></svg>
+            </span>
+            Simulating Stretch
+        </h2>
+        <a href="https://github.com/google-deepmind/mujoco_menagerie/tree/main/hello_robot_stretch">MuJoCo</a>
+        <a href="https://forum.hello-robot.com/t/physical-aspects-of-the-robot-for-simulation/792">Simulation Parameters</a>
+    </div>
+
+    <div class="feature-item" id="knowledge-base">
+        <h2>
+            <span class="twemoji" style="display: inline-block; vertical-align: -4px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.103 0C18.666 0 24 5.485 24 11.997c0 6.51-5.33 11.99-11.9 11.99L0 24V11.79C0 5.28 5.532 0 12.103 0zm.116 4.563a7.395 7.395 0 0 0-6.337 3.57 7.247 7.247 0 0 0-.148 7.22L4.4 19.61l4.794-1.074a7.424 7.424 0 0 0 8.136-1.39 7.256 7.256 0 0 0 1.737-7.997 7.375 7.375 0 0 0-6.84-4.585h-.008z"/></svg>
+            </span>
+            Knowledge Base
+        </h2>
+        <a href="https://forum.hello-robot.com/t/working-with-aruco-markers/">Working with ArUco Markers</a>
+        <a href="https://forum.hello-robot.com/t/making-videos-of-stretch-lenses-lights-editors-and-more/">Making Videos of Stretch</a>
+        <a href="https://forum.hello-robot.com/t/occupancy-grids-vs-max-height-images/">Occupancy Grids vs. Max Height Images</a>
+    </div>
+
+</div>
+
+
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
           
             
+              
+                
               
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
@@ -220,12 +656,12 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Stretch Documentation" class="md-nav__button md-logo" aria-label="Stretch Documentation" data-md-component="logo">
+    <a href="." title="Stretch Docs" class="md-nav__button md-logo" aria-label="Stretch Docs" data-md-component="logo">
       
   <img src="images/hello_robot_logo_light.png" alt="logo">
 
     </a>
-    Stretch Documentation
+    Stretch Docs
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -243,19 +679,6 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Home
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
       
       <a href="." class="md-nav__link md-nav__link--active">
         
@@ -266,97 +689,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#safety" class="md-nav__link">
-    <span class="md-ellipsis">
-      Safety
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-start" class="md-nav__link">
-    <span class="md-ellipsis">
-      Quick Start
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tutorials" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tutorials
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hardware" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hardware
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#software" class="md-nav__link">
-    <span class="md-ellipsis">
-      Software
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#where-to-find-things" class="md-nav__link">
-    <span class="md-ellipsis">
-      Where to Find Things
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#version" class="md-nav__link">
-    <span class="md-ellipsis">
-      Version
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#license" class="md-nav__link">
-    <span class="md-ellipsis">
-      License
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -383,7 +715,7 @@
             
   
   <span class="md-ellipsis">
-    Tutorials
+    Getting Started
   </span>
   
 
@@ -393,7 +725,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            Tutorials
+            Getting Started
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -404,11 +736,11 @@
   
   
     <li class="md-nav__item">
-      <a href="stretch-tutorials/" class="md-nav__link">
+      <a href="getting_started/hello_robot/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Overview
+    Hello Robot!
   </span>
   
 
@@ -424,2308 +756,12 @@
   
   
   
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Getting to Know Stretch
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_2">
-            <span class="md-nav__icon md-icon"></span>
-            Getting to Know Stretch
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/getting_started/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Overview
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Basics
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_2_2">
-            <span class="md-nav__icon md-icon"></span>
-            Basics
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/getting_started/safety_guide/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Safety Guide
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/getting_started/quick_start_guide_re1/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Quick Start Stretch RE1
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/getting_started/quick_start_guide_re2/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Quick Start Stretch 2
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/getting_started/best_practices/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Best Practices
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/getting_started/troubleshooting_guide/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Troubleshooting
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_2_3" id="__nav_2_2_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Advanced
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_2_3">
-            <span class="md-nav__icon md-icon"></span>
-            Advanced
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/getting_started/command_line_tools/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Command Line Tools
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/getting_started/untethered_operation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Untethered Operation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/getting_started/updating_software/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Updating Software
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Stretch Body Python SDK
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_3">
-            <span class="md-nav__icon md-icon"></span>
-            Stretch Body Python SDK
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/stretch_body/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Overview
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_3_2" id="__nav_2_3_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Basics
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_3_2">
-            <span class="md-nav__icon md-icon"></span>
-            Basics
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/stretch_body/tutorial_introduction/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Introduction
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/stretch_body/tutorial_command_line_tools/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Command line Tools
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/stretch_body/tutorial_robot_motion/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Robot Motion
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/stretch_body/tutorial_robot_sensors/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Robot Sensors
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_3_3" id="__nav_2_3_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Advanced
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_3_3">
-            <span class="md-nav__icon md-icon"></span>
-            Advanced
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/stretch_body/tutorial_dynamixel_servos/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Dynamixel Servos
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/stretch_body/tutorial_parameter_management/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Parameter Management
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/stretch_body/tutorial_splined_trajectories/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Splined Trajectories
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/stretch_body/tutorial_collision_avoidance/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Collision Avoidance
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/stretch_body/tutorial_contact_models/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Contact Models
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/stretch_body/tutorial_tool_change/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Changing Tools
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/stretch_body/tutorial_custom_wrist_dof/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Custom Wrist DOF
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/stretch_body/tutorial_safe_coding/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Safety Features
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ROS
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4">
-            <span class="md-nav__icon md-icon"></span>
-            ROS
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Overview
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_4_2" id="__nav_2_4_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Basics
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4_2">
-            <span class="md-nav__icon md-icon"></span>
-            Basics
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/getting_started/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Getting Started
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/teleoperating_stretch/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Teleoperating Stretch
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/internal_state_of_stretch/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Internal State of Stretch
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/rviz_basics/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    RViz Basics
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/navigation_stack/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Navigation Stack
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/follow_joint_trajectory/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Follow Joint Trajectory Commands
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/perception/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Perception
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/aruco_marker_detection/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ArUco Marker Detection
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/respeaker_microphone_array/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ReSpeaker Microphone Array
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="https://github.com/hello-robot/stretch_ros/tree/master/stretch_funmap" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    FUNMAP
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/gazebo_basics/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Gazebo Basics
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_4_3" id="__nav_2_4_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Other Examples
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4_3">
-            <span class="md-nav__icon md-icon"></span>
-            Other Examples
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/example_1/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Mobile Base Velocity Control
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/example_2/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Filter Laser Scans
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/example_3/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Mobile Base Collision Avoidance
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/example_4/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Give Stretch a Balloon
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/example_5/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Print Joint States
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/example_6/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Store Effort Values
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/example_7/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Capture Image
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/example_8/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Voice to Text
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/example_9/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Voice Teleoperation of Base
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/example_10/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Tf2 Broadcaster and Listener
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/example_11/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    PointCloud Transformation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/example_12/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ArUco Tag Locator
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/example_13/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    2D Navigation Goals
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros1/autodocking_nav_stack/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Autodocking
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ROS 2 (Beta)
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_5">
-            <span class="md-nav__icon md-icon"></span>
-            ROS 2 (Beta)
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Overview
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_5_2" id="__nav_2_5_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Basics
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_5_2">
-            <span class="md-nav__icon md-icon"></span>
-            Basics
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/getting_started/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Getting Started
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/intro_to_ros2/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Introduction to ROS 2
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/intro_to_hellonode/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Introduction to HelloNode
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/teleoperating_stretch/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Teleoperating Stretch
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/internal_state_of_stretch/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Internal State of Stretch
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/rviz_basics/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    RViz Basics
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_2_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_5_2_7" id="__nav_2_5_2_7_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Nav2 Stack
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_5_2_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_5_2_7">
-            <span class="md-nav__icon md-icon"></span>
-            Nav2 Stack
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/navigation_overview/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Overview
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/navigation_stack/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Nav2 Basics
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/navigation_simple_commander/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Nav2 Simple Commander
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/follow_joint_trajectory/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Follow Joint Trajectory Commands
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/perception/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Perception
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/aruco_marker_detection/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ArUco Marker Detection
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_2_11" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_5_2_11" id="__nav_2_5_2_11_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ReSpeaker Microphone Array
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_5_2_11_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_5_2_11">
-            <span class="md-nav__icon md-icon"></span>
-            ReSpeaker Microphone Array
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/respeaker_mic_array/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Respeaker Mic Array
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/respeaker_topics/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Respeaker Topics
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_funmap" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    FUNMAP
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_5_3" id="__nav_2_5_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Other Examples
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_5_3">
-            <span class="md-nav__icon md-icon"></span>
-            Other Examples
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/example_1/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Mobile Base Velocity Control
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/example_2/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Filter Laser Scans
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/example_3/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Mobile Base Collision Avoidance
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/example_4/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Give Stretch a Balloon
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/example_5/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Print Joint States
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/example_6/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Store Effort Values
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/example_7/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Capture Image
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/example_8/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Voice to Text
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/example_9/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Voice Teleoperation of Base
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/example_10/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Tf2 Broadcaster and Listener
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/example_12/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ArUco Tag Locator
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/obstacle_avoider/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Obstacle Avoider
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/align_to_aruco/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Align to ArUco
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/deep_perception/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Deep Perception
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tutorials/ros2/avoiding_deadlocks_race_conditions/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Avoiding Race Conditions and Deadlocks
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Stretch Tool Share
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_6">
-            <span class="md-nav__icon md-icon"></span>
-            Stretch Tool Share
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
-      <a href="stretch-tutorials/stretch_tool_share/" class="md-nav__link">
+      <a href="getting_started/connecting_to_stretch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Overview
+    Connecting to Stretch
   </span>
   
 
@@ -2734,41 +770,6 @@
   
 
               
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_6_2" id="__nav_2_6_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Basics
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_6_2">
-            <span class="md-nav__icon md-icon"></span>
-            Basics
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -2777,11 +778,11 @@
   
   
     <li class="md-nav__item">
-      <a href="stretch-tutorials/stretch_tool_share/gripper_removal/" class="md-nav__link">
+      <a href="getting_started/stretch_hardware_overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Gripper Removal
+    Stretch Hardware Overview
   </span>
   
 
@@ -2798,11 +799,11 @@
   
   
     <li class="md-nav__item">
-      <a href="stretch-tutorials/stretch_tool_share/gripper_puller/" class="md-nav__link">
+      <a href="getting_started/writing_code/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Gripper Puller
+    Writing Code
   </span>
   
 
@@ -2819,11 +820,11 @@
   
   
     <li class="md-nav__item">
-      <a href="stretch-tutorials/stretch_tool_share/dry_erase_holder/" class="md-nav__link">
+      <a href="getting_started/demos_mapping_and_navigation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Dry Erase Holder
+    Demo 1 - Mapping & Navigation
   </span>
   
 
@@ -2840,11 +841,11 @@
   
   
     <li class="md-nav__item">
-      <a href="stretch-tutorials/stretch_tool_share/dexwrist/" class="md-nav__link">
+      <a href="getting_started/demos_web_teleop/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Dex Wrist
+    Demo 2 - Web Teleop
   </span>
   
 
@@ -2861,63 +862,20 @@
   
   
     <li class="md-nav__item">
-      <a href="stretch-tutorials/stretch_tool_share/dex_to_standard/" class="md-nav__link">
+      <a href="getting_started/community_resources/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Dex to Standard Wrist
+    Community Resources
   </span>
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
-              
-            
               
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_6_3" id="__nav_2_6_3_label" tabindex="0">
             
-  
-  <span class="md-ellipsis">
-    Advanced
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_6_3">
-            <span class="md-nav__icon md-icon"></span>
-            Advanced
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
               
                 
   
@@ -2925,31 +883,15 @@
   
   
     <li class="md-nav__item">
-      <a href="stretch-tutorials/stretch_tool_share/updating_urdf/" class="md-nav__link">
+      <a href="getting_started/getting_help/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Updating URDF
+    Getting help
   </span>
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -2983,7 +925,7 @@
             
   
   <span class="md-ellipsis">
-    Code Repositories
+    Hardware Guides
   </span>
   
 
@@ -2993,7 +935,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Code Repositories
+            Hardware Guides
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -3004,152 +946,11 @@
   
   
     <li class="md-nav__item">
-      <a href="repos_overview/" class="md-nav__link">
+      <a href="hardware/safety_guide/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Overview
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Stretch Body
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_2">
-            <span class="md-nav__icon md-icon"></span>
-            Stretch Body
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-body/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Overview
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Documentation
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_2_2">
-            <span class="md-nav__icon md-icon"></span>
-            Documentation
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-body/docs/robot_parameters/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Robot Parameters
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_body/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Tutorials
+    Safety Guide
   </span>
   
 
@@ -3166,75 +967,11 @@
   
   
     <li class="md-nav__item">
-      <a href="stretch-body/CHANGELOG/" class="md-nav__link">
+      <a href="hardware/hardware_guide_stretch_3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Changelog
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Stretch ROS
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_3">
-            <span class="md-nav__icon md-icon"></span>
-            Stretch ROS
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Overview
+    Stretch 3 Hardware Guide
   </span>
   
 
@@ -3251,1672 +988,15 @@
   
   
     <li class="md-nav__item">
-      <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros1/" class="md-nav__link">
+      <a href="hardware/battery_maintenance_guide_se3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Tutorials
+    Battery Maintenance
   </span>
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_3_3" id="__nav_3_3_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Packages
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_3_3">
-            <span class="md-nav__icon md-icon"></span>
-            Packages
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros/hello_helpers/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    hello_helpers
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros/stretch_calibration/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    stretch_calibration
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros/stretch_core/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    stretch_core
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros/stretch_deep_perception/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    stretch_deep_perception
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros/stretch_demos/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    stretch_demos
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros/stretch_description/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    stretch_description
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros/stretch_funmap/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    stretch_funmap
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros/stretch_gazebo/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    stretch_gazebo
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros/stretch_moveit_config/README.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    stretch_moveit_config
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros/stretch_navigation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    stretch_navigation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Stretch ROS2
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_4">
-            <span class="md-nav__icon md-icon"></span>
-            Stretch ROS2
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros2/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Overview
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Tutorials
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_4_3" id="__nav_3_4_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Packages
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_4_3">
-            <span class="md-nav__icon md-icon"></span>
-            Packages
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros2/hello_helpers/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    hello_helpers
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros2/stretch_calibration/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    stretch_calibration
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros2/stretch_core/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    stretch_core
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros2/stretch_dashboard/README.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    stretch_dashboard
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros2/stretch_deep_perception/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    stretch_deep_perception
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros2/stretch_demos/README.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    stretch_demos
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros2/stretch_description/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    stretch_description
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros2/stretch_funmap/README.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    stretch_funmap
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros2/stretch_gazebo/README.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    stretch_gazebo
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros2/stretch_moveit_config/README.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    stretch_moveit_config
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros2/stretch_navigation/README.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    stretch_navigation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros2/stretch_octomap/README.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    stretch_octomap
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-ros2/stretch_rtabmap/README.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    stretch_rtabmap
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Stretch Factory
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_5">
-            <span class="md-nav__icon md-icon"></span>
-            Stretch Factory
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-factory/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Overview
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Stretch Firmware
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_6">
-            <span class="md-nav__icon md-icon"></span>
-            Stretch Firmware
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-firmware/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Overview
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_6_2" id="__nav_3_6_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Tutorials
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_6_2">
-            <span class="md-nav__icon md-icon"></span>
-            Tutorials
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-firmware/docs/tutorial_updating_firmware/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Updating Firmware
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_2_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_6_2_2" id="__nav_3_6_2_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Integrating Custom Hardware
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_6_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_6_2_2">
-            <span class="md-nav__icon md-icon"></span>
-            Integrating Custom Hardware
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-firmware/docs/tutorials_overview/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Overview
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-firmware/docs/tutorial_data_transfer/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Data Transfer
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-firmware/docs/tutorial_i2c_sensor/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    I2C Sensor
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-firmware/docs/tutorial_spi_sensor/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    SPI Sensor
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-firmware/docs/tutorial_serial_sensor/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Serial Sensor
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-firmware/docs/tutorial_wacc_emulation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Wacc Emulaton
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Stretch Tool Share
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_7">
-            <span class="md-nav__icon md-icon"></span>
-            Stretch Tool Share
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tool-share/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Overview
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_7_2" id="__nav_3_7_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Tools
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_7_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_7_2">
-            <span class="md-nav__icon md-icon"></span>
-            Tools
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tool-share/tool_share/dry_erase_holder_V1/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Dry Erase Holder
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tool-share/tool_share/phone_holder_V1/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Phone Holder
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tool-share/tool_share/puller_v1/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Puller
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tool-share/tool_share/reactorx_wrist_V1/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ReactorX Wrist
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tool-share/tool_share/swiffer_mount_V1/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Swiffer Mount
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tool-share/tool_share/tray_cup_holder_V1/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Tray Cup Holder
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tool-share/tool_share/wrist_USB_board_camera/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Wrist USB Camera
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tool-share/tool_share/arm_mounted_tray_V1/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Arm Mounted Tray
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tool-share/tool_share/card_holder_V1.5/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Card Holder
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tool-share/tool_share/stretch_dex_wrist/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Stretch Dex Wrist
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tool-share/tool_share/stretch_docking_station/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Stretch Docking Station
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tool-share/tool_share/stretch_RE1_arm/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Stretch RE1 Arm
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tool-share/tool_share/stretch_RE1_head/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Stretch RE1 Head
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-tool-share/tool_share/stretch_teleop_kit/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Stretch Teleop Kit
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Stretch Install
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_8">
-            <span class="md-nav__icon md-icon"></span>
-            Stretch Install
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-install/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Overview
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-install/docs/updating_software/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Updating Software
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-install/docs/add_new_user/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Adding New Users
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-install/docs/ros_workspace/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Adding a ROS Workspace
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-install/docs/robot_install/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Robot Install
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="https://docs.hello-robot.com/0.1/dex_wrist_user_guide/#appendix-installation-and-configuration" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    DexWrist Install
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Stretch Web Interface
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_9">
-            <span class="md-nav__icon md-icon"></span>
-            Stretch Web Interface
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-web-interface/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Overview
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -4950,7 +1030,7 @@
             
   
   <span class="md-ellipsis">
-    Hardware Guides
+    Software Overview
   </span>
   
 
@@ -4960,7 +1040,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Hardware Guides
+            Software Overview
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -4971,11 +1051,11 @@
   
   
     <li class="md-nav__item">
-      <a href="stretch-hardware-guides/" class="md-nav__link">
+      <a href="software/distributions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Overview
+    Distributions
   </span>
   
 
@@ -4992,67 +1072,11 @@
   
   
     <li class="md-nav__item">
-      <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/safety_guide/" class="md-nav__link">
+      <a href="software/updating_software/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Stretch Safety Guide
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Stretch RE1
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_3">
-            <span class="md-nav__icon md-icon"></span>
-            Stretch RE1
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-hardware-guides/docs/battery_maintenance_guide_re1/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Battery Maintenance Guide
+    Updating Software
   </span>
   
 
@@ -5069,44 +1093,15 @@
   
   
     <li class="md-nav__item">
-      <a href="stretch-hardware-guides/docs/hardware_guide_re1/" class="md-nav__link">
+      <a href="software/changelogs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Hardware Guide
+    Changelogs
   </span>
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="stretch-hardware-guides/docs/dex_wrist_guide_re1/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    DexWrist User Guide
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -5133,7 +1128,7 @@
             
   
   <span class="md-ellipsis">
-    Stretch 2
+    Installation Tutorials
   </span>
   
 
@@ -5143,7 +1138,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_4">
             <span class="md-nav__icon md-icon"></span>
-            Stretch 2
+            Installation Tutorials
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -5154,11 +1149,11 @@
   
   
     <li class="md-nav__item">
-      <a href="stretch-hardware-guides/docs/battery_maintenance_guide_re2/" class="md-nav__link">
+      <a href="installation/add_new_user/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Battery Maintenance Guide
+    Adding a New User
   </span>
   
 
@@ -5175,11 +1170,11 @@
   
   
     <li class="md-nav__item">
-      <a href="stretch-hardware-guides/docs/hardware_guide_re2/" class="md-nav__link">
+      <a href="installation/ros_workspace/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Hardware Guide
+    Updating your ROS Workspace
   </span>
   
 
@@ -5196,11 +1191,11 @@
   
   
     <li class="md-nav__item">
-      <a href="stretch-hardware-guides/docs/dex_wrist_guide_re2/" class="md-nav__link">
+      <a href="installation/robot_install/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    DexWrist User Guide
+    Upgrading your Operating System
   </span>
   
 
@@ -5246,7 +1241,7 @@
             
   
   <span class="md-ellipsis">
-    Resources
+    Developing with Stretch
   </span>
   
 
@@ -5256,7 +1251,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            Resources
+            Developing with Stretch
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -5267,11 +1262,137 @@
   
   
     <li class="md-nav__item">
-      <a href="https://forum.hello-robot.com/" class="md-nav__link">
+      <a href="developing/basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Stretch Forum
+    The Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Python Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="python/moving/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Commanding Stretch to Move
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ROS 2 Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            ROS 2 Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ros2/getting_started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
   </span>
   
 
@@ -5288,11 +1409,67 @@
   
   
     <li class="md-nav__item">
-      <a href="https://github.com/hello-robot" class="md-nav__link">
+      <a href="ros2/robot_drivers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Stretch GitHub
+    Robot Drivers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Navigation with Nav2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            Navigation with Nav2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ros2/navigation_overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
   </span>
   
 
@@ -5309,11 +1486,398 @@
   
   
     <li class="md-nav__item">
-      <a href="https://github.com/hello-robot/stretch_community" class="md-nav__link">
+      <a href="ros2/navigation_stack/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Stretch Community
+    Nav2 Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ros2/navigation_simple_commander/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nav2 Simple Commander
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_funmap#overview" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FUNMAP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ros2/perception/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Perception
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_6" id="__nav_7_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Examples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ros2/example_2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filter Laser Scans
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ros2/example_3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collision Avoidance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ros2/example_4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rviz Markers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ros2/remote_compute/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Offloading Computation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ros2/example_12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ArUco Locator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ros2/example_9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Voice Teleop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ros2/example_9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Playing Audio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ros2/example_9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rosbags & MCAPs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Extending Stretch
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Extending Stretch
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extending_stretch/changing_tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Changing Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extending_stretch/urdf_management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    URDF Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extending_stretch/extending_stretch_additional_hardware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Extending Stretch with Additional Hardware
   </span>
   
 
@@ -5338,6 +1902,8 @@
             
             
               
+                
+              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -5347,88 +1913,6 @@
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#safety" class="md-nav__link">
-    <span class="md-ellipsis">
-      Safety
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-start" class="md-nav__link">
-    <span class="md-ellipsis">
-      Quick Start
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tutorials" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tutorials
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hardware" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hardware
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#software" class="md-nav__link">
-    <span class="md-ellipsis">
-      Software
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#where-to-find-things" class="md-nav__link">
-    <span class="md-ellipsis">
-      Where to Find Things
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#version" class="md-nav__link">
-    <span class="md-ellipsis">
-      Version
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#license" class="md-nav__link">
-    <span class="md-ellipsis">
-      License
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -5439,272 +1923,6 @@
           
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
-                
-                  
-
-
-<div class="admonition note">
-<p class="admonition-title">New Docs Coming Soon</p>
-<p>A new documentation for Stretch website is coming on March 4th, with a newly designed homepage and dozens of new articles/tutorials. The old docs website will still be available as version "0.2" in the nav bar.</p>
-</div>
-<p><img alt="" src="images/banner.png" /></p>
-<h1 id="welcome">Welcome</h1>
-<p>This is your jumping off point for Stretch tutorials, hardware manuals, and APIs. </p>
-<p>Please contact us at <a href="mailto:support@hello-robot.com">support@hello-robot.com</a> if you don't find what you're looking for. We wish you success in your development journey with Stretch!</p>
-<h2 id="safety">Safety</h2>
-<p><strong>WARNING:</strong> The Stretch robot can potentially be dangerous if used without caution. All users must take the time to learn safe and best practices in operating Stretch prior to using the robot.</p>
-<table>
-<thead>
-<tr>
-<th>Resource</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/safety_guide/">Stretch Safety Guide</a></td>
-<td>Safety guide for users of the Stretch RE1</td>
-</tr>
-<tr>
-<td><a href="https://youtu.be/mQdOGEksdYM">Stretch Best Practices - Powered Off Video</a></td>
-<td>How to work with Stretch when its power is off</td>
-</tr>
-<tr>
-<td><a href="https://youtu.be/iEaapHNfEWA">Stretch Best Practices - Powered On Video</a></td>
-<td>How to work with Stretch when its power is on</td>
-</tr>
-</tbody>
-</table>
-<h2 id="quick-start">Quick Start</h2>
-<p>New to Stretch? We recommend following the below resources to get started.</p>
-<table>
-<thead>
-<tr>
-<th>Resource</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://youtu.be/O-6VrqqGlig">Stretch Unboxing Video</a></td>
-<td>How to unpack your new Stretch</td>
-</tr>
-<tr>
-<td><a href="https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/quick_start_guide_re2/">Stretch Quick Start Guide</a></td>
-<td>Getting started  - Xbox Teleoperation Demo and beyond</td>
-</tr>
-<tr>
-<td><a href="https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/troubleshooting_guide/">Stretch Troubleshooting Guide</a></td>
-<td>Solutions to common issues</td>
-</tr>
-<tr>
-<td><a href="https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/untethered_operation/">Stretch Network Setup</a></td>
-<td>Guide to network setup for working with Stretch untethered</td>
-</tr>
-</tbody>
-</table>
-<h2 id="tutorials">Tutorials</h2>
-<table>
-<thead>
-<tr>
-<th>Tutorial Track</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/">Getting to Know Stretch</a></td>
-<td>Everything a new user of Stretch needs to get started</td>
-</tr>
-<tr>
-<td><a href="https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_body/">Stretch Body Python SDK</a></td>
-<td>Learn how to program Stretch using its low level Python interface</td>
-</tr>
-<tr>
-<td><a href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros1/">ROS</a></td>
-<td>Learn how to program Stretch using its ROS interface</td>
-</tr>
-<tr>
-<td><a href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/">ROS 2 (Beta)</a></td>
-<td>Learn how to program Stretch using its ROS 2 interface</td>
-</tr>
-<tr>
-<td><a href="https://docs.hello-robot.com/0.2/stretch-tutorials/stretch_tool_share/">Stretch Tool Share</a></td>
-<td>Learn how to update the end of arm tool hardware</td>
-</tr>
-</tbody>
-</table>
-<h2 id="hardware">Hardware</h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Stretch 2</label><label for="__tabbed_1_2">Stretch RE1</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<table>
-<thead>
-<tr>
-<th>Guide</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/safety_guide/">Safety Guide</a></td>
-<td>Safety guide for users of the Stretch</td>
-</tr>
-<tr>
-<td><a href="https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/battery_maintenance_guide_re2/">Battery Maintenance Guide</a></td>
-<td>Guide to care for and charge the Stretch RE2 Batteries</td>
-</tr>
-<tr>
-<td><a href="https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/hardware_guide_re2/">Hardware Guide</a></td>
-<td>Specification and functional description of the Stretch RE2 Hardware</td>
-</tr>
-<tr>
-<td><a href="https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/dex_wrist_guide_re2/">Dex Wrist Guide</a></td>
-<td>Installing, configuring, and working with the Stretch RE2 Dex Wrist</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="tabbed-block">
-<table>
-<thead>
-<tr>
-<th>Guide</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/safety_guide/">Safety Guide</a></td>
-<td>Safety guide for users of the Stretch</td>
-</tr>
-<tr>
-<td><a href="https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/battery_maintenance_guide_re1/">Battery Maintenance Guide</a></td>
-<td>Guide to care for and charge the Stretch RE1 Batteries</td>
-</tr>
-<tr>
-<td><a href="https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/hardware_guide_re1/">Hardware Guide</a></td>
-<td>Specification and functional description of the Stretch RE1 Hardware</td>
-</tr>
-<tr>
-<td><a href="https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/dex_wrist_guide_re1/">Dex Wrist Guide</a></td>
-<td>Installing, configuring, and working with the Stretch RE1 Dex Wrist</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<h2 id="software">Software</h2>
-<table>
-<thead>
-<tr>
-<th>Repository</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://github.com/hello-robot/stretch_body">Stretch Body</a></td>
-<td>Python SDK that allows you to interact with the hardware.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/hello-robot/stretch_ros">Stretch ROS</a></td>
-<td>ROS related code for Stretch.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/hello-robot/stretch_ros2">Stretch ROS 2</a></td>
-<td>ROS 2 related code for Stretch.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/hello-robot/stretch_factory">Stretch Factory</a></td>
-<td>Factory Python tools for debug, testing and calibration.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/hello-robot/stretch_firmware">Stretch Firmware</a></td>
-<td>Arduino code for the firmware that drives Stretch.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/hello-robot/stretch_tool_share">Stretch Tool Share</a></td>
-<td>Hardware extensions to extend the capabilities of Stretch.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/hello-robot/stretch_install">Stretch Install</a></td>
-<td>Installation scripts for Stretch.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="where-to-find-things">Where to Find Things</h2>
-<p>All of the documentation is searchable and accessible via the navigation menu on this site. Alternatively, you can view the markdown hosted on the <a href="https://github.com/hello-robot">Hello Robot GitHub portal</a>.</p>
-<p>In addition, it is worth spending some time on the following sites:</p>
-<table>
-<thead>
-<tr>
-<th>Resource</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://github.com/hello-robot/stretch_community">Stretch Community</a></td>
-<td>Repository for community shared code</td>
-</tr>
-<tr>
-<td><a href="https://forum.hello-robot.com/">Stretch Forum</a></td>
-<td>Discourse User Forum</td>
-</tr>
-</tbody>
-</table>
-<h2 id="version">Version</h2>
-<p>This is version 0.2 of the Stretch User Documentation. It is written with the following system configuration in mind:</p>
-<table>
-<thead>
-<tr>
-<th>Descriptor</th>
-<th>Version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Model</td>
-<td>Stretch RE1 or Stretch 2</td>
-</tr>
-<tr>
-<td>OS</td>
-<td>Ubuntu 20.04</td>
-</tr>
-<tr>
-<td>ROS</td>
-<td>ROS Noetic and ROS 2 Galactic</td>
-</tr>
-<tr>
-<td>Python</td>
-<td>Python3</td>
-</tr>
-<tr>
-<td>Stretch Body</td>
-<td>&gt;=0.4</td>
-</tr>
-</tbody>
-</table>
-<p>You can access prior documentation suitable for older configurations (eg Ubuntu 18.04, ROS Melodic) <a href="https://docs.hello-robot.com/0.1/">here</a>.</p>
-<h2 id="license">License</h2>
-<p>This documentation is only to be used for an authentic Stretch robot produced and sold by Hello Robot Inc. </p>
-<p>All Hello Robot documentation and related materials are released under the <a href="https://creativecommons.org/licenses/by-nd/4.0">Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)</a> license.</p>
-<hr />
-<div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks. The Stretch robots are covered by U.S. Patent 11,230,000 and other patents pending.</div>
-
-
-
-
-
-
-
-
-
-
-
-
                 
               </article>
             </div>
@@ -5719,17 +1937,19 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" hidden>
         
         
           
-          <a href="stretch-tutorials/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview">
+          <a href="getting_started/hello_robot/" class="md-footer__link md-footer__link--next" aria-label="Next: Hello Robot!">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Overview
+                Hello Robot!
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -5746,7 +1966,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2022 Hello Robot Inc
+      Copyright &copy; 2020-2024 Hello Robot Inc
     </div>
   
   
@@ -5758,14 +1978,6 @@
 </div>
       
         <div class="md-social">
-  
-    
-    
-    
-    
-    <a href="" target="_blank" rel="noopener" title="" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
-    </a>
   
     
     
@@ -5823,11 +2035,11 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.footer"], "search": "assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.footer"], "search": "assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
       <script src="assets/javascripts/bundle.8fd75fb4.min.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

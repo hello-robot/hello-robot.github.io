@@ -1,0 +1,2523 @@
+<!-- Elements added to "main.html" will be displayed on all pages -->
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hello Robot User Documentation">
+      
+      
+        <meta name="author" content="Hello Robot Inc">
+      
+      
+        <link rel="canonical" href="https://docs.hello-robot.com/0.3/developing/cli/">
+      
+      
+      
+      
+      <link rel="icon" href="../../images/hello_robot_favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.9">
+    
+    
+      
+        <title>Command Line Tools - Stretch Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.f2e4d321.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+    <!-- main.html | Added "navigation.instant" support -->
+    <link rel="canonical" href=".">
+
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#command-line-tools" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Stretch Docs" class="md-header__button md-logo" aria-label="Stretch Docs" data-md-component="logo">
+      
+  <img src="../../images/hello_robot_logo_light.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Stretch Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Command Line Tools
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Stretch Docs" class="md-nav__button md-logo" aria-label="Stretch Docs" data-md-component="logo">
+      
+  <img src="../../images/hello_robot_logo_light.png" alt="logo">
+
+    </a>
+    Stretch Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/hello_robot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hello Robot!
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/connecting_to_stretch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Connecting to Stretch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/stretch_hardware_overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stretch Hardware Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/writing_code/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Writing Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/demos_mapping_and_navigation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Demo 1 - Mapping & Navigation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/demos_web_teleop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Demo 2 - Web Teleop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/community_resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Community Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/getting_help/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting help
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hardware Guides
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Hardware Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/safety_guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Safety Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/hardware_guide_stretch_3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stretch 3 Hardware Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/battery_maintenance_guide_se3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Battery Maintenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Software Overview
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Software Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/distributions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Distributions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/updating_software/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Updating Software
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/changelogs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Changelogs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Installation Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Installation Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/add_new_user/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adding a New User
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/ros_workspace/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Updating your ROS Workspace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/robot_install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Upgrading your Operating System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Developing with Stretch
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Developing with Stretch
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Python Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/moving/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Commanding Stretch to Move
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ROS 2 Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            ROS 2 Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/getting_started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/robot_drivers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Robot Drivers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Navigation with Nav2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            Navigation with Nav2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/navigation_overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/navigation_stack/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nav2 Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/navigation_simple_commander/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nav2 Simple Commander
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_funmap#overview" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FUNMAP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/perception/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Perception
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_6" id="__nav_7_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Examples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/example_2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filter Laser Scans
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/example_3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collision Avoidance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/example_4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rviz Markers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/remote_compute/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Offloading Computation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/example_12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ArUco Locator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/example_9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Voice Teleop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/example_9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Playing Audio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/example_9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rosbags & MCAPs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Extending Stretch
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Extending Stretch
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extending_stretch/changing_tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Changing Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extending_stretch/urdf_management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    URDF Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extending_stretch/extending_stretch_additional_hardware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Extending Stretch with Additional Hardware
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#stretch-body-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stretch Body Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stretch Body Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stretch_robot_system_checkpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_robot_system_check.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch_robot_homepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_robot_home.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch_robot_stowpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_robot_stow.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch_robot_battery_checkpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_robot_battery_check.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch_robot_keyboard_teleoppy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_robot_keyboard_teleop.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch_xbox_controller_teleoppy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_xbox_controller_teleop.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch_gamepad_teleoppy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_gamepad_teleop.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch_free_robot_processpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_free_robot_process.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch_paramspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_params.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch_realsense_visualizerpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_realsense_visualizer.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch_rp_lidar_jogpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_rp_lidar_jog.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch_audio_testpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_audio_test.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch_respeaker_testpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_respeaker_test.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch_device_homepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_&lt;device&gt;_home.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch_device_jogpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_&lt;device&gt;_jog.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch_device_scopepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_&lt;device&gt;_scope.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch_aboutpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_about.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch_about_textpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_about_text.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch_hardware_echopy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_hardware_echo.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch_trajectory_jogpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_trajectory_jog.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch_robot_dynamixel_rebootpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_robot_dynamixel_reboot.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch_robot_monitorpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_robot_monitor.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch_robot_urdf_visualizerpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_robot_urdf_visualizer.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch_versionsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_version.sh
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stretch-pyfunmap-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stretch PyFUNMAP Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stretch PyFUNMAP Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pyfunmap_head_scan_visualizerpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      pyfunmap_head_scan_visualizer.py
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stretch-diagnostics-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stretch Diagnostics Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stretch Diagnostics Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stretch_diagnostic_checkpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_diagnostic_check.py
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stretch-urdf-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stretch URDF Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stretch URDF Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stretch_urdf_examplepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_urdf_example.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stretch_urdf_vizpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_urdf_viz.py
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stretch-factory-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stretch Factory Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stretch Factory Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#re1_migrate_contactspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      RE1_migrate_contacts.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#re1_migrate_paramspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      RE1_migrate_params.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_d435i_checkpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_D435i_check.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_base_calibrate_imu_collectpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_base_calibrate_imu_collect.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_base_calibrate_imu_processpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_base_calibrate_imu_process.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_base_calibrate_wheel_separationpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_base_calibrate_wheel_separation.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_calibrate_gravity_comppy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_calibrate_gravity_comp.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_calibrate_guarded_contactpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_calibrate_guarded_contact.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_calibrate_rangepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_calibrate_range.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_cliff_sensor_calibratepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_cliff_sensor_calibrate.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_comm_ratespy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_comm_rates.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_discover_hello_devicespy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_discover_hello_devices.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_dmesg_monitorpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_dmesg_monitor.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_dynamixel_id_changepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_dynamixel_id_change.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_dynamixel_id_scanpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_dynamixel_id_scan.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_dynamixel_jogpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_dynamixel_jog.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_dynamixel_rebootpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_dynamixel_reboot.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_dynamixel_set_baudpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_dynamixel_set_baud.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_firmware_flashpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_firmware_flash.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_firmware_updaterpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_firmware_updater.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_gamepad_configurepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_gamepad_configure.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_gripper_calibratepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_gripper_calibrate.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_hello_dynamixel_jogpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_hello_dynamixel_jog.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_stepper_calibration_yaml_to_flashpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_stepper_calibration_YAML_to_flash.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_stepper_calibration_flash_to_yamlpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_stepper_calibration_flash_to_YAML.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_stepper_calibration_runpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_stepper_calibration_run.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_stepper_ctrl_tuningpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_stepper_ctrl_tuning.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_stepper_gainspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_stepper_gains.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_stepper_jogpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_stepper_jog.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_stepper_mechaduino_menupy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_stepper_mechaduino_menu.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_trace_firmwarepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_trace_firmware.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_trace_robotpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_trace_robot.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_usb_resetpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_usb_reset.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rex_wacc_calibratepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      REx_wacc_calibrate.py
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="command-line-tools">Command Line Tools<a class="headerlink" href="#command-line-tools" title="Anchor link">&para;</a></h1>
+<p>This tutorial covers the command line tools included in the Stretch CLI. For a primer on using CLIs and the terminal, see <a href="../basics/#terminal">The Basics</a> tutorial. The Stretch CLI is split among Stretch's Python packages. They are:</p>
+<ul>
+<li>Stretch Body - Tools that perform common tasks that are useful when developing with Stretch.</li>
+<li>Stretch PyFUNMAP - Tools that explore the capabilities of PyFUNMAP.</li>
+<li>Stretch Diagnostics - Tools for diagnosing issues with your robot.</li>
+<li>Stretch URDF - Tools for working with Stretch's URDFs.</li>
+<li>Stretch Factory - Tools used at Hello Robot during the robot's bring-up.</li>
+</ul>
+<h2 id="stretch-body-tools">Stretch Body Tools<a class="headerlink" href="#stretch-body-tools" title="Anchor link">&para;</a></h2>
+<p>These tools perform common tasks that are useful when working with Stretch (e.g. homing routine, joint jogging, etc.).</p>
+<h3 id="stretch_robot_system_checkpy"><code>stretch_robot_system_check.py</code><a class="headerlink" href="#stretch_robot_system_checkpy" title="Anchor link">&para;</a></h3>
+<p><a href="https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_robot_system_check.py">Link to source code</a></p>
+<p>The robot system check tool runs a series of tests, such as if each subsystem is online, and reports pass or fail. If everything passes in the report, the robot is ready to be used. You would use this tool everytime you use the robot. A passing output should look like:</p>
+<div class="shell-prompt highlight"><pre><span></span><code tabindex="0">stretch_robot_system_check.py<span class="w"> </span>
+For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </span>S<span class="w"> </span>T<span class="w"> </span>R<span class="w"> </span>E<span class="w"> </span>T<span class="w"> </span>C<span class="w"> </span>H<span class="w"> </span><span class="o">(</span>R<span class="o">)</span><span class="w"> </span>RESEARCH<span class="w"> </span>EDITION<span class="w"> </span>from<span class="w"> </span>Hello<span class="w"> </span>Robot<span class="w"> </span>Inc.
+---------------------------------------------------------------------
+
+----<span class="w"> </span>Checking<span class="w"> </span>Devices<span class="w"> </span>----
+<span class="s">[Pass] : hello-wacc</span>
+<span class="s">[Pass] : hello-motor-left-wheel</span>
+<span class="s">[Pass] : hello-pimu</span>
+<span class="s">[Pass] : hello-lrf</span>
+<span class="s">[Pass] : hello-dynamixel-head</span>
+<span class="s">[Pass] : hello-dynamixel-wrist</span>
+<span class="s">[Pass] : hello-motor-arm</span>
+<span class="s">[Pass] : hello-motor-right-wheel</span>
+<span class="s">[Pass] : hello-motor-lift</span>
+<span class="s">[Pass] : hello-respeaker</span>
+
+----<span class="w"> </span>Checking<span class="w"> </span>Pimu<span class="w"> </span>----
+<span class="s">[Pass] Voltage = 12.863744497299194</span>
+<span class="s">[Pass] Current = 2.67002009121435</span>
+<span class="s">[Pass] Temperature = 23.45359845039172</span>
+<span class="s">[Pass] Cliff-0 = 16.7066650390625</span>
+<span class="s">[Pass] Cliff-1 = 0.47015380859375</span>
+<span class="s">[Pass] Cliff-2 = -15.3138427734375</span>
+<span class="s">[Pass] Cliff-3 = -5.50537109375</span>
+<span class="s">[Pass] IMU AZ = -9.81534139672</span>
+<span class="s">[Pass] IMU Pitch = 0.0</span>
+<span class="s">[Pass] IMU Roll = 0.0</span>
+
+----<span class="w"> </span>Checking<span class="w"> </span>EndOfArm<span class="w"> </span>----
+<span class="s">[Pass] Ping of: wrist_pitch</span>
+<span class="s">[Pass] Ping of: wrist_roll</span>
+<span class="s">[Pass] Ping of: wrist_yaw</span>
+<span class="s">[Pass] Homed: wrist_yaw</span>
+<span class="s">[Pass] Ping of: stretch_gripper</span>
+<span class="s">[Pass] Homed: stretch_gripper</span>
+
+
+----<span class="w"> </span>Checking<span class="w"> </span>Head<span class="w"> </span>----
+<span class="s">[Pass] Ping of: head_pan</span>
+<span class="s">[Pass] Ping of: head_tilt</span>
+
+----<span class="w"> </span>Checking<span class="w"> </span>Wacc<span class="w"> </span>----
+<span class="s">[Pass] AX = 9.628660202026367</span>
+
+----<span class="w"> </span>Checking<span class="w"> </span>hello-motor-left-wheel<span class="w"> </span>----
+<span class="s">[Pass] Position = -3.035825729370117</span>
+
+----<span class="w"> </span>Checking<span class="w"> </span>hello-motor-right-wheel<span class="w"> </span>----
+<span class="s">[Pass] Position = 2.784149408340454</span>
+
+----<span class="w"> </span>Checking<span class="w"> </span>hello-motor-arm<span class="w"> </span>----
+<span class="s">[Pass] Position = 0.013962420634925365</span>
+<span class="s">[Pass] Position Homed = True</span>
+
+----<span class="w"> </span>Checking<span class="w"> </span>hello-motor-lift<span class="w"> </span>----
+<span class="s">[Pass] Position = 31.580163955688477</span>
+<span class="s">[Pass] Position Homed = True</span>
+
+----<span class="w"> </span>Checking<span class="w"> </span><span class="w">for</span><span class="w"> </span>Intel<span class="w"> </span>D435i<span class="w"> </span>----
+<span class="w">Bus 002 Device 002: ID 8086:0b3a Intel Corp. Intel(R) RealSense(TM) Depth Camera 435i</span>
+<span class="s">[Pass] : Device found</span>
+
+----<span class="w"> </span>Checking<span class="w"> </span>Software<span class="w"> </span>----
+<span class="s">[Pass] Ubuntu 22.04 is ready</span>
+<span class="s">[Pass] All APT pkgs are setup correctly</span>
+<span class="s">[Pass] Firmware is up-to-date</span>
+<span class="k">         hello-pimu = </span><span class="m">v0.6.2p4</span>
+<span class="k">         hello-wacc = </span><span class="m">v0.5.1p3</span>
+<span class="k">         hello-motor-arm = </span><span class="m">v0.6.2p4</span>
+<span class="k">         hello-motor-lift = </span><span class="m">v0.6.3p4</span>
+<span class="k">         hello-motor-left-wheel = </span><span class="m">v0.6.2p4</span>
+<span class="k">         hello-motor-right-wheel = </span><span class="m">v0.6.2p4</span>
+<span class="s">[Pass] Python pkgs are up-to-date</span>
+<span class="k">         hello-robot-stretch-body = </span><span class="m">0.6.8</span>
+<span class="k">         hello-robot-stretch-body-tools = </span><span class="m">.6.3</span>
+<span class="k">         hello-robot-stretch-tool-share = </span><span class="m">0.2.8</span>
+<span class="k">         hello-robot-stretch-factory = </span><span class="m">0.4.13</span>
+<span class="k">         hello-robot-stretch-diagnostics = </span><span class="m">0.0.14</span>
+<span class="k">         hello-robot-stretch-urdf = </span><span class="m">0.0.18</span>
+<span class="s">[Pass] ROS2 Humble is ready</span>
+<span class="k">         Workspace at ~/ament_ws/src/stretch_ros2</span>
+</code></pre></div>
+
+<p>In addition to checking the robot's hardware, this tool also prints out a software report. This includes which version of Stretch's Python, ROS2, etc. software your system has installed. Check out the <a href="../../../software/updating_software/#identifying-your-current-software">Keeping your Software Up-to-date</a> guide for a how-to on using this report to keep your robot's software up-to-date.</p>
+<h3 id="stretch_robot_homepy"><code>stretch_robot_home.py</code><a class="headerlink" href="#stretch_robot_homepy" title="Anchor link">&para;</a></h3>
+<p><a href="https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_robot_home.py">Link to source code</a></p>
+<p>This tool will start Stretch's homing procedure, where every joint's zero is found. Robots with relative encoders (vs absolute encoders) need a homing procedure when they power on. For Stretch, it's a 30-second procedure that must occur everytime the robot is powered on before you may send motion commands to or read correct joint positions from Stretch's joints. Normal output from this tool looks like:</p>
+<div class="shell-prompt highlight"><pre><span></span><code>stretch_robot_home.py
+For use with S T R E T C H (R) RESEARCH EDITION from Hello Robot Inc.
+---------------------------------------------------------------------
+
+--------- Homing Head ----
+--------- Homing Lift ----
+Homing Lift...
+Hardstop detected at motor position (rad) 105.44721221923828
+Marking Lift position to 1.096683 (m)
+Marking Lift position to 0.000000 (m)
+[INFO] [robot_monitor]: Guarded contact lift
+Lift homing successful
+--------- Homing Arm ----
+Homing Arm...
+Hardstop detected at motor position (rad) -1.5079643726348877
+Marking Arm position to 0.000000 (m)
+[INFO] [robot_monitor]: Guarded contact arm
+[INFO] [robot_monitor]: Wrist single tap: 9
+Arm homing successful
+Moving to first hardstop...
+First hardstop contact at position (ticks): 4097
+-----
+Homing offset was 3671
+Marking current position to zero ticks
+Homing offset is now  -427 (ticks)
+-----
+Current position (ticks): 24
+Moving to calibrated zero: (rad)
+[INFO] [robot_monitor]: Wrist single tap: 11
+[INFO] [robot_monitor]: Wrist single tap: 15
+[INFO] [robot_monitor]: Wrist single tap: 21
+[INFO] [robot_monitor]: Wrist single tap: 27
+[INFO] [robot_monitor]: Wrist single tap: 28
+[INFO] [robot_monitor]: Wrist single tap: 33
+[INFO] [robot_monitor]: Wrist single tap: 38
+[INFO] [robot_monitor]: Wrist single tap: 40
+Moving to first hardstop...
+First hardstop contact at position (ticks): -9
+-----
+Homing offset was 2234
+Marking current position to zero ticks
+Homing offset is now  2237 (ticks)
+-----
+Current position (ticks): 35
+Moving to calibrated zero: (rad)
+</code></pre></div>
+<h3 id="stretch_robot_stowpy"><code>stretch_robot_stow.py</code><a class="headerlink" href="#stretch_robot_stowpy" title="Anchor link">&para;</a></h3>
+<p>Useful to return the robot arm to a safe position within the base footprint. Normal output from this tool looks like:</p>
+<div class="shell-prompt highlight"><pre><span></span><code>stretch_robot_stow.py
+For use with S T R E T C H (R) RESEARCH EDITION from Hello Robot Inc.
+---------------------------------------------------------------------
+
+--------- Stowing Arm ----
+--------- Stowing EOA_Wrist_DW3_Tool_SG3 ----
+--------- Stowing Lift ----
+</code></pre></div>
+<h3 id="stretch_robot_battery_checkpy"><code>stretch_robot_battery_check.py</code><a class="headerlink" href="#stretch_robot_battery_checkpy" title="Anchor link">&para;</a></h3>
+<p>A quick way to check the robot's battery voltage / current consumption. Normal output from this tool looks like:</p>
+<div class="shell-prompt highlight"><pre><span></span><code>stretch_robot_battery_check.py
+For use with S T R E T C H (R) RESEARCH EDITION from Hello Robot Inc.
+---------------------------------------------------------------------
+
+<span class="s">[Pass] Voltage with 12.791140079498291</span>
+<span class="s">[Pass] Current with 6.154119995023523</span>
+<span class="s">[Pass] CPU Temp with 45</span>
+</code></pre></div>
+
+<h3 id="stretch_robot_keyboard_teleoppy"><code>stretch_robot_keyboard_teleop.py</code><a class="headerlink" href="#stretch_robot_keyboard_teleoppy" title="Anchor link">&para;</a></h3>
+<p>This tool enables jogging of the robot's joints from the keyboard.</p>
+<p>5</p>
+<p>What's the difference between jog and <code>stretch_robot_keyboard_teleop.py</code></p>
+<h3 id="stretch_xbox_controller_teleoppy"><code>stretch_xbox_controller_teleop.py</code><a class="headerlink" href="#stretch_xbox_controller_teleoppy" title="Anchor link">&para;</a></h3>
+<p>6</p>
+<p>Useful to quickly test if a robot can achieve a task by manually teleoperating the robot</p>
+<h3 id="stretch_gamepad_teleoppy"><code>stretch_gamepad_teleop.py</code><a class="headerlink" href="#stretch_gamepad_teleoppy" title="Anchor link">&para;</a></h3>
+<p>7</p>
+<h3 id="stretch_free_robot_processpy"><code>stretch_free_robot_process.py</code><a class="headerlink" href="#stretch_free_robot_processpy" title="Anchor link">&para;</a></h3>
+<p>8</p>
+<h3 id="stretch_paramspy"><code>stretch_params.py</code><a class="headerlink" href="#stretch_paramspy" title="Anchor link">&para;</a></h3>
+<p>9</p>
+<p>This tool prints the Stretch parameters to the console.</p>
+<h3 id="stretch_realsense_visualizerpy"><code>stretch_realsense_visualizer.py</code><a class="headerlink" href="#stretch_realsense_visualizerpy" title="Anchor link">&para;</a></h3>
+<p>10</p>
+<p>This is a tool to test the Realsense D435i Camera. Pass the '-h' flag along with the command to see optional arguments.</p>
+<h3 id="stretch_rp_lidar_jogpy"><code>stretch_rp_lidar_jog.py</code><a class="headerlink" href="#stretch_rp_lidar_jogpy" title="Anchor link">&para;</a></h3>
+<p>11</p>
+<h3 id="stretch_audio_testpy"><code>stretch_audio_test.py</code><a class="headerlink" href="#stretch_audio_testpy" title="Anchor link">&para;</a></h3>
+<p>12</p>
+<p>This tool allows you to test the audio system.</p>
+<h3 id="stretch_respeaker_testpy"><code>stretch_respeaker_test.py</code><a class="headerlink" href="#stretch_respeaker_testpy" title="Anchor link">&para;</a></h3>
+<p>13</p>
+<p>This tool allows you to record and playback audio via Respeaker.</p>
+<h3 id="stretch_device_homepy"><code>stretch_&lt;device&gt;_home.py</code><a class="headerlink" href="#stretch_device_homepy" title="Anchor link">&para;</a></h3>
+<p>14</p>
+<ul>
+<li>stretch_arm_home.py</li>
+<li>stretch_gripper_home.py</li>
+<li>stretch_lift_home.py</li>
+<li>stretch_wrist_yaw_home.py</li>
+</ul>
+<h3 id="stretch_device_jogpy"><code>stretch_&lt;device&gt;_jog.py</code><a class="headerlink" href="#stretch_device_jogpy" title="Anchor link">&para;</a></h3>
+<p>15</p>
+<ul>
+<li>stretch_arm_jog.py</li>
+<li>stretch_base_jog.py</li>
+<li>stretch_gripper_jog.py</li>
+<li>stretch_head_jog.py</li>
+<li>stretch_lift_jog.py</li>
+<li>stretch_pimu_jog.py</li>
+<li>stretch_wacc_jog.py</li>
+<li>stretch_wrist_yaw_jog.py</li>
+</ul>
+<h3 id="stretch_device_scopepy"><code>stretch_&lt;device&gt;_scope.py</code><a class="headerlink" href="#stretch_device_scopepy" title="Anchor link">&para;</a></h3>
+<p>16</p>
+<ul>
+<li>stretch_pimu_scope.py</li>
+<li>This tool allows you to visualize Pimu (Power+IMU) board data with an oscilloscope. Pass the '-h' flag along with the command to see optional arguments.</li>
+<li>stretch_wacc_scope.py</li>
+<li>This is a tool to visualize Wacc (Wrist+Accel) board data with an oscilloscope. Pass the '-h' flag along with the command to see optional arguments.</li>
+</ul>
+<h3 id="stretch_aboutpy"><code>stretch_about.py</code><a class="headerlink" href="#stretch_aboutpy" title="Anchor link">&para;</a></h3>
+<p>17</p>
+<p>This tool displays the model and serial number information as an image.</p>
+<h3 id="stretch_about_textpy"><code>stretch_about_text.py</code><a class="headerlink" href="#stretch_about_textpy" title="Anchor link">&para;</a></h3>
+<p>18</p>
+<p>This tool displays the model and serial number information as text.</p>
+<h3 id="stretch_hardware_echopy"><code>stretch_hardware_echo.py</code><a class="headerlink" href="#stretch_hardware_echopy" title="Anchor link">&para;</a></h3>
+<p>Can we get rid of this?</p>
+<p>This tool echoes the robot and computer hardware details to the console.</p>
+<h3 id="stretch_trajectory_jogpy"><code>stretch_trajectory_jog.py</code><a class="headerlink" href="#stretch_trajectory_jogpy" title="Anchor link">&para;</a></h3>
+<p>19</p>
+<h3 id="stretch_robot_dynamixel_rebootpy"><code>stretch_robot_dynamixel_reboot.py</code><a class="headerlink" href="#stretch_robot_dynamixel_rebootpy" title="Anchor link">&para;</a></h3>
+<p>20</p>
+<p>Resets all Dynamixels in the robot, which might be necessary if a servo overheats during use and enters an error state.</p>
+<p>This tool reboots all Dynamixel servos on the robot.</p>
+<h3 id="stretch_robot_monitorpy"><code>stretch_robot_monitor.py</code><a class="headerlink" href="#stretch_robot_monitorpy" title="Anchor link">&para;</a></h3>
+<p>21</p>
+<p>What does this do?</p>
+<p>This tool runs the Robot Monitor and prints to the console.</p>
+<h3 id="stretch_robot_urdf_visualizerpy"><code>stretch_robot_urdf_visualizer.py</code><a class="headerlink" href="#stretch_robot_urdf_visualizerpy" title="Anchor link">&para;</a></h3>
+<p>Can we replace this with the new Stretch URDF tools?</p>
+<p>This tool allows you to visualize robot URDF.</p>
+<h3 id="stretch_versionsh"><code>stretch_version.sh</code><a class="headerlink" href="#stretch_versionsh" title="Anchor link">&para;</a></h3>
+<p>Can we get rid of this?</p>
+<p>This script prints the version information for various software packages on the robot.</p>
+<h2 id="stretch-pyfunmap-tools">Stretch PyFUNMAP Tools<a class="headerlink" href="#stretch-pyfunmap-tools" title="Anchor link">&para;</a></h2>
+<h3 id="pyfunmap_head_scan_visualizerpy">pyfunmap_head_scan_visualizer.py<a class="headerlink" href="#pyfunmap_head_scan_visualizerpy" title="Anchor link">&para;</a></h3>
+<h2 id="stretch-diagnostics-tools">Stretch Diagnostics Tools<a class="headerlink" href="#stretch-diagnostics-tools" title="Anchor link">&para;</a></h2>
+<h3 id="stretch_diagnostic_checkpy"><code>stretch_diagnostic_check.py</code><a class="headerlink" href="#stretch_diagnostic_checkpy" title="Anchor link">&para;</a></h3>
+<h2 id="stretch-urdf-tools">Stretch URDF Tools<a class="headerlink" href="#stretch-urdf-tools" title="Anchor link">&para;</a></h2>
+<h3 id="stretch_urdf_examplepy">stretch_urdf_example.py<a class="headerlink" href="#stretch_urdf_examplepy" title="Anchor link">&para;</a></h3>
+<h3 id="stretch_urdf_vizpy">stretch_urdf_viz.py<a class="headerlink" href="#stretch_urdf_vizpy" title="Anchor link">&para;</a></h3>
+<h2 id="stretch-factory-tools">Stretch Factory Tools<a class="headerlink" href="#stretch-factory-tools" title="Anchor link">&para;</a></h2>
+<p>These tools are used at Hello Robot during the robot's system bring-up. They generally interact with the lowest level interface of the hardware, making measurements and writing calibration data to the robot's calibration folder.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It is possible to cause bodily harm and/or break your robot with these tools. Used improperly, these tools might not respect joint torque and position limits. They may overwrite existing calibration data as well.</p>
+</div>
+<h3 id="re1_migrate_contactspy">RE1_migrate_contacts.py<a class="headerlink" href="#re1_migrate_contactspy" title="Anchor link">&para;</a></h3>
+<h3 id="re1_migrate_paramspy">RE1_migrate_params.py<a class="headerlink" href="#re1_migrate_paramspy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_d435i_checkpy">REx_D435i_check.py<a class="headerlink" href="#rex_d435i_checkpy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_base_calibrate_imu_collectpy">REx_base_calibrate_imu_collect.py<a class="headerlink" href="#rex_base_calibrate_imu_collectpy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_base_calibrate_imu_processpy">REx_base_calibrate_imu_process.py<a class="headerlink" href="#rex_base_calibrate_imu_processpy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_base_calibrate_wheel_separationpy">REx_base_calibrate_wheel_separation.py<a class="headerlink" href="#rex_base_calibrate_wheel_separationpy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_calibrate_gravity_comppy">REx_calibrate_gravity_comp.py<a class="headerlink" href="#rex_calibrate_gravity_comppy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_calibrate_guarded_contactpy">REx_calibrate_guarded_contact.py<a class="headerlink" href="#rex_calibrate_guarded_contactpy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_calibrate_rangepy">REx_calibrate_range.py<a class="headerlink" href="#rex_calibrate_rangepy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_cliff_sensor_calibratepy">REx_cliff_sensor_calibrate.py<a class="headerlink" href="#rex_cliff_sensor_calibratepy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_comm_ratespy">REx_comm_rates.py<a class="headerlink" href="#rex_comm_ratespy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_discover_hello_devicespy">REx_discover_hello_devices.py<a class="headerlink" href="#rex_discover_hello_devicespy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_dmesg_monitorpy">REx_dmesg_monitor.py<a class="headerlink" href="#rex_dmesg_monitorpy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_dynamixel_id_changepy">REx_dynamixel_id_change.py<a class="headerlink" href="#rex_dynamixel_id_changepy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_dynamixel_id_scanpy">REx_dynamixel_id_scan.py<a class="headerlink" href="#rex_dynamixel_id_scanpy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_dynamixel_jogpy">REx_dynamixel_jog.py<a class="headerlink" href="#rex_dynamixel_jogpy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_dynamixel_rebootpy">REx_dynamixel_reboot.py<a class="headerlink" href="#rex_dynamixel_rebootpy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_dynamixel_set_baudpy">REx_dynamixel_set_baud.py<a class="headerlink" href="#rex_dynamixel_set_baudpy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_firmware_flashpy">REx_firmware_flash.py<a class="headerlink" href="#rex_firmware_flashpy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_firmware_updaterpy">REx_firmware_updater.py<a class="headerlink" href="#rex_firmware_updaterpy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_gamepad_configurepy">REx_gamepad_configure.py<a class="headerlink" href="#rex_gamepad_configurepy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_gripper_calibratepy">REx_gripper_calibrate.py<a class="headerlink" href="#rex_gripper_calibratepy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_hello_dynamixel_jogpy">REx_hello_dynamixel_jog.py<a class="headerlink" href="#rex_hello_dynamixel_jogpy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_stepper_calibration_yaml_to_flashpy">REx_stepper_calibration_YAML_to_flash.py<a class="headerlink" href="#rex_stepper_calibration_yaml_to_flashpy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_stepper_calibration_flash_to_yamlpy">REx_stepper_calibration_flash_to_YAML.py<a class="headerlink" href="#rex_stepper_calibration_flash_to_yamlpy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_stepper_calibration_runpy">REx_stepper_calibration_run.py<a class="headerlink" href="#rex_stepper_calibration_runpy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_stepper_ctrl_tuningpy">REx_stepper_ctrl_tuning.py<a class="headerlink" href="#rex_stepper_ctrl_tuningpy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_stepper_gainspy">REx_stepper_gains.py<a class="headerlink" href="#rex_stepper_gainspy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_stepper_jogpy">REx_stepper_jog.py<a class="headerlink" href="#rex_stepper_jogpy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_stepper_mechaduino_menupy">REx_stepper_mechaduino_menu.py<a class="headerlink" href="#rex_stepper_mechaduino_menupy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_trace_firmwarepy">REx_trace_firmware.py<a class="headerlink" href="#rex_trace_firmwarepy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_trace_robotpy">REx_trace_robot.py<a class="headerlink" href="#rex_trace_robotpy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_usb_resetpy">REx_usb_reset.py<a class="headerlink" href="#rex_usb_resetpy" title="Anchor link">&para;</a></h3>
+<h3 id="rex_wacc_calibratepy">REx_wacc_calibrate.py<a class="headerlink" href="#rex_wacc_calibratepy" title="Anchor link">&para;</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2020-2024 Hello Robot Inc
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://hello-robot.com" target="_blank" rel="noopener" title="hello-robot.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5Z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/HelloRobotInc" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23Z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/hello-robot" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/company/hello-robot-inc" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77Z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

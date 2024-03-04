@@ -1,0 +1,2024 @@
+<!-- Elements added to "main.html" will be displayed on all pages -->
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hello Robot User Documentation">
+      
+      
+        <meta name="author" content="Hello Robot Inc">
+      
+      
+        <link rel="canonical" href="https://docs.hello-robot.com/0.3/hardware/battery_maintenance_guide_re2/">
+      
+      
+      
+      
+      <link rel="icon" href="../../images/hello_robot_favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.9">
+    
+    
+      
+        <title>Stretch RE2 - Battery Maintenance Guide - Stretch Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.f2e4d321.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+    <!-- main.html | Added "navigation.instant" support -->
+    <link rel="canonical" href=".">
+
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#stretch-re2-battery-maintenance-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Stretch Docs" class="md-header__button md-logo" aria-label="Stretch Docs" data-md-component="logo">
+      
+  <img src="../../images/hello_robot_logo_light.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Stretch Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Stretch RE2 - Battery Maintenance Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Stretch Docs" class="md-nav__button md-logo" aria-label="Stretch Docs" data-md-component="logo">
+      
+  <img src="../../images/hello_robot_logo_light.png" alt="logo">
+
+    </a>
+    Stretch Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/hello_robot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hello Robot!
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/connecting_to_stretch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Connecting to Stretch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/stretch_hardware_overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stretch Hardware Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/writing_code/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Writing Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/demos_mapping_and_navigation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Demo 1 - Mapping & Navigation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/demos_web_teleop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Demo 2 - Web Teleop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/community_resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Community Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/getting_help/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting help
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hardware Guides
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Hardware Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../safety_guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Safety Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware_guide_stretch_3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stretch 3 Hardware Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../battery_maintenance_guide_se3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Battery Maintenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Software Overview
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Software Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/distributions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Distributions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/updating_software/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Updating Software
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/changelogs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Changelogs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Installation Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Installation Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/add_new_user/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adding a New User
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/ros_workspace/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Updating your ROS Workspace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/robot_install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Upgrading your Operating System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Developing with Stretch
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Developing with Stretch
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developing/basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Python Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/moving/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Commanding Stretch to Move
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ROS 2 Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            ROS 2 Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/getting_started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/robot_drivers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Robot Drivers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Navigation with Nav2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            Navigation with Nav2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/navigation_overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/navigation_stack/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nav2 Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/navigation_simple_commander/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nav2 Simple Commander
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_funmap#overview" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FUNMAP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/perception/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Perception
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_6" id="__nav_7_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Examples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/example_2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filter Laser Scans
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/example_3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collision Avoidance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/example_4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rviz Markers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/remote_compute/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Offloading Computation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/example_12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ArUco Locator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/example_9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Voice Teleop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/example_9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Playing Audio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/example_9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rosbags & MCAPs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Extending Stretch
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Extending Stretch
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extending_stretch/changing_tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Changing Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extending_stretch/urdf_management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    URDF Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extending_stretch/extending_stretch_additional_hardware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Extending Stretch with Additional Hardware
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#state-of-battery-charge" class="md-nav__link">
+    <span class="md-ellipsis">
+      State of Battery Charge
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-plug-in-the-charger" class="md-nav__link">
+    <span class="md-ellipsis">
+      When To Plug in the Charger
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accidental-full-discharge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accidental Full Discharge
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#charger" class="md-nav__link">
+    <span class="md-ellipsis">
+      Charger
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Charger">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#noco-genius-10-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOCO Genius 10 - Interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-the-battery-charge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checking the Battery Charge
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#charging-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Charging Best Practices
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recovering-from-low-battery-voltage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recovering from Low Battery Voltage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Information
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#powering-down-the-robot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Powering Down the Robot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replacing-the-fuse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Replacing the Fuse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-the-battery-voltage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checking the Battery Voltage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repairing-damaged-batteries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repairing Damaged Batteries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replacing-damaged-batteries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Replacing Damaged Batteries
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="stretch-re2-battery-maintenance-guide">Stretch RE2 - Battery Maintenance Guide<a class="headerlink" href="#stretch-re2-battery-maintenance-guide" title="Anchor link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Anchor link">&para;</a></h2>
+<p>Stretch RE2 utilizes two <a href="https://www.power-sonic.com/product/ps-1290/">12V AGM SLA batteries</a> that provide a combined 18AH of capacity. Maintaining an adequate level of charge on the battery system will enhance the battery lifetime.</p>
+<p>The run time for a fully charged system is dependent on the load use case. The majority of battery power is consumed by the NUC computer as Stretch uses relatively low power motors.</p>
+<p>A fully charged robot running a high CPU load can run approximately 2 hours before requiring a recharge.</p>
+<p>A fully charged robot powered on but with minimal load can run approximately 5 hours before requiring a recharge. </p>
+<h2 id="state-of-battery-charge">State of Battery Charge<a class="headerlink" href="#state-of-battery-charge" title="Anchor link">&para;</a></h2>
+<p>An accurate measure of the battery charge isn't available on Stretch (as this requires a coulomb counting system). A coarse approximation of battery charge is given by the battery voltage. </p>
+<p>For RE2 during normal operation with a moderate load the relationship between voltage and charge is roughly:</p>
+<table>
+<thead>
+<tr>
+<th>Voltage</th>
+<th>Charge</th>
+<th>LED Light Bar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11.5 - 13.4V</td>
+<td>80%+</td>
+<td>Bright green</td>
+</tr>
+<tr>
+<td>11.0 - 11.5V</td>
+<td>60%+</td>
+<td>Yellow</td>
+</tr>
+<tr>
+<td>10.5 - 11.0V</td>
+<td>40%+</td>
+<td>Orange</td>
+</tr>
+<tr>
+<td>Below 10.5V</td>
+<td>&lt;40%</td>
+<td>Red</td>
+</tr>
+</tbody>
+</table>
+<p>As shown below, the LED lightbar color provides an indication of the battery voltage. </p>
+<p><a class="glightbox" href="../images/re2/lightbar_voltage.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt_text" src="../images/re2/lightbar_voltage.png" /></a></p>
+<h2 id="when-to-plug-in-the-charger">When To Plug in the Charger<a class="headerlink" href="#when-to-plug-in-the-charger" title="Anchor link">&para;</a></h2>
+<p>We recommend plugging in the charger whenever:</p>
+<ul>
+<li>The battery voltage is below 11V (lightbar is orange). </li>
+<li>The robot is not running untethered</li>
+<li>The robot is producing a periodic beeping sound</li>
+</ul>
+<h2 id="accidental-full-discharge">Accidental Full Discharge<a class="headerlink" href="#accidental-full-discharge" title="Anchor link">&para;</a></h2>
+<p>Stretch includes a few feature to help prevent accidental full discharge (for example, if the robot is left on overnight not plugged to its charger)</p>
+<ul>
+<li><strong>Audible warning</strong>: Stretch will beep every 2 seconds if the battery voltage drops below 10.5V</li>
+<li><strong>Hard power off</strong>: Stretch will completely power off if the battery voltage drops below 9.75V</li>
+</ul>
+<h2 id="charger">Charger<a class="headerlink" href="#charger" title="Anchor link">&para;</a></h2>
+<p>Stretch ships with a NOCO Genius 10 charger. Please review the battery charger user manual prior to following the guidance in this document. </p>
+<ul>
+<li><a href="https://no.co/media/nocodownloads/format/g/e/genius10na_user_guide_1.pdf">Genius 10 Manual</a> </li>
+</ul>
+<p>Stretch utilizes four of the available modes on these chargers.</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STANDBY</td>
+<td>Charger not charging the robot</td>
+</tr>
+<tr>
+<td>12V AGM</td>
+<td>Charging  robot powered down</td>
+</tr>
+<tr>
+<td>SUPPLY</td>
+<td>1) Power the robot during tethered use<br/>2) Repair damaged batteries.</td>
+</tr>
+<tr>
+<td>REPAIR</td>
+<td>Repair damaged batteries.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="noco-genius-10-interface">NOCO Genius 10 - Interface<a class="headerlink" href="#noco-genius-10-interface" title="Anchor link">&para;</a></h3>
+<p><a class="glightbox" href="../images/NOCO_Genius10_UI.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt_text" src="../images/NOCO_Genius10_UI.png" title="image_tooltip" /></a></p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Procedure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STANDBY</td>
+<td>Illuminates when charger not charging</td>
+</tr>
+<tr>
+<td>12V AGM</td>
+<td>1) From STANDBY, charger attached<br>2) Press MODE button repeatedly until 12V AGM indicator is illuminated</td>
+</tr>
+<tr>
+<td>SUPPLY</td>
+<td>1) From STANDBY, charger not attached<br>2) Press and hold MODE button for 3s<br>3) Press MODE button until SUPPLY indicator is illuminated<br>4) Attach charger</td>
+</tr>
+<tr>
+<td>REPAIR</td>
+<td>1) From STANDBY, charger attached<br>2) Press and hold MODE button for 3s<br/>3) Press MODE button until REPAIR indicator is illuminated</td>
+</tr>
+</tbody>
+</table>
+<h3 id="checking-the-battery-charge">Checking the Battery Charge<a class="headerlink" href="#checking-the-battery-charge" title="Anchor link">&para;</a></h3>
+<p>The battery charger LEDs provide an approximate indicator of battery charge when it is in 12V AGM mode. Batteries are 100% fully charge when the green LED is not fading in and out.</p>
+<p><a class="glightbox" href="../images/genius10_100pct.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt_text" src="../images/genius10_100pct.png" /></a></p>
+<h2 id="charging-best-practices">Charging Best Practices<a class="headerlink" href="#charging-best-practices" title="Anchor link">&para;</a></h2>
+<p>It is possible to accidentally deeply discharge the batteries by leaving the robot on for long durations without the charger attached. This is similar to leaving the lights on your car where the battery will continue to drain until fully discharged.</p>
+<p>We recommend following the best practices below to avoid deep discharge of the batteries and to ensure they have a long lifespan.</p>
+<table>
+<thead>
+<tr>
+<th>Use Case</th>
+<th>Best Practice</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Robot is in use - tethered</strong></td>
+<td>Leave the charger attached in <strong>SUPPLY</strong> mode while developing on the robot whenever possible.<br><br>Shutdown and power off the robot when development is done.</td>
+<td>Running the robot while attempting to charge in <strong>12V AGM</strong> mode can cause issues and is generally bad for battery health. <strong>SUPPLY</strong> mode is preferred whenever the robot needs to be powered on.</td>
+</tr>
+<tr>
+<td><strong>Robot is in use - untethered</strong></td>
+<td>Regularly check the battery voltage using the command line tool.<br><br>Shutdown the computer and power off the robot when voltage falls below 11.5V.<br><br>Attach the charger in <strong>12V AGM</strong> mode.<br><br>Charge to 100% before resuming operation.</td>
+<td>The <strong>12V AGM</strong> charge mode expects the battery voltage to be above 10.5-11V in order to operate.</td>
+</tr>
+<tr>
+<td><strong>Robot is not in use</strong></td>
+<td>Shutdown the computer and turn off the robot power. <br><br>Leave the charger attached and place it in <strong>12V AGM</strong> mode.</td>
+<td>Leaving the robot power on may cause the batteries to deep discharge<br><br>The charger will maintain a ‘trickle charge’ on the battery, keeping the charge at 100%.</td>
+</tr>
+<tr>
+<td><strong>Robot is coming out of storage</strong></td>
+<td>Attach charger in <strong>12V AGM</strong> mode and charge for 2-3 hours until charger reports 100%</td>
+<td>SLA batteries naturally lose charge over time due to ‘self-discharge’.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Anchor link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>How to Diagnose</th>
+<th>Cause</th>
+<th>Corrective Procedure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Robot shows no power on activity</strong></td>
+<td>Nothing happens when you toggle on the robot’s power switch. <br><br>There is no visible illumination of LEDs, motion of the laser range finder, or audible noise of the robot fans.</td>
+<td>The robot fuse may have blown. <br>When the batteries drain the current required to maintain power goes up, which can ultimately blow the fuse.</td>
+<td>Proceed to “Changing the Fuse” steps below</td>
+</tr>
+<tr>
+<td><strong>Robot powers on momentarily</strong></td>
+<td>When you toggle on the robot’s power switch some activity occurs  (illumination of LEDs, audible noise of robot fans, etc) but the computer fails to boot.</td>
+<td>The battery voltage is too low to maintain power.<br><br> As the power draw increases during power-on, the voltage dips and causes the system to shut down.</td>
+<td>Connect the battery charger in <strong>12V AGM</strong> mode and leave until fully charged.</td>
+</tr>
+<tr>
+<td><strong>Battery won’t charge in 12V AGM mode</strong></td>
+<td>When the robot is powered down and the charger is connected in 12V AGM mode, the charger eventually switches to a different mode.</td>
+<td>The battery voltage is too low for the charger to function correctly in normal operation.</td>
+<td>Proceed to the “Recovering from Low Battery Voltage” steps below.</td>
+</tr>
+<tr>
+<td><strong>Charger reports 100% charge but the batteries are discharged</strong></td>
+<td>When the robot is powered down and the charger is connected in 12V AGM mode, the charger status shows 100%.  <br>However the robot fails to turn on properly.</td>
+<td>Damage to the batteries (usually caused by excessively low voltage) may artificially raise the open circuit voltage of the battery, causing the battery to appear fully charged, while providing low capacity.</td>
+<td>Proceed to the “Recovering from Low Battery Voltage” steps below.</td>
+</tr>
+<tr>
+<td><strong>Charger will not charge or stay in any mode.</strong></td>
+<td>When placed in 12V AGM, SUPPLY, or REPAIR  mode, it continually reverts to STANDBY mode after ~ 20 minutes.</td>
+<td>Charger may be defective.</td>
+<td>Contact Hello Robot Support for a replacement.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="recovering-from-low-battery-voltage">Recovering from Low Battery Voltage<a class="headerlink" href="#recovering-from-low-battery-voltage" title="Anchor link">&para;</a></h3>
+<ol>
+<li>Turn off the robot power switch and detach the charger from the robot</li>
+<li>Place charger in SUPPLY Mode </li>
+<li>Allow robot to charge for 4-8 hours, or up to 24 hours for extreme discharge</li>
+<li>Switch the charger to 12V AGM mode</li>
+<li>Charge until at 100%</li>
+</ol>
+<h2 id="additional-information">Additional Information<a class="headerlink" href="#additional-information" title="Anchor link">&para;</a></h2>
+<h3 id="powering-down-the-robot">Powering Down the Robot<a class="headerlink" href="#powering-down-the-robot" title="Anchor link">&para;</a></h3>
+<p>The recommended power down procedure is</p>
+<ol>
+<li>Place a clamp on the mast below the shoulder to prevent dropping</li>
+<li>Shutdown the computer from the Desktop or via SSH</li>
+<li>When the laser range finder has stopped spinning, turn off the main power switch</li>
+</ol>
+<h3 id="replacing-the-fuse">Replacing the Fuse<a class="headerlink" href="#replacing-the-fuse" title="Anchor link">&para;</a></h3>
+<p>Stretch RE2 has two automotive fuses inside the base that may need to be replaced. </p>
+<table>
+<thead>
+<tr>
+<th>Fuse Type</th>
+<th>Recommended Fuse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7.5A ATM Fast Blow Blade</td>
+<td>Bussman VP/ATM-7-1/2-RP</td>
+</tr>
+</tbody>
+</table>
+<p>The fuse locations are shown below.  For guidance on replacing the fuse, contact Hello Robot support: <a href="mailto:support@hello-robot.com">support@hello-robot.com</a>.</p>
+<p><a class="glightbox" href="../images/re2/fuse_replacement.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt_text" src="../images/re2/fuse_replacement.png" /></a></p>
+<h3 id="checking-the-battery-voltage">Checking the Battery Voltage<a class="headerlink" href="#checking-the-battery-voltage" title="Anchor link">&para;</a></h3>
+<p>Battery voltage is not always an accurate indicator of battery charge but it can be a useful proxy. </p>
+<p>A charged battery will typically report a voltage of 12-12.8V and will maintain that voltage across load conditions. Meanwhile, a partially charged battery may report anywhere from 10-12.8V but its voltage will drop rapidly when loaded.</p>
+<p><strong>Measuring Battery Voltage from the Command Line</strong></p>
+<p>The battery voltage and current draw can be checked from the command line:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>stretch_robot_battery_check.py
+<span class="go">[Pass] Voltage with 12.9889035225</span>
+<span class="go">[Pass] Current with 2.46239192784</span>
+<span class="go">[Pass] CPU Temp with 56.0</span>
+</code></pre></div>
+<p><strong>Measuring Battery Voltage with a DMM</strong></p>
+<p>When troubleshooting a deeply discharged battery it may be useful to directly measure the battery voltage with a digital multimeter (DMM). To do this we recommend </p>
+<ul>
+<li>Detach the charger cable at its inline connector </li>
+<li>Apply the DMM to the connector contacts as shown</li>
+<li>Plug the charge cable into the charge port of the robot</li>
+</ul>
+<p>NOTE: Caution should be taken as it is possible to short the battery when doing this. </p>
+<p><a class="glightbox" href="../images/base_dmm.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt_text" src="../images/base_dmm.png" /></a></p>
+<h3 id="repairing-damaged-batteries">Repairing Damaged Batteries<a class="headerlink" href="#repairing-damaged-batteries" title="Anchor link">&para;</a></h3>
+<p>It is possible for Stretch's batteries to become damaged due to repeated deep discharge. If the robot has continued issues maintaining a charge we recommend attempting the following procedure:</p>
+<p><strong>CAUTION: The repair cycle procedure requires you to do a repair  cycle on one battery at a time, which means you need to unplug each  battery, perform the repair, and then repeat the process on the other  battery. If you fail to repeat the procedure on the other battery, there is a potential risk that high amounts of current may flow from the  repaired battery to the other one, causing damage to both the battery  and the system.</strong></p>
+<ol>
+<li>Turn off the robot power switch</li>
+<li>Attach the charger to the robot and set it to 12V AGM mode. Allow the robot to fully charge</li>
+<li>Detach the charger from the robot</li>
+<li>Unplug 1 battery from the robot. For guidance on how to access the battery connectors, please contact Hello Robot support: support@hello-robot.com</li>
+<li>Attach the charger and place it in REPAIR mode</li>
+<li>Place the charger in REPAIR mode</li>
+<li>Wait until the repair cycle has completed and the charger returns to standby - up to 4 hours</li>
+<li>Repeat steps 3 to 6 for the second battery</li>
+</ol>
+<h3 id="replacing-damaged-batteries">Replacing Damaged Batteries<a class="headerlink" href="#replacing-damaged-batteries" title="Anchor link">&para;</a></h3>
+<p>It is possible for a mechanically skilled person to replace the Stretch batteries should it be necessary . Please contact Hello Robot Support for more information (support@hello-robot.com)</p>
+<hr />
+<div align="center"> All materials are Copyright 2022 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks.</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2020-2024 Hello Robot Inc
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://hello-robot.com" target="_blank" rel="noopener" title="hello-robot.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5Z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/HelloRobotInc" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23Z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/hello-robot" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/company/hello-robot-inc" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77Z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
