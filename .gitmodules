@@ -4,7 +4,7 @@
 	branch = master
 [submodule "repos/stretch_body"]
 	path = repos/stretch_body
-	url = https://github.com/hello-robot/stretch_body
+	url = https://github.com/hello-robot/stretch_body.git
 	branch = master
 [submodule "repos/stretch_ros"]
 	path = repos/stretch_ros
