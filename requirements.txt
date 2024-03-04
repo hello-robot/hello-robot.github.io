@@ -9,3 +9,5 @@ mike
 mkdocs-monorepo-plugin
 mkdocs-same-dir
 mkdocs-redirects
+mkdocs-glightbox
+mkdocs-include-markdown-plugin
