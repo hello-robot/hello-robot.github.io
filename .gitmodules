@@ -16,7 +16,7 @@
 	branch = master
 [submodule "repos/stretch_factory"]
 	path = repos/stretch_factory
-	url = https://github.com/hello-robot/stretch_factory
+	url = https://github.com/hello-robot/stretch_factory.git
 	branch = master
 [submodule "repos/stretch_web_interface"]
 	path = repos/stretch_web_interface
