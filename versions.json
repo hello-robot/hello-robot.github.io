@@ -3,13 +3,13 @@
     "version": "0.3",
     "title": "0.3: Experimental development",
     "aliases": [
-      "latest",
-      "experimental"
+      "experimental",
+      "latest"
     ]
   },
   {
     "version": "0.2",
-    "title": "0.2: Latest",
+    "title": "0.2",
     "aliases": [
       "beta",
       "push"
