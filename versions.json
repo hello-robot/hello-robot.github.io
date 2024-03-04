@@ -4,16 +4,15 @@
     "title": "0.3: Latest",
     "aliases": [
       "beta",
-      "experimental",
-      "latest"
+      "latest",
+      "push",
+      "experimental"
     ]
   },
   {
     "version": "0.2",
     "title": "0.2",
-    "aliases": [
-      "push"
-    ]
+    "aliases": []
   },
   {
     "version": "0.1",
