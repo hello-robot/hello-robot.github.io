@@ -1,86 +1,60 @@
-site_name: Stretch Documentation
+site_name: Stretch Docs
 site_url: https://docs.hello-robot.com
 site_description: "Hello Robot User Documentation"
-copyright: 'Copyright &copy; 2022 Hello Robot Inc'
+copyright: 'Copyright &copy; 2020-2024 Hello Robot Inc'
 site_author: Hello Robot Inc
 use_directory_urls: True
+edit_uri: ''
 
 theme:
  name: material
- features:
-   - navigation.instant
-   - navigation.footer
- #font: Arial
+ custom_dir: docs/overrides
+ logo: images/hello_robot_logo_light.png
+ favicon: images/hello_robot_favicon.png
+ font:
+   text: Roboto
+   code: Roboto Mono
  palette:
   - scheme: default
     primary: hello-robot-light
-    toggle:
-      icon: material/lightbulb-outline
-      name: Switch to dark mode
-  - scheme: slate
-    primary: hello-robot-dark
-    toggle:
-      icon: material/lightbulb
-      name: Switch to light mode
- logo: images/hello_robot_logo_light.png
- favicon: images/hello_robot_favicon.png
+ features:
+   - navigation.footer
+
+extra_css:
+  - extra.css
 
 markdown_extensions:
+  - toc:
+      permalink: true
+      permalink_title: Anchor link
   - pymdownx.highlight
   - pymdownx.superfences
   - pymdownx.inlinehilite
   - pymdownx.keys
-  - admonition
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.tabbed:
       alternate_style: true
+  - pymdownx.details
+  - attr_list
+  - md_in_html
+  - admonition
+  - footnotes
 
-
-#tabbed markdown
-
-extra_css:
-  - extra.css
 plugins:
-  - redirects:
-      redirect_maps:
-        'safety.md': 'https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/safety_guide/'
-        'battery.md': 'https://docs.hello-robot.com/0.2/stretch-hardware-guides/docs/battery_maintenance_guide_re2/'
-        'quick_start.md': 'https://docs.hello-robot.com/0.2/stretch-tutorials/getting_started/quick_start_guide_re2/'
-        'tutorials.md': 'https://docs.hello-robot.com/0.2/stretch-tutorials/'
-  - monorepo
-  - mike:
-      # these fields are all optional; the defaults are as below...
-      version_selector: true   # set to false to leave out the version selector
-      css_dir: css             # the directory to put the version selector's CSS
-      javascript_dir: js       # the directory to put the version selector's JS
-      canonical_version: null  # the version for <link rel="canonical">; `null`
-      # uses the version specified via `mike deploy`
   - search
-#  - tags
-#  - simple:
-#      merge_docs_dir: true
-#      include_extensions: [".css", ".png"]
-#      ignore_folders:
-#        - "repos/stretch_firmware/arduino"
-#        - "repos/stretch_factory/updates"
-  - mkdocstrings:
-      default_handler: python
-      handlers:
-        python:
-          selection:
-            docstring_style: numpy
-          rendering:
-            show_root_heading: true
-            show_source: false
-            members_order: source
-            heading_level: 3
-            show_if_no_docstring: true
-edit_uri: ''
+  - monorepo
+  - glightbox:
+      skip_classes:
+        - glightbox-skip
+  - include-markdown
+
 extra:
   version:
     provider: mike
     default: latest
   social:
-    - icon: fontawesome/brands/twitter
     - icon: material/home
       link: https://hello-robot.com
     - icon: material/twitter
@@ -92,19 +66,28 @@ extra:
 
 nav:
   - Home: README.md
-  - Tutorials: '!include ./repos/stretch_tutorials/mkdocs.yml'
-  - Code Repositories:
-    - Overview: repos_overview.md
-    - Stretch Body: '!include ./repos/stretch_body/mkdocs.yml'
-    - Stretch ROS: '!include ./repos/stretch_ros/mkdocs.yml'
-    - Stretch ROS2: '!include ./repos/stretch_ros2/mkdocs.yml'
-    - Stretch Factory: '!include ./repos/stretch_factory/mkdocs.yml'
-    - Stretch Firmware: '!include ./repos/stretch_firmware/mkdocs.yml'
-    - Stretch Tool Share: '!include ./repos/stretch_tool_share/mkdocs.yml'
-    - Stretch Install: '!include ./repos/stretch_install/mkdocs.yml'
-    - Stretch Web Interface: '!include ./repos/stretch_web_interface/mkdocs.yml'
+  - Getting Started:
+    - Hello Robot!: getting_started/hello_robot.md
+    - Connecting to Stretch: getting_started/connecting_to_stretch.md
+    - Stretch Hardware Overview: getting_started/stretch_hardware_overview.md
+    - Writing Code: getting_started/writing_code.md
+    - Demo 1 - Mapping & Navigation: getting_started/demos_mapping_and_navigation.md
+    - Demo 2 - Web Teleop: getting_started/demos_web_teleop.md
+    # - Demo 3 - Dexterous Teleop: getting_started/demos_dexterous_teleop.md # TODO
+    - Community Resources: getting_started/community_resources.md
+    - Getting help: getting_started/getting_help.md
   - Hardware Guides: '!include ./repos/stretch_hardware_guides/mkdocs.yml'
-  - Resources:
-    - Stretch Forum: "https://forum.hello-robot.com/"
-    - Stretch GitHub: "https://github.com/hello-robot"
-    - Stretch Community: "https://github.com/hello-robot/stretch_community"
+  - Software Overview:
+    # - Software Architecture: software/architecture.md # TODO
+    - Distributions: software/distributions.md
+    - Updating Software: software/updating_software.md
+    - Changelogs: software/changelogs.md
+    # - Contributing: software/contributing.md # TODO
+    - Installation Tutorials: '!include ./repos/stretch_install/mkdocs.yml'
+  - Developing with Stretch: '!include ./repos/stretch_tutorials/mkdocs_dws.yml'
+  - Python Tutorials: '!include ./repos/stretch_tutorials/mkdocs_pt.yml'
+  - ROS 2 Tutorials: '!include ./repos/stretch_tutorials/mkdocs_rt.yml'
+  - Extending Stretch:
+    - Changing Tools: extending_stretch/changing_tools.md
+    - URDF Management: extending_stretch/urdf_management.md
+    - Extending Stretch with Additional Hardware: extending_stretch/extending_stretch_additional_hardware.md
