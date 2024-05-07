@@ -24,7 +24,7 @@
       
       
       <link rel="icon" href="../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.9">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.21">
     
     
       
@@ -32,7 +32,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.f2e4d321.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.66ac8b77.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -1578,7 +1578,7 @@
         
   
   <span class="md-ellipsis">
-    Playing Audio
+    Voice Teleop
   </span>
   
 
@@ -1599,7 +1599,7 @@
         
   
   <span class="md-ellipsis">
-    Rosbags & MCAPs
+    Voice Teleop
   </span>
   
 
@@ -2044,32 +2044,7 @@
 <p>The password for the Hello Robot account is printed on the welcome sheet included in the box with Stretch. If you're having trouble finding it, reach out to <a href="mailto:support@hello-robot.com">support</a>. We recommend changing the password for this account.</p>
 <p><a class="glightbox" href="../images/changing_password.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="changing password" src="../images/changing_password.png" /></a></p>
 <h4 id="adding-new-users">Adding New Users<a class="headerlink" href="#adding-new-users" title="Anchor link">&para;</a></h4>
-<p>If you're sharing Stretch with other developers, it's a good idea to make an account for yourself and your team members. Your code and data will be password protected in your own account, and other developers can change or upgrade their own Stretch SDK without affecting yours and accidentally breaking your code.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>User accounts cannot completely insulate your account from changes in another. For example, if the robot's tool was changed, your account would have an outdated configuration for what tool is attached to the robot. A non-exhaustive list of changes that could break/affect accounts:</p>
-<ul>
-<li>Making hardware changes to the robot</li>
-<li>Updating the firmware</li>
-<li>Installing/changing <a href="#apt-package-manager">APT packages</a></li>
-</ul>
-</div>
-<p>Start by logging into the admin Hello Robot user. Go to Users system settings and unlock adminstrator actions.</p>
-<p><a class="glightbox" href="../images/unlock_users.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="unlock users" src="../images/unlock_users.png" /></a></p>
-<p>Click "Add User..." and complete the subsequent form.</p>
-<p><a class="glightbox" href="../images/adding_new_user.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="new user form" src="../images/adding_new_user.png" /></a></p>
-<p>Log out and back in as the new user. Open a terminal and execute the following to pull down the Stretch Install repository:</p>
-<div class="shell-prompt copy highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/hello-robot/stretch_install<span class="w"> </span>~/stretch_install
-</code></pre></div>
-<p>Make sure it's up-to-date:</p>
-<div class="shell-prompt copy highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/stretch_install<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>pull
-</code></pre></div>
-<p>Run the new user install script to set up the SDK for this new account:</p>
-<div class="shell-prompt copy highlight"><pre><span></span><code>./stretch_new_user_install.sh
-</code></pre></div>
-<p>Finally, reboot the robot and run a system check in the new user account to confirm if everything was set up correctly.</p>
-<div class="shell-prompt copy highlight"><pre><span></span><code>stretch_robot_system_check.py
-</code></pre></div>
+<p>If you're sharing Stretch with other developers, it can be helpful to create separate accounts for yourself and your team members. Check out the <a href="https://docs.hello-robot.com/0.3/installation/add_new_user/">Adding a New User</a> guide.</p>
 <h2 id="where-files-live">Where Files Live<a class="headerlink" href="#where-files-live" title="Anchor link">&para;</a></h2>
 <p>In this section, we'll cover where to find the files that are important for developing code.</p>
 <p><a class="glightbox" href="../images/files_app.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="files app" src="../images/files_app.png" /></a></p>
@@ -2207,7 +2182,7 @@
 </table>
 <p>TODO - <a href="https://youtu.be/Fqu2P2M092Y">Link to file system video here</a></p>
 <h4 id="flags">Flags<a class="headerlink" href="#flags" title="Anchor link">&para;</a></h4>
-<p>TODO</p>
+<p>TODO - CLI flags</p>
 <h3 id="apt-package-manager">APT Package Manager<a class="headerlink" href="#apt-package-manager" title="Anchor link">&para;</a></h3>
 <p>APT is a system package manager used to install applications. It can install packages that have no GUI. For example, all ROS2 software is installed through APT. The APT CLI enables you to introspect and install new software onto Stretch. Since APT makes changes at the system level, it requires "super user access", which means each of the commands below is preceded by <code>sudo</code> and will ask for your password.</p>
 <table>
@@ -2410,8 +2385,10 @@
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a7c05c9e.min.js"></script>
       
     
-  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

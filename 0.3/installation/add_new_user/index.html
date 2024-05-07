@@ -24,7 +24,7 @@
       
       
       <link rel="icon" href="../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.9">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.21">
     
     
       
@@ -32,7 +32,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.f2e4d321.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.66ac8b77.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -1361,7 +1361,7 @@
         
   
   <span class="md-ellipsis">
-    Playing Audio
+    Voice Teleop
   </span>
   
 
@@ -1382,7 +1382,7 @@
         
   
   <span class="md-ellipsis">
-    Rosbags & MCAPs
+    Voice Teleop
   </span>
   
 
@@ -1573,29 +1573,32 @@
 
 <h1 id="adding-a-new-user">Adding a New User<a class="headerlink" href="#adding-a-new-user" title="Anchor link">&para;</a></h1>
 <h2 id="why">Why<a class="headerlink" href="#why" title="Anchor link">&para;</a></h2>
-<p>When multiple people are working with the robot, it can be helpful to create separate Ubuntu user accounts. Here's a few reasons you might add a new user:</p>
+<p>If you're sharing Stretch with other developers, it can be helpful to create separate accounts for yourself and your team members. Your code and data will be password protected in your own account, and other developers can modify their own code without accidentally affecting yours.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>User accounts cannot completely insulate your account from changes in another. For example, if someone attaches a new gripper or end-effector tool to the robot, your account's software would have an outdated configuration for what tool is attached to the robot. A non-exhaustive list of changes that could break/affect accounts:</p>
 <ul>
-<li>Your code and data is protected by password in your user account</li>
-<li>Your code is dependent on a specific version of Stretch's software and you don't want other users to accidentally upgrade it (NOTE: some of Stretch's software is installed per user, e.g. Stretch Body and Stretch ROS, whereas other parts of the software is installed per OS, e.g. ROS1 or ROS2)</li>
-<li>Logs from your experiments will not be mixed with logs from other users</li>
+<li>Making hardware changes to the robot</li>
+<li>Updating the firmware</li>
+<li>Installing/changing <a href="#apt-package-manager">APT packages</a></li>
 </ul>
-<p>Finally, note that changes made in your user account can break another user account's set up. For example, if you configure a different gripper or end effector onto the robot with your account, other accounts will have outdated configurations for what gripper is attached to the robot.</p>
+</div>
 <h2 id="how">How<a class="headerlink" href="#how" title="Anchor link">&para;</a></h2>
-<p>Login to the "hello-robot" user. The "hello-robot" user account has administrator privileges. Go to Users system settings and unlock the administrator actions.</p>
+<p>Start by logging into the admin Hello Robot user. Go to Users system settings and unlock adminstrator actions.</p>
 <p><a class="glightbox" href="../images/unlock_users.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/unlock_users.png" /></a></p>
-<p>Click "Add User..." and complete the subsequent form.</p>
+<p>Click "Add User..." and complete the subsequent form. The new user needs to be an administrator.</p>
 <p><a class="glightbox" href="../images/adding_new_user.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/adding_new_user.png" /></a></p>
-<p>Logout and the log back in as the new user. Open a terminal and execute the following to pull down the Stretch Install repository.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~
-git<span class="w"> </span>clone<span class="w"> </span>https://github.com/hello-robot/stretch_install
-<span class="nb">cd</span><span class="w"> </span>stretch_install
-git<span class="w"> </span>pull
+<p>Log out and back in as the new user. Open a terminal and execute the following to pull down the Stretch Install repository:</p>
+<div class="shell-prompt copy highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/hello-robot/stretch_install<span class="w"> </span>~/stretch_install
 </code></pre></div>
-<p>Execute the following to set up the new user account with Stretch packages and the robot's configuration data.</p>
-<div class="highlight"><pre><span></span><code>./stretch_new_user_install.sh
+<p>Make sure it's up-to-date:</p>
+<div class="shell-prompt copy highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/stretch_install<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>pull
 </code></pre></div>
-<p>Finally, reboot your robot and execute the following to confirm the new user account was set up successfully.</p>
-<div class="highlight"><pre><span></span><code>stretch_robot_system_check.py
+<p>Run the new user install script to set up the SDK for this new account:</p>
+<div class="shell-prompt copy highlight"><pre><span></span><code>./stretch_new_user_install.sh
+</code></pre></div>
+<p>Finally, reboot the robot and run a system check in the new user account to confirm everything was set up correctly.</p>
+<div class="highlight"><pre><span></span><code>stretch_system_check.py
 </code></pre></div>
 <p>Your new user account is now set up successfully!</p>
 <hr />
@@ -1741,8 +1744,10 @@ git<span class="w"> </span>pull
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a7c05c9e.min.js"></script>
       
     
-  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>
