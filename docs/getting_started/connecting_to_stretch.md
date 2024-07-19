@@ -40,6 +40,10 @@ As a *mobile* manipulator, the robot can only travel so far when tethered by the
     ```{.bash .shell-prompt .copy}
     systemctl start --user sunshine
     ```
+1. Then, in the same terminal, run:
+    ```{.bash .shell-prompt .copy}
+    systemctl enable --user sunshine
+    ```
 1. Since this is your first time, we'll setup the Moonlight server (called "Sunshine") on Stretch. On the robot, open a browser and visit [https://localhost:47990](https://localhost:47990). You may see a warning and need to click "Advanced..." -> "Continue/Proceed". Next, it will ask you to choose credentials. Make sure to choose secure credentials and share them with anyone else using the robot. Then, log in and navigate to the "PIN" tab.
 1. On your laptop or PC, go to [moonlight-stream.org](https://moonlight-stream.org/) and download Moonlight.
 1. Ensure your laptop or PC is connected to the same network as Stretch. Moonlight can stream over the internet, but it is configured to work on a local network by default.
