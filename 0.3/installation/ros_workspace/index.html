@@ -24,7 +24,7 @@
       
       
       <link rel="icon" href="../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.32">
     
     
       
@@ -790,39 +790,6 @@
       How
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="How">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ubuntu-1804" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ubuntu 18.04
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ubuntu-2004" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ubuntu 20.04
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ubuntu-2204" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ubuntu 22.04
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1629,39 +1596,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="How">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ubuntu-1804" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ubuntu 18.04
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ubuntu-2004" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ubuntu 20.04
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ubuntu-2204" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ubuntu 22.04
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1723,25 +1657,15 @@
 
 <h1 id="updating-your-ros-workspace">Updating your ROS Workspace<a class="headerlink" href="#updating-your-ros-workspace" title="Anchor link">&para;</a></h1>
 <h2 id="why">Why<a class="headerlink" href="#why" title="Anchor link">&para;</a></h2>
-<p>ROS1 and ROS2 organize software by "workspaces", where ROS packages are developed, compiled, and made available to run from the command line. By default, a ROS1 workspace called <code>catkin_ws</code> is available in the home directory. If your robot is running Ubuntu 20.04, an additional ROS2 workspace called <code>ament_ws</code> is also available in the home directory. This guide will show you how to replace existing or create new ROS1/2 workspaces for developing ROS software.</p>
+<p>ROS1 and ROS2 organize software by "workspaces", where ROS packages are developed, compiled, and made available to run from the command line. By default, a ROS1 workspace called <code>catkin_ws</code> is available in the home directory. Similarly, a ROS2 workspace called <code>ament_ws</code> is available in the home directory. The operating system installed (and therefore version of ROS installed) on your robot dictates whether you'll have a <code>catkin_ws</code> or <code>ament_ws</code> folder.</p>
+<p>This guide will show you how to replace existing or create new ROS1/2 workspaces for developing ROS software.</p>
 <h2 id="how">How<a class="headerlink" href="#how" title="Anchor link">&para;</a></h2>
-<p>Open a terminal and execute the following to pull down the Stretch Install repository.</p>
+<p>Open a terminal and execute the following.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~
 git<span class="w"> </span>clone<span class="w"> </span>https://github.com/hello-robot/stretch_install
 <span class="nb">cd</span><span class="w"> </span>stretch_install
 git<span class="w"> </span>pull
-</code></pre></div>
-<h3 id="ubuntu-1804">Ubuntu 18.04<a class="headerlink" href="#ubuntu-1804" title="Anchor link">&para;</a></h3>
-<p>Run the following command to create a ROS1 Melodic workspace (replacing <code>&lt;optional-path-to-ws&gt;</code> for the <code>-w</code> flag with a filepath to the workspace. Not providing the flag defaults to <code>~/catkin_ws</code>).</p>
-<div class="highlight"><pre><span></span><code>./factory/18.04/stretch_create_catkin_workspace.sh<span class="w"> </span>-w<span class="w"> </span>&lt;optional-path-to-ws&gt;
-</code></pre></div>
-<h3 id="ubuntu-2004">Ubuntu 20.04<a class="headerlink" href="#ubuntu-2004" title="Anchor link">&para;</a></h3>
-<p>Run the following command to create a ROS1 Noetic workspace (replacing <code>&lt;optional-path-to-ws&gt;</code> for the <code>-w</code> flag with a filepath to the workspace. Not providing the flag defaults to <code>~/catkin_ws</code>).</p>
-<div class="highlight"><pre><span></span><code>./factory/20.04/stretch_create_catkin_workspace.sh<span class="w"> </span>-w<span class="w"> </span>&lt;optional-path-to-ws&gt;
-</code></pre></div>
-<h3 id="ubuntu-2204">Ubuntu 22.04<a class="headerlink" href="#ubuntu-2204" title="Anchor link">&para;</a></h3>
-<p>Run the following command to create a ROS2 Humble workspace (replacing <code>&lt;optional-path-to-ws&gt;</code> for the <code>-w</code> flag with a filepath to the workspace. Not providing the flag defaults to <code>~/ament_ws</code>).</p>
-<div class="highlight"><pre><span></span><code>./factory/22.04/stretch_create_ament_workspace.sh<span class="w"> </span>-w<span class="w"> </span>&lt;optional-path-to-ws&gt;
+./stretch_update_ros_workspace.sh
 </code></pre></div>
 <h2 id="wrap-up">Wrap up<a class="headerlink" href="#wrap-up" title="Anchor link">&para;</a></h2>
 <p>Close your current terminal and open a new one. The new terminal will have automatically activated the ROS workspace(s).</p>
@@ -1907,7 +1831,7 @@ Cannot create workspace while a conflicting ROS version is sourced. Exiting.
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../../assets/javascripts/bundle.471ce7a9.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

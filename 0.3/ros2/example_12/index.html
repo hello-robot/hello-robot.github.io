@@ -24,7 +24,7 @@
       
       
       <link rel="icon" href="../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.32">
     
     
       
@@ -1963,7 +1963,7 @@ python3<span class="w"> </span>aruco_tag_locator.py
     <span class="n">transform</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tf_buffer</span><span class="o">.</span><span class="n">lookup_transform</span><span class="p">(</span><span class="s1">&#39;base_link&#39;</span><span class="p">,</span>
                                                 <span class="n">tag_name</span><span class="p">,</span>
                                                 <span class="n">now</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Found Requested Tag: </span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">transform</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found Requested Tag: </span><span class="se">\n</span><span class="si">{</span><span class="n">transform</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">transform_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">transform</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">transform</span>
 <span class="k">except</span> <span class="n">TransformException</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
@@ -2140,7 +2140,7 @@ Instantiate the <code>LocateArUcoTag()</code> object and run the <code>main()</c
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../../assets/javascripts/bundle.471ce7a9.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
