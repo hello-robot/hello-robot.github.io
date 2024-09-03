@@ -1030,6 +1030,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#retrieving-joint-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retrieving joint limits
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1575,6 +1584,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#retrieving-joint-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retrieving joint limits
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1625,6 +1643,56 @@
 <p>Copy the above into a file called "example.py" and run it using:</p>
 <div class="shell-prompt copy highlight"><pre><span></span><code>python3<span class="w"> </span>example.py
 </code></pre></div>
+<h2 id="retrieving-joint-limits">Retrieving joint limits<a class="headerlink" href="#retrieving-joint-limits" title="Anchor link">&para;</a></h2>
+<p>In a terminal, echo the <code>/joint_limits</code> topic:</p>
+<div class="shell-prompt copy highlight"><pre><span></span><code>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/joint_limits
+</code></pre></div>
+<p>In a second terminal, request the driver publish the joint limits:</p>
+<div class="shell-prompt copy highlight"><pre><span></span><code>ros2<span class="w"> </span>service<span class="w"> </span>call<span class="w"> </span>/get_joint_states<span class="w"> </span>std_srvs/srv/Trigger<span class="w"> </span><span class="o">{}</span>
+</code></pre></div>
+<p>In the first terminal, you'll see a single message get published. It'll look like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">header</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stamp</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1725388967</span>
+<span class="w">    </span><span class="nt">nanosec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">818893747</span>
+<span class="w">  </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="nt">name</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">joint_head_tilt</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">joint_wrist_pitch</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">joint_wrist_roll</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">joint_wrist_yaw</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">joint_head_pan</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">joint_lift</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">joint_arm</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gripper_aperture</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">joint_gripper_finger_left</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">joint_gripper_finger_right</span>
+<span class="nt">position</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-2.0171847360696185</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.5707963267948966</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-2.9114955354069467</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.3933658823294575</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-4.035903452927122</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-0.1285204486235414</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-0.3757907854489514</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-0.3757907854489514</span>
+<span class="nt">velocity</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.4908738521234052</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.45099035163837853</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.9176314585584895</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4.416586351787409</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.7303303287350031</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0966833704348709</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5197662863936018</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.34289112948906764</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0026056417808995</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0026056417808995</span>
+<span class="nt">effort</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+</code></pre></div>
+<p>We're misusing the <a href="https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/JointState.html">sensor_msgs/JointState</a> message to publish the joint limits. The <code>name</code> array lists out each ranged joint. The <code>position</code> array lists the lower bound for each joint. The <code>velocity</code> array lists the upper bound. The length of these 3 arrays will be equal, because the index of the joint in the <code>name</code> array determines which index the corresponding limits will be in the other two arrays.</p>
+<p>The revolute joints will have their limits published in radians, and the prismatic joints will have them published in meters. See the <a href="../../getting_started/stretch_hardware_overview/">Hardware Overview</a> to see the ranges represented visually.</p>
 
 
 
