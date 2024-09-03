@@ -14,9 +14,13 @@
         <meta name="author" content="Hello Robot Inc">
       
       
-        <link rel="canonical" href="https://docs.hello-robot.com/0.3/ros2/feature_comparison/">
+        <link rel="canonical" href="https://docs.hello-robot.com/0.3/ros2/jogging/">
       
       
+        <link rel="prev" href="../getting_started/">
+      
+      
+        <link rel="next" href="../robot_drivers/">
       
       
       <link rel="icon" href="../../images/hello_robot_favicon.png">
@@ -24,7 +28,7 @@
     
     
       
-        <title>ROS 1 v/s ROS 2 Feature Comparison - Stretch Docs</title>
+        <title>Motion Commands - Stretch Docs</title>
       
     
     
@@ -90,7 +94,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ros-1-vs-ros-2-feature-comparison" class="md-skip">
+        <a href="#motion-commands-in-ros2" class="md-skip">
           Skip to content
         </a>
       
@@ -129,7 +133,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ROS 1 v/s ROS 2 Feature Comparison
+              Motion Commands
             
           </span>
         </div>
@@ -902,17 +906,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -926,7 +932,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             ROS 2 Tutorials
@@ -958,10 +964,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../jogging/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Motion Commands
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -970,6 +996,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quickstart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quickstart
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-a-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing a node
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1487,6 +1551,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quickstart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quickstart
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-a-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing a node
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1500,886 +1590,41 @@
                   
 
 
-<h1 id="ros-1-vs-ros-2-feature-comparison">ROS 1 v/s ROS 2 Feature Comparison<a class="headerlink" href="#ros-1-vs-ros-2-feature-comparison" title="Anchor link">&para;</a></h1>
-<p>This document will help you better understand our progress of bringing parity between our ROS 1 and ROS 2 software offerings. Additional comments indicate changes in the API and/or behavior for a component.</p>
-<table>
-<thead>
-<tr>
-<th>Package</th>
-<th>Node/Launch/Component</th>
-<th>Item</th>
-<th>ROS 1</th>
-<th>ROS 2</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Stretch Install</td>
-<td>Humble</td>
-<td>Installation scripts</td>
-<td>NA</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Install</td>
-<td>Humble</td>
-<td>Mesh and URDF files</td>
-<td>NA</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Install</td>
-<td>Iron</td>
-<td>Installation scripts</td>
-<td>NA</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Install</td>
-<td>Iron</td>
-<td>Mesh and URDF files</td>
-<td>NA</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Core</td>
-<td>stretch_driver</td>
-<td>JointTrajectoryAction Server, Position mode</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Core</td>
-<td>stretch_driver</td>
-<td>JointTrajectoryAction Server, Navigation mode</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Core</td>
-<td>stretch_driver</td>
-<td>JointTrajectoryAction Server, Trajectory mode</td>
-<td>✕</td>
-<td>✓</td>
-<td>Smooth preemption missing</td>
-</tr>
-<tr>
-<td>Stretch Core</td>
-<td>stretch_driver</td>
-<td>Mode topic</td>
-<td>✕</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Core</td>
-<td>stretch_driver</td>
-<td>Mode services</td>
-<td>✓</td>
-<td>✓</td>
-<td>ROS 1 does not have trajectory mode</td>
-</tr>
-<tr>
-<td>Stretch Core</td>
-<td>stretch_driver</td>
-<td>Home/stop/stow services</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Core</td>
-<td>stretch_driver</td>
-<td>Magnetometer and BatteryState topic</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Core</td>
-<td>stretch_driver</td>
-<td>Joint states, joint limits</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Core</td>
-<td>stretch_driver</td>
-<td>TF2</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Core</td>
-<td>keyboard_teleop</td>
-<td>Teleoperation</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Core</td>
-<td>keyboard_teleop</td>
-<td>Service triggers for demos</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Core</td>
-<td>detect_aruco_markers</td>
-<td>Aruco marker detection</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Core</td>
-<td>rplidar</td>
-<td>Driver</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Core</td>
-<td>rplidar</td>
-<td>LaserScan filtering</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Core</td>
-<td>d435i</td>
-<td>Driver</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Core</td>
-<td>d435i</td>
-<td>High/Low resolution launch</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Core</td>
-<td>d435i</td>
-<td>IMU</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Core</td>
-<td>d435i</td>
-<td>Aligned depth</td>
-<td>✓</td>
-<td>✕</td>
-<td>ROS 2 pending</td>
-</tr>
-<tr>
-<td>Stretch Core</td>
-<td>respeaker</td>
-<td>Driver</td>
-<td>✓</td>
-<td>✕</td>
-<td>ROS 2 pending</td>
-</tr>
-<tr>
-<td>Stretch Core</td>
-<td>API Docs</td>
-<td>Documentation</td>
-<td>✕</td>
-<td>✕</td>
-<td>ROS 1 and ROS 2 pending</td>
-</tr>
-<tr>
-<td>Hello Helpers</td>
-<td>hello_misc</td>
-<td>HelloNode</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Hello Helpers</td>
-<td>hello_misc</td>
-<td>Preprocess trajectories</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Hello Helpers</td>
-<td>hello_ros_viz</td>
-<td>Create markers</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Hello Helpers</td>
-<td>simple_command_groups</td>
-<td>SimpleCommandGroup</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Hello Helpers</td>
-<td>gripper_conversion</td>
-<td>GripperConversion</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Hello Helpers</td>
-<td>fit_plane</td>
-<td>Fit plane helper functions</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Hello Helpers</td>
-<td>configure_wrist</td>
-<td>Switch between standard and dex wrist</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Hello Helpers</td>
-<td>API Docs</td>
-<td>Documentation</td>
-<td>✕</td>
-<td>✕</td>
-<td>ROS 1 and 2 pending</td>
-</tr>
-<tr>
-<td>Stretch Description</td>
-<td>stretch_description</td>
-<td>Stretch URDF</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Description</td>
-<td>stretch_description</td>
-<td>Standard Gripper xacro</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Description</td>
-<td>stretch_description</td>
-<td>Dex wrist xacro</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Description</td>
-<td>stretch_description</td>
-<td>Batch-specific mesh files</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Calibration</td>
-<td>collect_head_calibration_data</td>
-<td>CollectHeadCalibrationDataNode</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Calibration</td>
-<td>process_head_calibration_data</td>
-<td>HeadCalibrator, ProcessHeadCalibrationNode</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Calibration</td>
-<td>check_head_calibration</td>
-<td>check_head_calibration</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Calibration</td>
-<td>revert_to_previous_calibration</td>
-<td>revert_to_previous_calibration</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Calibration</td>
-<td>update_uncalibrated_urdf</td>
-<td>update_uncalibrated_urdf</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Calibration</td>
-<td>update_urdf_after_xacro_change</td>
-<td>update_urdf_after_xacro_change</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Calibration</td>
-<td>update_with_most_recent_calibration</td>
-<td>update_with_most_recent_calibration</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Calibration</td>
-<td>visualize_most_recent_head_calibration</td>
-<td>visualize_most_recent_head_calibration</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Calibration</td>
-<td>Revert to position mode</td>
-<td>Revert to position mode</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Tutorials</td>
-<td>Getting started</td>
-<td>Instructions</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Tutorials</td>
-<td>Modes tutorial</td>
-<td>Instructions</td>
-<td>✕</td>
-<td>✕</td>
-<td>ROS 1 and ROS 2 pending</td>
-</tr>
-<tr>
-<td>Stretch Tutorials</td>
-<td>ROS 2 with rclpy</td>
-<td>Instructions</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Tutorials</td>
-<td>Race conditions and deadlocks in ROS 2</td>
-<td>Instructions</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Tutorials</td>
-<td>HelloNode Tutorial</td>
-<td>Instructions</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Tutorials</td>
-<td>HFollow Joint Trajectory Commands</td>
-<td>Trajectory mode</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Tutorials</td>
-<td>HFollow Joint Trajectory Commands</td>
-<td>Joint Trajectory Server</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Tutorials</td>
-<td>Internal State of Stretch</td>
-<td>Command line and RQT graph</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Tutorials</td>
-<td>RViz basics</td>
-<td>Robot visualizationa and TF tree</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Tutorials</td>
-<td>Teleoperation</td>
-<td>Velocity command of mobile base</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Tutorials</td>
-<td>Tf2 broadcaster and listener</td>
-<td>TF2 static broadcaster and listener</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Tutorials</td>
-<td>Respeaker voice to text</td>
-<td>Instructions</td>
-<td>✓</td>
-<td>✕</td>
-<td>ROS 2 pending</td>
-</tr>
-<tr>
-<td>Stretch Tutorials</td>
-<td>API docs</td>
-<td>Instructions</td>
-<td>✕</td>
-<td>✕</td>
-<td>ROS 1 and ROS 2 pending</td>
-</tr>
-<tr>
-<td>Stretch Tutorials</td>
-<td>Migration guides</td>
-<td>From ROS1 Noetic &amp; from ROS2 Galactic</td>
-<td>NA</td>
-<td>✕</td>
-<td>ROS 2 pending</td>
-</tr>
-<tr>
-<td>Stretch Tutorials</td>
-<td>Nav2 stack</td>
-<td>Mapping</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Tutorials</td>
-<td>Nav2 stack</td>
-<td>Navigation</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Tutorials</td>
-<td>Filter laser scans</td>
-<td>RPLidar and laserscan filtering</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Tutorials</td>
-<td>Deep perception</td>
-<td>Objects and faces detection</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Tutorials</td>
-<td>FUNMAP demos</td>
-<td>Instructions</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Tutorials</td>
-<td>Align to ArUco</td>
-<td>ArUco detection, tf transforms and trajectory server</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Tutorials</td>
-<td>Obstacle avoider</td>
-<td>RPLidar based sensing and avoidance</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Tutorials</td>
-<td>Mobile base collision avoidance</td>
-<td>RPLidar based sensing and avoidance</td>
-<td>✓</td>
-<td>✕</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch FUNMAP</td>
-<td>manipulation_planning</td>
-<td>plan_surface_coverage, detect_cliff</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch FUNMAP</td>
-<td>manipulation_planning</td>
-<td>PlanarRobotModel, ManipulationPlanner</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch FUNMAP</td>
-<td>manipulation_planning</td>
-<td>ManipulationView</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch FUNMAP</td>
-<td>mapping</td>
-<td>robot stowing, scanning, &amp; localizing methods</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch FUNMAP</td>
-<td>mapping</td>
-<td>HeadScan</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch FUNMAP</td>
-<td>navigate</td>
-<td>ForwardMotionObstacleDetector</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch FUNMAP</td>
-<td>navigate</td>
-<td>FastSingleViewPlanner</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch FUNMAP</td>
-<td>navigate</td>
-<td>MoveBase</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch FUNMAP</td>
-<td>ros_max_height_image</td>
-<td>ROSVolumeOfInterest</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch FUNMAP</td>
-<td>ros_max_height_image</td>
-<td>ROSMaxHeightImage</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch FUNMAP</td>
-<td>funmap</td>
-<td>ContactDetector, FunMapNode, services</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch FUNMAP</td>
-<td>API Docs</td>
-<td>Instructions</td>
-<td>✕</td>
-<td>✕</td>
-<td>ROS 1 and ROS 2 pending</td>
-</tr>
-<tr>
-<td>Stretch Deep Perception</td>
-<td>detection_node</td>
-<td>DetectionNode</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Deep Perception</td>
-<td>detect_faces</td>
-<td>OpenVINO Face Detection</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Deep Perception</td>
-<td>detect_objects</td>
-<td>PyTorch YOLO object detection</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Deep Perception</td>
-<td>detect_nearest_mouth</td>
-<td>OpenVINO Mouth Detection</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Deep Perception</td>
-<td>detect_nearest_mouth</td>
-<td>OpenVINO Body Landmark Detection</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Deep Perception</td>
-<td>API Docs</td>
-<td>Instructions</td>
-<td>✕</td>
-<td>✕</td>
-<td>ROS 1 and ROS 2 pending</td>
-</tr>
-<tr>
-<td>Stretch Demos</td>
-<td>hello_world</td>
-<td>HelloWorldNode, services</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Demos</td>
-<td>clean_surface</td>
-<td>CleanSurfaceNode, services</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Demos</td>
-<td>grasp_object</td>
-<td>GraspObjectNode, services</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Demos</td>
-<td>handover_object</td>
-<td>HandoverObjectNode, services</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Demos</td>
-<td>open_drawer</td>
-<td>OpenDrawerNode, services</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Demos</td>
-<td>HelloNode API</td>
-<td>Switch demos to HelloNode API</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Demos</td>
-<td>autodocking_behaviors</td>
-<td>MoveBaseActionClient, CheckTF</td>
-<td>✓</td>
-<td>✕</td>
-<td>ROS 2 pending</td>
-</tr>
-<tr>
-<td>Stretch Demos</td>
-<td>autodocking_behaviors</td>
-<td>VisualServoing</td>
-<td>✓</td>
-<td>✕</td>
-<td>ROS 2 pending</td>
-</tr>
-<tr>
-<td>Stretch Demos</td>
-<td>API docs</td>
-<td>Instructions</td>
-<td>✕</td>
-<td>✕</td>
-<td>ROS 1 and ROS 2 pending</td>
-</tr>
-<tr>
-<td>Stretch Nav2</td>
-<td>offline_mapping</td>
-<td>SLAM</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Nav2</td>
-<td>navigation</td>
-<td>Pose, Waypoints, Obstacle avoidance</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Nav2</td>
-<td>Patrolling Demo</td>
-<td>Python API, Autonomous waypoint nav</td>
-<td>✓</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch Nav2</td>
-<td>API Docs</td>
-<td>Instructions</td>
-<td>✕</td>
-<td>✕</td>
-<td>ROS 1 and ROS 2 pending</td>
-</tr>
-<tr>
-<td>Stretch MoveIt 2</td>
-<td>MoveIt Config Files</td>
-<td>YAML/XML/SRDF/URDF files</td>
-<td>✕</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch MoveIt 2</td>
-<td>moveit</td>
-<td>RViz plugin</td>
-<td>✕</td>
-<td>✓</td>
-<td></td>
-</tr>
-<tr>
-<td>Stretch MoveIt 2</td>
-<td>moveit_py</td>
-<td>Joint Space Goals</td>
-<td>✕</td>
-<td>✓</td>
-<td>In review</td>
-</tr>
-<tr>
-<td>Stretch MoveIt 2</td>
-<td>moveit_py</td>
-<td>Pose Goals</td>
-<td>✕</td>
-<td>✕</td>
-<td>ROS 2 pending</td>
-</tr>
-<tr>
-<td>Stretch MoveIt 2</td>
-<td>moveit_py</td>
-<td>Multiplanning pipeline</td>
-<td>✕</td>
-<td>✓</td>
-<td>In review</td>
-</tr>
-<tr>
-<td>Stretch MoveIt 2</td>
-<td>moveit_py</td>
-<td>Octomap plugin</td>
-<td>✕</td>
-<td>✓</td>
-<td>In review</td>
-</tr>
-<tr>
-<td>Stretch MoveIt 2</td>
-<td>moveit</td>
-<td>End effector pose goals</td>
-<td>✕</td>
-<td>✕</td>
-<td>ROS 2 pending</td>
-</tr>
-<tr>
-<td>Stretch MoveIt 2</td>
-<td>moveit</td>
-<td>Hybrid planning</td>
-<td>✕</td>
-<td>✕</td>
-<td>ROS 2 pending</td>
-</tr>
-<tr>
-<td>Web-based Teleoperation</td>
-<td>web_interface</td>
-<td>operator</td>
-<td>✓</td>
-<td>✕</td>
-<td>ROS 2 pending</td>
-</tr>
-<tr>
-<td>Web-based Teleoperation</td>
-<td>web_interface</td>
-<td>robot</td>
-<td>✓</td>
-<td>✕</td>
-<td>ROS 2 pending</td>
-</tr>
-</tbody>
-</table>
+<h1 id="motion-commands-in-ros2">Motion Commands in ROS2<a class="headerlink" href="#motion-commands-in-ros2" title="Anchor link">&para;</a></h1>
+<h2 id="quickstart">Quickstart<a class="headerlink" href="#quickstart" title="Anchor link">&para;</a></h2>
+<p>Sending motion commands is as easy as:</p>
+<ol>
+<li>Launch the ROS2 driver in a terminal:
+    <div class="shell-prompt copy highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_core<span class="w"> </span>stretch_driver.launch.py
+</code></pre></div></li>
+<li>Open iPython and type the following code, one line at a time:
+    <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">hello_helpers.hello_misc</span> <span class="k">as</span> <span class="nn">hm</span>
+<span class="n">node</span> <span class="o">=</span> <span class="n">hm</span><span class="o">.</span><span class="n">HelloNode</span><span class="o">.</span><span class="n">quick_create</span><span class="p">(</span><span class="s1">&#39;temp&#39;</span><span class="p">)</span>
+<span class="n">node</span><span class="o">.</span><span class="n">move_to_pose</span><span class="p">({</span><span class="s1">&#39;joint_lift&#39;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">},</span> <span class="n">blocking</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">node</span><span class="o">.</span><span class="n">move_to_pose</span><span class="p">({</span><span class="s1">&#39;joint_wrist_yaw&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;joint_wrist_roll&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">},</span> <span class="n">blocking</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div></li>
+</ol>
+<h2 id="writing-a-node">Writing a node<a class="headerlink" href="#writing-a-node" title="Anchor link">&para;</a></h2>
+<p>You can also write a ROS2 node to send motion commands:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">hello_helpers.hello_misc</span> <span class="k">as</span> <span class="nn">hm</span>
+
+<span class="k">class</span> <span class="nc">MyNode</span><span class="p">(</span><span class="n">hm</span><span class="o">.</span><span class="n">HelloNode</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">hm</span><span class="o">.</span><span class="n">HelloNode</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">hm</span><span class="o">.</span><span class="n">HelloNode</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;my_node&#39;</span><span class="p">,</span> <span class="s1">&#39;my_node&#39;</span><span class="p">,</span> <span class="n">wait_for_first_pointcloud</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="c1"># my_node&#39;s main logic goes here</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">move_to_pose</span><span class="p">({</span><span class="s1">&#39;joint_lift&#39;</span><span class="p">:</span> <span class="mf">0.6</span><span class="p">},</span> <span class="n">blocking</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">move_to_pose</span><span class="p">({</span><span class="s1">&#39;joint_wrist_yaw&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;joint_wrist_pitch&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">},</span> <span class="n">blocking</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">node</span> <span class="o">=</span> <span class="n">MyNode</span><span class="p">()</span>
+<span class="n">node</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+<p>Copy the above into a file called "example.py" and run it using:</p>
+<div class="shell-prompt copy highlight"><pre><span></span><code>python3<span class="w"> </span>example.py
+</code></pre></div>
 
 
 
@@ -2404,6 +1649,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../getting_started/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Getting Started">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Getting Started
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../robot_drivers/" class="md-footer__link md-footer__link--next" aria-label="Next: Robot Drivers">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Robot Drivers
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
