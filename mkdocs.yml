@@ -91,3 +91,4 @@ nav:
     - Changing Tools: extending_stretch/changing_tools.md
     - URDF Management: extending_stretch/urdf_management.md
     - Extending Stretch with Additional Hardware: extending_stretch/extending_stretch_additional_hardware.md
+  - Software Documentation: '!include ./repos/stretch_body/mkdocs.yml'
