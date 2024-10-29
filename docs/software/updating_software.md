@@ -11,7 +11,7 @@ Your Stretch receives a few different kinds of software updates, each with its o
 The system check tool can print out a summary of your current software:
 
 ```{.bash .shell-prompt .copy}
-stretch_robot_system_check.py
+stretch_system_check.py -v
 ```
 
 At the bottom of the output, you might see a "Checking Software" section (if this doesn't appear, [see below](#manually-identifying-your-current-software)):
