@@ -24,7 +24,7 @@
       
       
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
     
     
       
@@ -1636,6 +1636,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#stretch_gripper_overload" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_gripper_overload
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#parameters-for-command-line-tools" class="md-nav__link">
     <span class="md-ellipsis">
       Parameters for Command Line Tools
@@ -1771,6 +1780,15 @@
   <a href="#i_feedforward-and-i_safety_feedforward" class="md-nav__link">
     <span class="md-ellipsis">
       i_feedforward and i_safety_feedforward
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stretch_gripper_overload" class="md-nav__link">
+    <span class="md-ellipsis">
+      stretch_gripper_overload
     </span>
   </a>
   
@@ -1923,6 +1941,22 @@
 <h3 id="i_feedforward-and-i_safety_feedforward">i_feedforward and i_safety_feedforward<a class="headerlink" href="#i_feedforward-and-i_safety_feedforward" title="Anchor link">&para;</a></h3>
 <p>Gravity compensation adds a fixed ‘feedforward’ current to the motor controller to support the lift against gravity. This allows the lift to ‘float’ when the runstop is enabled, for example. If the feedforward current is too low, the lift will drift downward. If it is too high, it will drift upward. The <code>i_safety_feedforward</code> is the amount of current (A) applied when the motor is in safety mode (eg, runstop enabled). The <code>i_feedforward</code> term is applied when the lift is in normal operation. Generally the two parameters will be identical.</p>
 <p>There’s a simple tool to calibrate these values. <code>REx_calibrate_gravity_comp.py</code> will move the lift to a few positions, sampled the applied motor currents, and update your gravity compensation parameters. More details can be found in this <a href="https://forum.hello-robot.com/t/practical-guide-to-lift-gravity-compensation/657">knowledge base post</a>.</p>
+<h3 id="stretch_gripper_overload">stretch_gripper_overload<a class="headerlink" href="#stretch_gripper_overload" title="Anchor link">&para;</a></h3>
+<p>A boolean to toggle whether a sentry monitors the gripper servo for risk of "overloading", a hardware protection state the servo goes into when it cannot provide the torque being asked for, and backs off the commands to reduce the amount of torque being asked for. In effect, this sentry enables the gripper to keep its grip on objects without overloading.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>robot_sentry.stretch_gripper_overload</td>
+<td><code>1</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="parameters-for-command-line-tools">Parameters for Command Line Tools<a class="headerlink" href="#parameters-for-command-line-tools" title="Anchor link">&para;</a></h2>
 <h3 id="show_sw_exc">show_sw_exc<a class="headerlink" href="#show_sw_exc" title="Anchor link">&para;</a></h3>
 <p>In the <code>stretch_robot_system_check.py</code> tool, the "Checking Software" section is wrapped in a try/except because of the experimental nature of the code. The tool is introspecting the system and relying on resources/files to be available in specific places with specific formats. Since the tool's output needs to be easily understood, the error or exception cannot be shown (hence the try/except block). This parameter allows the tool to raise the exception and display it in the terminal. This is useful for debugging purposes.</p>
