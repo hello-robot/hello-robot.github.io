@@ -1645,6 +1645,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#base_max_velocity" class="md-nav__link">
+    <span class="md-ellipsis">
+      base_max_velocity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#parameters-for-command-line-tools" class="md-nav__link">
     <span class="md-ellipsis">
       Parameters for Command Line Tools
@@ -1789,6 +1798,15 @@
   <a href="#stretch_gripper_overload" class="md-nav__link">
     <span class="md-ellipsis">
       stretch_gripper_overload
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#base_max_velocity" class="md-nav__link">
+    <span class="md-ellipsis">
+      base_max_velocity
     </span>
   </a>
   
@@ -1953,6 +1971,22 @@
 <tbody>
 <tr>
 <td>robot_sentry.stretch_gripper_overload</td>
+<td><code>1</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="base_max_velocity">base_max_velocity<a class="headerlink" href="#base_max_velocity" title="Anchor link">&para;</a></h3>
+<p>A boolean to toggle whether a sentry monitors the robot's center of mass and limits max allowable speed of the mobile base to prevent unstable behavior resulting from fast motion paired with a high center of mass. Disabling this safety feature means the base will not limit its speed and will travel at the speed you've commanded it.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>robot_sentry.base_max_velocity</td>
 <td><code>1</code></td>
 </tr>
 </tbody>
