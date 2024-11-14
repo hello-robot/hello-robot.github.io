@@ -100,3 +100,11 @@ The action modes can be selected in the dropdown in the top-left corner of the i
 - **Step Actions**: When you click, Stretch will move a fixed distance based on the selected speed.
 - **Press-Release**: Stretch will move while you are pressing and holding the button and will stop when you release.
 - **Click-Click**: Stretch will start moving when you click and will stop when you click again. You can also stop Stretch by moving the cursor outside the button you clicked.
+
+## Troubleshooting
+
+If you're having trouble with the steps in the guide, please check the following tips:
+
+### Stretch fails launch the interface
+
+The interface will have created a .zip file with its logs. Please contact Hello Robot support and include the file. The log files will typically include information on what went wrong.
