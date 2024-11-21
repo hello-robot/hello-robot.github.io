@@ -85,7 +85,7 @@ To start the demo:
     * ![](./images/connect_button.png){ width="100" loading=lazy }
     * If the LED ring instead flashes, it needs to be paired with the dongle. Hold the center button for 3-4 seconds until the controller vibrates, and the upper two LEDs illuminates steadily.
 
-1. Make sure the space around the robot is clear. Hit the Home Robot ![home robot button](./images/xbox360/360_Startv3.png){ width="20" .glightbox-skip } button ("Start" on the gamepad). Stretch will begin its homing routine, finding the zero position of all of its joints. Be careful not to interfere with these movements, as it may cause the zero position to be set incorrectly. When this procedure is completed (after ~30 seconds), the robot should beep once.
+1. Make sure the space around the robot is clear. Hit the Home Robot ![home robot button](./images/xbox360/Start_Button_X05.png){ width="20" .glightbox-skip } button ("Start" on the gamepad). Stretch will begin its homing routine, finding the zero position of all of its joints. Be careful not to interfere with these movements, as it may cause the zero position to be set incorrectly. When this procedure is completed (after ~30 seconds), the robot should beep once.
 
     !!! note
 
@@ -112,7 +112,7 @@ Here's a few things to try:
 
 ## Shutting Down Stretch
 
-Once you're finished with the gamepad teleoperation demo, let's learn how to properly shut down the robot. It is recommended to always wait for the onboard PC to fully shutdown prior to hitting the On/Off switch in the trunk (which will cut off power). From the gamepad teleoperation demo, you can simply hold down the Shutdown PC ![shutdown pc button](./images/xbox360/360_Backv3.png){ width="20" .glightbox-skip } button ("Back" on the gamepad) for 2 seconds. The robot will move to its Stow position, and then the PC will turn off. When the lidar stop spinning, the PC has shutdown.
+Once you're finished with the gamepad teleoperation demo, let's learn how to properly shut down the robot. It is recommended to always wait for the onboard PC to fully shutdown prior to hitting the On/Off switch in the trunk (which will cut off power). From the gamepad teleoperation demo, you can simply hold down the Shutdown PC ![shutdown pc button](./images/xbox360/Back_Button_X05.png){ width="20" .glightbox-skip } button ("Back" on the gamepad) for 2 seconds. The robot will move to its Stow position, and then the PC will turn off. When the lidar stop spinning, the PC has shutdown.
 
 If you're working with a Stretch 3, turn off the robot with the On/Off switch and the lift joint will slowly descend. If you're working with a Stretch 2 or Stretch RE1, place the included clamp below the shoulder before turning off the On/Off switch because the lift joint will descend rapidly. 
 
@@ -163,7 +163,7 @@ If you're having trouble with the steps in the guide, please check the following
 
 ### Nothing happens when I try to home the robot
 
-- If the robot has already been homed, pressing the Home Robot ![home robot button](./images/xbox360/360_Startv3.png){ width="20" .glightbox-skip } button won't do anything. Try moving the other controller buttons - if the robot moves then you are already good to go.
+- If the robot has already been homed, pressing the Home Robot ![home robot button](./images/xbox360/Start_Button_X05.png){ width="20" .glightbox-skip } button won't do anything. Try moving the other controller buttons - if the robot moves then you are already good to go.
 - The gamepad controller script might be disabled - this is common on a robot that others have used. You'll need to run `stretch_gamepad_teleop.py` in a Terminal window on the robot. See the next tutorial, [Connecting to Stretch](./connecting_to_stretch.md), for details on how to accomplish this.
 
 ### The gamepad connection is intermittent or stops working
