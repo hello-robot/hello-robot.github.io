@@ -80,10 +80,13 @@ To start the demo:
 
         If you don't hear the two beeps, or you are following this guide on a robot that has already been used by someone else, gamepad teleop may not be configured to launch when the robot is booting up. See the [troubleshooting advice](#i-dont-hear-two-beeps-when-the-robot-powers-on) below.
 
-1. Press the center "Connect" button on the controller. The upper two LEDs of the ring will illuminate, indicating that a connection has been made to the USB dongle in the robot's trunk.
+1. Press the center "Connect" button on the controller. It will look like either:
 
     * ![](./images/connect_button.png){ width="100" loading=lazy }
-    * If the LED ring instead flashes, it needs to be paired with the dongle. Hold the center button for 3-4 seconds until the controller vibrates, and the upper two LEDs illuminates steadily.
+        * The upper two LEDs of the ring will illuminate, indicating that a connection has been made to the USB dongle in the robot's trunk.
+    * ![](./images/connect_button_X05.png){ width="100" loading=lazy }
+        * The button will illuminate solid, indicating that a connection has been made to the USB dongle in the robot's trunk.
+    * If the button or LED ring instead flashes, it needs to be paired with the dongle. Hold the center button for 6 seconds until the controller vibrates, and the upper two LEDs illuminates steadily. If the dongle has a button on it, you may need to press it beforehand to put in pairing mode as well.
 
 1. Make sure the space around the robot is clear. Hit the Home Robot ![home robot button](./images/xbox360/Start_Button_X05.png){ width="20" .glightbox-skip } button ("Start" on the gamepad). Stretch will begin its homing routine, finding the zero position of all of its joints. Be careful not to interfere with these movements, as it may cause the zero position to be set incorrectly. When this procedure is completed (after ~30 seconds), the robot should beep once.
 
