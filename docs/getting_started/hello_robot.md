@@ -84,7 +84,7 @@ To start the demo:
 
     * ![](./images/connect_button.png){ width="100" loading=lazy }
         * The upper two LEDs of the ring will illuminate, indicating that a connection has been made to the USB dongle in the robot's trunk.
-    * ![](./images/connect_button_X05.png){ width="100" loading=lazy }
+    * ![](./images/connect_button_X05.jpg){ width="100" loading=lazy }
         * The button will illuminate solid, indicating that a connection has been made to the USB dongle in the robot's trunk.
     * If the button or LED ring instead flashes, it needs to be paired with the dongle. Hold the center button for 6 seconds until the controller vibrates, and the upper two LEDs illuminates steadily. If the dongle has a button on it, you may need to press it beforehand to put in pairing mode as well.
 
