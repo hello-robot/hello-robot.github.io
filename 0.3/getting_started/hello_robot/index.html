@@ -24,7 +24,7 @@
       
       
       <link rel="icon" href="../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.45">
     
     
       
@@ -2148,14 +2148,21 @@
 </div>
 </li>
 <li>
-<p>Press the center "Connect" button on the controller. The upper two LEDs of the ring will illuminate, indicating that a connection has been made to the USB dongle in the robot's trunk.</p>
+<p>Press the center "Connect" button on the controller. It will look like either:</p>
 <ul>
-<li><a class="glightbox" href="../images/connect_button.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../images/connect_button.png" width="100" /></a></li>
-<li>If the LED ring instead flashes, it needs to be paired with the dongle. Hold the center button for 3-4 seconds until the controller vibrates, and the upper two LEDs illuminates steadily.</li>
+<li><a class="glightbox" href="../images/connect_button.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../images/connect_button.png" width="100" /></a><ul>
+<li>The upper two LEDs of the ring will illuminate, indicating that a connection has been made to the USB dongle in the robot's trunk.</li>
+</ul>
+</li>
+<li><a class="glightbox" href="../images/connect_button_X05.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../images/connect_button_X05.jpg" width="100" /></a><ul>
+<li>The button will illuminate solid, indicating that a connection has been made to the USB dongle in the robot's trunk.</li>
+</ul>
+</li>
+<li>If the button or LED ring instead flashes, it needs to be paired with the dongle. Hold the center button for 6 seconds until the controller vibrates, and the upper two LEDs illuminates steadily. If the dongle has a button on it, you may need to press it beforehand to put in pairing mode as well.</li>
 </ul>
 </li>
 <li>
-<p>Make sure the space around the robot is clear. Hit the Home Robot <img alt="home robot button" class="glightbox-skip" src="../images/xbox360/360_Startv3.png" width="20" /> button ("Start" on the gamepad). Stretch will begin its homing routine, finding the zero position of all of its joints. Be careful not to interfere with these movements, as it may cause the zero position to be set incorrectly. When this procedure is completed (after ~30 seconds), the robot should beep once.</p>
+<p>Make sure the space around the robot is clear. Hit the Home Robot <img alt="home robot button" class="glightbox-skip" src="../images/xbox360/Start_Button_X05.png" width="20" /> button ("Start" on the gamepad). Stretch will begin its homing routine, finding the zero position of all of its joints. Be careful not to interfere with these movements, as it may cause the zero position to be set incorrectly. When this procedure is completed (after ~30 seconds), the robot should beep once.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If nothing happens when you hit the Start button, see the <a href="#nothing-happens-when-i-try-to-home-the-robot">troubleshooting advice</a> below.</p>
@@ -2181,7 +2188,7 @@
 <li>Try pressing the Runstop button while moving the robot, then reset it by holding the button down for 2 seconds.</li>
 </ul>
 <h2 id="shutting-down-stretch">Shutting Down Stretch<a class="headerlink" href="#shutting-down-stretch" title="Anchor link">&para;</a></h2>
-<p>Once you're finished with the gamepad teleoperation demo, let's learn how to properly shut down the robot. It is recommended to always wait for the onboard PC to fully shutdown prior to hitting the On/Off switch in the trunk (which will cut off power). From the gamepad teleoperation demo, you can simply hold down the Shutdown PC <img alt="shutdown pc button" class="glightbox-skip" src="../images/xbox360/360_Backv3.png" width="20" /> button ("Back" on the gamepad) for 2 seconds. The robot will move to its Stow position, and then the PC will turn off. When the lidar stop spinning, the PC has shutdown.</p>
+<p>Once you're finished with the gamepad teleoperation demo, let's learn how to properly shut down the robot. It is recommended to always wait for the onboard PC to fully shutdown prior to hitting the On/Off switch in the trunk (which will cut off power). From the gamepad teleoperation demo, you can simply hold down the Shutdown PC <img alt="shutdown pc button" class="glightbox-skip" src="../images/xbox360/Back_Button_X05.png" width="20" /> button ("Back" on the gamepad) for 2 seconds. The robot will move to its Stow position, and then the PC will turn off. When the lidar stop spinning, the PC has shutdown.</p>
 <p>If you're working with a Stretch 3, turn off the robot with the On/Off switch and the lift joint will slowly descend. If you're working with a Stretch 2 or Stretch RE1, place the included clamp below the shoulder before turning off the On/Off switch because the lift joint will descend rapidly. </p>
 <p><a class="glightbox" href="../images/clamp_lift.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="clamp under lift" loading="lazy" src="../images/clamp_lift.png" /></a></p>
 <h2 id="battery-charging-basics">Battery Charging Basics<a class="headerlink" href="#battery-charging-basics" title="Anchor link">&para;</a></h2>
@@ -2221,7 +2228,7 @@
 </ul>
 <h3 id="nothing-happens-when-i-try-to-home-the-robot">Nothing happens when I try to home the robot<a class="headerlink" href="#nothing-happens-when-i-try-to-home-the-robot" title="Anchor link">&para;</a></h3>
 <ul>
-<li>If the robot has already been homed, pressing the Home Robot <img alt="home robot button" class="glightbox-skip" src="../images/xbox360/360_Startv3.png" width="20" /> button won't do anything. Try moving the other controller buttons - if the robot moves then you are already good to go.</li>
+<li>If the robot has already been homed, pressing the Home Robot <img alt="home robot button" class="glightbox-skip" src="../images/xbox360/Start_Button_X05.png" width="20" /> button won't do anything. Try moving the other controller buttons - if the robot moves then you are already good to go.</li>
 <li>The gamepad controller script might be disabled - this is common on a robot that others have used. You'll need to run <code>stretch_gamepad_teleop.py</code> in a Terminal window on the robot. See the next tutorial, <a href="../connecting_to_stretch/">Connecting to Stretch</a>, for details on how to accomplish this.</li>
 </ul>
 <h3 id="the-gamepad-connection-is-intermittent-or-stops-working">The gamepad connection is intermittent or stops working<a class="headerlink" href="#the-gamepad-connection-is-intermittent-or-stops-working" title="Anchor link">&para;</a></h3>
