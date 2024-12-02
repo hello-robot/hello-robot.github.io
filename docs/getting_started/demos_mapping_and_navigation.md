@@ -41,7 +41,7 @@ To fill in the map, we need to move the robot through the environment so that th
 Once you map captures the space you want Stretch to be able to navigate in, open a **new terminal window** and run the following command to save the map:
 
 ```{.bash .shell-prompt .copy}
-ros2 run nav2_map_server map_saver_cli -f ${HELLO_FLEET_PATH}/maps/nav2_demo_map`
+ros2 run nav2_map_server map_saver_cli -f ${HELLO_FLEET_PATH}/maps/nav2_demo_map
 ```
 
 This will save two files to the "~/stretch_user/maps" directory - `nav2_demo_map.pgm` and `nav2_demo_map.yaml`.
