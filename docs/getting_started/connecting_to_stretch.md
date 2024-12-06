@@ -151,5 +151,14 @@ Ubuntu 22.04 is the latest at the time of this writing. The tutorials on this we
       </div>
  - If your robot doesn't have a Dex Wrist 3, you can skip the Visual Servoing section.
 
+### I've forgotten my login credentials for Sunshine's Web UI
+
+Connect to your robot using the [tethered setup](#tethered-setup). Open a terminal and run the following command:
+
+```
+# Choose a new username and password
+sunshine --creds <new-username> <new-password>
+```
+
 ------
 <div align="center"> All materials are Copyright 2020-2024 by Hello Robot Inc. Hello Robot and Stretch are registered trademarks.</div>
