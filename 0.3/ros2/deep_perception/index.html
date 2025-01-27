@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a40c8224.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -1718,7 +1718,7 @@
 <h2 id="code-breakdown">Code Breakdown<a class="headerlink" href="#code-breakdown" title="Anchor link">&para;</a></h2>
 <p>Luckily, the stretch_deep_pereption package is extremely modular and is designed to work with a wide array of detectors. Although most of the heavy lifting in this tutorial is being done by the neural network, let's attempt to break down the code into functional blocks to understand the detection pipeline.</p>
 <p>The control flow begins with executing the <a href="https://github.com/hello-robot/stretch_ros2/blob/iron/stretch_deep_perception/stretch_deep_perception/detect_objects.py">detect_objects.py</a> script. In the main() function, we create an instance of the ObjectDetector class from the <a href="https://github.com/hello-robot/stretch_ros2/blob/iron/stretch_deep_perception/stretch_deep_perception/object_detect_pytorch.py">object_detect_pytorch.py</a> script where we configure the YOLOv5s model. Next, we pass this detector to an instance of the DetectionNode class from the <a href="https://github.com/hello-robot/stretch_ros2/blob/iron/stretch_deep_perception/stretch_deep_perception/detection_node.py">detection_node.py</a> script and call the main function.
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="n">confidence_threshold</span> <span class="o">=</span> <span class="mf">0.0</span>
     <span class="n">detector</span> <span class="o">=</span> <span class="n">od</span><span class="o">.</span><span class="n">ObjectDetector</span><span class="p">(</span><span class="n">confidence_threshold</span><span class="o">=</span><span class="n">confidence_threshold</span><span class="p">)</span>
     <span class="n">default_marker_name</span> <span class="o">=</span> <span class="s1">&#39;object&#39;</span>
@@ -1729,14 +1729,14 @@
     <span class="n">node</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </code></pre></div></p>
 <p>Let's skim through the object_detect_pytorch.py script to understand the configuration. The constructor is where we load the pretrained YOLOv5s model using the torch.hub.load() PyTorch wrapper. We set the confidence threshold to be 0.2, which says that a detection is only considered valid if the probability is higher than 0.2. This can be tweaked, although lower numbers often result in false positives and higher numbers often disregard blurry or smaller valid objects.
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ObjectDetector</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">confidence_threshold</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ObjectDetector</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">confidence_threshold</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
         <span class="c1"># Load the models</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">hub</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;ultralytics/yolov5&#39;</span><span class="p">,</span> <span class="s1">&#39;yolov5s&#39;</span><span class="p">)</span>  <span class="c1"># or yolov5m, yolov5l, yolov5x, custom</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">confidence_threshold</span> <span class="o">=</span> <span class="n">confidence_threshold</span>
 </code></pre></div></p>
 <p>The apply_to_image() method passes the stream of RGB images from the realsense camera to the YOLOv5s model and returns detections in the form of a dictionary consisting of class_id, label, confidence and bouding box coordinates. The last part is exactly what we need for further computations.
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">apply_to_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rgb_image</span><span class="p">,</span> <span class="n">draw_output</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">apply_to_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rgb_image</span><span class="p">,</span> <span class="n">draw_output</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">rgb_image</span><span class="p">)</span>
 
         <span class="o">...</span>
@@ -1749,7 +1749,7 @@
         <span class="k">return</span> <span class="n">results</span><span class="p">,</span> <span class="n">output_image</span>
 </code></pre></div></p>
 <p>This method calls the draw_detection() method to draw bounding boxes with the object labels and confidence thresholds over detected objects in the image using OpenCV.
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">draw_detection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">detection_dict</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">draw_detection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">detection_dict</span><span class="p">):</span>
         <span class="o">...</span>
 
         <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">y_min</span><span class="p">),</span> <span class="p">(</span><span class="n">x_max</span><span class="p">,</span> <span class="n">y_max</span><span class="p">),</span> <span class="n">color</span><span class="p">,</span> <span class="n">rectangle_line_thickness</span><span class="p">)</span>
@@ -1760,7 +1760,7 @@
         <span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">output_string</span><span class="p">,</span> <span class="p">(</span><span class="n">text_x</span><span class="p">,</span> <span class="n">text_y</span><span class="p">),</span> <span class="n">font</span><span class="p">,</span> <span class="n">font_scale</span><span class="p">,</span> <span class="n">line_color</span><span class="p">,</span> <span class="n">line_width</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">LINE_AA</span><span class="p">)</span>
 </code></pre></div></p>
 <p>Next, the script detection_node.py contains the class DetectionNode which is the main ROS node that subscribes to the RGB and depth images from the realsense camera and feeds them to the detector to run inference. The image_callback() method runs in a loop to subscribe to synchronized RGB and depth images. The RGB images are then rotated 90 degrees and passed to the apply_to_image() method. The returned output image is published on the visualize_object_detections_pub publisher, while the detections_2d dictionary is passed to the detections_2d_to_3d() method for further processing and drawing the detection plane. For detectors that also return markers and axes, it also publishes this information.
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">image_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ros_rgb_image</span><span class="p">,</span> <span class="n">ros_depth_image</span><span class="p">,</span> <span class="n">rgb_camera_info</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">image_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ros_rgb_image</span><span class="p">,</span> <span class="n">ros_depth_image</span><span class="p">,</span> <span class="n">rgb_camera_info</span><span class="p">):</span>
         <span class="o">...</span>
 
         <span class="n">detection_box_image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rgb_image</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">ROTATE_90_CLOCKWISE</span><span class="p">)</span>
@@ -1827,8 +1827,8 @@
     <span class="n">node</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </code></pre></div></p>
 <p>In addition to detecting faces, this class also enables detecting facial landmarks as well as estimating head pose. The constructor initializes and configures three separate models, namely head_detection_model, head_pose_model and landmarks_model,  with the help of the renamed_cv2.dnn.readNet() wrappers. Note that renamed_cv2 is simply the opencv_python_inference_engine library compiled under a different namespace for use with Stretch so as not to conflict with the regular OpenCV library and have functionalities from both available to users concurrently.
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">HeadPoseEstimator</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">models_directory</span><span class="p">,</span> <span class="n">use_neural_compute_stick</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">HeadPoseEstimator</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">models_directory</span><span class="p">,</span> <span class="n">use_neural_compute_stick</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="o">...</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">head_detection_model</span> <span class="o">=</span> <span class="n">renamed_cv2</span><span class="o">.</span><span class="n">dnn</span><span class="o">.</span><span class="n">readNetFromCaffe</span><span class="p">(</span><span class="n">head_detection_model_prototxt_filename</span><span class="p">,</span> <span class="n">head_detection_model_caffemodel_filename</span><span class="p">)</span>
@@ -1843,7 +1843,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">landmarks_model</span> <span class="o">=</span> <span class="n">renamed_cv2</span><span class="o">.</span><span class="n">dnn</span><span class="o">.</span><span class="n">readNet</span><span class="p">(</span><span class="n">landmarks_weights_filename</span><span class="p">,</span> <span class="n">landmarks_config_filename</span><span class="p">)</span>
 </code></pre></div></p>
 <p>The apply_to_image() method calls individual methods like detect_faces(), estimate_head_pose() and detect_facial_landmarks() that each runs the inference using the models we configured above. The bounding_boxes from the face detection model are used to supply the cropped image of the faces to head pose and facial landmark models to make their job way more efficient.
-<div class="highlight"><pre><span></span><code> <span class="k">def</span> <span class="nf">apply_to_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rgb_image</span><span class="p">,</span> <span class="n">draw_output</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code> <span class="k">def</span><span class="w"> </span><span class="nf">apply_to_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rgb_image</span><span class="p">,</span> <span class="n">draw_output</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="o">...</span>
 
         <span class="n">boxes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">detect_faces</span><span class="p">(</span><span class="n">rgb_image</span><span class="p">)</span>
@@ -1968,10 +1968,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../assets/javascripts/bundle.60a45f97.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

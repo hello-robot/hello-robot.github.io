@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.6f8fc17f.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -1857,16 +1857,16 @@
 <p>Having multiple readers, even if only one thread can send commands, would be useful for visualization purposes.</p>
 <h2 id="writing">Writing<a class="headerlink" href="#writing" title="Anchor link">&para;</a></h2>
 <p>Let's create an instance of the <code>Robot</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">stretch_body.robot</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">stretch_body.robot</span>
 
 <span class="n">r</span> <span class="o">=</span> <span class="n">stretch_body</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">Robot</span><span class="p">()</span>
 <span class="k">assert</span> <span class="n">r</span><span class="o">.</span><span class="n">startup</span><span class="p">()</span>
 <span class="k">assert</span> <span class="n">r</span><span class="o">.</span><span class="n">is_homed</span><span class="p">()</span>
 </code></pre></div>
 <p>Then create a "writer", that will send motion commands:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">random</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
 
-<span class="k">def</span> <span class="nf">write</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">write</span><span class="p">():</span>
     <span class="n">r</span><span class="o">.</span><span class="n">lift</span><span class="o">.</span><span class="n">move_to</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">))</span>
     <span class="n">r</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">move_to</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">))</span>
     <span class="n">r</span><span class="o">.</span><span class="n">end_of_arm</span><span class="o">.</span><span class="n">move_to</span><span class="p">(</span><span class="s1">&#39;wrist_roll&#39;</span><span class="p">,</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
@@ -1874,7 +1874,7 @@
     <span class="n">r</span><span class="o">.</span><span class="n">push_command</span><span class="p">()</span>
 </code></pre></div>
 <p>Then let's define a writing-only runner, that sends motion commands at 10hz:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">wo_runner</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">wo_runner</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;write-only runner&quot;&quot;&quot;</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">write</span><span class="p">()</span>
@@ -1885,27 +1885,27 @@
 <div class="highlight"><pre><span></span><code><span class="n">wo_runner</span><span class="p">()</span>
 </code></pre></div>
 <p>or launch it in a thread:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">threading</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">wo_runner</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </code></pre></div>
 <p>When AsyncIO is turned on, the program exits with no error. Likely an exception is being thrown in the thread, but isn't being surfaced to the user. Surfacing this exception is the first step towards making this library thread-safe with AsyncIO.</p>
 <p>However, if we <a href="https://github.com/hello-robot/stretch_body/blob/master/docs/robot_parameters.md#use_asyncio">disable AsyncIO</a>, we'll see the robot start to jitter and it tracks random motion goals.</p>
 <p>Next, we can run multiple threads with no problem:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">threading</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 
 <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">wo_runner</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">wo_runner</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </code></pre></div>
 <h3 id="high-low-competition">High-Low Competition<a class="headerlink" href="#high-low-competition" title="Anchor link">&para;</a></h3>
 <p>In the previous experiment, it's hard to tell the two-thread jitter apart from the one-thread jitter. So let's write two competing writers:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">low_write</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">low_write</span><span class="p">():</span>
     <span class="n">r</span><span class="o">.</span><span class="n">lift</span><span class="o">.</span><span class="n">move_to</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
     <span class="n">r</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">move_to</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
     <span class="n">r</span><span class="o">.</span><span class="n">end_of_arm</span><span class="o">.</span><span class="n">move_to</span><span class="p">(</span><span class="s1">&#39;wrist_roll&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
     <span class="n">r</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">move_to</span><span class="p">(</span><span class="s1">&#39;head_pan&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
     <span class="n">r</span><span class="o">.</span><span class="n">push_command</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">high_write</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">high_write</span><span class="p">():</span>
     <span class="n">r</span><span class="o">.</span><span class="n">lift</span><span class="o">.</span><span class="n">move_to</span><span class="p">(</span><span class="mf">1.1</span><span class="p">)</span>
     <span class="n">r</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">move_to</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span>
     <span class="n">r</span><span class="o">.</span><span class="n">end_of_arm</span><span class="o">.</span><span class="n">move_to</span><span class="p">(</span><span class="s1">&#39;wrist_roll&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
@@ -1913,7 +1913,7 @@
     <span class="n">r</span><span class="o">.</span><span class="n">push_command</span><span class="p">()</span>
 </code></pre></div>
 <p>and create runners for each:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">low_rw_runner</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">low_rw_runner</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;read-and-write runner&quot;&quot;&quot;</span>
     <span class="n">pl</span><span class="o">=</span><span class="n">NBPlot</span><span class="p">()</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -1921,7 +1921,7 @@
         <span class="n">read</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">high_rw_runner</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">high_rw_runner</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;read-and-write runner&quot;&quot;&quot;</span>
     <span class="n">pl</span><span class="o">=</span><span class="n">NBPlot</span><span class="p">()</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
@@ -1932,14 +1932,14 @@
 </code></pre></div>
 <p>Then, launch them with:</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">threading</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
     <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">low_rw_runner</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
     <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">high_rw_runner</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </code></pre></div>
 <p>Running this, we'll see the threads compete with one another, and the joints will oscillate between their limits, depending on which thread is given more processing time by the operating system at that moment. After 10 seconds, the high writer dies, and the robot moves to its lower joint limits.</p>
 <h2 id="reading">Reading<a class="headerlink" href="#reading" title="Anchor link">&para;</a></h2>
 <p>Let's create a "reader", that will plot the joint states for the four joints:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="n">plotter</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">read</span><span class="p">(</span><span class="n">plotter</span><span class="p">):</span>
     <span class="n">lift_pos</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">lift</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;pos&#39;</span><span class="p">]</span>
     <span class="n">arm_pos</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;pos&#39;</span><span class="p">]</span>
     <span class="n">roll_pos</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">end_of_arm</span><span class="o">.</span><span class="n">get_joint</span><span class="p">(</span><span class="s1">&#39;wrist_roll&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;pos&#39;</span><span class="p">]</span>
@@ -1947,7 +1947,7 @@
     <span class="n">plotter</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lift_pos</span><span class="p">,</span> <span class="n">arm_pos</span><span class="p">,</span> <span class="n">roll_pos</span><span class="p">,</span> <span class="n">pan_pos</span><span class="p">)</span>
 </code></pre></div>
 <p>Then let's define a reading-only runner, that will plot joint state at 10hz:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">ro_runner</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">ro_runner</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;read-only runner&quot;&quot;&quot;</span>
     <span class="n">pl</span><span class="o">=</span><span class="n">NBPlot</span><span class="p">()</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -1957,13 +1957,13 @@
 <p><code>NBPlot</code> is defined within <code>multiprocessing_plotter.py</code> in this folder. It enables Matplotlib to plot within threads.</p>
 <h3 id="results_1">Results<a class="headerlink" href="#results_1" title="Anchor link">&para;</a></h3>
 <p>We can run <code>ro_runner()</code> in the main thread without any issues, but if we launch <code>ro_runner()</code> in a thread:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">threading</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">ro_runner</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </code></pre></div>
 <p>Once again, the program exits with no error if we use asyncio and works fine if we disable it. Surfacing the underlying error will be helpful to debug.</p>
 <h2 id="reading-and-writing">Reading and Writing<a class="headerlink" href="#reading-and-writing" title="Anchor link">&para;</a></h2>
 <p>For completion, we have <code>wr_runner()</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">rw_runner</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">rw_runner</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;read-and-write runner&quot;&quot;&quot;</span>
     <span class="n">pl</span><span class="o">=</span><span class="n">NBPlot</span><span class="p">()</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -1972,7 +1972,7 @@
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 </code></pre></div>
 <p>We run it with:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">threading</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 
 <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">rw_runner</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">rw_runner</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
@@ -2110,10 +2110,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
