@@ -813,6 +813,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#rosdep-failure-on-rtabmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rosdep failure on RTabMap
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#conflicting-ros-version-sourced-error" class="md-nav__link">
     <span class="md-ellipsis">
       'Conflicting ROS version sourced' error
@@ -1765,6 +1774,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#rosdep-failure-on-rtabmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rosdep failure on RTabMap
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#conflicting-ros-version-sourced-error" class="md-nav__link">
     <span class="md-ellipsis">
       'Conflicting ROS version sourced' error
@@ -1820,6 +1838,12 @@ git<span class="w"> </span>pull
 <hr />
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Anchor link">&para;</a></h2>
 <p>This section provides suggestions for common errors that occur during installation. If you become stuck and don't find an answer here, please email us or contact us through <a href="https://forum.hello-robot.com/">the forum</a>.</p>
+<h3 id="rosdep-failure-on-rtabmap">Rosdep failure on RTabMap<a class="headerlink" href="#rosdep-failure-on-rtabmap" title="Anchor link">&para;</a></h3>
+<p>After a failure, if you see the following error in your log file (from <code>~/stretch_user/log/stretch_create_ament_workspace.&lt;timestamp&gt;_log.txt</code>):</p>
+<div class="highlight"><pre><span></span><code>ERROR: the following rosdeps failed to install
+  apt: command [sudo -H apt-get install -y ros-humble-rtabmap-ros] failed
+</code></pre></div>
+<p>Open a terminal, run <code>sudo apt install ros-humble-rtabmap-ros</code>, and then try updating the ROS workspace again.</p>
 <h3 id="conflicting-ros-version-sourced-error">'Conflicting ROS version sourced' error<a class="headerlink" href="#conflicting-ros-version-sourced-error" title="Anchor link">&para;</a></h3>
 <p>If you are seeing the following error:</p>
 <div class="highlight"><pre><span></span><code>###########################################
