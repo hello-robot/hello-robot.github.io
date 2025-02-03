@@ -24,7 +24,7 @@
       
       
       <link rel="icon" href="../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
     
     
       
@@ -32,7 +32,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.a40c8224.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d7758b05.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -833,6 +833,15 @@
   
     <nav class="md-nav" aria-label="Troubleshooting">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uv-not-found-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      UV not found failure
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#rosdep-failure-on-rtabmap" class="md-nav__link">
@@ -1829,6 +1838,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#uv-not-found-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      UV not found failure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#rosdep-failure-on-rtabmap" class="md-nav__link">
     <span class="md-ellipsis">
       Rosdep failure on RTabMap
@@ -1894,6 +1912,8 @@ git<span class="w"> </span>pull
 <hr />
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Anchor link">&para;</a></h2>
 <p>This section provides suggestions for common errors that occur during installation. If you become stuck and don't find an answer here, please email us or contact us through <a href="https://forum.hello-robot.com/">the forum</a>.</p>
+<h3 id="uv-not-found-failure">UV not found failure<a class="headerlink" href="#uv-not-found-failure" title="Anchor link">&para;</a></h3>
+<p>If you see the errors regarding the <code>uv</code> CLI not being found in your log file (from <code>~/stretch_user/log/stretch_create_ament_workspace.&lt;timestamp&gt;_log.txt</code>), follow the <a href="https://docs.astral.sh/uv/#getting-started">uv installation instructions</a> and then try updating the ROS workspace again.</p>
 <h3 id="rosdep-failure-on-rtabmap">Rosdep failure on RTabMap<a class="headerlink" href="#rosdep-failure-on-rtabmap" title="Anchor link">&para;</a></h3>
 <p>After a failure, if you see the following error in your log file (from <code>~/stretch_user/log/stretch_create_ament_workspace.&lt;timestamp&gt;_log.txt</code>):</p>
 <div class="highlight"><pre><span></span><code>ERROR: the following rosdeps failed to install
@@ -2058,7 +2078,7 @@ Cannot create workspace while a conflicting ROS version is sourced. Exiting.
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.5090c770.min.js"></script>
+      <script src="../../assets/javascripts/bundle.f13b1293.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
