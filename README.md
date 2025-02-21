@@ -1,4 +1,4 @@
-# Stretch Documentation Web Server
+# Stretch Docs Generator
 
 This repository generates the documentation hosted at [https://docs.hello-robot.com](https://docs.hello-robot.com).
 
@@ -17,48 +17,47 @@ git clone https://github.com/hello-robot/hello-robot.github.io
 cd hello-robot.github.io
 ./install.sh
 
-# choose a version of the documentation (e.g. 0.3)
+# choose a version of the documentation (details below)
 git checkout 0.3
 git submodule init
 git submodule update
 ```
 
-## Branch Structure
-The documentation is organized on versioned branches:
+### Choose a version
+
+Each version of the documentation is on a separate branch.
+
 ```commandline
 /repos/hello-robot.github.io$ git branch
   0.1
   0.2
+  0.3
   gh-pages
 ```
-This allows for the development of new documentation under a new version while hosting the stable documentation as default.
 
-All content maintained under the versioned branch. This master branch is for hosting install scripts and this README.md only.
+V0.1 was released with the launch of Stretch RE1. V0.2 was released with the Ubuntu 20.04-based OS upgrade for Stretch robots. V0.3 was released with the launch of Stretch 3.
 
-The branch `gh-pages` is a special orphan branch that the documentation build is pushed to using the Mike versioning plug-in for MkDocs. This branch is hosted by default at via GitHub Pages at [docs.hello-robot.com](docs.hello-robot.com),
-## Editing content
-In order to make a small change that doesn't require a version bump (for example):
-```commandline
-cd ~/repos/hello-robot.github.io
-git checkout 0.1
+By using versioning, you can find old docs even as new tutorials and APIs are released. All content is maintained under the version branch. This master branch is mostly empty.
 
-<make edits>
-
-git add *
-git commit -m 'make some edits'
-git push
-```
+The branch `gh-pages` is a special orphan branch that the documentation build is pushed to using the Mike versioning plug-in for MkDocs. This branch is hosted via GitHub Pages at [https://docs.hello-robot.com](https://docs.hello-robot.com),
 
 ## Previewing Edits
 
+Make edits in the respective repo. For example, if you're updating a tutorial for Stretch Body, edit the markdown file in that repo and open a PR there. Then, pull it here:
+
 ```commandline
-cd ~/repos/hello-robot.github.io
-mike serve
-Starting server at http://localhost:8000/
-Press Ctrl+C to quit.
+cd repos/<repo>
+git checkout <pr>
+
+cd ../..
+mkdocs serve
 ```
 You can then preview the content at site http://localhost:8000
+
 ## Deploying Edits
+
+**Note**: There's a Github Action set up on most Stretch repos. If a docs change is merged into mainline there, it automatically rebuilds the website and deploys it here. You can check that your change deployed by looking at the [actions tab](https://github.com/hello-robot/hello-robot.github.io/actions) on Github.
+
 If, for example, the version under edit is 0.1, you can push the edits to the webserver by:
 ```commandline
 cd ~/repos/hello-robot.github.io
@@ -83,6 +82,7 @@ mike deploy 0.3 'experimental' -t '0.3: Experimental development' --push
 ```
 
 Note the format for the title (-t). Keep a consistent naming structure. Also note that this version is aliased as `experimental`. 
+
 ## Adding a New Submodule Repo
 ```commandline
 cd ~/repos/hello-robot.github.io/repos
@@ -131,7 +131,9 @@ cd ~/repos/hello-robot.github.io/
 mike deploy 0.2 --push
 mike serve
 ```
+
 ## Other Tips
+
 The currently hosted versions that are managed by mike can be found with
 ```commandline
 ~/repos/hello-robot.github.io$ mike list
