@@ -2,426 +2,426 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.hello-robot.com/0.3/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/LICENSE/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/developing/basics/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/developing/cli/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/developing/networking/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/developing/onboot/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/developing/python/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/extending_stretch/changing_tools/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/extending_stretch/custom_dof/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/extending_stretch/extending_stretch_additional_hardware/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/extending_stretch/urdf_management/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/extending_stretch/wrist_expansion_header/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/getting_started/community_resources/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/getting_started/connecting_to_stretch/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/getting_started/demos_dexterous_teleop/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/getting_started/demos_mapping_and_navigation/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/getting_started/demos_web_teleop/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/getting_started/getting_help/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/getting_started/hello_robot/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/getting_started/stretch_hardware_overview/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/getting_started/wallpapers/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/getting_started/writing_code/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/hardware/battery_maintenance_guide_re1/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/hardware/battery_maintenance_guide_re2/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/hardware/battery_maintenance_guide_se3/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/hardware/dex_wrist_guide_re1/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/hardware/dex_wrist_guide_re2/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/hardware/hardware_guide_re1/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/hardware/hardware_guide_re2/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/hardware/hardware_guide_stretch_3/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/hardware/safety_guide/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/installation/add_new_user/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/installation/configure_BIOS/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/installation/contributing/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/installation/install_ubuntu_18.04/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/installation/install_ubuntu_20.04/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/installation/install_ubuntu_22.04/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/installation/robot_install/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/installation/ros_workspace/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/python/audio/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/python/ik/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/python/moving/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/python/other/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/python/pyfunmap/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/python/sensors/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/python/visual_servoing/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/align_to_aruco/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/aruco_marker_detection/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/avoiding_deadlocks_race_conditions/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/coming_soon/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/deep_perception/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/demo_grasp_object/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/demo_handover_object/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/demo_hello_world/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/demo_open_drawer/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/demo_surface_cleaning/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/example_1/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/example_10/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/example_12/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/example_2/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/example_3/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/example_4/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/example_5/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/example_6/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/example_7/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/example_8/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/example_9/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/feature_comparison/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/follow_joint_trajectory/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/gazebo_basics/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/getting_started/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/internal_state_of_stretch/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/intro_to_hellonode/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/intro_to_ros2/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/jogging/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/modes/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/moveit_basics/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/moveit_movegroup_demo/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/moveit_rviz_demo/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/navigation_overview/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/navigation_simple_commander/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/navigation_stack/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/obstacle_avoider/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/perception/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/remote_compute/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/respeaker_mic_array/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/respeaker_topics/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/robot_drivers/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/rviz_basics/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/teleoperating_stretch/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/ros2/writing_nodes/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/software/architecture/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/software/changelogs/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/software/contributing/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/software/distributions/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/software/updating_software/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/stretch-body/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/stretch-body/CHANGELOG/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/stretch-body/body/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/stretch-body/body/LICENSE/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/stretch-body/body/test/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/stretch-body/docs/robot_parameters/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/stretch-body/docs/is_thread_safe/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/stretch-body/tools/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.3/stretch-body/tools/LICENSE/</loc>
-         <lastmod>2025-02-07</lastmod>
+         <lastmod>2025-02-21</lastmod>
     </url>
 </urlset>

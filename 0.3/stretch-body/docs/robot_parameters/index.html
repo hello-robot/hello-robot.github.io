@@ -24,7 +24,7 @@
       
       
       <link rel="icon" href="../../../images/hello_robot_favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
     
     
       
@@ -32,7 +32,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7758b05.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8608ea7d.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -1702,6 +1702,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#enable_runstop" class="md-nav__link">
+    <span class="md-ellipsis">
+      enable_runstop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#i_feedforward-and-i_safety_feedforward" class="md-nav__link">
     <span class="md-ellipsis">
       i_feedforward and i_safety_feedforward
@@ -1856,6 +1865,15 @@
   <a href="#use_multiturn" class="md-nav__link">
     <span class="md-ellipsis">
       use_multiturn
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enable_runstop" class="md-nav__link">
+    <span class="md-ellipsis">
+      enable_runstop
     </span>
   </a>
   
@@ -2033,6 +2051,60 @@
 </tbody>
 </table>
 <p>* <code>head_pan.use_multiturn</code> is <code>0</code> for most Stretch robots, except for some early RE1s. For those robots, the parameter is set to <code>1</code> in "stretch_configuration_params.yaml". </p>
+<h3 id="enable_runstop">enable_runstop<a class="headerlink" href="#enable_runstop" title="Anchor link">&para;</a></h3>
+<p>This parameter changes how a particular joint behaves when the robot is runstopped. Setting this parameter to <code>0</code> means the joint will not stop moving and continue tracking its commanded goal. This can be useful if, for example, you want the gripper to keep hold on what it's holding when the robot is runstopped.</p>
+<p>The Dynamixel joints on the robot handle runstop differently than the stepper joints do. Whereas the stepper joints receive a hardware pulse whenever the runstop button is pressed, the Dynamixel joints don't. When Stretch Body is running, a sentry monitors the runstop through the pimu and calls <code>disable_torque()</code> / <code>enable_torque()</code> on the dxl joints as needed. For stepper joints, this parameter gives you control over whether the stepper PCB respects the hardware pulse. For dxl joints, this parameter gives you control over whether the sentry will turn on/off torque of a joint in response to the runstop state.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>head_pan.enable_runstop</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>head_tilt.enable_runstop</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>stretch_gripper.enable_runstop</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>wrist_yaw.enable_runstop</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>wrist_pitch.enable_runstop</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>wrist_roll.enable_runstop</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>hello-motor-arm.gains.enable_runstop</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>hello-motor-lift.gains.enable_runstop</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>hello-motor-left-wheel.gains.enable_runstop</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>hello-motor-right-wheel.gains.enable_runstop</td>
+<td><code>1</code></td>
+</tr>
+</tbody>
+</table>
+<p>To disable the sentry, there's also the <code>robot_sentry.dynamixel_stop_on_runstop</code> parameter. To disable the hardware pulses, there's also the <code>pimu.config.stop_at_runstop</code> parameter. To disabling logging when runstop is enabled/disabled, there's also the <code>robot_monitor.monitor_runstop</code>.</p>
 <h3 id="i_feedforward-and-i_safety_feedforward">i_feedforward and i_safety_feedforward<a class="headerlink" href="#i_feedforward-and-i_safety_feedforward" title="Anchor link">&para;</a></h3>
 <p>Gravity compensation adds a fixed ‘feedforward’ current to the motor controller to support the lift against gravity. This allows the lift to ‘float’ when the runstop is enabled, for example. If the feedforward current is too low, the lift will drift downward. If it is too high, it will drift upward. The <code>i_safety_feedforward</code> is the amount of current (A) applied when the motor is in safety mode (eg, runstop enabled). The <code>i_feedforward</code> term is applied when the lift is in normal operation. Generally the two parameters will be identical.</p>
 <p>There’s a simple tool to calibrate these values. <code>REx_calibrate_gravity_comp.py</code> will move the lift to a few positions, sampled the applied motor currents, and update your gravity compensation parameters. More details can be found in this <a href="https://forum.hello-robot.com/t/practical-guide-to-lift-gravity-compensation/657">knowledge base post</a>.</p>

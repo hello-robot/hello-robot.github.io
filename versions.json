@@ -3,9 +3,9 @@
     "version": "0.3",
     "title": "0.3: Latest",
     "aliases": [
-      "experimental",
-      "push",
       "beta",
+      "push",
+      "experimental",
       "latest"
     ]
   },
