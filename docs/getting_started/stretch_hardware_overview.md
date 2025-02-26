@@ -1,4 +1,4 @@
-# Stretch Hardware Overview
+# Robot Overview
 
 This guide will walk you through Stretch's hardware from top to bottom, including some simple command line tools you can use to interact with the robot.
 
