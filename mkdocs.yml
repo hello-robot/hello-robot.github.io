@@ -69,7 +69,7 @@ nav:
   - Getting Started:
     - Hello Robot!: getting_started/hello_robot.md
     - Connecting to Stretch: getting_started/connecting_to_stretch.md
-    - Stretch Hardware Overview: getting_started/stretch_hardware_overview.md
+    - Robot Overview: getting_started/stretch_hardware_overview.md
     - Writing Code: getting_started/writing_code.md
     - Demo 1 - Mapping & Navigation: getting_started/demos_mapping_and_navigation.md
     - Demo 2 - Web Teleop: getting_started/demos_web_teleop.md
