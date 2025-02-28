@@ -1738,6 +1738,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#distance_tol" class="md-nav__link">
+    <span class="md-ellipsis">
+      distance_tol
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#parameters-for-command-line-tools" class="md-nav__link">
     <span class="md-ellipsis">
       Parameters for Command Line Tools
@@ -1901,6 +1910,15 @@
   <a href="#base_max_velocity" class="md-nav__link">
     <span class="md-ellipsis">
       base_max_velocity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distance_tol" class="md-nav__link">
+    <span class="md-ellipsis">
+      distance_tol
     </span>
   </a>
   
@@ -2137,6 +2155,50 @@
 <tr>
 <td>robot_sentry.base_max_velocity</td>
 <td><code>1</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="distance_tol">distance_tol<a class="headerlink" href="#distance_tol" title="Anchor link">&para;</a></h3>
+<p>A tolerance within which the first waypoint of a splined trajectory must be of the joint's current position when <code>follow_trajectory(move_to_first_point=False)</code>, or the trajectory won't start execution.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>head_pan.distance_tol</td>
+<td><code>0.15</code></td>
+</tr>
+<tr>
+<td>head_tilt.distance_tol</td>
+<td><code>0.52</code></td>
+</tr>
+<tr>
+<td>stretch_gripper.distance_tol</td>
+<td><code>0.015</code></td>
+</tr>
+<tr>
+<td>wrist_yaw.distance_tol</td>
+<td><code>0.015</code></td>
+</tr>
+<tr>
+<td>wrist_pitch.distance_tol</td>
+<td><code>0.03</code></td>
+</tr>
+<tr>
+<td>wrist_roll.distance_tol</td>
+<td><code>0.015</code></td>
+</tr>
+<tr>
+<td>arm.distance_tol</td>
+<td><code>0.008</code></td>
+</tr>
+<tr>
+<td>lift.distance_tol</td>
+<td><code>0.015</code></td>
 </tr>
 </tbody>
 </table>
