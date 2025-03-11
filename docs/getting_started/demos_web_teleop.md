@@ -14,7 +14,7 @@ First, navigate to the folder containing the codebase using:
 colcon_cd stretch_web_teleop
 ```
 
-Next, launch the interface (if you captured a map in the [previous tutorial](./demos_mapping_and_navigation.md), use `./launch_interface -m ${HELLO_FLEET_PATH}/maps/nav2_demo_map.yaml` instead):
+Next, launch the interface (if you captured a map in the [previous tutorial](./demos_mapping_and_navigation.md), use `./launch_interface.sh -m ${HELLO_FLEET_PATH}/maps/nav2_demo_map.yaml` instead):
 
 ```{.bash .shell-prompt .copy}
 ./launch_interface.sh
