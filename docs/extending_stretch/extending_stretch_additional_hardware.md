@@ -14,6 +14,12 @@ Stretch provides various threaded mounting points (M4 threaded) around it's body
 |---	    |
 |   ![Shoulder Mounting Holes](./images/shoulder_mounting_holes_3d.jpg){: style="max-width:150px"}	|
 
+!!! warning
+
+    Maximum fastener length for shoulder mounting holes is 7mm - exceeding this depth may cause damage
+
+    ![Screw Max Length](./images/shoulder_mounting_holes_max_length.jpg){: style="max-width:450px"}
+
 ## Powering your Hardware
 
 Stretch providess additional 12V auxilary power ports on the base, head and shoulder  which you could use to power your additional hardware.
