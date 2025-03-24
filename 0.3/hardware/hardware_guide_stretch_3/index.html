@@ -2627,7 +2627,6 @@ Pin 2: GND</td>
 <p>The runstop allows the user to pause the motion of the four primary DOF (base, lift, and arm) by tapping the illuminated button on the head. When the runstop is enabled, these DOF are in a ‘Safety Mode’ that inhibits the motion controller at the firmware level. Disabling the runstop allows normal operation to resume.</p>
 <h3 id="lift">Lift<a class="headerlink" href="#lift" title="Anchor link">&para;</a></h3>
 <p>The lift degree of freedom provides vertical translation of the arm. It is driven by a closed loop stepper motor, providing smooth and precise motion through a low gear-ratio belt drive. The ‘shoulder’ includes four mounting holes and a small delivery tray.</p>
-<p>[!WARNING] Maximum fastener length for shoulder mounting holes is 7mm - exceeding this depth may cause damage</p>
 <p><a class="glightbox" href="../images/re2/lift_detail_rs.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image alt text" src="../images/re2/lift_detail_rs.png" /></a></p>
 <p><a class="glightbox" href="../images/re2/shoulder_detail_rs.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image alt text" src="../images/re2/shoulder_detail_rs.png" /></a></p>
 <table>
@@ -2660,6 +2659,12 @@ Pin 1: 12V
 Pin 2: GND</td>
   </tr>
 </table>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Maximum fastener length for shoulder mounting holes is 7mm - exceeding this depth may cause damage</p>
+<p><a class="glightbox" href="../images/shoulder_mounting_holes_max_length.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screw Max Length" src="../images/shoulder_mounting_holes_max_length.jpg" style="max-width:450px" /></a></p>
+</div>
 <p>Stretch 3 introduces a new lift brake feature. Upon power being disconnected to the lift motor (eg when the robot power switch is turned off), a brake will engage that prevents the arm and shoulder from falling rapidly. Instead, the robot arm will very slowly descend from its current position to the base of the robot. </p>
 <p>It takes approximately 2 minutes for the arm to fully descend from the top of the lift. After about 3 minutes, the brake function will disengage, and the lift will be backdrivable as normal. If it is necessary to backdrive the lift during the period where the brake is engaged, it can be overcome with a sufficient amount of external force. Hold the arm securely when backdriving it in this way.</p>
 <h3 id="arm">Arm<a class="headerlink" href="#arm" title="Anchor link">&para;</a></h3>
