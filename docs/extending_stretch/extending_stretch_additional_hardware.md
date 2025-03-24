@@ -10,6 +10,10 @@ Stretch provides various threaded mounting points (M4 threaded) around it's body
 |---	    |---	    |---	        |---	                |
 |   ![Base Mounting Holes](./images/base_mounting_holes.png){: style="height:700px,width:700px"}	|   ![Head Mounting Holes](./images/head_mounting_holes.png){: style="height:700px,width:700px"}	|   ![Shoulder Mounting Holes](./images/shoulder_mounting_holes.jpg){: style="height:700px,width:700px"}	|   ![Wrist Mounting Holes](./images/wrist_mounting_holes.png){: style="height:700px,width:700px"}	|
 
+### Shoulder
+
+CAD for the shoulder shell can be found on the [Tool Share](https://github.com/hello-robot/stretch_tool_share/tree/master/tool_share/stretch_shoulder).
+
 |   Shoulder 3D	|
 |---	    |
 |   ![Shoulder Mounting Holes](./images/shoulder_mounting_holes_3d.jpg){: style="max-width:150px"}	|
