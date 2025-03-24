@@ -8,7 +8,11 @@ Stretch provides various threaded mounting points (M4 threaded) around it's body
 
 |   Base	|   Head	|   Shoulder	|   Wrist Tool Plate	|
 |---	    |---	    |---	        |---	                |
-|   ![Base Mounting Holes](./images/base_mounting_holes.png){: style="height:700px,width:700px"}	|   ![Head Mounting Holes](./images/head_mounting_holes.png){: style="height:700px,width:700px"}	|   ![Shoulder Mounting Holes](./images/shoulder_mounting_holes.png){: style="height:700px,width:700px"}	|   ![Wrist Mounting Holes](./images/wrist_mounting_holes.png){: style="height:700px,width:700px"}	|
+|   ![Base Mounting Holes](./images/base_mounting_holes.png){: style="height:700px,width:700px"}	|   ![Head Mounting Holes](./images/head_mounting_holes.png){: style="height:700px,width:700px"}	|   ![Shoulder Mounting Holes](./images/shoulder_mounting_holes.jpg){: style="height:700px,width:700px"}	|   ![Wrist Mounting Holes](./images/wrist_mounting_holes.png){: style="height:700px,width:700px"}	|
+
+|   Shoulder 3D	|
+|---	    |
+|   ![Shoulder Mounting Holes](./images/shoulder_mounting_holes_3d.jpg){: style="max-width:150px"}	|
 
 ## Powering your Hardware
 
