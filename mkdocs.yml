@@ -39,6 +39,8 @@ markdown_extensions:
 
 extra_css:
   - extra.css
+extra_javascript:
+  - extra.js
 plugins:
   - redirects:
       redirect_maps:
