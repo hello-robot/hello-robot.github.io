@@ -19,8 +19,7 @@ cd hello-robot.github.io
 
 # choose a version of the documentation (details below)
 git checkout 0.3
-git submodule init
-git submodule update
+git submodule update --init
 ```
 
 ### Choose a version
