@@ -3,10 +3,10 @@
     "version": "0.3",
     "title": "0.3: Latest",
     "aliases": [
-      "latest",
-      "beta",
       "experimental",
-      "push"
+      "beta",
+      "push",
+      "latest"
     ]
   },
   {

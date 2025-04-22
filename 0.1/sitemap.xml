@@ -2,77 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.hello-robot.com/0.1/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <lastmod>2025-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.1/LICENSE/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <lastmod>2025-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.1/battery_maintenance_guide/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <lastmod>2025-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.1/dex_wrist_user_guide/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <lastmod>2025-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.1/dynamixel_tutorial/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <lastmod>2025-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.1/hardware_user_guide/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <lastmod>2025-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.1/parameters_tutorial/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <lastmod>2025-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.1/quick_start_guide/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <lastmod>2025-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.1/robot_safety_guide/</loc>
-         <lastmod>2022-08-31</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://docs.hello-robot.com/0.1/stretch_body_api/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <lastmod>2025-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.1/stretch_body_guide/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <lastmod>2025-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.1/tool_change_tutorial/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <lastmod>2025-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.1/troubleshooting_guide/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <lastmod>2025-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.1/untethered_operation/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <lastmod>2025-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.hello-robot.com/0.1/updating_software/</loc>
-         <lastmod>2022-08-31</lastmod>
+         <lastmod>2025-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

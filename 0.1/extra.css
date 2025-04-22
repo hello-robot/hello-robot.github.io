@@ -46,3 +46,19 @@ div.doc-contents {
 .highlight.no-copy .md-clipboard {
   display: none;
 }
+
+/* Old Docs Banner */
+div[data-md-component=announce] {
+    background-color: rgba(255,145,0,.1);
+}
+div[data-md-component=announce]>div#announce-msg{
+    color: var(--md-admonition-fg-color);
+    font-size: .8rem;
+    text-align: center;
+    margin: 15px;
+}
+div[data-md-component=announce]>div#announce-msg>a{
+    color: var(--md-typeset-a-color);
+    text-decoration: underline;
+}
+
