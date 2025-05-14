@@ -26,7 +26,7 @@ Description:	Ubuntu 22.04.3 LTS
 
 ### Installing a Distribution
 
-To install one of the distributions above, check out the [Performing a Robot Installation](../../stretch-install/robot_install/) guide.
+To install one of the distributions above, check out the [Performing a Robot Installation](../../installation/robot_install/) guide.
 
 ## Roadmap
 
