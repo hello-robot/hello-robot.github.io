@@ -1,7 +1,7 @@
 site_name: Stretch Docs
 site_url: https://docs.hello-robot.com
 site_description: "Hello Robot User Documentation"
-copyright: 'Copyright &copy; 2020-2024 Hello Robot Inc'
+copyright: 'Copyright &copy; 2020-2025 Hello Robot Inc'
 site_author: Hello Robot Inc
 use_directory_urls: True
 edit_uri: ''
