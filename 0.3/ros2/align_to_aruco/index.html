@@ -1784,6 +1784,30 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#the-aruco-marker-dictionary" class="md-nav__link">
+    <span class="md-ellipsis">
+      The ArUco Marker Dictionary
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The ArUco Marker Dictionary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-aruco-marker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a New ArUco Marker
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#aruco-detection" class="md-nav__link">
     <span class="md-ellipsis">
       ArUco Detection
@@ -1807,6 +1831,30 @@
       See It In Action
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="See It In Action">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#special-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Special Considerations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual-launch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual Launch
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1837,11 +1885,79 @@
 
 <h1 id="align-to-aruco">Align to ArUco<a class="headerlink" href="#align-to-aruco" title="Anchor link">&para;</a></h1>
 <p>ArUco markers are a type of fiducials that are used extensively in robotics for identification and pose estimation. In this tutorial we will learn how to identify ArUco markers with the ArUco detection node and enable Stretch to navigate and align itself with respect to the marker.</p>
+<p>There are three main parameters to creating an ArUco tag:
+- Dictionary Size (Use 6x6_250 when using Stretch tutorials or ROS2 nodes, this is explained more <a href="#aruco-detection">below</a>)
+- ID (A unique identifier for the tag, see <a href="#create-a-new-aruco-marker">Create a New ArUco Marker</a> for reserved ID's)
+- Marker Size (The physical dimensions of the tag in mm, this can be customized freely.)</p>
+<h2 id="the-aruco-marker-dictionary">The ArUco Marker Dictionary<a class="headerlink" href="#the-aruco-marker-dictionary" title="Anchor link">&para;</a></h2>
+<p>When defining the ArUco markers on Stretch, hello robot utilizes a YAML file, <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yaml</a>, that holds the information about the markers.</p>
+<p>If <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/nodes/detect_aruco_markers">detect_aruco_markers</a> node doesn’t find an entry in <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yaml</a> for a particular ArUco marker ID number, it uses the default entry. For example, most robots have shipped with the following default entry:</p>
+<div class="highlight"><pre><span></span><code><span class="s">&#39;default&#39;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">&#39;length_mm&#39;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24</span>
+<span class="w">  </span><span class="s">&#39;use_rgb_only&#39;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+<span class="w">  </span><span class="s">&#39;name&#39;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&#39;unknown&#39;</span>
+<span class="w">  </span><span class="s">&#39;link&#39;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
+</code></pre></div>
+<p>and the following entry for the ArUco marker on the top of the wrist</p>
+<div class="highlight"><pre><span></span><code><span class="s">&#39;133&#39;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">&#39;length_mm&#39;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">23.5</span>
+<span class="w">  </span><span class="s">&#39;use_rgb_only&#39;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+<span class="w">  </span><span class="s">&#39;name&#39;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&#39;wrist_top&#39;</span>
+<span class="w">  </span><span class="s">&#39;link&#39;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&#39;link_aruco_top_wrist&#39;</span>
+</code></pre></div>
+<p><strong>Dictionary Breakdown</strong></p>
+<div class="highlight"><pre><span></span><code><span class="s">&#39;133&#39;</span><span class="p p-Indicator">:</span>
+</code></pre></div>
+<p>The dictionary key for each entry is the ArUco marker’s ID number or <code>default</code>. For example, the entry shown above for the ArUco marker on the top of the wrist assumes that the marker’s ID number is <code>133</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="s">&#39;length_mm&#39;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">23.5</span>
+</code></pre></div>
+<p>The <code>length_mm</code> value used by <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/nodes/detect_aruco_markers">detect_aruco_markers</a> is important for estimating the pose of an ArUco marker.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the actual width and height of the marker do not match this value, then pose estimation will be poor. Thus, carefully measure custom Aruco markers.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="s">&#39;use_rgb_only&#39;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+</code></pre></div>
+<p>If <code>use_rgb_only</code> is <code>True</code>, <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/nodes/detect_aruco_markers">detect_aruco_markers</a> will ignore depth images from the <a href="https://www.intelrealsense.com/depth-camera-d435i/">Intel RealSense D435i depth camera</a> when estimating the pose of the marker and will instead only use RGB images from the D435i.</p>
+<div class="highlight"><pre><span></span><code><span class="s">&#39;name&#39;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&#39;wrist_top&#39;</span>
+</code></pre></div>
+<p><code>name</code> is used for the text string of the ArUco marker’s <a href="http://docs.ros.org/en/melodic/api/visualization_msgs/html/msg/Marker.html">ROS Marker</a> in the <a href="http://docs.ros.org/en/melodic/api/visualization_msgs/html/msg/MarkerArray.html">ROS MarkerArray</a> Message published by the <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/nodes/detect_aruco_markers">detect_aruco_markers</a> ROS node.</p>
+<div class="highlight"><pre><span></span><code><span class="s">&#39;link&#39;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&#39;link_aruco_top_wrist&#39;</span>
+</code></pre></div>
+<p><code>link</code> is currently used by <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_calibration/nodes/collect_head_calibration_data">stretch_calibration</a>. It is the name of the link associated with a body-mounted ArUco marker in the <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_description/urdf/stretch_aruco.xacro">robot’s URDF</a>.</p>
+<p>It’s good practice to add an entry to <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yaml</a> for each ArUco marker you use.</p>
+<h3 id="create-a-new-aruco-marker">Create a New ArUco Marker<a class="headerlink" href="#create-a-new-aruco-marker" title="Anchor link">&para;</a></h3>
+<p>At Hello Robot, we’ve used the following guide when generating new ArUco markers.</p>
+<p>We generate ArUco markers using a 6x6-bit grid (36 bits) with 250 unique codes. This corresponds with<a href="https://docs.opencv.org/3.4/d9/d6a/group__aruco.html"> DICT_6X6_250 defined in OpenCV</a>. We generate markers using this <a href="https://chev.me/arucogen/">online ArUco marker generator</a> by setting the Dictionary entry to 6x6 and then setting the Marker ID and Marker size, mm as appropriate for the specific application. We strongly recommend measuring the actual marker by hand before adding an entry for it to <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yaml</a>.</p>
+<p>We select marker ID numbers using the following ranges.</p>
+<ul>
+<li>0 - 99: reserved for users</li>
+<li>100 - 249: reserved for official use by Hello Robot Inc.</li>
+<li>100 - 199: reserved for robots with distinct sets of body-mounted markers<ul>
+<li>Allows different robots near each other to use distinct sets of body-mounted markers to avoid confusion. This could be valuable for various uses of body-mounted markers, including calibration, visual servoing, visual motion capture, and multi-robot tasks.</li>
+<li>5 markers per robot = 2 on the mobile base + 2 on the wrist + 1 on the shoulder</li>
+<li>20 distinct sets = 100 available ID numbers / 5 ID numbers per robot</li>
+</ul>
+</li>
+<li>200 - 249: reserved for official accessories<ul>
+<li>245 for the prototype docking station</li>
+<li>246-249 for large floor markers</li>
+</ul>
+</li>
+</ul>
+<p>When coming up with this guide, we expected the following:</p>
+<ul>
+<li>Body-mounted accessories with the same ID numbers mounted to different robots could be disambiguated using the expected range of 3D locations of the ArUco markers on the calibrated body.</li>
+<li>Accessories in the environment with the same ID numbers could be disambiguated using a map or nearby observable features of the environment.</li>
+</ul>
+<blockquote>
+<p>Note: This section of the tutorial is borrowed from its <a href="https://github.com/hello-robot/stretch_tutorials/blob/master/ros1/aruco_marker_detection.md">ROS1 predecessor</a>.</p>
+</blockquote>
 <h2 id="aruco-detection">ArUco Detection<a class="headerlink" href="#aruco-detection" title="Anchor link">&para;</a></h2>
 <p>Stretch uses the OpenCV ArUco detection library and is configured to identify a specific set of ArUco markers belonging to the 6x6, 250 dictionary. To understand why this is important, please refer to <a href="https://docs.opencv.org/4.x/d5/dae/tutorial_aruco_detection.html">this</a> handy guide provided by OpenCV.</p>
-<p>Stretch comes preconfigured to identify ArUco markers. The ROS node that enables this is the detect_aruco_markers <a href="https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/stretch_core/detect_aruco_markers.py">node</a> in the stretch_core package. Thanks to this node, identifying and estimating the pose of a marker is as easy as pointing the camera at the marker and running the detection node. It is also possible and quite convenient to visualize the detections with RViz.</p>
+<p>Stretch comes preconfigured to identify ArUco markers. The ROS node that enables this is the <a href="https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/stretch_core/detect_aruco_markers.py">detect_aruco_markers node</a> in the stretch_core package. Thanks to this node, identifying and estimating the pose of a marker is as easy as pointing the camera at the marker and running the detection node. It is also possible and quite convenient to visualize the detections with RViz.</p>
 <h2 id="computing-transformations">Computing Transformations<a class="headerlink" href="#computing-transformations" title="Anchor link">&para;</a></h2>
-<p>If you have not already done so, now might be a good time to review the <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/example_10/">tf listener</a> tutorial. Go on, we can wait…
+<p>If you have not already done so, now might be a good time to review the <a href="https://docs.hello-robot.com/latest/ros2/example_10/">tf listener</a> tutorial. Go on, we can wait…
 Now that we know how to program stretch to return the transform between known reference frames, we can use this knowledge to compute the transform between the detected marker and the robot base_link. From its current pose, for Stretch to align itself in front of the marker, we need to command it to reach there. But even before that, we need to program Stretch to know the goal pose. We define the goal pose to be 0.5 metre outward from the marker in the marker negative y-axis (Green axis). This is easier to visualize through the figure below.</p>
 <p align="center">
     <a class="glightbox" href="https://user-images.githubusercontent.com/97639181/196329130-986c3af9-6dc9-4d9b-8a74-626d12b1d82c.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://user-images.githubusercontent.com/97639181/196329130-986c3af9-6dc9-4d9b-8a74-626d12b1d82c.png" width="400"></a>
@@ -1850,15 +1966,17 @@ Now that we know how to program stretch to return the transform between known re
 <!-- Add images to show alignment and tranformations -->
 
 <p>By monitoring the /aruco/marker_array and /aruco/axes topics, we can visualize the markers in RViz. The detection node also publishes the tf pose of the detected markers. This can be visualized by using the TF plugin and selecting the detected marker to inspect the pose. Next, we will use exactly that to compute the transform between the detected marker and the base_link of the robot.</p>
-<p>Now, we can compute the transformation from the robot base_link frame to the goal pose and pass this as an SE2 pose to the mobile base.</p>
-<p>Since we want Stretch to stop at a fixed distance with respect to the marker, we define a 0.5m offset in the marker y-axis where Stretch would come to a stop. At the same time, we also want Stretch to align its orientation to point its arm towards the marker so as to make the subsequent manipulation tasks easier to accomplish. This would result in the end pose of the base_link as shown in the above figure. Sweet! The next task is to generate a simple motion plan for the mobile base to reach this end pose. We do this in three steps:
+<p>Now, we can compute the transformation from the robot <code>base_link</code> frame to the <code>goal</code> pose and pass this as a 2D special Euclidian (SE2) pose to the mobile base.</p>
+<p>Since we want Stretch to stop at a fixed distance with respect to the marker, we define a 0.75m offset in the marker y-axis where Stretch would come to a stop. </p>
+<p>At the same time, we also want Stretch to align its orientation to point its arm towards the marker so as to make the subsequent manipulation tasks easier to accomplish. This would result in the end pose of the base_link as shown in the above figure. Sweet! </p>
+<p>The next task is to generate a simple motion plan for the mobile base to reach this end pose. We do this in three steps:
 1. Turn theta degrees towards the goal position. This would be the angle formed between the robot x-axis and the line connecting the start and the goal positions.
 2. Travel straight to the goal position. This would be the euclidean distance between the start and the goal positions.
 3. Turn phi degrees to attain the goal orientation. This would be the correction angle necessary to align the robot y-axis with the marker x-axis.</p>
 <p>Luckily, we know how to command Stretch to execute a trajectory using the joint trajectory server. If you are just starting, have a look at the <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/follow_joint_trajectory/">Follow Joint Trajectory Commands</a> tutorial to know how to command Stretch using the Joint trajectory Server.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Since we won't be using the arm for this demo, it's safer to stow Stretch's arm in.</p>
+<p>Since we won't be using the arm for this demo, it's safer to stow Stretch's arm in. Run <code>stretch_robot_stow.py</code> from anywhere on a terminal.</p>
 </div>
 <div class="shell-prompt highlight"><pre><span></span><code>stretch_robot_stow.py
 </code></pre></div>
@@ -1873,6 +1991,20 @@ Now that we know how to program stretch to return the transform between known re
     <a class="glightbox" href="https://user-images.githubusercontent.com/97639181/196327520-7a3b6743-8e2c-4ec0-8603-ba9baff7aa34.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://user-images.githubusercontent.com/97639181/196327520-7a3b6743-8e2c-4ec0-8603-ba9baff7aa34.gif" width="400"></a>
 </p>
 
+<h4 id="special-considerations">Special Considerations<a class="headerlink" href="#special-considerations" title="Anchor link">&para;</a></h4>
+<ol>
+<li>Since we won't be using the arm for this demo, it's safer to stow Stretch's arm in. Run <code>stretch_robot_stow.py</code> from anywhere on a terminal.</li>
+<li>the ArUco tag needs to be laid flat and rotated to match the image in <a href="https://docs.hello-robot.com/latest/ros2/align_to_aruco/#computing-transformations">Computing Transformations</a> above.</li>
+<li>The robot will move 0.75m away from the marker. This means that if the robot is within 0.75m, then it will rotate and move forward until it is at 0.75m. If the robot is too close while rotating, it may collide with its surroundings.</li>
+<li>If you wish to use a custom ArUco tag, 1. you should <a href="#create-a-new-aruco-marker">create a tag</a>. 2. print it so you can place it in your environment. 3. Duplicate the <code>131</code> <code>base_right</code> marker in <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yml</a> and replace <code>131</code> with your marker's ID, <code>base_right</code> with a new name, and the <code>marker_size</code>, if it is different. 4. Lastly, you will need to pass the <code>aruco_tag_name</code> rosparam to the <code>stretch_aruco.py</code> node. You can do this either by editting the <code>align_to_aruco.launch.py</code> file or following the <a href="#manual-launch">Manual Launch</a> steps below.</li>
+</ol>
+<h3 id="manual-launch">Manual Launch<a class="headerlink" href="#manual-launch" title="Anchor link">&para;</a></h3>
+<p>Instead of using the launch file, you can also run the following commands. This allows you to specify a custom ArUco tag name to the <code>align_to_aruco.py</code> node. The custom tag name must be defined in <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yml</a>:</p>
+<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
+roslaunch stretch_core d435i_low_resolution.launch
+roslaunch stretch_core stretch_aruco.launch --ros-args -p aruco_tag_name:=base_right
+rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/aruco_detector_example.rviz
+</code></pre></div>
 <h2 id="code-breakdown">Code Breakdown<a class="headerlink" href="#code-breakdown" title="Anchor link">&para;</a></h2>
 <p>Let's jump into the code to see how things work under the hood. Follow along <a href="https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/stretch_core/align_to_aruco.py">here</a> to have a look at the entire script.</p>
 <p>We make use of two separate Python classes for this demo. The FrameListener class is derived from the Node class and is the place where we compute the TF transformations. For an explantion of this class, you can refer to the <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/example_10/">TF listener</a> tutorial.
@@ -1925,7 +2057,7 @@ Now that we know how to program stretch to return the transform between known re
 <p>The align_to_marker() method is where we command Stretch to the pose goal in three steps using the Joint Trajectory action server. For an explanation on how to form the trajectory goal, you can refer to the <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/follow_joint_trajectory/">Follow Joint Trajectory Commands</a> tutorial.
 <div class="highlight"><pre><span></span><code>    <span class="k">def</span><span class="w"> </span><span class="nf">align_to_marker</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </code></pre></div></p>
-<p>If you want to work with a different ArUco marker than the one we used in this tutorial, you can do so by changing line 44 in the <a href="https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/stretch_core/align_to_aruco.py#L44">code</a> to the one you wish to detect. Also, don't forget to add the marker in the <a href="https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yaml</a> ArUco marker dictionary.</p>
+<p>If you want to work with a different ArUco marker than the one we used in this tutorial, you can do so by changing line 44 in the <a href="https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/stretch_core/align_to_aruco.py#L130">code</a> to the one you wish to detect or pass in that rosparam. Also, don't forget to add the marker in the <a href="https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yaml</a> ArUco marker dictionary.</p>
 
 
 
