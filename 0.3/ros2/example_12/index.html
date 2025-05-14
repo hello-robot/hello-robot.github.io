@@ -20,7 +20,7 @@
         <link rel="prev" href="../remote_compute/">
       
       
-        <link rel="next" href="../example_9/">
+        <link rel="next" href="../example_5/">
       
       
       <link rel="icon" href="../../images/hello_robot_favicon.png">
@@ -94,7 +94,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#example-12" class="md-skip">
+        <a href="#aruco-locator" class="md-skip">
           Skip to content
         </a>
       
@@ -1467,12 +1467,48 @@
   
   
   
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_7_6" id="__nav_7_7_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Joints
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_7_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_7_6">
+            <span class="md-nav__icon md-icon"></span>
+            Joints
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../example_9/" class="md-nav__link">
+      <a href="../example_5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Voice Teleop
+    Joint States
     
   </span>
   
@@ -1490,11 +1526,85 @@
   
   
     <li class="md-nav__item">
-      <a href="../example_9/" class="md-nav__link">
+      <a href="../example_10/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Voice Teleop
+    Static Transformations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example_6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Joint Effort
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example_7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Realsense Camera
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example_8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Microphones
     
   </span>
   
@@ -1822,7 +1932,7 @@
 
 
 
-<h1 id="example-12">Example 12<a class="headerlink" href="#example-12" title="Anchor link">&para;</a></h1>
+<h1 id="aruco-locator">ArUco Locator<a class="headerlink" href="#aruco-locator" title="Anchor link">&para;</a></h1>
 <p>For this example, we will send follow joint trajectory commands for the head camera to search and locate an ArUco tag. In this instance, a Stretch robot will try to locate the docking station's ArUco tag.</p>
 <h2 id="modifying-stretch-marker-dictionary-yaml-file">Modifying Stretch Marker Dictionary YAML File<a class="headerlink" href="#modifying-stretch-marker-dictionary-yaml-file" title="Anchor link">&para;</a></h2>
 <p>When defining the ArUco markers on Stretch, hello robot utilizes a YAML file, <a href="https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yaml</a>, that holds the information about the markers. A further breakdown of the YAML file can be found in our <a href="../aruco_marker_detection/">Aruco Marker Detection</a> tutorial.</p>
@@ -2248,13 +2358,13 @@ Instantiate the <code>LocateArUcoTag()</code> object and run the <code>main()</c
         
         
           
-          <a href="../example_9/" class="md-footer__link md-footer__link--next" aria-label="Next: Voice Teleop">
+          <a href="../example_5/" class="md-footer__link md-footer__link--next" aria-label="Next: Joint States">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Voice Teleop
+                Joint States
               </div>
             </div>
             <div class="md-footer__button md-icon">

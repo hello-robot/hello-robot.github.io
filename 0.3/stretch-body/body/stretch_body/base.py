@@ -20,7 +20,7 @@ class Base(Device):
             usb_right = self.params['usb_name_right_wheel']
         self.left_wheel = Stepper(usb=usb_left, name='hello-motor-left-wheel')
         self.right_wheel = Stepper(usb=usb_right, name='hello-motor-right-wheel')
-        self.status = {'timestamp_pc':0,'x':0,'y':0,'theta':0,'x_vel':0,'y_vel':0,'theta_vel':0, 'pose_time_s':0,'effort': [0, 0], 'left_wheel': self.left_wheel.status, 'right_wheel': self.right_wheel.status, 'translation_force': 0, 'rotation_torque': 0}
+        self.status = {'timestamp_pc':0,'x':0,'y':0,'theta':0,'x_vel':0,'y_vel':0,'theta_vel':0, 'pose_time_s':0,'effort': (0, 0), 'left_wheel': self.left_wheel.status, 'right_wheel': self.right_wheel.status, 'translation_force': 0, 'rotation_torque': 0}
         self.trajectory = DiffDriveTrajectory()
         self._waypoint_lwpos = None
         self._waypoint_rwpos = None
@@ -37,7 +37,7 @@ class Base(Device):
         self.fast_motion_allowed = True
     # ###########  Device Methods #############
 
-    def startup(self, threaded=True):
+    def startup(self, threaded:bool=True) -> bool:
         #Startup steppers first so that status is populated before this Device thread begins (if threaded==true)
         success = self.left_wheel.startup(threaded=False) and self.right_wheel.startup(threaded=False)
         if success:
@@ -400,6 +400,7 @@ class Base(Device):
         if int(str(self.right_wheel.board_info['protocol_version'])[1:]) < 1:
             self.logger.warning("Base right motor firmware version doesn't support waypoint trajectories")
             return False
+            
 
         # check if trajectory valid
         vel_limit = v_r if v_r is not None else self.params['motion']['trajectory_max']['vel_r']
@@ -441,8 +442,14 @@ class Base(Device):
         self.right_wheel.pull_status()
         self._waypoint_lwpos = self.left_wheel.status['pos']
         self._waypoint_rwpos = self.right_wheel.status['pos']
-        ls0, rs0 = self.trajectory.get_wheel_segments(0, self.translate_to_motor_rad, self.rotate_to_motor_rad,
+        wheel_segments = self.trajectory.get_wheel_segments(0, self.translate_to_motor_rad, self.rotate_to_motor_rad,
             self._waypoint_lwpos, self._waypoint_rwpos)
+        
+        if wheel_segments is None:
+            return False
+        
+        ls0, rs0 = wheel_segments
+
         return self.left_wheel.start_waypoint_trajectory(ls0.to_array()) and \
             self.right_wheel.start_waypoint_trajectory(rs0.to_array())
 
@@ -495,8 +502,14 @@ class Base(Device):
         if self.left_wheel.status['waypoint_traj']['state'] == 'active' and self.right_wheel.status['waypoint_traj']['state'] == 'active':
             next_segment_id = self.left_wheel.status['waypoint_traj']['segment_id'] - 2 + 1 # subtract 2 due to IDs 0 & 1 being reserved by firmware
             if next_segment_id < self.trajectory.get_num_segments():
-                ls1, rs1 = self.trajectory.get_wheel_segments(next_segment_id, self.translate_to_motor_rad, self.rotate_to_motor_rad,
+                wheel_segments = self.trajectory.get_wheel_segments(next_segment_id, self.translate_to_motor_rad, self.rotate_to_motor_rad,
                     self._waypoint_lwpos, self._waypoint_rwpos)
+                
+                if wheel_segments is None:
+                    self.logger.warn('unable to send next trajectory segment; received invalid index')
+                    return
+                
+                ls1, rs1 = wheel_segments
                 self.left_wheel.set_next_trajectory_segment(ls1.to_array())
                 self.right_wheel.set_next_trajectory_segment(rs1.to_array())
         elif self.left_wheel.status['waypoint_traj']['state'] == 'idle' and self.left_wheel.status['mode'] == Stepper.MODE_POS_TRAJ_WAYPOINT and \
@@ -565,6 +578,12 @@ class Base(Device):
         await self.right_wheel.pull_status_async()
         self.__update_status()
 
+    def _get_effort(self) -> tuple[float, float]:
+        return (
+            self.status['left_wheel']["effort_pct"],
+            self.status['right_wheel']["effort_pct"]
+        )
+
     def __update_status(self):
 
         self.status['timestamp_pc'] = time.time()
@@ -593,6 +612,8 @@ class Base(Device):
             self.status['x_vel'] = 0.0
             self.status['y_vel'] = 0.0
             self.status['theta_vel'] = 0.0
+
+            self.status['effort'] = self._get_effort()
 
         else:
             ######################################################
@@ -692,6 +713,8 @@ class Base(Device):
                 self.status['x'] = prev_x + delta_x
                 self.status['y'] = prev_y + delta_y
                 self.status['theta'] = (prev_theta + delta_theta) % (2.0 * pi)
+
+                self.status['effort'] = self._get_effort()
 
     # ############## Deprecated Contact API ##################
 
