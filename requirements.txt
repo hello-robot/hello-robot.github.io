@@ -1,5 +1,5 @@
 mkdocs
-mkdocs-material
+mkdocs-material==9.6.9
 mkdocs-simple-plugin
 pytkdocs[numpy-style]
 jinja2==3.0.3
