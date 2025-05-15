@@ -1245,7 +1245,7 @@
             
   
   <span class="md-ellipsis">
-    Examples
+    Examples:
     
   </span>
   
@@ -1256,7 +1256,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_7">
             <span class="md-nav__icon md-icon"></span>
-            Examples
+            Examples:
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1267,11 +1267,33 @@
   
   
     <li class="md-nav__item">
-      <a href="../example_2/" class="md-nav__link">
+      <a href="../ros2/example_1.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Filter Laser Scans
+    Move Stretch with Twist Controller
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ros2/obstacle_avoider.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Obstacle Avoidance
     
   </span>
   
@@ -1355,6 +1377,28 @@
   
   
     <li class="md-nav__item">
+      <a href="../ros2/align_to_aruco.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Align to ArUco
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../example_12/" class="md-nav__link">
         
   
@@ -1384,10 +1428,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7_8" >
         
           
-          <label class="md-nav__link" for="__nav_7_7_6" id="__nav_7_7_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_7_8" id="__nav_7_7_8_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1399,8 +1443,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_7_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_7_6">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_7_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_7_8">
             <span class="md-nav__icon md-icon"></span>
             Joints
           </label>
@@ -1475,6 +1519,50 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ros2/deep_perception.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deep Perception
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example_2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filter Laser Scans
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1867,6 +1955,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#interactive-alignment-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interactive Alignment Visualization
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2056,8 +2153,59 @@ rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/aruco
 </code></pre></div></p>
 <p>The align_to_marker() method is where we command Stretch to the pose goal in three steps using the Joint Trajectory action server. For an explanation on how to form the trajectory goal, you can refer to the <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/follow_joint_trajectory/">Follow Joint Trajectory Commands</a> tutorial.
 <div class="highlight"><pre><span></span><code>    <span class="k">def</span><span class="w"> </span><span class="nf">align_to_marker</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</code></pre></div></p>
-<p>If you want to work with a different ArUco marker than the one we used in this tutorial, you can do so by changing line 44 in the <a href="https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/stretch_core/align_to_aruco.py#L130">code</a> to the one you wish to detect or pass in that rosparam. Also, don't forget to add the marker in the <a href="https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yaml</a> ArUco marker dictionary.</p>
+</code></pre></div>
+If you want to work with a different ArUco marker than the one we used in this tutorial, you can do so by changing line 44 in the <a href="https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/stretch_core/align_to_aruco.py#L130">code</a> to the one you wish to detect or pass in that rosparam. Also, don't forget to add the marker in the <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yaml</a> ArUco marker dictionary.</p>
+<h2 id="interactive-alignment-visualization">Interactive Alignment Visualization<a class="headerlink" href="#interactive-alignment-visualization" title="Anchor link">&para;</a></h2>
+<p>Below is an interactive visualization that demonstrates how Stretch aligns with an ArUco marker:</p>
+<div class="alignment-visualization">
+  <h2>Align to ArUco Visualization</h2>
+  <div class="container">
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <div class="controls">
+      <label>
+        Marker Offset Distance (m)
+        <input type="range" id="offset" min="0.3" max="1.5" step="0.05" value="0.75">
+        <span id="offsetVal">0.75</span>
+      </label>
+
+      <label>
+        Marker X Position (m)
+        <input type="range" id="markerX" min="-2.0" max="2.0" step="0.1" value="1.2">
+        <span id="markerXVal">1.2</span>
+      </label>
+
+      <label>
+        Marker Y Position (m)
+        <input type="range" id="markerY" min="-2.0" max="2.0" step="0.1" value="1.2">
+        <span id="markerYVal">1.2</span>
+      </label>
+
+      <label>
+        Marker Rotation (degrees)
+        <input type="range" id="markerRot" min="-180" max="180" step="5" value="-90">
+        <span id="markerRotVal">-90</span>
+      </label>
+
+      <div class="button-group">
+        <button onclick="resetInputs()">Reset</button>
+        <button id="animateButton" onclick="startAnimation()">Animate Robot</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p><link rel="stylesheet" href="../css/align_to_aruco_vis.css"></p>
+<script src="../js/align_to_aruco_vis.js"></script>
+
+<p>This interactive visualization illustrates the process of aligning Stretch with an ArUco marker:</p>
+<ol>
+<li>The visualization shows the initial pose of the robot (yellow arrow) and the ArUco marker (blue dot)</li>
+<li>The marker has its own coordinate system (red x-axis, green y-axis)</li>
+<li>The target position is calculated by moving a distance defined by "Marker Offset Distance" along the marker's y-axis</li>
+<li>The angle φ (phi) represents the angle the robot needs to turn to face the target position</li>
+<li>The final pose (orange arrow) shows how the robot will align itself relative to the marker</li>
+</ol>
+<p>You can adjust the marker's position, orientation, and offset distance using the sliders to see how these parameters affect the robot's alignment. Additionally, you can click the "Animate Robot" button to visualize the robot's movement from its initial pose to the final aligned position.</p>
 
 
 
