@@ -1953,14 +1953,56 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#interactive-alignment-visualization" class="md-nav__link">
+    <nav class="md-nav" aria-label="Code Breakdown">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-setup-and-parameters" class="md-nav__link">
     <span class="md-ellipsis">
-      Interactive Alignment Visualization
+      Step 1: Setup and Parameters
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-transform-lookup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Transform Lookup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-aligntoaruco-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: AlignToAruco Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-compute-the-pose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Compute the Pose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-move-the-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Move the Base
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1982,10 +2024,12 @@
 
 <h1 id="align-to-aruco">Align to ArUco<a class="headerlink" href="#align-to-aruco" title="Anchor link">&para;</a></h1>
 <p>ArUco markers are a type of fiducials that are used extensively in robotics for identification and pose estimation. In this tutorial we will learn how to identify ArUco markers with the ArUco detection node and enable Stretch to navigate and align itself with respect to the marker.</p>
-<p>There are three main parameters to creating an ArUco tag:
-- Dictionary Size (Use 6x6_250 when using Stretch tutorials or ROS2 nodes, this is explained more <a href="#aruco-detection">below</a>)
-- ID (A unique identifier for the tag, see <a href="#create-a-new-aruco-marker">Create a New ArUco Marker</a> for reserved ID's)
-- Marker Size (The physical dimensions of the tag in mm, this can be customized freely.)</p>
+<p>There are three main parameters to creating an ArUco tag:</p>
+<ul>
+<li>Dictionary Size (Use 6x6_250 when using Stretch tutorials or ROS2 nodes, this is explained more <a href="#aruco-detection">below</a>)</li>
+<li>ID (A unique identifier for the tag, see <a href="#create-a-new-aruco-marker">Create a New ArUco Marker</a> for reserved IDs)</li>
+<li>Marker Size (The physical dimensions of the tag in mm, this can be customized freely.)</li>
+</ul>
 <h2 id="the-aruco-marker-dictionary">The ArUco Marker Dictionary<a class="headerlink" href="#the-aruco-marker-dictionary" title="Anchor link">&para;</a></h2>
 <p>When defining the ArUco markers on Stretch, hello robot utilizes a YAML file, <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yaml</a>, that holds the information about the markers.</p>
 <p>If <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/nodes/detect_aruco_markers">detect_aruco_markers</a> node doesn’t find an entry in <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yaml</a> for a particular ArUco marker ID number, it uses the default entry. For example, most robots have shipped with the following default entry:</p>
@@ -2025,22 +2069,18 @@
 <p>It’s good practice to add an entry to <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yaml</a> for each ArUco marker you use.</p>
 <h3 id="create-a-new-aruco-marker">Create a New ArUco Marker<a class="headerlink" href="#create-a-new-aruco-marker" title="Anchor link">&para;</a></h3>
 <p>At Hello Robot, we’ve used the following guide when generating new ArUco markers.</p>
-<p>We generate ArUco markers using a 6x6-bit grid (36 bits) with 250 unique codes. This corresponds with<a href="https://docs.opencv.org/3.4/d9/d6a/group__aruco.html"> DICT_6X6_250 defined in OpenCV</a>. We generate markers using this <a href="https://chev.me/arucogen/">online ArUco marker generator</a> by setting the Dictionary entry to 6x6 and then setting the Marker ID and Marker size, mm as appropriate for the specific application. We strongly recommend measuring the actual marker by hand before adding an entry for it to <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yaml</a>.</p>
+<p>We generate ArUco markers using a 6x6-bit grid (36 bits) with 250 unique codes. This corresponds with <a href="https://docs.opencv.org/3.4/d9/d6a/group__aruco.html">DICT_6X6_250 defined in OpenCV</a>. We generate markers using this <a href="https://chev.me/arucogen/">online ArUco marker generator</a> by setting the Dictionary entry to 6x6 and then setting the Marker ID and Marker size, mm as appropriate for the specific application. We strongly recommend measuring the actual marker by hand before adding an entry for it to <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yaml</a>.</p>
 <p>We select marker ID numbers using the following ranges.</p>
 <ul>
 <li>0 - 99: reserved for users</li>
 <li>100 - 249: reserved for official use by Hello Robot Inc.</li>
-<li>100 - 199: reserved for robots with distinct sets of body-mounted markers<ul>
+<li>100 - 199: reserved for robots with distinct sets of body-mounted markers</li>
 <li>Allows different robots near each other to use distinct sets of body-mounted markers to avoid confusion. This could be valuable for various uses of body-mounted markers, including calibration, visual servoing, visual motion capture, and multi-robot tasks.</li>
 <li>5 markers per robot = 2 on the mobile base + 2 on the wrist + 1 on the shoulder</li>
 <li>20 distinct sets = 100 available ID numbers / 5 ID numbers per robot</li>
-</ul>
-</li>
-<li>200 - 249: reserved for official accessories<ul>
+<li>200 - 249: reserved for official accessories</li>
 <li>245 for the prototype docking station</li>
 <li>246-249 for large floor markers</li>
-</ul>
-</li>
 </ul>
 <p>When coming up with this guide, we expected the following:</p>
 <ul>
@@ -2054,134 +2094,46 @@
 <p>Stretch uses the OpenCV ArUco detection library and is configured to identify a specific set of ArUco markers belonging to the 6x6, 250 dictionary. To understand why this is important, please refer to <a href="https://docs.opencv.org/4.x/d5/dae/tutorial_aruco_detection.html">this</a> handy guide provided by OpenCV.</p>
 <p>Stretch comes preconfigured to identify ArUco markers. The ROS node that enables this is the <a href="https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/stretch_core/detect_aruco_markers.py">detect_aruco_markers node</a> in the stretch_core package. Thanks to this node, identifying and estimating the pose of a marker is as easy as pointing the camera at the marker and running the detection node. It is also possible and quite convenient to visualize the detections with RViz.</p>
 <h2 id="computing-transformations">Computing Transformations<a class="headerlink" href="#computing-transformations" title="Anchor link">&para;</a></h2>
-<p>If you have not already done so, now might be a good time to review the <a href="https://docs.hello-robot.com/latest/ros2/example_10/">tf listener</a> tutorial. Go on, we can wait…
-Now that we know how to program stretch to return the transform between known reference frames, we can use this knowledge to compute the transform between the detected marker and the robot base_link. From its current pose, for Stretch to align itself in front of the marker, we need to command it to reach there. But even before that, we need to program Stretch to know the goal pose. We define the goal pose to be 0.5 metre outward from the marker in the marker negative y-axis (Green axis). This is easier to visualize through the figure below.</p>
+<p>If you have not already done so, now might be a good time to review the <a href="https://docs.hello-robot.com/latest/ros2/example_10/">tf listener</a> tutorial. Go on, we can wait...
+Now that we know how to program stretch to return the transform between known reference frames, we can use this knowledge to compute the transform between the detected marker and the robot's base_link. From its current pose, for Stretch to align itself in front of the marker, we need to command it to reach there. But even before that, we need to program Stretch to know the goal pose. We define the goal pose to be 0.75 meter outward from the marker in the marker negative y-axis (Green axis). This is easier to visualize through the figure below.</p>
 <p align="center">
     <a class="glightbox" href="https://user-images.githubusercontent.com/97639181/196329130-986c3af9-6dc9-4d9b-8a74-626d12b1d82c.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://user-images.githubusercontent.com/97639181/196329130-986c3af9-6dc9-4d9b-8a74-626d12b1d82c.png" width="400"></a>
 </p>
 
-<!-- Add images to show alignment and tranformations -->
-
 <p>By monitoring the /aruco/marker_array and /aruco/axes topics, we can visualize the markers in RViz. The detection node also publishes the tf pose of the detected markers. This can be visualized by using the TF plugin and selecting the detected marker to inspect the pose. Next, we will use exactly that to compute the transform between the detected marker and the base_link of the robot.</p>
 <p>Now, we can compute the transformation from the robot <code>base_link</code> frame to the <code>goal</code> pose and pass this as a 2D special Euclidian (SE2) pose to the mobile base.</p>
-<p>Since we want Stretch to stop at a fixed distance with respect to the marker, we define a 0.75m offset in the marker y-axis where Stretch would come to a stop. </p>
-<p>At the same time, we also want Stretch to align its orientation to point its arm towards the marker so as to make the subsequent manipulation tasks easier to accomplish. This would result in the end pose of the base_link as shown in the above figure. Sweet! </p>
-<p>The next task is to generate a simple motion plan for the mobile base to reach this end pose. We do this in three steps:
-1. Turn theta degrees towards the goal position. This would be the angle formed between the robot x-axis and the line connecting the start and the goal positions.
-2. Travel straight to the goal position. This would be the euclidean distance between the start and the goal positions.
-3. Turn phi degrees to attain the goal orientation. This would be the correction angle necessary to align the robot y-axis with the marker x-axis.</p>
-<p>Luckily, we know how to command Stretch to execute a trajectory using the joint trajectory server. If you are just starting, have a look at the <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/follow_joint_trajectory/">Follow Joint Trajectory Commands</a> tutorial to know how to command Stretch using the Joint trajectory Server.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Since we won't be using the arm for this demo, it's safer to stow Stretch's arm in. Run <code>stretch_robot_stow.py</code> from anywhere on a terminal.</p>
-</div>
-<div class="shell-prompt highlight"><pre><span></span><code>stretch_robot_stow.py
-</code></pre></div>
-<h2 id="see-it-in-action">See It In Action<a class="headerlink" href="#see-it-in-action" title="Anchor link">&para;</a></h2>
-<p>First, we need to point the camera towards the marker. To do this, you could use the keyboard teleop node. To do this, run:
-<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_core<span class="w"> </span>keyboard_teleop.launch.py
-</code></pre></div></p>
-<p>When you are ready, execute the following command:
-<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_core<span class="w"> </span>align_to_aruco.launch.py
-</code></pre></div></p>
-<p align="center">
-    <a class="glightbox" href="https://user-images.githubusercontent.com/97639181/196327520-7a3b6743-8e2c-4ec0-8603-ba9baff7aa34.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://user-images.githubusercontent.com/97639181/196327520-7a3b6743-8e2c-4ec0-8603-ba9baff7aa34.gif" width="400"></a>
-</p>
-
-<h4 id="special-considerations">Special Considerations<a class="headerlink" href="#special-considerations" title="Anchor link">&para;</a></h4>
+<p>Since we want Stretch to stop at a fixed distance with respect to the marker, we define a 0.75m offset in the marker y-axis where Stretch would come to a stop.</p>
+<p>At the same time, we also want Stretch to align its orientation to point its arm towards the marker so as to make the subsequent manipulation tasks easier to accomplish. This would result in the end pose of the base_link as shown in the above figure. Sweet!</p>
+<p>The next task is to generate a simple motion plan for the mobile base to reach this end pose. We do this in three steps:</p>
 <ol>
-<li>Since we won't be using the arm for this demo, it's safer to stow Stretch's arm in. Run <code>stretch_robot_stow.py</code> from anywhere on a terminal.</li>
-<li>the ArUco tag needs to be laid flat and rotated to match the image in <a href="https://docs.hello-robot.com/latest/ros2/align_to_aruco/#computing-transformations">Computing Transformations</a> above.</li>
-<li>The robot will move 0.75m away from the marker. This means that if the robot is within 0.75m, then it will rotate and move forward until it is at 0.75m. If the robot is too close while rotating, it may collide with its surroundings.</li>
-<li>If you wish to use a custom ArUco tag, 1. you should <a href="#create-a-new-aruco-marker">create a tag</a>. 2. print it so you can place it in your environment. 3. Duplicate the <code>131</code> <code>base_right</code> marker in <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yml</a> and replace <code>131</code> with your marker's ID, <code>base_right</code> with a new name, and the <code>marker_size</code>, if it is different. 4. Lastly, you will need to pass the <code>aruco_tag_name</code> rosparam to the <code>stretch_aruco.py</code> node. You can do this either by editting the <code>align_to_aruco.launch.py</code> file or following the <a href="#manual-launch">Manual Launch</a> steps below.</li>
+<li>Turn <code>phi</code> (φ) degrees towards the goal position. This would be the angle formed between the robot x-axis and the line connecting the start and the goal positions.</li>
+<li>Travel straight to the goal position. This would be the euclidean distance between the start and the goal positions.</li>
+<li>Turn <code>z_rot_base</code> degrees to attain the goal orientation. This would be the correction angle necessary to align the robot with the marker.</li>
 </ol>
-<h3 id="manual-launch">Manual Launch<a class="headerlink" href="#manual-launch" title="Anchor link">&para;</a></h3>
-<p>Instead of using the launch file, you can also run the following commands. This allows you to specify a custom ArUco tag name to the <code>align_to_aruco.py</code> node. The custom tag name must be defined in <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yml</a>:</p>
-<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
-roslaunch stretch_core d435i_low_resolution.launch
-roslaunch stretch_core stretch_aruco.launch --ros-args -p aruco_tag_name:=base_right
-rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/aruco_detector_example.rviz
-</code></pre></div>
-<h2 id="code-breakdown">Code Breakdown<a class="headerlink" href="#code-breakdown" title="Anchor link">&para;</a></h2>
-<p>Let's jump into the code to see how things work under the hood. Follow along <a href="https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/stretch_core/align_to_aruco.py">here</a> to have a look at the entire script.</p>
-<p>We make use of two separate Python classes for this demo. The FrameListener class is derived from the Node class and is the place where we compute the TF transformations. For an explantion of this class, you can refer to the <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/example_10/">TF listener</a> tutorial.
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">FrameListener</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
-</code></pre></div></p>
-<p>The AlignToAruco class is where we command Stretch to the pose goal. This class is derived from the FrameListener class so that they can both share the node instance.
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">AlignToAruco</span><span class="p">(</span><span class="n">FrameListener</span><span class="p">):</span>
-</code></pre></div></p>
-<p>The constructor initializes the Joint trajectory action client. It also initializes the attribute called offset that determines the end distance between the marker and the robot.
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mf">0.75</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">trans_base</span> <span class="o">=</span> <span class="n">TransformStamped</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">trans_camera</span> <span class="o">=</span> <span class="n">TransformStamped</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">joint_state</span> <span class="o">=</span> <span class="n">JointState</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">offset</span> <span class="o">=</span> <span class="n">offset</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">node</span> <span class="o">=</span> <span class="n">node</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">trajectory_client</span> <span class="o">=</span> <span class="n">ActionClient</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">,</span> <span class="n">FollowJointTrajectory</span><span class="p">,</span> <span class="s1">&#39;/stretch_controller/follow_joint_trajectory&#39;</span><span class="p">)</span>
-        <span class="n">server_reached</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trajectory_client</span><span class="o">.</span><span class="n">wait_for_server</span><span class="p">(</span><span class="n">timeout_sec</span><span class="o">=</span><span class="mf">60.0</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">server_reached</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Unable to connect to arm action server. Timeout exceeded.&#39;</span><span class="p">)</span>
-            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
-</code></pre></div></p>
-<p>The joint_states_callback is the callback method that receives the most recent joint state messages published on the /stretch/joint_states topic.
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span><span class="w"> </span><span class="nf">joint_states_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">joint_state</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">joint_state</span> <span class="o">=</span> <span class="n">joint_state</span>
-</code></pre></div></p>
-<p>The compute_difference() method is where we call the get_transform() method from the FrameListener class to compute the difference between the base_link and base_right frame with an offset of 0.5 m in the negative y-axis.
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span><span class="w"> </span><span class="nf">compute_difference</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">trans_base</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">trans_camera</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">get_transforms</span><span class="p">()</span>
-</code></pre></div></p>
-<p>To compute the (x, y) coordinates of the SE2 pose goal, we compute the transformation here.
-<div class="highlight"><pre><span></span><code>        <span class="n">R</span> <span class="o">=</span> <span class="n">quaternion_matrix</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
-        <span class="n">P_dash</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">offset</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
-        <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="bp">self</span><span class="o">.</span><span class="n">trans_base</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">translation</span><span class="o">.</span><span class="n">x</span><span class="p">],</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">trans_base</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">translation</span><span class="o">.</span><span class="n">y</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
-
-        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">P_dash</span><span class="p">)</span>
-        <span class="n">P_base</span> <span class="o">=</span> <span class="n">X</span> <span class="o">+</span> <span class="n">P</span>
-
-        <span class="n">base_position_x</span> <span class="o">=</span> <span class="n">P_base</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-        <span class="n">base_position_y</span> <span class="o">=</span> <span class="n">P_base</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-</code></pre></div></p>
-<p>From this, it is relatively straightforward to compute the angle <strong>phi</strong> and the euclidean distance <strong>dist</strong>. We then compute the angle z_rot_base to perform the last angle correction.
-<div class="highlight"><pre><span></span><code>        <span class="n">phi</span> <span class="o">=</span> <span class="n">atan2</span><span class="p">(</span><span class="n">base_position_y</span><span class="p">,</span> <span class="n">base_position_x</span><span class="p">)</span>
-
-        <span class="n">dist</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="n">base_position_x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="nb">pow</span><span class="p">(</span><span class="n">base_position_y</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-
-        <span class="n">x_rot_base</span><span class="p">,</span> <span class="n">y_rot_base</span><span class="p">,</span> <span class="n">z_rot_base</span> <span class="o">=</span> <span class="n">euler_from_quaternion</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">w</span><span class="p">])</span>
-        <span class="n">z_rot_base</span> <span class="o">=</span> <span class="o">-</span><span class="n">phi</span> <span class="o">+</span> <span class="n">z_rot_base</span> <span class="o">+</span> <span class="mf">3.14159</span>
-</code></pre></div></p>
-<p>The align_to_marker() method is where we command Stretch to the pose goal in three steps using the Joint Trajectory action server. For an explanation on how to form the trajectory goal, you can refer to the <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/follow_joint_trajectory/">Follow Joint Trajectory Commands</a> tutorial.
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span><span class="w"> </span><span class="nf">align_to_marker</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</code></pre></div>
-If you want to work with a different ArUco marker than the one we used in this tutorial, you can do so by changing line 44 in the <a href="https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/stretch_core/align_to_aruco.py#L130">code</a> to the one you wish to detect or pass in that rosparam. Also, don't forget to add the marker in the <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yaml</a> ArUco marker dictionary.</p>
-<h2 id="interactive-alignment-visualization">Interactive Alignment Visualization<a class="headerlink" href="#interactive-alignment-visualization" title="Anchor link">&para;</a></h2>
-<p>Below is an interactive visualization that demonstrates how Stretch aligns with an ArUco marker:</p>
 <div class="alignment-visualization">
-  <h2>Align to ArUco Visualization</h2>
   <div class="container">
     <canvas id="canvas" width="500" height="500"></canvas>
     <div class="controls">
       <label>
-        Marker Offset Distance (m)
-        <input type="range" id="offset" min="0.3" max="1.5" step="0.05" value="0.75">
+        Offset Distance (m)
+        <input type="range" id="offset" min="0." max="1.5" step="0.05" value="0.75">
         <span id="offsetVal">0.75</span>
       </label>
 
       <label>
         Marker X Position (m)
-        <input type="range" id="markerX" min="-2.0" max="2.0" step="0.1" value="1.2">
+        <input type="range" id="markerX" min="-2.0" max="2.0" step="0.05" value="1.2">
         <span id="markerXVal">1.2</span>
       </label>
 
       <label>
         Marker Y Position (m)
-        <input type="range" id="markerY" min="-2.0" max="2.0" step="0.1" value="1.2">
+        <input type="range" id="markerY" min="-2.0" max="2.0" step="0.05" value="1.2">
         <span id="markerYVal">1.2</span>
       </label>
 
       <label>
-        Marker Rotation (degrees)
+        Marker Rotation (°)
         <input type="range" id="markerRot" min="-180" max="180" step="5" value="-90">
         <span id="markerRotVal">-90</span>
       </label>
@@ -2191,21 +2143,116 @@ If you want to work with a different ArUco marker than the one we used in this t
         <button id="animateButton" onclick="startAnimation()">Animate Robot</button>
       </div>
     </div>
+
   </div>
 </div>
 
 <p><link rel="stylesheet" href="../css/align_to_aruco_vis.css"></p>
 <script src="../js/align_to_aruco_vis.js"></script>
 
-<p>This interactive visualization illustrates the process of aligning Stretch with an ArUco marker:</p>
+<blockquote>
+<p>You can adjust the marker's position, orientation, and offset distance using the sliders to see how these parameters affect the robot's alignment. Additionally, you can click the "Animate Robot" button to visualize the robot's trajectory from its initial pose to the final aligned position.</p>
+</blockquote>
+<p>Luckily, we know how to command Stretch to execute a trajectory using the joint trajectory server. If you are just starting, have a look at the <a href="https://docs.hello-robot.com/latest/ros2/follow_joint_trajectory/">Follow Joint Trajectory Commands</a> tutorial to know how to command Stretch using the Joint trajectory Server.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Since we won't be using the arm for this demo, it's safer to stow Stretch's arm in. Run <code>stretch_robot_stow.py</code> from anywhere on a terminal.</p>
+<div class="shell-prompt highlight"><pre><span></span><code>stretch_robot_stow.py
+</code></pre></div>
+</div>
+<h2 id="see-it-in-action">See It In Action<a class="headerlink" href="#see-it-in-action" title="Anchor link">&para;</a></h2>
+<p>First, we need to point the camera towards the marker. To do this, you could use the keyboard teleop node. To do this, run:</p>
+<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_core<span class="w"> </span>keyboard_teleop.launch.py
+</code></pre></div>
+<p>When you are ready, execute the following command:</p>
+<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_core<span class="w"> </span>align_to_aruco.launch.py
+</code></pre></div>
+<p align="center">
+    <a class="glightbox" href="https://user-images.githubusercontent.com/97639181/196327520-7a3b6743-8e2c-4ec0-8603-ba9baff7aa34.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://user-images.githubusercontent.com/97639181/196327520-7a3b6743-8e2c-4ec0-8603-ba9baff7aa34.gif" width="400"></a>
+</p>
+
+<h4 id="special-considerations">Special Considerations<a class="headerlink" href="#special-considerations" title="Anchor link">&para;</a></h4>
 <ol>
-<li>The visualization shows the initial pose of the robot (yellow arrow) and the ArUco marker (blue dot)</li>
-<li>The marker has its own coordinate system (red x-axis, green y-axis)</li>
-<li>The target position is calculated by moving a distance defined by "Marker Offset Distance" along the marker's y-axis</li>
-<li>The angle φ (phi) represents the angle the robot needs to turn to face the target position</li>
-<li>The final pose (orange arrow) shows how the robot will align itself relative to the marker</li>
+<li>Since we won't be using the arm for this demo, it's safer to stow Stretch's arm in. Run <code>stretch_robot_stow.py</code> from anywhere on a terminal.</li>
+<li>The ArUco tag needs to be laid flat and rotated to match the image in <a href="#computing-transformations">Computing Transformations</a> above.</li>
+<li>The robot will move 0.75m away from the marker. This means that if the robot is within 0.75m, then it will rotate and move forward until it is at 0.75m. If the robot is too close while rotating, it may collide with its surroundings.</li>
+<li>If you wish to use a custom ArUco tag, you should 1. <a href="#create-a-new-aruco-marker">create a tag</a>. 2. print it so you can place it in your environment. 3. Duplicate the <code>131</code> <code>base_right</code> marker in <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yaml</a> and replace <code>131</code> with your marker's ID, <code>base_right</code> with a new name, and the <code>marker_size</code>, if it is different. 4. Lastly, you will need to pass the <code>aruco_tag_name</code> rosparam to the <code>stretch_aruco.py</code> node. You can do this either by editing the <code>align_to_aruco.launch.py</code> file or following the <a href="#manual-launch">Manual Launch</a> steps below.</li>
 </ol>
-<p>You can adjust the marker's position, orientation, and offset distance using the sliders to see how these parameters affect the robot's alignment. Additionally, you can click the "Animate Robot" button to visualize the robot's movement from its initial pose to the final aligned position.</p>
+<h3 id="manual-launch">Manual Launch<a class="headerlink" href="#manual-launch" title="Anchor link">&para;</a></h3>
+<p>Instead of using the launch file, you can also run the following commands. This allows you to specify a custom ArUco tag name to the <code>align_to_aruco.py</code> node. The custom tag name must be defined in <a href="https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/config/stretch_marker_dict.yaml">stretch_marker_dict.yaml</a>:</p>
+<div class="highlight"><pre><span></span><code>roslaunch stretch_core stretch_driver.launch
+roslaunch stretch_core d435i_low_resolution.launch
+roslaunch stretch_core stretch_aruco.launch --ros-args -p aruco_tag_name:=base_right
+rosrun rviz rviz -d /home/hello-robot/catkin_ws/src/stretch_tutorials/rviz/aruco_detector_example.rviz
+</code></pre></div>
+<h2 id="code-breakdown">Code Breakdown<a class="headerlink" href="#code-breakdown" title="Anchor link">&para;</a></h2>
+<p>Let’s walk through the updated code to understand how the ArUco-based alignment works under the hood. You can follow along with the full script <a href="https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_core/stretch_core/align_to_aruco.py">here</a>.</p>
+<h3 id="step-1-setup-and-parameters">Step 1: Setup and Parameters<a class="headerlink" href="#step-1-setup-and-parameters" title="Anchor link">&para;</a></h3>
+<p>We begin by initializing the ROS 2 node and TF listener. The name of the ArUco marker to align to is the launch file parameter (default: <code>"base_right"</code>), see the <a href="#special-considerations">Special Considerations</a> section above for using a custom ArUco marker.</p>
+<div class="highlight"><pre><span></span><code><span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;align_to_aruco_node&quot;</span><span class="p">)</span>
+<span class="n">node</span><span class="o">.</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s2">&quot;aruco_tag_name&quot;</span><span class="p">,</span> <span class="s2">&quot;base_right&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h3 id="step-2-transform-lookup">Step 2: Transform Lookup<a class="headerlink" href="#step-2-transform-lookup" title="Anchor link">&para;</a></h3>
+<p>The code repeatedly tries to find the transform between <code>base_link</code> and the given ArUco marker frame (e.g., <code>base_right</code>).</p>
+<div class="highlight"><pre><span></span><code><span class="n">tf_buffer</span> <span class="o">=</span> <span class="n">Buffer</span><span class="p">()</span>
+<span class="n">TransformListener</span><span class="p">(</span><span class="n">tf_buffer</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
+<span class="n">trans_base</span> <span class="o">=</span> <span class="n">tf_buffer</span><span class="o">.</span><span class="n">lookup_transform</span><span class="p">(</span><span class="s2">&quot;base_link&quot;</span><span class="p">,</span> <span class="n">aruco_tag_name</span><span class="p">,</span> <span class="n">Time</span><span class="p">())</span>
+</code></pre></div>
+<p>If the marker cannot be detected or the transform cannot be looked up within the timeout, the script prints a helpful message:</p>
+<div class="highlight"><pre><span></span><code>Could not detect the ArUco marker.
+Please make sure the camera is manually pointed at the marker.
+Please also make sure that the marker is upright—an incorrect orientation will result in an incorrect movement.
+The robot will move when the marker is found.
+</code></pre></div>
+<hr />
+<h3 id="step-3-aligntoaruco-class">Step 3: AlignToAruco Class<a class="headerlink" href="#step-3-aligntoaruco-class" title="Anchor link">&para;</a></h3>
+<p>Once the transform is found, we pass it to the <code>AlignToAruco</code> class, which handles computing the desired pose and sending movement goals:</p>
+<div class="highlight"><pre><span></span><code><span class="n">align</span> <span class="o">=</span> <span class="n">AlignToAruco</span><span class="p">(</span><span class="n">node</span><span class="o">=</span><span class="n">node</span><span class="p">,</span> <span class="n">trans_base</span><span class="o">=</span><span class="n">trans_base</span><span class="p">)</span>
+<span class="n">align</span><span class="o">.</span><span class="n">align_to_marker</span><span class="p">()</span>
+</code></pre></div>
+<p>This class initializes an action client to communicate with the base controller:</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">trajectory_client</span> <span class="o">=</span> <span class="n">ActionClient</span><span class="p">(</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">,</span>
+    <span class="n">FollowJointTrajectory</span><span class="p">,</span>
+    <span class="s2">&quot;/stretch_controller/follow_joint_trajectory&quot;</span>
+<span class="p">)</span>
+</code></pre></div>
+<hr />
+<h3 id="step-4-compute-the-pose">Step 4: Compute the Pose<a class="headerlink" href="#step-4-compute-the-pose" title="Anchor link">&para;</a></h3>
+<blockquote>
+<p>Refer to <a href="#computing-transformations">Computing Transformations</a> above for graphical explanation</p>
+</blockquote>
+<p>The robot computes how it should align to the marker using homogeneous transformations. It applies a 75 cm offset in the marker's frame and transforms it to the base frame:</p>
+<div class="highlight"><pre><span></span><code><span class="n">R</span> <span class="o">=</span> <span class="n">quaternion_matrix</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+<span class="n">P_dash</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">offset</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">P_dash</span><span class="p">)</span>
+<span class="n">P_base</span> <span class="o">=</span> <span class="n">X</span> <span class="o">+</span> <span class="n">P</span>
+</code></pre></div>
+<p>It then calculates:</p>
+<ul>
+<li><code>phi</code>: the angle to rotate to face the marker</li>
+<li><code>dist</code>: the forward distance to drive</li>
+<li><code>z_rot_base</code>: a final rotation to align with robot gripper facing the marker</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">phi</span> <span class="o">=</span> <span class="n">atan2</span><span class="p">(</span><span class="n">base_position_y</span><span class="p">,</span> <span class="n">base_position_x</span><span class="p">)</span>
+<span class="n">dist</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">base_position_x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">base_position_y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">z_rot_base</span> <span class="o">=</span> <span class="o">-</span><span class="n">phi</span> <span class="o">+</span> <span class="n">z_rot_base</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+</code></pre></div>
+<hr />
+<h3 id="step-5-move-the-base">Step 5: Move the Base<a class="headerlink" href="#step-5-move-the-base" title="Anchor link">&para;</a></h3>
+<p>The robot sends three sequential trajectory goals:</p>
+<ol>
+<li>Rotate toward the marker</li>
+<li>Drive forward</li>
+<li>Final rotation to align with marker axis</li>
+</ol>
+<p>Each goal is sent using the <code>rotate_mobile_base</code> or <code>translate_mobile_base</code> joints and executed <strong>synchronously</strong> using blocking calls:</p>
+<div class="highlight"><pre><span></span><code><span class="n">send_base_goal_blocking</span><span class="p">(</span><span class="s2">&quot;rotate_mobile_base&quot;</span><span class="p">,</span> <span class="n">phi</span><span class="p">)</span>
+<span class="n">send_base_goal_blocking</span><span class="p">(</span><span class="s2">&quot;translate_mobile_base&quot;</span><span class="p">,</span> <span class="n">dist</span><span class="p">)</span>
+<span class="n">send_base_goal_blocking</span><span class="p">(</span><span class="s2">&quot;rotate_mobile_base&quot;</span><span class="p">,</span> <span class="n">final_theta</span><span class="p">)</span>
+</code></pre></div>
+<p>Each goal is checked for acceptance and completion.</p>
 
 
 
