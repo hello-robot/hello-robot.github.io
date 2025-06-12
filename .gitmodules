@@ -38,4 +38,7 @@
 	path = repos/stretch_ros2
 	url = https://github.com/hello-robot/stretch_ros2
 	branch = galactic
-
+[submodule "repos/stretch_mujoco"]
+	path = repos/stretch_mujoco
+	url = https://github.com/hello-robot/stretch_mujoco
+	branch = main

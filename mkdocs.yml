@@ -87,6 +87,7 @@ nav:
   - Developing with Stretch: '!include ./repos/stretch_tutorials/mkdocs_dws.yml'
   - Python Tutorials: '!include ./repos/stretch_tutorials/mkdocs_pt.yml'
   - ROS 2 Tutorials: '!include ./repos/stretch_tutorials/mkdocs_rt.yml'
+  - Simulation: '!include ./repos/stretch_mujoco/mkdocs.yml'
   - Extending Stretch:
     - Changing Tools: extending_stretch/changing_tools.md
     - URDF Management: extending_stretch/urdf_management.md
