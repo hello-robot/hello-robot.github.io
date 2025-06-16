@@ -11,3 +11,4 @@ mkdocs-same-dir
 mkdocs-redirects
 mkdocs-glightbox
 mkdocs-include-markdown-plugin
+mkdocs-jupyter
