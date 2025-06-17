@@ -17,6 +17,10 @@
         <link rel="canonical" href="https://docs.hello-robot.com/0.3/ros2/follow_joint_trajectory/">
       
       
+        <link rel="prev" href="../example_1/">
+      
+      
+        <link rel="next" href="../obstacle_avoider/">
       
       
       <link rel="icon" href="../../images/hello_robot_favicon.png">
@@ -24,7 +28,7 @@
     
     
       
-        <title>Follow joint trajectory - Stretch Docs</title>
+        <title>Trajectory Control - Stretch Docs</title>
       
     
     
@@ -129,7 +133,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Follow joint trajectory
+              Trajectory Control
             
           </span>
         </div>
@@ -972,17 +976,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -997,7 +1003,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             ROS 2 Tutorials
@@ -1228,17 +1234,19 @@
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7_7" id="__nav_7_7_label" tabindex="0">
@@ -1253,7 +1261,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7_7">
             <span class="md-nav__icon md-icon"></span>
             Examples
@@ -1277,6 +1285,140 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Trajectory Control
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Trajectory Control
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#followjointtrajectory-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      FollowJointTrajectory Commands
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stow-command-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stow Command Example
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stow Command Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-code-explained" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Code Explained
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multipoint-command-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multipoint Command Example
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multipoint Command Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-code_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-code-explained_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Code Explained.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1428,10 +1570,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7_9" >
         
           
-          <label class="md-nav__link" for="__nav_7_7_8" id="__nav_7_7_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_7_9" id="__nav_7_7_9_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1443,8 +1585,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_7_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_7_8">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_7_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_7_9">
             <span class="md-nav__icon md-icon"></span>
             Joints
           </label>
@@ -2245,13 +2387,9 @@
 
 
 
-  <h1>Follow joint trajectory</h1>
+  <h1>Trajectory Control</h1>
 
 <h2 id="followjointtrajectory-commands">FollowJointTrajectory Commands<a class="headerlink" href="#followjointtrajectory-commands" title="Anchor link">&para;</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>ROS 2 tutorials are still under active development. For this exercise you'll need to have Ubuntu 22.04 and ROS Iron for it to work completly.</p>
-</div>
 <p>Stretch driver offers a <a href="http://docs.ros.org/en/api/control_msgs/html/action/FollowJointTrajectory.html"><code>FollowJointTrajectory</code></a> action service for its arm. Within this tutorial, we will have a simple FollowJointTrajectory command sent to a Stretch robot to execute.</p>
 <h2 id="stow-command-example">Stow Command Example<a class="headerlink" href="#stow-command-example" title="Anchor link">&para;</a></h2>
 <p align="center">
@@ -2259,8 +2397,11 @@
 </p>
 
 <p>Begin by launching stretch_driver in a terminal.</p>
-<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_core<span class="w"> </span>stretch_driver.launch.py<span class="w"> </span>mode:<span class="o">=</span>trajectory
+<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_core<span class="w"> </span>stretch_driver.launch.py<span class="w"> </span>mode:<span class="o">=</span>position
 </code></pre></div>
+<blockquote>
+<p>Note: <code>mode:=position</code> uses a trapezoidal motion profile. For advanced control, you may use <code>mode:=trajectory</code>.</p>
+</blockquote>
 <p>In a new terminal type the following commands.</p>
 <div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>run<span class="w"> </span>stretch_ros_tutorials<span class="w"> </span>stow_command
 </code></pre></div>
@@ -2391,8 +2532,11 @@ Make the action call and send the goal.</p>
 </p>
 
 <p>If you have killed the above instance of stretch_driver relaunch it again through the terminal.</p>
-<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_core<span class="w"> </span>stretch_driver.launch.py<span class="w"> </span>mode:<span class="o">=</span>trajectory
+<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_core<span class="w"> </span>stretch_driver.launch.py<span class="w"> </span>mode:<span class="o">=</span>position
 </code></pre></div>
+<blockquote>
+<p>Note: <code>mode:=position</code> uses a trapezoidal motion profile. For advanced control, you may use <code>mode:=trajectory</code>.</p>
+</blockquote>
 <p>In a new terminal type the following commands.</p>
 <div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>run<span class="w"> </span>stretch_ros_tutorials<span class="w"> </span>multipoint_command
 </code></pre></div>
@@ -2514,6 +2658,44 @@ Make the action call and send the goal.</p>
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../example_1/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Move Stretch with Twist Controller">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Move Stretch with Twist Controller
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../obstacle_avoider/" class="md-footer__link md-footer__link--next" aria-label="Next: Obstacle Avoidance">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Obstacle Avoidance
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
