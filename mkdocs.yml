@@ -45,6 +45,8 @@ markdown_extensions:
 plugins:
   - search
   - monorepo
+  - mkdocs-jupyter:
+      include: ["*.ipynb"]
   - glightbox:
       skip_classes:
         - glightbox-skip
