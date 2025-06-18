@@ -17,7 +17,7 @@
         <link rel="canonical" href="https://docs.hello-robot.com/0.3/stretch-mujoco/docs/using_mujoco_simulator_with_stretch/">
       
       
-        <link rel="prev" href="../getting_started.ipynb">
+        <link rel="prev" href="../getting_started/">
       
       
         <link rel="next" href="../../../extending_stretch/changing_tools/">
@@ -1802,7 +1802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting_started.ipynb" class="md-nav__link">
+      <a href="../getting_started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2568,17 +2568,17 @@
 
 
 <h1 id="using-the-mujoco-simulator-with-stretch">Using the Mujoco Simulator with Stretch<a class="headerlink" href="#using-the-mujoco-simulator-with-stretch" title="Anchor link">&para;</a></h1>
-<p>When using Mujoco to simulate Stretch, you can command <a href="../../stretch_mujoco/enums/actuators.py">joints</a> and access joint poses and <a href="../../stretch_mujoco/enums/stretch_cameras.py">camera</a> data.</p>
+<p>When using Mujoco to simulate Stretch, you can command <a href="https://github.com/hello-robot/stretch_mujoco/tree/main/stretch_mujoco/enums/actuators.py">joints</a> and access joint poses and <a href="https://github.com/hello-robot/stretch_mujoco/tree/main/stretch_mujoco/enums/stretch_cameras.py">camera</a> data.</p>
 <h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Anchor link">&para;</a></h2>
 <ol>
-<li>Read the <a href="../../">README</a> to install the required dependencies.</li>
+<li>Read the <a href="https://github.com/hello-robot/stretch_mujoco/tree/main/README.md">README</a> to install the required dependencies.</li>
 <li>Check out the controller examples, such as:</li>
-<li><a href="../../examples/keyboard_teleop.py">keyboard_teleop.py</a></li>
-<li><a href="../../examples/gamepad_teleop.py">gamepad_teleopy.py</a></li>
+<li><a href="https://github.com/hello-robot/stretch_mujoco/tree/main/examples/keyboard_teleop.py">keyboard_teleop.py</a></li>
+<li><a href="https://github.com/hello-robot/stretch_mujoco/tree/main/examples/gamepad_teleop.py">gamepad_teleopy.py</a></li>
 <li>Check out the headless examples, such as:</li>
-<li><a href="../../examples/draw_circles.py">draw_circles.py</a></li>
-<li><a href="../../examples/camera_feeds.py">camera_feeds.py</a></li>
-<li>Check out the sensor example: <a href="../../examples/laser_scan.py">laser_sca.py</a></li>
+<li><a href="https://github.com/hello-robot/stretch_mujoco/tree/main/examples/draw_circles.py">draw_circles.py</a></li>
+<li><a href="https://github.com/hello-robot/stretch_mujoco/tree/main/examples/camera_feeds.py">camera_feeds.py</a></li>
+<li>Check out the sensor example: <a href="https://github.com/hello-robot/stretch_mujoco/tree/main/examples/laser_scan.py">laser_sca.py</a></li>
 </ol>
 <h3 id="terminology">Terminology<a class="headerlink" href="#terminology" title="Anchor link">&para;</a></h3>
 <p>The following words apply to this document only, to make it easier to read:</p>
@@ -2586,10 +2586,10 @@
 <li><a href="https://mujoco.readthedocs.io/en/stable/overview.html">Mujoco</a>: An open-source physics engine.</li>
 <li><a href="https://mujoco.readthedocs.io/en/stable/programming/samples.html#sasimulate">Mujoco Viewer</a>: An interactive Mujoco GUI that ships with Mujoco. This is spawned when you don't use <code>headless</code> mode.</li>
 <li><a href="https://mujoco.readthedocs.io/en/stable/APIreference/APIfunctions.html#main-simulation">Headless Mode</a>: Using the Mujoco simulation without the Mujoco Viewer. This calls <code>mj_step</code> directly to step the simulation. For the purposes of Stretch Mujoco Simulations, this is a performant mode to run simulations in.</li>
-<li><a href="../../stretch_mujoco/stretch_mujoco_simulator.py">Stretch Mujoco Simulator</a>: A scaffolding that enables you to send commands and receive sensor data to and from Stretch in a Mujoco environment.</li>
+<li><a href="https://github.com/hello-robot/stretch_mujoco/tree/main/stretch_mujoco/stretch_mujoco_simulator.py">Stretch Mujoco Simulator</a>: A scaffolding that enables you to send commands and receive sensor data to and from Stretch in a Mujoco environment.</li>
 </ul>
 <h2 id="control-flow">Control Flow<a class="headerlink" href="#control-flow" title="Anchor link">&para;</a></h2>
-<p>All simulations using <a href="../../stretch_mujoco/stretch_mujoco_simulator.py">Stretch Mujoco Simulator</a> should have an entry point that looks similar to this:</p>
+<p>All simulations using <a href="https://github.com/hello-robot/stretch_mujoco/tree/main/stretch_mujoco/stretch_mujoco_simulator.py">Stretch Mujoco Simulator</a> should have an entry point that looks similar to this:</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
 
     <span class="c1"># You can use all the camera&#39;s, but it takes longer to render, and may affect the overall simulation FPS.</span>
@@ -2603,7 +2603,7 @@
 <blockquote>
 <p>You can use the <code>start()</code> method to specify headless or UI view modes. The Passive Viewer is the default and recommended non-headless mode.</p>
 <p>If you are using the simulation for machine-learning applications, it is recommended to use the headless mode for better performance.</p>
-<p>If you are displaying camera data or doing heavy computations on your Control Loop, it is recommended to move your control commands to a thread, and display the camera data on the main thread. See <a href="#displaying-camera-data-using-opencv">Displaying camera data using OpenCV</a> below and the <a href="../../examples/camera_feeds.py">camera_feeds.py</a> example for more information.</p>
+<p>If you are displaying camera data or doing heavy computations on your Control Loop, it is recommended to move your control commands to a thread, and display the camera data on the main thread. See <a href="#displaying-camera-data-using-opencv">Displaying camera data using OpenCV</a> below and the <a href="https://github.com/hello-robot/stretch_mujoco/tree/main/examples/camera_feeds.py">camera_feeds.py</a> example for more information.</p>
 </blockquote>
 <h3 id="commanding-stretch">Commanding Stretch<a class="headerlink" href="#commanding-stretch" title="Anchor link">&para;</a></h3>
 <p>When the simulator is running, you can use your script to send commands to Stretch, or read data from the simulation.</p>
@@ -2612,13 +2612,13 @@
 <p>There are two methods for pulling data from the simulation: <code>sim.pull_status()</code> and <code>sim.pull_camera_data()</code>.</p>
 <h4 id="stretch-status">Stretch Status<a class="headerlink" href="#stretch-status" title="Anchor link">&para;</a></h4>
 <p>Use <code>sim.pull_status()</code> to fetch the joint states of the robot.</p>
-<p>This method returns a <code>StatusStretchJoints</code> <a href="../../stretch_mujoco/datamodels/status_stretch_joints.py">dataclass</a> with the names of all the joints populated.</p>
+<p>This method returns a <code>StatusStretchJoints</code> <a href="https://github.com/hello-robot/stretch_mujoco/tree/main/stretch_mujoco/datamodels/status_stretch_joints.py">dataclass</a> with the names of all the joints populated.</p>
 <p>The statuses of all the joints are fetched at the same time.</p>
 <h4 id="stretch-sensors">Stretch Sensors<a class="headerlink" href="#stretch-sensors" title="Anchor link">&para;</a></h4>
 <p>Use <code>sim.pull_sensor_data()</code> to fetch data from sensors on Stretch.</p>
-<p>This methods returns a <code>StatusStretchSensors</code> <a href="../../stretch_mujoco/datamodels/status_stretch_sensors.py">dataclass</a></p>
+<p>This methods returns a <code>StatusStretchSensors</code> <a href="https://github.com/hello-robot/stretch_mujoco/tree/main/stretch_mujoco/datamodels/status_stretch_sensors.py">dataclass</a></p>
 <p>The statuses of all the sensors are fetched at the same time.</p>
-<p>All the sensors defined in <a href="../../stretch_mujoco/models/scene.xml"><code>stretch.xml</code></a> are fetched:</p>
+<p>All the sensors defined in <a href="https://github.com/hello-robot/stretch_mujoco/tree/main/stretch_mujoco/models/scene.xml"><code>stretch.xml</code></a> are fetched:</p>
 <div class="highlight"><pre><span></span><code>  &lt;sensor&gt;
     &lt;gyro name=&quot;base_gyro&quot; site=&quot;base_imu&quot;/&gt;
     &lt;accelerometer name=&quot;base_accel&quot; site=&quot;base_imu&quot;/&gt;
@@ -2630,11 +2630,11 @@
 </blockquote>
 <h4 id="stretch-cameras">Stretch Cameras<a class="headerlink" href="#stretch-cameras" title="Anchor link">&para;</a></h4>
 <p>Use <code>sim.pull_camera_data()</code> to fetch the pixel values from Stretch's cameras.</p>
-<p>This method returns a <code>StatusStretchCameras</code> <a href="../../stretch_mujoco/datamodels/status_stretch_camera.py">dataclass</a> with the names of all the cameras populated.</p>
+<p>This method returns a <code>StatusStretchCameras</code> <a href="https://github.com/hello-robot/stretch_mujoco/tree/main/stretch_mujoco/datamodels/status_stretch_camera.py">dataclass</a> with the names of all the cameras populated.</p>
 <p>The pixel values of all the renderings of the cameras are fetched at the same time.</p>
 <p>Note: this operation is computationally heavy. The more cameras that are requested, the slower the simulation may run.</p>
 <h5 id="displaying-camera-data-using-opencv">Displaying camera data using OpenCV<a class="headerlink" href="#displaying-camera-data-using-opencv" title="Anchor link">&para;</a></h5>
-<p>The <a href="../../examples/camera_feeds.py">camera_feeds.py</a> example shows a sample to display camera data using <code>cv2.imshow()</code>.</p>
+<p>The <a href="https://github.com/hello-robot/stretch_mujoco/tree/main/examples/camera_feeds.py">camera_feeds.py</a> example shows a sample to display camera data using <code>cv2.imshow()</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="n">camera_data</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">pull_camera_data</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">camera</span> <span class="ow">in</span> <span class="n">cameras_to_use</span><span class="p">:</span>
@@ -2648,19 +2648,19 @@
 <h3 id="misc-stretch-mujoco-simulator-api-calls">Misc Stretch Mujoco Simulator API calls<a class="headerlink" href="#misc-stretch-mujoco-simulator-api-calls" title="Anchor link">&para;</a></h3>
 <h4 id="world-coordinate-frame-arrows">World Coordinate Frame Arrows<a class="headerlink" href="#world-coordinate-frame-arrows" title="Anchor link">&para;</a></h4>
 <p>You can use <code>sim.add_world_frame((0.1, 0.0, 0.0))</code> to add arrows dynamically to the Mujoco viewer:</p>
-<p><a class="glightbox" href="images/coordinate_frame_arrows.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="images/coordinate_frame_arrows.png" width=400/></a></p>
+<p><a class="glightbox" href="https://github.com/hello-robot/stretch_mujoco/raw/main/docs/images/coordinate_frame_arrows.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://github.com/hello-robot/stretch_mujoco/raw/main/docs/images/coordinate_frame_arrows.png" width=400/></a></p>
 <p>This also supports rotating the frame:</p>
 <div class="highlight"><pre><span></span><code>sim.add_world_frame((0.1,0,0), (0,0,0))
 sim.add_world_frame((0.2,0,0), (1.57,0,0)) # (x, y, z), (r, p, y)
 </code></pre></div>
-<p><a class="glightbox" href="images/rotate_coordinate_frames.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="images/rotate_coordinate_frames.png" width=400/></a></p>
+<p><a class="glightbox" href="https://github.com/hello-robot/stretch_mujoco/raw/main/docs/images/rotate_coordinate_frames.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://github.com/hello-robot/stretch_mujoco/raw/main/docs/images/rotate_coordinate_frames.png" width=400/></a></p>
 <h2 id="more-to-know">More to know<a class="headerlink" href="#more-to-know" title="Anchor link">&para;</a></h2>
 <h3 id="behind-the-scenes">Behind the scenes<a class="headerlink" href="#behind-the-scenes" title="Anchor link">&para;</a></h3>
 <p>When you call <code>sim.start()</code>, the following process diagram explains how Mujoco is launched and your Control Loop are managed.</p>
 <blockquote>
 <p>tl;dr The Mujoco simulator is started on a spawned process, and data is communicated between your main process and the Mujoco process using a <a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Manager">Multiprocesing Manager</a>.</p>
 </blockquote>
-<p><a class="glightbox" href="images/mujoco_server_process_diagram.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="images/mujoco_server_process_diagram.jpg" width=600></a></p>
+<p><a class="glightbox" href="https://github.com/hello-robot/stretch_mujoco/raw/main/docs/images/mujoco_server_process_diagram.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://github.com/hello-robot/stretch_mujoco/raw/main/docs/images/mujoco_server_process_diagram.jpg" width=600></a></p>
 <h3 id="mujoco-rendering-locks">Mujoco rendering locks<a class="headerlink" href="#mujoco-rendering-locks" title="Anchor link">&para;</a></h3>
 <p>Mujoco's <a href="https://mujoco.readthedocs.io/en/stable/python.html#passive-viewer">passive</a> and headless modes need some access governance over the <code>mjdata</code> and <code>mjmodel</code> objects to behave correctly.</p>
 <p>When using either of these modes, we are responsible for calling <code>mj_step</code> to step the simulation. This also means we're responsible for managing when Mujoco should render scenes. Calling <code>mj_step</code> is not a thread-safe operation, and if it's done while a render is rendering, bad things happen. So we use some mutexes to ensure these steps are in sync.</p>
@@ -2696,7 +2696,7 @@ sim.add_world_frame((0.2,0,0), (1.57,0,0)) # (x, y, z), (r, p, y)
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../getting_started.ipynb" class="md-footer__link md-footer__link--prev" aria-label="Previous: Getting Started Notebook">
+          <a href="../getting_started/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Getting Started Notebook">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
