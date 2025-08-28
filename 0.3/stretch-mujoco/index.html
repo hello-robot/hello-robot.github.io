@@ -2418,12 +2418,8 @@ cd stretch_mujoco
 <blockquote>
 <p>If you've already cloned the repo without <code>--recurse-submodules</code>, run <code>git submodule update --init</code> to pull the submodule.</p>
 </blockquote>
-<p>Then, install this repo:</p>
-<div class="highlight"><pre><span></span><code>uv venv
-uv pip install -e .
-</code></pre></div>
 <p>Lastly, run the simulation:</p>
-<div class="highlight"><pre><span></span><code>uv run launch_sim.py
+<div class="highlight"><pre><span></span><code>uv run launch_sim
 </code></pre></div>
 <p>To exit, press <code>Ctrl+C</code> in the terminal.</p>
 <p>
@@ -2566,9 +2562,13 @@ uv run examples/robocasa_environment.py
 <p>Check out the following documentation resources:</p>
 <ul>
 <li><a href="docs/using_mujoco_simulator_with_stretch/">Using the Mujoco Simulator with Stretch</a></li>
+<li><a href="docs/getting_started/">Getting Started jupyter notebook</a></li>
+<li><a href="docs/releasing_to_pypi/">Releasing to PyPi</a></li>
+<li><a href="docs/contributing/">Contributing to this project</a></li>
+<li><a href="CHANGELOG/">Changelog</a></li>
 </ul>
 <h3 id="feature-requests-and-bug-reporting">Feature Requests and Bug reporting<a class="headerlink" href="#feature-requests-and-bug-reporting" title="Anchor link">&para;</a></h3>
-<p>All the enhancements/missing features/Bugfixes are tracked by <a href="https://github.com/hello-robot/stretch_mujoco/issues">Issues</a> filed. Please feel free to file an issue if you would like to report bugs or request a feature addition.</p>
+<p>All enhancements/missing features/bugfixes are tracked by <a href="https://github.com/hello-robot/stretch_mujoco/issues">Issues</a> filed. Please feel free to file an issue if you would like to report bugs or request a feature addition. Pull requests are welcome! Please see the <a href="docs/contributing/">contributing guide</a>.</p>
 <h2 id="acknowledgment">Acknowledgment<a class="headerlink" href="#acknowledgment" title="Anchor link">&para;</a></h2>
 <p>The assets in this repository contain significant contributions and efforts from <a href="https://github.com/kevinzakka">Kevin Zakka</a> and <a href="https://github.com/google-deepmind">Google Deepmind</a>, along with others in Hello Robot Inc. who helped us in modeling Stretch in Mujoco. Thank you for your contributions.</p>
 
