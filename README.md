@@ -5,12 +5,13 @@ This repository generates the documentation hosted at [docs.hello-robot.com](htt
 The content largely lives inside of independent repositories that include their own MkDocs site generation information. This repo has the role of integrating these independent repositories together using the plugin `mkdocs-monorepo-plugin`.
 
 ## Setup for Documentation Development
-In order to create a development environment on a 20.04 Ubuntu machine:
+In order to create a development environment on a >=20.04 Ubuntu machine:
 ```
 cd ~/repos
 git clone https://github.com/hello-robot/hello-robot.github.io
 cd hello-robot.github.io
-./install.sh
+uv sync # Or python3 venv && source venv/bin/activate && pip3 install -e .
+
 # choose a version of the documentation (e.g. 0.3)
 git checkout 0.3
 git submodule init
@@ -23,6 +24,7 @@ The documentation is organized on versioned branches:
 /repos/hello-robot.github.io$ git branch
   0.1
   0.2
+  0.3
   gh-pages
 ```
 This allows for the development of new documentation under a new version while hosting the stable documentation as default.
@@ -47,7 +49,8 @@ git push
 
 ```commandline
 cd ~/repos/hello-robot.github.io
-mike serve
+source ~/.venv/bin/activate
+mkdocs serve
 Starting server at http://localhost:8000/
 Press Ctrl+C to quit.
 ```
