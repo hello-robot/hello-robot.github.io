@@ -50,7 +50,7 @@ git push
 ```commandline
 cd ~/repos/hello-robot.github.io
 source ~/.venv/bin/activate
-mkdocs serve
+mkdocs serve # Note: Use `mike serve` for 0.1 and 0.2 docs.
 Starting server at http://localhost:8000/
 Press Ctrl+C to quit.
 ```
