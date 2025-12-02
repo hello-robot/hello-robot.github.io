@@ -42,7 +42,7 @@ jobs:
           python-version: '3.10'
 
       - name: Install Pip dependencies
-        run: python3 -m pip install -r ./requirements.txt
+        run: python3 -m pip install .
 
       - name: Save Mike version
         run: echo "mike_version=$(echo ${GITHUB_REF#refs/heads/})" >> "$GITHUB_ENV"
