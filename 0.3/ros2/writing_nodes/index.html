@@ -1,9 +1,4 @@
-<!-- Elements added to "main.html" will be displayed on all pages -->
-
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!-- Elements added to "main.html" will be displayed on all pages --><!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -17,6 +12,10 @@
         <link rel="canonical" href="https://docs.hello-robot.com/0.3/ros2/writing_nodes/">
       
       
+        <link rel="prev" href="../getting_started/">
+      
+      
+        <link rel="next" href="../intro_to_ros2/">
       
       
       <link rel="icon" href="../../images/hello_robot_favicon.png">
@@ -24,7 +23,7 @@
     
     
       
-        <title>Writing Nodes - Stretch Docs</title>
+        <title>Creating Packages &amp; Nodes - Stretch Docs</title>
       
     
     
@@ -45,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -62,16 +61,17 @@
     <!-- main.html | Added "navigation.instant" support -->
     <link rel="canonical" href=".">
 
-   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
-    html.glightbox-open { overflow: initial; height: 100%; }
-    .gslide-title { margin-top: 0px; user-select: text; }
-    .gslide-desc { color: #666; user-select: text; }
-    .gslide-image img { background: white; }
-    .gscrollbar-fixer { padding-right: 15px; }
-    .gdesc-inner { font-size: 0.75rem; }
-    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
-    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#writing-nodes" class="md-skip">
+        <a href="#writing-ros2-nodes" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -129,7 +129,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Writing Nodes
+              Creating Packages &amp; Nodes
             
           </span>
         </div>
@@ -142,7 +142,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent="indigo" aria-hidden="true" type="radio" name="__palette" id="__palette_0">
     
   
 </form>
@@ -155,7 +155,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -164,15 +164,15 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -207,7 +207,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -261,7 +261,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -382,7 +382,7 @@
         
   
   <span class="md-ellipsis">
-    Demo 1 - Mapping & Navigation
+    Demo 1 - Mapping &amp; Navigation
     
   </span>
   
@@ -480,7 +480,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -589,7 +589,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -691,7 +691,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4">
         
           
           <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
@@ -808,7 +808,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -895,7 +895,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -972,17 +972,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -997,7 +999,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             ROS 2 Tutorials
@@ -1030,6 +1032,517 @@
                 
   
   
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ROS2 Basics
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            ROS2 Basics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Creating Packages &amp; Nodes
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Creating Packages &amp; Nodes
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-ros2-workspace-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding the ROS2 Workspace Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-creating-a-new-ros2-python-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Creating a New ROS2 Python Package
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-understanding-package-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Understanding Package Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Understanding Package Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#packagexml" class="md-nav__link">
+    <span class="md-ellipsis">
+      package.xml
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setuppy" class="md-nav__link">
+    <span class="md-ellipsis">
+      setup.py
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-writing-your-first-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Writing Your First Node
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Writing Your First Node">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Explanation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-configuring-package-dependencies-and-entry-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Configuring Package Dependencies and Entry Points
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Configuring Package Dependencies and Entry Points">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-packagexml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update package.xml
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-setuppy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update setup.py
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-building-your-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Building Your Package
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-running-your-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6: Running Your Node
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 6: Running Your Node">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start-the-stretch-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start the Stretch Driver
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-your-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run Your Node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understanding-the-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding the Output
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-enhancing-your-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 7: Enhancing Your Node
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build Errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runtime-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Runtime Errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging Tips
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-ros2-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding ROS2 Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding ROS2 Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#topics-and-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Topics and Messages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quality-of-service-qos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality of Service (QoS)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node Lifecycle
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro_to_ros2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction to ROS2 Client (rclpy)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro_to_hellonode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction to HelloNode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stretch_simulation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Simulation Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../teleoperating_stretch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Teleoperation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rviz_basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RViz Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../follow_joint_trajectory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Follow Joint Trajectory &amp; Joint States
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     <li class="md-nav__item">
@@ -1037,7 +1550,7 @@
         
   
   <span class="md-ellipsis">
-    Motion Commands
+    Motion Commands via hello_utils
     
   </span>
   
@@ -1059,7 +1572,51 @@
         
   
   <span class="md-ellipsis">
-    Robot Drivers
+    Robot Driver
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../twist_control/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Twist Control
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensors_tutorial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sensors Tutorial
     
   </span>
   
@@ -1084,14 +1641,14 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_11">
         
           
-          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_11" id="__nav_7_11_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    Navigation with Nav2
+    Nav Stack Tutorial
     
   </span>
   
@@ -1099,10 +1656,10 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_11">
             <span class="md-nav__icon md-icon"></span>
-            Navigation with Nav2
+            Nav Stack Tutorial
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1187,11 +1744,11 @@
   
   
     <li class="md-nav__item">
-      <a href="https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_funmap#overview" class="md-nav__link">
+      <a href="../perception.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    FUNMAP
+    Perception Tutorial
     
   </span>
   
@@ -1209,11 +1766,55 @@
   
   
     <li class="md-nav__item">
-      <a href="../perception/" class="md-nav__link">
+      <a href="../deep_perception/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Perception
+    Deep Perception
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aruco_marker_detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ArUco Markers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../remote_compute/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Offloading Computation Tutorial
     
   </span>
   
@@ -1238,14 +1839,14 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_16">
         
           
-          <label class="md-nav__link" for="__nav_7_7" id="__nav_7_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_16" id="__nav_7_16_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    Examples
+    Autonomy Demos
     
   </span>
   
@@ -1253,10 +1854,10 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_16">
             <span class="md-nav__icon md-icon"></span>
-            Examples
+            Autonomy Demos
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1267,11 +1868,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../example_1/" class="md-nav__link">
+      <a href="../demo_hello_world/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Move Stretch with Twist Controller
+    Hello World
     
   </span>
   
@@ -1289,11 +1890,385 @@
   
   
     <li class="md-nav__item">
-      <a href="../follow_joint_trajectory/" class="md-nav__link">
+      <a href="../demo_grasp_object/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Trajectory Control
+    Grasp Object
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demo_handover_object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Handover Object
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demo_open_drawer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Open Drawer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demo_surface_cleaning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Surface Cleaning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../funmap_tutorial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FUNMAP Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_18">
+        
+          
+          <label class="md-nav__link" for="__nav_7_18" id="__nav_7_18_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_18">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../voice_teleop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Voice Teleop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../speech_to_text/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Speech to Text
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lidar_filtering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lidar Based Sensing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rviz_markers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom RViz Marker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../joint_effort_plotting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Effort Value Plotting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tf2_transforms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tf2 Listener and Broadcaster
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../realsense_camera/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Realsense Camera
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../align_to_aruco/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Align to ArUco Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aruco_marker_detection#aruco-locator-example" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ArUco Locator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../joint_states/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Joint States
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collision_avoidance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collision Avoidance
     
   </span>
   
@@ -1326,336 +2301,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_3/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Collision Avoidance
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_4/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Rviz Markers
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../remote_compute/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Offloading Computation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ros2/align_to_aruco.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Align to ArUco
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_12/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ArUco Locator
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7_9" >
-        
-          
-          <label class="md-nav__link" for="__nav_7_7_9" id="__nav_7_7_9_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Joints
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_7_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_7_9">
-            <span class="md-nav__icon md-icon"></span>
-            Joints
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_5/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Joint States
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_10/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Static Transformations
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_6/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Joint Effort
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ros2/deep_perception.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Deep Perception
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_2/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Filter Laser Scans
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_7/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Realsense Camera
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_8/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Microphones
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_9/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Voice Teleop
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1685,7 +2330,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
@@ -1765,7 +2410,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3">
         
           
           <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
@@ -1875,7 +2520,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_4">
         
           
           <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
@@ -1970,7 +2615,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
         
           
           <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
@@ -2079,7 +2724,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10">
         
           
           <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
@@ -2160,7 +2805,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2171,6 +2816,284 @@
   
     
   
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-ros2-workspace-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding the ROS2 Workspace Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-creating-a-new-ros2-python-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Creating a New ROS2 Python Package
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-understanding-package-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Understanding Package Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Understanding Package Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#packagexml" class="md-nav__link">
+    <span class="md-ellipsis">
+      package.xml
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setuppy" class="md-nav__link">
+    <span class="md-ellipsis">
+      setup.py
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-writing-your-first-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Writing Your First Node
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Writing Your First Node">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Explanation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-configuring-package-dependencies-and-entry-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Configuring Package Dependencies and Entry Points
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Configuring Package Dependencies and Entry Points">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-packagexml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update package.xml
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-setuppy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update setup.py
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-building-your-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Building Your Package
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-running-your-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6: Running Your Node
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 6: Running Your Node">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start-the-stretch-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start the Stretch Driver
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-your-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run Your Node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understanding-the-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding the Output
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-enhancing-your-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 7: Enhancing Your Node
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build Errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runtime-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Runtime Errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging Tips
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-ros2-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding ROS2 Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding ROS2 Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#topics-and-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Topics and Messages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quality-of-service-qos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality of Service (QoS)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node Lifecycle
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -2186,9 +3109,406 @@
 
 
 
-<h1 id="writing-nodes">Writing Nodes<a class="headerlink" href="#writing-nodes" title="Anchor link">&para;</a></h1>
-<p>TODO</p>
-<p>You would publish <a href="https://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Twist.html">geometry_msgs/Twist</a> messages to the <a href="#TODO">/stretch/cmd_vel topic</a>. Since Twist messages are generalized to robots that can move with velocity in any direction, only the <code>Twist.linear.x</code> (translational velocity) and <code>Twist.angular.z</code> (rotational velocity) fields apply for differential drive mobile bases.</p>
+<h1 id="writing-ros2-nodes">Writing ROS2 Nodes<a class="headerlink" href="#writing-ros2-nodes" title="Anchor link">¶</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Anchor link">¶</a></h2>
+<p>ROS2 nodes are the fundamental building blocks of any ROS2 application. A node is an executable that uses ROS2 to communicate with other nodes. Nodes can publish messages to topics, subscribe to topics to receive messages, provide services, or call services provided by other nodes. In this tutorial, you'll learn how to create your own ROS2 Python package and write a simple node that subscribes to Stretch's joint states.</p>
+<p>Think of nodes as individual programs that each have a specific responsibility - one node might handle camera data, another might control the robot's movement, and yet another might process sensor information. By breaking functionality into separate nodes, ROS2 applications become modular, easier to debug, and more maintainable.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Anchor link">¶</a></h2>
+<p>Before starting this tutorial, you should have:</p>
+<ol>
+<li><strong>Basic Python knowledge</strong>: Understanding of Python syntax, functions, and classes</li>
+<li><strong>ROS2 installation</strong>: ROS2 Humble installed on your system (this comes pre-installed on Stretch robots)</li>
+<li><strong>Stretch robot setup</strong>: Access to a Stretch robot or simulation environment</li>
+<li><strong>Basic terminal/command line familiarity</strong>: Ability to navigate directories and run commands</li>
+</ol>
+<p>If you're new to ROS2 concepts, we recommend first reading through the <a href="../intro_to_ros2/">Introduction to ROS2</a> tutorial.</p>
+<h2 id="understanding-the-ros2-workspace-structure">Understanding the ROS2 Workspace Structure<a class="headerlink" href="#understanding-the-ros2-workspace-structure" title="Anchor link">¶</a></h2>
+<p>Before we create our first node, let's understand how ROS2 organizes code. ROS2 uses a workspace structure where all your packages live in a <code>src</code> directory within your workspace. The standard workspace structure looks like this:</p>
+<div class="highlight"><pre><span></span><code>~/ament_ws/                    # Your workspace root
+├── build/                     # Build artifacts (auto-generated)
+├── install/                   # Installed packages (auto-generated)
+├── log/                       # Build logs (auto-generated)
+└── src/                       # Your source code goes here
+    ├── package1/
+    ├── package2/
+    └── your_new_package/
+</code></pre></div>
+<h2 id="step-1-creating-a-new-ros2-python-package">Step 1: Creating a New ROS2 Python Package<a class="headerlink" href="#step-1-creating-a-new-ros2-python-package" title="Anchor link">¶</a></h2>
+<p>Let's start by creating a new ROS2 package. A package is a collection of related nodes, launch files, configuration files, and other resources.</p>
+<p>First, navigate to your workspace source directory:</p>
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/ament_ws/src
+</code></pre></div>
+<p>Now create a new Python package using the <code>ros2 pkg create</code> command:</p>
+<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>pkg<span class="w"> </span>create<span class="w"> </span>--build-type<span class="w"> </span>ament_python<span class="w"> </span>stretch_joint_reader
+</code></pre></div>
+<p>This command creates a new package called <code>stretch_joint_reader</code> with the following structure:</p>
+<div class="highlight"><pre><span></span><code>stretch_joint_reader/
+├── package.xml              # Package metadata and dependencies
+├── setup.cfg               # Setup configuration
+├── setup.py               # Python package setup
+├── stretch_joint_reader/  # Python module directory
+│   └── __init__.py
+</code></pre></div>
+<p>Let's examine what was created:</p>
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>stretch_joint_reader
+ls<span class="w"> </span>-la
+</code></pre></div>
+<h2 id="step-2-understanding-package-configuration">Step 2: Understanding Package Configuration<a class="headerlink" href="#step-2-understanding-package-configuration" title="Anchor link">¶</a></h2>
+<p>Let's look at the key configuration files that were generated.</p>
+<h3 id="packagexml">package.xml<a class="headerlink" href="#packagexml" title="Anchor link">¶</a></h3>
+<p>This file contains metadata about your package. Open it to see the current contents:</p>
+<div class="shell-prompt highlight"><pre><span></span><code>cat<span class="w"> </span>package.xml
+</code></pre></div>
+<p>The <code>package.xml</code> file defines dependencies, maintainer information, and other package metadata. For our joint state subscriber, we need to add a dependency on the <code>sensor_msgs</code> package, which contains the <code>JointState</code> message type.</p>
+<h3 id="setuppy">setup.py<a class="headerlink" href="#setuppy" title="Anchor link">¶</a></h3>
+<p>This file tells Python how to install your package. Let's examine it:</p>
+<div class="shell-prompt highlight"><pre><span></span><code>cat<span class="w"> </span>setup.py
+</code></pre></div>
+<p>We'll need to modify this file to include our new node as an entry point so ROS2 can find and run it.</p>
+<h2 id="step-3-writing-your-first-node">Step 3: Writing Your First Node<a class="headerlink" href="#step-3-writing-your-first-node" title="Anchor link">¶</a></h2>
+<p>Now let's create our first ROS2 node that subscribes to the <code>/joint_states</code> topic and prints information about Stretch's joints.</p>
+<p>Create a new Python file for our node:</p>
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>stretch_joint_reader
+touch<span class="w"> </span>joint_state_subscriber.py
+</code></pre></div>
+<p>Open the file in your preferred text editor and add the following code:</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.node</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sensor_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">JointState</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">JointStateSubscriber</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    A ROS2 node that subscribes to joint states and prints joint information.</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Initialize the node with a name</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">'joint_state_subscriber'</span><span class="p">)</span>
+
+        <span class="c1"># Create a subscription to the /joint_states topic</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subscription</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span>
+            <span class="n">JointState</span><span class="p">,</span>                    <span class="c1"># Message type</span>
+            <span class="s1">'/joint_states'</span><span class="p">,</span>               <span class="c1"># Topic name</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">joint_state_callback</span><span class="p">,</span>     <span class="c1"># Callback function</span>
+            <span class="mi">10</span>                            <span class="c1"># Queue size</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Prevent unused variable warning</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subscription</span>
+
+        <span class="c1"># Log that the node has started</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'Joint State Subscriber node has started!'</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'Listening for joint states on /joint_states topic...'</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">joint_state_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Callback function that gets called whenever a new JointState message is received.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            msg (JointState): The received joint state message</span>
+<span class="sd">        """</span>
+        <span class="c1"># Log basic information about the message</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Received joint states for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="si">}</span><span class="s1"> joints'</span><span class="p">)</span>
+
+        <span class="c1"># Print detailed information about each joint</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'Joint Information:'</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">joint_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">name</span><span class="p">):</span>
+            <span class="n">position</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">position</span><span class="p">)</span> <span class="k">else</span> <span class="s1">'N/A'</span>
+            <span class="n">velocity</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">velocity</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">velocity</span><span class="p">)</span> <span class="k">else</span> <span class="s1">'N/A'</span>
+            <span class="n">effort</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">effort</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">effort</span><span class="p">)</span> <span class="k">else</span> <span class="s1">'N/A'</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">'  </span><span class="si">{</span><span class="n">joint_name</span><span class="si">}</span><span class="s1">: pos=</span><span class="si">{</span><span class="n">position</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">, vel=</span><span class="si">{</span><span class="n">velocity</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">, effort=</span><span class="si">{</span><span class="n">effort</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">'</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'---'</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Main function to initialize ROS2, create the node, and spin.</span>
+<span class="sd">    """</span>
+    <span class="c1"># Initialize ROS2 Python client library</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
+
+    <span class="c1"># Create an instance of our node</span>
+    <span class="n">joint_state_subscriber</span> <span class="o">=</span> <span class="n">JointStateSubscriber</span><span class="p">()</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Spin the node to keep it alive and processing callbacks</span>
+        <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">joint_state_subscriber</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+        <span class="c1"># Handle Ctrl+C gracefully</span>
+        <span class="n">joint_state_subscriber</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'Shutting down joint state subscriber...'</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="c1"># Clean up</span>
+        <span class="n">joint_state_subscriber</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span>
+        <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="code-explanation">Code Explanation<a class="headerlink" href="#code-explanation" title="Anchor link">¶</a></h3>
+<p>Let's break down what this code does:</p>
+<ol>
+<li><strong>Imports</strong>: We import the necessary ROS2 Python libraries and message types</li>
+<li><strong>Class Definition</strong>: We create a class that inherits from <code>Node</code>, which is the base class for all ROS2 nodes</li>
+<li><strong>Constructor (<code>__init__</code>)</strong>:</li>
+<li>Calls the parent constructor with our node name</li>
+<li>Creates a subscription to the <code>/joint_states</code> topic</li>
+<li>Sets up logging messages</li>
+<li><strong>Callback Function</strong>: This function gets called every time a new message arrives on the subscribed topic</li>
+<li><strong>Main Function</strong>: Initializes ROS2, creates our node, and keeps it running</li>
+</ol>
+<h2 id="step-4-configuring-package-dependencies-and-entry-points">Step 4: Configuring Package Dependencies and Entry Points<a class="headerlink" href="#step-4-configuring-package-dependencies-and-entry-points" title="Anchor link">¶</a></h2>
+<p>Now we need to update our package configuration to include the necessary dependencies and make our node executable.</p>
+<h3 id="update-packagexml">Update package.xml<a class="headerlink" href="#update-packagexml" title="Anchor link">¶</a></h3>
+<p>Edit the <code>package.xml</code> file to add the required dependencies. Add these lines after the existing <code>&lt;depend&gt;</code> tags:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;depend&gt;</span>rclpy<span class="nt">&lt;/depend&gt;</span>
+<span class="nt">&lt;depend&gt;</span>sensor_msgs<span class="nt">&lt;/depend&gt;</span>
+</code></pre></div>
+<h3 id="update-setuppy">Update setup.py<a class="headerlink" href="#update-setuppy" title="Anchor link">¶</a></h3>
+<p>Edit the <code>setup.py</code> file to add our node as an entry point. Find the <code>entry_points</code> section and modify it to look like this:</p>
+<div class="highlight"><pre><span></span><code><span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">'console_scripts'</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">'joint_state_subscriber = stretch_joint_reader.joint_state_subscriber:main'</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">},</span>
+</code></pre></div>
+<p>This tells ROS2 that when someone runs <code>ros2 run stretch_joint_reader joint_state_subscriber</code>, it should execute the <code>main</code> function from our <code>joint_state_subscriber.py</code> file.</p>
+<h2 id="step-5-building-your-package">Step 5: Building Your Package<a class="headerlink" href="#step-5-building-your-package" title="Anchor link">¶</a></h2>
+<p>Now that we've created our node and configured our package, we need to build it. ROS2 uses the <code>colcon</code> build system.</p>
+<p>Navigate back to your workspace root:</p>
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/ament_ws
+</code></pre></div>
+<p>Build your package:</p>
+<div class="shell-prompt highlight"><pre><span></span><code>colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>stretch_joint_reader
+</code></pre></div>
+<p>If the build is successful, you should see output similar to:</p>
+<div class="no-copy highlight"><pre><span></span><code>Starting<span class="w"> </span>&gt;&gt;&gt;<span class="w"> </span>stretch_joint_reader
+Finished<span class="w"> </span><span class="o">&lt;&lt;&lt;</span><span class="w"> </span>stretch_joint_reader<span class="w"> </span><span class="o">[</span><span class="m">2</span>.34s<span class="o">]</span>
+
+Summary:<span class="w"> </span><span class="m">1</span><span class="w"> </span>package<span class="w"> </span>finished<span class="w"> </span><span class="o">[</span><span class="m">2</span>.56s<span class="o">]</span>
+</code></pre></div>
+<p>If you encounter any errors, double-check that:
+- Your Python code has correct indentation
+- The <code>package.xml</code> and <code>setup.py</code> files are properly formatted
+- All file names match exactly</p>
+<p>After building, source the setup script to make your new package available:</p>
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>install/setup.bash
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You need to source the setup script in every new terminal where you want to use your custom packages. To avoid doing this every time, you can add the source command to your <code>~/.bashrc</code> file:
+</p><div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">"source ~/ament_ws/install/setup.bash"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+</code></pre></div><p></p>
+</div>
+<h2 id="step-6-running-your-node">Step 6: Running Your Node<a class="headerlink" href="#step-6-running-your-node" title="Anchor link">¶</a></h2>
+<p>Now comes the exciting part - running your node! But first, we need to make sure the Stretch robot driver is running so that joint state messages are being published.</p>
+<h3 id="start-the-stretch-driver">Start the Stretch Driver<a class="headerlink" href="#start-the-stretch-driver" title="Anchor link">¶</a></h3>
+<p>In one terminal, launch the Stretch driver:</p>
+<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_core<span class="w"> </span>stretch_driver.launch.py
+</code></pre></div>
+<p>Wait for the driver to fully initialize. You should see messages indicating that the robot is ready.</p>
+<h3 id="run-your-node">Run Your Node<a class="headerlink" href="#run-your-node" title="Anchor link">¶</a></h3>
+<p>In a new terminal (remember to source your workspace), run your joint state subscriber:</p>
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/ament_ws
+<span class="nb">source</span><span class="w"> </span>install/setup.bash
+ros2<span class="w"> </span>run<span class="w"> </span>stretch_joint_reader<span class="w"> </span>joint_state_subscriber
+</code></pre></div>
+<p>You should see output similar to:</p>
+<div class="no-copy highlight"><pre><span></span><code><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1699123456</span>.789<span class="o">]</span><span class="w"> </span><span class="o">[</span>joint_state_subscriber<span class="o">]</span>:<span class="w"> </span>Joint<span class="w"> </span>State<span class="w"> </span>Subscriber<span class="w"> </span>node<span class="w"> </span>has<span class="w"> </span>started!
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1699123456</span>.790<span class="o">]</span><span class="w"> </span><span class="o">[</span>joint_state_subscriber<span class="o">]</span>:<span class="w"> </span>Listening<span class="w"> </span><span class="k">for</span><span class="w"> </span>joint<span class="w"> </span>states<span class="w"> </span>on<span class="w"> </span>/joint_states<span class="w"> </span>topic...
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1699123456</span>.891<span class="o">]</span><span class="w"> </span><span class="o">[</span>joint_state_subscriber<span class="o">]</span>:<span class="w"> </span>Received<span class="w"> </span>joint<span class="w"> </span>states<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="m">15</span><span class="w"> </span>joints
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1699123456</span>.891<span class="o">]</span><span class="w"> </span><span class="o">[</span>joint_state_subscriber<span class="o">]</span>:<span class="w"> </span>Joint<span class="w"> </span>Information:
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1699123456</span>.891<span class="o">]</span><span class="w"> </span><span class="o">[</span>joint_state_subscriber<span class="o">]</span>:<span class="w">   </span>joint_left_wheel:<span class="w"> </span><span class="nv">pos</span><span class="o">=</span><span class="m">0</span>.0000,<span class="w"> </span><span class="nv">vel</span><span class="o">=</span><span class="m">0</span>.0000,<span class="w"> </span><span class="nv">effort</span><span class="o">=</span><span class="m">0</span>.0000
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1699123456</span>.891<span class="o">]</span><span class="w"> </span><span class="o">[</span>joint_state_subscriber<span class="o">]</span>:<span class="w">   </span>joint_right_wheel:<span class="w"> </span><span class="nv">pos</span><span class="o">=</span><span class="m">0</span>.0000,<span class="w"> </span><span class="nv">vel</span><span class="o">=</span><span class="m">0</span>.0000,<span class="w"> </span><span class="nv">effort</span><span class="o">=</span><span class="m">0</span>.0000
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1699123456</span>.891<span class="o">]</span><span class="w"> </span><span class="o">[</span>joint_state_subscriber<span class="o">]</span>:<span class="w">   </span>joint_lift:<span class="w"> </span><span class="nv">pos</span><span class="o">=</span><span class="m">0</span>.2500,<span class="w"> </span><span class="nv">vel</span><span class="o">=</span><span class="m">0</span>.0000,<span class="w"> </span><span class="nv">effort</span><span class="o">=</span><span class="m">0</span>.0000
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1699123456</span>.891<span class="o">]</span><span class="w"> </span><span class="o">[</span>joint_state_subscriber<span class="o">]</span>:<span class="w">   </span>wrist_extension:<span class="w"> </span><span class="nv">pos</span><span class="o">=</span><span class="m">0</span>.0000,<span class="w"> </span><span class="nv">vel</span><span class="o">=</span><span class="m">0</span>.0000,<span class="w"> </span><span class="nv">effort</span><span class="o">=</span><span class="m">0</span>.0000
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1699123456</span>.891<span class="o">]</span><span class="w"> </span><span class="o">[</span>joint_state_subscriber<span class="o">]</span>:<span class="w">   </span>joint_wrist_yaw:<span class="w"> </span><span class="nv">pos</span><span class="o">=</span><span class="m">0</span>.0000,<span class="w"> </span><span class="nv">vel</span><span class="o">=</span><span class="m">0</span>.0000,<span class="w"> </span><span class="nv">effort</span><span class="o">=</span><span class="m">0</span>.0000
+...
+</code></pre></div>
+<p>Congratulations! Your node is now receiving and displaying joint state information from Stretch.</p>
+<h3 id="understanding-the-output">Understanding the Output<a class="headerlink" href="#understanding-the-output" title="Anchor link">¶</a></h3>
+<p>The joint state messages contain information about all of Stretch's joints:</p>
+<ul>
+<li><strong>Position</strong>: Current joint position (in radians for revolute joints, meters for prismatic joints)</li>
+<li><strong>Velocity</strong>: Current joint velocity</li>
+<li><strong>Effort</strong>: Current effort/torque being applied to the joint</li>
+</ul>
+<p>Key joints you'll see include:
+- <code>joint_lift</code>: The vertical lift mechanism
+- <code>wrist_extension</code>: The telescoping arm extension
+- <code>joint_wrist_yaw</code>: Wrist rotation
+- <code>joint_left_wheel</code> and <code>joint_right_wheel</code>: The mobile base wheels
+- Various gripper joints for the fingers</p>
+<h2 id="step-7-enhancing-your-node">Step 7: Enhancing Your Node<a class="headerlink" href="#step-7-enhancing-your-node" title="Anchor link">¶</a></h2>
+<p>Let's make our node more useful by filtering for specific joints and adding some additional functionality.</p>
+<p>Create a new file called <code>filtered_joint_subscriber.py</code>:</p>
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/ament_ws/src/stretch_joint_reader/stretch_joint_reader
+touch<span class="w"> </span>filtered_joint_subscriber.py
+</code></pre></div>
+<p>Add the following enhanced code:</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.node</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sensor_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">JointState</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">FilteredJointStateSubscriber</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    An enhanced ROS2 node that subscribes to joint states and filters for specific joints.</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">'filtered_joint_state_subscriber'</span><span class="p">)</span>
+
+        <span class="c1"># Define which joints we're interested in</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">joints_of_interest</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">'joint_lift'</span><span class="p">,</span>
+            <span class="s1">'wrist_extension'</span><span class="p">,</span>
+            <span class="s1">'joint_wrist_yaw'</span><span class="p">,</span>
+            <span class="s1">'joint_gripper_finger_left'</span><span class="p">,</span>
+            <span class="s1">'joint_gripper_finger_right'</span>
+        <span class="p">]</span>
+
+        <span class="c1"># Create subscription</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subscription</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span>
+            <span class="n">JointState</span><span class="p">,</span>
+            <span class="s1">'/joint_states'</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">joint_state_callback</span><span class="p">,</span>
+            <span class="mi">10</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Create a timer to periodically print a summary</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_timer</span><span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">print_summary</span><span class="p">)</span>
+
+        <span class="c1"># Store the latest joint states</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">latest_joint_states</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'Filtered Joint State Subscriber started!'</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Monitoring joints: </span><span class="si">{</span><span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">joints_of_interest</span><span class="p">)</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">joint_state_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Process incoming joint state messages."""</span>
+        <span class="c1"># Update our stored joint states</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">joint_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">name</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">joint_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">joints_of_interest</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">latest_joint_states</span><span class="p">[</span><span class="n">joint_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s1">'position'</span><span class="p">:</span> <span class="n">msg</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">position</span><span class="p">)</span> <span class="k">else</span> <span class="mf">0.0</span><span class="p">,</span>
+                    <span class="s1">'velocity'</span><span class="p">:</span> <span class="n">msg</span><span class="o">.</span><span class="n">velocity</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">velocity</span><span class="p">)</span> <span class="k">else</span> <span class="mf">0.0</span><span class="p">,</span>
+                    <span class="s1">'effort'</span><span class="p">:</span> <span class="n">msg</span><span class="o">.</span><span class="n">effort</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">effort</span><span class="p">)</span> <span class="k">else</span> <span class="mf">0.0</span>
+                <span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">print_summary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Print a summary of current joint states."""</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">latest_joint_states</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">'No joint state data received yet...'</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'=== Joint State Summary ==='</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">joint_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">joints_of_interest</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">joint_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">latest_joint_states</span><span class="p">:</span>
+                <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">latest_joint_states</span><span class="p">[</span><span class="n">joint_name</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">joint_name</span><span class="si">:</span><span class="s1">25</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">state</span><span class="p">[</span><span class="s2">"position"</span><span class="p">]</span><span class="si">:</span><span class="s1">8.4f</span><span class="si">}</span><span class="s1"> rad/m'</span>
+                <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'==========================='</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">FilteredJointStateSubscriber</span><span class="p">()</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'Shutting down...'</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span>
+        <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+<p>Update your <code>setup.py</code> to include this new node:</p>
+<div class="highlight"><pre><span></span><code><span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">'console_scripts'</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">'joint_state_subscriber = stretch_joint_reader.joint_state_subscriber:main'</span><span class="p">,</span>
+        <span class="s1">'filtered_joint_subscriber = stretch_joint_reader.filtered_joint_subscriber:main'</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">},</span>
+</code></pre></div>
+<p>Rebuild your package:</p>
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/ament_ws
+colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>stretch_joint_reader
+<span class="nb">source</span><span class="w"> </span>install/setup.bash
+</code></pre></div>
+<p>Run the enhanced node:</p>
+<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>run<span class="w"> </span>stretch_joint_reader<span class="w"> </span>filtered_joint_subscriber
+</code></pre></div>
+<p>This enhanced version will print a summary every 5 seconds showing only the joints you're interested in, making it easier to monitor specific parts of the robot.</p>
+<h2 id="common-troubleshooting">Common Troubleshooting<a class="headerlink" href="#common-troubleshooting" title="Anchor link">¶</a></h2>
+<h3 id="build-errors">Build Errors<a class="headerlink" href="#build-errors" title="Anchor link">¶</a></h3>
+<p><strong>Problem</strong>: <code>colcon build</code> fails with Python syntax errors
+- <strong>Solution</strong>: Check your Python code for proper indentation and syntax. Python is sensitive to indentation - use consistent spaces (typically 4 spaces per level).</p>
+<p><strong>Problem</strong>: Package not found during build
+- <strong>Solution</strong>: Make sure you're in the correct workspace directory (<code>~/ament_ws</code>) and that your package is in the <code>src</code> folder.</p>
+<p><strong>Problem</strong>: Missing dependencies error
+- <strong>Solution</strong>: Ensure all required dependencies are listed in your <code>package.xml</code> file.</p>
+<h3 id="runtime-errors">Runtime Errors<a class="headerlink" href="#runtime-errors" title="Anchor link">¶</a></h3>
+<p><strong>Problem</strong>: <code>ros2 run</code> command not found or package not found
+- <strong>Solution</strong>: Make sure you've sourced your workspace: <code>source ~/ament_ws/install/setup.bash</code></p>
+<p><strong>Problem</strong>: Node starts but no messages are received
+- <strong>Solution</strong>:
+  1. Check that the Stretch driver is running: <code>ros2 launch stretch_core stretch_driver.launch.py</code>
+  2. Verify the topic exists: <code>ros2 topic list | grep joint_states</code>
+  3. Check if messages are being published: <code>ros2 topic echo /joint_states</code></p>
+<p><strong>Problem</strong>: Permission denied when running the node
+- <strong>Solution</strong>: Make sure your Python file has execute permissions: <code>chmod +x joint_state_subscriber.py</code></p>
+<h3 id="debugging-tips">Debugging Tips<a class="headerlink" href="#debugging-tips" title="Anchor link">¶</a></h3>
+<ol>
+<li>
+<p><strong>Use ROS2 command-line tools</strong>:
+   </p><div class="highlight"><pre><span></span><code><span class="c1"># List all available topics</span>
+ros2<span class="w"> </span>topic<span class="w"> </span>list
+
+<span class="c1"># See what's being published on a topic</span>
+ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/joint_states
+
+<span class="c1"># Check topic information</span>
+ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/joint_states
+
+<span class="c1"># List running nodes</span>
+ros2<span class="w"> </span>node<span class="w"> </span>list
+</code></pre></div><p></p>
+</li>
+<li>
+<p><strong>Add more logging</strong>: Use <code>self.get_logger().info()</code>, <code>.warn()</code>, <code>.error()</code>, or <code>.debug()</code> to add debugging information to your code.</p>
+</li>
+<li>
+<p><strong>Check the ROS2 graph</strong>: Use <code>rqt_graph</code> to visualize the connections between nodes:
+   </p><div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>run<span class="w"> </span>rqt_graph<span class="w"> </span>rqt_graph
+</code></pre></div><p></p>
+</li>
+</ol>
+<h2 id="understanding-ros2-concepts">Understanding ROS2 Concepts<a class="headerlink" href="#understanding-ros2-concepts" title="Anchor link">¶</a></h2>
+<h3 id="topics-and-messages">Topics and Messages<a class="headerlink" href="#topics-and-messages" title="Anchor link">¶</a></h3>
+<ul>
+<li><strong>Topics</strong>: Named channels for data communication between nodes</li>
+<li><strong>Messages</strong>: Data structures that define the format of information sent over topics</li>
+<li><strong>Publishers</strong>: Nodes that send messages to topics</li>
+<li><strong>Subscribers</strong>: Nodes that receive messages from topics</li>
+</ul>
+<h3 id="quality-of-service-qos">Quality of Service (QoS)<a class="headerlink" href="#quality-of-service-qos" title="Anchor link">¶</a></h3>
+<p>The queue size parameter (10 in our examples) is part of ROS2's Quality of Service system. It determines how many messages to buffer if your callback function can't process them fast enough.</p>
+<h3 id="node-lifecycle">Node Lifecycle<a class="headerlink" href="#node-lifecycle" title="Anchor link">¶</a></h3>
+<ol>
+<li><strong>Initialization</strong>: <code>rclpy.init()</code> sets up the ROS2 runtime</li>
+<li><strong>Node Creation</strong>: Creating your node instance</li>
+<li><strong>Spinning</strong>: <code>rclpy.spin()</code> keeps the node alive and processes callbacks</li>
+<li><strong>Cleanup</strong>: <code>destroy_node()</code> and <code>rclpy.shutdown()</code> clean up resources</li>
+</ol>
 
 
 
@@ -2214,13 +3534,51 @@
         <footer class="md-footer">
   
     
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../getting_started/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Getting Started">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Getting Started
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../intro_to_ros2/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction to ROS2 Client (rclpy)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Introduction to ROS2 Client (rclpy)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2020-2025 Hello Robot Inc
+      Copyright © 2020-2025 Hello Robot Inc
     </div>
   
   
@@ -2241,7 +3599,7 @@
       
     
     <a href="https://hello-robot.com" target="_blank" rel="noopener" title="hello-robot.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
     </a>
   
     
@@ -2252,7 +3610,7 @@
       
     
     <a href="https://twitter.com/HelloRobotInc" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.2 4.2 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.52 8.52 0 0 1-5.33 1.84q-.51 0-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.2 4.2 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.52 8.52 0 0 1-5.33 1.84q-.51 0-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23"></path></svg>
     </a>
   
     
@@ -2263,7 +3621,7 @@
       
     
     <a href="https://github.com/hello-robot" target="_blank" rel="noopener" title="github.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"></path></svg>
     </a>
   
     
@@ -2274,7 +3632,7 @@
       
     
     <a href="https://linkedin.com/company/hello-robot-inc" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"></path></svg>
     </a>
   
 </div>
@@ -2295,7 +3653,7 @@
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
-  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
-document$.subscribe(() => { lightbox.reload() });
-</script></body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

@@ -1,9 +1,4 @@
-<!-- Elements added to "main.html" will be displayed on all pages -->
-
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!-- Elements added to "main.html" will be displayed on all pages --><!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -17,6 +12,10 @@
         <link rel="canonical" href="https://docs.hello-robot.com/0.3/ros2/intro_to_ros2/">
       
       
+        <link rel="prev" href="../writing_nodes/">
+      
+      
+        <link rel="next" href="../intro_to_hellonode/">
       
       
       <link rel="icon" href="../../images/hello_robot_favicon.png">
@@ -24,7 +23,7 @@
     
     
       
-        <title>Introduction to ROS 2 - Stretch Docs</title>
+        <title>Introduction to ROS2 Client (rclpy) - Stretch Docs</title>
       
     
     
@@ -45,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -62,16 +61,17 @@
     <!-- main.html | Added "navigation.instant" support -->
     <link rel="canonical" href=".">
 
-   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
-    html.glightbox-open { overflow: initial; height: 100%; }
-    .gslide-title { margin-top: 0px; user-select: text; }
-    .gslide-desc { color: #666; user-select: text; }
-    .gslide-image img { background: white; }
-    .gscrollbar-fixer { padding-right: 15px; }
-    .gdesc-inner { font-size: 0.75rem; }
-    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
-    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#introduction-to-ros-2" class="md-skip">
+        <a href="#introduction-to-ros-2-and-the-python-client-library-rclpy" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -129,7 +129,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introduction to ROS 2
+              Introduction to ROS2 Client (rclpy)
             
           </span>
         </div>
@@ -142,7 +142,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent="indigo" aria-hidden="true" type="radio" name="__palette" id="__palette_0">
     
   
 </form>
@@ -155,7 +155,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -164,15 +164,15 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -207,7 +207,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -261,7 +261,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -382,7 +382,7 @@
         
   
   <span class="md-ellipsis">
-    Demo 1 - Mapping & Navigation
+    Demo 1 - Mapping &amp; Navigation
     
   </span>
   
@@ -480,7 +480,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -589,7 +589,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -691,7 +691,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4">
         
           
           <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
@@ -808,7 +808,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -895,7 +895,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -972,17 +972,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -997,7 +999,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             ROS 2 Tutorials
@@ -1030,6 +1032,487 @@
                 
   
   
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ROS2 Basics
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            ROS2 Basics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../writing_nodes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating Packages &amp; Nodes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Introduction to ROS2 Client (rclpy)
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Introduction to ROS2 Client (rclpy)
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ipython" class="md-nav__link">
+    <span class="md-ellipsis">
+      IPython
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialization-and-shutdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initialization and Shutdown
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Initialization and Shutdown">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rclpyinit" class="md-nav__link">
+    <span class="md-ellipsis">
+      rclpy.init()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rclpycreate_node" class="md-nav__link">
+    <span class="md-ellipsis">
+      rclpy.create_node()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rclpyloggingget_logger" class="md-nav__link">
+    <span class="md-ellipsis">
+      rclpy.logging.get_logger()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rclpyok" class="md-nav__link">
+    <span class="md-ellipsis">
+      rclpy.ok()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rclpyshutdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      rclpy.shutdown()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publishing-and-subscribing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publishing and Subscribing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Publishing and Subscribing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_publisher" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_publisher()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create_subscription" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_subscription()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publish" class="md-nav__link">
+    <span class="md-ellipsis">
+      publish()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rclpyspin_once" class="md-nav__link">
+    <span class="md-ellipsis">
+      rclpy.spin_once()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rclpyspin" class="md-nav__link">
+    <span class="md-ellipsis">
+      rclpy.spin()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-server-and-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Server and Client
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Service Server and Client">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_service" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_service()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create_client" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_client()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rclpyspin_until_future_complete" class="md-nav__link">
+    <span class="md-ellipsis">
+      rclpy.spin_until_future_complete()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-ros_domain_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding ROS_DOMAIN_ID
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding ROS_DOMAIN_ID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-ros_domain_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is ROS_DOMAIN_ID?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-is-ros_domain_id-important" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why is ROS_DOMAIN_ID Important?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-ros_domain_id-in-the-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting ROS_DOMAIN_ID in the Terminal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-ros_domain_id-permanently-in-bashrc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting ROS_DOMAIN_ID Permanently in ~/.bashrc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-your-current-ros_domain_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checking Your Current ROS_DOMAIN_ID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-using-ros_domain_id-with-multiple-robots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Using ROS_DOMAIN_ID with Multiple Robots
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro_to_hellonode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction to HelloNode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stretch_simulation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Simulation Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../teleoperating_stretch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Teleoperation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rviz_basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RViz Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../follow_joint_trajectory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Follow Joint Trajectory &amp; Joint States
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     <li class="md-nav__item">
@@ -1037,7 +1520,7 @@
         
   
   <span class="md-ellipsis">
-    Motion Commands
+    Motion Commands via hello_utils
     
   </span>
   
@@ -1059,7 +1542,51 @@
         
   
   <span class="md-ellipsis">
-    Robot Drivers
+    Robot Driver
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../twist_control/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Twist Control
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensors_tutorial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sensors Tutorial
     
   </span>
   
@@ -1084,14 +1611,14 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_11">
         
           
-          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_11" id="__nav_7_11_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    Navigation with Nav2
+    Nav Stack Tutorial
     
   </span>
   
@@ -1099,10 +1626,10 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_11">
             <span class="md-nav__icon md-icon"></span>
-            Navigation with Nav2
+            Nav Stack Tutorial
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1187,11 +1714,11 @@
   
   
     <li class="md-nav__item">
-      <a href="https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_funmap#overview" class="md-nav__link">
+      <a href="../perception.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    FUNMAP
+    Perception Tutorial
     
   </span>
   
@@ -1209,11 +1736,55 @@
   
   
     <li class="md-nav__item">
-      <a href="../perception/" class="md-nav__link">
+      <a href="../deep_perception/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Perception
+    Deep Perception
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aruco_marker_detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ArUco Markers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../remote_compute/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Offloading Computation Tutorial
     
   </span>
   
@@ -1238,14 +1809,14 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_16">
         
           
-          <label class="md-nav__link" for="__nav_7_7" id="__nav_7_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_16" id="__nav_7_16_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    Examples
+    Autonomy Demos
     
   </span>
   
@@ -1253,10 +1824,10 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_16">
             <span class="md-nav__icon md-icon"></span>
-            Examples
+            Autonomy Demos
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1267,11 +1838,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../example_1/" class="md-nav__link">
+      <a href="../demo_hello_world/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Move Stretch with Twist Controller
+    Hello World
     
   </span>
   
@@ -1289,11 +1860,385 @@
   
   
     <li class="md-nav__item">
-      <a href="../follow_joint_trajectory/" class="md-nav__link">
+      <a href="../demo_grasp_object/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Trajectory Control
+    Grasp Object
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demo_handover_object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Handover Object
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demo_open_drawer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Open Drawer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demo_surface_cleaning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Surface Cleaning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../funmap_tutorial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FUNMAP Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_18">
+        
+          
+          <label class="md-nav__link" for="__nav_7_18" id="__nav_7_18_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_18">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../voice_teleop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Voice Teleop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../speech_to_text/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Speech to Text
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lidar_filtering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lidar Based Sensing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rviz_markers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom RViz Marker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../joint_effort_plotting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Effort Value Plotting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tf2_transforms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tf2 Listener and Broadcaster
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../realsense_camera/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Realsense Camera
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../align_to_aruco/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Align to ArUco Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aruco_marker_detection#aruco-locator-example" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ArUco Locator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../joint_states/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Joint States
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collision_avoidance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collision Avoidance
     
   </span>
   
@@ -1326,336 +2271,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_3/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Collision Avoidance
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_4/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Rviz Markers
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../remote_compute/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Offloading Computation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ros2/align_to_aruco.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Align to ArUco
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_12/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ArUco Locator
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7_9" >
-        
-          
-          <label class="md-nav__link" for="__nav_7_7_9" id="__nav_7_7_9_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Joints
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_7_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_7_9">
-            <span class="md-nav__icon md-icon"></span>
-            Joints
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_5/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Joint States
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_10/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Static Transformations
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_6/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Joint Effort
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ros2/deep_perception.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Deep Perception
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_2/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Filter Laser Scans
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_7/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Realsense Camera
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_8/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Microphones
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_9/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Voice Teleop
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1685,7 +2300,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
@@ -1765,7 +2380,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3">
         
           
           <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
@@ -1875,7 +2490,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_4">
         
           
           <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
@@ -1970,7 +2585,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
         
           
           <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
@@ -2079,7 +2694,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10">
         
           
           <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
@@ -2160,7 +2775,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2349,6 +2964,75 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#understanding-ros_domain_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding ROS_DOMAIN_ID
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding ROS_DOMAIN_ID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-ros_domain_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is ROS_DOMAIN_ID?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-is-ros_domain_id-important" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why is ROS_DOMAIN_ID Important?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-ros_domain_id-in-the-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting ROS_DOMAIN_ID in the Terminal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-ros_domain_id-permanently-in-bashrc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting ROS_DOMAIN_ID Permanently in ~/.bashrc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-your-current-ros_domain_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checking Your Current ROS_DOMAIN_ID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-using-ros_domain_id-with-multiple-robots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Using ROS_DOMAIN_ID with Multiple Robots
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2365,124 +3049,124 @@
 
 
 
-<h1 id="introduction-to-ros-2">Introduction to ROS 2<a class="headerlink" href="#introduction-to-ros-2" title="Anchor link">&para;</a></h1>
+<h1 id="introduction-to-ros-2-and-the-python-client-library-rclpy">Introduction to ROS 2 and the python client library (rclpy)<a class="headerlink" href="#introduction-to-ros-2-and-the-python-client-library-rclpy" title="Anchor link">¶</a></h1>
 <p>In this tutorial we will explore rclpy, the client library for interacting with ROS 2 using the Python API. The rclpy library forms the base of ROS 2 and you will notice that all tutorials in the following sections will use it. In this section we will focus on a few common constructs of rclpy and then follow some examples using the IPython interpreter to get familiar with them.</p>
-<h2 id="ipython">IPython<a class="headerlink" href="#ipython" title="Anchor link">&para;</a></h2>
+<h2 id="ipython">IPython<a class="headerlink" href="#ipython" title="Anchor link">¶</a></h2>
 <p>It is not always necessary to write a functional Python script while prototyping or exploring a new library. It's instructive and helpful to use what’s called an REPL (Read-Eval-Print Loop), which quickly allows us to execute Python instructions and see their output immediately. This allows better understanding of what each instruction does and is often a great way to debug unexpected behavior. IPython is a command line based interactive interpreter for Python that uses REPL and can be used to run Python snippets for quick prototyping.</p>
 <p>To run IPython in a terminal, simply execute:
-<div class="shell-prompt highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>IPython
-</code></pre></div></p>
+</p><div class="shell-prompt highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>IPython
+</code></pre></div><p></p>
 <p>Try out the following snippets for a ROS 2 quickstart:</p>
-<h2 id="initialization-and-shutdown">Initialization and Shutdown<a class="headerlink" href="#initialization-and-shutdown" title="Anchor link">&para;</a></h2>
-<h3 id="rclpyinit">rclpy.init()<a class="headerlink" href="#rclpyinit" title="Anchor link">&para;</a></h3>
+<h2 id="initialization-and-shutdown">Initialization and Shutdown<a class="headerlink" href="#initialization-and-shutdown" title="Anchor link">¶</a></h2>
+<h3 id="rclpyinit">rclpy.init()<a class="headerlink" href="#rclpyinit" title="Anchor link">¶</a></h3>
 <p>All rclpy functionality can be exposed after initialization:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
+</p><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
 
 <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
-</code></pre></div></p>
-<h3 id="rclpycreate_node">rclpy.create_node()<a class="headerlink" href="#rclpycreate_node" title="Anchor link">&para;</a></h3>
+</code></pre></div><p></p>
+<h3 id="rclpycreate_node">rclpy.create_node()<a class="headerlink" href="#rclpycreate_node" title="Anchor link">¶</a></h3>
 <p>To create a new ROS 2 node, one can use the create_node method with the node name as the argument:
-<div class="highlight"><pre><span></span><code><span class="n">node</span> <span class="o">=</span> <span class="n">rclpy</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="s1">&#39;temp&#39;</span><span class="p">)</span>
-</code></pre></div></p>
-<h3 id="rclpyloggingget_logger">rclpy.logging.get_logger()<a class="headerlink" href="#rclpyloggingget_logger" title="Anchor link">&para;</a></h3>
+</p><div class="highlight"><pre><span></span><code><span class="n">node</span> <span class="o">=</span> <span class="n">rclpy</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="s1">'temp'</span><span class="p">)</span>
+</code></pre></div><p></p>
+<h3 id="rclpyloggingget_logger">rclpy.logging.get_logger()<a class="headerlink" href="#rclpyloggingget_logger" title="Anchor link">¶</a></h3>
 <p>The rclpy library also provides a logger to print messages with different severity levels to stdout. Here’s how you can use it:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy.logging</span>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">rclpy</span><span class="o">.</span><span class="n">logging</span><span class="o">.</span><span class="n">get_logger</span><span class="p">(</span><span class="s1">&#39;temp&#39;</span><span class="p">)</span>
-<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
-<span class="n">logger</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Robot&quot;</span><span class="p">)</span>
-<span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Stretch&quot;</span><span class="p">)</span>
-</code></pre></div></p>
-<h3 id="rclpyok">rclpy.ok()<a class="headerlink" href="#rclpyok" title="Anchor link">&para;</a></h3>
+</p><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy.logging</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">rclpy</span><span class="o">.</span><span class="n">logging</span><span class="o">.</span><span class="n">get_logger</span><span class="p">(</span><span class="s1">'temp'</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Hello"</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">"Robot"</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"Stretch"</span><span class="p">)</span>
+</code></pre></div><p></p>
+<h3 id="rclpyok">rclpy.ok()<a class="headerlink" href="#rclpyok" title="Anchor link">¶</a></h3>
 <p>If you want to check whether rclpy has been initialized, you can run the following snippet. This is especially useful to simulate an infinite loop based on whether rclpy has been shutdown.
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+</p><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="k">while</span> <span class="n">rclpy</span><span class="o">.</span><span class="n">ok</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello"</span><span class="p">)</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
-</code></pre></div></p>
+</code></pre></div><p></p>
 <p>Press ctrl+c to get out of the infinite loop.</p>
-<h3 id="rclpyshutdown">rclpy.shutdown()<a class="headerlink" href="#rclpyshutdown" title="Anchor link">&para;</a></h3>
+<h3 id="rclpyshutdown">rclpy.shutdown()<a class="headerlink" href="#rclpyshutdown" title="Anchor link">¶</a></h3>
 <p>Finally, to destroy a node safely and shutdown the instance of rclpy you can run:</p>
 <div class="highlight"><pre><span></span><code><span class="n">node</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span>
 <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
 </code></pre></div>
-<h2 id="publishing-and-subscribing">Publishing and Subscribing<a class="headerlink" href="#publishing-and-subscribing" title="Anchor link">&para;</a></h2>
-<h3 id="create_publisher">create_publisher()<a class="headerlink" href="#create_publisher" title="Anchor link">&para;</a></h3>
+<h2 id="publishing-and-subscribing">Publishing and Subscribing<a class="headerlink" href="#publishing-and-subscribing" title="Anchor link">¶</a></h2>
+<h3 id="create_publisher">create_publisher()<a class="headerlink" href="#create_publisher" title="Anchor link">¶</a></h3>
 <p>ROS 2 is a distributed communication system and one way to send data is through a publisher. It takes the following arguments: msg_type, msg_topic and a history depth (formerly queue_size):
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">std_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">String</span>
+</p><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">std_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">String</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
 
 <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
-<span class="n">node</span> <span class="o">=</span> <span class="n">rclpy</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="s1">&#39;temp&#39;</span><span class="p">)</span>
-<span class="n">pub</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-</code></pre></div></p>
-<h3 id="create_subscription">create_subscription()<a class="headerlink" href="#create_subscription" title="Anchor link">&para;</a></h3>
+<span class="n">node</span> <span class="o">=</span> <span class="n">rclpy</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="s1">'temp'</span><span class="p">)</span>
+<span class="n">pub</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="s1">'hello'</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</code></pre></div><p></p>
+<h3 id="create_subscription">create_subscription()<a class="headerlink" href="#create_subscription" title="Anchor link">¶</a></h3>
 <p>To receive a message, we need to create a subscriber with a callback function that listens to the arriving messages. Let's create a subscriber and define a callback called hello_callback() that logs the a message as soon as one is received:
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">hello_callback</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Received message: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
+</p><div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">hello_callback</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Received message: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
 
-<span class="n">sub</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="n">hello_callback</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-</code></pre></div></p>
-<h3 id="publish">publish()<a class="headerlink" href="#publish" title="Anchor link">&para;</a></h3>
+<span class="n">sub</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="s1">'hello'</span><span class="p">,</span> <span class="n">hello_callback</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</code></pre></div><p></p>
+<h3 id="publish">publish()<a class="headerlink" href="#publish" title="Anchor link">¶</a></h3>
 <p>Now that you have defined a publisher and a subscriber, let’s send a message and see if it gets printed to the console:
-<div class="highlight"><pre><span></span><code><span class="n">msg</span> <span class="o">=</span> <span class="n">String</span><span class="p">()</span>
-<span class="n">msg</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;Hello&quot;</span>
+</p><div class="highlight"><pre><span></span><code><span class="n">msg</span> <span class="o">=</span> <span class="n">String</span><span class="p">()</span>
+<span class="n">msg</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="s2">"Hello"</span>
 <span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-</code></pre></div></p>
-<h3 id="rclpyspin_once">rclpy.spin_once()<a class="headerlink" href="#rclpyspin_once" title="Anchor link">&para;</a></h3>
+</code></pre></div><p></p>
+<h3 id="rclpyspin_once">rclpy.spin_once()<a class="headerlink" href="#rclpyspin_once" title="Anchor link">¶</a></h3>
 <p>That didn’t do it! Although the message was sent, it didn't get printed to the console. Why? Because the hello_callback() method was never called to print the message. In ROS, we don’t call this method manually, but rather leave it to what’s called the executor. The executor can be invoked by calling the spin_once() method. We pass the node object and a timeout of 2 seconds as the arguments. The timeout is important because the spin_once() method is blocking and it will wait for a message to arrive indefinitely if a timeout is not defined. It returns immediately once a message is received.
-<div class="highlight"><pre><span></span><code><span class="n">rclpy</span><span class="o">.</span><span class="n">spin_once</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">timeout_sec</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
-</code></pre></div></p>
-<h3 id="rclpyspin">rclpy.spin()<a class="headerlink" href="#rclpyspin" title="Anchor link">&para;</a></h3>
+</p><div class="highlight"><pre><span></span><code><span class="n">rclpy</span><span class="o">.</span><span class="n">spin_once</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">timeout_sec</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+</code></pre></div><p></p>
+<h3 id="rclpyspin">rclpy.spin()<a class="headerlink" href="#rclpyspin" title="Anchor link">¶</a></h3>
 <p>The spin_once() method only does work equivalent to a single message callback. What if you want the executor to process callbacks continuously? This can be achieved using the spin() method. While retaining the current interpreter instance, let’s open a new terminal window with a new instance of IPython and execute the following:</p>
 <p>Terminal 2:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
+</p><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">std_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">String</span>
 <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
-<span class="n">node</span> <span class="o">=</span> <span class="n">rclpy</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="s1">&#39;temp2&#39;</span><span class="p">)</span>
+<span class="n">node</span> <span class="o">=</span> <span class="n">rclpy</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="s1">'temp2'</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">hello_callback</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I heard: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
-<span class="n">sub</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="n">hello_callback</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"I heard: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
+<span class="n">sub</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="s1">'hello'</span><span class="p">,</span> <span class="n">hello_callback</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
-</code></pre></div></p>
+</code></pre></div><p></p>
 <p>Now, from the first IPython instance, send a series of messages and see what happens:</p>
 <p>Terminal 1:
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-    <span class="n">msg</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;Hello </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</p><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">msg</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="s2">"Hello </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
     <span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-</code></pre></div></p>
+</code></pre></div><p></p>
 <p>Voila! Finally, close both the terminals to end the session.</p>
-<h2 id="service-server-and-client">Service Server and Client<a class="headerlink" href="#service-server-and-client" title="Anchor link">&para;</a></h2>
-<h3 id="create_service">create_service()<a class="headerlink" href="#create_service" title="Anchor link">&para;</a></h3>
+<h2 id="service-server-and-client">Service Server and Client<a class="headerlink" href="#service-server-and-client" title="Anchor link">¶</a></h2>
+<h3 id="create_service">create_service()<a class="headerlink" href="#create_service" title="Anchor link">¶</a></h3>
 <p>Let’s explore another common way of using ROS 2. Imagine a case where you need to request some information from a node and you expect to receive a response. This can be achieved using the service client paradigm in ROS 2. Let’s fire up IPython again and create a quick service:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
+</p><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">example_interfaces.srv</span><span class="w"> </span><span class="kn">import</span> <span class="n">AddTwoInts</span>
 <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">add_ints</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Received request&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Received request"</span><span class="p">)</span>
     <span class="n">res</span><span class="o">.</span><span class="n">sum</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="n">req</span><span class="o">.</span><span class="n">b</span>
     <span class="k">return</span> <span class="n">res</span>
 
-<span class="n">node</span> <span class="o">=</span> <span class="n">rclpy</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="s1">&#39;temp&#39;</span><span class="p">)</span>
-<span class="n">srv</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">create_service</span><span class="p">(</span><span class="n">AddTwoInts</span><span class="p">,</span> <span class="s1">&#39;add_ints&#39;</span><span class="p">,</span> <span class="n">add_ints</span><span class="p">)</span>
+<span class="n">node</span> <span class="o">=</span> <span class="n">rclpy</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="s1">'temp'</span><span class="p">)</span>
+<span class="n">srv</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">create_service</span><span class="p">(</span><span class="n">AddTwoInts</span><span class="p">,</span> <span class="s1">'add_ints'</span><span class="p">,</span> <span class="n">add_ints</span><span class="p">)</span>
 
 <span class="c1"># you need to spin to receive the request</span>
 <span class="n">rclpy</span><span class="o">.</span><span class="n">spin_once</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">timeout_sec</span><span class="o">=</span><span class="mf">60.0</span><span class="p">)</span>
-</code></pre></div></p>
+</code></pre></div><p></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You need to execute the next section of this tutorial within 60 seconds as the timeout defined for the spin_once() method to receive incoming requests is defined as 60 seconds. If the time elapses, you can execute the spin_once() method again before issuing a service request in the next section. Alternatively, you can call the spin() method to listen for incoming requests indefinitely.</p>
 </div>
 <p>The add_ints() method is the callback method for the service server. Once a service request is received, this method will act on it to generate the response. Since a service request is a ROS message, we need to invoke the executor with a spin method to receive the message.</p>
-<h3 id="create_client">create_client()<a class="headerlink" href="#create_client" title="Anchor link">&para;</a></h3>
+<h3 id="create_client">create_client()<a class="headerlink" href="#create_client" title="Anchor link">¶</a></h3>
 <p>Now, while retaining the current IPython session, open another session of the IPython interpreter in another terminal to write the service client:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
+</p><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">example_interfaces.srv</span><span class="w"> </span><span class="kn">import</span> <span class="n">AddTwoInts</span>
 <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
-<span class="n">node</span> <span class="o">=</span> <span class="n">rclpy</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="s1">&#39;temp2&#39;</span><span class="p">)</span>
+<span class="n">node</span> <span class="o">=</span> <span class="n">rclpy</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="s1">'temp2'</span><span class="p">)</span>
 
-<span class="n">cli</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">create_client</span><span class="p">(</span><span class="n">AddTwoInts</span><span class="p">,</span> <span class="s1">&#39;add_ints&#39;</span><span class="p">)</span>
+<span class="n">cli</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">create_client</span><span class="p">(</span><span class="n">AddTwoInts</span><span class="p">,</span> <span class="s1">'add_ints'</span><span class="p">)</span>
 
 <span class="n">req</span> <span class="o">=</span> <span class="n">AddTwoInts</span><span class="o">.</span><span class="n">Request</span><span class="p">()</span>
 <span class="n">req</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
@@ -2491,10 +3175,69 @@
 <span class="n">req_future</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">call_async</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
 <span class="n">rclpy</span><span class="o">.</span><span class="n">spin_until_future_complete</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">req_future</span><span class="p">,</span> <span class="n">timeout_sec</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Received response: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">req_future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">))</span>
-</code></pre></div></p>
-<h3 id="rclpyspin_until_future_complete">rclpy.spin_until_future_complete()<a class="headerlink" href="#rclpyspin_until_future_complete" title="Anchor link">&para;</a></h3>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Received response: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">req_future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">))</span>
+</code></pre></div><p></p>
+<h3 id="rclpyspin_until_future_complete">rclpy.spin_until_future_complete()<a class="headerlink" href="#rclpyspin_until_future_complete" title="Anchor link">¶</a></h3>
 <p>Notice that the spin method manifests itself as the spin_until_future_complete() method which takes the node, future and timeout_sec as the arguments. The future is an object in ROS 2 that’s returned immediately after an async service call has been made. We can then wait on the result of this future. This way the call to the service is not blocking and the code execution can continue as soon as the service call is issued.</p>
+<h2 id="understanding-ros_domain_id">Understanding ROS_DOMAIN_ID<a class="headerlink" href="#understanding-ros_domain_id" title="Anchor link">¶</a></h2>
+<h3 id="what-is-ros_domain_id">What is ROS_DOMAIN_ID?<a class="headerlink" href="#what-is-ros_domain_id" title="Anchor link">¶</a></h3>
+<p>ROS_DOMAIN_ID is an environment variable that determines which DDS (Data Distribution Service) domain your ROS2 nodes will communicate on. Think of it as a "channel" or "network ID" - only nodes with the same ROS_DOMAIN_ID can discover and communicate with each other.</p>
+<p>This is particularly useful in environments where:
+- Multiple robots or ROS2 systems are running on the same network
+- Multiple users are developing ROS2 applications simultaneously
+- You want to isolate your ROS2 communication from other systems</p>
+<p>The ROS_DOMAIN_ID can be any integer from 0 to 101 (some values may be reserved depending on your DDS implementation). The default value is 0.</p>
+<h3 id="why-is-ros_domain_id-important">Why is ROS_DOMAIN_ID Important?<a class="headerlink" href="#why-is-ros_domain_id-important" title="Anchor link">¶</a></h3>
+<p>When working with Stretch robots, setting the correct ROS_DOMAIN_ID is crucial because:</p>
+<ol>
+<li><strong>Multi-robot environments</strong>: If you have multiple Stretch robots on the same network, each should use a different ROS_DOMAIN_ID to prevent cross-talk</li>
+<li><strong>Shared networks</strong>: In lab or classroom settings, different users' ROS2 nodes won't interfere with each other if they use different domain IDs</li>
+<li><strong>Debugging</strong>: You can isolate your development environment from production systems</li>
+</ol>
+<h3 id="setting-ros_domain_id-in-the-terminal">Setting ROS_DOMAIN_ID in the Terminal<a class="headerlink" href="#setting-ros_domain_id-in-the-terminal" title="Anchor link">¶</a></h3>
+<p>To set the ROS_DOMAIN_ID for the current terminal session only, use the <code>export</code> command:</p>
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">ROS_DOMAIN_ID</span><span class="o">=</span><span class="m">42</span>
+</code></pre></div>
+<p>You can verify it's set correctly:</p>
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="nv">$ROS_DOMAIN_ID</span>
+</code></pre></div>
+<p>This setting will only persist for the current terminal session. Once you close the terminal, the setting is lost.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>All terminals where you run ROS2 nodes that need to communicate with each other must have the same ROS_DOMAIN_ID set. If you launch the Stretch driver in one terminal with <code>ROS_DOMAIN_ID=42</code> and try to run your node in another terminal with <code>ROS_DOMAIN_ID=0</code>, they won't be able to see each other!</p>
+</div>
+<h3 id="setting-ros_domain_id-permanently-in-bashrc">Setting ROS_DOMAIN_ID Permanently in ~/.bashrc<a class="headerlink" href="#setting-ros_domain_id-permanently-in-bashrc" title="Anchor link">¶</a></h3>
+<p>To avoid setting the ROS_DOMAIN_ID every time you open a new terminal, you can add it to your <code>~/.bashrc</code> file. This file is executed automatically every time you open a new terminal.</p>
+<p>Add the following line to your <code>~/.bashrc</code>:</p>
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">"export ROS_DOMAIN_ID=42"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+</code></pre></div>
+<p>Or manually edit the file:</p>
+<div class="shell-prompt highlight"><pre><span></span><code>nano<span class="w"> </span>~/.bashrc
+</code></pre></div>
+<p>Add this line at the end of the file (replace 42 with your desired domain ID):</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">ROS_DOMAIN_ID</span><span class="o">=</span><span class="m">42</span>
+</code></pre></div>
+<p>Save and exit (in nano: Ctrl+X, then Y, then Enter).</p>
+<p>To apply the changes to your current terminal without closing it:</p>
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When working with a Stretch robot, it's a good practice to set the same ROS_DOMAIN_ID in the <code>~/.bashrc</code> file on both your development machine and the robot itself. This ensures consistent communication across all terminals and reboots.</p>
+</div>
+<h3 id="checking-your-current-ros_domain_id">Checking Your Current ROS_DOMAIN_ID<a class="headerlink" href="#checking-your-current-ros_domain_id" title="Anchor link">¶</a></h3>
+<p>You can always check what ROS_DOMAIN_ID is currently set:</p>
+<div class="shell-prompt highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="nv">$ROS_DOMAIN_ID</span>
+</code></pre></div>
+<p>If this returns an empty line, it means ROS_DOMAIN_ID is not set, and ROS2 will use the default value of 0.</p>
+<h3 id="example-using-ros_domain_id-with-multiple-robots">Example: Using ROS_DOMAIN_ID with Multiple Robots<a class="headerlink" href="#example-using-ros_domain_id-with-multiple-robots" title="Anchor link">¶</a></h3>
+<p>If you're working in a lab with multiple Stretch robots, you might organize them like this:</p>
+<ul>
+<li><strong>Stretch Robot 1</strong>: <code>ROS_DOMAIN_ID=10</code></li>
+<li><strong>Stretch Robot 2</strong>: <code>ROS_DOMAIN_ID=11</code></li>
+<li><strong>Stretch Robot 3</strong>: <code>ROS_DOMAIN_ID=12</code></li>
+</ul>
+<p>Each robot and its corresponding development machine would have the same domain ID set in their <code>~/.bashrc</code> files.</p>
 
 
 
@@ -2520,13 +3263,51 @@
         <footer class="md-footer">
   
     
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../writing_nodes/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Creating Packages &amp; Nodes">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Creating Packages &amp; Nodes
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../intro_to_hellonode/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction to HelloNode">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Introduction to HelloNode
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2020-2025 Hello Robot Inc
+      Copyright © 2020-2025 Hello Robot Inc
     </div>
   
   
@@ -2547,7 +3328,7 @@
       
     
     <a href="https://hello-robot.com" target="_blank" rel="noopener" title="hello-robot.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
     </a>
   
     
@@ -2558,7 +3339,7 @@
       
     
     <a href="https://twitter.com/HelloRobotInc" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.2 4.2 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.52 8.52 0 0 1-5.33 1.84q-.51 0-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.2 4.2 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.52 8.52 0 0 1-5.33 1.84q-.51 0-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23"></path></svg>
     </a>
   
     
@@ -2569,7 +3350,7 @@
       
     
     <a href="https://github.com/hello-robot" target="_blank" rel="noopener" title="github.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"></path></svg>
     </a>
   
     
@@ -2580,7 +3361,7 @@
       
     
     <a href="https://linkedin.com/company/hello-robot-inc" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"></path></svg>
     </a>
   
 </div>
@@ -2601,7 +3382,7 @@
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
-  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
-document$.subscribe(() => { lightbox.reload() });
-</script></body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

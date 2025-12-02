@@ -1,9 +1,4 @@
-<!-- Elements added to "main.html" will be displayed on all pages -->
-
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!-- Elements added to "main.html" will be displayed on all pages --><!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -14,13 +9,13 @@
         <meta name="author" content="Hello Robot Inc">
       
       
-        <link rel="canonical" href="https://docs.hello-robot.com/0.3/ros2/example_2/">
+        <link rel="canonical" href="https://docs.hello-robot.com/0.3/ros2/funmap_tutorial/">
       
       
-        <link rel="prev" href="../example_6/">
+        <link rel="prev" href="../demo_surface_cleaning/">
       
       
-        <link rel="next" href="../example_7/">
+        <link rel="next" href="../voice_teleop/">
       
       
       <link rel="icon" href="../../images/hello_robot_favicon.png">
@@ -28,7 +23,7 @@
     
     
       
-        <title>Filter Laser Scans - Stretch Docs</title>
+        <title>FUNMAP Tutorial - Stretch Docs</title>
       
     
     
@@ -49,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -66,16 +61,17 @@
     <!-- main.html | Added "navigation.instant" support -->
     <link rel="canonical" href=".">
 
-   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
-    html.glightbox-open { overflow: initial; height: 100%; }
-    .gslide-title { margin-top: 0px; user-select: text; }
-    .gslide-desc { color: #666; user-select: text; }
-    .gslide-image img { background: white; }
-    .gscrollbar-fixer { padding-right: 15px; }
-    .gdesc-inner { font-size: 0.75rem; }
-    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
-    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -94,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#example-2" class="md-skip">
+        <a href="#funmap-tutorial" class="md-skip">
           Skip to content
         </a>
       
@@ -121,7 +117,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -133,7 +129,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Filter Laser Scans
+              FUNMAP Tutorial
             
           </span>
         </div>
@@ -146,7 +142,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="hello-robot-light" data-md-color-accent="indigo" aria-hidden="true" type="radio" name="__palette" id="__palette_0">
     
   
 </form>
@@ -159,7 +155,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -168,15 +164,15 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -211,7 +207,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -265,7 +261,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -386,7 +382,7 @@
         
   
   <span class="md-ellipsis">
-    Demo 1 - Mapping & Navigation
+    Demo 1 - Mapping &amp; Navigation
     
   </span>
   
@@ -484,7 +480,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -593,7 +589,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -695,7 +691,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4">
         
           
           <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
@@ -812,7 +808,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -899,7 +895,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -1038,12 +1034,210 @@
   
   
   
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2">
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ROS2 Basics
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            ROS2 Basics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../writing_nodes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating Packages &amp; Nodes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro_to_ros2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction to ROS2 Client (rclpy)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro_to_hellonode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction to HelloNode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stretch_simulation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Simulation Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../teleoperating_stretch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Teleoperation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rviz_basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RViz Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../follow_joint_trajectory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Follow Joint Trajectory &amp; Joint States
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../jogging/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Motion Commands
+    Motion Commands via hello_utils
     
   </span>
   
@@ -1065,7 +1259,51 @@
         
   
   <span class="md-ellipsis">
-    Robot Drivers
+    Robot Driver
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../twist_control/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Twist Control
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensors_tutorial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sensors Tutorial
     
   </span>
   
@@ -1090,14 +1328,14 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_11">
         
           
-          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_11" id="__nav_7_11_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    Navigation with Nav2
+    Nav Stack Tutorial
     
   </span>
   
@@ -1105,10 +1343,10 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_11">
             <span class="md-nav__icon md-icon"></span>
-            Navigation with Nav2
+            Nav Stack Tutorial
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1193,11 +1431,11 @@
   
   
     <li class="md-nav__item">
-      <a href="https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_funmap#overview" class="md-nav__link">
+      <a href="../perception.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    FUNMAP
+    Perception Tutorial
     
   </span>
   
@@ -1215,11 +1453,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../perception/" class="md-nav__link">
+      <a href="../deep_perception/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Perception
+    Deep Perception
     
   </span>
   
@@ -1234,22 +1472,326 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../aruco_marker_detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ArUco Markers
     
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
   
   
   
+  
+    <li class="md-nav__item">
+      <a href="../remote_compute/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Offloading Computation Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_16">
         
           
-          <label class="md-nav__link" for="__nav_7_7" id="__nav_7_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_16" id="__nav_7_16_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Autonomy Demos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_16">
+            <span class="md-nav__icon md-icon"></span>
+            Autonomy Demos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demo_hello_world/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hello World
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demo_grasp_object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Grasp Object
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demo_handover_object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Handover Object
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demo_open_drawer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Open Drawer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demo_surface_cleaning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Surface Cleaning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    FUNMAP Tutorial
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    FUNMAP Tutorial
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started-demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started Demo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more-funmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      More FUNMAP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    <span class="md-ellipsis">
+      License
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_18">
+        
+          
+          <label class="md-nav__link" for="__nav_7_18" id="__nav_7_18_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1261,8 +1803,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_18">
             <span class="md-nav__icon md-icon"></span>
             Examples
           </label>
@@ -1275,11 +1817,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../example_1/" class="md-nav__link">
+      <a href="../voice_teleop/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Move Stretch with Twist Controller
+    Voice Teleop
     
   </span>
   
@@ -1297,11 +1839,209 @@
   
   
     <li class="md-nav__item">
-      <a href="../follow_joint_trajectory/" class="md-nav__link">
+      <a href="../speech_to_text/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Trajectory Control
+    Speech to Text
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lidar_filtering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lidar Based Sensing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rviz_markers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom RViz Marker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../joint_effort_plotting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Effort Value Plotting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tf2_transforms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tf2 Listener and Broadcaster
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../realsense_camera/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Realsense Camera
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../align_to_aruco/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Align to ArUco Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aruco_marker_detection#aruco-locator-example" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ArUco Locator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../joint_states/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Joint States
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collision_avoidance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collision Avoidance
     
   </span>
   
@@ -1334,406 +2074,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_3/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Collision Avoidance
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_4/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Rviz Markers
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../remote_compute/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Offloading Computation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ros2/align_to_aruco.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Align to ArUco
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_12/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ArUco Locator
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7_9" >
-        
-          
-          <label class="md-nav__link" for="__nav_7_7_9" id="__nav_7_7_9_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Joints
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_7_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_7_9">
-            <span class="md-nav__icon md-icon"></span>
-            Joints
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_5/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Joint States
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_10/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Static Transformations
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_6/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Joint Effort
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ros2/deep_perception.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Deep Perception
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Filter Laser Scans
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Filter Laser Scans
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#example-2" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example 2
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Example 2">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Code
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-code-explained" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Code Explained
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_7/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Realsense Camera
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_8/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Microphones
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example_9/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Voice Teleop
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1763,7 +2103,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
@@ -1843,7 +2183,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3">
         
           
           <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
@@ -1953,7 +2293,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_4">
         
           
           <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
@@ -2048,7 +2388,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
         
           
           <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
@@ -2157,7 +2497,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10">
         
           
           <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
@@ -2238,7 +2578,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2246,6 +2586,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -2255,35 +2597,47 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#example-2" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Example 2
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Example 2">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Code
+      Overview
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#the-code-explained" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#getting-started-demo" class="md-nav__link">
     <span class="md-ellipsis">
-      The Code Explained
+      Getting Started Demo
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#more-funmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      More FUNMAP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    <span class="md-ellipsis">
+      License
+    </span>
+  </a>
   
 </li>
       
@@ -2303,141 +2657,82 @@
 
 
 
-  <h1>Filter Laser Scans</h1>
-
-<h2 id="example-2">Example 2<a class="headerlink" href="#example-2" title="Anchor link">&para;</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>ROS 2 tutorials are still under active development. </p>
-</div>
-<p>This example aims to provide instructions on how to filter scan messages.</p>
-<p>For robots with laser scanners, ROS provides a special Message type in the <a href="https://github.com/ros2/common_interfaces/tree/humble/sensor_msgs">sensor_msgs</a> package called <a href="https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/LaserScan.msg">LaserScan</a> to hold information about a given scan. Let's take a look at the message specification itself:</p>
-<div class="no-copy highlight"><pre><span></span><code><span class="c1"># Laser scans angles are measured counter clockwise,</span>
-<span class="c1"># with Stretch&#39;s LiDAR having both angle_min and angle_max facing forward</span>
-<span class="c1"># (very closely along the x-axis) of the device frame</span>
-<span class="c1">#</span>
-std_msgs/Header<span class="w"> </span>header<span class="w">   </span><span class="c1"># timestamp data in a particular coordinate frame</span>
-float32<span class="w"> </span>angle_min<span class="w">        </span><span class="c1"># start angle of the scan [rad]</span>
-float32<span class="w"> </span>angle_max<span class="w">        </span><span class="c1"># end angle of the scan [rad]</span>
-float32<span class="w"> </span>angle_increment<span class="w">  </span><span class="c1"># angular distance between measurements [rad]</span>
-float32<span class="w"> </span>time_increment<span class="w">   </span><span class="c1"># time between measurements [seconds]</span>
-float32<span class="w"> </span>scan_time<span class="w">        </span><span class="c1"># time between scans [seconds]</span>
-float32<span class="w"> </span>range_min<span class="w">        </span><span class="c1"># minimum range value [m]</span>
-float32<span class="w"> </span>range_max<span class="w">        </span><span class="c1"># maximum range value [m]</span>
-float32<span class="o">[]</span><span class="w"> </span>ranges<span class="w">         </span><span class="c1"># range data [m] (Note: values &lt; range_min or &gt; range_max should be discarded)</span>
-float32<span class="o">[]</span><span class="w"> </span>intensities<span class="w">    </span><span class="c1"># intensity data [device-specific units]</span>
+<h1 id="funmap-tutorial">FUNMAP Tutorial<a class="headerlink" href="#funmap-tutorial" title="Anchor link">¶</a></h1>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/banner.png" data-desc-position="bottom"><img alt="" src="../../images/banner.png"></a></p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Anchor link">¶</a></h2>
+<p><em>stretch_funmap</em> is an implementation of Fast Unified Navigation, Manipulation And Planning (FUNMAP). FUNMAP provides navigation, manipulation, and planning capabilities for the Stretch mobile manipulator. <em>stretch_funmap</em> includes examples of efficient ways to take advantage of the Stretch's unique properties. </p>
+<p>Previous commercially-available mobile manipulators have consisted of a serial manipulator (i.e., links connected by rotary joints) placed on a mobile base [1]. Widely used software (e.g., the Robot Operating System (ROS)) [1] typically expects a velocity-controlled mobile base that can be held still while the arm manipulates [3, 4]. </p>
+<p>In contrast, the Stretch's mobile base is integral to manipulation and typically moves throughout a task. It can also perform high-fidelity position control with its mobile base. FUNMAP uses approximate geometric models and computer-vision algorithms to efficiently find plans that take advantage of its prismatic joints (e.g., telescoping arm) and Cartesian structure. In contrast to typical approaches that treat navigation (e.g., ROS Navigation Stack ) and manipulation (e.g., MoveIt! [5, 6]) separately, FUNMAP does both. </p>
+<h2 id="getting-started-demo">Getting Started Demo<a class="headerlink" href="#getting-started-demo" title="Anchor link">¶</a></h2>
+<p>First, make sure that your Stretch has clearance to rotate in place and will rotate without straining any cables connected to the trunk. Ideally, you should have the robot untethered.</p>
+<p>Next, run the following launch file:</p>
+<div class="highlight"><pre><span></span><code>ros2 launch stretch_funmap mapping.launch.py
 </code></pre></div>
-<p>The above message tells you everything you need to know about a scan. Most importantly, you have the angle of each hit and its distance (range) from the scanner. If you want to work with raw range data, then the above message is all you need. There is also an image below that illustrates the components of the message type.</p>
-<p align="center">
-  <a class="glightbox" href="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/lidar.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/lidar.png"/></a>
-</p>
-
-<p>For a Stretch robot the start angle of the scan, <code>angle_min</code>, and
-end angle, <code>angle_max</code>, are closely located along the x-axis of Stretch's frame. <code>angle_min</code> and <code>angle_max</code> are set at <strong>-3.1416</strong> and <strong>3.1416</strong>, respectively. This is illustrated by the images below.</p>
-<p align="center">
-  <a class="glightbox" href="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/stretch_axes.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img height=500 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/stretch_axes.png"/></a>
-  <a class="glightbox" href="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/scan_angles.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img height=500 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/scan_angles.png"/></a>
-</p>
-
-<p>Knowing the orientation of the LiDAR allows us to filter the scan values for a desired range. In this case, we are only considering the scan ranges in front of the stretch robot.</p>
-<p>First, open a terminal and run the stretch driver launch file.</p>
-<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_core<span class="w"> </span>stretch_driver.launch.py
+<p>In another terminal, run the keyboard teleoperation node:
+</p><div class="highlight"><pre><span></span><code>ros2 run stretch_core keyboard_teleop --ros-args -p mapping_on:=True
+</code></pre></div><p></p>
+<p>Now, you will take a head scan, which will involve the head panning around, the base rotating, and the head panning around again to overcome the blindspot due to the mast.</p>
+<div class="highlight"><pre><span></span><code>While in the terminal in which you started the `keyboard_teleop` node, press the space bar to initiate the head scan.
 </code></pre></div>
-<p>Then in a new terminal run the rplidar launch file from <code>stretch_core</code>.
-<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_core<span class="w"> </span>rplidar.launch.py
-</code></pre></div></p>
-<p>To filter the lidar scans for ranges that are directly in front of Stretch (width of 1 meter) run the scan filter node by typing the following in a new terminal.</p>
-<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>run<span class="w"> </span>stretch_ros_tutorials<span class="w"> </span>scan_filter
+<p>At this point, you should see a 3D map resulting from the head scan in RViz. You can rotate it around and look at it. It has been created by merging many 3D scans.</p>
+<p>If you have the robot untethered, you can now specify a navigation goal for the robot. If the robot finds a navigation plan to the goal, it will attempt to navigate to it. While navigating, it will look down with its 3D camera in an attempt to stop if it detects an obstacle.</p>
+<p></p><div class="highlight"><pre><span></span><code>In RViz, press the "2D Nav Goal" button on the top bar with a magenta arrow icon.
+Specify a nearby navigation goal pose on the floor of the map by clicking and drawing a magenta arrow.
 </code></pre></div>
-<p>Then run the following command to bring up a simple RViz configuration of the Stretch robot.
-<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>run<span class="w"> </span>rviz2<span class="w"> </span>rviz2<span class="w"> </span>-d<span class="w"> </span><span class="sb">`</span>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>stretch_calibration<span class="sb">`</span>/share/stretch_calibration/rviz/stretch_simple_test.rviz
-</code></pre></div></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If the laser scan points published by the scan or the scan_filtered topic are not visible in RViz, you can visualize them by adding them using the 'Add' button in the left panel, selecting the 'By topic' tab, and then selecting the scan or scan_filtered topic.</p>
-</div>
-<p>Change the topic name from the LaserScan display from <em>/scan</em> to <em>/filter_scan</em>.</p>
-<p align="center">
-  <a class="glightbox" href="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/scanfilter.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img height=600 src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/ROS2/images/scanfilter.gif"/></a>
-</p>
-
-<h3 id="the-code">The Code<a class="headerlink" href="#the-code" title="Anchor link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.node</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">linspace</span><span class="p">,</span> <span class="n">inf</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sin</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sensor_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">LaserScan</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">ScanFilter</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;stretch_scan_filter&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">LaserScan</span><span class="p">,</span> <span class="s1">&#39;/filtered_scan&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">LaserScan</span><span class="p">,</span> <span class="s1">&#39;/scan&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">scan_filter_callback</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">extent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="mf">2.0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Publishing the filtered_scan topic. Use RViz to visualize.&quot;</span><span class="p">)</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">scan_filter_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">msg</span><span class="p">):</span>
-        <span class="n">angles</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">angle_min</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">angle_max</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">))</span>
-        <span class="n">points</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">theta</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">2.5</span> <span class="ow">or</span> <span class="n">theta</span> <span class="o">&gt;</span> <span class="mf">2.5</span><span class="p">)</span> <span class="k">else</span> <span class="n">inf</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span><span class="n">theta</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">,</span> <span class="n">angles</span><span class="p">)]</span>
-        <span class="n">new_ranges</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">extent</span> <span class="k">else</span> <span class="n">inf</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">,</span> <span class="n">points</span><span class="p">)]</span>
-        <span class="n">msg</span><span class="o">.</span><span class="n">ranges</span> <span class="o">=</span> <span class="n">new_ranges</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
-    <span class="n">scan_filter</span> <span class="o">=</span> <span class="n">ScanFilter</span><span class="p">()</span>
-    <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">scan_filter</span><span class="p">)</span>
-    <span class="n">scan_filter</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span>
-    <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
+For this to work, the navigation goal must be in a place that the robot can reach and that the robot has scanned well. For example, the robot will only navigate across floor regions that it has in its map.<p></p>
+<p>If the robot finds a path, you should see green lines connecting white spheres in RViz that display its plan as it attempts to navigate to the goal.</p>
+<p>Once the robot has reached the goal, you can take another head scan.</p>
+<div class="highlight"><pre><span></span><code>While in the terminal, press the space bar to initiate another head scan.
 </code></pre></div>
-<h3 id="the-code-explained">The Code Explained<a class="headerlink" href="#the-code-explained" title="Anchor link">&para;</a></h3>
-<p>Now let's break the code down.</p>
-<p><div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+<p>The robot should take the head scan and merge it with the previous scans. If all goes well, the merged 3D map will be visible in RViz.</p>
+<p>You can also have the robot automatically drive to a place that it thinks is a good place for it to take a head scan in order to map the environment.</p>
+<div class="highlight"><pre><span></span><code>While in the terminal, press the key with \ and | on it. 
+This should work even if caps lock is enabled or the shift key is pressed. 
 </code></pre></div>
-Every Python ROS <a href="http://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html">Node</a> will have this declaration at the top. The first line makes sure your script is executed as a Python script.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.node</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">linspace</span><span class="p">,</span> <span class="n">inf</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sin</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sensor_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">LaserScan</span>
+<p>If the robot reached it's goal, then you can now take another head scan. </p>
+<div class="highlight"><pre><span></span><code>While in the terminal, press the space bar to initiate another head scan.
 </code></pre></div>
-<p>You need to import rclpy if you are writing a ROS Node. There are functions from numpy and math that are required within this code, that's why linspace, inf, and sin are imported. The sensor_msgs.msg import is so that we can subscribe and publish LaserScan messages.</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">extent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="mf">2.0</span>
+<p>By repeating this process, you can create a 3D map of the environment. FUNMAP uses images to represent the environment with each pixel value representing the highest observed 3D point at a planar location. By default, all of the merged maps are saved to the following directory:</p>
+<div class="highlight"><pre><span></span><code>./stretch_user/debug/merged_maps/
 </code></pre></div>
-We're going to assume that the robot is pointing up the x-axis, so that any points with y coordinates further than half of the defined width (1 meter) from the axis are not considered.</p>
-<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">sub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">LaserScan</span><span class="p">,</span> <span class="s1">&#39;/scan&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">scan_filter_callback</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<p>You can see the image representations by looking at files with the following naming pattern: </p>
+<div class="highlight"><pre><span></span><code>./stretch_user/debug/merged_maps/merged_map_DATETIME_mhi_visualization.png
 </code></pre></div>
-<p>Set up a subscriber.  We're going to subscribe to the topic "/scan", looking for LaserScan messages.  When a message comes in, ROS is going to pass it to the function "callback" automatically.</p>
-<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">pub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">LaserScan</span><span class="p">,</span> <span class="s1">&#39;/filtered_scan&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<p>You can also click on a reaching goal for the Stretch by clicking on "Publish Point" in Rviz and then selecting a 3D point on the map. FUNMAP will attempt to generate a navigation and manipulation plan to reach close to the selected 3D location with Stretch's gripper.</p>
+<div class="highlight"><pre><span></span><code>In RViz, select a reach goal by clicking on "Publish Point" on the top bar with a red map location icon). 
+Then, click on a 3D location on the map to specify a reaching target for the robot's gripper.
 </code></pre></div>
-<p>This declares that your node is publishing to the <em>filtered_scan</em> topic using the message type LaserScan. This lets any nodes listening on <em>filtered_scan</em> that we are going to publish data on that topic.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">angles</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">angle_min</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">angle_max</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">))</span>
-</code></pre></div>
-This line of code utilizes linspace to compute each angle of the subscribed scan.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">points</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">theta</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">2.5</span> <span class="ow">or</span> <span class="n">theta</span> <span class="o">&gt;</span> <span class="mf">2.5</span><span class="p">)</span> <span class="k">else</span> <span class="n">inf</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span><span class="n">theta</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">,</span> <span class="n">angles</span><span class="p">)]</span>
-</code></pre></div>
-Here we are computing the y coordinates of the ranges that are <strong>below -2.5</strong> and <strong>above 2.5</strong> radians of the scan angles. These limits are sufficient for considering scan ranges in front of Stretch, but these values can be altered to your preference.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">new_ranges</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">extent</span> <span class="k">else</span> <span class="n">inf</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">,</span> <span class="n">points</span><span class="p">)]</span>
-</code></pre></div>
-If the absolute value of a point's y-coordinate is under <em>self.extent</em> then keep the range, otherwise use inf, which means "no return".</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span> <span class="o">=</span> <span class="n">new_ranges</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-</code></pre></div>
-Substitute the new ranges in the original message, and republish it.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
-    <span class="n">scan_filter</span> <span class="o">=</span> <span class="n">ScanFilter</span><span class="p">()</span>
-</code></pre></div>
-The next line, rclpy.init_node initializes the node. In this case, your node will take on the name 'stretch_scan_filter'. NOTE: the name must be a base name, i.e. it cannot contain any slashes "/".</p>
-<p>Setup Scanfilter class with <code>scan_filter = Scanfilter()</code></p>
-<div class="highlight"><pre><span></span><code><span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">scan_filter</span><span class="p">)</span>
-</code></pre></div>
-<p>Give control to ROS.  This will allow the callback to be called whenever new
-messages come in.  If we don't put this line in, then the node will not work,
-and ROS will not process any messages.</p>
+<p>That concludes the demonstration. Have fun with FUNMAP!</p>
+<h2 id="more-funmap">More FUNMAP<a class="headerlink" href="#more-funmap" title="Anchor link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="./images/living_room_map_image.png" data-desc-position="bottom"><img alt="" src="./images/living_room_map_image.png"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="./images/living_room_map.png" data-desc-position="bottom"><img alt="" src="./images/living_room_map.png"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="./images/living_room_map_perspective.png" data-desc-position="bottom"><img alt="" src="./images/living_room_map_perspective.png"></a></p>
+<p>FUNMAP represents human environments with Max Height Images (MHIs). An MHI is an image for which each pixel typically represents the height of the robot’s environment. Given a volume of interest (VOI) with its z-axis aligned with gravity, an MHI, I, maps locations to heights. Specifically, I(x,y)=z, where (x,y) represents a discretized planar location within the VOI and z represents the discretized height of the maximum occupied voxel within the VOI at that planar location (see Figure 1 above). </p>
+<p>The placement of the Stretch 3D camera at a human head height enables it to capture MHIs that represent the horizontal surfaces with which humans frequently interact, such as table tops, countertops, and chairs. The orientation of its 3D camera enables the robot to quickly scan an environment to create a room-scale MHI by panning its head at a constant tilt angle. </p>
+<p>In contrast to other environment representations, such as point clouds and 3D mesh models, MHIs support fast, efficient operations through optimized image processing and are compatible with deep learning methods for images. Related representations have primarily been used for navigation, including for legged robots on rough terrain, but have not emphasized elevated surfaces in human environments nor incorporated manipulation [7, 8]. Object grasping systems for bin picking have used related representations, but have only considered small areas with objects and not incorporated navigation [9, 10]. </p>
+<p>During development, we have used FUNMAP to create MHIs for which each pixel represents a 6mm x 6mm region of the environment’s floor and has a height resolution of less than 6mm per unit. This allows a single 2000 x 2000 pixel, 8-bit image to represent a 12m x 12m environment from 10cm below the estimated floor plane to 1.2m above the floor plane, which captures the great majority of open horizontal surfaces in human environments with which people interact. MHIs also have the potential to represent enclosed surfaces (e.g., surfaces in shelves and cabinets) and vertical surfaces (e.g., doors) by defining new VOIs with different orientations and heights, which is a capability that merits future exploration.</p>
+<p>For navigation and planning, FUNMAP uses fast distance transforms and morphological operators to efficiently create cost functions for robust optimization-based planning. For example, a high value of a distance transform at a floor location implies that the mobile base will be farther from obstacles. Similarly, a high value of a distance transform for a location on an elevated surface implies that the robot’s end effector will be farther from obstacles. </p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="./images/reach_plan_1.png" data-desc-position="bottom"><img alt="" src="./images/reach_plan_1.png"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="./images/reach_plan_2.png" data-desc-position="bottom"><img alt="" src="./images/reach_plan_2.png"></a></p>
+<p>Figure 3: Left: The cyan lines represent achievable driving goals on the floor from which the robot can reach the target (red circle) on the table (dark blue). Right: When the target (red circle) is farther back near obstacles on the table (dark blue), the robot can reach the target from fewer locations (cyan lines). </p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="./images/navigation_1.png" data-desc-position="bottom"><img alt="" src="./images/navigation_1.png"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="./images/reach_1.png" data-desc-position="bottom"><img alt="" src="./images/reach_1.png"></a></p>
+<p>Figure 4: Left: Example of a piecewise linear navigation plan (green line segments and white spheres) being executed. Right: Example of a successfully executed plan to reach a target location on a table (light blue) while avoiding a wall with shelves (dark blue and purple).</p>
+<p>The Stretch’s slender links and Cartesian kinematics support rapid optimization of plans due to the simplified geometry of the robot’s motions. FUNMAP uses piecewise linear paths on the cost image for fast navigation and manipulation planning. </p>
+<p>FUNMAP enables the Stretch to reach a 3D target position. FUNMAP models the linear motion of the telescoping arm as it extends to reach a target as a line in a manipulation cost image (see Figure 2). FUNMAP uses a navigation cost image and Djikstra’s algorithm with a priority queue to efficiently estimate the cost of navigating to all floor locations (see Figure 3 left). FUNMAP then combines these results to find a minimum cost plan that increases the distance to obstacles and the manipulable workspace of the robot (see Figure 3 right). </p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Anchor link">¶</a></h2>
+<p>[1] Bostelman, Roger, Tsai Hong, and Jeremy Marvel. "Survey of research for performance measurement of mobile manipulators." Journal of Research of the National Institute of Standards and Technology 121, no. 3 (2016): 342-366.</p>
+<p>[2] Quigley, Morgan, Ken Conley, Brian Gerkey, Josh Faust, Tully Foote, Jeremy Leibs, Rob Wheeler, and Andrew Y. Ng. "ROS: an open-source Robot Operating System." In ICRA workshop on open source software, vol. 3, no. 3.2, p. 5. 2009.</p>
+<p>[3] Sachin Chitta, Eitan Marder-Eppstein, Wim Meeussen, Vijay Pradeep, Adolfo Rodríguez Tsouroukdissian, et al.. ros_control: A generic and simple control framework for ROS. The Journal of Open Source Software, 2017, 2 (20), pp.456 - 456.</p>
+<p>[4] Guimarães, Rodrigo Longhi, André Schneider de Oliveira, João Alberto Fabro, Thiago Becker, and Vinícius Amilgar Brenner. "ROS navigation: Concepts and tutorial." In Robot Operating System (ROS), pp. 121-160. Springer, Cham, 2016.</p>
+<p>[5] Chitta, Sachin, Ioan Sucan, and Steve Cousins. "Moveit! [ros topics]." IEEE Robotics &amp; Automation Magazine 19, no. 1 (2012): 18-19.</p>
+<p>[6] Chitta, Sachin. "MoveIt!: an introduction." In Robot Operating System (ROS), pp. 3-27. Springer, Cham, 2016.</p>
+<p>[7] Fankhauser, Péter, and Marco Hutter. "A universal grid map library: Implementation and use case for rough terrain navigation." In Robot Operating System (ROS), pp. 99-120. Springer, Cham, 2016.</p>
+<p>[8] Lu, David V., Dave Hershberger, and William D. Smart. "Layered costmaps for context-sensitive navigation." In 2014 IEEE/RSJ International Conference on Intelligent Robots and Systems, pp. 709-715. IEEE, 2014.</p>
+<p>[9] Zeng, Andy, Shuran Song, Johnny Lee, Alberto Rodriguez, and Thomas Funkhouser. "Tossingbot: Learning to throw arbitrary objects with residual physics." arXiv preprint arXiv:1903.11239 (2019).</p>
+<p>[10] Zeng, Andy, Shuran Song, Kuan-Ting Yu, Elliott Donlon, Francois R. Hogan, Maria Bauza, Daolin Ma et al. "Robotic pick-and-place of novel objects in clutter with multi-affordance grasping and cross-domain image matching." In 2018 IEEE international conference on robotics and automation (ICRA), pp. 1-8. IEEE, 2018.</p>
+<h2 id="license">License<a class="headerlink" href="#license" title="Anchor link">¶</a></h2>
+<p>For license information, please see the LICENSE files. </p>
 
 
 
@@ -2464,38 +2759,38 @@ and ROS will not process any messages.</p>
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../example_6/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Joint Effort">
+          <a href="../demo_surface_cleaning/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Surface Cleaning">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Previous
               </span>
               <div class="md-ellipsis">
-                Joint Effort
+                Surface Cleaning
               </div>
             </div>
           </a>
         
         
           
-          <a href="../example_7/" class="md-footer__link md-footer__link--next" aria-label="Next: Realsense Camera">
+          <a href="../voice_teleop/" class="md-footer__link md-footer__link--next" aria-label="Next: Voice Teleop">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Realsense Camera
+                Voice Teleop
               </div>
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
             </div>
           </a>
         
@@ -2507,7 +2802,7 @@ and ROS will not process any messages.</p>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2020-2025 Hello Robot Inc
+      Copyright © 2020-2025 Hello Robot Inc
     </div>
   
   
@@ -2528,7 +2823,7 @@ and ROS will not process any messages.</p>
       
     
     <a href="https://hello-robot.com" target="_blank" rel="noopener" title="hello-robot.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
     </a>
   
     
@@ -2539,7 +2834,7 @@ and ROS will not process any messages.</p>
       
     
     <a href="https://twitter.com/HelloRobotInc" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.2 4.2 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.52 8.52 0 0 1-5.33 1.84q-.51 0-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.2 4.2 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.52 8.52 0 0 1-5.33 1.84q-.51 0-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23"></path></svg>
     </a>
   
     
@@ -2550,7 +2845,7 @@ and ROS will not process any messages.</p>
       
     
     <a href="https://github.com/hello-robot" target="_blank" rel="noopener" title="github.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"></path></svg>
     </a>
   
     
@@ -2561,7 +2856,7 @@ and ROS will not process any messages.</p>
       
     
     <a href="https://linkedin.com/company/hello-robot-inc" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"></path></svg>
     </a>
   
 </div>
@@ -2582,7 +2877,7 @@ and ROS will not process any messages.</p>
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
-  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
-document$.subscribe(() => { lightbox.reload() });
-</script></body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
