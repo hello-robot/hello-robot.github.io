@@ -80,6 +80,9 @@ mike deploy 0.3 'experimental' -t '0.3: Experimental development' --push
 ```
 
 Note the format for the title (-t). Keep a consistent naming structure. Also note that this version is aliased as `experimental`. 
+
+Also, edit the edit_uri in mkdocs.yml to have the new version as a branch name.
+
 ## Adding a New Submodule Repo
 ```commandline
 cd ~/repos/hello-robot.github.io/repos
