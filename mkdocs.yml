@@ -55,7 +55,7 @@ plugins:
   - include-markdown
 
 hooks:
-  - plugins/edit_links_across_submodules.py
+  - edit_links_across_submodules.py
 
 extra:
   version:
