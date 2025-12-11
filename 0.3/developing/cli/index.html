@@ -187,6 +187,18 @@
 </div>
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/hello-robot/hello-robot.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
   </nav>
   
 </header>
@@ -219,6 +231,18 @@
     </a>
     Stretch Docs
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hello-robot/hello-robot.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -3152,6 +3176,14 @@
                   
 
 
+  
+    <a href="https://github.com/hello-robot/stretch_tutorials/blob/master/developing/cli.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
 
 <h1 id="command-line-tools">Command Line Tools<a class="headerlink" href="#command-line-tools" title="Anchor link">¶</a></h1>
 <p>This tutorial covers the command line tools included in the Stretch CLI. For a primer on using CLIs and the terminal, see <a href="../basics/#terminal">The Basics</a> tutorial. The Stretch CLI is split among Stretch's Python packages. They are:</p>
@@ -3166,7 +3198,7 @@
 <p>These tools perform common tasks that are useful when working with Stretch (e.g. homing routine, joint jogging, etc.).</p>
 <h3 id="stretch_robot_system_checkpy"><code>stretch_robot_system_check.py</code><a class="headerlink" href="#stretch_robot_system_checkpy" title="Anchor link">¶</a></h3>
 <p><a href="https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_robot_system_check.py">Link to source code</a></p>
-<p>The robot system check tool runs a series of tests, such as if each subsystem is online, and reports pass or fail. If everything passes in the report, the robot is ready to be used. You would use this tool everytime you use the robot. A passing output should look like:</p>
+<p>The robot system check tool runs a series of tests, such as if each subsystem is online, and reports pass or fail. If everything passes in the report, the robot is ready to be used. You would use this tool every time you use the robot. A passing output should look like:</p>
 <div class="shell-prompt highlight"><pre><span></span><code tabindex="0">stretch_robot_system_check.py<span class="w"> </span>
 For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </span>S<span class="w"> </span>T<span class="w"> </span>R<span class="w"> </span>E<span class="w"> </span>T<span class="w"> </span>C<span class="w"> </span>H<span class="w"> </span><span class="o">(</span>R<span class="o">)</span><span class="w"> </span>RESEARCH<span class="w"> </span>EDITION<span class="w"> </span>from<span class="w"> </span>Hello<span class="w"> </span>Robot<span class="w"> </span>Inc.
 ---------------------------------------------------------------------
@@ -3253,7 +3285,7 @@ For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </spa
 <p>In addition to checking the robot's hardware, this tool also prints out a software report. This includes which version of Stretch's Python, ROS2, etc. software your system has installed. Check out the <a href="../../../software/updating_software/#identifying-your-current-software">Keeping your Software Up-to-date</a> guide for a how-to on using this report to keep your robot's software up-to-date.</p>
 <h3 id="stretch_robot_homepy"><code>stretch_robot_home.py</code><a class="headerlink" href="#stretch_robot_homepy" title="Anchor link">¶</a></h3>
 <p><a href="https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_robot_home.py">Link to source code</a></p>
-<p>This tool will start Stretch's homing procedure, where every joint's zero is found. Robots with relative encoders (vs absolute encoders) need a homing procedure when they power on. For Stretch, it's a 30-second procedure that must occur everytime the robot is powered on before you may send motion commands to or read correct joint positions from Stretch's joints. Normal output from this tool looks like:</p>
+<p>This tool will start Stretch's homing procedure, where every joint's zero is found. Robots with relative encoders (vs absolute encoders) need a homing procedure when they power on. For Stretch, it's a 30-second procedure that must occur every time the robot is powered on before you may send motion commands to or read correct joint positions from Stretch's joints. Normal output from this tool looks like:</p>
 <div class="shell-prompt highlight"><pre><span></span><code>stretch_robot_home.py
 For use with S T R E T C H (R) RESEARCH EDITION from Hello Robot Inc.
 ---------------------------------------------------------------------
@@ -3546,7 +3578,7 @@ For use with S T R E T C H (R) RESEARCH EDITION from Hello Robot Inc.
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>

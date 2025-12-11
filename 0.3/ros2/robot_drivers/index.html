@@ -191,6 +191,18 @@
 </div>
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/hello-robot/hello-robot.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
   </nav>
   
 </header>
@@ -223,6 +235,18 @@
     </a>
     Stretch Docs
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hello-robot/hello-robot.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -2722,6 +2746,14 @@
                   
 
 
+  
+    <a href="https://github.com/hello-robot/stretch_tutorials/blob/master/ros2/robot_drivers.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
 
 <h1 id="robot-drivers">Robot Drivers<a class="headerlink" href="#robot-drivers" title="Anchor link">¶</a></h1>
 <p>This tutorial introduces the ROS2 drivers for Stretch and its sensors. These drivers reside in the <code>stretch_core</code> package, which is part of a suite of ROS2 packages available open-source <a href="https://github.com/hello-robot/stretch_ros2/tree/humble/stretch_core#overview">on Github</a>.</p>
@@ -2734,10 +2766,10 @@
 <h3 id="modes">Modes<a class="headerlink" href="#modes" title="Anchor link">¶</a></h3>
 <p>Stretch Driver has a few modes that change how the driver behaves. They are:</p>
 <ul>
-<li><strong>Position:</strong> The default and simplest mode. In this mode, you can control every joint on the robot using position commands. For example, you could move the telescoping arm 25cm out by sending the driver a command of 0.25m for the "joint_arm" joint. Two kinds of position commands are available for the mobile base: translation and rotation, with joint names "translate_mobile_base" and "rotate_mobile_base". They are mutually exlusive and these joints have no limits since the wheels can spin continuously.<ul>
+<li><strong>Position:</strong> The default and simplest mode. In this mode, you can control every joint on the robot using position commands. For example, you could move the telescoping arm 25cm out by sending the driver a command of 0.25m for the "joint_arm" joint. Two kinds of position commands are available for the mobile base: translation and rotation, with joint names "translate_mobile_base" and "rotate_mobile_base". They are mutually exclusive and these joints have no limits since the wheels can spin continuously.<ul>
 <li>Position commands are tracked by a trapezoidal motion profile.</li>
 <li>Position commands are contact sensitive. This is helpful for manipulating objects in the world. For example, Stretch can <a href="https://youtu.be/SXgj9be3PdM">open a cabinet</a> by reaching out with the telescoping arm and detecting contact with the door and its handle.</li>
-<li>Position commands are preemptable, so you can issue a new position command before the previous one has finished executing and the robot will smoothly transition to executing the new command. This feature is helpful for reactive control (e.g visual servo-ing).</li>
+<li>Position commands are preemptible, so you can issue a new position command before the previous one has finished executing and the robot will smoothly transition to executing the new command. This feature is helpful for reactive control (e.g visual servo-ing).</li>
 </ul>
 </li>
 <li><strong>Navigation:</strong> In this mode, every joint behaves identically to "position" mode except for the mobile base, which takes velocity commands.<ul>
@@ -2747,7 +2779,7 @@
 </li>
 <li><strong>Trajectory:</strong> In this mode, every joint follows a trajectory that is modeled as a spline. The key benefit of this mode is control over the timing at which the robot achieves positions (a.k.a waypoints), enabling smooth and coordinated motion through a preplanned trajectory.<ul>
 <li>Trajectory commands are contact sensitive.</li>
-<li>The waypoints in trajectory commands are preemptable.</li>
+<li>The waypoints in trajectory commands are preemptible.</li>
 </ul>
 </li>
 <li><strong>Homing:</strong> This is the mode reported by the driver when a homing sequence is happening. While this mode is active, no commands will be accepted by the driver and the mode cannot be switched. After the robot has completed its 30 second homing sequence, it will return to the mode it was in before.</li>
@@ -2759,7 +2791,7 @@
 <span class="c1"># TODO - include output</span>
 </code></pre></div>
 <h3 id="keyboard-teleop">Keyboard Teleop<a class="headerlink" href="#keyboard-teleop" title="Anchor link">¶</a></h3>
-<p>The keyboard teleop node is an easy way to send position commands. First, switch the driver into "position" mode using the <code>/stetch/switch_to_position_mode</code> service:</p>
+<p>The keyboard teleop node is an easy way to send position commands. First, switch the driver into "position" mode using the <code>/stretch/switch_to_position_mode</code> service:</p>
 <div class="shell-prompt copy highlight"><pre><span></span><code>ros2<span class="w"> </span>service<span class="w"> </span>call<span class="w"> </span>/stretch/switch_to_position_mode
 <span class="c1"># TODO - verify command and include output</span>
 </code></pre></div>
@@ -2787,7 +2819,7 @@ effort:<span class="w"> </span><span class="o">[</span><span class="m">0</span>.
 <p>To stop the stream of joint states, press <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span>. The position, velocity, and effort arrays match the length of the joint names array, so each joint's state is found by indexing into the arrays at the same index that the joint has in the joint names array. E.g. "joint_wrist_yaw" has position 9.32603306580404e-07, velocity 0.0002451588607332439, and effort 0.0.</p>
 <h3 id="motion-profiles">Motion Profiles<a class="headerlink" href="#motion-profiles" title="Anchor link">¶</a></h3>
 <ul>
-<li>Position commands are tracked in the firmware by a trapezoidal motion profile, and specifing the optional velocity and acceleration in <a href="https://docs.ros.org/en/noetic/api/trajectory_msgs/html/msg/JointTrajectoryPoint.html">JointTrajectoryPoint</a> changes the shape of the trapezoid. More details about the motion profile <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros1/follow_joint_trajectory/">in the tutorial</a>.</li>
+<li>Position commands are tracked in the firmware by a trapezoidal motion profile, and specifying the optional velocity and acceleration in <a href="https://docs.ros.org/en/noetic/api/trajectory_msgs/html/msg/JointTrajectoryPoint.html">JointTrajectoryPoint</a> changes the shape of the trapezoid. More details about the motion profile <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros1/follow_joint_trajectory/">in the tutorial</a>.</li>
 </ul>
 <h3 id="contact-sensitivity">Contact Sensitivity<a class="headerlink" href="#contact-sensitivity" title="Anchor link">¶</a></h3>
 <ul>
@@ -2938,7 +2970,7 @@ ros2<span class="w"> </span>service<span class="w"> </span>call<span class="w"> 
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>

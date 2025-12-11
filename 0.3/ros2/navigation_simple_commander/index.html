@@ -191,6 +191,18 @@
 </div>
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/hello-robot/hello-robot.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
   </nav>
   
 </header>
@@ -223,6 +235,18 @@
     </a>
     Stretch Docs
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hello-robot/hello-robot.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -2640,6 +2664,14 @@
                   
 
 
+  
+    <a href="https://github.com/hello-robot/stretch_tutorials/blob/master/ros2/navigation_simple_commander.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
 
 <h1 id="nav2-stack-using-simple-commander-python-api">Nav2 Stack Using Simple Commander Python API<a class="headerlink" href="#nav2-stack-using-simple-commander-python-api" title="Anchor link">¶</a></h1>
 <p>In this tutorial, we will work with Stretch to explore the Simple Commander Python API to enable autonomous navigation programmatically. We will also demonstrate a security patrol routine for Stretch developed using this API. If you just landed here, it might be a good idea to first review the previous tutorial which covered mapping and navigation using RViz as an interface.</p>
@@ -2654,7 +2686,7 @@
 <div class="shell-prompt highlight"><pre><span></span><code>stretch_robot_stow.py
 </code></pre></div>
 <h2 id="setup">Setup<a class="headerlink" href="#setup" title="Anchor link">¶</a></h2>
-<p>Let's set the patrol route up before you can execute this demo in your map. This requires reading the position of the robot at various locations in the map and entering the co-ordinates in the array called <code>security_route</code> in the <a href="https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_nav2/stretch_nav2/simple_commander_demo.py#L30">simple_commander_demo.py</a> file. </p>
+<p>Let's set the patrol route up before you can execute this demo in your map. This requires reading the position of the robot at various locations in the map and entering the coordinates in the array called <code>security_route</code> in the <a href="https://github.com/hello-robot/stretch_ros2/blob/humble/stretch_nav2/stretch_nav2/simple_commander_demo.py#L30">simple_commander_demo.py</a> file. </p>
 <p>First, execute the following command while passing the correct map YAML. Then, press the 'Startup' button:</p>
 <div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_nav2<span class="w"> </span>navigation.launch.py<span class="w"> </span>map:<span class="o">=</span><span class="si">${</span><span class="nv">HELLO_FLEET_PATH</span><span class="si">}</span>/maps/&lt;map_name&gt;.yaml
 </code></pre></div>
@@ -2892,7 +2924,7 @@ Terminal 1:</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>

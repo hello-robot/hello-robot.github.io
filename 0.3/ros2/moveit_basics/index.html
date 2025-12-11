@@ -187,6 +187,18 @@
 </div>
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/hello-robot/hello-robot.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
   </nav>
   
 </header>
@@ -219,6 +231,18 @@
     </a>
     Stretch Docs
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hello-robot/hello-robot.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -2570,6 +2594,14 @@
                   
 
 
+  
+    <a href="https://github.com/hello-robot/stretch_tutorials/blob/master/ros2/moveit_basics.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
 
 <h1 id="moveit-basics">MoveIt! Basics<a class="headerlink" href="#moveit-basics" title="Anchor link">¶</a></h1>
 <div class="admonition note">
@@ -2591,7 +2623,7 @@
 <p>Follow the instructions in this <a href="https://docs.hello-robot.com/0.2/stretch-tutorials/ros2/moveit_rviz_demo">tutorial</a> to plan and execute trajectories using the interactive markers in RViz.</p>
 <p>Use the interactive markers to drag joints to desired positions or go to the manipulation tab in the Motion Planning pane to fine-tune joint values using the sliders. Next, click the 'Plan' button to plan the trajectory. If the plan is valid, you should be able to execute the trajectory by clicking the 'Execute' button. Below we see Stretch raising its arm without any obstacle in the way.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://user-images.githubusercontent.com/97639181/162533340-dec4232b-617c-4b90-b4e1-a24fd3027baa.gif" data-desc-position="bottom"><img alt="WithoutObstacle" src="https://user-images.githubusercontent.com/97639181/162533340-dec4232b-617c-4b90-b4e1-a24fd3027baa.gif"></a></p>
-<p>To plan with obstacles, you can insert objects like a box, cyclinder or sphere, in the planning scene to plan trajectories around the object. This can be done by adding an object using the Scene Objects tab in the Motion Planning pane. Below we see Stretch raising its arm with a flat cuboid obstacle in the way. The mobile base allows Stretch to move forward and then back again while raising the arm to avoid the obstacle.</p>
+<p>To plan with obstacles, you can insert objects like a box, cylinder or sphere, in the planning scene to plan trajectories around the object. This can be done by adding an object using the Scene Objects tab in the Motion Planning pane. Below we see Stretch raising its arm with a flat cuboid obstacle in the way. The mobile base allows Stretch to move forward and then back again while raising the arm to avoid the obstacle.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://user-images.githubusercontent.com/97639181/162533356-15955809-f21d-4181-a012-6bca3f48dfc4.gif" data-desc-position="bottom"><img alt="WithObstacle" src="https://user-images.githubusercontent.com/97639181/162533356-15955809-f21d-4181-a012-6bca3f48dfc4.gif"></a></p>
 <h3 id="planning-with-moveit-2-using-the-movegroup-c-api">Planning with MoveIt 2 Using the MoveGroup C++ API<a class="headerlink" href="#planning-with-moveit-2-using-the-movegroup-c-api" title="Anchor link">¶</a></h3>
 <p>If you want to integrate MoveIt 2 into your planning pipeline and want greater control over its various functionalities, using the MoveGroup API is the way to go. Execute the launch file again and go through the comments in the <a href="https://github.com/hello-robot/stretch_ros2/blob/galactic/stretch_moveit2/src/movegroup_test.cpp">code</a> to understand what's going on. (Press Ctrl+C in the terminal to terminate)</p>
@@ -2699,7 +2731,7 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
