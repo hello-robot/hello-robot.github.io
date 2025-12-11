@@ -4,7 +4,8 @@ site_description: "Hello Robot User Documentation"
 copyright: 'Copyright &copy; 2020-2025 Hello Robot Inc'
 site_author: Hello Robot Inc
 use_directory_urls: True
-edit_uri: ''
+repo_url: https://github.com/hello-robot/hello-robot.github.io
+edit_uri: blob/0.3/docs
 
 theme:
  name: material
@@ -18,6 +19,7 @@ theme:
   - scheme: default
     primary: hello-robot-light
  features:
+   - content.action.edit
    - navigation.footer
 
 extra_css:
@@ -51,6 +53,9 @@ plugins:
       skip_classes:
         - glightbox-skip
   - include-markdown
+
+hooks:
+  - plugins/edit_links_across_submodules.py
 
 extra:
   version:
