@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#writing-ros2-nodes" class="md-skip">
+        <a href="#writing-ros-2-nodes" class="md-skip">
           Skip to content
         </a>
       
@@ -1075,7 +1075,7 @@
             
   
   <span class="md-ellipsis">
-    ROS2 Basics
+    ROS 2 Basics
     
   </span>
   
@@ -1086,7 +1086,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7_2">
             <span class="md-nav__icon md-icon"></span>
-            ROS2 Basics
+            ROS 2 Basics
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1163,18 +1163,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#understanding-the-ros2-workspace-structure" class="md-nav__link">
+  <a href="#understanding-the-ros-2-workspace-structure" class="md-nav__link">
     <span class="md-ellipsis">
-      Understanding the ROS2 Workspace Structure
+      Understanding the ROS 2 Workspace Structure
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-1-creating-a-new-ros2-python-package" class="md-nav__link">
+  <a href="#step-1-creating-a-new-ros-2-python-package" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 1: Creating a New ROS2 Python Package
+      Step 1: Creating a New ROS 2 Python Package
     </span>
   </a>
   
@@ -1373,13 +1373,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#understanding-ros2-concepts" class="md-nav__link">
+  <a href="#understanding-ros-2-concepts" class="md-nav__link">
     <span class="md-ellipsis">
-      Understanding ROS2 Concepts
+      Understanding ROS 2 Concepts
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Understanding ROS2 Concepts">
+    <nav class="md-nav" aria-label="Understanding ROS 2 Concepts">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1434,7 +1434,7 @@
         
   
   <span class="md-ellipsis">
-    Introduction to ROS2 Client (rclpy)
+    Introduction to ROS 2 Client (rclpy)
     
   </span>
   
@@ -2866,18 +2866,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#understanding-the-ros2-workspace-structure" class="md-nav__link">
+  <a href="#understanding-the-ros-2-workspace-structure" class="md-nav__link">
     <span class="md-ellipsis">
-      Understanding the ROS2 Workspace Structure
+      Understanding the ROS 2 Workspace Structure
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-1-creating-a-new-ros2-python-package" class="md-nav__link">
+  <a href="#step-1-creating-a-new-ros-2-python-package" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 1: Creating a New ROS2 Python Package
+      Step 1: Creating a New ROS 2 Python Package
     </span>
   </a>
   
@@ -3076,13 +3076,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#understanding-ros2-concepts" class="md-nav__link">
+  <a href="#understanding-ros-2-concepts" class="md-nav__link">
     <span class="md-ellipsis">
-      Understanding ROS2 Concepts
+      Understanding ROS 2 Concepts
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Understanding ROS2 Concepts">
+    <nav class="md-nav" aria-label="Understanding ROS 2 Concepts">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3141,21 +3141,21 @@
   
 
 
-<h1 id="writing-ros2-nodes">Writing ROS2 Nodes<a class="headerlink" href="#writing-ros2-nodes" title="Anchor link">¶</a></h1>
+<h1 id="writing-ros-2-nodes">Writing ROS 2 Nodes<a class="headerlink" href="#writing-ros-2-nodes" title="Anchor link">¶</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Anchor link">¶</a></h2>
-<p>ROS2 nodes are the fundamental building blocks of any ROS2 application. A node is an executable that uses ROS2 to communicate with other nodes. Nodes can publish messages to topics, subscribe to topics to receive messages, provide services, or call services provided by other nodes. In this tutorial, you'll learn how to create your own ROS2 Python package and write a simple node that subscribes to Stretch's joint states.</p>
-<p>Think of nodes as individual programs that each have a specific responsibility - one node might handle camera data, another might control the robot's movement, and yet another might process sensor information. By breaking functionality into separate nodes, ROS2 applications become modular, easier to debug, and more maintainable.</p>
+<p>ROS 2 nodes are the fundamental building blocks of any ROS 2 application. A node is an executable that uses ROS 2 to communicate with other nodes. Nodes can publish messages to topics, subscribe to topics to receive messages, provide services, or call services provided by other nodes. In this tutorial, you'll learn how to create your own ROS 2 Python package and write a simple node that subscribes to Stretch's joint states.</p>
+<p>Think of nodes as individual programs that each have a specific responsibility - one node might handle camera data, another might control the robot's movement, and yet another might process sensor information. By breaking functionality into separate nodes, ROS 2 applications become modular, easier to debug, and more maintainable.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Anchor link">¶</a></h2>
 <p>Before starting this tutorial, you should have:</p>
 <ol>
 <li><strong>Basic Python knowledge</strong>: Understanding of Python syntax, functions, and classes</li>
-<li><strong>ROS2 installation</strong>: ROS2 Humble installed on your system (this comes pre-installed on Stretch robots)</li>
+<li><strong>ROS 2 installation</strong>: ROS 2 Humble installed on your system (this comes pre-installed on Stretch robots)</li>
 <li><strong>Stretch robot setup</strong>: Access to a Stretch robot or simulation environment</li>
 <li><strong>Basic terminal/command line familiarity</strong>: Ability to navigate directories and run commands</li>
 </ol>
-<p>If you're new to ROS2 concepts, we recommend first reading through the <a href="../intro_to_ros2/">Introduction to ROS2</a> tutorial.</p>
-<h2 id="understanding-the-ros2-workspace-structure">Understanding the ROS2 Workspace Structure<a class="headerlink" href="#understanding-the-ros2-workspace-structure" title="Anchor link">¶</a></h2>
-<p>Before we create our first node, let's understand how ROS2 organizes code. ROS2 uses a workspace structure where all your packages live in a <code>src</code> directory within your workspace. The standard workspace structure looks like this:</p>
+<p>If you're new to ROS 2 concepts, we recommend first reading through the <a href="../intro_to_ros2/">Introduction to ROS 2</a> tutorial.</p>
+<h2 id="understanding-the-ros-2-workspace-structure">Understanding the ROS 2 Workspace Structure<a class="headerlink" href="#understanding-the-ros-2-workspace-structure" title="Anchor link">¶</a></h2>
+<p>Before we create our first node, let's understand how ROS 2 organizes code. ROS 2 uses a workspace structure where all your packages live in a <code>src</code> directory within your workspace. The standard workspace structure looks like this:</p>
 <div class="highlight"><pre><span></span><code>~/ament_ws/                    # Your workspace root
 ├── build/                     # Build artifacts (auto-generated)
 ├── install/                   # Installed packages (auto-generated)
@@ -3165,8 +3165,8 @@
     ├── package2/
     └── your_new_package/
 </code></pre></div>
-<h2 id="step-1-creating-a-new-ros2-python-package">Step 1: Creating a New ROS2 Python Package<a class="headerlink" href="#step-1-creating-a-new-ros2-python-package" title="Anchor link">¶</a></h2>
-<p>Let's start by creating a new ROS2 package. A package is a collection of related nodes, launch files, configuration files, and other resources.</p>
+<h2 id="step-1-creating-a-new-ros-2-python-package">Step 1: Creating a New ROS 2 Python Package<a class="headerlink" href="#step-1-creating-a-new-ros-2-python-package" title="Anchor link">¶</a></h2>
+<p>Let's start by creating a new ROS 2 package. A package is a collection of related nodes, launch files, configuration files, and other resources.</p>
 <p>First, navigate to your workspace source directory:</p>
 <div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/ament_ws/src
 </code></pre></div>
@@ -3196,9 +3196,9 @@ ls<span class="w"> </span>-la
 <p>This file tells Python how to install your package. Let's examine it:</p>
 <div class="shell-prompt highlight"><pre><span></span><code>cat<span class="w"> </span>setup.py
 </code></pre></div>
-<p>We'll need to modify this file to include our new node as an entry point so ROS2 can find and run it.</p>
+<p>We'll need to modify this file to include our new node as an entry point so ROS 2 can find and run it.</p>
 <h2 id="step-3-writing-your-first-node">Step 3: Writing Your First Node<a class="headerlink" href="#step-3-writing-your-first-node" title="Anchor link">¶</a></h2>
-<p>Now let's create our first ROS2 node that subscribes to the <code>/joint_states</code> topic and prints information about Stretch's joints.</p>
+<p>Now let's create our first ROS 2 node that subscribes to the <code>/joint_states</code> topic and prints information about Stretch's joints.</p>
 <p>Create a new Python file for our node:</p>
 <div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>stretch_joint_reader
 touch<span class="w"> </span>joint_state_subscriber.py
@@ -3212,7 +3212,7 @@ touch<span class="w"> </span>joint_state_subscriber.py
 
 <span class="k">class</span><span class="w"> </span><span class="nc">JointStateSubscriber</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    A ROS2 node that subscribes to joint states and prints joint information.</span>
+<span class="sd">    A ROS 2 node that subscribes to joint states and prints joint information.</span>
 <span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -3259,9 +3259,9 @@ touch<span class="w"> </span>joint_state_subscriber.py
 
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    Main function to initialize ROS2, create the node, and spin.</span>
+<span class="sd">    Main function to initialize ROS 2, create the node, and spin.</span>
 <span class="sd">    """</span>
-    <span class="c1"># Initialize ROS2 Python client library</span>
+    <span class="c1"># Initialize ROS 2 Python client library</span>
     <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 
     <span class="c1"># Create an instance of our node</span>
@@ -3284,14 +3284,22 @@ touch<span class="w"> </span>joint_state_subscriber.py
 <h3 id="code-explanation">Code Explanation<a class="headerlink" href="#code-explanation" title="Anchor link">¶</a></h3>
 <p>Let's break down what this code does:</p>
 <ol>
-<li><strong>Imports</strong>: We import the necessary ROS2 Python libraries and message types</li>
-<li><strong>Class Definition</strong>: We create a class that inherits from <code>Node</code>, which is the base class for all ROS2 nodes</li>
-<li><strong>Constructor (<code>__init__</code>)</strong>:</li>
-<li>Calls the parent constructor with our node name</li>
+<li><strong>Imports</strong>: We import the necessary ROS 2 Python libraries and message types</li>
+<li><strong>Class Definition</strong>: We create a class that inherits from <code>Node</code>, which is the base class for all ROS 2 nodes</li>
+<li>
+<p><strong>Constructor (<code>__init__</code>)</strong>:</p>
+</li>
+<li>
+<p>Calls the parent constructor with our node name</p>
+</li>
 <li>Creates a subscription to the <code>/joint_states</code> topic</li>
-<li>Sets up logging messages</li>
-<li><strong>Callback Function</strong>: This function gets called every time a new message arrives on the subscribed topic</li>
-<li><strong>Main Function</strong>: Initializes ROS2, creates our node, and keeps it running</li>
+<li>
+<p>Sets up logging messages</p>
+</li>
+<li>
+<p><strong>Callback Function</strong>: This function gets called every time a new message arrives on the subscribed topic</p>
+</li>
+<li><strong>Main Function</strong>: Initializes ROS 2, creates our node, and keeps it running</li>
 </ol>
 <h2 id="step-4-configuring-package-dependencies-and-entry-points">Step 4: Configuring Package Dependencies and Entry Points<a class="headerlink" href="#step-4-configuring-package-dependencies-and-entry-points" title="Anchor link">¶</a></h2>
 <p>Now we need to update our package configuration to include the necessary dependencies and make our node executable.</p>
@@ -3308,9 +3316,9 @@ touch<span class="w"> </span>joint_state_subscriber.py
     <span class="p">],</span>
 <span class="p">},</span>
 </code></pre></div>
-<p>This tells ROS2 that when someone runs <code>ros2 run stretch_joint_reader joint_state_subscriber</code>, it should execute the <code>main</code> function from our <code>joint_state_subscriber.py</code> file.</p>
+<p>This tells ROS 2 that when someone runs <code>ros2 run stretch_joint_reader joint_state_subscriber</code>, it should execute the <code>main</code> function from our <code>joint_state_subscriber.py</code> file.</p>
 <h2 id="step-5-building-your-package">Step 5: Building Your Package<a class="headerlink" href="#step-5-building-your-package" title="Anchor link">¶</a></h2>
-<p>Now that we've created our node and configured our package, we need to build it. ROS2 uses the <code>colcon</code> build system.</p>
+<p>Now that we've created our node and configured our package, we need to build it. ROS 2 uses the <code>colcon</code> build system.</p>
 <p>Navigate back to your workspace root:</p>
 <div class="shell-prompt highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/ament_ws
 </code></pre></div>
@@ -3323,10 +3331,12 @@ Finished<span class="w"> </span><span class="o">&lt;&lt;&lt;</span><span class="
 
 Summary:<span class="w"> </span><span class="m">1</span><span class="w"> </span>package<span class="w"> </span>finished<span class="w"> </span><span class="o">[</span><span class="m">2</span>.56s<span class="o">]</span>
 </code></pre></div>
-<p>If you encounter any errors, double-check that:
-- Your Python code has correct indentation
-- The <code>package.xml</code> and <code>setup.py</code> files are properly formatted
-- All file names match exactly</p>
+<p>If you encounter any errors, double-check that:</p>
+<ul>
+<li>Your Python code has correct indentation</li>
+<li>The <code>package.xml</code> and <code>setup.py</code> files are properly formatted</li>
+<li>All file names match exactly</li>
+</ul>
 <p>After building, source the setup script to make your new package available:</p>
 <div class="shell-prompt highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>install/setup.bash
 </code></pre></div>
@@ -3369,12 +3379,14 @@ ros2<span class="w"> </span>run<span class="w"> </span>stretch_joint_reader<span
 <li><strong>Velocity</strong>: Current joint velocity</li>
 <li><strong>Effort</strong>: Current effort/torque being applied to the joint</li>
 </ul>
-<p>Key joints you'll see include:
-- <code>joint_lift</code>: The vertical lift mechanism
-- <code>wrist_extension</code>: The telescoping arm extension
-- <code>joint_wrist_yaw</code>: Wrist rotation
-- <code>joint_left_wheel</code> and <code>joint_right_wheel</code>: The mobile base wheels
-- Various gripper joints for the fingers</p>
+<p>Key joints you'll see include:</p>
+<ul>
+<li><code>joint_lift</code>: The vertical lift mechanism</li>
+<li><code>wrist_extension</code>: The telescoping arm extension</li>
+<li><code>joint_wrist_yaw</code>: Wrist rotation</li>
+<li><code>joint_left_wheel</code> and <code>joint_right_wheel</code>: The mobile base wheels</li>
+<li>Various gripper joints for the fingers</li>
+</ul>
 <h2 id="step-7-enhancing-your-node">Step 7: Enhancing Your Node<a class="headerlink" href="#step-7-enhancing-your-node" title="Anchor link">¶</a></h2>
 <p>Let's make our node more useful by filtering for specific joints and adding some additional functionality.</p>
 <p>Create a new file called <code>filtered_joint_subscriber.py</code>:</p>
@@ -3390,7 +3402,7 @@ touch<span class="w"> </span>filtered_joint_subscriber.py
 
 <span class="k">class</span><span class="w"> </span><span class="nc">FilteredJointStateSubscriber</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    An enhanced ROS2 node that subscribes to joint states and filters for specific joints.</span>
+<span class="sd">    An enhanced ROS 2 node that subscribes to joint states and filters for specific joints.</span>
 <span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -3477,31 +3489,47 @@ colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<spa
 <span class="nb">source</span><span class="w"> </span>install/setup.bash
 </code></pre></div>
 <p>Run the enhanced node:</p>
-<div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>run<span class="w"> </span>stretch_joint_reader<span class="w"> </span>filtered_joint_subscriber
+<div class="shell-prompt highlight"><pre><span></span><code><span class="w"> </span>ros2<span class="w"> </span>run<span class="w"> </span>stretch_joint_reader<span class="w"> </span>filtered_joint_subscriber
 </code></pre></div>
 <p>This enhanced version will print a summary every 5 seconds showing only the joints you're interested in, making it easier to monitor specific parts of the robot.</p>
 <h2 id="common-troubleshooting">Common Troubleshooting<a class="headerlink" href="#common-troubleshooting" title="Anchor link">¶</a></h2>
 <h3 id="build-errors">Build Errors<a class="headerlink" href="#build-errors" title="Anchor link">¶</a></h3>
-<p><strong>Problem</strong>: <code>colcon build</code> fails with Python syntax errors
-- <strong>Solution</strong>: Check your Python code for proper indentation and syntax. Python is sensitive to indentation - use consistent spaces (typically 4 spaces per level).</p>
-<p><strong>Problem</strong>: Package not found during build
-- <strong>Solution</strong>: Make sure you're in the correct workspace directory (<code>~/ament_ws</code>) and that your package is in the <code>src</code> folder.</p>
-<p><strong>Problem</strong>: Missing dependencies error
-- <strong>Solution</strong>: Ensure all required dependencies are listed in your <code>package.xml</code> file.</p>
+<p><strong>Problem</strong>: <code>colcon build</code> fails with Python syntax errors</p>
+<ul>
+<li><strong>Solution</strong>: Check your Python code for proper indentation and syntax. Python is sensitive to indentation - use consistent spaces (typically 4 spaces per level).</li>
+</ul>
+<p><strong>Problem</strong>: Package not found during build</p>
+<ul>
+<li><strong>Solution</strong>: Make sure you're in the correct workspace directory (<code>~/ament_ws</code>) and that your package is in the <code>src</code> folder.</li>
+</ul>
+<p><strong>Problem</strong>: Missing dependencies error</p>
+<ul>
+<li><strong>Solution</strong>: Ensure all required dependencies are listed in your <code>package.xml</code> file.</li>
+</ul>
 <h3 id="runtime-errors">Runtime Errors<a class="headerlink" href="#runtime-errors" title="Anchor link">¶</a></h3>
-<p><strong>Problem</strong>: <code>ros2 run</code> command not found or package not found
-- <strong>Solution</strong>: Make sure you've sourced your workspace: <code>source ~/ament_ws/install/setup.bash</code></p>
-<p><strong>Problem</strong>: Node starts but no messages are received
-- <strong>Solution</strong>:
-  1. Check that the Stretch driver is running: <code>ros2 launch stretch_core stretch_driver.launch.py</code>
-  2. Verify the topic exists: <code>ros2 topic list | grep joint_states</code>
-  3. Check if messages are being published: <code>ros2 topic echo /joint_states</code></p>
-<p><strong>Problem</strong>: Permission denied when running the node
-- <strong>Solution</strong>: Make sure your Python file has execute permissions: <code>chmod +x joint_state_subscriber.py</code></p>
+<p><strong>Problem</strong>: <code>ros2 run</code> command not found or package not found</p>
+<ul>
+<li><strong>Solution</strong>: Make sure you've sourced your workspace: <code>source ~/ament_ws/install/setup.bash</code>.</li>
+</ul>
+<p><strong>Problem</strong>: Node starts but no messages are received</p>
+<ul>
+<li>
+<p><strong>Solution</strong>:</p>
+</li>
+<li>
+<p>Check that the Stretch driver is running: <code>ros2 launch stretch_core stretch_driver.launch.py</code>.</p>
+</li>
+<li>Verify the topic exists: <code>ros2 topic list | grep joint_states</code>.</li>
+<li>Check if messages are being published: <code>ros2 topic echo /joint_states</code>.</li>
+</ul>
+<p><strong>Problem</strong>: Permission denied when running the node</p>
+<ul>
+<li><strong>Solution</strong>: Make sure your Python file has execute permissions: <code>chmod +x joint_state_subscriber.py</code>.</li>
+</ul>
 <h3 id="debugging-tips">Debugging Tips<a class="headerlink" href="#debugging-tips" title="Anchor link">¶</a></h3>
 <ol>
 <li>
-<p><strong>Use ROS2 command-line tools</strong>:
+<p><strong>Use ROS 2 command-line tools</strong>:
    </p><div class="highlight"><pre><span></span><code><span class="c1"># List all available topics</span>
 ros2<span class="w"> </span>topic<span class="w"> </span>list
 
@@ -3519,12 +3547,12 @@ ros2<span class="w"> </span>node<span class="w"> </span>list
 <p><strong>Add more logging</strong>: Use <code>self.get_logger().info()</code>, <code>.warn()</code>, <code>.error()</code>, or <code>.debug()</code> to add debugging information to your code.</p>
 </li>
 <li>
-<p><strong>Check the ROS2 graph</strong>: Use <code>rqt_graph</code> to visualize the connections between nodes:
+<p><strong>Check the ROS 2 graph</strong>: Use <code>rqt_graph</code> to visualize the connections between nodes:
    </p><div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>run<span class="w"> </span>rqt_graph<span class="w"> </span>rqt_graph
 </code></pre></div><p></p>
 </li>
 </ol>
-<h2 id="understanding-ros2-concepts">Understanding ROS2 Concepts<a class="headerlink" href="#understanding-ros2-concepts" title="Anchor link">¶</a></h2>
+<h2 id="understanding-ros-2-concepts">Understanding ROS 2 Concepts<a class="headerlink" href="#understanding-ros-2-concepts" title="Anchor link">¶</a></h2>
 <h3 id="topics-and-messages">Topics and Messages<a class="headerlink" href="#topics-and-messages" title="Anchor link">¶</a></h3>
 <ul>
 <li><strong>Topics</strong>: Named channels for data communication between nodes</li>
@@ -3533,10 +3561,10 @@ ros2<span class="w"> </span>node<span class="w"> </span>list
 <li><strong>Subscribers</strong>: Nodes that receive messages from topics</li>
 </ul>
 <h3 id="quality-of-service-qos">Quality of Service (QoS)<a class="headerlink" href="#quality-of-service-qos" title="Anchor link">¶</a></h3>
-<p>The queue size parameter (10 in our examples) is part of ROS2's Quality of Service system. It determines how many messages to buffer if your callback function can't process them fast enough.</p>
+<p>The queue size parameter (10 in our examples) is part of ROS 2's Quality of Service system. It determines how many messages to buffer if your callback function can't process them fast enough.</p>
 <h3 id="node-lifecycle">Node Lifecycle<a class="headerlink" href="#node-lifecycle" title="Anchor link">¶</a></h3>
 <ol>
-<li><strong>Initialization</strong>: <code>rclpy.init()</code> sets up the ROS2 runtime</li>
+<li><strong>Initialization</strong>: <code>rclpy.init()</code> sets up the ROS 2 runtime</li>
 <li><strong>Node Creation</strong>: Creating your node instance</li>
 <li><strong>Spinning</strong>: <code>rclpy.spin()</code> keeps the node alive and processes callbacks</li>
 <li><strong>Cleanup</strong>: <code>destroy_node()</code> and <code>rclpy.shutdown()</code> clean up resources</li>
@@ -3587,13 +3615,13 @@ ros2<span class="w"> </span>node<span class="w"> </span>list
         
         
           
-          <a href="../intro_to_ros2/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction to ROS2 Client (rclpy)">
+          <a href="../intro_to_ros2/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction to ROS 2 Client (rclpy)">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Introduction to ROS2 Client (rclpy)
+                Introduction to ROS 2 Client (rclpy)
               </div>
             </div>
             <div class="md-footer__button md-icon">

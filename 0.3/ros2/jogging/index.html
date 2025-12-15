@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#motion-commands-in-ros2" class="md-skip">
+        <a href="#motion-commands-in-ros-2" class="md-skip">
           Skip to content
         </a>
       
@@ -1073,7 +1073,7 @@
             
   
   <span class="md-ellipsis">
-    ROS2 Basics
+    ROS 2 Basics
     
   </span>
   
@@ -1084,7 +1084,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_2">
             <span class="md-nav__icon md-icon"></span>
-            ROS2 Basics
+            ROS 2 Basics
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1121,7 +1121,7 @@
         
   
   <span class="md-ellipsis">
-    Introduction to ROS2 Client (rclpy)
+    Introduction to ROS 2 Client (rclpy)
     
   </span>
   
@@ -2671,11 +2671,11 @@
   
 
 
-<h1 id="motion-commands-in-ros2">Motion Commands in ROS2<a class="headerlink" href="#motion-commands-in-ros2" title="Anchor link">¶</a></h1>
+<h1 id="motion-commands-in-ros-2">Motion Commands in ROS 2<a class="headerlink" href="#motion-commands-in-ros-2" title="Anchor link">¶</a></h1>
 <h2 id="quickstart">Quickstart<a class="headerlink" href="#quickstart" title="Anchor link">¶</a></h2>
 <p>Sending motion commands is as easy as:</p>
 <ol>
-<li>Launch the ROS2 driver in a terminal:
+<li>Launch the ROS 2 driver in a terminal:
     <div class="shell-prompt copy highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_core<span class="w"> </span>stretch_driver.launch.py
 </code></pre></div></li>
 <li>Open iPython and type the following code, one line at a time:
@@ -2686,7 +2686,7 @@
 </code></pre></div></li>
 </ol>
 <h2 id="writing-a-node">Writing a node<a class="headerlink" href="#writing-a-node" title="Anchor link">¶</a></h2>
-<p>You can also write a ROS2 node to send motion commands:</p>
+<p>You can also write a ROS 2 node to send motion commands:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">hello_helpers.hello_misc</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">hm</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">MyNode</span><span class="p">(</span><span class="n">hm</span><span class="o">.</span><span class="n">HelloNode</span><span class="p">):</span>
@@ -2757,7 +2757,7 @@
 <p>We're misusing the <a href="https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/JointState.html">sensor_msgs/JointState</a> message to publish the joint limits. The <code>name</code> array lists out each ranged joint. The <code>position</code> array lists the lower bound for each joint. The <code>velocity</code> array lists the upper bound. The length of these 3 arrays will be equal, because the index of the joint in the <code>name</code> array determines which index the corresponding limits will be in the other two arrays.</p>
 <p>The revolute joints will have their limits published in radians, and the prismatic joints will have them published in meters. See the <a href="../../getting_started/stretch_hardware_overview/">Hardware Overview</a> to see the ranges represented visually.</p>
 <h2 id="translating-and-rotating-the-base">Translating and rotating the base<a class="headerlink" href="#translating-and-rotating-the-base" title="Anchor link">¶</a></h2>
-<p>You can also write a ROS2 node to send motion commands to the base:</p>
+<p>You can also write a ROS 2 node to send motion commands to the base:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">hello_helpers.hello_misc</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">hm</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">MyNode</span><span class="p">(</span><span class="n">hm</span><span class="o">.</span><span class="n">HelloNode</span><span class="p">):</span>

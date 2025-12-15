@@ -1067,7 +1067,7 @@
             
   
   <span class="md-ellipsis">
-    ROS2 Basics
+    ROS 2 Basics
     
   </span>
   
@@ -1078,7 +1078,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_2">
             <span class="md-nav__icon md-icon"></span>
-            ROS2 Basics
+            ROS 2 Basics
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1115,7 +1115,7 @@
         
   
   <span class="md-ellipsis">
-    Introduction to ROS2 Client (rclpy)
+    Introduction to ROS 2 Client (rclpy)
     
   </span>
   
@@ -3278,11 +3278,11 @@ For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </spa
 <span class="k">         hello-robot-stretch-factory = </span><span class="m">0.4.13</span>
 <span class="k">         hello-robot-stretch-diagnostics = </span><span class="m">0.0.14</span>
 <span class="k">         hello-robot-stretch-urdf = </span><span class="m">0.0.18</span>
-<span class="s">[Pass] ROS2 Humble is ready</span>
+<span class="s">[Pass] ROS 2 Humble is ready</span>
 <span class="k">         Workspace at ~/ament_ws/src/stretch_ros2</span>
 </code></pre></div>
 
-<p>In addition to checking the robot's hardware, this tool also prints out a software report. This includes which version of Stretch's Python, ROS2, etc. software your system has installed. Check out the <a href="../../../software/updating_software/#identifying-your-current-software">Keeping your Software Up-to-date</a> guide for a how-to on using this report to keep your robot's software up-to-date.</p>
+<p>In addition to checking the robot's hardware, this tool also prints out a software report. This includes which version of Stretch's Python, ROS 2, etc. software your system has installed. Check out the <a href="../../../software/updating_software/#identifying-your-current-software">Keeping your Software Up-to-date</a> guide for a how-to on using this report to keep your robot's software up-to-date.</p>
 <h3 id="stretch_robot_homepy"><code>stretch_robot_home.py</code><a class="headerlink" href="#stretch_robot_homepy" title="Anchor link">¶</a></h3>
 <p><a href="https://github.com/hello-robot/stretch_body/blob/master/tools/bin/stretch_robot_home.py">Link to source code</a></p>
 <p>This tool will start Stretch's homing procedure, where every joint's zero is found. Robots with relative encoders (vs absolute encoders) need a homing procedure when they power on. For Stretch, it's a 30-second procedure that must occur every time the robot is powered on before you may send motion commands to or read correct joint positions from Stretch's joints. Normal output from this tool looks like:</p>

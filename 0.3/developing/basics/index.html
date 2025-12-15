@@ -1351,7 +1351,7 @@
             
   
   <span class="md-ellipsis">
-    ROS2 Basics
+    ROS 2 Basics
     
   </span>
   
@@ -1362,7 +1362,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_2">
             <span class="md-nav__icon md-icon"></span>
-            ROS2 Basics
+            ROS 2 Basics
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1399,7 +1399,7 @@
         
   
   <span class="md-ellipsis">
-    Introduction to ROS2 Client (rclpy)
+    Introduction to ROS 2 Client (rclpy)
     
   </span>
   
@@ -3118,7 +3118,7 @@
 <p>Your account's files all live under the home folder. This directory contains standard organizational folders like <code>Documents</code> or <code>Downloads</code>, as well as folders that are unique to Stretch's SDK, such as:</p>
 <ul>
 <li><code>stretch_user</code>: The <a href="#the-stretch-user-folder">Stretch User folder</a> is required to be present in the home directory for Stretch's SDK to work correctly. It contains calibration data unique to your robot and assets (e.g. neural net checkpoints, maps for navigation, etc.) used by various programs. If you're missing this directory, reach out to support.</li>
-<li><code>ament_ws</code>: The Ament Workspace folder contains Stretch's ROS2 SDK. This directory will be covered in more detail in the <a href="#TODO">Using ROS 2 with Stretch</a> tutorial. If this folder is missing, you may be using an older <a href="../../../software/distributions/">robot distribution</a> and should consider upgrading.</li>
+<li><code>ament_ws</code>: The Ament Workspace folder contains Stretch's ROS 2 SDK. This directory will be covered in more detail in the <a href="#TODO">Using ROS 2 with Stretch</a> tutorial. If this folder is missing, you may be using an older <a href="../../../software/distributions/">robot distribution</a> and should consider upgrading.</li>
 <li><code>catkin_ws</code>: The Catkin Workspace folder contains Stretch's ROS1 SDK. If this folder exists, you may be using an older <a href="../../../software/distributions/">robot distribution</a> and should consider upgrading.</li>
 </ul>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/files.png" data-desc-position="bottom"><img alt="files" src="../images/files.png"></a></p>
@@ -3127,8 +3127,8 @@
 <ul>
 <li><code>stretch-yyy-xxxx</code>: This is the <a href="#the-robot-calibration-folder">robot calibration directory</a>. Its naming scheme is "stretch-" following by "re1" for a Stretch RE1, "re2" for a Stretch 2, or "se3" for a Stretch 3, finally followed by your robot's four digit serial number.</li>
 <li><code>stretch_deep_perception_models</code>: This directory contains open deep learning models from third parties, including object detection, head detection, facial landmarks detection, and human pose detection.</li>
-<li><code>maps</code>: This directory contains <a href="https://www.cs.cmu.edu/~16831-f14/notes/F14/16831_lecture06_agiri_dmcconac_kumarsha_nbhakta.pdf">occupancy maps</a> that are to be used with the Stretch Nav2 ROS2 package.</li>
-<li><code>debug</code>: This directory contains debug output from the Stretch FUNMAP ROS2 package.</li>
+<li><code>maps</code>: This directory contains <a href="https://www.cs.cmu.edu/~16831-f14/notes/F14/16831_lecture06_agiri_dmcconac_kumarsha_nbhakta.pdf">occupancy maps</a> that are to be used with the Stretch Nav2 ROS 2 package.</li>
+<li><code>debug</code>: This directory contains debug output from the Stretch FUNMAP ROS 2 package.</li>
 <li><code>log</code>: This directory contains logfiles from various Stretch programs.</li>
 </ul>
 <h3 id="the-robot-calibration-folder">The Robot Calibration Folder<a class="headerlink" href="#the-robot-calibration-folder" title="Anchor link">¶</a></h3>
@@ -3250,7 +3250,7 @@
 <h4 id="flags">Flags<a class="headerlink" href="#flags" title="Anchor link">¶</a></h4>
 <p>TODO - CLI flags</p>
 <h3 id="apt-package-manager">APT Package Manager<a class="headerlink" href="#apt-package-manager" title="Anchor link">¶</a></h3>
-<p>APT is a system package manager used to install applications. It can install packages that have no GUI. For example, all ROS2 software is installed through APT. The APT CLI enables you to introspect and install new software onto Stretch. Since APT makes changes at the system level, it requires "super user access", which means each of the commands below is preceded by <code>sudo</code> and will ask for your password.</p>
+<p>APT is a system package manager used to install applications. It can install packages that have no GUI. For example, all ROS 2 software is installed through APT. The APT CLI enables you to introspect and install new software onto Stretch. Since APT makes changes at the system level, it requires "super user access", which means each of the commands below is preceded by <code>sudo</code> and will ask for your password.</p>
 <table>
 <thead>
 <tr>
