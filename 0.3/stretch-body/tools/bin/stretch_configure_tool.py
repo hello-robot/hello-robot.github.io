@@ -63,6 +63,11 @@ def is_d405_present():
             return True
     return False
 
+def is_pro_gripper_present(pro_gripper_id=17):
+    """Return True if the Pro gripper servo (by DXL ID) was detected in the last scan."""
+    model = present_dxl_model_id_map.get(pro_gripper_id)
+    return model is not None
+
 def run_cmd(cmdstr):
     cli_device.logger.debug(f'Executing command: {cmdstr}')
     returncode = os.system(cmdstr + ' > /dev/null 2>&1')
@@ -110,10 +115,16 @@ def does_tool_need_to_change():
         cli_device.logger.info(f"""But the gripper camera {"should" if expected_d405_present else "shouldn't"} be present""")
         return True
 
-    # Check if SG3's gripper dxl id to detect pro gripper
-    pro_gripper_id = 17
-    if pro_gripper_id in present_dxl_model_id_map.keys():
-        cli_device.logger.info(f"The Stretch Gripper dxl id set to {present_dxl_model_id_map[pro_gripper_id]}")
+    # Check if using standard gripper and gripper dxl id to is pro gripper
+    pro_present = is_pro_gripper_present()
+
+    if pro_present and stretch_tool != "eoa_wrist_dw3_tool_sg3_pro":
+        cli_device.logger.info("But a Pro gripper was detected and your tool is not set to eoa_wrist_dw3_tool_sg3_pro")
+        cli_device.logger.info("Done!")
+        return True
+
+    if (not pro_present) and stretch_tool == "eoa_wrist_dw3_tool_sg3_pro":
+        cli_device.logger.info("But your tool is set to eoa_wrist_dw3_tool_sg3_pro and a Pro gripper was not detected")
         cli_device.logger.info("Done!")
         return True
 
@@ -149,6 +160,25 @@ def determine_what_tool_is_correct():
     cli_device.logger.debug(f"These tools match based on present={d405_present} gripper camera: {Fore.YELLOW + str(d405_match) + Style.RESET_ALL}")
     matches = list(set(matches) & set(d405_match))
     cli_device.logger.debug(f"Filtering based on this brings the matches to: {Fore.YELLOW + str(matches) + Style.RESET_ALL}")
+
+
+    # pro-gripper present
+    pro_present = is_pro_gripper_present()
+
+    if not pro_present:
+        matches = [m for m in matches if m != 'eoa_wrist_dw3_tool_sg3_pro']
+              
+    if pro_present:
+        target = 'eoa_wrist_dw3_tool_sg3_pro'
+        if target not in matches:
+            cli_device.logger.info(
+                f"Pro gripper detected. {target} not listed in supported_eoa, attempting anyway."
+            )
+        else:
+            cli_device.logger.info(
+                f"Pro gripper detected. Selecting {target}."
+            )
+        return target
 
     if len(matches) == 0:
         cli_device.logger.info('Unable to find any tool that matches the hardware connected to your robot. Contact Hello Robot support for help.')
