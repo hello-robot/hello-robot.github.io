@@ -191,7 +191,7 @@ stretch_camera_streams_check.py --d405
 
 ### Arducam Wide-angle Color Camera
 
-Stretch has a third camera, attached to the same pan-tilt apparatus as the D435if. This smaller camera is an Arducam 1MP RGB camera with a wide-angle lens and global shutter. It is primarily useful when operating the robot remotely, as we will see in an upcoming [Web Interface Demo](./demos_web_interface.md) tutorial.
+Stretch has a third camera, attached to the same pan-tilt apparatus as the D435if. This smaller camera is an Arducam 1MP RGB camera with a wide-angle lens and global shutter. It is primarily useful when operating the robot remotely, as we will see in an upcoming [Web Interface Demo](./demos_web_teleop.md) tutorial.
 
 ```{.bash .shell-prompt .copy}
 stretch_camera_streams_check.py --navigation
