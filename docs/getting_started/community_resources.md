@@ -4,7 +4,7 @@ While this documentation is the ideal way to get started with your robot, there 
 
 ## Forum
 
-Stretch has a diverse and vibrant user community, and one of our goals at Hello Robot is to help our customers connect, collaborate, and share with one another. To this end, we have created a [public Hello Robot Forum](www.forum.hello-robot.com) where you can ask questions, post about your work, request support, or search an archive of resolved issues. Our engineers regularly read and respond to threads here, as well as posting helpful tips and tricks in the [Knowledge Base](https://forum.hello-robot.com/c/knowledge-base/). 
+Stretch has a diverse and vibrant user community, and one of our goals at Hello Robot is to help our customers connect, collaborate, and share with one another. To this end, we have created a [public Hello Robot Forum](https://forum.hello-robot.com) where you can ask questions, post about your work, request support, or search an archive of resolved issues. Our engineers regularly read and respond to threads here, as well as posting helpful tips and tricks in the [Knowledge Base](https://forum.hello-robot.com/c/knowledge-base/).
 
 ## Github
 

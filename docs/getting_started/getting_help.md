@@ -4,7 +4,7 @@ If you run into any issues or find yourself in need of additional resources whil
 
 ## Forum
 
-One of the best parts of working with Stretch is the active and helpful user community. We encourage all our users to make use of the [Hello Robot Forum](www.forum.hello-robot.com), where you can post your own questions or search an archive of resolved issues. Our engineers regularly read and respond to threads here, as well as posting helpful tips and tricks in the [Knowledge Base](https://forum.hello-robot.com/c/knowledge-base/). 
+One of the best parts of working with Stretch is the active and helpful user community. We encourage all our users to make use of the [Hello Robot Forum](https://forum.hello-robot.com), where you can post your own questions or search an archive of resolved issues. Our engineers regularly read and respond to threads here, as well as posting helpful tips and tricks in the [Knowledge Base](https://forum.hello-robot.com/c/knowledge-base/).
 
 ## Support
 
