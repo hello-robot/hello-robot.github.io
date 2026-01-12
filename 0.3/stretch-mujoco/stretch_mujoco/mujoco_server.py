@@ -1,6 +1,7 @@
 import contextlib
 from dataclasses import dataclass
 from multiprocessing.managers import DictProxy, SyncManager
+import os
 import signal
 import threading
 import time
@@ -192,13 +193,42 @@ class MujocoServer:
         stop_mujoco_process_event: threading.Event,
         data_proxies: MujocoServerProxies,
         cameras_to_use: list[StretchCameras],
+        start_translation: list|None,
+        start_rotation_quat: list|None
     ):
-        server = cls(scene_xml_path, model, stop_mujoco_process_event, data_proxies)
+        server = cls(scene_xml_path, model, stop_mujoco_process_event, data_proxies,start_translation , start_rotation_quat)
         server.run(
             show_viewer_ui=show_viewer_ui,
             camera_hz=camera_hz,
             cameras_to_use=cameras_to_use,
         )
+
+    def change_start_pose(self,model: MjModel, translation: list|None, rotation_quat: list|None):
+        body_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_BODY, "base_link")
+        
+        if body_id == -1:
+            raise ValueError("Body 'base_link' not found in the MjModel.")
+    
+        joint_id = -1
+        for j in range(model.njnt):
+            if model.jnt_bodyid[j] == body_id:
+                joint_id = j
+                break
+    
+        # Since the model has a Free Joint, we must change the default QPOS (qpos0).
+        qadr = model.jnt_qposadr[joint_id]
+
+        if translation is not None:
+            model.qpos0[qadr:qadr+3] = translation
+            
+        if rotation_quat is not None:
+            model.qpos0[qadr+3:qadr+7] = rotation_quat
+
+        print(f"Start pose: {model.qpos0[qadr:qadr+3]}, {model.qpos0[qadr+3:qadr+7]}")
+
+        return model
+        
+
 
     def __init__(
         self,
@@ -206,6 +236,8 @@ class MujocoServer:
         model: MjModel | None,
         stop_mujoco_process_event: threading.Event,
         data_proxies: MujocoServerProxies,
+        start_translation: list|None,
+        start_rotation_quat: list|None
     ):
         """
         Initialize the Simulator handle with a scene
@@ -215,11 +247,14 @@ class MujocoServer:
         """
         if scene_xml_path is None:
             scene_xml_path = utils.default_scene_xml_path
-            self.mjmodel = MjModel.from_xml_path(scene_xml_path)
-        elif model is None:
-            self.mjmodel = MjModel.from_xml_path(scene_xml_path)
-        if model is not None:
-            self.mjmodel = model
+
+        if model is None:
+            model = MjModel.from_xml_path(scene_xml_path)
+
+        model = self.change_start_pose(model, start_translation, start_rotation_quat)
+
+        self.mjmodel = model
+
         self.mjdata = MjData(self.mjmodel)
 
         self._base_in_pos_motion = False
