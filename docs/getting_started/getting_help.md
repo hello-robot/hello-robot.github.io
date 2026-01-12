@@ -10,6 +10,14 @@ One of the best parts of working with Stretch is the active and helpful user com
 
 If you've run into a hardware problem, need urgent assistance, or just can't find the answer to your questions and want to chat directly with a Hello Robot engineer, please feel free to contact us directly at support@hello-robot.com. We love talking to Stretch users, and your feedback helps us improve the product for all our users.
 
+## Troubleshooting
+
+Each tutorial has a troubleshooting section at the end, covering common issues with the robot and content covered in the tutorial. For example, check out the troubleshooting section for:
+
+ - [Upgrading your Operating System](https://docs.hello-robot.com/0.3/installation/robot_install/#troubleshooting)
+ - [Getting Started](https://docs.hello-robot.com/0.3/getting_started/hello_robot/#troubleshooting)
+ - [Stretch Web Teleop](https://github.com/hello-robot/stretch_web_teleop#troubleshooting)
+
 ## Next Steps
 
 This concludes the guides in our Quickstart tutorial. We recommend continuing to learn about Stretch in one of the following sections:
