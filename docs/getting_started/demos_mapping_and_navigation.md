@@ -56,6 +56,9 @@ This will save two files to the "~/stretch_user/maps" directory - `nav2_demo_map
 
 ### Navigation
 
+!!! note
+    Before starting navigation, ensure that the mapping process (`offline_mapping.launch.py`) has been stopped. Navigation should be launched after mapping is complete and the map has been saved.
+    
 Now that we have a saved map of the environment, we can command the robot to move around the mapped space. Run the following command:
 
 ```{.bash .shell-prompt .copy}
