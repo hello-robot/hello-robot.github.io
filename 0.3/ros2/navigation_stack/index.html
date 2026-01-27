@@ -2684,6 +2684,10 @@ ros2<span class="w"> </span>run<span class="w"> </span>nav2_map_server<span clas
 <div class="shell-prompt highlight"><pre><span></span><code>eog<span class="w"> </span><span class="si">${</span><span class="nv">HELLO_FLEET_PATH</span><span class="si">}</span>/maps/&lt;map_name&gt;.pgm
 </code></pre></div>
 <h2 id="navigation">Navigation<a class="headerlink" href="#navigation" title="Anchor link">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Before starting navigation, ensure that the mapping process (<code>offline_mapping.launch.py</code>) has been stopped. Navigation should be launched after mapping is complete and the map has been saved.</p>
+</div>
 <p>Next, with <code>&lt;map_name&gt;.yaml</code>, we can navigate the robot around the mapped space. Run:</p>
 <div class="shell-prompt highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_nav2<span class="w"> </span>navigation.launch.py<span class="w"> </span>map:<span class="o">=</span><span class="si">${</span><span class="nv">HELLO_FLEET_PATH</span><span class="si">}</span>/maps/&lt;map_name&gt;.yaml
 </code></pre></div>

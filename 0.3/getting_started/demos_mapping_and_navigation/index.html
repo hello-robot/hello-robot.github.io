@@ -2804,6 +2804,10 @@
 </code></pre></div>
 </div>
 <h3 id="navigation">Navigation<a class="headerlink" href="#navigation" title="Anchor link">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Before starting navigation, ensure that the mapping process (<code>offline_mapping.launch.py</code>) has been stopped. Navigation should be launched after mapping is complete and the map has been saved.</p>
+</div>
 <p>Now that we have a saved map of the environment, we can command the robot to move around the mapped space. Run the following command:</p>
 <div class="shell-prompt copy highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>stretch_nav2<span class="w"> </span>navigation.launch.py<span class="w"> </span>map:<span class="o">=</span><span class="si">${</span><span class="nv">HELLO_FLEET_PATH</span><span class="si">}</span>/maps/nav2_demo_map.yaml
 </code></pre></div>
