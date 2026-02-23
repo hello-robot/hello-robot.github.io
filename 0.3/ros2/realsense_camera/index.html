@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#capture-image" class="md-skip">
+        <a href="#realsense-camera" class="md-skip">
           Skip to content
         </a>
       
@@ -1915,9 +1915,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#example-7" class="md-nav__link">
+  <a href="#quick-hardware-check-no-ros-2-required" class="md-nav__link">
     <span class="md-ellipsis">
-      Example 7
+      Quick Hardware Check (No ROS 2 Required)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#capture-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Capture Image
     </span>
   </a>
   
@@ -2631,9 +2640,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#example-7" class="md-nav__link">
+  <a href="#quick-hardware-check-no-ros-2-required" class="md-nav__link">
     <span class="md-ellipsis">
-      Example 7
+      Quick Hardware Check (No ROS 2 Required)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#capture-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Capture Image
     </span>
   </a>
   
@@ -2729,8 +2747,62 @@
   
 
 
-<h1 id="capture-image">Capture Image<a class="headerlink" href="#capture-image" title="Anchor link">¶</a></h1>
-<h2 id="example-7">Example 7<a class="headerlink" href="#example-7" title="Anchor link">¶</a></h2>
+<h1 id="realsense-camera">Realsense Camera<a class="headerlink" href="#realsense-camera" title="Anchor link">¶</a></h1>
+<h2 id="quick-hardware-check-no-ros-2-required">Quick Hardware Check (No ROS 2 Required)<a class="headerlink" href="#quick-hardware-check-no-ros-2-required" title="Anchor link">¶</a></h2>
+<p>Stretch includes a standalone visualization tool for debugging RealSense cameras without launching ROS 2.</p>
+<p>To view the head D435i camera:</p>
+<div class="highlight"><pre><span></span><code>stretch_realsense_visualizer.py
+</code></pre></div>
+<div align="center">
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/realsense_D435i.png" data-desc-position="bottom"><img src="../images/realsense_D435i.png" alt="base" width="500"></a>
+</div>
+
+<p>It opens a live window showing the RGB image on the left and the color-mapped depth image on the right.
+By default, it uses the head D435i, or the wrist D405 when launched with <code>--d405</code>.</p>
+<p>To view the gripper D405 camera:</p>
+<div class="highlight"><pre><span></span><code>stretch_realsense_visualizer.py<span class="w"> </span>--d405
+</code></pre></div>
+<div align="center">
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/realsense_D405.png" data-desc-position="bottom"><img src="../images/realsense_D405.png" alt="base" width="500"></a>
+</div>
+
+<p>You can also adjust exposure settings using the <code>--exposure</code> flag. For example, to modify exposure on the D405:</p>
+<div class="highlight"><pre><span></span><code>stretch_realsense_visualizer.py<span class="w"> </span>--d405<span class="w"> </span>--exposure<span class="w"> </span>low
+</code></pre></div>
+<p>The <code>--exposure</code> option supports <code>auto</code>, <code>low</code>, <code>medium</code>, or a manual integer value in the range <code>[0, 165000]</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Exposure settings applied via this tool are temporary and only affect the running session. They do not persist and will not carry over to ROS 2 camera nodes.</p>
+</div>
+<p>To see all available options, run:</p>
+<div class="highlight"><pre><span></span><code>stretch_realsense_visualizer.py<span class="w"> </span>--help
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>stretch_realsense_visualizer.py<span class="w"> </span>--help
+For<span class="w"> </span>use<span class="w"> </span>with<span class="w"> </span>S<span class="w"> </span>T<span class="w"> </span>R<span class="w"> </span>E<span class="w"> </span>T<span class="w"> </span>C<span class="w"> </span>H<span class="w"> </span><span class="o">(</span>R<span class="o">)</span><span class="w"> </span>from<span class="w"> </span>Hello<span class="w"> </span>Robot<span class="w"> </span>Inc.
+---------------------------------------------------------------------
+
+usage:<span class="w"> </span>stretch_realsense_visualizer.py<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--no_gui<span class="o">]</span><span class="w"> </span><span class="o">[</span>--colormap<span class="w"> </span>COLORMAP<span class="o">]</span>
+<span class="w">                                       </span><span class="o">[</span>--save<span class="w"> </span><span class="o">[</span>SAVE<span class="o">]]</span>
+<span class="w">                                       </span><span class="o">[</span>--save_limit<span class="w"> </span>SAVE_LIMIT<span class="o">]</span><span class="w"> </span><span class="o">[</span>--d405<span class="o">]</span>
+<span class="w">                                       </span><span class="o">[</span>--exposure<span class="w"> </span>EXPOSURE<span class="o">]</span>
+
+Tool<span class="w"> </span>to<span class="w"> </span><span class="nb">test</span><span class="w"> </span>the<span class="w"> </span>Realsense<span class="w"> </span>D435i<span class="w"> </span>Camera.
+
+options:
+<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">            </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+<span class="w">  </span>--no_gui<span class="w">              </span>Show<span class="w"> </span>no<span class="w"> </span>GUI<span class="w"> </span><span class="k">while</span><span class="w"> </span>reading<span class="w"> </span>images.
+<span class="w">  </span>--colormap<span class="w"> </span>COLORMAP<span class="w">   </span>Valid<span class="w"> </span>OpenCV<span class="w"> </span>colormaps<span class="w"> </span>at<span class="w"> </span><span class="s1">'https://docs.opencv.org/mas</span>
+<span class="s1">                        ter/d3/d50/group__imgproc__colormap.html'</span>.
+<span class="w">  </span>--save<span class="w"> </span><span class="o">[</span>SAVE<span class="o">]</span><span class="w">         </span>Save<span class="w"> </span>as<span class="w"> </span>.avi<span class="w"> </span>video<span class="w"> </span>to<span class="w"> </span>given<span class="w"> </span>filepath<span class="w"> </span>at<span class="w"> </span>end<span class="w"> </span>of<span class="w"> </span>script.
+<span class="w">  </span>--save_limit<span class="w"> </span>SAVE_LIMIT
+<span class="w">                        </span>The<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>minutes<span class="w"> </span>of<span class="w"> </span>data<span class="w"> </span>to<span class="w"> </span>save.
+<span class="w">  </span>--d405<span class="w">                </span>By<span class="w"> </span>default,<span class="w"> </span>this<span class="w"> </span>tool<span class="w"> </span>shows<span class="w"> </span>the<span class="w"> </span>D435if<span class="w"> </span>head<span class="w"> </span>camera
+<span class="w">                        </span>imagery.<span class="w"> </span>Setting<span class="w"> </span>this<span class="w"> </span>flag<span class="w"> </span>causes<span class="w"> </span>the<span class="w"> </span>tool<span class="w"> </span>to<span class="w"> </span>instead
+<span class="w">                        </span>show<span class="w"> </span>the<span class="w"> </span>D405<span class="w"> </span>wrist<span class="w"> </span>imagery.
+<span class="w">  </span>--exposure<span class="w"> </span>EXPOSURE<span class="w">   </span>Set<span class="w"> </span>the<span class="w"> </span>D405<span class="w"> </span>exposure<span class="w"> </span>to<span class="w"> </span><span class="o">[</span><span class="s1">'low'</span>,<span class="w"> </span><span class="s1">'medium'</span>,<span class="w"> </span><span class="s1">'auto'</span><span class="o">]</span><span class="w"> </span>or
+<span class="w">                        </span>an<span class="w"> </span>integer<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>range<span class="w"> </span><span class="o">[</span><span class="m">0</span>,<span class="w"> </span><span class="m">165000</span><span class="o">]</span>
+</code></pre></div>
+<h2 id="capture-image">Capture Image<a class="headerlink" href="#capture-image" title="Anchor link">¶</a></h2>
 <p>In this example, we will review a Python script that captures an image from the <a href="https://www.intelrealsense.com/depth-camera-d435i/">RealSense camera</a>.</p>
 <p align="center">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/camera_image.jpeg" data-desc-position="bottom"><img src="https://raw.githubusercontent.com/hello-robot/stretch_tutorials/noetic/images/camera_image.jpeg"></a>
