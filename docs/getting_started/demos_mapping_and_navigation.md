@@ -130,6 +130,43 @@ To read more about Nav2, FUNMAP, and mapping and navigation with Stretch, check 
 
 In the next guide, [Demo #2 - Web Teleop](./demos_web_teleop.md), we will teleoperate the robot from a web browser or mobile phone using Stretch's Web Teleoperation interface.
 
+## Troubleshooting
+
+This section provides suggestions for common errors. If you become stuck and don't find an answer here, please email us or contact us through the [forum](https://forum.hello-robot.com/).
+
+### High CPU Usage, Freezing, RViz Not Launching, or Unexpected Behavior
+
+If you experience issues such as high CPU usage, crashes, freezing, or RViz not launching, this may be due to multiple ROS systems sharing the same network and ROS Domain ID.
+
+**Solution: Set a Unique ROS Domain ID**
+
+**Temporary:**
+
+```
+export ROS_DOMAIN_ID=10
+```
+
+**Permanent:**
+
+```
+nano ~/.bashrc
+```
+Add to your bashrc:
+
+```
+export ROS_DOMAIN_ID=10
+```
+
+Then:
+
+```
+source ~/.bashrc
+```
+
+
+Ensure each robot on the network uses a different `ROS_DOMAIN_ID`, then relaunch the demo.
+
+
 <!-- TODO:
 
 ---
