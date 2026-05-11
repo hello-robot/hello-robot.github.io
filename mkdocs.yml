@@ -25,6 +25,9 @@ theme:
 extra_css:
   - extra.css
 
+extra_javascript:
+  - extra.js
+
 markdown_extensions:
   - toc:
       permalink: true
