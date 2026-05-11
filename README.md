@@ -1,5 +1,12 @@
 # Stretch Documentation Web Server
 
+## Stretch 4 Release Note
+
+Stretch 4 docs are coming soon! Check out <a href="https://github.com/hello-robot?q=stretch4_&type=&language=&sort=">the open source repositories </a> on GitHub!
+
+
+## This Repository
+
 This repository generates the documentation hosted at [docs.hello-robot.com](https://docs.hello-robot.com). 
 
 The content largely lives inside of independent repositories that include their own MkDocs site generation information. This repo has the role of integrating these independent repositories together using the plugin `mkdocs-monorepo-plugin`.
