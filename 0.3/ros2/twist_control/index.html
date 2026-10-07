@@ -2739,7 +2739,7 @@ The next line, rclpy.init(args=args), is very important as it tells ROS to initi
   <img src="images/move.gif"/>
 </p>
 Using your preferred text editor, modify the topic name of the published *Twist* messages. Please review the edit in the **move.py** script below.
-<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;/stretch_diff_drive_controller/cmd_vel&#39;</span><span class="p">,</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">'/stretch_diff_drive_controller/cmd_vel'</span><span class="p">,</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 After saving the edited node, bringup [Stretch in the empty world simulation](gazebo_basics.md). To drive the robot with the node, type the following in a new terminal
 ```
